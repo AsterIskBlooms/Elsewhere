@@ -2,10 +2,10 @@
 	"schemaVersion": 1,
 	"id": "elsewhere",
 	"version": "${version}",
-	"name": "elsewhere",
-	"description": "dimensiioonnnne :3",
+	"name": "ELSEWHERE",
+	"description": "A mod that adds a new dimension, the Tangleroot",
 	"authors": [
-		"Aster-Isk, SurelyBerry"
+		"Aster-Isk, SurelyBerry, Pixion"
 	],
 	"contact": {
 		"homepage": "",
