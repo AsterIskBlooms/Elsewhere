@@ -4,9 +4,6 @@ import net.asterisk.elsewhere.registry.EBlocks;
 import net.asterisk.elsewhere.registry.EItems;
 import net.asterisk.elsewhere.registry.ETabs;
 import net.asterisk.elsewhere.registry.ESounds;
-import net.asterisk.elsewhere.worldgen.EConfiguredFeatures;
-import net.asterisk.elsewhere.worldgen.EPlacedFeatures;
-import net.asterisk.elsewhere.worldgen.tangleroot.ElsewhereGenerator;
 import net.asterisk.elsewhere.worldgen.tree.ESaplingGenerators;
 import net.fabricmc.api.ModInitializer;
 

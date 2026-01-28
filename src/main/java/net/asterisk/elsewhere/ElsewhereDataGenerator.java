@@ -2,6 +2,7 @@ package net.asterisk.elsewhere;
 
 import net.asterisk.elsewhere.datagen.*;
 import net.asterisk.elsewhere.worldgen.EConfiguredFeatures;
+import net.asterisk.elsewhere.worldgen.EDimensions;
 import net.asterisk.elsewhere.worldgen.EPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -25,5 +26,6 @@ public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, EConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, EPlacedFeatures::bootstrap);
+		registryBuilder.add(Registries.DIMENSION_TYPE, EDimensions::bootstrapType);
 	}
 }
