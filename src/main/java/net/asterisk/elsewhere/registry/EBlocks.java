@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.function.Function;
@@ -112,12 +113,20 @@ public interface EBlocks {
     );
     Block TAUTWOOD_FENCE_GATE = registerFenceGate("tautwood_fence_gate", EWoodTypes.TAUTWOOD, TAUTWOOD_FENCE
     );
-    Block TAUTWOOD_HANGING_SIGN = registerCeilingHangingSign("tautwood_hanging_sign", EWoodTypes.TAUTWOOD
+    Block TAUTWOOD_SIGN = registerSign("tautwood_sign", EWoodTypes.TAUTWOOD, TAUTWOOD_PLANKS
     );
-    Block TAUTWOOD_WALL_HANGING_SIGN = registerWallHangingSign("tautwood_wall_hanging_sign", EWoodTypes.TAUTWOOD
+    Block TAUTWOOD_WALL_SIGN = registerWallSign("tautwood_wall_sign", EWoodTypes.TAUTWOOD, TAUTWOOD_PLANKS
+    );
+    Block TAUTWOOD_HANGING_SIGN = registerCeilingHangingSign("tautwood_hanging_sign", EWoodTypes.TAUTWOOD, TAUTWOOD_PLANKS
+    );
+    Block TAUTWOOD_WALL_HANGING_SIGN = registerWallHangingSign("tautwood_wall_hanging_sign", EWoodTypes.TAUTWOOD, TAUTWOOD_PLANKS
     );
     Block TAUTWOOD_SHELF = register("tautwood_shelf", ShelfBlock::new, true,
             BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2.0F, 3.0F).ignitedByLava()
+    );
+    Block TAUTWOOD_BUTTON = registerWoodenButton("tautwood_button", EBlockSetTypes.TAUTWOOD, TAUTWOOD_PLANKS
+    );
+    Block TAUTWOOD_PRESSURE_PLATE = registerWoodenPressurePlate("tautwood_pressure_plate", EBlockSetTypes.TAUTWOOD
     );
 
 
@@ -168,12 +177,28 @@ public interface EBlocks {
         return register(id, p -> new FenceGateBlock(woodType, p), true, BlockBehaviour.Properties.ofFullCopy(block));
     }
 
-    private static Block registerCeilingHangingSign(final String id, WoodType woodType) {
-        return register(id, p -> new CeilingHangingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
+    private static Block registerSign(final String id, WoodType woodType, Block block) {
+        return register(id, p -> new StandingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block));
     }
 
-    private static Block registerWallHangingSign(final String id, WoodType woodType) {
-        return register(id, p -> new WallHangingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN));
+    private static Block registerWallSign(final String id, WoodType woodType, Block block) {
+        return register(id, p -> new WallSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block));
+    }
+
+    private static Block registerCeilingHangingSign(final String id, WoodType woodType, Block block) {
+        return register(id, p -> new CeilingHangingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block));
+    }
+
+    private static Block registerWallHangingSign(final String id, WoodType woodType, Block block) {
+        return register(id, p -> new WallHangingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block));
+    }
+
+    private static Block registerWoodenButton(final String id, BlockSetType blockSetType, Block block) {
+        return register(id, p -> new ButtonBlock(blockSetType, 30, p), true, BlockBehaviour.Properties.ofFullCopy(block));
+    }
+
+    private static Block registerWoodenPressurePlate(final String id, BlockSetType blockSetType) {
+        return register(id, p -> new PressurePlateBlock(blockSetType, p), true, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     }
 
 

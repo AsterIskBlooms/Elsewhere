@@ -63,7 +63,8 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.TAUTWOOD_SLAB)
                 .fence(EBlocks.TAUTWOOD_FENCE)
                 .fenceGate(EBlocks.TAUTWOOD_FENCE_GATE)
-                //.sign(EBlocks.TAUTWOOD_SIGN)
+                .button(EBlocks.TAUTWOOD_BUTTON)
+                .pressurePlate(EBlocks.TAUTWOOD_PRESSURE_PLATE)
                 ;
     }
 
@@ -106,6 +107,8 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SYLVER_BOOTS, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EBlocks.TAUTWOOD_SAPLING.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.TAUTWOOD_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.TAUTWOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
     }
 
 

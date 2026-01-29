@@ -47,8 +47,8 @@ public class ETabs {
                     output.accept(EBlocks.TAUTWOOD_SLAB.asItem());
                     output.accept(EBlocks.TAUTWOOD_FENCE.asItem());
                     output.accept(EBlocks.TAUTWOOD_FENCE_GATE.asItem());
-                    //output.accept(EBlocks.TAUTWOOD_SIGN.asItem());
-                    output.accept(EItems.TAUTWOOD_HANGING_SIGN);
+                    //output.accept(EItems.TAUTWOOD_SIGN);
+                    //output.accept(EItems.TAUTWOOD_HANGING_SIGN);
                     output.accept(EBlocks.TAUTWOOD_SHELF.asItem());
                     // Xyloite Items
                     output.accept(EItems.RAW_XYLOITE);
@@ -67,8 +67,8 @@ public class ETabs {
                     // Xyloite Blocks
                     output.accept(EBlocks.XYLOITE_BLOCK.asItem());
                     output.accept(EBlocks.CUT_XYLOITE.asItem());
-                    output.accept(EBlocks.CUT_XYLOITE_SLAB.asItem());
                     output.accept(EBlocks.CUT_XYLOITE_STAIRS.asItem());
+                    output.accept(EBlocks.CUT_XYLOITE_SLAB.asItem());
                     // Sylver Items
                     output.accept(EItems.RAW_SYLVER);
                     output.accept(EItems.SYLVER_INGOT);

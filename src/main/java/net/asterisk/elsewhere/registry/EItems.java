@@ -135,7 +135,8 @@ public interface EItems {
     );
 
      // Hanging Signs
-    Item TAUTWOOD_HANGING_SIGN = registerHangingSign("tautwood_hanging_sign", EBlocks.TAUTWOOD_HANGING_SIGN, EBlocks.TAUTWOOD_WALL_HANGING_SIGN);
+     Item TAUTWOOD_SIGN = registerSign("tautwood_sign", EBlocks.TAUTWOOD_HANGING_SIGN, EBlocks.TAUTWOOD_WALL_HANGING_SIGN);
+     Item TAUTWOOD_HANGING_SIGN = registerHangingSign("tautwood_hanging_sign", EBlocks.TAUTWOOD_SIGN, EBlocks.TAUTWOOD_WALL_SIGN);
 
 
 
@@ -154,6 +155,10 @@ public interface EItems {
         Registry.register(BuiltInRegistries.ITEM, itemKey, item);
 
         return item;
+    }
+
+    private static Item registerSign(final String name, Block signBlock, Block wallSignBlock) {
+        return register(name, p -> new SignItem(signBlock, wallSignBlock, p), new Item.Properties());
     }
 
     private static Item registerHangingSign(final String name, Block hangingSignBlock, Block wallHangingSignBlock) {

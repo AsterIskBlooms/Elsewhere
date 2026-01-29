@@ -88,9 +88,12 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.tautwood_fence", "Tautwood Fence");
         translationBuilder.add("block.elsewhere.tautwood_fence_gate", "Tautwood Fence Gate");
         translationBuilder.add("block.elsewhere.tautwood_sign", "Tautwood Sign");
+        translationBuilder.add("block.elsewhere.tautwood_wall_sign", "Tautwood Sign");
         translationBuilder.add("item.elsewhere.tautwood_hanging_sign", "Tautwood Hanging Sign");
         translationBuilder.add("block.elsewhere.tautwood_hanging_sign", "Tautwood Hanging Sign");
         translationBuilder.add("block.elsewhere.tautwood_wall_hanging_sign", "Tautwood Hanging Sign");
+        translationBuilder.add("block.elsewhere.tautwood_button", "Tautwood Button");
+        translationBuilder.add("block.elsewhere.tautwood_pressure_plate", "Tautwood Pressure Plate");
 
 
 
