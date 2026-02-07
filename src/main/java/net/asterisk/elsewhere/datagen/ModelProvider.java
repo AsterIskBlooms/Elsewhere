@@ -17,8 +17,6 @@ public class ModelProvider extends FabricModelProvider {
         super(output);
     }
 
-    public static final TexturedModel.Provider PLANT = createDefault(TextureMapping::cross, ModelTemplates.CROSS);
-
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
         // Gloam Blocks
@@ -46,26 +44,31 @@ public class ModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(EBlocks.XYLOITE_BLOCK);
         blockStateModelGenerator.family(EBlocks.CUT_XYLOITE)
                 .stairs(EBlocks.CUT_XYLOITE_STAIRS)
-                .slab(EBlocks.CUT_XYLOITE_SLAB);
+                .slab(EBlocks.CUT_XYLOITE_SLAB)
+                ;
+        blockStateModelGenerator.createDoor(EBlocks.XYLOITE_DOOR);
+        blockStateModelGenerator.createTrapdoor(EBlocks.XYLOITE_TRAPDOOR);
 
         // Sylver Blocks
         blockStateModelGenerator.createTrivialCube(EBlocks.SYLVER_BLOCK);
 
-        // Tautwood Blocks
-        blockStateModelGenerator.createTrivialBlock(EBlocks.TAUTWOOD_SAPLING, PLANT);
-        blockStateModelGenerator.createTrivialBlock(EBlocks.TAUTWOOD_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.createTrivialBlock(EBlocks.TAUTWOOD_LOG, TexturedModel.COLUMN_ALT);
-        blockStateModelGenerator.createTrivialCube(EBlocks.TAUTWOOD_WOOD);
-        blockStateModelGenerator.createTrivialBlock(EBlocks.STRIPPED_TAUTWOOD_LOG, TexturedModel.COLUMN_ALT);
-        blockStateModelGenerator.createTrivialCube(EBlocks.STRIPPED_TAUTWOOD_WOOD);
-        blockStateModelGenerator.family(EBlocks.TAUTWOOD_PLANKS)
-                .stairs(EBlocks.TAUTWOOD_STAIRS)
-                .slab(EBlocks.TAUTWOOD_SLAB)
-                .fence(EBlocks.TAUTWOOD_FENCE)
-                .fenceGate(EBlocks.TAUTWOOD_FENCE_GATE)
-                .button(EBlocks.TAUTWOOD_BUTTON)
-                .pressurePlate(EBlocks.TAUTWOOD_PRESSURE_PLATE)
-                ;
+        // Tautolith Blocks
+        blockStateModelGenerator.createPlantWithDefaultItem(EBlocks.TAUTOLITH_SAPLING, EBlocks.POTTED_TAUTOLITH_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockStateModelGenerator.createTrivialBlock(EBlocks.TAUTOLITH_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.woodProvider(EBlocks.TAUTOLITH_LOG).logWithHorizontal(EBlocks.TAUTOLITH_LOG).wood(EBlocks.TAUTOLITH_WOOD);
+        blockStateModelGenerator.woodProvider(EBlocks.STRIPPED_TAUTOLITH_LOG).logWithHorizontal(EBlocks.STRIPPED_TAUTOLITH_LOG).wood(EBlocks.STRIPPED_TAUTOLITH_WOOD);
+        blockStateModelGenerator.family(EBlocks.TAUTOLITH_PLANKS).generateFor(EBlocks.TAUTOLITH_FAMILY);
+        blockStateModelGenerator.createHangingSign(EBlocks.STRIPPED_TAUTOLITH_LOG, EBlocks.TAUTOLITH_HANGING_SIGN, EBlocks.TAUTOLITH_WALL_HANGING_SIGN);
+        blockStateModelGenerator.createShelf(EBlocks.TAUTOLITH_SHELF, EBlocks.STRIPPED_TAUTOLITH_LOG);
+
+        // Briar Blocks
+        blockStateModelGenerator.createPlantWithDefaultItem(EBlocks.BRIAR_SAPLING, EBlocks.POTTED_BRIAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockStateModelGenerator.createTrivialBlock(EBlocks.BRIAR_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.woodProvider(EBlocks.BRIAR_LOG).logWithHorizontal(EBlocks.BRIAR_LOG).wood(EBlocks.BRIAR_WOOD);
+        blockStateModelGenerator.woodProvider(EBlocks.STRIPPED_BRIAR_LOG).logWithHorizontal(EBlocks.STRIPPED_BRIAR_LOG).wood(EBlocks.STRIPPED_BRIAR_WOOD);
+        blockStateModelGenerator.family(EBlocks.BRIAR_PLANKS).generateFor(EBlocks.BRIAR_FAMILY);
+        blockStateModelGenerator.createHangingSign(EBlocks.STRIPPED_BRIAR_LOG, EBlocks.BRIAR_HANGING_SIGN, EBlocks.BRIAR_WALL_HANGING_SIGN);
+        blockStateModelGenerator.createShelf(EBlocks.BRIAR_SHELF, EBlocks.STRIPPED_BRIAR_LOG);
     }
 
 
@@ -81,7 +84,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.XYLOITE_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.XYLOITE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.XYLOITE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        // Do spear manually
+        itemModelGenerator.generateSpear(EItems.XYLOITE_SPEAR);
         itemModelGenerator.generateFlatItem(EItems.XYLOITE_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.XYLOITE_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.XYLOITE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -97,7 +100,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SYLVER_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SYLVER_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SYLVER_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        // Do spear manually
+        itemModelGenerator.generateSpear(EItems.SYLVER_SPEAR);
         itemModelGenerator.generateFlatItem(EItems.SYLVER_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SYLVER_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SYLVER_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -105,13 +108,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SYLVER_CHESTPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SYLVER_LEGGINGS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SYLVER_BOOTS, ModelTemplates.FLAT_ITEM);
-
-        itemModelGenerator.generateFlatItem(EBlocks.TAUTWOOD_SAPLING.asItem(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.TAUTWOOD_SIGN, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.TAUTWOOD_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
     }
-
-
 
 
 

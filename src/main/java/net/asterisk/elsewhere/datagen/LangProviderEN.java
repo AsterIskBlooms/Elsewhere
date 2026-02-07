@@ -75,25 +75,47 @@ public class LangProviderEN extends FabricLanguageProvider {
         // Sylver Blocks
         translationBuilder.add("block.elsewhere.sylver_block", "Block of Sylver");
 
-        // Tautwood Blocks
-        translationBuilder.add("block.elsewhere.tautwood_sapling", "Tautwood Sapling");
-        translationBuilder.add("block.elsewhere.tautwood_leaves", "Tautwood Leaves");
-        translationBuilder.add("block.elsewhere.tautwood_log", "Tautwood Log");
-        translationBuilder.add("block.elsewhere.tautwood_wood", "Tautwood Wood");
-        translationBuilder.add("block.elsewhere.stripped_tautwood_log", "Stripped Tautwood Log");
-        translationBuilder.add("block.elsewhere.stripped_tautwood_wood", "Stripped Tautwood Wood");
-        translationBuilder.add("block.elsewhere.tautwood_planks", "Tautwood Planks");
-        translationBuilder.add("block.elsewhere.tautwood_stairs", "Tautwood Stairs");
-        translationBuilder.add("block.elsewhere.tautwood_slab", "Tautwood Slab");
-        translationBuilder.add("block.elsewhere.tautwood_fence", "Tautwood Fence");
-        translationBuilder.add("block.elsewhere.tautwood_fence_gate", "Tautwood Fence Gate");
-        translationBuilder.add("block.elsewhere.tautwood_sign", "Tautwood Sign");
-        translationBuilder.add("block.elsewhere.tautwood_wall_sign", "Tautwood Sign");
-        translationBuilder.add("item.elsewhere.tautwood_hanging_sign", "Tautwood Hanging Sign");
-        translationBuilder.add("block.elsewhere.tautwood_hanging_sign", "Tautwood Hanging Sign");
-        translationBuilder.add("block.elsewhere.tautwood_wall_hanging_sign", "Tautwood Hanging Sign");
-        translationBuilder.add("block.elsewhere.tautwood_button", "Tautwood Button");
-        translationBuilder.add("block.elsewhere.tautwood_pressure_plate", "Tautwood Pressure Plate");
+        // Tautolith Blocks
+        translationBuilder.add("block.elsewhere.tautolith_sapling", "Tautolith Sapling");
+        translationBuilder.add("block.elsewhere.tautolith_leaves", "Tautolith Leaves");
+        translationBuilder.add("block.elsewhere.tautolith_log", "Tautolith Log");
+        translationBuilder.add("block.elsewhere.tautolith_wood", "Tautolith Wood");
+        translationBuilder.add("block.elsewhere.stripped_tautolith_log", "Stripped Tautolith Log");
+        translationBuilder.add("block.elsewhere.stripped_tautolith_wood", "Stripped Tautolith Wood");
+        translationBuilder.add("block.elsewhere.tautolith_planks", "Tautolith Planks");
+        translationBuilder.add("block.elsewhere.tautolith_stairs", "Tautolith Stairs");
+        translationBuilder.add("block.elsewhere.tautolith_slab", "Tautolith Slab");
+        translationBuilder.add("block.elsewhere.tautolith_fence", "Tautolith Fence");
+        translationBuilder.add("block.elsewhere.tautolith_fence_gate", "Tautolith Fence Gate");
+        translationBuilder.add("item.elsewhere.tautolith_sign", "Tautolith Sign");
+        translationBuilder.add("block.elsewhere.tautolith_sign", "Tautolith Sign");
+        translationBuilder.add("block.elsewhere.tautolith_wall_sign", "Tautolith Sign");
+        translationBuilder.add("item.elsewhere.tautolith_hanging_sign", "Tautolith Hanging Sign");
+        translationBuilder.add("block.elsewhere.tautolith_hanging_sign", "Tautolith Hanging Sign");
+        translationBuilder.add("block.elsewhere.tautolith_wall_hanging_sign", "Tautolith Hanging Sign");
+        translationBuilder.add("block.elsewhere.tautolith_button", "Tautolith Button");
+        translationBuilder.add("block.elsewhere.tautolith_pressure_plate", "Tautolith Pressure Plate");
+
+        // Briar Blocks
+        translationBuilder.add("block.elsewhere.briar_sapling", "Briar Sapling");
+        translationBuilder.add("block.elsewhere.briar_leaves", "Briar Leaves");
+        translationBuilder.add("block.elsewhere.briar_log", "Briar Log");
+        translationBuilder.add("block.elsewhere.briar_wood", "Briar Wood");
+        translationBuilder.add("block.elsewhere.stripped_briar_log", "Stripped Briar Log");
+        translationBuilder.add("block.elsewhere.stripped_briar_wood", "Stripped Briar Wood");
+        translationBuilder.add("block.elsewhere.briar_planks", "Briar Planks");
+        translationBuilder.add("block.elsewhere.briar_stairs", "Briar Stairs");
+        translationBuilder.add("block.elsewhere.briar_slab", "Briar Slab");
+        translationBuilder.add("block.elsewhere.briar_fence", "Briar Fence");
+        translationBuilder.add("block.elsewhere.briar_fence_gate", "Briar Fence Gate");
+        translationBuilder.add("item.elsewhere.briar_sign", "Briar Sign");
+        translationBuilder.add("block.elsewhere.briar_sign", "Briar Sign");
+        translationBuilder.add("block.elsewhere.briar_wall_sign", "Briar Sign");
+        translationBuilder.add("item.elsewhere.briar_hanging_sign", "Briar Hanging Sign");
+        translationBuilder.add("block.elsewhere.briar_hanging_sign", "Briar Hanging Sign");
+        translationBuilder.add("block.elsewhere.briar_wall_hanging_sign", "Briar Hanging Sign");
+        translationBuilder.add("block.elsewhere.briar_button", "Briar Button");
+        translationBuilder.add("block.elsewhere.briar_pressure_plate", "Briar Pressure Plate");
 
 
 

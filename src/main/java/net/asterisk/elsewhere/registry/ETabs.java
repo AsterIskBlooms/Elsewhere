@@ -35,21 +35,44 @@ public class ETabs {
                     // Bitterack Blocks
                     output.accept(EBlocks.BITTERACK.asItem());
                     output.accept(EBlocks.BITTERACK_SYLVER_ORE.asItem());
-                    // Tautwood Blocks
-                    output.accept(EBlocks.TAUTWOOD_SAPLING.asItem());
-                    output.accept(EBlocks.TAUTWOOD_LOG.asItem());
-                    output.accept(EBlocks.STRIPPED_TAUTWOOD_LOG.asItem());
-                    output.accept(EBlocks.TAUTWOOD_WOOD.asItem());
-                    output.accept(EBlocks.STRIPPED_TAUTWOOD_WOOD.asItem());
-                    output.accept(EBlocks.TAUTWOOD_LEAVES.asItem());
-                    output.accept(EBlocks.TAUTWOOD_PLANKS.asItem());
-                    output.accept(EBlocks.TAUTWOOD_STAIRS.asItem());
-                    output.accept(EBlocks.TAUTWOOD_SLAB.asItem());
-                    output.accept(EBlocks.TAUTWOOD_FENCE.asItem());
-                    output.accept(EBlocks.TAUTWOOD_FENCE_GATE.asItem());
-                    //output.accept(EItems.TAUTWOOD_SIGN);
-                    //output.accept(EItems.TAUTWOOD_HANGING_SIGN);
-                    output.accept(EBlocks.TAUTWOOD_SHELF.asItem());
+                    // Tautolith Blocks
+                    output.accept(EBlocks.TAUTOLITH_SAPLING.asItem());
+                    output.accept(EBlocks.TAUTOLITH_LOG.asItem());
+                    output.accept(EBlocks.TAUTOLITH_WOOD.asItem());
+                    output.accept(EBlocks.STRIPPED_TAUTOLITH_LOG.asItem());
+                    output.accept(EBlocks.STRIPPED_TAUTOLITH_WOOD.asItem());
+                    output.accept(EBlocks.TAUTOLITH_LEAVES.asItem());
+                    output.accept(EBlocks.TAUTOLITH_PLANKS.asItem());
+                    output.accept(EBlocks.TAUTOLITH_STAIRS.asItem());
+                    output.accept(EBlocks.TAUTOLITH_SLAB.asItem());
+                    output.accept(EBlocks.TAUTOLITH_FENCE.asItem());
+                    output.accept(EBlocks.TAUTOLITH_FENCE_GATE.asItem());
+                    output.accept(EBlocks.TAUTOLITH_DOOR.asItem());
+                    output.accept(EBlocks.TAUTOLITH_TRAPDOOR.asItem());
+                    output.accept(EBlocks.TAUTOLITH_BUTTON.asItem());
+                    output.accept(EBlocks.TAUTOLITH_PRESSURE_PLATE.asItem());
+                    output.accept(EItems.TAUTOLITH_SIGN);
+                    output.accept(EItems.TAUTOLITH_HANGING_SIGN);
+                    output.accept(EBlocks.TAUTOLITH_SHELF.asItem());
+                    // Briar Blocks
+                    output.accept(EBlocks.BRIAR_SAPLING.asItem());
+                    output.accept(EBlocks.BRIAR_LOG.asItem());
+                    output.accept(EBlocks.BRIAR_WOOD.asItem());
+                    output.accept(EBlocks.STRIPPED_BRIAR_LOG.asItem());
+                    output.accept(EBlocks.STRIPPED_BRIAR_WOOD.asItem());
+                    output.accept(EBlocks.BRIAR_LEAVES.asItem());
+                    output.accept(EBlocks.BRIAR_PLANKS.asItem());
+                    output.accept(EBlocks.BRIAR_STAIRS.asItem());
+                    output.accept(EBlocks.BRIAR_SLAB.asItem());
+                    output.accept(EBlocks.BRIAR_FENCE.asItem());
+                    output.accept(EBlocks.BRIAR_FENCE_GATE.asItem());
+                    output.accept(EBlocks.BRIAR_DOOR.asItem());
+                    output.accept(EBlocks.BRIAR_TRAPDOOR.asItem());
+                    output.accept(EBlocks.BRIAR_BUTTON.asItem());
+                    output.accept(EBlocks.BRIAR_PRESSURE_PLATE.asItem());
+                    output.accept(EItems.BRIAR_SIGN);
+                    output.accept(EItems.BRIAR_HANGING_SIGN);
+                    output.accept(EBlocks.BRIAR_SHELF.asItem());
                     // Xyloite Items
                     output.accept(EItems.RAW_XYLOITE);
                     output.accept(EItems.XYLOITE_INGOT);
@@ -69,6 +92,8 @@ public class ETabs {
                     output.accept(EBlocks.CUT_XYLOITE.asItem());
                     output.accept(EBlocks.CUT_XYLOITE_STAIRS.asItem());
                     output.accept(EBlocks.CUT_XYLOITE_SLAB.asItem());
+                    output.accept(EBlocks.XYLOITE_DOOR.asItem());
+                    output.accept(EBlocks.XYLOITE_TRAPDOOR.asItem());
                     // Sylver Items
                     output.accept(EItems.RAW_SYLVER);
                     output.accept(EItems.SYLVER_INGOT);

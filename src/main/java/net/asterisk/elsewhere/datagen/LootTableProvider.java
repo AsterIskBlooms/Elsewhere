@@ -28,18 +28,18 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         // Bitterack
         dropSelf(EBlocks.BITTERACK);
 
-        // Tautwood
-        dropSelf(EBlocks.TAUTWOOD_SAPLING);
-        dropSelf(EBlocks.TAUTWOOD_LOG);
-        dropSelf(EBlocks.TAUTWOOD_WOOD);
-        dropSelf(EBlocks.STRIPPED_TAUTWOOD_LOG);
-        dropSelf(EBlocks.STRIPPED_TAUTWOOD_WOOD);
-        dropSelf(EBlocks.TAUTWOOD_PLANKS);
-        dropSelf(EBlocks.TAUTWOOD_STAIRS);
-        dropSelf(EBlocks.TAUTWOOD_SLAB);
-        dropSelf(EBlocks.TAUTWOOD_FENCE);
-        dropSelf(EBlocks.TAUTWOOD_FENCE_GATE);
-        dropLeaves(EBlocks.TAUTWOOD_LEAVES);
+        // Tautolith
+        dropSelf(EBlocks.TAUTOLITH_SAPLING);
+        dropSelf(EBlocks.TAUTOLITH_LOG);
+        dropSelf(EBlocks.TAUTOLITH_WOOD);
+        dropSelf(EBlocks.STRIPPED_TAUTOLITH_LOG);
+        dropSelf(EBlocks.STRIPPED_TAUTOLITH_WOOD);
+        dropSelf(EBlocks.TAUTOLITH_PLANKS);
+        dropSelf(EBlocks.TAUTOLITH_STAIRS);
+        dropSelf(EBlocks.TAUTOLITH_SLAB);
+        dropSelf(EBlocks.TAUTOLITH_FENCE);
+        dropSelf(EBlocks.TAUTOLITH_FENCE_GATE);
+        dropLeaves(EBlocks.TAUTOLITH_LEAVES);
     }
 
     public void dropLeaves(final Block block) {

@@ -1,9 +1,6 @@
 package net.asterisk.elsewhere;
 
-import net.asterisk.elsewhere.registry.EBlocks;
-import net.asterisk.elsewhere.registry.EItems;
-import net.asterisk.elsewhere.registry.ETabs;
-import net.asterisk.elsewhere.registry.ESounds;
+import net.asterisk.elsewhere.registry.*;
 import net.asterisk.elsewhere.worldgen.tree.ESaplingGenerators;
 import net.fabricmc.api.ModInitializer;
 
@@ -21,5 +18,6 @@ public class Elsewhere implements ModInitializer {
 		EBlocks.initialize();
 		ESounds.initialize();
 		ESaplingGenerators.initialize();
+		EBlocks.addValidBlocks();
 	}
 }

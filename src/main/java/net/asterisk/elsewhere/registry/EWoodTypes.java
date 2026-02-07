@@ -6,9 +6,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
 public interface EWoodTypes {
-    WoodType TAUTWOOD = new WoodType(
-            Elsewhere.MODID + "tautwood",
-            EBlockSetTypes.TAUTWOOD,
+    WoodType TAUTOLITH = new WoodType(
+            Elsewhere.MODID + "tautolith",
+            EBlockSetTypes.TAUTOLITH,
             SoundType.WOOD,
             SoundType.HANGING_SIGN,
             SoundEvents.FENCE_GATE_CLOSE,

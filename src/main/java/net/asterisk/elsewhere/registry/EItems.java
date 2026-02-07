@@ -12,10 +12,7 @@ import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CeilingHangingSignBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallHangingSignBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
@@ -134,9 +131,11 @@ public interface EItems {
                     .durability(ArmorType.BOOTS.getDurability(SylverTier.BASE_DURABILITY))
     );
 
-     // Hanging Signs
-     Item TAUTWOOD_SIGN = registerSign("tautwood_sign", EBlocks.TAUTWOOD_HANGING_SIGN, EBlocks.TAUTWOOD_WALL_HANGING_SIGN);
-     Item TAUTWOOD_HANGING_SIGN = registerHangingSign("tautwood_hanging_sign", EBlocks.TAUTWOOD_SIGN, EBlocks.TAUTWOOD_WALL_SIGN);
+     // Signs
+     Item TAUTOLITH_SIGN = registerSign("tautolith_sign", EBlocks.TAUTOLITH_SIGN, EBlocks.TAUTOLITH_WALL_SIGN);
+     Item TAUTOLITH_HANGING_SIGN = registerHangingSign("tautolith_hanging_sign", EBlocks.TAUTOLITH_HANGING_SIGN, EBlocks.TAUTOLITH_WALL_HANGING_SIGN);
+     Item BRIAR_SIGN = registerSign("briar_sign", EBlocks.BRIAR_SIGN, EBlocks.BRIAR_WALL_SIGN);
+     Item BRIAR_HANGING_SIGN = registerHangingSign("briar_hanging_sign", EBlocks.BRIAR_HANGING_SIGN, EBlocks.BRIAR_WALL_HANGING_SIGN);
 
 
 
@@ -162,7 +161,7 @@ public interface EItems {
     }
 
     private static Item registerHangingSign(final String name, Block hangingSignBlock, Block wallHangingSignBlock) {
-        return register(name, p -> new HangingSignItem(hangingSignBlock, wallHangingSignBlock, p), new Item.Properties());
+        return register(name, p -> new SignItem(hangingSignBlock, wallHangingSignBlock, p), new Item.Properties());
     }
 
     // Initialize

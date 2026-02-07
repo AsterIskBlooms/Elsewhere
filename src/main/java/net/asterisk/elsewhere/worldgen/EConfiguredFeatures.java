@@ -20,28 +20,42 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 
 public class EConfiguredFeatures {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TAUTWOOD = resourceKey("tautwood");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_TAUTWOOD = resourceKey("mega_tautwood");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TAUTOLITH = resourceKey("tautolith");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_TAUTOLITH = resourceKey("mega_tautolith");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BRIAR = resourceKey("briar");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        // Tautwood Tree
-        register(context, TAUTWOOD, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(EBlocks.TAUTWOOD_LOG),
-                new StraightTrunkPlacer(8, 11, 6),
+        // Tautolith Trees
+        register(context, TAUTOLITH, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.TAUTOLITH_LOG),
+                new StraightTrunkPlacer(6, 1, 2),
 
-                BlockStateProvider.simple(EBlocks.TAUTWOOD_LEAVES),
+                BlockStateProvider.simple(EBlocks.TAUTOLITH_LEAVES),
                 new MegaJungleFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 2),
 
                 new TwoLayersFeatureSize(1, 0,2))
 
                 .build()
         );
-        register(context, MEGA_TAUTWOOD, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(EBlocks.TAUTWOOD_LOG),
-                new MegaJungleTrunkPlacer(13, 18, 9),
+        register(context, MEGA_TAUTOLITH, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.TAUTOLITH_LOG),
+                new MegaJungleTrunkPlacer(9, 1, 0),
 
-                BlockStateProvider.simple(EBlocks.TAUTWOOD_LEAVES),
+                BlockStateProvider.simple(EBlocks.TAUTOLITH_LEAVES),
                 new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
+
+                new TwoLayersFeatureSize(1, 0,2))
+
+                .build()
+        );
+
+        // Briar Trees
+        register(context, BRIAR, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.TAUTOLITH_LOG),
+                new StraightTrunkPlacer(6, 1, 2),
+
+                BlockStateProvider.simple(EBlocks.TAUTOLITH_LEAVES),
+                new MegaJungleFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 2),
 
                 new TwoLayersFeatureSize(1, 0,2))
 
