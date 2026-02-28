@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -20,41 +21,15 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 
 public class EConfiguredFeatures {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TAUTOLITH = resourceKey("tautolith");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_TAUTOLITH = resourceKey("mega_tautolith");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BRIAR = resourceKey("briar");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        // Tautolith Trees
-        register(context, TAUTOLITH, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(EBlocks.TAUTOLITH_LOG),
-                new StraightTrunkPlacer(6, 1, 2),
-
-                BlockStateProvider.simple(EBlocks.TAUTOLITH_LEAVES),
-                new MegaJungleFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 2),
-
-                new TwoLayersFeatureSize(1, 0,2))
-
-                .build()
-        );
-        register(context, MEGA_TAUTOLITH, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(EBlocks.TAUTOLITH_LOG),
-                new MegaJungleTrunkPlacer(9, 1, 0),
-
-                BlockStateProvider.simple(EBlocks.TAUTOLITH_LEAVES),
-                new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
-
-                new TwoLayersFeatureSize(1, 0,2))
-
-                .build()
-        );
-
         // Briar Trees
         register(context, BRIAR, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(EBlocks.TAUTOLITH_LOG),
+                BlockStateProvider.simple(Blocks.SPRUCE_LOG),
                 new StraightTrunkPlacer(6, 1, 2),
 
-                BlockStateProvider.simple(EBlocks.TAUTOLITH_LEAVES),
+                BlockStateProvider.simple(Blocks.AZALEA_LEAVES),
                 new MegaJungleFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 2),
 
                 new TwoLayersFeatureSize(1, 0,2))

@@ -2,7 +2,6 @@ package net.asterisk.elsewhere.registry;
 
 import net.asterisk.elsewhere.Elsewhere;
 import net.asterisk.elsewhere.registry.tiers.SylverTier;
-import net.asterisk.elsewhere.registry.tiers.XyloiteTier;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,64 +18,6 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import java.util.function.Function;
 
 public interface EItems {
-
-
-
-
-
-
-    // Xyloite Items
-     Item RAW_XYLOITE = register("raw_xyloite", Item::new, new Item.Properties());
-     Item XYLOITE_INGOT = register("xyloite_ingot", Item::new, new Item.Properties());
-     Item XYLOITE_NUGGET = register("xyloite_nugget", Item::new, new Item.Properties());
-     Item XYLOITE_SWORD = register("xyloite_sword", Item::new,
-            new Item.Properties().sword(
-                    XyloiteTier.XYLOITE_TOOL_MATERIAL, 3.0F, -2.4F
-            )
-    );
-     Item XYLOITE_AXE = register("xyloite_axe", Item::new,
-            new Item.Properties().axe(
-                    XyloiteTier.XYLOITE_TOOL_MATERIAL, 1.5F, -3.0F
-            )
-    );
-     Item XYLOITE_SPEAR = register("xyloite_spear", Item::new,
-            new Item.Properties().spear(
-                    XyloiteTier.XYLOITE_TOOL_MATERIAL,
-                    0.85F, 0.82F, 0.65F, 4.0F, 9.0F, 8.25F, 5.1F, 12.5F, 4.6F
-            )
-    );
-     Item XYLOITE_PICKAXE = register("xyloite_pickaxe", Item::new,
-            new Item.Properties().pickaxe(
-                    XyloiteTier.XYLOITE_TOOL_MATERIAL, 1.0F, -2.8F
-            )
-    );
-     Item XYLOITE_SHOVEL = register("xyloite_shovel", Item::new,
-            new Item.Properties().shovel(
-                    XyloiteTier.XYLOITE_TOOL_MATERIAL, 5.0F, -3.0F
-            )
-    );
-     Item XYLOITE_HOE = register("xyloite_hoe", Item::new,
-            new Item.Properties().hoe(
-                    XyloiteTier.XYLOITE_TOOL_MATERIAL, -3.0F, 0.0F
-            )
-    );
-     Item XYLOITE_HELMET = register("xyloite_helmet", Item::new,
-            new Item.Properties().humanoidArmor(XyloiteTier.INSTANCE, ArmorType.HELMET)
-                    .durability(ArmorType.HELMET.getDurability(XyloiteTier.BASE_DURABILITY))
-    );
-     Item XYLOITE_CHESTPLATE = register("xyloite_chestplate", Item::new,
-            new Item.Properties().humanoidArmor(XyloiteTier.INSTANCE, ArmorType.CHESTPLATE)
-                    .durability(ArmorType.CHESTPLATE.getDurability(XyloiteTier.BASE_DURABILITY))
-    );
-     Item XYLOITE_LEGGINGS = register("xyloite_leggings", Item::new,
-            new Item.Properties().humanoidArmor(XyloiteTier.INSTANCE, ArmorType.LEGGINGS)
-                    .durability(ArmorType.LEGGINGS.getDurability(XyloiteTier.BASE_DURABILITY))
-    );
-     Item XYLOITE_BOOTS = register("xyloite_boots", Item::new,
-            new Item.Properties().humanoidArmor(XyloiteTier.INSTANCE, ArmorType.BOOTS)
-                    .durability(ArmorType.BOOTS.getDurability(XyloiteTier.BASE_DURABILITY))
-    );
-
 
 
     // Sylver Items
@@ -130,12 +71,6 @@ public interface EItems {
             new Item.Properties().humanoidArmor(SylverTier.INSTANCE, ArmorType.BOOTS)
                     .durability(ArmorType.BOOTS.getDurability(SylverTier.BASE_DURABILITY))
     );
-
-     // Signs
-     Item TAUTOLITH_SIGN = registerSign("tautolith_sign", EBlocks.TAUTOLITH_SIGN, EBlocks.TAUTOLITH_WALL_SIGN);
-     Item TAUTOLITH_HANGING_SIGN = registerHangingSign("tautolith_hanging_sign", EBlocks.TAUTOLITH_HANGING_SIGN, EBlocks.TAUTOLITH_WALL_HANGING_SIGN);
-     Item BRIAR_SIGN = registerSign("briar_sign", EBlocks.BRIAR_SIGN, EBlocks.BRIAR_WALL_SIGN);
-     Item BRIAR_HANGING_SIGN = registerHangingSign("briar_hanging_sign", EBlocks.BRIAR_HANGING_SIGN, EBlocks.BRIAR_WALL_HANGING_SIGN);
 
 
 

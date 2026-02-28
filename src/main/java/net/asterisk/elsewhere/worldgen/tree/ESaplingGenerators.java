@@ -7,9 +7,6 @@ import net.minecraft.world.level.block.grower.TreeGrower;
 import java.util.Optional;
 
 public interface ESaplingGenerators {
-     TreeGrower TAUTOLITH = new TreeGrower(Elsewhere.MODID + "tautolith",
-             Optional.of(EConfiguredFeatures.MEGA_TAUTOLITH), Optional.of(EConfiguredFeatures.TAUTOLITH), Optional.empty());
-
      TreeGrower BRIAR = new TreeGrower(Elsewhere.MODID + "briar",
              Optional.empty(), Optional.of(EConfiguredFeatures.BRIAR), Optional.empty());
 

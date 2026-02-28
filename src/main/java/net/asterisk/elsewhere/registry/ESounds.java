@@ -12,7 +12,7 @@ public class ESounds {
     }
 
     // Sounds
-    public static final SoundEvent XYLOITE = registerSound("xyloite");
+    public static final SoundEvent OBSIDIAN = registerSound("obsidian");
 
 
 

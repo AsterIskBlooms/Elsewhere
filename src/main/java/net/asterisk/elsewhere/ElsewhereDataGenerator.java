@@ -1,6 +1,7 @@
 package net.asterisk.elsewhere;
 
 import net.asterisk.elsewhere.datagen.*;
+import net.asterisk.elsewhere.registry.EEnchantments;
 import net.asterisk.elsewhere.worldgen.EConfiguredFeatures;
 import net.asterisk.elsewhere.worldgen.EDimensions;
 import net.asterisk.elsewhere.worldgen.EPlacedFeatures;
@@ -8,7 +9,6 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.server.packs.VanillaPackResourcesBuilder;
 
 public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -27,5 +27,6 @@ public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, EConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, EPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.DIMENSION_TYPE, EDimensions::bootstrapType);
+		registryBuilder.add(Registries.ENCHANTMENT, EEnchantments::bootstrap);
 	}
 }

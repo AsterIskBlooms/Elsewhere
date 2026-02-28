@@ -4,7 +4,19 @@ import net.asterisk.elsewhere.registry.EBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -13,37 +25,49 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         super(packOutput, registriesFuture);
     }
 
+
+
     @Override
     public void generate() {
-        // Gloam
-        dropSelf(EBlocks.GLOAM);
+        // Ore Changes
+        add(Blocks.COPPER_ORE, createMultipleOreDrops(Blocks.COPPER_ORE, Items.RAW_COPPER, 1.0F, 2.0F));
+        add(Blocks.DEEPSLATE_COPPER_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER, 1.0F, 3.0F));
+        add(Blocks.DEEPSLATE_IRON_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_IRON_ORE, Items.RAW_IRON, 1.0F, 2.0F));
 
-        // Rootshale
-        dropSelf(EBlocks.COBBLED_ROOTSHALE);
-        dropSelf(EBlocks.ROOTSHALE_BRICKS);
-        dropSelf(EBlocks.ROOTSHALE_BRICK_STAIRS);
-        dropSelf(EBlocks.ROOTSHALE_BRICK_SLAB);
-        dropSelf(EBlocks.ROOTSHALE_BRICK_WALL);
+        // Quartz Brick Fill
+        dropSelf(EBlocks.QUARTZ_BRICK_STAIRS);
+        add(EBlocks.QUARTZ_BRICK_SLAB, createSlabItemTable(EBlocks.QUARTZ_BRICK_SLAB));
 
-        // Bitterack
-        dropSelf(EBlocks.BITTERACK);
+        // Amethyst-Obsidian Set
+        dropSelf(EBlocks.AMETHYST_STAIRS);
+        add(EBlocks.AMETHYST_SLAB, createSlabItemTable(EBlocks.AMETHYST_SLAB));
+        dropSelf(EBlocks.AMETHYST_BRICKS);
+        dropSelf(EBlocks.AMETHYST_BRICK_STAIRS);
+        add(EBlocks.AMETHYST_BRICK_SLAB, createSlabItemTable(EBlocks.AMETHYST_BRICK_SLAB));
+        dropSelf(EBlocks.AMETHYST_PILLAR);
+        dropSelf(EBlocks.CHISELED_AMETHYST);
 
-        // Tautolith
-        dropSelf(EBlocks.TAUTOLITH_SAPLING);
-        dropSelf(EBlocks.TAUTOLITH_LOG);
-        dropSelf(EBlocks.TAUTOLITH_WOOD);
-        dropSelf(EBlocks.STRIPPED_TAUTOLITH_LOG);
-        dropSelf(EBlocks.STRIPPED_TAUTOLITH_WOOD);
-        dropSelf(EBlocks.TAUTOLITH_PLANKS);
-        dropSelf(EBlocks.TAUTOLITH_STAIRS);
-        dropSelf(EBlocks.TAUTOLITH_SLAB);
-        dropSelf(EBlocks.TAUTOLITH_FENCE);
-        dropSelf(EBlocks.TAUTOLITH_FENCE_GATE);
-        dropLeaves(EBlocks.TAUTOLITH_LEAVES);
+        dropSelf(EBlocks.OBSIDIAN_STAIRS);
+        add(EBlocks.OBSIDIAN_SLAB, createSlabItemTable(EBlocks.OBSIDIAN_SLAB));
+        dropSelf(EBlocks.OBSIDIAN_BRICKS);
+        dropSelf(EBlocks.OBSIDIAN_BRICK_STAIRS);
+        add(EBlocks.OBSIDIAN_BRICK_SLAB, createSlabItemTable(EBlocks.OBSIDIAN_BRICK_SLAB));
+        dropSelf(EBlocks.OBSIDIAN_PILLAR);
+        dropSelf(EBlocks.CHISELED_OBSIDIAN);
     }
 
-    public void dropLeaves(final Block block) {
-        this.createShearsOrSilkTouchOnlyDrop(block);
+    // Secondary Ore Method
+    public LootTable.Builder createMultipleOreDrops(final Block block, final Item drop, float min, float max) {
+        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchDispatchTable(
+                block,
+                this.applyExplosionDecay(
+                        block,
+                        LootItem.lootTableItem(drop)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                                .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
     }
 
 }

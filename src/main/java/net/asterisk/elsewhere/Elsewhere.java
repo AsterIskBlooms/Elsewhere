@@ -18,6 +18,6 @@ public class Elsewhere implements ModInitializer {
 		EBlocks.initialize();
 		ESounds.initialize();
 		ESaplingGenerators.initialize();
-		EBlocks.addValidBlocks();
+		EEnchantments.initialize();
 	}
 }

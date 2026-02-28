@@ -40,6 +40,7 @@ public class EDimensions {
                 true,
                 false,
                 true,
+                false,
                 4.0,
                 -64,
                 160,
