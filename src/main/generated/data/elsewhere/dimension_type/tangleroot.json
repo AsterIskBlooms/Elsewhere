@@ -1,0 +1,15 @@
+{
+  "ambient_light": 0.2,
+  "coordinate_scale": 4.0,
+  "has_ceiling": true,
+  "has_ender_dragon_fight": false,
+  "has_fixed_time": true,
+  "has_skylight": false,
+  "height": 160,
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "logical_height": 96,
+  "min_y": -64,
+  "monster_spawn_block_light_limit": 7,
+  "monster_spawn_light_level": 7,
+  "skybox": "none"
+}

@@ -7,7 +7,6 @@ import net.asterisk.elsewhere.registry.registryclasses.AmethystStairBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
@@ -94,7 +93,7 @@ public interface EBlocks {
 
 
 
-    public static <T extends SignBlock> T registerSignBlock(ResourceKey<Block> key, T block) {
+    static <T extends SignBlock> T registerSignBlock(ResourceKey<Block> key, T block) {
         if (block instanceof StandingSignBlock || block instanceof WallSignBlock) {
             BlockEntityType.SIGN.addValidBlock(block);
         } else if (block instanceof CeilingHangingSignBlock || block instanceof WallHangingSignBlock) {
