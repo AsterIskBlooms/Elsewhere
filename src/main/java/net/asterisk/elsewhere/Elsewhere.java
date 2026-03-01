@@ -1,5 +1,6 @@
 package net.asterisk.elsewhere;
 
+import net.asterisk.elsewhere.mesa.enchanting.CEManager;
 import net.asterisk.elsewhere.registry.*;
 import net.asterisk.elsewhere.worldgen.tree.ESaplingGenerators;
 import net.fabricmc.api.ModInitializer;
@@ -19,5 +20,6 @@ public class Elsewhere implements ModInitializer {
 		ESounds.initialize();
 		ESaplingGenerators.initialize();
 		EEnchantments.initialize();
+		CEManager.initialize();
 	}
 }
