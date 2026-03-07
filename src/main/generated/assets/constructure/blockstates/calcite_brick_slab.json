@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "constructure:block/calcite_brick_slab"
+    },
+    "type=double": {
+      "model": "constructure:block/calcite_bricks"
+    },
+    "type=top": {
+      "model": "constructure:block/calcite_brick_slab_top"
+    }
+  }
+}

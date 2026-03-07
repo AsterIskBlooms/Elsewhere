@@ -1,0 +1,20 @@
+{
+  "values": [
+    "constructure:quartz_brick_stairs",
+    "constructure:quartz_brick_slab",
+    "constructure:amethyst_stairs",
+    "constructure:amethyst_slab",
+    "constructure:amethyst_brick_stairs",
+    "constructure:amethyst_brick_slab",
+    "constructure:amethyst_bricks",
+    "constructure:amethyst_pillar",
+    "constructure:chiseled_amethyst",
+    "constructure:obsidian_stairs",
+    "constructure:obsidian_slab",
+    "constructure:obsidian_brick_stairs",
+    "constructure:obsidian_brick_slab",
+    "constructure:obsidian_bricks",
+    "constructure:obsidian_pillar",
+    "constructure:chiseled_obsidian"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "constructure:block/chiseled_obsidian"
+  }
+}

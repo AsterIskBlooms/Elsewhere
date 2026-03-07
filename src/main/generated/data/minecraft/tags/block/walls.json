@@ -1,0 +1,20 @@
+{
+  "values": [
+    "constructure:stone_wall",
+    "constructure:smooth_stone_wall",
+    "constructure:stone_tile_wall",
+    "constructure:mossy_stone_tile_wall",
+    "constructure:polished_andesite_wall",
+    "constructure:andesite_brick_wall",
+    "constructure:polished_granite_wall",
+    "constructure:granite_brick_wall",
+    "constructure:polished_diorite_wall",
+    "constructure:diorite_brick_wall",
+    "constructure:calcite_wall",
+    "constructure:polished_calcite_wall",
+    "constructure:calcite_brick_wall",
+    "constructure:dripstone_wall",
+    "constructure:polished_dripstone_wall",
+    "constructure:dripstone_brick_wall"
+  ]
+}

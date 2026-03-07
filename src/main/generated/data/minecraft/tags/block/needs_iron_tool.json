@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:obsidian",
+    "constructure:obsidian_stairs",
+    "constructure:obsidian_slab",
+    "constructure:obsidian_bricks",
+    "constructure:obsidian_brick_stairs",
+    "constructure:obsidian_brick_slab",
+    "constructure:obsidian_pillar",
+    "constructure:chiseled_obsidian"
+  ]
+}

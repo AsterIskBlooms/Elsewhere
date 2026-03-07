@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "constructure:block/polished_dripstone",
+    "side": "constructure:block/polished_dripstone",
+    "top": "constructure:block/polished_dripstone"
+  }
+}
