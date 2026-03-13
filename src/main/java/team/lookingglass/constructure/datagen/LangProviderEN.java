@@ -49,7 +49,7 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.constructure.mossy_stone_tile_stairs", "Mossy Stone Tile Stairs");
         translationBuilder.add("block.constructure.mossy_stone_tile_slab", "Mossy Stone Tile Slab");
         translationBuilder.add("block.constructure.mossy_stone_tile_wall", "Mossy Stone Tile Wall");
-        translationBuilder.add("block.constructure.chiseled_stone_bricks", "Chiseled Stone Bricks");
+        translationBuilder.add("block.constructure.chiseled_stone", "Chiseled Stone");
         translationBuilder.add("block.constructure.stone_pillar", "Stone Pillar");
 
         translationBuilder.add("block.constructure.chiseled_deepslate_bricks", "Chiseled Deepslate Bricks");

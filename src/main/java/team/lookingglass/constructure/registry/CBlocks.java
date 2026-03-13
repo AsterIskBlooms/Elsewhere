@@ -76,7 +76,7 @@ public interface CBlocks {
     Block MOSSY_STONE_TILE_SLAB = registerSlab("mossy_stone_tile_slab", STONE_TILES);
     Block MOSSY_STONE_TILE_WALL = registerWall("mossy_stone_tile_wall", STONE_TILES);
 
-    Block CHISELED_STONE_BRICKS = registerSubBlock("chiseled_stone_bricks", Blocks.STONE_BRICKS);
+    Block CHISELED_STONE = registerSubBlock("chiseled_stone", Blocks.STONE_BRICKS);
     Block STONE_PILLAR = register("stone_pillar", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
     );

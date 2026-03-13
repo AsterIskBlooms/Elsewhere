@@ -44,7 +44,7 @@ public class CTabs {
                     output.accept(CBlocks.SMOOTH_STONE_STAIRS.asItem());
                     output.accept(CBlocks.SMOOTH_STONE_WALL.asItem());
 
-                    output.accept(CBlocks.CHISELED_STONE_BRICKS.asItem());
+                    output.accept(CBlocks.CHISELED_STONE.asItem());
                     output.accept(CBlocks.STONE_TILES.asItem());
                     output.accept(CBlocks.STONE_TILE_STAIRS.asItem());
                     output.accept(CBlocks.STONE_TILE_SLAB.asItem());

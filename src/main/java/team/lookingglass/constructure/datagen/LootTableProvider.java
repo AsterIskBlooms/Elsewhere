@@ -66,7 +66,7 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(CBlocks.MOSSY_STONE_TILE_STAIRS);
         add(CBlocks.MOSSY_STONE_TILE_SLAB, createSlabItemTable(CBlocks.MOSSY_STONE_TILE_SLAB));
         dropSelf(CBlocks.MOSSY_STONE_TILE_WALL);
-        dropSelf(CBlocks.CHISELED_STONE_BRICKS);
+        dropSelf(CBlocks.CHISELED_STONE);
         dropSelf(CBlocks.STONE_PILLAR);
         dropSelf(CBlocks.CHISELED_DEEPSLATE_BRICKS);
         dropSelf(CBlocks.DEEPSLATE_PILLAR);

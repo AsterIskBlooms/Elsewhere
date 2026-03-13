@@ -62,7 +62,7 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(CBlocks.MOSSY_STONE_TILE_SLAB)
                 .wall(CBlocks.MOSSY_STONE_TILE_WALL)
         ;
-        blockStateModelGenerator.createTrivialCube(CBlocks.CHISELED_STONE_BRICKS);
+        blockStateModelGenerator.createTrivialCube(CBlocks.CHISELED_STONE);
         blockStateModelGenerator.createAxisAlignedPillarBlock(CBlocks.STONE_PILLAR, TexturedModel.COLUMN);
         blockStateModelGenerator.createTrivialBlock(CBlocks.CHISELED_DEEPSLATE_BRICKS, TexturedModel.COLUMN);
         blockStateModelGenerator.createAxisAlignedPillarBlock(CBlocks.DEEPSLATE_PILLAR, TexturedModel.COLUMN);
