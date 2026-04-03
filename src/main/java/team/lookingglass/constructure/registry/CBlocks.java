@@ -1,5 +1,7 @@
 package team.lookingglass.constructure.registry;
 
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.material.PushReaction;
 import team.lookingglass.constructure.Constructure;
 import team.lookingglass.constructure.registry.registryclasses.AmethystPillarBlock;
 import team.lookingglass.constructure.registry.registryclasses.AmethystSlabBlock;
@@ -61,11 +63,17 @@ public interface CBlocks {
 
 
 
-
     // STOOOOOONE !!!
     Block STONE_WALL = registerWall("stone_wall", Blocks.STONE);
     Block SMOOTH_STONE_STAIRS = registerStair("smooth_stone_stairs", Blocks.SMOOTH_STONE);
     Block SMOOTH_STONE_WALL = registerWall("smooth_stone_wall", Blocks.SMOOTH_STONE);
+
+    Block POLISHED_STONE = register("polished_stone", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
+    );
+    Block POLISHED_STONE_STAIRS = registerStair("polished_stone_stairs", POLISHED_STONE);
+    Block POLISHED_STONE_SLAB = registerSlab("polished_stone_slab", POLISHED_STONE);
+    Block POLISHED_STONE_WALL = registerWall("polished_stone_wall", POLISHED_STONE);
 
     Block STONE_TILES = registerSubBlock("stone_tiles", Blocks.STONE_BRICKS);
     Block STONE_TILE_STAIRS = registerStair("stone_tile_stairs", STONE_TILES);
@@ -81,16 +89,51 @@ public interface CBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS)
     );
 
+    Block DEEPSLATE_STAIRS = registerStair("deepslate_stairs", Blocks.DEEPSLATE);
+    Block DEEPSLATE_SLAB = registerSlab("deepslate_slab", Blocks.DEEPSLATE);
+    Block DEEPSLATE_WALL = registerWall("deepslate_wall", Blocks.DEEPSLATE);
+
+    Block SMOOTH_DEEPSLATE = register("smooth_deepslate", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_DEEPSLATE)
+    );
+    Block SMOOTH_DEEPSLATE_STAIRS = registerStair("smooth_deepslate_stairs", SMOOTH_DEEPSLATE);
+    Block SMOOTH_DEEPSLATE_SLAB = registerSlab("smooth_deepslate_slab", SMOOTH_DEEPSLATE);
+    Block SMOOTH_DEEPSLATE_WALL = registerWall("smooth_deepslate_wall", SMOOTH_DEEPSLATE);
+
     Block CHISELED_DEEPSLATE_BRICKS = registerSubBlock("chiseled_deepslate_bricks", Blocks.DEEPSLATE_BRICKS);
     Block DEEPSLATE_PILLAR = register("deepslate_pillar", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_BRICKS)
     );
 
+    Block SMOOTH_TUFF = register("smooth_tuff", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_ANDESITE)
+    );
+    Block SMOOTH_TUFF_STAIRS = registerStair("smooth_tuff_stairs", SMOOTH_TUFF);
+    Block SMOOTH_TUFF_SLAB = registerSlab("smooth_tuff_slab", SMOOTH_TUFF);
+    Block SMOOTH_TUFF_WALL = registerWall("smooth_tuff_wall", SMOOTH_TUFF);
     Block TUFF_PILLAR = register("tuff_pillar", RotatedPillarBlock::new, true,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF_BRICKS)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_TUFF)
+    );
+
+    Block SMOOTH_BLACKSTONE = register("smooth_blackstone", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.DRIPSTONE_BLOCK)
+    );
+    Block SMOOTH_BLACKSTONE_STAIRS = registerStair("smooth_blackstone_stairs", SMOOTH_BLACKSTONE);
+    Block SMOOTH_BLACKSTONE_SLAB = registerSlab("smooth_blackstone_slab", SMOOTH_BLACKSTONE);
+    Block SMOOTH_BLACKSTONE_WALL = registerWall("smooth_blackstone_wall", SMOOTH_BLACKSTONE);
+    Block CHISELED_POLISHED_BLACKSTONE_BRICKS = registerSubBlock("chiseled_polished_blackstone_bricks", SMOOTH_BLACKSTONE
+    );
+    Block POLISHED_BLACKSTONE_PILLAR = register("polished_blackstone_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SMOOTH_BLACKSTONE)
     );
 
     Block POLISHED_ANDESITE_WALL = registerWall("polished_andesite_wall", Blocks.POLISHED_ANDESITE);
+    Block SMOOTH_ANDESITE = register("smooth_andesite", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_ANDESITE)
+    );
+    Block SMOOTH_ANDESITE_STAIRS = registerStair("smooth_andesite_stairs", SMOOTH_ANDESITE);
+    Block SMOOTH_ANDESITE_SLAB = registerSlab("smooth_andesite_slab", SMOOTH_ANDESITE);
+    Block SMOOTH_ANDESITE_WALL = registerWall("smooth_andesite_wall", SMOOTH_ANDESITE);
     Block ANDESITE_BRICKS = register("andesite_bricks", Block::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_ANDESITE)
     );
@@ -104,6 +147,12 @@ public interface CBlocks {
     );
 
     Block POLISHED_GRANITE_WALL = registerWall("polished_granite_wall", Blocks.POLISHED_GRANITE);
+    Block SMOOTH_GRANITE = register("smooth_granite", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_GRANITE)
+    );
+    Block SMOOTH_GRANITE_STAIRS = registerStair("smooth_granite_stairs", SMOOTH_GRANITE);
+    Block SMOOTH_GRANITE_SLAB = registerSlab("smooth_granite_slab", SMOOTH_GRANITE);
+    Block SMOOTH_GRANITE_WALL = registerWall("smooth_granite_wall", SMOOTH_GRANITE);
     Block GRANITE_BRICKS = register("granite_bricks", Block::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_GRANITE)
     );
@@ -117,6 +166,12 @@ public interface CBlocks {
     );
 
     Block POLISHED_DIORITE_WALL = registerWall("polished_diorite_wall", Blocks.POLISHED_DIORITE);
+    Block SMOOTH_DIORITE = register("smooth_diorite", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_DIORITE)
+    );
+    Block SMOOTH_DIORITE_STAIRS = registerStair("smooth_diorite_stairs", SMOOTH_DIORITE);
+    Block SMOOTH_DIORITE_SLAB = registerSlab("smooth_diorite_slab", SMOOTH_DIORITE);
+    Block SMOOTH_DIORITE_WALL = registerWall("smooth_diorite_wall", SMOOTH_DIORITE);
     Block DIORITE_BRICKS = register("diorite_bricks", Block::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_DIORITE)
     );
@@ -132,8 +187,14 @@ public interface CBlocks {
     Block CALCITE_STAIRS = registerStair("calcite_stairs", Blocks.CALCITE);
     Block CALCITE_SLAB = registerSlab("calcite_slab", Blocks.CALCITE);
     Block CALCITE_WALL = registerWall("calcite_wall", Blocks.CALCITE);
+    Block SMOOTH_CALCITE = register("smooth_calcite", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE)
+    );
+    Block SMOOTH_CALCITE_STAIRS = registerStair("smooth_calcite_stairs", SMOOTH_CALCITE);
+    Block SMOOTH_CALCITE_SLAB = registerSlab("smooth_calcite_slab", SMOOTH_CALCITE);
+    Block SMOOTH_CALCITE_WALL = registerWall("smooth_calcite_wall", SMOOTH_CALCITE);
     Block POLISHED_CALCITE = register("polished_calcite", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.CALCITE).requiresCorrectToolForDrops().strength(1.5F, 1.0F)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE)
     );
     Block POLISHED_CALCITE_STAIRS = registerStair("polished_calcite_stairs", POLISHED_CALCITE);
     Block POLISHED_CALCITE_SLAB = registerSlab("polished_calcite_slab", POLISHED_CALCITE);
@@ -153,8 +214,14 @@ public interface CBlocks {
     Block DRIPSTONE_STAIRS = registerStair("dripstone_stairs", Blocks.DRIPSTONE_BLOCK);
     Block DRIPSTONE_SLAB = registerSlab("dripstone_slab", Blocks.DRIPSTONE_BLOCK);
     Block DRIPSTONE_WALL = registerWall("dripstone_wall", Blocks.DRIPSTONE_BLOCK);
+    Block SMOOTH_DRIPSTONE = register("smooth_dripstone", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DRIPSTONE_BLOCK)
+    );
+    Block SMOOTH_DRIPSTONE_STAIRS = registerStair("smooth_dripstone_stairs", SMOOTH_DRIPSTONE);
+    Block SMOOTH_DRIPSTONE_SLAB = registerSlab("smooth_dripstone_slab", SMOOTH_DRIPSTONE);
+    Block SMOOTH_DRIPSTONE_WALL = registerWall("smooth_dripstone_wall", SMOOTH_DRIPSTONE);
     Block POLISHED_DRIPSTONE = register("polished_dripstone", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.DRIPSTONE_BLOCK).requiresCorrectToolForDrops().strength(1.5F, 1.0F)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DRIPSTONE_BLOCK)
     );
     Block POLISHED_DRIPSTONE_STAIRS = registerStair("polished_dripstone_stairs", POLISHED_DRIPSTONE);
     Block POLISHED_DRIPSTONE_SLAB = registerSlab("polished_dripstone_slab", POLISHED_DRIPSTONE);
@@ -174,15 +241,269 @@ public interface CBlocks {
 
 
     // Sandstone Fills
+    Block POLISHED_SANDSTONE = registerSubBlock("polished_sandstone", Blocks.CUT_SANDSTONE);
+    Block POLISHED_SANDSTONE_STAIRS = registerStair("polished_sandstone_stairs", POLISHED_SANDSTONE);
+    Block POLISHED_SANDSTONE_SLAB = registerSlab("polished_sandstone_slab", POLISHED_SANDSTONE);
+    Block POLISHED_SANDSTONE_WALL = registerWall("polished_sandstone_wall", POLISHED_SANDSTONE);
+
+    Block POLISHED_RED_SANDSTONE = registerSubBlock("polished_red_sandstone", Blocks.CUT_SANDSTONE);
+    Block POLISHED_RED_SANDSTONE_STAIRS = registerStair("polished_red_sandstone_stairs", POLISHED_RED_SANDSTONE);
+    Block POLISHED_RED_SANDSTONE_SLAB = registerSlab("polished_red_sandstone_slab", POLISHED_RED_SANDSTONE);
+    Block POLISHED_RED_SANDSTONE_WALL = registerWall("polished_red_sandstone_wall", POLISHED_RED_SANDSTONE);
+
+    Block SANDSTONE_BRICKS = registerSubBlock("sandstone_bricks", Blocks.CUT_SANDSTONE);
+    Block SANDSTONE_BRICK_STAIRS = registerStair("sandstone_brick_stairs", SANDSTONE_BRICKS);
+    Block SANDSTONE_BRICK_SLAB = registerSlab("sandstone_brick_slab", SANDSTONE_BRICKS);
+    Block SANDSTONE_BRICK_WALL = registerWall("sandstone_brick_wall", SANDSTONE_BRICKS);
+
+    Block RED_SANDSTONE_BRICKS = registerSubBlock("red_sandstone_bricks", Blocks.CUT_RED_SANDSTONE);
+    Block RED_SANDSTONE_BRICK_STAIRS = registerStair("red_sandstone_brick_stairs", RED_SANDSTONE_BRICKS);
+    Block RED_SANDSTONE_BRICK_SLAB = registerSlab("red_sandstone_brick_slab", RED_SANDSTONE_BRICKS);
+    Block RED_SANDSTONE_BRICK_WALL = registerWall("red_sandstone_brick_wall", RED_SANDSTONE_BRICKS);
+
+    Block SMOOTH_SANDSTONE_WALL = registerWall("smooth_sandstone_wall", Blocks.SMOOTH_SANDSTONE);
+    Block SMOOTH_RED_SANDSTONE_WALL = registerWall("smooth_red_sandstone_wall", Blocks.SMOOTH_RED_SANDSTONE);
+
     Block CUT_SANDSTONE_STAIRS = registerStair("cut_sandstone_stairs", Blocks.CUT_SANDSTONE);
+    Block CUT_SANDSTONE_WALL = registerWall("cut_sandstone_wall", Blocks.CUT_SANDSTONE);
     Block CUT_RED_SANDSTONE_STAIRS = registerStair("cut_red_sandstone_stairs", Blocks.CUT_RED_SANDSTONE);
+    Block CUT_RED_SANDSTONE_WALL = registerWall("cut_red_sandstone_wall", Blocks.CUT_RED_SANDSTONE);
 
 
 
+    // Prismarine
+    Block SMOOTH_PRISMARINE = register("smooth_prismarine", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)
+    );
+    Block SMOOTH_PRISMARINE_STAIRS = registerStair("smooth_prismarine_stairs", SMOOTH_PRISMARINE);
+    Block SMOOTH_PRISMARINE_SLAB = registerSlab("smooth_prismarine_slab", SMOOTH_PRISMARINE);
+    Block SMOOTH_PRISMARINE_WALL = registerWall("smooth_prismarine_wall", SMOOTH_PRISMARINE);
+    Block POLISHED_PRISMARINE = register("polished_prismarine", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)
+    );
+    Block POLISHED_PRISMARINE_STAIRS = registerStair("polished_prismarine_stairs", POLISHED_PRISMARINE);
+    Block POLISHED_PRISMARINE_SLAB = registerSlab("polished_prismarine_slab", POLISHED_PRISMARINE);
+    Block POLISHED_PRISMARINE_WALL = registerWall("polished_prismarine_wall", POLISHED_PRISMARINE);
+    Block PRISMARINE_BRICK_WALL = registerWall("prismarine_brick_wall", Blocks.PRISMARINE_BRICKS);
+    Block CHISELED_PRISMARINE = registerSubBlock("chiseled_prismarine", Blocks.PRISMARINE_BRICKS);
+    Block CHISELED_PRISMARINE_BRICKS = registerSubBlock("chiseled_prismarine_bricks", Blocks.PRISMARINE_BRICKS);
+    Block PRISMARINE_PILLAR = register("prismarine_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE_BRICKS)
+    );
+
+    Block DARK_PRISMARINE_WALL = registerWall("dark_prismarine_wall", Blocks.DARK_PRISMARINE);
+    Block SMOOTH_DARK_PRISMARINE = register("smooth_dark_prismarine", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_PRISMARINE)
+    );
+    Block SMOOTH_DARK_PRISMARINE_STAIRS = registerStair("smooth_dark_prismarine_stairs", SMOOTH_DARK_PRISMARINE);
+    Block SMOOTH_DARK_PRISMARINE_SLAB = registerSlab("smooth_dark_prismarine_slab", SMOOTH_DARK_PRISMARINE);
+    Block SMOOTH_DARK_PRISMARINE_WALL = registerWall("smooth_dark_prismarine_wall", SMOOTH_DARK_PRISMARINE);
+    Block POLISHED_DARK_PRISMARINE = register("polished_dark_prismarine", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_PRISMARINE)
+    );
+    Block POLISHED_DARK_PRISMARINE_STAIRS = registerStair("polished_dark_prismarine_stairs", POLISHED_DARK_PRISMARINE);
+    Block POLISHED_DARK_PRISMARINE_SLAB = registerSlab("polished_dark_prismarine_slab", POLISHED_DARK_PRISMARINE);
+    Block POLISHED_DARK_PRISMARINE_WALL = registerWall("polished_dark_prismarine_wall", POLISHED_DARK_PRISMARINE);
+    Block DARK_PRISMARINE_BRICKS = register("dark_prismarine_bricks", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(POLISHED_DARK_PRISMARINE)
+    );
+    Block DARK_PRISMARINE_BRICK_STAIRS = registerStair("dark_prismarine_brick_stairs", DARK_PRISMARINE_BRICKS);
+    Block DARK_PRISMARINE_BRICK_SLAB = registerSlab("dark_prismarine_brick_slab", DARK_PRISMARINE_BRICKS);
+    Block DARK_PRISMARINE_BRICK_WALL = registerWall("dark_prismarine_brick_wall", DARK_PRISMARINE_BRICKS);
+    Block CHISELED_DARK_PRISMARINE = registerSubBlock("chiseled_dark_prismarine", DARK_PRISMARINE_BRICKS);
+    Block CHISELED_DARK_PRISMARINE_BRICKS = registerSubBlock("chiseled_dark_prismarine_bricks", DARK_PRISMARINE_BRICKS);
+    Block DARK_PRISMARINE_PILLAR = register("dark_prismarine_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(DARK_PRISMARINE_BRICKS)
+    );
+
+
+    // Basalt
+    Block BASALT_STAIRS = registerStair("basalt_stairs", Blocks.BASALT);
+    Block BASALT_SLAB = registerSlab("basalt_slab", Blocks.BASALT);
+    Block BASALT_WALL = registerWall("basalt_wall", Blocks.BASALT);
+    Block SMOOTH_BASALT_STAIRS = registerStair("smooth_basalt_stairs", Blocks.SMOOTH_BASALT);
+    Block SMOOTH_BASALT_SLAB = registerSlab("smooth_basalt_slab", Blocks.SMOOTH_BASALT);
+    Block SMOOTH_BASALT_WALL = registerWall("smooth_basalt_wall", Blocks.SMOOTH_BASALT);
+    Block POLISHED_BASALT_STAIRS = registerStair("polished_basalt_stairs", Blocks.POLISHED_BASALT);
+    Block POLISHED_BASALT_SLAB = registerSlab("polished_basalt_slab", Blocks.POLISHED_BASALT);
+    Block POLISHED_BASALT_WALL = registerWall("polished_basalt_wall", Blocks.POLISHED_BASALT);
+    Block BASALT_BRICKS = register("basalt_bricks", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_BASALT)
+    );
+    Block BASALT_BRICK_STAIRS = registerStair("basalt_brick_stairs", BASALT_BRICKS);
+    Block BASALT_BRICK_SLAB = registerSlab("basalt_brick_slab", BASALT_BRICKS);
+    Block BASALT_BRICK_WALL = registerWall("basalt_brick_wall", BASALT_BRICKS);
+    Block CHISELED_BASALT = registerSubBlock("chiseled_basalt", BASALT_BRICKS);
+    Block CHISELED_BASALT_BRICKS = registerSubBlock("chiseled_basalt_bricks", BASALT_BRICKS);
+    Block BASALT_PILLAR = register("basalt_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(BASALT_BRICKS)
+    );
+
+
+    // End Stone
+    Block SMOOTH_END_STONE = register("smooth_end_stone", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 9.0F).sound(CSounds.END_STONE)
+    );
+    Block END_STONE_STAIRS = registerStair("end_stone_stairs", SMOOTH_END_STONE);
+    Block END_STONE_SLAB = registerSlab("end_stone_slab", SMOOTH_END_STONE);
+    Block END_STONE_WALL = registerWall("end_stone_wall", SMOOTH_END_STONE);
+    Block SMOOTH_END_STONE_STAIRS = registerStair("smooth_end_stone_stairs", SMOOTH_END_STONE);
+    Block SMOOTH_END_STONE_SLAB = registerSlab("smooth_end_stone_slab", SMOOTH_END_STONE);
+    Block SMOOTH_END_STONE_WALL = registerWall("smooth_end_stone_wall", SMOOTH_END_STONE);
+    Block POLISHED_END_STONE = register("polished_end_stone", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SMOOTH_END_STONE)
+    );
+    Block POLISHED_END_STONE_STAIRS = registerStair("polished_end_stone_stairs", POLISHED_END_STONE);
+    Block POLISHED_END_STONE_SLAB = registerSlab("polished_end_stone_slab", POLISHED_END_STONE);
+    Block POLISHED_END_STONE_WALL = registerWall("polished_end_stone_wall", POLISHED_END_STONE);
+    Block CHISELED_END_STONE = registerSubBlock("chiseled_end_stone", SMOOTH_END_STONE);
+    Block CHISELED_END_STONE_BRICKS = registerSubBlock("chiseled_end_stone_bricks", SMOOTH_END_STONE);
+    Block END_STONE_PILLAR = register("end_stone_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SMOOTH_END_STONE)
+    );
+
+    Block SODALITE = register("sodalite", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.LAPIS).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.0F, 6.0F).sound(SoundType.TUFF)
+    );
+    Block SODALITE_STAIRS = registerStair("sodalite_stairs", SODALITE);
+    Block SODALITE_SLAB = registerSlab("sodalite_slab", SODALITE);
+    Block SODALITE_WALL = registerWall("sodalite_wall", SODALITE);
+    Block SMOOTH_SODALITE = register("smooth_sodalite", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SODALITE)
+    );
+    Block SMOOTH_SODALITE_STAIRS = registerStair("smooth_sodalite_stairs", SMOOTH_SODALITE);
+    Block SMOOTH_SODALITE_SLAB = registerSlab("smooth_sodalite_slab", SMOOTH_SODALITE);
+    Block SMOOTH_SODALITE_WALL = registerWall("smooth_sodalite_wall", SMOOTH_SODALITE);
+    Block POLISHED_SODALITE = register("polished_sodalite", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.LAPIS).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.0F, 6.0F).sound(SoundType.POLISHED_TUFF)
+    );
+    Block POLISHED_SODALITE_STAIRS = registerStair("polished_sodalite_stairs", POLISHED_SODALITE);
+    Block POLISHED_SODALITE_SLAB = registerSlab("polished_sodalite_slab", POLISHED_SODALITE);
+    Block POLISHED_SODALITE_WALL = registerWall("polished_sodalite_wall", POLISHED_SODALITE);
+    Block SODALITE_BRICKS = register("sodalite_bricks", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.LAPIS).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.0F, 6.0F).sound(SoundType.TUFF_BRICKS)
+    );
+    Block SODALITE_BRICK_STAIRS = registerStair("sodalite_brick_stairs", SODALITE_BRICKS);
+    Block SODALITE_BRICK_SLAB = registerSlab("sodalite_brick_slab", SODALITE_BRICKS);
+    Block SODALITE_BRICK_WALL = registerWall("sodalite_brick_wall", SODALITE_BRICKS);
+    Block CHISELED_SODALITE = registerSubBlock("chiseled_sodalite", POLISHED_SODALITE);
+    Block CHISELED_SODALITE_BRICKS = registerSubBlock("chiseled_sodalite_bricks", SODALITE_BRICKS);
+    Block SODALITE_PILLAR = register("sodalite_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(POLISHED_SODALITE)
+    );
+
+    // SHAAAALE
+    Block SHALE = register("shale", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(SoundType.TUFF)
+    );
+    Block SHALE_STAIRS = registerStair("shale_stairs", SHALE);
+    Block SHALE_SLAB = registerSlab("shale_slab", SHALE);
+    Block SHALE_WALL = registerWall("shale_wall", SHALE);
+    Block SMOOTH_SHALE = register("smooth_shale", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.TUFF)
+    );
+    Block SMOOTH_SHALE_STAIRS = registerStair("smooth_shale_stairs", SMOOTH_SHALE);
+    Block SMOOTH_SHALE_SLAB = registerSlab("smooth_shale_slab", SMOOTH_SHALE);
+    Block SMOOTH_SHALE_WALL = registerWall("smooth_shale_wall", SMOOTH_SHALE);
+    Block POLISHED_SHALE = register("polished_shale", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.POLISHED_TUFF)
+    );
+    Block POLISHED_SHALE_STAIRS = registerStair("polished_shale_stairs", POLISHED_SHALE);
+    Block POLISHED_SHALE_SLAB = registerSlab("polished_shale_slab", POLISHED_SHALE);
+    Block POLISHED_SHALE_WALL = registerWall("polished_shale_wall", POLISHED_SHALE);
+    Block SHALE_BRICKS = register("shale_bricks", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.TUFF_BRICKS)
+    );
+    Block SHALE_BRICK_STAIRS = registerStair("shale_brick_stairs", SHALE_BRICKS);
+    Block SHALE_BRICK_SLAB = registerSlab("shale_brick_slab", SHALE_BRICKS);
+    Block SHALE_BRICK_WALL = registerWall("shale_brick_wall", SHALE_BRICKS);
+    Block CHISELED_SHALE = registerSubBlock("chiseled_shale", POLISHED_SHALE);
+    Block CHISELED_SHALE_BRICKS = registerSubBlock("chiseled_shale_bricks", SHALE_BRICKS);
+    Block SHALE_PILLAR = register("shale_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(POLISHED_SHALE)
+    );
+    Block COBBLESHALE = register("cobbleshale", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.TUFF)
+    );
+    Block COBBLESHALE_STAIRS = registerStair("cobbleshale_stairs", SHALE);
+    Block COBBLESHALE_SLAB = registerSlab("cobbleshale_slab", SHALE);
+    Block COBBLESHALE_WALL = registerWall("cobbleshale_wall", SHALE);
+    Block SHALE_TILES = register("shale_tiles", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.TUFF_BRICKS)
+    );
+    Block SHALE_TILE_STAIRS = registerStair("shale_tile_stairs", SHALE);
+    Block SHALE_TILE_SLAB = registerSlab("shale_tile_slab", SHALE);
+    Block SHALE_TILE_WALL = registerWall("shale_tile_wall", SHALE);
+
+    Block SHALE_COAL_ORE = register("shale_coal_ore", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F, 6.0F).sound(SoundType.TUFF)
+    );
+    Block SHALE_COPPER_ORE = registerSubBlock("shale_copper_ore", SHALE_COAL_ORE);
+    Block SHALE_IRON_ORE = registerSubBlock("shale_iron_ore", SHALE_COAL_ORE);
+    Block SHALE_GOLD_ORE = registerSubBlock("shale_gold_ore", SHALE_COAL_ORE);
+    Block SHALE_REDSTONE_ORE = registerSubBlock("shale_redstone_ore", SHALE_COAL_ORE);
+    Block SHALE_DIAMOND_ORE = registerSubBlock("shale_diamond_ore", SHALE_COAL_ORE);
+    Block SHALE_LAPIS_ORE = registerSubBlock("shale_lapis_ore", SHALE_COAL_ORE);
+    Block SHALE_EMERALD_ORE = registerSubBlock("shale_emerald_ore", SHALE_COAL_ORE);
+
+    // Singular Purpur Block
+    Block CHISELED_PURPUR = registerSubBlock("chiseled_purpur", Blocks.PURPUR_BLOCK);
+
+
+    // Wood Mosaics
+    Block OAK_MOSAIC = registerSubBlock("oak_mosaic", Blocks.OAK_PLANKS);
+    Block OAK_MOSAIC_STAIRS = registerStair("oak_mosaic_stairs", OAK_MOSAIC);
+    Block OAK_MOSAIC_SLAB = registerSlab("oak_mosaic_slab", OAK_MOSAIC);
+
+    Block DARK_OAK_MOSAIC = registerSubBlock("dark_oak_mosaic", Blocks.DARK_OAK_PLANKS);
+    Block DARK_OAK_MOSAIC_STAIRS = registerStair("dark_oak_mosaic_stairs", DARK_OAK_MOSAIC);
+    Block DARK_OAK_MOSAIC_SLAB = registerSlab("dark_oak_mosaic_slab", DARK_OAK_MOSAIC);
+
+    Block PALE_OAK_MOSAIC = registerSubBlock("pale_oak_mosaic", Blocks.PALE_OAK_PLANKS);
+    Block PALE_OAK_MOSAIC_STAIRS = registerStair("pale_oak_mosaic_stairs", PALE_OAK_MOSAIC);
+    Block PALE_OAK_MOSAIC_SLAB = registerSlab("pale_oak_mosaic_slab", PALE_OAK_MOSAIC);
+
+    Block BIRCH_MOSAIC = registerSubBlock("birch_mosaic", Blocks.BIRCH_PLANKS);
+    Block BIRCH_MOSAIC_STAIRS = registerStair("birch_mosaic_stairs", BIRCH_MOSAIC);
+    Block BIRCH_MOSAIC_SLAB = registerSlab("birch_mosaic_slab", BIRCH_MOSAIC);
+
+    Block SPRUCE_MOSAIC = registerSubBlock("spruce_mosaic", Blocks.SPRUCE_PLANKS);
+    Block SPRUCE_MOSAIC_STAIRS = registerStair("spruce_mosaic_stairs", SPRUCE_MOSAIC);
+    Block SPRUCE_MOSAIC_SLAB = registerSlab("spruce_mosaic_slab", SPRUCE_MOSAIC);
+
+    Block JUNGLE_MOSAIC = registerSubBlock("jungle_mosaic", Blocks.JUNGLE_PLANKS);
+    Block JUNGLE_MOSAIC_STAIRS = registerStair("jungle_mosaic_stairs", JUNGLE_MOSAIC);
+    Block JUNGLE_MOSAIC_SLAB = registerSlab("jungle_mosaic_slab", JUNGLE_MOSAIC);
+
+    Block ACACIA_MOSAIC = registerSubBlock("acacia_mosaic", Blocks.ACACIA_PLANKS);
+    Block ACACIA_MOSAIC_STAIRS = registerStair("acacia_mosaic_stairs", ACACIA_MOSAIC);
+    Block ACACIA_MOSAIC_SLAB = registerSlab("acacia_mosaic_slab", ACACIA_MOSAIC);
+
+    Block CHERRY_MOSAIC = registerSubBlock("cherry_mosaic", Blocks.CHERRY_PLANKS);
+    Block CHERRY_MOSAIC_STAIRS = registerStair("cherry_mosaic_stairs", CHERRY_MOSAIC);
+    Block CHERRY_MOSAIC_SLAB = registerSlab("cherry_mosaic_slab", CHERRY_MOSAIC);
+
+    Block MANGROVE_MOSAIC = registerSubBlock("mangrove_mosaic", Blocks.MANGROVE_PLANKS);
+    Block MANGROVE_MOSAIC_STAIRS = registerStair("mangrove_mosaic_stairs", MANGROVE_MOSAIC);
+    Block MANGROVE_MOSAIC_SLAB = registerSlab("mangrove_mosaic_slab", MANGROVE_MOSAIC);
+
+    Block CRIMSON_MOSAIC = registerSubBlock("crimson_mosaic", Blocks.CRIMSON_PLANKS);
+    Block CRIMSON_MOSAIC_STAIRS = registerStair("crimson_mosaic_stairs", CRIMSON_MOSAIC);
+    Block CRIMSON_MOSAIC_SLAB = registerSlab("crimson_mosaic_slab", CRIMSON_MOSAIC);
+
+    Block WARPED_MOSAIC = registerSubBlock("warped_mosaic", Blocks.WARPED_PLANKS);
+    Block WARPED_MOSAIC_STAIRS = registerStair("warped_mosaic_stairs", WARPED_MOSAIC);
+    Block WARPED_MOSAIC_SLAB = registerSlab("warped_mosaic_slab", WARPED_MOSAIC);
 
 
 
-
+    // Plantttss
+    Block BLUEBONNET = register("bluebonnet", p -> new FlowerBlock(MobEffects.RESISTANCE, 5.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block POTTED_BLUEBONNET = register("potted_bluebonnet", p -> new FlowerPotBlock(BLUEBONNET, p),false,
+            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
+    );
 
 
 

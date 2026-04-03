@@ -1,5 +1,6 @@
 package team.lookingglass.constructure;
 
+import net.minecraft.data.recipes.RecipeProvider;
 import team.lookingglass.constructure.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;

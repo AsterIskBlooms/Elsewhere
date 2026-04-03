@@ -12,6 +12,7 @@ public class Constructure implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		CWorldgen.initialize();
 		CItems.initialize();
 		CTabs.initialize();
 		CBlocks.initialize();

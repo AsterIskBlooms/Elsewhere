@@ -1,0 +1,30 @@
+{
+  "end_stone_break": {
+    "subtitle": "sounds.constructure.end_stone_hit",
+    "sounds": [
+      "constructure:end_stone_break1",
+      "constructure:end_stone_break2",
+      "constructure:end_stone_break3",
+      "constructure:end_stone_break4",
+      "constructure:end_stone_break5"
+    ]
+  },
+  "end_stone_place": {
+    "subtitle": "sounds.constructure.end_stone_place",
+    "sounds": [
+      "constructure:end_stone_place1",
+      "constructure:end_stone_place2",
+      "constructure:end_stone_place3",
+      "constructure:end_stone_place4"
+    ]
+  },
+  "end_stone_hit": {
+    "subtitle": "sounds.constructure.end_stone_place",
+    "sounds": [
+      "constructure:end_stone_hit1",
+      "constructure:end_stone_hit2",
+      "constructure:end_stone_hit3",
+      "constructure:end_stone_hit4"
+    ]
+  }
+}

@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "end": "constructure:block/chiseled_dripstone_bricks_top",
-    "side": "constructure:block/chiseled_dripstone_bricks_side"
+    "all": "constructure:block/chiseled_dripstone_bricks"
   }
 }
