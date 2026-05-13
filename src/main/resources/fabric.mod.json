@@ -1,33 +1,34 @@
 {
 	"schemaVersion": 1,
-	"id": "constructure",
+	"id": "elsewhere",
 	"version": "${version}",
-	"name": "ELSEWHERE: Constructure",
-	"description": "Building blocks galore!",
+	"name": "Elsewhere",
+	"description": "A new world... Somewhere else.",
 	"authors": [
 		"Aster-Isk, mesadev, Pixion, asof, SurelyBerry"
 	],
 	"contact": {
 		"homepage": "",
-		"sources": "https://github.com/AsterIskBlooms/ConstructureMod"
+		"sources": "https://github.com/AsterIskBlooms/ElsewhereMod"
 	},
 	"license": "MIT",
-	"icon": "assets/constructure/icon.png",
+	"icon": "assets/elsewhere/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"team.lookingglass.constructure.Constructure"
+			"team.lookingglass.elsewhere.Elsewhere"
 		],
 		"fabric-datagen": [
-			"team.lookingglass.constructure.ConstructureDataGenerator"
+			"team.lookingglass.elsewhere.ElsewhereDataGenerator"
 		],
 		"client": [
-			"team.lookingglass.constructure.ConstructureClient"
+			"team.lookingglass.elsewhere.ElsewhereClient"
 		]
 	},
 	"mixins": [
-		"constructure.mixins.json"
+		"elsewhere.mixins.json"
 	],
+	"accessWidener": "elsewhere.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.18.4",
 		"minecraft": "~26.1-",

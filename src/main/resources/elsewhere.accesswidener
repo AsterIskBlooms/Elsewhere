@@ -1,0 +1,13 @@
+accessWidener v2 official
+
+accessible class net/minecraft/world/level/levelgen/SurfaceRules$NoiseThresholdConditionSource
+accessible method net/minecraft/world/level/levelgen/SurfaceRules$NoiseThresholdConditionSource <init> (Lnet/minecraft/resources/ResourceKey;DDZ)V
+accessible class net/minecraft/world/level/levelgen/SurfaceRules$Condition
+accessible class net/minecraft/world/level/levelgen/SurfaceRules$Context
+accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context randomState Lnet/minecraft/world/level/levelgen/RandomState;
+accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context blockX I
+accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context blockY I
+accessible field net/minecraft/world/level/levelgen/SurfaceRules$Context blockZ I
+accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
+accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> (Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;Ljava/util/Set;)V
+accessible method net/minecraft/core/particles/SimpleParticleType <init> (Z)V

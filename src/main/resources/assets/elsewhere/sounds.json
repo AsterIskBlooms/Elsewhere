@@ -1,0 +1,173 @@
+{
+  "end_stone_break": {
+    "subtitle": "sounds.elsewhere.end_stone_hit",
+    "sounds": [
+      "elsewhere:end_stone/end_stone_break1",
+      "elsewhere:end_stone/end_stone_break2",
+      "elsewhere:end_stone/end_stone_break3",
+      "elsewhere:end_stone/end_stone_break4",
+      "elsewhere:end_stone/end_stone_break5"
+    ]
+  },
+  "end_stone_place": {
+    "subtitle": "sounds.elsewhere.end_stone_place",
+    "sounds": [
+      "elsewhere:end_stone/end_stone_place1",
+      "elsewhere:end_stone/end_stone_place2",
+      "elsewhere:end_stone/end_stone_place3",
+      "elsewhere:end_stone/end_stone_place4"
+    ]
+  },
+  "end_stone_hit": {
+    "subtitle": "sounds.elsewhere.end_stone_place",
+    "sounds": [
+      "elsewhere:end_stone/end_stone_hit1",
+      "elsewhere:end_stone/end_stone_hit2",
+      "elsewhere:end_stone/end_stone_hit3",
+      "elsewhere:end_stone/end_stone_hit4"
+    ]
+  },
+  "sulfur_break": {
+    "subtitle": "sounds.elsewhere.sulfur_break",
+    "sounds": [
+      "elsewhere:sulfur/sulfur_break1",
+      "elsewhere:sulfur/sulfur_break2",
+      "elsewhere:sulfur/sulfur_break3",
+      "elsewhere:sulfur/sulfur_break4",
+      "elsewhere:sulfur/sulfur_break5",
+      "elsewhere:sulfur/sulfur_break6",
+      "elsewhere:sulfur/sulfur_break7"
+    ]
+  },
+  "sulfur_step": {
+    "subtitle": "sounds.elsewhere.sulfur_step",
+    "sounds": [
+      "elsewhere:sulfur/sulfur_step1",
+      "elsewhere:sulfur/sulfur_step2",
+      "elsewhere:sulfur/sulfur_step3",
+      "elsewhere:sulfur/sulfur_step4",
+      "elsewhere:sulfur/sulfur_step5",
+      "elsewhere:sulfur/sulfur_step6",
+      "elsewhere:sulfur/sulfur_step7"
+    ]
+  },
+  "sulfur_place": {
+    "subtitle": "sounds.elsewhere.sulfur_place",
+    "sounds": [
+      "elsewhere:sulfur/sulfur_place1",
+      "elsewhere:sulfur/sulfur_place2",
+      "elsewhere:sulfur/sulfur_place3",
+      "elsewhere:sulfur/sulfur_place4",
+      "elsewhere:sulfur/sulfur_place5",
+      "elsewhere:sulfur/sulfur_place6",
+      "elsewhere:sulfur/sulfur_place7",
+      "elsewhere:sulfur/sulfur_place8"
+    ]
+  },
+  "sulfur_hit": {
+    "subtitle": "sounds.elsewhere.sulfur_hit",
+    "sounds": [
+      "elsewhere:sulfur/sulfur_hit1",
+      "elsewhere:sulfur/sulfur_hit2",
+      "elsewhere:sulfur/sulfur_hit3",
+      "elsewhere:sulfur/sulfur_hit4",
+      "elsewhere:sulfur/sulfur_hit5",
+      "elsewhere:sulfur/sulfur_hit6",
+      "elsewhere:sulfur/sulfur_hit7"
+    ]
+  },
+  "noxious_gas": {
+    "subtitle": "sounds.elsewhere.noxious_gas",
+    "sounds": [
+      "elsewhere:sulfur/noxious_gas/gas_ambient1",
+      "elsewhere:sulfur/noxious_gas/gas_ambient2",
+      "elsewhere:sulfur/noxious_gas/gas_ambient3",
+      "elsewhere:sulfur/noxious_gas/gas_ambient4",
+      "elsewhere:sulfur/noxious_gas/gas_ambient5",
+      "elsewhere:sulfur/noxious_gas/gas_ambient6",
+      "elsewhere:sulfur/noxious_gas/gas_ambient7",
+      "elsewhere:sulfur/noxious_gas/gas_ambient8",
+      "elsewhere:sulfur/noxious_gas/gas_ambient9",
+      "elsewhere:sulfur/noxious_gas/gas_ambient10",
+      "elsewhere:sulfur/noxious_gas/gas_ambient11",
+      "elsewhere:sulfur/noxious_gas/gas_ambient12",
+      "elsewhere:sulfur/noxious_gas/gas_ambient13",
+      "elsewhere:sulfur/noxious_gas/gas_ambient14"
+    ]
+  },
+  "geyser_eruption_start": {
+    "subtitle": "sounds.elsewhere.geyser_eruption_start",
+    "sounds": [
+      "elsewhere:sulfur/geyser/eruption1",
+      "elsewhere:sulfur/geyser/eruption2",
+      "elsewhere:sulfur/geyser/eruption3",
+      "elsewhere:sulfur/geyser/eruption4",
+      "elsewhere:sulfur/geyser/eruption5",
+      "elsewhere:sulfur/geyser/eruption6",
+      "elsewhere:sulfur/geyser/eruption7",
+      "elsewhere:sulfur/geyser/eruption8"
+    ]
+  },
+  "geyser_eruption_active": {
+    "subtitle": "sounds.elsewhere.geyser_eruption_active",
+    "sounds": [
+      "elsewhere:sulfur/geyser/eruption_active1",
+      "elsewhere:sulfur/geyser/eruption_active2",
+      "elsewhere:sulfur/geyser/eruption_active3",
+      "elsewhere:sulfur/geyser/eruption_active4",
+      "elsewhere:sulfur/geyser/eruption_active5",
+      "elsewhere:sulfur/geyser/eruption_active6",
+      "elsewhere:sulfur/geyser/eruption_active7",
+      "elsewhere:sulfur/geyser/eruption_active8"
+    ]
+  },
+  "cinnabar_break": {
+    "subtitle": "sounds.elsewhere.cinnabar_break",
+    "sounds": [
+      "elsewhere:cinnabar/cinnabar_break1",
+      "elsewhere:cinnabar/cinnabar_break2",
+      "elsewhere:cinnabar/cinnabar_break3",
+      "elsewhere:cinnabar/cinnabar_break4",
+      "elsewhere:cinnabar/cinnabar_break5",
+      "elsewhere:cinnabar/cinnabar_break6",
+      "elsewhere:cinnabar/cinnabar_break7"
+    ]
+  },
+  "cinnabar_step": {
+    "subtitle": "sounds.elsewhere.cinnabar_step",
+    "sounds": [
+      "elsewhere:cinnabar/cinnabar_step1",
+      "elsewhere:cinnabar/cinnabar_step2",
+      "elsewhere:cinnabar/cinnabar_step3",
+      "elsewhere:cinnabar/cinnabar_step4",
+      "elsewhere:cinnabar/cinnabar_step5",
+      "elsewhere:cinnabar/cinnabar_step6",
+      "elsewhere:cinnabar/cinnabar_step7"
+    ]
+  },
+  "cinnabar_place": {
+    "subtitle": "sounds.elsewhere.cinnabar_place",
+    "sounds": [
+      "elsewhere:cinnabar/cinnabar_place1",
+      "elsewhere:cinnabar/cinnabar_place2",
+      "elsewhere:cinnabar/cinnabar_place3",
+      "elsewhere:cinnabar/cinnabar_place4",
+      "elsewhere:cinnabar/cinnabar_place5",
+      "elsewhere:cinnabar/cinnabar_place6",
+      "elsewhere:cinnabar/cinnabar_place7",
+      "elsewhere:cinnabar/cinnabar_place8"
+    ]
+  },
+  "cinnabar_hit": {
+    "subtitle": "sounds.elsewhere.cinnabar_hit",
+    "sounds": [
+      "elsewhere:cinnabar/cinnabar_hit1",
+      "elsewhere:cinnabar/cinnabar_hit2",
+      "elsewhere:cinnabar/cinnabar_hit3",
+      "elsewhere:cinnabar/cinnabar_hit4",
+      "elsewhere:cinnabar/cinnabar_hit5",
+      "elsewhere:cinnabar/cinnabar_hit6",
+      "elsewhere:cinnabar/cinnabar_hit7"
+    ]
+  }
+}

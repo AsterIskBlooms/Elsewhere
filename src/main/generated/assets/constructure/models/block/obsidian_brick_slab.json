@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "constructure:block/obsidian_bricks",
-    "side": "constructure:block/obsidian_bricks",
-    "top": "constructure:block/obsidian_bricks"
-  }
-}

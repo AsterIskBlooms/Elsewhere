@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "constructure:block/chiseled_obsidian_top",
-    "side": "constructure:block/chiseled_obsidian_side"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "constructure:block/amethyst_bricks",
-    "side": "constructure:block/amethyst_bricks",
-    "top": "constructure:block/amethyst_bricks"
-  }
-}
