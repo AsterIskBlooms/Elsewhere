@@ -358,9 +358,48 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.cinnabar_lapis_ore", "Cinnabar Lapis Lazuli Ore");
         translationBuilder.add("block.elsewhere.cinnabar_emerald_ore", "Cinnabar Emerald Ore");
 
+        translationBuilder.add("block.elsewhere.orpiment", "Orpiment");
+        translationBuilder.add("block.elsewhere.orpiment_stairs", "Orpiment Stairs");
+        translationBuilder.add("block.elsewhere.orpiment_slab", "Orpiment Slab");
+        translationBuilder.add("block.elsewhere.orpiment_wall", "Orpiment Wall");
+        translationBuilder.add("block.elsewhere.smooth_orpiment", "Smooth Orpiment");
+        translationBuilder.add("block.elsewhere.smooth_orpiment_stairs", "Smooth Orpiment Stairs");
+        translationBuilder.add("block.elsewhere.smooth_orpiment_slab", "Smooth Orpiment Slab");
+        translationBuilder.add("block.elsewhere.smooth_orpiment_wall", "Smooth Orpiment Wall");
+        translationBuilder.add("block.elsewhere.polished_orpiment", "Polished Orpiment");
+        translationBuilder.add("block.elsewhere.polished_orpiment_stairs", "Polished Orpiment Stairs");
+        translationBuilder.add("block.elsewhere.polished_orpiment_slab", "Polished Orpiment Slab");
+        translationBuilder.add("block.elsewhere.polished_orpiment_wall", "Polished Orpiment Wall");
+        translationBuilder.add("block.elsewhere.orpiment_bricks", "Orpiment Bricks");
+        translationBuilder.add("block.elsewhere.orpiment_brick_stairs", "Orpiment Brick Stairs");
+        translationBuilder.add("block.elsewhere.orpiment_brick_slab", "Orpiment Brick Slab");
+        translationBuilder.add("block.elsewhere.orpiment_brick_wall", "Orpiment Brick Wall");
+        translationBuilder.add("block.elsewhere.chiseled_orpiment", "Chiseled Orpiment");
+        translationBuilder.add("block.elsewhere.chiseled_orpiment_bricks", "Chiseled Orpiment Bricks");
+        translationBuilder.add("block.elsewhere.orpiment_pillar", "Orpiment Pillar");
+
+        translationBuilder.add("block.elsewhere.netherrack_stairs", "Netherrack Stairs");
+        translationBuilder.add("block.elsewhere.netherrack_slab", "Netherrack Slab");
+        translationBuilder.add("block.elsewhere.netherrack_wall", "Netherrack Wall");
+        translationBuilder.add("block.elsewhere.smooth_netherrack", "Smooth Netherrack");
+        translationBuilder.add("block.elsewhere.smooth_netherrack_stairs", "Smooth Netherrack Stairs");
+        translationBuilder.add("block.elsewhere.smooth_netherrack_slab", "Smooth Netherrack Slab");
+        translationBuilder.add("block.elsewhere.smooth_netherrack_wall", "Smooth Netherrack Wall");
+        translationBuilder.add("block.elsewhere.polished_netherrack", "Polished Netherrack");
+        translationBuilder.add("block.elsewhere.polished_netherrack_stairs", "Polished Netherrack Stairs");
+        translationBuilder.add("block.elsewhere.polished_netherrack_slab", "Polished Netherrack Slab");
+        translationBuilder.add("block.elsewhere.polished_netherrack_wall", "Polished Netherrack Wall");
+        translationBuilder.add("block.elsewhere.netherrack_bricks", "Netherrack Bricks");
+        translationBuilder.add("block.elsewhere.netherrack_brick_stairs", "Netherrack Brick Stairs");
+        translationBuilder.add("block.elsewhere.netherrack_brick_slab", "Netherrack Brick Slab");
+        translationBuilder.add("block.elsewhere.netherrack_brick_wall", "Netherrack Brick Wall");
+        translationBuilder.add("block.elsewhere.chiseled_netherrack", "Chiseled Netherrack");
+        translationBuilder.add("block.elsewhere.chiseled_netherrack_bricks", "Chiseled Netherrack Bricks");
+        translationBuilder.add("block.elsewhere.netherrack_pillar", "Netherrack Pillar");
 
         translationBuilder.add("block.elsewhere.chiseled_purpur", "Chiseled Purpur");
 
+        translationBuilder.add("block.elsewhere.icicle", "Icicle");
 
 
         translationBuilder.add("block.elsewhere.oak_mosaic", "Oak Mosaic");

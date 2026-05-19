@@ -28,6 +28,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.PlayerTeam;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 import java.util.EnumSet;
 
@@ -44,7 +45,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
     protected AbstractCubeMob(final EntityType<? extends AbstractCubeMob> type, final Level level) {
         super(type, level);
-        this.fixupDimensions();
+        this.refreshDimensions();
         this.moveControl = new AbstractCubeMob.CubeMobMoveControl<>(this);
     }
 
@@ -181,7 +182,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
 
             for (int i = 0; i < count; i++) {
                 float xd = (i % 2 - 0.5F) * xzCubeSpawnOffset;
-                float zd = (i / 2 - 0.5F) * xzCubeSpawnOffset;
+                float zd = (i % 2 - 0.5F) * xzCubeSpawnOffset;
                 this.convertTo(
                         this.getType(),
                         new ConversionParams(ConversionType.SPLIT_ON_DEATH, false, false, team),
@@ -226,7 +227,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
         }
     }
 
-    protected Vec3 getPassengerAttachmentPoint(final Entity passenger, final EntityDimensions dimensions, final float scale) {
+    protected @NonNull Vec3 getPassengerAttachmentPoint(final Entity passenger, final EntityDimensions dimensions, final float scale) {
         return new Vec3(0.0, dimensions.height() - 0.015625 * this.getSize() * scale, 0.0);
     }
 
@@ -238,7 +239,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
         return (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE);
     }
 
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
+    public @NonNull EntityDimensions getDefaultDimensions(final Pose pose) {
         return this.getType().getDimensions().scale(this.getSize());
     }
 
@@ -248,7 +249,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
         this.needsSync = true;
     }
 
-    public SoundSource getSoundSource() {
+    public @NonNull SoundSource getSoundSource() {
         return SoundSource.HOSTILE;
     }
 
@@ -316,7 +317,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
             if (target == null) {
                 return false;
             } else {
-                return !this.cubeMob.canAttack(target) ? false : this.cubeMob.getMoveControl() instanceof AbstractCubeMob.CubeMobMoveControl;
+                return this.cubeMob.canAttack(target) && this.cubeMob.getMoveControl() instanceof CubeMobMoveControl;
             }
         }
 
@@ -332,7 +333,7 @@ public abstract class AbstractCubeMob extends AgeableMob {
             if (target == null) {
                 return false;
             } else {
-                return !this.cubeMob.canAttack(target) ? false : --this.growTiredTimer > 0;
+                return this.cubeMob.canAttack(target) && --this.growTiredTimer > 0;
             }
         }
 

@@ -482,7 +482,7 @@ public interface EBlocks {
             BlockBehaviour.Properties.ofFullCopy(POLISHED_SULFUR)
     );
 
-    Block SULFUR_SPIKE = register("sulfur_spike", SulfurSpikeBlock::new, true,
+    Block SULFUR_SPIKE = register("sulfur_spike", p -> new SpikeBlock(SULFUR, 2.5, p), true,
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(ESounds.SULFUR)
     );
 
@@ -528,9 +528,59 @@ public interface EBlocks {
     Block CINNABAR_LAPIS_ORE = registerSubBlock("cinnabar_lapis_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_EMERALD_ORE = registerSubBlock("cinnabar_emerald_ore", CINNABAR_COAL_ORE);
 
+    // Netherrack
+    Block NETHERRACK_STAIRS = registerStair("netherrack_stairs", Blocks.NETHERRACK);
+    Block NETHERRACK_SLAB = registerSlab("netherrack_slab", Blocks.NETHERRACK);
+    Block NETHERRACK_WALL = registerWall("netherrack_wall", Blocks.NETHERRACK);
+    Block SMOOTH_NETHERRACK = registerSubBlock("smooth_netherrack", Blocks.NETHERRACK);
+    Block SMOOTH_NETHERRACK_STAIRS = registerStair("smooth_netherrack_stairs", SMOOTH_NETHERRACK);
+    Block SMOOTH_NETHERRACK_SLAB = registerSlab("smooth_netherrack_slab", SMOOTH_NETHERRACK);
+    Block SMOOTH_NETHERRACK_WALL = registerWall("smooth_netherrack_wall", SMOOTH_NETHERRACK);
+    Block POLISHED_NETHERRACK = registerSubBlock("polished_netherrack", SMOOTH_NETHERRACK);
+    Block POLISHED_NETHERRACK_STAIRS = registerStair("polished_netherrack_stairs", POLISHED_NETHERRACK);
+    Block POLISHED_NETHERRACK_SLAB = registerSlab("polished_netherrack_slab", POLISHED_NETHERRACK);
+    Block POLISHED_NETHERRACK_WALL = registerWall("polished_netherrack_wall", POLISHED_NETHERRACK);
+    Block NETHERRACK_BRICKS = registerSubBlock("netherrack_bricks", POLISHED_NETHERRACK);
+    Block NETHERRACK_BRICK_STAIRS = registerStair("netherrack_brick_stairs", NETHERRACK_BRICKS);
+    Block NETHERRACK_BRICK_SLAB = registerSlab("netherrack_brick_slab", NETHERRACK_BRICKS);
+    Block NETHERRACK_BRICK_WALL = registerWall("netherrack_brick_wall", NETHERRACK_BRICKS);
+    Block CHISELED_NETHERRACK = registerSubBlock("chiseled_netherrack", NETHERRACK_BRICKS);
+    Block CHISELED_NETHERRACK_BRICKS = registerSubBlock("chiseled_netherrack_bricks", NETHERRACK_BRICKS);
+    Block NETHERRACK_PILLAR = register("netherrack_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(NETHERRACK_BRICKS)
+    );
+
+    // Orpiment
+    Block ORPIMENT = register("orpiment", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.CALCITE)
+    );
+    Block ORPIMENT_STAIRS = registerStair("orpiment_stairs", ORPIMENT);
+    Block ORPIMENT_SLAB = registerSlab("orpiment_slab", ORPIMENT);
+    Block ORPIMENT_WALL = registerWall("orpiment_wall", ORPIMENT);
+    Block SMOOTH_ORPIMENT = registerSubBlock("smooth_orpiment", ORPIMENT);
+    Block SMOOTH_ORPIMENT_STAIRS = registerStair("smooth_orpiment_stairs", SMOOTH_ORPIMENT);
+    Block SMOOTH_ORPIMENT_SLAB = registerSlab("smooth_orpiment_slab", SMOOTH_ORPIMENT);
+    Block SMOOTH_ORPIMENT_WALL = registerWall("smooth_orpiment_wall", SMOOTH_ORPIMENT);
+    Block POLISHED_ORPIMENT = registerSubBlock("polished_orpiment", ORPIMENT);
+    Block POLISHED_ORPIMENT_STAIRS = registerStair("polished_orpiment_stairs", POLISHED_ORPIMENT);
+    Block POLISHED_ORPIMENT_SLAB = registerSlab("polished_orpiment_slab", POLISHED_ORPIMENT);
+    Block POLISHED_ORPIMENT_WALL = registerWall("polished_orpiment_wall", POLISHED_ORPIMENT);
+    Block ORPIMENT_BRICKS = registerSubBlock("orpiment_bricks", POLISHED_ORPIMENT);
+    Block ORPIMENT_BRICK_STAIRS = registerStair("orpiment_brick_stairs", ORPIMENT_BRICKS);
+    Block ORPIMENT_BRICK_SLAB = registerSlab("orpiment_brick_slab", ORPIMENT_BRICKS);
+    Block ORPIMENT_BRICK_WALL = registerWall("orpiment_brick_wall", ORPIMENT_BRICKS);
+    Block CHISELED_ORPIMENT = registerSubBlock("chiseled_orpiment", POLISHED_ORPIMENT);
+    Block CHISELED_ORPIMENT_BRICKS = registerSubBlock("chiseled_orpiment_bricks", ORPIMENT_BRICKS);
+    Block ORPIMENT_PILLAR = register("orpiment_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(POLISHED_ORPIMENT)
+    );
+
     // Singular Purpur Block
     Block CHISELED_PURPUR = registerSubBlock("chiseled_purpur", Blocks.PURPUR_BLOCK);
 
+    Block ICICLE = register("icicle", p -> new SpikeBlock(Blocks.PACKED_ICE, 2.5, p), true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_ICE)
+    );
 
     // Wood Mosaics
     Block OAK_MOSAIC = registerSubBlock("oak_mosaic", Blocks.OAK_PLANKS);
@@ -587,12 +637,6 @@ public interface EBlocks {
     );
 
     Block ARID_DIRT = registerSubBlock("arid_dirt", Blocks.DIRT);
-
-
-
-
-
-
 
 
 

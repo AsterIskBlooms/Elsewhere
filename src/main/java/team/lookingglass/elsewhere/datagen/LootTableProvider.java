@@ -376,7 +376,48 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.CHISELED_CINNABAR_BRICKS);
         dropSelf(EBlocks.CINNABAR_PILLAR);
 
+        dropSelf(EBlocks.NETHERRACK_STAIRS);
+        add(EBlocks.NETHERRACK_SLAB, createSlabItemTable(EBlocks.NETHERRACK_SLAB));
+        dropSelf(EBlocks.NETHERRACK_WALL);
+        dropSelf(EBlocks.SMOOTH_NETHERRACK);
+        dropSelf(EBlocks.SMOOTH_NETHERRACK_STAIRS);
+        add(EBlocks.SMOOTH_NETHERRACK_SLAB, createSlabItemTable(EBlocks.SMOOTH_NETHERRACK_SLAB));
+        dropSelf(EBlocks.SMOOTH_NETHERRACK_WALL);
+        dropSelf(EBlocks.POLISHED_NETHERRACK);
+        dropSelf(EBlocks.POLISHED_NETHERRACK_STAIRS);
+        add(EBlocks.POLISHED_NETHERRACK_SLAB, createSlabItemTable(EBlocks.POLISHED_NETHERRACK_SLAB));
+        dropSelf(EBlocks.POLISHED_NETHERRACK_WALL);
+        dropSelf(EBlocks.NETHERRACK_BRICKS);
+        dropSelf(EBlocks.NETHERRACK_BRICK_STAIRS);
+        add(EBlocks.NETHERRACK_BRICK_SLAB, createSlabItemTable(EBlocks.NETHERRACK_BRICK_SLAB));
+        dropSelf(EBlocks.NETHERRACK_BRICK_WALL);
+        dropSelf(EBlocks.CHISELED_NETHERRACK);
+        dropSelf(EBlocks.CHISELED_NETHERRACK_BRICKS);
+        dropSelf(EBlocks.NETHERRACK_PILLAR);
+
+        dropSelf(EBlocks.ORPIMENT);
+        dropSelf(EBlocks.ORPIMENT_STAIRS);
+        add(EBlocks.ORPIMENT_SLAB, createSlabItemTable(EBlocks.ORPIMENT_SLAB));
+        dropSelf(EBlocks.ORPIMENT_WALL);
+        dropSelf(EBlocks.SMOOTH_ORPIMENT);
+        dropSelf(EBlocks.SMOOTH_ORPIMENT_STAIRS);
+        add(EBlocks.SMOOTH_ORPIMENT_SLAB, createSlabItemTable(EBlocks.SMOOTH_ORPIMENT_SLAB));
+        dropSelf(EBlocks.SMOOTH_ORPIMENT_WALL);
+        dropSelf(EBlocks.POLISHED_ORPIMENT);
+        dropSelf(EBlocks.POLISHED_ORPIMENT_STAIRS);
+        add(EBlocks.POLISHED_ORPIMENT_SLAB, createSlabItemTable(EBlocks.POLISHED_ORPIMENT_SLAB));
+        dropSelf(EBlocks.POLISHED_ORPIMENT_WALL);
+        dropSelf(EBlocks.ORPIMENT_BRICKS);
+        dropSelf(EBlocks.ORPIMENT_BRICK_STAIRS);
+        add(EBlocks.ORPIMENT_BRICK_SLAB, createSlabItemTable(EBlocks.ORPIMENT_BRICK_SLAB));
+        dropSelf(EBlocks.ORPIMENT_BRICK_WALL);
+        dropSelf(EBlocks.CHISELED_ORPIMENT);
+        dropSelf(EBlocks.CHISELED_ORPIMENT_BRICKS);
+        dropSelf(EBlocks.ORPIMENT_PILLAR);
+
         dropSelf(EBlocks.CHISELED_PURPUR);
+
+        add(EBlocks.ICICLE, createSilkTouchOnlyTable(EBlocks.ICICLE));
 
         dropSelf(EBlocks.OAK_MOSAIC);
         dropSelf(EBlocks.OAK_MOSAIC_STAIRS);

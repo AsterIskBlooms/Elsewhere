@@ -36,22 +36,31 @@ public class OverworldBiomeGenMixin {
         OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor) this;
 
         accessor.invokeAddUndergroundBiome(biomes,
-                accessor.getFULL_RANGE(),           // temperature — any
-                accessor.getFULL_RANGE(),      // humidity — any
-                Climate.Parameter.span(-1.20F, -0.455F),      // continentalness — ocean
-                Climate.Parameter.span(0.55F, 1.0F),           // erosion — eroded
-                accessor.getFULL_RANGE(),           // weirdness — any
+                accessor.getFULL_RANGE(), // temperature — any
+                accessor.getFULL_RANGE(), // humidity — any
+                Climate.Parameter.span(-1.20F, -0.455F), // continentalness — ocean
+                Climate.Parameter.span(0.55F, 1.0F), // erosion — eroded
+                accessor.getFULL_RANGE(), // weirdness — any
                 0.0F,
-                EBiomes.CRYSTALLINE_CAVES
+                EBiomes.CRYSTAL_CAVERNS
         );
         accessor.invokeAddUndergroundBiome(biomes,
-                accessor.getFULL_RANGE(),           // temperature — any
-                accessor.getFULL_RANGE(),      // humidity — any
-                accessor.getFULL_RANGE(),      // continentalness — any
-                accessor.getFULL_RANGE(),           // erosion — any
-                Climate.Parameter.span(-1.0F, -0.567F),           // weirdness — low
+                accessor.getFULL_RANGE(), // temperature — any
+                accessor.getFULL_RANGE(), // humidity — any
+                accessor.getFULL_RANGE(), // continentalness — any
+                accessor.getFULL_RANGE(), // erosion — any
+                Climate.Parameter.span(-1.0F, -0.567F), // weirdness — low
                 0.0F,
                 EBiomes.SULFUR_CAVES
+        );
+        accessor.invokeAddUndergroundBiome(biomes,
+                Climate.Parameter.span(0.55F, 1.0F), // temperature — hot
+                accessor.getFULL_RANGE(), // humidity — any
+                accessor.getFULL_RANGE(), // continentalness — any
+                Climate.Parameter.span(-1.0F, -0.375F), // erosion — low
+                accessor.getFULL_RANGE(), // weirdness — low
+                0.0F,
+                EBiomes.ARID_CAVES
         );
     }
 }

@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -74,9 +73,9 @@ public class EWorldgen {
 
         // Amethyst Spires
         BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == EBiomes.CRYSTALLINE_CAVES,
+                ctx -> ctx.getBiomeKey() == EBiomes.CRYSTAL_CAVERNS,
                 GenerationStep.Decoration.UNDERGROUND_DECORATION,
-                EPlacedFeatures.AMETHYST_SPIRE
+                EPlacedFeatures.AMETHYST_NODE
         );
 
         // Sulfur Spikes
@@ -170,29 +169,25 @@ public class EWorldgen {
                         )
                 );
 
-                SurfaceRules.RuleSource crystallineCaveRules = SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(EBiomes.CRYSTALLINE_CAVES),
+                SurfaceRules.RuleSource crystalCavernRules = SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(EBiomes.CRYSTAL_CAVERNS),
                         SurfaceRules.sequence(
-                                // Sodalite Valley, Mid, & Peak
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, -0.5, -0.4),
+                                // Sodalite Bands
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.25, -0.2),
                                         SurfaceRules.state(EBlocks.SODALITE.defaultBlockState())),
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, -0.05, 0.05),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.0, 0.05),
                                         SurfaceRules.state(EBlocks.SODALITE.defaultBlockState())),
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, 0.4, 0.5),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.25, 0.3),
                                         SurfaceRules.state(EBlocks.SODALITE.defaultBlockState())),
 
-                                // Basalt Bands
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, 0.75, 0.9),
+                                // Basalt & Calcite Bands
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.2, -0.1),
                                         SurfaceRules.state(Blocks.SMOOTH_BASALT.defaultBlockState())),
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, -0.2, -0.1),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.0, 0.2),
+                                        SurfaceRules.state(Blocks.CALCITE.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.2, 0.4),
                                         SurfaceRules.state(Blocks.SMOOTH_BASALT.defaultBlockState())),
-
-                                // Calcite Bands
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, 0.2, 0.4),
-                                        SurfaceRules.state(Blocks.CALCITE.defaultBlockState())),
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, -1.0, -0.7),
-                                        SurfaceRules.state(Blocks.CALCITE.defaultBlockState())),
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CRYSTALLINE_CAVE_GRADIENT, -0.35, -0.2),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4),
                                         SurfaceRules.state(Blocks.CALCITE.defaultBlockState()))
 
                                 // Default rest to respective stone layer
@@ -203,20 +198,38 @@ public class EWorldgen {
                         SurfaceRules.isBiome(EBiomes.SULFUR_CAVES),
                         SurfaceRules.sequence(
                                 // Cave Bands
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.SULFUR_CAVE_GRADIENT, -0.4F, -0.1F),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.4F, -0.1F),
                                         SurfaceRules.state(EBlocks.CINNABAR.defaultBlockState())),
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.SULFUR_CAVE_GRADIENT, 0.0F, 0.4F),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.0F, 0.325F),
                                         SurfaceRules.state(EBlocks.SULFUR.defaultBlockState())),
-                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.SULFUR_CAVE_GRADIENT, 0.4F),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.325F, 0.4F),
+                                        SurfaceRules.state(EBlocks.ORPIMENT.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4F),
                                         SurfaceRules.state(EBlocks.CINNABAR.defaultBlockState()))
 
+                                // Default rest to respective stone layer
+                        )
+                );
+
+                SurfaceRules.RuleSource aridCaveRules = SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(EBiomes.ARID_CAVES),
+                        SurfaceRules.sequence(
+                                // Cave Bands
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.4F, -0.1F),
+                                        SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.0F, 0.2F),
+                                        SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.2F, 0.5F),
+                                        SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.5F),
+                                        SurfaceRules.state(Blocks.SAND.defaultBlockState()))
 
                                 // Default rest to respective stone layer
                         )
                 );
 
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
-                        SurfaceRules.sequence(outbackRules, crystallineCaveRules, sulfurCaveRules,
+                        SurfaceRules.sequence(outbackRules, crystalCavernRules, sulfurCaveRules, aridCaveRules,
                                 bedrockFloorCheck, deepslateRule, shaleRule, object.surfaceRule())
                 );
             });

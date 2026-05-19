@@ -34,7 +34,7 @@ public class EConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUEBONNET_KEY = registerKey("bluebonnet");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUEBONNET_DENSE_KEY = registerKey("bluebonnet_dense");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> AMETHYST_SPIRE_KEY = registerKey("amethyst_spire");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AMETHYST_NODE_KEY = registerKey("amethyst_node");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_SPIKE_KEY = registerKey("sulfur_spike");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_SPIKE_CLUSTER_KEY = registerKey("sulfur_spike_cluster");
@@ -56,7 +56,7 @@ public class EConfiguredFeatures {
         registerFeature(context, BLUEBONNET_KEY, EFeatureTypes.BLUEBONNET_PATCH_FEATURE, NoneFeatureConfiguration.INSTANCE);
         registerFeature(context, BLUEBONNET_DENSE_KEY, EFeatureTypes.BLUEBONNET_DENSE_FEATURE, NoneFeatureConfiguration.INSTANCE);
 
-        registerFeature(context, AMETHYST_SPIRE_KEY, EFeatureTypes.AMETHYST_SPIRE_FEATURE, NoneFeatureConfiguration.INSTANCE);
+        registerFeature(context, AMETHYST_NODE_KEY, EFeatureTypes.AMETHYST_NODE_FEATURE, NoneFeatureConfiguration.INSTANCE);
 
         registerFeature(context, SULFUR_SPIKE_KEY, EFeatureTypes.SULFUR_SPIKE_FEATURE,
                 new SulfurSpikeConfiguration(0.2F, 0.7F, 0.5F, 0.5F));

@@ -11,7 +11,6 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.*;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.EBlocks;
@@ -27,7 +26,7 @@ public class EPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BLUEBONNET = registerKey("bluebonnet");
     public static final ResourceKey<PlacedFeature> BLUEBONNET_DENSE = registerKey("bluebonnet_dense");
 
-    public static final ResourceKey<PlacedFeature> AMETHYST_SPIRE = registerKey("amethyst_spire");
+    public static final ResourceKey<PlacedFeature> AMETHYST_NODE = registerKey("amethyst_node");
 
     public static final ResourceKey<PlacedFeature> SULFUR_SPIKE = registerKey("sulfur_spike");
     public static final ResourceKey<PlacedFeature> SULFUR_SPIKE_CLUSTER = registerKey("sulfur_spike_cluster");
@@ -81,10 +80,10 @@ public class EPlacedFeatures {
         );
 
         // Amethyst Spires
-        registerPlaced(context, AMETHYST_SPIRE,
-                configured.getOrThrow(EConfiguredFeatures.AMETHYST_SPIRE_KEY),
+        registerPlaced(context, AMETHYST_NODE,
+                configured.getOrThrow(EConfiguredFeatures.AMETHYST_NODE_KEY),
                 List.of(
-                        CountPlacement.of(6),
+                        CountPlacement.of(24),
                         InSquarePlacement.spread(),
                         PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
                         BiomeFilter.biome()

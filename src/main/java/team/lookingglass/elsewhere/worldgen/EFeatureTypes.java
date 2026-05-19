@@ -35,10 +35,10 @@ public class EFeatureTypes {
                     Identifier.fromNamespaceAndPath(Elsewhere.MODID, "bluebonnet_dense"),
                     new FlowerPatchFeature(EBlocks.BLUEBONNET, 7, 3, 28, 12));
 
-    public static final Feature<NoneFeatureConfiguration> AMETHYST_SPIRE_FEATURE =
+    public static final Feature<NoneFeatureConfiguration> AMETHYST_NODE_FEATURE =
             Registry.register(BuiltInRegistries.FEATURE,
-                    Identifier.fromNamespaceAndPath(Elsewhere.MODID, "amethyst_spire"),
-                    new AmethystSpireFeature());
+                    Identifier.fromNamespaceAndPath(Elsewhere.MODID, "amethyst_node"),
+                    new AmethystNodeFeature());
 
     public static final Feature<SulfurSpikeConfiguration> SULFUR_SPIKE_FEATURE =
             Registry.register(BuiltInRegistries.FEATURE,

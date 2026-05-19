@@ -5,6 +5,7 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -18,21 +19,26 @@ public class EBiomes {
 
     public static void bootstrap(BootstrapContext<Biome> context) {
         context.register(OUTBACK, createOutback(context));
-        context.register(CRYSTALLINE_CAVES, createCrystallineCaves(context));
+        context.register(CRYSTAL_CAVERNS, createCrystalCaverns(context));
         context.register(SULFUR_CAVES, createSulfurCaves(context));
+        context.register(ARID_CAVES, createAridCaves(context));
     }
 
     public static final ResourceKey<Biome> OUTBACK = ResourceKey.create(
             Registries.BIOME,
             Identifier.fromNamespaceAndPath(Elsewhere.MODID, "outback")
     );
-    public static final ResourceKey<Biome> CRYSTALLINE_CAVES = ResourceKey.create(
+    public static final ResourceKey<Biome> CRYSTAL_CAVERNS = ResourceKey.create(
             Registries.BIOME,
-            Identifier.fromNamespaceAndPath(Elsewhere.MODID, "crystalline_caves")
+            Identifier.fromNamespaceAndPath(Elsewhere.MODID, "crystal_caverns")
     );
     public static final ResourceKey<Biome> SULFUR_CAVES = ResourceKey.create(
             Registries.BIOME,
             Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_caves")
+    );
+    public static final ResourceKey<Biome> ARID_CAVES = ResourceKey.create(
+            Registries.BIOME,
+            Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_caves")
     );
 
     private static Biome createOutback(BootstrapContext<Biome> context) {
@@ -58,7 +64,7 @@ public class EBiomes {
 
         globalOverworldGeneration(genBuilder);
         BiomeDefaultFeatures.addSavannaGrass(genBuilder);
-        BiomeDefaultFeatures.addSavannaTrees(genBuilder); // placeholder tree
+        BiomeDefaultFeatures.addSavannaTrees(genBuilder);
         BiomeDefaultFeatures.addDesertVegetation(genBuilder);
         BiomeDefaultFeatures.addDesertExtraVegetation(genBuilder);
         BiomeDefaultFeatures.addExtraGold(genBuilder);
@@ -75,7 +81,7 @@ public class EBiomes {
                 .build();
     }
 
-    private static Biome createCrystallineCaves(BootstrapContext<Biome> context) {
+    private static Biome createCrystalCaverns(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
@@ -134,6 +140,44 @@ public class EBiomes {
                 .downfall(1.0F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x34BF89)
+                        .build())
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, -7555023)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, -14267102)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.2F)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.75F)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createAridCaves(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        globalOverworldGeneration(genBuilder);
+        BiomeDefaultFeatures.addDesertVegetation(genBuilder);
+        BiomeDefaultFeatures.addDesertExtraVegetation(genBuilder);
+        BiomeDefaultFeatures.addExtraGold(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(2.0F)
+                .downfall(0.0F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x43D5EE)
                         .build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())

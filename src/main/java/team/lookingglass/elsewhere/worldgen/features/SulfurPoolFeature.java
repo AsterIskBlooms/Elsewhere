@@ -34,10 +34,10 @@ public class SulfurPoolFeature extends Feature<LakeFeature.Configuration> {
                     BlockPos pos = origin.offset(x, y, z);
                     if (level.getFluidState(pos).is(Fluids.WATER)) {
                         BlockPos below = pos.below();
-                        if (level.getBlockState(below).is(EBlocks.SULFUR) && random.nextFloat() < 0.20F) {
+                        if (level.getBlockState(below).is(EBlocks.SULFUR) && random.nextFloat() < 0.15F) {
                             level.setBlock(below, EBlocks.POTENT_SULFUR.defaultBlockState(), 3);
                             level.updateNeighborsAt(below, EBlocks.POTENT_SULFUR);
-                            if (level.getBlockState(below).is(EBlocks.POTENT_SULFUR) && random.nextFloat() < 0.05f) {
+                            if (level.getBlockState(below).is(EBlocks.POTENT_SULFUR) && random.nextFloat() < 0.02F) {
                                 BlockPos magmaPos = below.below();
                                 if (!level.getBlockState(magmaPos).isAir()) {
                                     level.setBlock(magmaPos, Blocks.MAGMA_BLOCK.defaultBlockState(), 3);

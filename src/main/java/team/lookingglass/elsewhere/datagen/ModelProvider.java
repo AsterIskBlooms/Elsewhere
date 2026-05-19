@@ -467,9 +467,60 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.CINNABAR_LAPIS_ORE);
         gen.createTrivialCube(EBlocks.CINNABAR_EMERALD_ORE);
 
+        // Netherrack
+        gen.family(Blocks.NETHERRACK)
+                .stairs(EBlocks.NETHERRACK_STAIRS)
+                .slab(EBlocks.NETHERRACK_SLAB)
+                .wall(EBlocks.NETHERRACK_WALL)
+        ;
+        gen.family(EBlocks.SMOOTH_NETHERRACK)
+                .stairs(EBlocks.SMOOTH_NETHERRACK_STAIRS)
+                .slab(EBlocks.SMOOTH_NETHERRACK_SLAB)
+                .wall(EBlocks.SMOOTH_NETHERRACK_WALL)
+        ;
+        gen.family(EBlocks.POLISHED_NETHERRACK)
+                .stairs(EBlocks.POLISHED_NETHERRACK_STAIRS)
+                .slab(EBlocks.POLISHED_NETHERRACK_SLAB)
+                .wall(EBlocks.POLISHED_NETHERRACK_WALL)
+        ;
+        gen.family(EBlocks.NETHERRACK_BRICKS)
+                .stairs(EBlocks.NETHERRACK_BRICK_STAIRS)
+                .slab(EBlocks.NETHERRACK_BRICK_SLAB)
+                .wall(EBlocks.NETHERRACK_BRICK_WALL)
+        ;
+        gen.createTrivialCube(EBlocks.CHISELED_NETHERRACK);
+        gen.createTrivialCube(EBlocks.CHISELED_NETHERRACK_BRICKS);
+        gen.createAxisAlignedPillarBlock(EBlocks.NETHERRACK_PILLAR, TexturedModel.COLUMN);
+
+        // Orpiment
+        gen.family(EBlocks.ORPIMENT)
+                .stairs(EBlocks.ORPIMENT_STAIRS)
+                .slab(EBlocks.ORPIMENT_SLAB)
+                .wall(EBlocks.ORPIMENT_WALL)
+        ;
+        gen.family(EBlocks.SMOOTH_ORPIMENT)
+                .stairs(EBlocks.SMOOTH_ORPIMENT_STAIRS)
+                .slab(EBlocks.SMOOTH_ORPIMENT_SLAB)
+                .wall(EBlocks.SMOOTH_ORPIMENT_WALL)
+        ;
+        gen.family(EBlocks.POLISHED_ORPIMENT)
+                .stairs(EBlocks.POLISHED_ORPIMENT_STAIRS)
+                .slab(EBlocks.POLISHED_ORPIMENT_SLAB)
+                .wall(EBlocks.POLISHED_ORPIMENT_WALL)
+        ;
+        gen.family(EBlocks.ORPIMENT_BRICKS)
+                .stairs(EBlocks.ORPIMENT_BRICK_STAIRS)
+                .slab(EBlocks.ORPIMENT_BRICK_SLAB)
+                .wall(EBlocks.ORPIMENT_BRICK_WALL)
+        ;
+        gen.createTrivialCube(EBlocks.CHISELED_ORPIMENT);
+        gen.createTrivialBlock(EBlocks.CHISELED_ORPIMENT_BRICKS, TexturedModel.COLUMN);
+        gen.createAxisAlignedPillarBlock(EBlocks.ORPIMENT_PILLAR, TexturedModel.COLUMN);
 
         // Purpur
         gen.createTrivialBlock(EBlocks.CHISELED_PURPUR, TexturedModel.COLUMN);
+
+        customGen.generateStalactite(gen, EBlocks.ICICLE);
 
 
         // Wood Sets
@@ -531,6 +582,7 @@ public class ModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         itemModelGenerator.generateFlatItem(EBlocks.SULFUR_SPIKE.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EBlocks.ICICLE.asItem(), ModelTemplates.FLAT_ITEM);
 
     }
 

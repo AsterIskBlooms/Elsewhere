@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import team.lookingglass.elsewhere.datagen.BlockTagProvider;
 import team.lookingglass.elsewhere.registry.EBlocks;
-import team.lookingglass.elsewhere.registry.blocktypes.SulfurSpikeBlock;
+import team.lookingglass.elsewhere.registry.blocktypes.SpikeBlock;
 
 public class SulfurUtils {
     public SulfurUtils() {
@@ -83,7 +83,7 @@ public class SulfurUtils {
             BlockPos.MutableBlockPos pos = startPos.mutable();
             buildBaseToTipColumn(tipDirection, height, mergedTip, (state) -> {
                 if (state.is(EBlocks.SULFUR_SPIKE)) {
-                    state = (BlockState)state.setValue(SulfurSpikeBlock.WATERLOGGED, level.isWaterAt(pos));
+                    state = (BlockState)state.setValue(SpikeBlock.WATERLOGGED, level.isWaterAt(pos));
                 }
 
                 level.setBlock(pos, state, 2);
@@ -103,7 +103,7 @@ public class SulfurUtils {
     }
 
     private static BlockState createSulfurSpike(final Direction direction, final DripstoneThickness thickness) {
-        return (BlockState)((BlockState)EBlocks.SULFUR_SPIKE.defaultBlockState().setValue(SulfurSpikeBlock.TIP_DIRECTION, direction)).setValue(SulfurSpikeBlock.THICKNESS, thickness);
+        return (BlockState)((BlockState)EBlocks.SULFUR_SPIKE.defaultBlockState().setValue(SpikeBlock.TIP_DIRECTION, direction)).setValue(SpikeBlock.THICKNESS, thickness);
     }
 
     public static boolean isSulfurBaseOrLava(final BlockState state) {

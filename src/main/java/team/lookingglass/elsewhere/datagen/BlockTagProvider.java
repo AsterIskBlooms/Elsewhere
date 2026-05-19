@@ -23,6 +23,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
     public static final TagKey<Block> SHALE_ORE_REPLACEABLES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "shale_ore_replaceables"));
     public static final TagKey<Block> CINNABAR_ORE_REPLACEABLES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cinnabar_ore_replaceables"));
     public static final TagKey<Block> SULFUR_SPIKE_REPLACEABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_spike_replaceable"));
+    public static final TagKey<Block> ICICLE_REPLACEABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "icicle_replaceable"));
 
 
     @Override
@@ -35,6 +36,8 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
         valueLookupBuilder(SULFUR_SPIKE_REPLACEABLE).add(EBlocks.SULFUR);
         valueLookupBuilder(CINNABAR_ORE_REPLACEABLES).add(EBlocks.CINNABAR);
+
+        valueLookupBuilder(ICICLE_REPLACEABLE).add(Blocks.ICE, Blocks.PACKED_ICE, Blocks.BLUE_ICE);
 
 
 
@@ -121,7 +124,13 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.BASALT_BRICKS, EBlocks.BASALT_BRICK_STAIRS, EBlocks.BASALT_BRICK_SLAB, EBlocks.BASALT_BRICK_WALL,
                         EBlocks.BASALT_PILLAR, EBlocks.CHISELED_BASALT, EBlocks.CHISELED_BASALT_BRICKS,
 
-                        EBlocks.SMOOTH_END_STONE, EBlocks.END_STONE_STAIRS, EBlocks.END_STONE_SLAB, EBlocks.END_STONE_WALL,
+                        EBlocks.NETHERRACK_STAIRS, EBlocks.NETHERRACK_SLAB, EBlocks.NETHERRACK_WALL, EBlocks.SMOOTH_NETHERRACK,
+                        EBlocks.SMOOTH_NETHERRACK_STAIRS, EBlocks.SMOOTH_NETHERRACK_SLAB, EBlocks.SMOOTH_NETHERRACK_WALL,
+                        EBlocks.POLISHED_NETHERRACK, EBlocks.POLISHED_NETHERRACK_STAIRS, EBlocks.POLISHED_NETHERRACK_SLAB, EBlocks.POLISHED_NETHERRACK_WALL,
+                        EBlocks.NETHERRACK_BRICKS, EBlocks.NETHERRACK_BRICK_STAIRS, EBlocks.NETHERRACK_BRICK_SLAB, EBlocks.NETHERRACK_BRICK_WALL,
+                        EBlocks.NETHERRACK_PILLAR, EBlocks.CHISELED_NETHERRACK, EBlocks.CHISELED_NETHERRACK_BRICKS,
+
+                        EBlocks.END_STONE_STAIRS, EBlocks.END_STONE_SLAB, EBlocks.END_STONE_WALL, EBlocks.SMOOTH_END_STONE,
                         EBlocks.SMOOTH_END_STONE_STAIRS, EBlocks.SMOOTH_END_STONE_SLAB, EBlocks.SMOOTH_END_STONE_WALL,
                         EBlocks.POLISHED_END_STONE, EBlocks.POLISHED_END_STONE_STAIRS, EBlocks.POLISHED_END_STONE_SLAB, EBlocks.POLISHED_END_STONE_WALL,
                         EBlocks.END_STONE_PILLAR, EBlocks.CHISELED_END_STONE, EBlocks.CHISELED_END_STONE_BRICKS,
@@ -144,6 +153,12 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
                         EBlocks.CINNABAR_COAL_ORE, EBlocks.CINNABAR_COPPER_ORE, EBlocks.CINNABAR_IRON_ORE, EBlocks.CINNABAR_GOLD_ORE, EBlocks.CINNABAR_REDSTONE_ORE, EBlocks.CINNABAR_DIAMOND_ORE, EBlocks.CINNABAR_LAPIS_ORE, EBlocks.CINNABAR_EMERALD_ORE,
 
+                        EBlocks.NETHERRACK_STAIRS, EBlocks.NETHERRACK_SLAB, EBlocks.NETHERRACK_WALL,
+                        EBlocks.SMOOTH_NETHERRACK, EBlocks.SMOOTH_NETHERRACK_STAIRS, EBlocks.SMOOTH_NETHERRACK_SLAB, EBlocks.SMOOTH_NETHERRACK_WALL,
+                        EBlocks.POLISHED_NETHERRACK, EBlocks.POLISHED_NETHERRACK_STAIRS, EBlocks.POLISHED_NETHERRACK_SLAB, EBlocks.POLISHED_NETHERRACK_WALL,
+                        EBlocks.NETHERRACK_BRICKS, EBlocks.NETHERRACK_BRICK_STAIRS, EBlocks.NETHERRACK_BRICK_SLAB, EBlocks.NETHERRACK_BRICK_WALL,
+                        EBlocks.NETHERRACK_PILLAR, EBlocks.CHISELED_NETHERRACK, EBlocks.CHISELED_NETHERRACK_BRICKS,
+
                         EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE,
 
                         EBlocks.SULFUR, EBlocks.SULFUR_STAIRS, EBlocks.SULFUR_SLAB, EBlocks.SULFUR_WALL,
@@ -157,6 +172,12 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.POLISHED_CINNABAR, EBlocks.POLISHED_CINNABAR_STAIRS, EBlocks.POLISHED_CINNABAR_SLAB, EBlocks.POLISHED_CINNABAR_WALL,
                         EBlocks.CINNABAR_BRICKS, EBlocks.CINNABAR_BRICK_STAIRS, EBlocks.CINNABAR_BRICK_SLAB, EBlocks.CINNABAR_BRICK_WALL,
                         EBlocks.CINNABAR_PILLAR, EBlocks.CHISELED_CINNABAR, EBlocks.CHISELED_CINNABAR_BRICKS,
+
+                        EBlocks.ORPIMENT, EBlocks.ORPIMENT_STAIRS, EBlocks.ORPIMENT_SLAB, EBlocks.ORPIMENT_WALL,
+                        EBlocks.SMOOTH_ORPIMENT, EBlocks.SMOOTH_ORPIMENT_STAIRS, EBlocks.SMOOTH_ORPIMENT_SLAB, EBlocks.SMOOTH_ORPIMENT_WALL,
+                        EBlocks.POLISHED_ORPIMENT, EBlocks.POLISHED_ORPIMENT_STAIRS, EBlocks.POLISHED_ORPIMENT_SLAB, EBlocks.POLISHED_ORPIMENT_WALL,
+                        EBlocks.ORPIMENT_BRICKS, EBlocks.ORPIMENT_BRICK_STAIRS, EBlocks.ORPIMENT_BRICK_SLAB, EBlocks.ORPIMENT_BRICK_WALL,
+                        EBlocks.ORPIMENT_PILLAR, EBlocks.CHISELED_ORPIMENT, EBlocks.CHISELED_ORPIMENT_BRICKS,
 
                         EBlocks.CHISELED_PURPUR
                 );
@@ -261,6 +282,15 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(EBlocks.SMOOTH_CINNABAR_WALL)
                 .add(EBlocks.POLISHED_CINNABAR_WALL)
                 .add(EBlocks.CINNABAR_BRICK_WALL)
+                .add(EBlocks.ORPIMENT_WALL)
+                .add(EBlocks.SMOOTH_ORPIMENT_WALL)
+                .add(EBlocks.POLISHED_ORPIMENT_WALL)
+                .add(EBlocks.ORPIMENT_BRICK_WALL)
+
+                .add(EBlocks.NETHERRACK_WALL)
+                .add(EBlocks.SMOOTH_NETHERRACK_WALL)
+                .add(EBlocks.POLISHED_NETHERRACK_WALL)
+                .add(EBlocks.NETHERRACK_BRICK_WALL)
 
                 .add(EBlocks.SHALE_WALL)
                 .add(EBlocks.SMOOTH_SHALE_WALL)

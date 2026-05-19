@@ -289,6 +289,25 @@ public class ETabs {
                     output.accept(EBlocks.CINNABAR_LAPIS_ORE.asItem());
                     output.accept(EBlocks.CINNABAR_EMERALD_ORE.asItem());
 
+                    output.accept(EBlocks.NETHERRACK_STAIRS.asItem());
+                    output.accept(EBlocks.NETHERRACK_SLAB.asItem());
+                    output.accept(EBlocks.NETHERRACK_WALL.asItem());
+                    output.accept(EBlocks.SMOOTH_NETHERRACK.asItem());
+                    output.accept(EBlocks.SMOOTH_NETHERRACK_STAIRS.asItem());
+                    output.accept(EBlocks.SMOOTH_NETHERRACK_SLAB.asItem());
+                    output.accept(EBlocks.SMOOTH_NETHERRACK_WALL.asItem());
+                    output.accept(EBlocks.POLISHED_NETHERRACK.asItem());
+                    output.accept(EBlocks.POLISHED_NETHERRACK_STAIRS.asItem());
+                    output.accept(EBlocks.POLISHED_NETHERRACK_SLAB.asItem());
+                    output.accept(EBlocks.POLISHED_NETHERRACK_WALL.asItem());
+                    output.accept(EBlocks.NETHERRACK_BRICKS.asItem());
+                    output.accept(EBlocks.NETHERRACK_BRICK_STAIRS.asItem());
+                    output.accept(EBlocks.NETHERRACK_BRICK_SLAB.asItem());
+                    output.accept(EBlocks.NETHERRACK_BRICK_WALL.asItem());
+                    output.accept(EBlocks.CHISELED_NETHERRACK.asItem());
+                    output.accept(EBlocks.CHISELED_NETHERRACK_BRICKS.asItem());
+                    output.accept(EBlocks.NETHERRACK_PILLAR.asItem());
+
                     output.accept(EBlocks.END_STONE_STAIRS.asItem());
                     output.accept(EBlocks.END_STONE_SLAB.asItem());
                     output.accept(EBlocks.END_STONE_WALL.asItem());
@@ -359,6 +378,8 @@ public class ETabs {
                     output.accept(EBlocks.DARK_PRISMARINE_PILLAR.asItem());
 
                     output.accept(EBlocks.CHISELED_PURPUR.asItem());
+
+                    output.accept(EBlocks.ICICLE.asItem());
 
                     output.accept(EBlocks.OAK_MOSAIC.asItem());
                     output.accept(EBlocks.OAK_MOSAIC_STAIRS.asItem());
