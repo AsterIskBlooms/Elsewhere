@@ -253,22 +253,17 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.CHISELED_DARK_PRISMARINE_BRICKS);
         dropSelf(EBlocks.DARK_PRISMARINE_PILLAR);
 
-        dropSelf(EBlocks.BASALT_STAIRS);
         add(EBlocks.BASALT_SLAB, createSlabItemTable(EBlocks.BASALT_SLAB));
-        dropSelf(EBlocks.BASALT_WALL);
         dropSelf(EBlocks.SMOOTH_BASALT_STAIRS);
         add(EBlocks.SMOOTH_BASALT_SLAB, createSlabItemTable(EBlocks.SMOOTH_BASALT_SLAB));
         dropSelf(EBlocks.SMOOTH_BASALT_WALL);
-        dropSelf(EBlocks.POLISHED_BASALT_STAIRS);
         add(EBlocks.POLISHED_BASALT_SLAB, createSlabItemTable(EBlocks.POLISHED_BASALT_SLAB));
-        dropSelf(EBlocks.POLISHED_BASALT_WALL);
         dropSelf(EBlocks.BASALT_BRICKS);
         dropSelf(EBlocks.BASALT_BRICK_STAIRS);
         add(EBlocks.BASALT_BRICK_SLAB, createSlabItemTable(EBlocks.BASALT_BRICK_SLAB));
         dropSelf(EBlocks.BASALT_BRICK_WALL);
         dropSelf(EBlocks.CHISELED_BASALT);
         dropSelf(EBlocks.CHISELED_BASALT_BRICKS);
-        dropSelf(EBlocks.BASALT_PILLAR);
 
         dropSelf(EBlocks.END_STONE_STAIRS);
         add(EBlocks.END_STONE_SLAB, createSlabItemTable(EBlocks.END_STONE_SLAB));
@@ -415,9 +410,33 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.CHISELED_ORPIMENT_BRICKS);
         dropSelf(EBlocks.ORPIMENT_PILLAR);
 
+        dropSelf(EBlocks.SOUL_SANDSTONE);
+        dropSelf(EBlocks.SOUL_SANDSTONE_STAIRS);
+        add(EBlocks.SOUL_SANDSTONE_SLAB, createSlabItemTable(EBlocks.SOUL_SANDSTONE_SLAB));
+        dropSelf(EBlocks.SOUL_SANDSTONE_WALL);
+        dropSelf(EBlocks.SMOOTH_SOUL_SANDSTONE);
+        dropSelf(EBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS);
+        add(EBlocks.SMOOTH_SOUL_SANDSTONE_SLAB, createSlabItemTable(EBlocks.SMOOTH_SOUL_SANDSTONE_SLAB));
+        dropSelf(EBlocks.SMOOTH_SOUL_SANDSTONE_WALL);
+        dropSelf(EBlocks.CUT_SOUL_SANDSTONE);
+        dropSelf(EBlocks.CUT_SOUL_SANDSTONE_STAIRS);
+        add(EBlocks.CUT_SOUL_SANDSTONE_SLAB, createSlabItemTable(EBlocks.CUT_SOUL_SANDSTONE_SLAB));
+        dropSelf(EBlocks.CUT_SOUL_SANDSTONE_WALL);
+        dropSelf(EBlocks.POLISHED_SOUL_SANDSTONE);
+        dropSelf(EBlocks.POLISHED_SOUL_SANDSTONE_STAIRS);
+        add(EBlocks.POLISHED_SOUL_SANDSTONE_SLAB, createSlabItemTable(EBlocks.POLISHED_SOUL_SANDSTONE_SLAB));
+        dropSelf(EBlocks.POLISHED_SOUL_SANDSTONE_WALL);
+        dropSelf(EBlocks.SOUL_SANDSTONE_BRICKS);
+        dropSelf(EBlocks.SOUL_SANDSTONE_BRICK_STAIRS);
+        add(EBlocks.SOUL_SANDSTONE_BRICK_SLAB, createSlabItemTable(EBlocks.SOUL_SANDSTONE_BRICK_SLAB));
+        dropSelf(EBlocks.SOUL_SANDSTONE_BRICK_WALL);
+        dropSelf(EBlocks.CHISELED_SOUL_SANDSTONE);
+
         dropSelf(EBlocks.CHISELED_PURPUR);
 
         add(EBlocks.ICICLE, createSilkTouchOnlyTable(EBlocks.ICICLE));
+
+        dropSelf(EBlocks.ARID_DIRT);
 
         dropSelf(EBlocks.OAK_MOSAIC);
         dropSelf(EBlocks.OAK_MOSAIC_STAIRS);

@@ -11,14 +11,15 @@ import org.jetbrains.annotations.Nullable;
 public class GeyserBaseParticle extends SingleQuadParticle {
 
     protected GeyserBaseParticle(ClientLevel level, double x, double y, double z,
-                                 double xa, double ya, double za, GeyserBaseParticleOptions options, SpriteSet sprites) {
+                                  double xa, double ya, double za, GeyserBaseParticleOptions options, SpriteSet sprites) {
         super(level, x, y, z, xa, ya, za, sprites.first());
         this.setSpriteFromAge(sprites);
         this.lifetime = 20;
         this.hasPhysics = true;
-        if (options.burstImpulseBase() == 2.0F) {
-            this.quadSize *= 3.0F; // POOF
-        } else this.quadSize = 0.75F;
+        this.xd = xa;
+        this.zd = za;
+        this.yd = 0.05;
+        this.quadSize = options.burstImpulseBase() == 2.0F ? this.quadSize * 3.0F : 0.75F;
     }
 
     @Override
@@ -42,7 +43,9 @@ public class GeyserBaseParticle extends SingleQuadParticle {
         public @Nullable Particle createParticle(GeyserBaseParticleOptions options,
                                                  ClientLevel level, double x, double y, double z,
                                                  double xAux, double yAux, double zAux, RandomSource random) {
-            return new GeyserBaseParticle(level, x, y, z, xAux, yAux, zAux, options, sprites);
+            double offsetX = (random.nextFloat() - 0.5F) * 0.4;
+            double offsetZ = (random.nextFloat() - 0.5F) * 0.4;
+            return new GeyserBaseParticle(level, x + offsetX, y, z + offsetZ, offsetX * 0.3, 0.0, offsetZ * 0.3, options, sprites);
         }
     }
 }

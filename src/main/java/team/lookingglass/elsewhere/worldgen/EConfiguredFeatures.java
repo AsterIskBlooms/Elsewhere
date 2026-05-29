@@ -20,8 +20,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.datagen.BlockTagProvider;
 import team.lookingglass.elsewhere.registry.EBlocks;
-import team.lookingglass.elsewhere.worldgen.features.utils.SulfurSpikeClusterConfiguration;
-import team.lookingglass.elsewhere.worldgen.features.utils.SulfurSpikeConfiguration;
+import team.lookingglass.elsewhere.worldgen.features.spike.utils.SpikeClusterConfiguration;
+import team.lookingglass.elsewhere.worldgen.features.spike.utils.SpikeConfiguration;
 
 import java.util.List;
 
@@ -36,6 +36,9 @@ public class EConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMETHYST_NODE_KEY = registerKey("amethyst_node");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ICICLE_KEY = registerKey("icicle");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ICICLE_CLUSTER_KEY = registerKey("icicle_cluster");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_SPIKE_KEY = registerKey("sulfur_spike");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_SPIKE_CLUSTER_KEY = registerKey("sulfur_spike_cluster");
 
@@ -47,7 +50,6 @@ public class EConfiguredFeatures {
 
     @SuppressWarnings("deprecation")
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
 
         registerFeature(context, ROCKY_OUTCROP_KEY, EFeatureTypes.ROCKY_OUTCROP_FEATURE, NoneFeatureConfiguration.INSTANCE);
 
@@ -58,11 +60,18 @@ public class EConfiguredFeatures {
 
         registerFeature(context, AMETHYST_NODE_KEY, EFeatureTypes.AMETHYST_NODE_FEATURE, NoneFeatureConfiguration.INSTANCE);
 
+        registerFeature(context, ICICLE_KEY, EFeatureTypes.ICICLE_FEATURE,
+                new SpikeConfiguration(0.2F, 0.7F, 0.5F, 0.5F));
+
+        registerFeature(context, ICICLE_CLUSTER_KEY, EFeatureTypes.ICICLE_CLUSTER_FEATURE,
+                new SpikeClusterConfiguration(12, UniformInt.of(1, 7), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4),
+                        UniformFloat.of(0.3F, 0.7F), ConstantFloat.ZERO, 0.1F, 3, 8));
+
         registerFeature(context, SULFUR_SPIKE_KEY, EFeatureTypes.SULFUR_SPIKE_FEATURE,
-                new SulfurSpikeConfiguration(0.2F, 0.7F, 0.5F, 0.5F));
+                new SpikeConfiguration(0.2F, 0.7F, 0.5F, 0.5F));
 
         registerFeature(context, SULFUR_SPIKE_CLUSTER_KEY, EFeatureTypes.SULFUR_SPIKE_CLUSTER_FEATURE,
-                new SulfurSpikeClusterConfiguration(12, UniformInt.of(1, 7), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4),
+                new SpikeClusterConfiguration(12, UniformInt.of(1, 7), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4),
                         UniformFloat.of(0.3F, 0.7F), ConstantFloat.ZERO, 0.1F, 3, 8));
 
         registerFeature(context, SULFUR_POOL_KEY, EFeatureTypes.SULFUR_POOL_FEATURE,

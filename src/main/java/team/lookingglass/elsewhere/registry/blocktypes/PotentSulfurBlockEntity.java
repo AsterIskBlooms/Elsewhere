@@ -29,8 +29,10 @@ import team.lookingglass.elsewhere.registry.ESounds;
 import team.lookingglass.elsewhere.registry.particles.GeyserParticleOptions;
 import team.lookingglass.elsewhere.registry.properties.PotentSulfurState;
 
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
+
+import static team.lookingglass.elsewhere.registry.blocktypes.PotentSulfurBlock.ALLOWED_WATER_BLOCKS_ABOVE;
 
 public class PotentSulfurBlockEntity extends BlockEntity {
     private static final int EFFECT_APPLICATION_FREQUENCY_TICKS = 10;
@@ -49,7 +51,8 @@ public class PotentSulfurBlockEntity extends BlockEntity {
         if (level.getGameTime() % 10L == 0L) {
             BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
             if (sourceBlock != null) {
-                for (LivingEntity entity : getNearbyLivingEntities(level, sourceBlock)) {
+                for (LivingEntity entity : getNearbyLivingEntities(level, pos)) {
+                    if (entity instanceof Player) continue; // players handled by EServerEvents
                     if (canBeReachedByNoxiousGas(level, sourceBlock, entity.getEyePosition())) {
                         applyNauseaEffect(entity);
                     }
@@ -57,6 +60,7 @@ public class PotentSulfurBlockEntity extends BlockEntity {
             }
         }
     };
+
     public static BlockEntityTicker<PotentSulfurBlockEntity> CLIENT_NOXIOUS_GAS_TICKER = (level, pos, state, entity) -> {
         if (level.getGameTime() % 20L == 0L) {
             BlockPos sourceBlock = findNoxiousGasSourceBlock(level, pos);
@@ -91,10 +95,11 @@ public class PotentSulfurBlockEntity extends BlockEntity {
                 }
 
                 if (entity.waitingCountdown == 0) {
-                    PotentSulfurState stateToSet = state.getValue(PotentSulfurBlock.STATE) == PotentSulfurState.DORMANT
+                    boolean lavaBelow = level.getFluidState(pos.below()).isSourceOfType(Fluids.LAVA);
+                    PotentSulfurState stateToSet = (lavaBelow || state.getValue(PotentSulfurBlock.STATE) == PotentSulfurState.DORMANT)
                             ? PotentSulfurState.ERUPTING
                             : PotentSulfurState.DORMANT;
-                    level.setBlock(pos, (BlockState)state.setValue(PotentSulfurBlock.STATE, stateToSet), 3);
+                    level.setBlock(pos, state.setValue(PotentSulfurBlock.STATE, stateToSet), 3);
                     if (stateToSet == PotentSulfurState.DORMANT) {
                         level.gameEvent(GameEvent.BLOCK_DEACTIVATE, pos, GameEvent.Context.of(state));
                     }
@@ -150,7 +155,7 @@ public class PotentSulfurBlockEntity extends BlockEntity {
     public void setLevel(final Level level) {
         super.setLevel(level);
         if (this.geyserEruptionTime == -1) {
-            this.geyserEruptionTime = level.getRandom().nextIntBetweenInclusive(1, 2);
+            this.geyserEruptionTime = level.getRandom().nextIntBetweenInclusive(3, 6);
         }
 
         if (this.dormantGeyserTime == -1) {
@@ -162,17 +167,16 @@ public class PotentSulfurBlockEntity extends BlockEntity {
         }
     }
 
+    private static void applyNauseaEffect(final LivingEntity entity) {
+        entity.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 80, 0, true, true));
+    }
+
     public void resetCountdown() {
         this.waitingCountdown = -1;
     }
 
-    private static void applyNauseaEffect(final LivingEntity entity) {
-        entity.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 80, 0, true, true));
-        entity.addEffect(new MobEffectInstance(MobEffects.POISON, 80, 0, true, true));
-    }
-
     private static List<LivingEntity> getNearbyLivingEntities(final Level level, final BlockPos pos) {
-        AABB aabb = new AABB(pos).inflate(2.5, 0.0, 2.5);
+        AABB aabb = new AABB(pos).inflate(2.5, ALLOWED_WATER_BLOCKS_ABOVE + 1, 2.5);
         return level.getEntitiesOfClass(LivingEntity.class, aabb, EFFECT_PREDICATE);
     }
 
@@ -206,18 +210,19 @@ public class PotentSulfurBlockEntity extends BlockEntity {
     }
 
     public static boolean canBeReachedByNoxiousGas(final Level level, final BlockPos sourceBlock, final Vec3 pos) {
-        if (!isAir(level, pos)) {
+        if (pos.distanceToSqr(Vec3.atCenterOf(sourceBlock)) > 9.0) {
             return false;
-        } else if (pos.distanceToSqr(Vec3.atCenterOf(sourceBlock)) > 9.0) {
-            return false;
-        } else {
-            Vec3 belowSource = Vec3.atCenterOf(sourceBlock.below());
-            Vec3 belowPos = pos.with(Direction.Axis.Y, pos.y - 1.0);
-            return isWater(level, belowPos) && haveLineOfSight(level, belowSource, belowPos);
         }
+        BlockState eyeState = level.getBlockState(BlockPos.containing(pos));
+        if (!eyeState.isAir() && !eyeState.getFluidState().isSourceOfType(Fluids.WATER)) {
+            return false;
+        }
+        Vec3 belowSource = Vec3.atCenterOf(sourceBlock.below());
+        Vec3 belowPos = pos.with(Direction.Axis.Y, pos.y - 1.0);
+        return isWater(level, belowPos) && haveLineOfSight(level, belowSource, belowPos);
     }
 
-    private static boolean haveLineOfSight(final Level level, final Vec3 a, final Vec3 b) {
+    public static boolean haveLineOfSight(final Level level, final Vec3 a, final Vec3 b) {
         HitResult hitResult = level.clip(new ClipContext(a, b, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, CollisionContext.empty()));
         return hitResult.getType() != HitResult.Type.BLOCK;
     }

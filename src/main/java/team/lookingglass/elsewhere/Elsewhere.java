@@ -10,6 +10,7 @@ import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.lookingglass.elsewhere.worldgen.EFeatureTypes;
+import team.lookingglass.elsewhere.worldgen.ENoise;
 import team.lookingglass.elsewhere.worldgen.EWorldgen;
 import team.lookingglass.elsewhere.worldgen.NoiseCondition3D;
 
@@ -28,9 +29,7 @@ public class Elsewhere implements ModInitializer {
 		EBlockEntityTypes.initialize();
 		EParticles.initialize();
 		EEntityType.initialize();
-
-		Registry.register(BuiltInRegistries.MATERIAL_CONDITION,
-				Identifier.fromNamespaceAndPath(Elsewhere.MODID, "noise_3d"),
-				NoiseCondition3D.CODEC.codec());
+		EServerEvents.initialize();
+		ENoise.initialize();
 	}
 }

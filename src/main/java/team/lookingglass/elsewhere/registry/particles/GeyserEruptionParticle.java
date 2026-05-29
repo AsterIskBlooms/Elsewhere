@@ -49,7 +49,9 @@ public class GeyserEruptionParticle extends NoRenderParticle {
         super.tick();
         if (this.age % 2 == 0) {
             for (int i = 0; i < 2; i++) {
-                this.level.addParticle(this.baseParticle, this.x, this.y, this.z, this.xa, this.ya, this.za);
+                double spreadX = (this.level.getRandom().nextFloat() - 0.5F) * 0.1;
+                double spreadZ = (this.level.getRandom().nextFloat() - 0.5F) * 0.1;
+                this.level.addParticle(this.baseParticle, this.x, this.y, this.z, spreadX, this.ya, spreadZ);
             }
         }
 

@@ -14,7 +14,7 @@ public class LangProviderEN extends FabricLanguageProvider {
     @Override
     public void generateTranslations(HolderLookup.Provider wrapperLookup, TranslationBuilder translationBuilder) {
         // Tab Title
-        translationBuilder.add("ecological.tab", "Elsewhere");
+        translationBuilder.add("elsewhere.tab", "Elsewhere");
 
         // Quartz Brick Fill
         translationBuilder.add("block.elsewhere.quartz_brick_stairs", "Quartz Brick Stairs");
@@ -212,22 +212,17 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.chiseled_dark_prismarine_bricks", "Chiseled Dark Prismarine Bricks");
         translationBuilder.add("block.elsewhere.dark_prismarine_pillar", "Dark Prismarine Pillar");
 
-        translationBuilder.add("block.elsewhere.basalt_stairs", "Basalt Stairs");
         translationBuilder.add("block.elsewhere.basalt_slab", "Basalt Slab");
-        translationBuilder.add("block.elsewhere.basalt_wall", "Basalt Wall");
         translationBuilder.add("block.elsewhere.smooth_basalt_stairs", "Smooth Basalt Stairs");
         translationBuilder.add("block.elsewhere.smooth_basalt_slab", "Smooth Basalt Slab");
         translationBuilder.add("block.elsewhere.smooth_basalt_wall", "Smooth Basalt Wall");
-        translationBuilder.add("block.elsewhere.polished_basalt_stairs", "Polished Basalt Stairs");
         translationBuilder.add("block.elsewhere.polished_basalt_slab", "Polished Basalt Slab");
-        translationBuilder.add("block.elsewhere.polished_basalt_wall", "Polished Basalt Wall");
         translationBuilder.add("block.elsewhere.basalt_bricks", "Basalt Bricks");
         translationBuilder.add("block.elsewhere.basalt_brick_stairs", "Basalt Brick Stairs");
         translationBuilder.add("block.elsewhere.basalt_brick_slab", "Basalt Brick Slab");
         translationBuilder.add("block.elsewhere.basalt_brick_wall", "Basalt Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_basalt", "Chiseled Basalt");
         translationBuilder.add("block.elsewhere.chiseled_basalt_bricks", "Chiseled Basalt Bricks");
-        translationBuilder.add("block.elsewhere.basalt_pillar", "Basalt Pillar");
 
         translationBuilder.add("block.elsewhere.end_stone_stairs", "End Stone Stairs");
         translationBuilder.add("block.elsewhere.end_stone_slab", "End Stone Slab");
@@ -397,6 +392,28 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.chiseled_netherrack_bricks", "Chiseled Netherrack Bricks");
         translationBuilder.add("block.elsewhere.netherrack_pillar", "Netherrack Pillar");
 
+        translationBuilder.add("block.elsewhere.soul_sandstone", "Soul Sandstone");
+        translationBuilder.add("block.elsewhere.soul_sandstone_stairs", "Soul Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.soul_sandstone_slab", "Soul Sandstone Slab");
+        translationBuilder.add("block.elsewhere.soul_sandstone_wall", "Soul Sandstone Wall");
+        translationBuilder.add("block.elsewhere.smooth_soul_sandstone", "Smooth Soul Sandstone");
+        translationBuilder.add("block.elsewhere.smooth_soul_sandstone_stairs", "Smooth Soul Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.smooth_soul_sandstone_slab", "Smooth Soul Sandstone Slab");
+        translationBuilder.add("block.elsewhere.smooth_soul_sandstone_wall", "Smooth Soul Sandstone Wall");
+        translationBuilder.add("block.elsewhere.cut_soul_sandstone", "Cut Soul Sandstone");
+        translationBuilder.add("block.elsewhere.cut_soul_sandstone_stairs", "Cut Soul Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.cut_soul_sandstone_slab", "Cut Soul Sandstone Slab");
+        translationBuilder.add("block.elsewhere.cut_soul_sandstone_wall", "Cut Soul Sandstone Wall");
+        translationBuilder.add("block.elsewhere.polished_soul_sandstone", "Polished Soul Sandstone");
+        translationBuilder.add("block.elsewhere.polished_soul_sandstone_stairs", "Polished Soul Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.polished_soul_sandstone_slab", "Polished Soul Sandstone Slab");
+        translationBuilder.add("block.elsewhere.polished_soul_sandstone_wall", "Polished Soul Sandstone Wall");
+        translationBuilder.add("block.elsewhere.soul_sandstone_bricks", "Soul Sandstone Bricks");
+        translationBuilder.add("block.elsewhere.soul_sandstone_brick_stairs", "Soul Sandstone Brick Stairs");
+        translationBuilder.add("block.elsewhere.soul_sandstone_brick_slab", "Soul Sandstone Brick Slab");
+        translationBuilder.add("block.elsewhere.soul_sandstone_brick_wall", "Soul Sandstone Brick Wall");
+        translationBuilder.add("block.elsewhere.chiseled_soul_sandstone", "Chiseled Soul Sandstone");
+
         translationBuilder.add("block.elsewhere.chiseled_purpur", "Chiseled Purpur");
 
         translationBuilder.add("block.elsewhere.icicle", "Icicle");
@@ -452,6 +469,34 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.arid_dirt", "Arid Dirt");
 
 
+        translationBuilder.add("item.elsewhere.raw_silver", "Raw Silver");
+        translationBuilder.add("item.elsewhere.silver_ingot", "Silver Ingot");
+        translationBuilder.add("item.elsewhere.silver_nugget", "Silver Nugget");
+        translationBuilder.add("item.elsewhere.silver_helmet", "Silver Helmet");
+        translationBuilder.add("item.elsewhere.silver_chestplate", "Silver Chestplate");
+        translationBuilder.add("item.elsewhere.silver_leggings", "Silver Leggings");
+        translationBuilder.add("item.elsewhere.silver_boots", "Silver Boots");
+        translationBuilder.add("item.elsewhere.silver_sword", "Silver Sword");
+        translationBuilder.add("item.elsewhere.silver_axe", "Silver Axe");
+        translationBuilder.add("item.elsewhere.silver_spear", "Silver Spear");
+        translationBuilder.add("item.elsewhere.silver_pickaxe", "Silver Pickaxe");
+        translationBuilder.add("item.elsewhere.silver_shovel", "Silver Shovel");
+        translationBuilder.add("item.elsewhere.silver_hoe", "Silver Hoe");
+
+        translationBuilder.add("item.elsewhere.soulsteel_ingot", "Soulsteel Ingot");
+        translationBuilder.add("item.elsewhere.soulsteel_nugget", "Soulsteel Nugget");
+        translationBuilder.add("item.elsewhere.soulsteel_helmet", "Soulsteel Helmet");
+        translationBuilder.add("item.elsewhere.soulsteel_chestplate", "Soulsteel Chestplate");
+        translationBuilder.add("item.elsewhere.soulsteel_leggings", "Soulsteel Leggings");
+        translationBuilder.add("item.elsewhere.soulsteel_boots", "Soulsteel Boots");
+        translationBuilder.add("item.elsewhere.soulsteel_sword", "Soulsteel Sword");
+        translationBuilder.add("item.elsewhere.soulsteel_axe", "Soulsteel Axe");
+        translationBuilder.add("item.elsewhere.soulsteel_spear", "Soulsteel Spear");
+        translationBuilder.add("item.elsewhere.soulsteel_pickaxe", "Soulsteel Pickaxe");
+        translationBuilder.add("item.elsewhere.soulsteel_shovel", "Soulsteel Shovel");
+        translationBuilder.add("item.elsewhere.soulsteel_hoe", "Soulsteel Hoe");
+
+
 
         translationBuilder.add("biome.elsewhere.outback", "Outback");
         translationBuilder.add("biome.elsewhere.sulfur_caves", "Sulfur Caves");
@@ -464,6 +509,9 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("tag.elsewhere.shale_ore_replaceables", "Shale Ore Replaceables");
         translationBuilder.add("tag.elsewhere.cinnabar_ore_replaceables", "Cinnabar Ore Replaceables");
         translationBuilder.add("tag.elsewhere.sulfur_spike_replaceable", "Sulfur Spike Replaceable");
+        translationBuilder.add("tag.elsewhere.icicle_replaceable", "Icicle Replaceable");
+        translationBuilder.add("tag.elsewhere.repairs_silver_armor", "Repairs Silver Armor");
+        translationBuilder.add("tag.elsewhere.repairs_soulsteel_armor", "Repairs Soulsteel Armor");
 
 
 

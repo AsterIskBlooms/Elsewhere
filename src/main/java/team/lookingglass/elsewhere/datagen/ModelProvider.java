@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.world.level.block.Blocks;
+import team.lookingglass.elsewhere.registry.EItems;
 
 public class ModelProvider extends FabricModelProvider {
     public ModelProvider(FabricPackOutput output) {
@@ -291,29 +292,24 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialBlock(EBlocks.CHISELED_DARK_PRISMARINE_BRICKS, TexturedModel.COLUMN);
         gen.createAxisAlignedPillarBlock(EBlocks.DARK_PRISMARINE_PILLAR, TexturedModel.COLUMN);
 
-        customGen.axisAlignedPillarFamily(Blocks.BASALT, TexturedModel.COLUMN,
-                EBlocks.BASALT_STAIRS,
-                EBlocks.BASALT_SLAB,
-                EBlocks.BASALT_WALL
-        );
+        customGen.axisAlignedPillarFamily(Blocks.BASALT, TexturedModel.COLUMN)
+                .slab(EBlocks.BASALT_SLAB)
+        ;
         gen.family(Blocks.SMOOTH_BASALT)
                 .stairs(EBlocks.SMOOTH_BASALT_STAIRS)
                 .slab(EBlocks.SMOOTH_BASALT_SLAB)
                 .wall(EBlocks.SMOOTH_BASALT_WALL)
         ;
-        customGen.axisAlignedPillarFamily(Blocks.POLISHED_BASALT, TexturedModel.COLUMN,
-                EBlocks.POLISHED_BASALT_STAIRS,
-                EBlocks.POLISHED_BASALT_SLAB,
-                EBlocks.POLISHED_BASALT_WALL
-        );
+        customGen.axisAlignedPillarFamily(Blocks.POLISHED_BASALT, TexturedModel.COLUMN)
+                .slab(EBlocks.POLISHED_BASALT_SLAB)
+        ;
         gen.family(EBlocks.BASALT_BRICKS)
                 .stairs(EBlocks.BASALT_BRICK_STAIRS)
                 .slab(EBlocks.BASALT_BRICK_SLAB)
                 .wall(EBlocks.BASALT_BRICK_WALL)
         ;
-        gen.createTrivialCube(EBlocks.CHISELED_BASALT);
-        gen.createTrivialBlock(EBlocks.CHISELED_BASALT_BRICKS, TexturedModel.COLUMN);
-        gen.createAxisAlignedPillarBlock(EBlocks.BASALT_PILLAR, TexturedModel.COLUMN);
+        gen.createAxisAlignedPillarBlock(EBlocks.CHISELED_BASALT, TexturedModel.COLUMN);
+        gen.createRotatedPillarWithHorizontalVariant(EBlocks.CHISELED_BASALT_BRICKS, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
 
         gen.family(Blocks.END_STONE)
                 .stairs(EBlocks.END_STONE_STAIRS)
@@ -379,7 +375,7 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.SHALE_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_SHALE);
-        gen.createTrivialBlock(EBlocks.CHISELED_SHALE_BRICKS, TexturedModel.COLUMN);
+        gen.createTrivialCube(EBlocks.CHISELED_SHALE_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.SHALE_PILLAR, TexturedModel.COLUMN);
         gen.family(EBlocks.COBBLESHALE)
                 .stairs(EBlocks.COBBLESHALE_STAIRS)
@@ -426,7 +422,7 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.SULFUR_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_SULFUR);
-        gen.createTrivialBlock(EBlocks.CHISELED_SULFUR_BRICKS, TexturedModel.COLUMN);
+        gen.createTrivialCube(EBlocks.CHISELED_SULFUR_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.SULFUR_PILLAR, TexturedModel.COLUMN);
 
         customGen.generateStalactite(gen, EBlocks.SULFUR_SPIKE);
@@ -454,7 +450,7 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.CINNABAR_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_CINNABAR);
-        gen.createTrivialBlock(EBlocks.CHISELED_CINNABAR_BRICKS, TexturedModel.COLUMN);
+        gen.createTrivialCube(EBlocks.CHISELED_CINNABAR_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.CINNABAR_PILLAR, TexturedModel.COLUMN);
 
         gen.createTrivialCube(EBlocks.CINNABAR_COAL_ORE);
@@ -514,8 +510,37 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.ORPIMENT_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_ORPIMENT);
-        gen.createTrivialBlock(EBlocks.CHISELED_ORPIMENT_BRICKS, TexturedModel.COLUMN);
+        gen.createTrivialCube(EBlocks.CHISELED_ORPIMENT_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.ORPIMENT_PILLAR, TexturedModel.COLUMN);
+
+        // Soul Sandstone
+        customGen.cubeTopFamily(EBlocks.SOUL_SANDSTONE)
+                .stairs(EBlocks.SOUL_SANDSTONE_STAIRS)
+                .slab(EBlocks.SOUL_SANDSTONE_SLAB)
+                .wall(EBlocks.SOUL_SANDSTONE_WALL)
+        ;
+        gen.family(EBlocks.SMOOTH_SOUL_SANDSTONE)
+                .stairs(EBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS)
+                .slab(EBlocks.SMOOTH_SOUL_SANDSTONE_SLAB)
+                .wall(EBlocks.SMOOTH_SOUL_SANDSTONE_WALL)
+        ;
+        customGen.columnFamily(EBlocks.CUT_SOUL_SANDSTONE)
+                .stairs(EBlocks.CUT_SOUL_SANDSTONE_STAIRS)
+                .slab(EBlocks.CUT_SOUL_SANDSTONE_SLAB)
+                .wall(EBlocks.CUT_SOUL_SANDSTONE_WALL)
+        ;
+        gen.family(EBlocks.POLISHED_SOUL_SANDSTONE)
+                .stairs(EBlocks.POLISHED_SOUL_SANDSTONE_STAIRS)
+                .slab(EBlocks.POLISHED_SOUL_SANDSTONE_SLAB)
+                .wall(EBlocks.POLISHED_SOUL_SANDSTONE_WALL)
+        ;
+        customGen.columnFamily(EBlocks.SOUL_SANDSTONE_BRICKS)
+                .stairs(EBlocks.SOUL_SANDSTONE_BRICK_STAIRS)
+                .slab(EBlocks.SOUL_SANDSTONE_BRICK_SLAB)
+                .wall(EBlocks.SOUL_SANDSTONE_BRICK_WALL)
+        ;
+        gen.createTrivialBlock(EBlocks.CHISELED_SOUL_SANDSTONE, TexturedModel.COLUMN);
+
 
         // Purpur
         gen.createTrivialBlock(EBlocks.CHISELED_PURPUR, TexturedModel.COLUMN);
@@ -584,6 +609,30 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EBlocks.SULFUR_SPIKE.asItem(), ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EBlocks.ICICLE.asItem(), ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerator.generateFlatItem(EItems.RAW_SILVER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_INGOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_HELMET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_CHESTPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_LEGGINGS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateSpear(EItems.SILVER_SPEAR);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SILVER_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_INGOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_NUGGET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HELMET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_CHESTPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_LEGGINGS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateSpear(EItems.SOULSTEEL_SPEAR);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
     }
 
 

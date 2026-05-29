@@ -1,5 +1,7 @@
 package team.lookingglass.elsewhere.worldgen;
 
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
@@ -17,5 +19,11 @@ public class ENoise {
     public static void bootstrap(BootstrapContext<NormalNoise.NoiseParameters> context) {
         context.register(CAVE_GRADIENT_3D,
                 new NormalNoise.NoiseParameters(-5, 1.0, 0.0, 1.0));
+    }
+
+    public static void initialize() {
+        Registry.register(BuiltInRegistries.MATERIAL_CONDITION,
+                Identifier.fromNamespaceAndPath(Elsewhere.MODID, "noise_3d"),
+                NoiseCondition3D.CODEC.codec());
     }
 }

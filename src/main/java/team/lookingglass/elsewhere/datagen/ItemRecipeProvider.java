@@ -389,11 +389,9 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.CHISELED_DARK_PRISMARINE_BRICKS.asItem(),
                         EBlocks.DARK_PRISMARINE_PILLAR.asItem()
                 );
-                stoneSet(wrappedOutput,
+                basaltSet(wrappedOutput,
                         Items.BASALT,
-                        EBlocks.BASALT_STAIRS.asItem(),
                         EBlocks.BASALT_SLAB.asItem(),
-                        EBlocks.BASALT_WALL.asItem(),
 
                         Items.SMOOTH_BASALT,
                         EBlocks.SMOOTH_BASALT_STAIRS.asItem(),
@@ -401,9 +399,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.SMOOTH_BASALT_WALL.asItem(),
 
                         Items.POLISHED_BASALT,
-                        EBlocks.POLISHED_BASALT_STAIRS.asItem(),
                         EBlocks.POLISHED_BASALT_SLAB.asItem(),
-                        EBlocks.POLISHED_BASALT_WALL.asItem(),
 
                         EBlocks.BASALT_BRICKS.asItem(),
                         EBlocks.BASALT_BRICK_STAIRS.asItem(),
@@ -411,8 +407,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.BASALT_BRICK_WALL.asItem(),
 
                         EBlocks.CHISELED_BASALT.asItem(),
-                        EBlocks.CHISELED_BASALT_BRICKS.asItem(),
-                        EBlocks.BASALT_PILLAR.asItem()
+                        EBlocks.CHISELED_BASALT_BRICKS.asItem()
                 );
                 stoneSet(wrappedOutput,
                         Items.END_STONE,
@@ -753,6 +748,76 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                 polished, polishedStair, polishedWall,
                                 brick, brickStair, brickWall,
                                 chiseled, chiseledBrick, pillar
+                        ),
+                        List.of(baseSlab, smoothSlab, polishedSlab, brickSlab)
+                );
+            }
+
+            private void basaltSet(RecipeOutput output,
+                                  final ItemLike base,
+                                  final ItemLike baseSlab,
+                                  final ItemLike smooth,
+                                  final ItemLike smoothStair,
+                                  final ItemLike smoothSlab,
+                                  final ItemLike smoothWall,
+                                  final ItemLike polished,
+                                  final ItemLike polishedSlab,
+                                  final ItemLike brick,
+                                  final ItemLike brickStair,
+                                  final ItemLike brickSlab,
+                                  final ItemLike brickWall,
+                                  final ItemLike chiseled,
+                                  final ItemLike chiseledBrick) {
+
+                // Base
+                shaped(RecipeCategory.BUILDING_BLOCKS, baseSlab, 6).define('#', base).pattern("###")
+                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(baseSlab));
+
+                // Polished from Base
+                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', base).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(polished));
+
+                // Polished from Smooth
+                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', base).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(base), has(base)).save(output,
+                                BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
+
+                // Smooth
+                shaped(RecipeCategory.BUILDING_BLOCKS, smoothStair, 6).define('#', smooth).pattern("#  ").pattern("## ").pattern("###")
+                        .unlockedBy(getHasName(smooth), has(smooth)).save(output, shapedId(smoothStair));
+                shaped(RecipeCategory.BUILDING_BLOCKS, smoothSlab, 6).define('#', smooth).pattern("###")
+                        .unlockedBy(getHasName(smooth), has(smooth)).save(output, shapedId(smoothSlab));
+                shaped(RecipeCategory.BUILDING_BLOCKS, smoothWall, 6).define('#', smooth).pattern("###").pattern("###")
+                        .unlockedBy(getHasName(smooth), has(smooth)).save(output, shapedId(smoothWall));
+
+                // Polished
+                shaped(RecipeCategory.BUILDING_BLOCKS, polishedSlab, 6).define('#', polished).pattern("###")
+                        .unlockedBy(getHasName(polished), has(polished)).save(output, shapedId(polishedSlab));
+
+                // Bricks
+                shaped(RecipeCategory.BUILDING_BLOCKS, brick, 4).define('#', polished).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(polished), has(polished)).save(output, shapedId(brick));
+                shaped(RecipeCategory.BUILDING_BLOCKS, brickStair, 6).define('#', brick).pattern("#  ").pattern("## ").pattern("###")
+                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(brickStair));
+                shaped(RecipeCategory.BUILDING_BLOCKS, brickSlab, 6).define('#', brick).pattern("###")
+                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(brickSlab));
+                shaped(RecipeCategory.BUILDING_BLOCKS, brickWall, 6).define('#', brick).pattern("###").pattern("###")
+                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(brickWall));
+
+                // Chiseled & Pillar
+                shaped(RecipeCategory.BUILDING_BLOCKS, chiseled, 2).define('#', polished).pattern(" #").pattern("# ")
+                        .unlockedBy(getHasName(polished), has(polished)).save(output, shapedId(chiseled));
+                shaped(RecipeCategory.BUILDING_BLOCKS, chiseledBrick, 2).define('#', brick).pattern(" #").pattern("# ")
+                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(chiseledBrick));
+
+                smeltingResultFromBase(smooth, base);
+
+                // Stonecutter
+                stonecutterSet(output,
+                        List.of(base, polished,
+                                smooth, smoothStair, smoothWall,
+                                brick, brickStair, brickWall,
+                                chiseled, chiseledBrick
                         ),
                         List.of(baseSlab, smoothSlab, polishedSlab, brickSlab)
                 );

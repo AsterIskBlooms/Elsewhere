@@ -28,6 +28,9 @@ public class EPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> AMETHYST_NODE = registerKey("amethyst_node");
 
+    public static final ResourceKey<PlacedFeature> ICICLE = registerKey("icicle");
+    public static final ResourceKey<PlacedFeature> ICICLE_CLUSTER = registerKey("icicle_cluster");
+
     public static final ResourceKey<PlacedFeature> SULFUR_SPIKE = registerKey("sulfur_spike");
     public static final ResourceKey<PlacedFeature> SULFUR_SPIKE_CLUSTER = registerKey("sulfur_spike_cluster");
 
@@ -90,7 +93,29 @@ public class EPlacedFeatures {
                 )
         );
 
-        // Sulfur Spikes
+        // Frigid Caves
+        registerPlaced(context, ICICLE,
+                configured.getOrThrow(EConfiguredFeatures.ICICLE_KEY),
+                List.of(
+                        CountPlacement.of(128),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
+                        EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12),
+                        RandomOffsetPlacement.vertical(ConstantInt.of(1)),
+                        BiomeFilter.biome()
+                )
+        );
+        registerPlaced(context, ICICLE_CLUSTER,
+                configured.getOrThrow(EConfiguredFeatures.ICICLE_CLUSTER_KEY),
+                List.of(
+                        CountPlacement.of(128),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
+                        BiomeFilter.biome()
+                )
+        );
+
+        // Sulfur Caves
         registerPlaced(context, SULFUR_SPIKE,
                 configured.getOrThrow(EConfiguredFeatures.SULFUR_SPIKE_KEY),
                 List.of(
@@ -102,7 +127,6 @@ public class EPlacedFeatures {
                         BiomeFilter.biome()
                 )
         );
-
         registerPlaced(context, SULFUR_SPIKE_CLUSTER,
                 configured.getOrThrow(EConfiguredFeatures.SULFUR_SPIKE_CLUSTER_KEY),
                 List.of(

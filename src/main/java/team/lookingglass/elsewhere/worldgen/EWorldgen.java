@@ -78,7 +78,19 @@ public class EWorldgen {
                 EPlacedFeatures.AMETHYST_NODE
         );
 
-        // Sulfur Spikes
+        // Frigid Caves
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.FRIGID_CAVES,
+                GenerationStep.Decoration.UNDERGROUND_DECORATION,
+                EPlacedFeatures.ICICLE
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.FRIGID_CAVES,
+                GenerationStep.Decoration.UNDERGROUND_DECORATION,
+                EPlacedFeatures.ICICLE_CLUSTER
+        );
+
+        // Sulfur Caves
         BiomeModifications.addFeature(
                 ctx -> ctx.getBiomeKey() == EBiomes.SULFUR_CAVES,
                 GenerationStep.Decoration.UNDERGROUND_DECORATION,
@@ -189,8 +201,6 @@ public class EWorldgen {
                                         SurfaceRules.state(Blocks.SMOOTH_BASALT.defaultBlockState())),
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4),
                                         SurfaceRules.state(Blocks.CALCITE.defaultBlockState()))
-
-                                // Default rest to respective stone layer
                         )
                 );
 
@@ -206,8 +216,6 @@ public class EWorldgen {
                                         SurfaceRules.state(EBlocks.ORPIMENT.defaultBlockState())),
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4F),
                                         SurfaceRules.state(EBlocks.CINNABAR.defaultBlockState()))
-
-                                // Default rest to respective stone layer
                         )
                 );
 
@@ -223,13 +231,26 @@ public class EWorldgen {
                                         SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())),
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.5F),
                                         SurfaceRules.state(Blocks.SAND.defaultBlockState()))
+                        )
+                );
 
-                                // Default rest to respective stone layer
+                SurfaceRules.RuleSource frigidCaveRules = SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(EBiomes.FRIGID_CAVES),
+                        SurfaceRules.sequence(
+                                // Cave Bands
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.4F, -0.2F),
+                                        SurfaceRules.state(Blocks.PACKED_ICE.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.1F, 0.2F),
+                                        SurfaceRules.state(Blocks.BLUE_ICE.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.2F, 0.4F),
+                                        SurfaceRules.state(Blocks.PACKED_ICE.defaultBlockState())),
+                                SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4F, 0.65F),
+                                        SurfaceRules.state(Blocks.SNOW_BLOCK.defaultBlockState()))
                         )
                 );
 
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
-                        SurfaceRules.sequence(outbackRules, crystalCavernRules, sulfurCaveRules, aridCaveRules,
+                        SurfaceRules.sequence(outbackRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 bedrockFloorCheck, deepslateRule, shaleRule, object.surfaceRule())
                 );
             });

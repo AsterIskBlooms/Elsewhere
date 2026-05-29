@@ -12,11 +12,11 @@ import net.minecraft.world.item.ItemStack;
 import team.lookingglass.elsewhere.Elsewhere;
 
 public class ETabs {
-    private static final ResourceKey<CreativeModeTab> ECOLOGICAL = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "ecological_tab"));
+    private static final ResourceKey<CreativeModeTab> ELSEWHERE = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "elsewhere_tab"));
 
     public static void initialize() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ECOLOGICAL, FabricCreativeModeTab.builder()
-                .title(Component.translatable("ecological.tab"))
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ELSEWHERE, FabricCreativeModeTab.builder()
+                .title(Component.translatable("elsewhere.tab"))
                 .icon(() -> new ItemStack(EBlocks.STONE_TILES))
                 .displayItems((context, output) -> {
                     // Quartz Brick Fill
@@ -39,6 +39,8 @@ public class ETabs {
                     output.accept(EBlocks.OBSIDIAN_BRICK_SLAB.asItem());
                     output.accept(EBlocks.OBSIDIAN_PILLAR.asItem());
                     output.accept(EBlocks.CHISELED_OBSIDIAN.asItem());
+
+                    output.accept(EBlocks.CHISELED_PURPUR.asItem());
 
                     // Stone Set
                     output.accept(EBlocks.STONE_WALL.asItem());
@@ -200,22 +202,17 @@ public class ETabs {
                     output.accept(EBlocks.CHISELED_DRIPSTONE_BRICKS.asItem());
                     output.accept(EBlocks.DRIPSTONE_PILLAR.asItem());
 
-                    output.accept(EBlocks.BASALT_STAIRS.asItem());
                     output.accept(EBlocks.BASALT_SLAB.asItem());
-                    output.accept(EBlocks.BASALT_WALL.asItem());
                     output.accept(EBlocks.SMOOTH_BASALT_STAIRS.asItem());
                     output.accept(EBlocks.SMOOTH_BASALT_SLAB.asItem());
                     output.accept(EBlocks.SMOOTH_BASALT_WALL.asItem());
-                    output.accept(EBlocks.POLISHED_BASALT_STAIRS.asItem());
                     output.accept(EBlocks.POLISHED_BASALT_SLAB.asItem());
-                    output.accept(EBlocks.POLISHED_BASALT_WALL.asItem());
                     output.accept(EBlocks.BASALT_BRICKS.asItem());
                     output.accept(EBlocks.BASALT_BRICK_STAIRS.asItem());
                     output.accept(EBlocks.BASALT_BRICK_SLAB.asItem());
                     output.accept(EBlocks.BASALT_BRICK_WALL.asItem());
                     output.accept(EBlocks.CHISELED_BASALT.asItem());
                     output.accept(EBlocks.CHISELED_BASALT_BRICKS.asItem());
-                    output.accept(EBlocks.BASALT_PILLAR.asItem());
 
                     output.accept(EBlocks.SODALITE.asItem());
                     output.accept(EBlocks.SODALITE_STAIRS.asItem());
@@ -258,6 +255,26 @@ public class ETabs {
                     output.accept(EBlocks.SULFUR_PILLAR.asItem());
                     output.accept(EBlocks.SULFUR_SPIKE.asItem());
                     output.accept(EBlocks.POTENT_SULFUR.asItem());
+
+                    output.accept(EBlocks.ORPIMENT.asItem());
+                    output.accept(EBlocks.ORPIMENT_STAIRS.asItem());
+                    output.accept(EBlocks.ORPIMENT_SLAB.asItem());
+                    output.accept(EBlocks.ORPIMENT_WALL.asItem());
+                    output.accept(EBlocks.SMOOTH_ORPIMENT.asItem());
+                    output.accept(EBlocks.SMOOTH_ORPIMENT_STAIRS.asItem());
+                    output.accept(EBlocks.SMOOTH_ORPIMENT_SLAB.asItem());
+                    output.accept(EBlocks.SMOOTH_ORPIMENT_WALL.asItem());
+                    output.accept(EBlocks.POLISHED_ORPIMENT.asItem());
+                    output.accept(EBlocks.POLISHED_ORPIMENT_STAIRS.asItem());
+                    output.accept(EBlocks.POLISHED_ORPIMENT_SLAB.asItem());
+                    output.accept(EBlocks.POLISHED_ORPIMENT_WALL.asItem());
+                    output.accept(EBlocks.ORPIMENT_BRICKS.asItem());
+                    output.accept(EBlocks.ORPIMENT_BRICK_STAIRS.asItem());
+                    output.accept(EBlocks.ORPIMENT_BRICK_SLAB.asItem());
+                    output.accept(EBlocks.ORPIMENT_BRICK_WALL.asItem());
+                    output.accept(EBlocks.CHISELED_ORPIMENT.asItem());
+                    output.accept(EBlocks.CHISELED_ORPIMENT_BRICKS.asItem());
+                    output.accept(EBlocks.ORPIMENT_PILLAR.asItem());
 
                     output.accept(EBlocks.CINNABAR.asItem());
                     output.accept(EBlocks.CINNABAR_STAIRS.asItem());
@@ -347,6 +364,28 @@ public class ETabs {
                     output.accept(EBlocks.RED_SANDSTONE_BRICK_SLAB.asItem());
                     output.accept(EBlocks.RED_SANDSTONE_BRICK_WALL.asItem());
 
+                    output.accept(EBlocks.SOUL_SANDSTONE.asItem());
+                    output.accept(EBlocks.SOUL_SANDSTONE_STAIRS.asItem());
+                    output.accept(EBlocks.SOUL_SANDSTONE_SLAB.asItem());
+                    output.accept(EBlocks.SOUL_SANDSTONE_WALL.asItem());
+                    output.accept(EBlocks.SMOOTH_SOUL_SANDSTONE.asItem());
+                    output.accept(EBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS.asItem());
+                    output.accept(EBlocks.SMOOTH_SOUL_SANDSTONE_SLAB.asItem());
+                    output.accept(EBlocks.SMOOTH_SOUL_SANDSTONE_WALL.asItem());
+                    output.accept(EBlocks.CUT_SOUL_SANDSTONE.asItem());
+                    output.accept(EBlocks.CUT_SOUL_SANDSTONE_STAIRS.asItem());
+                    output.accept(EBlocks.CUT_SOUL_SANDSTONE_SLAB.asItem());
+                    output.accept(EBlocks.CUT_SOUL_SANDSTONE_WALL.asItem());
+                    output.accept(EBlocks.POLISHED_SOUL_SANDSTONE.asItem());
+                    output.accept(EBlocks.POLISHED_SOUL_SANDSTONE_STAIRS.asItem());
+                    output.accept(EBlocks.POLISHED_SOUL_SANDSTONE_SLAB.asItem());
+                    output.accept(EBlocks.POLISHED_SOUL_SANDSTONE_WALL.asItem());
+                    output.accept(EBlocks.SOUL_SANDSTONE_BRICKS.asItem());
+                    output.accept(EBlocks.SOUL_SANDSTONE_BRICK_STAIRS.asItem());
+                    output.accept(EBlocks.SOUL_SANDSTONE_BRICK_SLAB.asItem());
+                    output.accept(EBlocks.SOUL_SANDSTONE_BRICK_WALL.asItem());
+                    output.accept(EBlocks.CHISELED_SOUL_SANDSTONE.asItem());
+
                     output.accept(EBlocks.SMOOTH_PRISMARINE.asItem());
                     output.accept(EBlocks.SMOOTH_PRISMARINE_STAIRS.asItem());
                     output.accept(EBlocks.SMOOTH_PRISMARINE_SLAB.asItem());
@@ -376,8 +415,6 @@ public class ETabs {
                     output.accept(EBlocks.CHISELED_DARK_PRISMARINE.asItem());
                     output.accept(EBlocks.CHISELED_DARK_PRISMARINE_BRICKS.asItem());
                     output.accept(EBlocks.DARK_PRISMARINE_PILLAR.asItem());
-
-                    output.accept(EBlocks.CHISELED_PURPUR.asItem());
 
                     output.accept(EBlocks.ICICLE.asItem());
 

@@ -25,6 +25,7 @@ public class ESounds {
     public static final SoundEvent SULFUR_HIT = registerSound("sulfur_hit");
     public static final SoundType SULFUR = new SoundType(1F, 1F,
             SULFUR_BREAK, SULFUR_STEP, SULFUR_PLACE, SULFUR_HIT, SULFUR_PLACE);
+    public static final SoundEvent SULFUR_SPIKE_LAND = registerSound("sulfur_spike_land");
 
     public static final SoundEvent CINNABAR_BREAK = registerSound("cinnabar_break");
     public static final SoundEvent CINNABAR_STEP = registerSound("cinnabar_step");

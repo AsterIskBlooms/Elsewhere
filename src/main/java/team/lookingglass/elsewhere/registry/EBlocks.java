@@ -1,5 +1,7 @@
 package team.lookingglass.elsewhere.registry;
 
+import net.minecraft.references.BlockIds;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.material.PushReaction;
 import team.lookingglass.elsewhere.Elsewhere;
@@ -244,26 +246,28 @@ public interface EBlocks {
     Block POLISHED_SANDSTONE_SLAB = registerSlab("polished_sandstone_slab", POLISHED_SANDSTONE);
     Block POLISHED_SANDSTONE_WALL = registerWall("polished_sandstone_wall", POLISHED_SANDSTONE);
 
-    Block POLISHED_RED_SANDSTONE = registerSubBlock("polished_red_sandstone", Blocks.CUT_SANDSTONE);
-    Block POLISHED_RED_SANDSTONE_STAIRS = registerStair("polished_red_sandstone_stairs", POLISHED_RED_SANDSTONE);
-    Block POLISHED_RED_SANDSTONE_SLAB = registerSlab("polished_red_sandstone_slab", POLISHED_RED_SANDSTONE);
-    Block POLISHED_RED_SANDSTONE_WALL = registerWall("polished_red_sandstone_wall", POLISHED_RED_SANDSTONE);
-
     Block SANDSTONE_BRICKS = registerSubBlock("sandstone_bricks", Blocks.CUT_SANDSTONE);
     Block SANDSTONE_BRICK_STAIRS = registerStair("sandstone_brick_stairs", SANDSTONE_BRICKS);
     Block SANDSTONE_BRICK_SLAB = registerSlab("sandstone_brick_slab", SANDSTONE_BRICKS);
     Block SANDSTONE_BRICK_WALL = registerWall("sandstone_brick_wall", SANDSTONE_BRICKS);
+
+    Block SMOOTH_SANDSTONE_WALL = registerWall("smooth_sandstone_wall", Blocks.SMOOTH_SANDSTONE);
+
+    Block CUT_SANDSTONE_STAIRS = registerStair("cut_sandstone_stairs", Blocks.CUT_SANDSTONE);
+    Block CUT_SANDSTONE_WALL = registerWall("cut_sandstone_wall", Blocks.CUT_SANDSTONE);
+
+    Block POLISHED_RED_SANDSTONE = registerSubBlock("polished_red_sandstone", Blocks.CUT_SANDSTONE);
+    Block POLISHED_RED_SANDSTONE_STAIRS = registerStair("polished_red_sandstone_stairs", POLISHED_RED_SANDSTONE);
+    Block POLISHED_RED_SANDSTONE_SLAB = registerSlab("polished_red_sandstone_slab", POLISHED_RED_SANDSTONE);
+    Block POLISHED_RED_SANDSTONE_WALL = registerWall("polished_red_sandstone_wall", POLISHED_RED_SANDSTONE);
 
     Block RED_SANDSTONE_BRICKS = registerSubBlock("red_sandstone_bricks", Blocks.CUT_RED_SANDSTONE);
     Block RED_SANDSTONE_BRICK_STAIRS = registerStair("red_sandstone_brick_stairs", RED_SANDSTONE_BRICKS);
     Block RED_SANDSTONE_BRICK_SLAB = registerSlab("red_sandstone_brick_slab", RED_SANDSTONE_BRICKS);
     Block RED_SANDSTONE_BRICK_WALL = registerWall("red_sandstone_brick_wall", RED_SANDSTONE_BRICKS);
 
-    Block SMOOTH_SANDSTONE_WALL = registerWall("smooth_sandstone_wall", Blocks.SMOOTH_SANDSTONE);
     Block SMOOTH_RED_SANDSTONE_WALL = registerWall("smooth_red_sandstone_wall", Blocks.SMOOTH_RED_SANDSTONE);
 
-    Block CUT_SANDSTONE_STAIRS = registerStair("cut_sandstone_stairs", Blocks.CUT_SANDSTONE);
-    Block CUT_SANDSTONE_WALL = registerWall("cut_sandstone_wall", Blocks.CUT_SANDSTONE);
     Block CUT_RED_SANDSTONE_STAIRS = registerStair("cut_red_sandstone_stairs", Blocks.CUT_RED_SANDSTONE);
     Block CUT_RED_SANDSTONE_WALL = registerWall("cut_red_sandstone_wall", Blocks.CUT_RED_SANDSTONE);
 
@@ -316,24 +320,21 @@ public interface EBlocks {
 
 
     // Basalt
-    Block BASALT_STAIRS = registerStair("basalt_stairs", Blocks.BASALT);
     Block BASALT_SLAB = registerSlab("basalt_slab", Blocks.BASALT);
-    Block BASALT_WALL = registerWall("basalt_wall", Blocks.BASALT);
     Block SMOOTH_BASALT_STAIRS = registerStair("smooth_basalt_stairs", Blocks.SMOOTH_BASALT);
     Block SMOOTH_BASALT_SLAB = registerSlab("smooth_basalt_slab", Blocks.SMOOTH_BASALT);
     Block SMOOTH_BASALT_WALL = registerWall("smooth_basalt_wall", Blocks.SMOOTH_BASALT);
-    Block POLISHED_BASALT_STAIRS = registerStair("polished_basalt_stairs", Blocks.POLISHED_BASALT);
     Block POLISHED_BASALT_SLAB = registerSlab("polished_basalt_slab", Blocks.POLISHED_BASALT);
-    Block POLISHED_BASALT_WALL = registerWall("polished_basalt_wall", Blocks.POLISHED_BASALT);
-    Block BASALT_BRICKS = register("basalt_bricks", Block::new, true,
+    Block BASALT_BRICKS = register("basalt_bricks", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.POLISHED_BASALT)
     );
     Block BASALT_BRICK_STAIRS = registerStair("basalt_brick_stairs", BASALT_BRICKS);
     Block BASALT_BRICK_SLAB = registerSlab("basalt_brick_slab", BASALT_BRICKS);
     Block BASALT_BRICK_WALL = registerWall("basalt_brick_wall", BASALT_BRICKS);
-    Block CHISELED_BASALT = registerSubBlock("chiseled_basalt", BASALT_BRICKS);
-    Block CHISELED_BASALT_BRICKS = registerSubBlock("chiseled_basalt_bricks", BASALT_BRICKS);
-    Block BASALT_PILLAR = register("basalt_pillar", RotatedPillarBlock::new, true,
+    Block CHISELED_BASALT = register("chiseled_basalt", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(BASALT_BRICKS)
+    );
+    Block CHISELED_BASALT_BRICKS = register("chiseled_basalt_bricks", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(BASALT_BRICKS)
     );
 
@@ -441,7 +442,9 @@ public interface EBlocks {
     Block SHALE_COPPER_ORE = registerSubBlock("shale_copper_ore", SHALE_COAL_ORE);
     Block SHALE_IRON_ORE = registerSubBlock("shale_iron_ore", SHALE_COAL_ORE);
     Block SHALE_GOLD_ORE = registerSubBlock("shale_gold_ore", SHALE_COAL_ORE);
-    Block SHALE_REDSTONE_ORE = registerSubBlock("shale_redstone_ore", SHALE_COAL_ORE);
+    Block SHALE_REDSTONE_ORE = register("shale_redstone_ore", RedStoneOreBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().randomTicks().lightLevel(Blocks.litBlockEmission(9)).strength(3.0F, 6.0F).sound(ESounds.CINNABAR)
+    );
     Block SHALE_DIAMOND_ORE = registerSubBlock("shale_diamond_ore", SHALE_COAL_ORE);
     Block SHALE_LAPIS_ORE = registerSubBlock("shale_lapis_ore", SHALE_COAL_ORE);
     Block SHALE_EMERALD_ORE = registerSubBlock("shale_emerald_ore", SHALE_COAL_ORE);
@@ -482,8 +485,8 @@ public interface EBlocks {
             BlockBehaviour.Properties.ofFullCopy(POLISHED_SULFUR)
     );
 
-    Block SULFUR_SPIKE = register("sulfur_spike", p -> new SpikeBlock(SULFUR, 2.5, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(ESounds.SULFUR)
+    Block SULFUR_SPIKE = register("sulfur_spike", p -> new SpikeBlock(SULFUR, 2.5, ESounds.SULFUR_SPIKE_LAND, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(ESounds.SULFUR).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)
     );
 
     Block POTENT_SULFUR = register("potent_sulfur", PotentSulfurBlock::new, true,
@@ -523,7 +526,9 @@ public interface EBlocks {
     Block CINNABAR_IRON_ORE = registerSubBlock("cinnabar_iron_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_GOLD_ORE = registerSubBlock("cinnabar_gold_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_SILVER_ORE = registerSubBlock("cinnabar_silver_ore", CINNABAR_COAL_ORE);
-    Block CINNABAR_REDSTONE_ORE = registerSubBlock("cinnabar_redstone_ore", CINNABAR_COAL_ORE);
+    Block CINNABAR_REDSTONE_ORE = register("cinnabar_redstone_ore", RedStoneOreBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().randomTicks().lightLevel(Blocks.litBlockEmission(9)).strength(3.0F, 6.0F).sound(ESounds.CINNABAR)
+    );
     Block CINNABAR_DIAMOND_ORE = registerSubBlock("cinnabar_diamond_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_LAPIS_ORE = registerSubBlock("cinnabar_lapis_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_EMERALD_ORE = registerSubBlock("cinnabar_emerald_ore", CINNABAR_COAL_ORE);
@@ -575,11 +580,42 @@ public interface EBlocks {
             BlockBehaviour.Properties.ofFullCopy(POLISHED_ORPIMENT)
     );
 
+
+    // Soul Sandstone
+    Block SOUL_SANDSTONE = register("soul_sandstone", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F).sound(SoundType.BASALT)
+    );
+    Block SOUL_SANDSTONE_STAIRS = registerStair("soul_sandstone_stairs", SOUL_SANDSTONE);
+    Block SOUL_SANDSTONE_SLAB = registerSlab("soul_sandstone_slab", SOUL_SANDSTONE);
+    Block SOUL_SANDSTONE_WALL = registerWall("soul_sandstone_wall", SOUL_SANDSTONE);
+
+    Block SMOOTH_SOUL_SANDSTONE = registerSubBlock("smooth_soul_sandstone", SOUL_SANDSTONE);
+    Block SMOOTH_SOUL_SANDSTONE_STAIRS = registerStair("smooth_soul_sandstone_stairs", SMOOTH_SOUL_SANDSTONE);
+    Block SMOOTH_SOUL_SANDSTONE_SLAB = registerSlab("smooth_soul_sandstone_slab", SMOOTH_SOUL_SANDSTONE);
+    Block SMOOTH_SOUL_SANDSTONE_WALL = registerWall("smooth_soul_sandstone_wall", SMOOTH_SOUL_SANDSTONE);
+
+    Block CUT_SOUL_SANDSTONE = registerSubBlock("cut_soul_sandstone", SOUL_SANDSTONE);
+    Block CUT_SOUL_SANDSTONE_STAIRS = registerStair("cut_soul_sandstone_stairs", CUT_SOUL_SANDSTONE);
+    Block CUT_SOUL_SANDSTONE_SLAB = registerSlab("cut_soul_sandstone_slab", CUT_SOUL_SANDSTONE);
+    Block CUT_SOUL_SANDSTONE_WALL = registerWall("cut_soul_sandstone_wall", CUT_SOUL_SANDSTONE);
+
+    Block POLISHED_SOUL_SANDSTONE = registerSubBlock("polished_soul_sandstone", SOUL_SANDSTONE);
+    Block POLISHED_SOUL_SANDSTONE_STAIRS = registerStair("polished_soul_sandstone_stairs", POLISHED_SOUL_SANDSTONE);
+    Block POLISHED_SOUL_SANDSTONE_SLAB = registerSlab("polished_soul_sandstone_slab", POLISHED_SOUL_SANDSTONE);
+    Block POLISHED_SOUL_SANDSTONE_WALL = registerWall("polished_soul_sandstone_wall", POLISHED_SOUL_SANDSTONE);
+
+    Block SOUL_SANDSTONE_BRICKS = registerSubBlock("soul_sandstone_bricks", SOUL_SANDSTONE);
+    Block SOUL_SANDSTONE_BRICK_STAIRS = registerStair("soul_sandstone_brick_stairs", SOUL_SANDSTONE_BRICKS);
+    Block SOUL_SANDSTONE_BRICK_SLAB = registerSlab("soul_sandstone_brick_slab", SOUL_SANDSTONE_BRICKS);
+    Block SOUL_SANDSTONE_BRICK_WALL = registerWall("soul_sandstone_brick_wall", SOUL_SANDSTONE_BRICKS);
+
+    Block CHISELED_SOUL_SANDSTONE = registerSubBlock("chiseled_soul_sandstone", SOUL_SANDSTONE);
+
     // Singular Purpur Block
     Block CHISELED_PURPUR = registerSubBlock("chiseled_purpur", Blocks.PURPUR_BLOCK);
 
-    Block ICICLE = register("icicle", p -> new SpikeBlock(Blocks.PACKED_ICE, 2.5, p), true,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_ICE)
+    Block ICICLE = register("icicle", p -> new SpikeBlock(Blocks.PACKED_ICE, 2.5, SoundEvents.GLASS_BREAK, p), true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_ICE).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)
     );
 
     // Wood Mosaics
@@ -636,7 +672,9 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
     );
 
-    Block ARID_DIRT = registerSubBlock("arid_dirt", Blocks.DIRT);
+    Block ARID_DIRT = register("arid_dirt", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5F).sound(SoundType.ROOTED_DIRT)
+    );
 
 
 

@@ -24,55 +24,79 @@ public class EBlockModelGenerators extends BlockModelGenerators {
 
     public BlockFamilyProvider columnFamily(Block block) {
         TexturedModel model = TexturedModel.COLUMN.get(block);
-        TextureMapping mapping = model.getMapping().put(TextureSlot.WALL, TextureMapping.getBlockTexture(block, "_side"));
-        return new BlockFamilyProvider(model.getMapping()).fullBlock(block, model.getTemplate());
+        TextureMapping mapping = model.getMapping()
+                .put(TextureSlot.WALL, model.getMapping().get(TextureSlot.SIDE));
+        return new BlockFamilyProvider(mapping).fullBlock(block, model.getTemplate());
+    }
+
+    public BlockFamilyProvider cubeTopFamily(Block block) {
+        TexturedModel model = TexturedModel.CUBE_TOP.get(block);
+        TextureMapping mapping = model.getMapping()
+                .put(TextureSlot.WALL, TextureMapping.getBlockTexture(block, "_side"))
+                .put(TextureSlot.BOTTOM, model.getMapping().get(TextureSlot.SIDE));
+        return new BlockFamilyProvider(mapping).fullBlock(block, model.getTemplate());
+    }
+
+    public BlockFamilyProvider cubeTopBottomFamily(Block block) {
+        TexturedModel model = TexturedModel.CUBE_TOP_BOTTOM.get(block);
+        TextureMapping mapping = model.getMapping()
+                .put(TextureSlot.WALL, TextureMapping.getBlockTexture(block, "_side"))
+                .put(TextureSlot.BOTTOM, model.getMapping().get(TextureSlot.BOTTOM));
+        return new BlockFamilyProvider(mapping).fullBlock(block, model.getTemplate());
     }
 
 
     // Fuck me.
-    public final void axisAlignedPillarFamily(
-            final Block block,
-            final TexturedModel.Provider pillarProvider,
-            final Block stairs,
-            final Block slab,
-            final Block wall
-    ) {
-
-        // Base block — axis aligned pillar
+    public AxisAlignedPillarFamilyProvider axisAlignedPillarFamily(Block block, TexturedModel.Provider pillarProvider) {
         Identifier modelLocation = pillarProvider.create(block, this.modelOutput);
         this.blockStateOutput.accept(createAxisAlignedPillarBlock(block, plainVariant(modelLocation)));
-
-        // Grab texture mapping from the pillar for sub-blocks
         TextureMapping mapping = pillarProvider.get(block).getMapping();
+        return new AxisAlignedPillarFamilyProvider(modelLocation, mapping);
+    }
 
-        // Stairs
-        Identifier innerModel = ModelTemplates.STAIRS_INNER.create(stairs, mapping, this.modelOutput);
-        Identifier straightModel = ModelTemplates.STAIRS_STRAIGHT.create(stairs, mapping, this.modelOutput);
-        Identifier outerModel = ModelTemplates.STAIRS_OUTER.create(stairs, mapping, this.modelOutput);
-        this.blockStateOutput.accept(createStairs(stairs,
-                plainVariant(innerModel),
-                plainVariant(straightModel),
-                plainVariant(outerModel)));
+    public class AxisAlignedPillarFamilyProvider {
+        private final Identifier modelLocation;
+        private final TextureMapping mapping;
 
-        // Slab
-        Identifier bottomModel = ModelTemplates.SLAB_BOTTOM.create(slab, mapping, this.modelOutput);
-        Identifier topModel = ModelTemplates.SLAB_TOP.create(slab, mapping, this.modelOutput);
-        this.blockStateOutput.accept(createSlab(slab,
-                plainVariant(bottomModel),
-                plainVariant(topModel),
-                plainVariant(modelLocation)));
+        public AxisAlignedPillarFamilyProvider(Identifier modelLocation, TextureMapping mapping) {
+            this.modelLocation = modelLocation;
+            this.mapping = mapping;
+        }
 
-        // Wall
-        TextureMapping wallMapping = new TextureMapping().put(TextureSlot.WALL, mapping.get(TextureSlot.SIDE));
-        Identifier wallPostModel = ModelTemplates.WALL_POST.create(wall, wallMapping, this.modelOutput);
-        Identifier wallLowModel = ModelTemplates.WALL_LOW_SIDE.create(wall, wallMapping, this.modelOutput);
-        Identifier wallTallModel = ModelTemplates.WALL_TALL_SIDE.create(wall, wallMapping, this.modelOutput);
-        this.blockStateOutput.accept(createWall(wall,
-                plainVariant(wallPostModel),
-                plainVariant(wallLowModel),
-                plainVariant(wallTallModel)));
-        Identifier inventory = ModelTemplates.WALL_INVENTORY.create(wall, wallMapping, this.modelOutput);
-        this.registerSimpleItemModel(wall, inventory);
+        public AxisAlignedPillarFamilyProvider stairs(Block stairs) {
+            Identifier innerModel = ModelTemplates.STAIRS_INNER.create(stairs, mapping, modelOutput);
+            Identifier straightModel = ModelTemplates.STAIRS_STRAIGHT.create(stairs, mapping, modelOutput);
+            Identifier outerModel = ModelTemplates.STAIRS_OUTER.create(stairs, mapping, modelOutput);
+            blockStateOutput.accept(createStairs(stairs,
+                    plainVariant(innerModel),
+                    plainVariant(straightModel),
+                    plainVariant(outerModel)));
+            return this;
+        }
+
+        public AxisAlignedPillarFamilyProvider slab(Block slab) {
+            Identifier bottomModel = ModelTemplates.SLAB_BOTTOM.create(slab, mapping, modelOutput);
+            Identifier topModel = ModelTemplates.SLAB_TOP.create(slab, mapping, modelOutput);
+            blockStateOutput.accept(createSlab(slab,
+                    plainVariant(bottomModel),
+                    plainVariant(topModel),
+                    plainVariant(modelLocation)));
+            return this;
+        }
+
+        public AxisAlignedPillarFamilyProvider wall(Block wall) {
+            TextureMapping wallMapping = new TextureMapping().put(TextureSlot.WALL, mapping.get(TextureSlot.SIDE));
+            Identifier wallPostModel = ModelTemplates.WALL_POST.create(wall, wallMapping, modelOutput);
+            Identifier wallLowModel = ModelTemplates.WALL_LOW_SIDE.create(wall, wallMapping, modelOutput);
+            Identifier wallTallModel = ModelTemplates.WALL_TALL_SIDE.create(wall, wallMapping, modelOutput);
+            blockStateOutput.accept(createWall(wall,
+                    plainVariant(wallPostModel),
+                    plainVariant(wallLowModel),
+                    plainVariant(wallTallModel)));
+            Identifier inventory = ModelTemplates.WALL_INVENTORY.create(wall, wallMapping, modelOutput);
+            registerSimpleItemModel(wall, inventory);
+            return this;
+        }
     }
 
     public void generateStalactite(BlockModelGenerators generator, Block sulfurBlock) {

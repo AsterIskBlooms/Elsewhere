@@ -6,6 +6,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.OverworldBiomeBuilder;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -49,18 +50,33 @@ public class OverworldBiomeGenMixin {
                 accessor.getFULL_RANGE(), // humidity — any
                 accessor.getFULL_RANGE(), // continentalness — any
                 accessor.getFULL_RANGE(), // erosion — any
-                Climate.Parameter.span(-1.0F, -0.567F), // weirdness — low
+                Climate.Parameter.span(-1.0F, -0.767F), // weirdness — low
                 0.0F,
                 EBiomes.SULFUR_CAVES
         );
-        accessor.invokeAddUndergroundBiome(biomes,
-                Climate.Parameter.span(0.55F, 1.0F), // temperature — hot
-                accessor.getFULL_RANGE(), // humidity — any
-                accessor.getFULL_RANGE(), // continentalness — any
-                Climate.Parameter.span(-1.0F, -0.375F), // erosion — low
-                accessor.getFULL_RANGE(), // weirdness — low
+//        this.addShallowUndergroundBiome(biomes,
+//                Climate.Parameter.span(0.55F, 1.0F), // temperature — hot
+//                accessor.getFULL_RANGE(), // humidity — any
+//                Climate.Parameter.span(0.3F, 1.0F), // continentalness — far inland
+//                accessor.getFULL_RANGE(), // erosion — any
+//                accessor.getFULL_RANGE(), // weirdness — any
+//                0.0F,
+//                EBiomes.ARID_CAVES
+//        );
+        this.addShallowUndergroundBiome(biomes,
+                Climate.Parameter.span(-1.0F, -0.45F), // temperature — cold
+                Climate.Parameter.span(-1.0F, 0.3F), // humidity — low
+                Climate.Parameter.span(-0.11F, 1.0F), // continentalness — inland
+                accessor.getFULL_RANGE(), // erosion — any
+                accessor.getFULL_RANGE(), // weirdness — any
                 0.0F,
-                EBiomes.ARID_CAVES
+                EBiomes.FRIGID_CAVES
         );
+    }
+
+    @Unique
+    private void addShallowUndergroundBiome(final Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes, final Climate.Parameter temperature, final Climate.Parameter humidity,
+                                            final Climate.Parameter continentalness, final Climate.Parameter erosion, final Climate.Parameter weirdness, final float offset, final ResourceKey<Biome> biome) {
+        biomes.accept(Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.span(0.1F, 0.2F), weirdness, offset), biome));
     }
 }

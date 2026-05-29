@@ -3,6 +3,7 @@ package team.lookingglass.elsewhere.datagen;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.EBlocks;
@@ -11,6 +12,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import team.lookingglass.elsewhere.registry.EItems;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -26,6 +28,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
     public static final TagKey<Block> ICICLE_REPLACEABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "icicle_replaceable"));
 
 
+
     @Override
     protected void addTags(HolderLookup.Provider registries) {
 
@@ -38,8 +41,6 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
         valueLookupBuilder(CINNABAR_ORE_REPLACEABLES).add(EBlocks.CINNABAR);
 
         valueLookupBuilder(ICICLE_REPLACEABLE).add(Blocks.ICE, Blocks.PACKED_ICE, Blocks.BLUE_ICE);
-
-
 
         valueLookupBuilder(BlockTags.DIRT).add(EBlocks.ARID_DIRT);
         valueLookupBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(EBlocks.ARID_DIRT);
@@ -118,11 +119,10 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.DARK_PRISMARINE_BRICKS, EBlocks.DARK_PRISMARINE_BRICK_STAIRS, EBlocks.DARK_PRISMARINE_BRICK_SLAB, EBlocks.DARK_PRISMARINE_BRICK_WALL,
                         EBlocks.DARK_PRISMARINE_PILLAR, EBlocks.CHISELED_DARK_PRISMARINE, EBlocks.CHISELED_DARK_PRISMARINE_BRICKS,
 
-                        EBlocks.BASALT_STAIRS, EBlocks.BASALT_SLAB, EBlocks.BASALT_WALL,
+                        EBlocks.BASALT_SLAB, EBlocks.POLISHED_BASALT_SLAB,
                         EBlocks.SMOOTH_BASALT_STAIRS, EBlocks.SMOOTH_BASALT_SLAB, EBlocks.SMOOTH_BASALT_WALL,
-                        EBlocks.POLISHED_BASALT_STAIRS, EBlocks.POLISHED_BASALT_SLAB, EBlocks.POLISHED_BASALT_WALL,
                         EBlocks.BASALT_BRICKS, EBlocks.BASALT_BRICK_STAIRS, EBlocks.BASALT_BRICK_SLAB, EBlocks.BASALT_BRICK_WALL,
-                        EBlocks.BASALT_PILLAR, EBlocks.CHISELED_BASALT, EBlocks.CHISELED_BASALT_BRICKS,
+                        EBlocks.CHISELED_BASALT, EBlocks.CHISELED_BASALT_BRICKS,
 
                         EBlocks.NETHERRACK_STAIRS, EBlocks.NETHERRACK_SLAB, EBlocks.NETHERRACK_WALL, EBlocks.SMOOTH_NETHERRACK,
                         EBlocks.SMOOTH_NETHERRACK_STAIRS, EBlocks.SMOOTH_NETHERRACK_SLAB, EBlocks.SMOOTH_NETHERRACK_WALL,
@@ -178,6 +178,13 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.POLISHED_ORPIMENT, EBlocks.POLISHED_ORPIMENT_STAIRS, EBlocks.POLISHED_ORPIMENT_SLAB, EBlocks.POLISHED_ORPIMENT_WALL,
                         EBlocks.ORPIMENT_BRICKS, EBlocks.ORPIMENT_BRICK_STAIRS, EBlocks.ORPIMENT_BRICK_SLAB, EBlocks.ORPIMENT_BRICK_WALL,
                         EBlocks.ORPIMENT_PILLAR, EBlocks.CHISELED_ORPIMENT, EBlocks.CHISELED_ORPIMENT_BRICKS,
+
+                        EBlocks.SOUL_SANDSTONE, EBlocks.SOUL_SANDSTONE_STAIRS, EBlocks.SOUL_SANDSTONE_SLAB, EBlocks.SOUL_SANDSTONE_WALL,
+                        EBlocks.SMOOTH_SOUL_SANDSTONE, EBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS, EBlocks.SMOOTH_SOUL_SANDSTONE_SLAB, EBlocks.SMOOTH_SOUL_SANDSTONE_WALL,
+                        EBlocks.CUT_SOUL_SANDSTONE, EBlocks.CUT_SOUL_SANDSTONE_STAIRS, EBlocks.CUT_SOUL_SANDSTONE_SLAB, EBlocks.CUT_SOUL_SANDSTONE_WALL,
+                        EBlocks.POLISHED_SOUL_SANDSTONE, EBlocks.POLISHED_SOUL_SANDSTONE_STAIRS, EBlocks.POLISHED_SOUL_SANDSTONE_SLAB, EBlocks.POLISHED_SOUL_SANDSTONE_WALL,
+                        EBlocks.SOUL_SANDSTONE_BRICKS, EBlocks.SOUL_SANDSTONE_BRICK_STAIRS, EBlocks.SOUL_SANDSTONE_BRICK_SLAB, EBlocks.SOUL_SANDSTONE_BRICK_WALL,
+                        EBlocks.CHISELED_SOUL_SANDSTONE,
 
                         EBlocks.CHISELED_PURPUR
                 );
@@ -263,9 +270,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(EBlocks.SMOOTH_DARK_PRISMARINE_WALL)
                 .add(EBlocks.POLISHED_DARK_PRISMARINE_WALL)
                 .add(EBlocks.DARK_PRISMARINE_BRICK_WALL)
-                .add(EBlocks.BASALT_WALL)
                 .add(EBlocks.SMOOTH_BASALT_WALL)
-                .add(EBlocks.POLISHED_BASALT_WALL)
                 .add(EBlocks.BASALT_BRICK_WALL)
                 .add(EBlocks.END_STONE_WALL)
                 .add(EBlocks.SMOOTH_END_STONE_WALL)
@@ -286,6 +291,11 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(EBlocks.SMOOTH_ORPIMENT_WALL)
                 .add(EBlocks.POLISHED_ORPIMENT_WALL)
                 .add(EBlocks.ORPIMENT_BRICK_WALL)
+                .add(EBlocks.SOUL_SANDSTONE_WALL)
+                .add(EBlocks.SMOOTH_SOUL_SANDSTONE_WALL)
+                .add(EBlocks.CUT_SOUL_SANDSTONE_WALL)
+                .add(EBlocks.POLISHED_SOUL_SANDSTONE_WALL)
+                .add(EBlocks.SOUL_SANDSTONE_BRICK_WALL)
 
                 .add(EBlocks.NETHERRACK_WALL)
                 .add(EBlocks.SMOOTH_NETHERRACK_WALL)

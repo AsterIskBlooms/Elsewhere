@@ -76,6 +76,18 @@
       "elsewhere:sulfur/sulfur_hit7"
     ]
   },
+  "sulfur_spike_land": {
+    "subtitle": "sounds.elsewhere.sulfur_spike_land",
+    "sounds": [
+      "elsewhere:sulfur/spike/spike_land1",
+      "elsewhere:sulfur/spike/spike_land2",
+      "elsewhere:sulfur/spike/spike_land3",
+      "elsewhere:sulfur/spike/spike_land4",
+      "elsewhere:sulfur/spike/spike_land5",
+      "elsewhere:sulfur/spike/spike_land6",
+      "elsewhere:sulfur/spike/spike_land7"
+    ]
+  },
   "noxious_gas": {
     "subtitle": "sounds.elsewhere.noxious_gas",
     "sounds": [
