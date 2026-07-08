@@ -1,6 +1,6 @@
 package team.lookingglass.elsewhere.registry;
 
-import net.minecraft.references.BlockIds;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.material.PushReaction;
@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public interface EBlocks {
@@ -52,12 +53,12 @@ public interface EBlocks {
     Block OBSIDIAN_STAIRS = registerStair("obsidian_stairs", Blocks.OBSIDIAN);
     Block OBSIDIAN_SLAB = registerSlab("obsidian_slab", Blocks.OBSIDIAN);
     Block OBSIDIAN_BRICKS = register("obsidian_bricks", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(5.0F, 1200.0F).sound(SoundType.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(5.0F, 1200.0F).sound(SoundType.DEEPSLATE_BRICKS).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
     );
     Block OBSIDIAN_BRICK_STAIRS = registerStair("obsidian_brick_stairs", OBSIDIAN_BRICKS);
     Block OBSIDIAN_BRICK_SLAB = registerSlab("obsidian_brick_slab", OBSIDIAN_BRICKS);
     Block OBSIDIAN_PILLAR = register("obsidian_pillar", RotatedPillarBlock::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(5.0F, 1200.0F).sound(SoundType.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(5.0F, 1200.0F).sound(SoundType.DEEPSLATE_BRICKS).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
     );
     Block CHISELED_OBSIDIAN = registerSubBlock("chiseled_obsidian", OBSIDIAN_BRICKS);
 
@@ -184,6 +185,7 @@ public interface EBlocks {
             BlockBehaviour.Properties.ofFullCopy(DIORITE_BRICKS)
     );
 
+    Block BEJEWELED_CALCITE = registerSubBlock("bejeweled_calcite", Blocks.CALCITE);
     Block CALCITE_STAIRS = registerStair("calcite_stairs", Blocks.CALCITE);
     Block CALCITE_SLAB = registerSlab("calcite_slab", Blocks.CALCITE);
     Block CALCITE_WALL = registerWall("calcite_wall", Blocks.CALCITE);
@@ -430,7 +432,7 @@ public interface EBlocks {
     Block COBBLESHALE_SLAB = registerSlab("cobbleshale_slab", SHALE);
     Block COBBLESHALE_WALL = registerWall("cobbleshale_wall", SHALE);
     Block SHALE_TILES = register("shale_tiles", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.TUFF_BRICKS)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(ESounds.SHALE_TILES)
     );
     Block SHALE_TILE_STAIRS = registerStair("shale_tile_stairs", SHALE);
     Block SHALE_TILE_SLAB = registerSlab("shale_tile_slab", SHALE);
@@ -452,10 +454,35 @@ public interface EBlocks {
     Block SILVER_ORE = registerSubBlock("silver_ore", Blocks.COAL_ORE);
     Block SHALE_SILVER_ORE = registerSubBlock("shale_silver_ore", SHALE_COAL_ORE);
     Block DEEPSLATE_SILVER_ORE = registerSubBlock("deepslate_silver_ore", Blocks.DEEPSLATE_COAL_ORE);
-
-    Block SILVER_BLOCK = register("silver_block", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)
+    Block CINNABAR_SILVER_ORE = register("cinnabar_silver_ore", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(ESounds.CINNABAR)
     );
+
+    Block TIN_ORE = registerSubBlock("tin_ore", Blocks.COAL_ORE);
+    Block SHALE_TIN_ORE = registerSubBlock("shale_tin_ore", SHALE_COAL_ORE);
+    Block DEEPSLATE_TIN_ORE = registerSubBlock("deepslate_tin_ore", Blocks.DEEPSLATE_COAL_ORE);
+    Block CINNABAR_TIN_ORE = registerSubBlock("cinnabar_tin_ore", CINNABAR_SILVER_ORE);
+
+
+    Block TIN_BLOCK = register("tin_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.IRON)
+    );
+    Block RAW_TIN_BLOCK = register("raw_tin_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.STONE)
+    );
+    Block BRONZE_BLOCK = register("bronze_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).requiresCorrectToolForDrops().strength(4.0F, 6.0F).sound(SoundType.COPPER)
+    );
+    Block SILVER_BLOCK = register("silver_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)
+    );
+    Block RAW_SILVER_BLOCK = register("raw_silver_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)
+    );
+    Block SOULSTEEL_BLOCK = register("soulsteel_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).sound(SoundType.NETHERITE_BLOCK)
+    );
+
 
     // Sulfur & Cinnabar
     Block SULFUR = register("sulfur", Block::new, true,
@@ -485,7 +512,7 @@ public interface EBlocks {
             BlockBehaviour.Properties.ofFullCopy(POLISHED_SULFUR)
     );
 
-    Block SULFUR_SPIKE = register("sulfur_spike", p -> new SpikeBlock(SULFUR, 2.5, ESounds.SULFUR_SPIKE_LAND, p), true,
+    Block SULFUR_SPIKE = register("sulfur_spike", p -> new SpikeBlock(SULFUR, 2, ESounds.SULFUR_SPIKE_LAND, p), true,
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(ESounds.SULFUR).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)
     );
 
@@ -525,7 +552,6 @@ public interface EBlocks {
     Block CINNABAR_COPPER_ORE = registerSubBlock("cinnabar_copper_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_IRON_ORE = registerSubBlock("cinnabar_iron_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_GOLD_ORE = registerSubBlock("cinnabar_gold_ore", CINNABAR_COAL_ORE);
-    Block CINNABAR_SILVER_ORE = registerSubBlock("cinnabar_silver_ore", CINNABAR_COAL_ORE);
     Block CINNABAR_REDSTONE_ORE = register("cinnabar_redstone_ore", RedStoneOreBlock::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().randomTicks().lightLevel(Blocks.litBlockEmission(9)).strength(3.0F, 6.0F).sound(ESounds.CINNABAR)
     );
@@ -614,67 +640,208 @@ public interface EBlocks {
     // Singular Purpur Block
     Block CHISELED_PURPUR = registerSubBlock("chiseled_purpur", Blocks.PURPUR_BLOCK);
 
-    Block ICICLE = register("icicle", p -> new SpikeBlock(Blocks.PACKED_ICE, 2.5, SoundEvents.GLASS_BREAK, p), true,
+    Block ICICLE = register("icicle", p -> new SpikeBlock(Blocks.PACKED_ICE, 5, SoundEvents.GLASS_BREAK, p), true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_ICE).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)
     );
 
-    // Wood Mosaics
+    Block PACKED_MUD_STAIRS = registerStair("packed_mud_stairs", Blocks.PACKED_MUD);
+    Block PACKED_MUD_SLAB = registerSlab("packed_mud_slab", Blocks.PACKED_MUD);
+    Block PACKED_MUD_WALL = registerWall("packed_mud_wall", Blocks.PACKED_MUD);
+    Block CHISELED_MUD_BRICKS = registerSubBlock("chiseled_mud_bricks", Blocks.MUD_BRICKS);
+    Block MUD_BRICK_PILLAR = register("mud_brick_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MUD_BRICKS)
+    );
+
+
+    // Wood Blocks
     Block OAK_MOSAIC = registerSubBlock("oak_mosaic", Blocks.OAK_PLANKS);
     Block OAK_MOSAIC_STAIRS = registerStair("oak_mosaic_stairs", OAK_MOSAIC);
     Block OAK_MOSAIC_SLAB = registerSlab("oak_mosaic_slab", OAK_MOSAIC);
+    Block OAK_BOARDS = register("oak_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+    );
+    Block OAK_TRIM = registerSubBlock("oak_trim", Blocks.OAK_PLANKS);
 
     Block DARK_OAK_MOSAIC = registerSubBlock("dark_oak_mosaic", Blocks.DARK_OAK_PLANKS);
     Block DARK_OAK_MOSAIC_STAIRS = registerStair("dark_oak_mosaic_stairs", DARK_OAK_MOSAIC);
     Block DARK_OAK_MOSAIC_SLAB = registerSlab("dark_oak_mosaic_slab", DARK_OAK_MOSAIC);
+    Block DARK_OAK_BOARDS = register("dark_oak_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_PLANKS)
+    );
+    Block DARK_OAK_TRIM = registerSubBlock("dark_oak_trim", Blocks.DARK_OAK_PLANKS);
 
     Block PALE_OAK_MOSAIC = registerSubBlock("pale_oak_mosaic", Blocks.PALE_OAK_PLANKS);
     Block PALE_OAK_MOSAIC_STAIRS = registerStair("pale_oak_mosaic_stairs", PALE_OAK_MOSAIC);
     Block PALE_OAK_MOSAIC_SLAB = registerSlab("pale_oak_mosaic_slab", PALE_OAK_MOSAIC);
+    Block PALE_OAK_BOARDS = register("pale_oak_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PALE_OAK_PLANKS)
+    );
+    Block PALE_OAK_TRIM = registerSubBlock("pale_oak_trim", Blocks.PALE_OAK_PLANKS);
 
     Block BIRCH_MOSAIC = registerSubBlock("birch_mosaic", Blocks.BIRCH_PLANKS);
     Block BIRCH_MOSAIC_STAIRS = registerStair("birch_mosaic_stairs", BIRCH_MOSAIC);
     Block BIRCH_MOSAIC_SLAB = registerSlab("birch_mosaic_slab", BIRCH_MOSAIC);
+    Block BIRCH_BOARDS = register("birch_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_PLANKS)
+    );
+    Block BIRCH_TRIM = registerSubBlock("birch_trim", Blocks.BIRCH_PLANKS);
 
     Block SPRUCE_MOSAIC = registerSubBlock("spruce_mosaic", Blocks.SPRUCE_PLANKS);
     Block SPRUCE_MOSAIC_STAIRS = registerStair("spruce_mosaic_stairs", SPRUCE_MOSAIC);
     Block SPRUCE_MOSAIC_SLAB = registerSlab("spruce_mosaic_slab", SPRUCE_MOSAIC);
+    Block SPRUCE_BOARDS = register("spruce_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_PLANKS)
+    );
+    Block SPRUCE_TRIM = registerSubBlock("spruce_trim", Blocks.SPRUCE_PLANKS);
 
     Block JUNGLE_MOSAIC = registerSubBlock("jungle_mosaic", Blocks.JUNGLE_PLANKS);
     Block JUNGLE_MOSAIC_STAIRS = registerStair("jungle_mosaic_stairs", JUNGLE_MOSAIC);
     Block JUNGLE_MOSAIC_SLAB = registerSlab("jungle_mosaic_slab", JUNGLE_MOSAIC);
+    Block JUNGLE_BOARDS = register("jungle_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_PLANKS)
+    );
+    Block JUNGLE_TRIM = registerSubBlock("jungle_trim", Blocks.JUNGLE_PLANKS);
 
     Block ACACIA_MOSAIC = registerSubBlock("acacia_mosaic", Blocks.ACACIA_PLANKS);
     Block ACACIA_MOSAIC_STAIRS = registerStair("acacia_mosaic_stairs", ACACIA_MOSAIC);
     Block ACACIA_MOSAIC_SLAB = registerSlab("acacia_mosaic_slab", ACACIA_MOSAIC);
+    Block ACACIA_BOARDS = register("acacia_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS)
+    );
+    Block ACACIA_TRIM = registerSubBlock("acacia_trim", Blocks.ACACIA_PLANKS);
 
     Block CHERRY_MOSAIC = registerSubBlock("cherry_mosaic", Blocks.CHERRY_PLANKS);
     Block CHERRY_MOSAIC_STAIRS = registerStair("cherry_mosaic_stairs", CHERRY_MOSAIC);
     Block CHERRY_MOSAIC_SLAB = registerSlab("cherry_mosaic_slab", CHERRY_MOSAIC);
+    Block CHERRY_BOARDS = register("cherry_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)
+    );
+    Block CHERRY_TRIM = registerSubBlock("cherry_trim", Blocks.CHERRY_PLANKS);
 
     Block MANGROVE_MOSAIC = registerSubBlock("mangrove_mosaic", Blocks.MANGROVE_PLANKS);
     Block MANGROVE_MOSAIC_STAIRS = registerStair("mangrove_mosaic_stairs", MANGROVE_MOSAIC);
     Block MANGROVE_MOSAIC_SLAB = registerSlab("mangrove_mosaic_slab", MANGROVE_MOSAIC);
+    Block MANGROVE_BOARDS = register("mangrove_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_PLANKS)
+    );
+    Block MANGROVE_TRIM = registerSubBlock("mangrove_trim", Blocks.MANGROVE_PLANKS);
 
     Block CRIMSON_MOSAIC = registerSubBlock("crimson_mosaic", Blocks.CRIMSON_PLANKS);
     Block CRIMSON_MOSAIC_STAIRS = registerStair("crimson_mosaic_stairs", CRIMSON_MOSAIC);
     Block CRIMSON_MOSAIC_SLAB = registerSlab("crimson_mosaic_slab", CRIMSON_MOSAIC);
+    Block CRIMSON_BOARDS = register("crimson_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS)
+    );
+    Block CRIMSON_TRIM = registerSubBlock("crimson_trim", Blocks.CRIMSON_PLANKS);
 
     Block WARPED_MOSAIC = registerSubBlock("warped_mosaic", Blocks.WARPED_PLANKS);
     Block WARPED_MOSAIC_STAIRS = registerStair("warped_mosaic_stairs", WARPED_MOSAIC);
     Block WARPED_MOSAIC_SLAB = registerSlab("warped_mosaic_slab", WARPED_MOSAIC);
+    Block WARPED_BOARDS = register("warped_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)
+    );
+    Block WARPED_TRIM = registerSubBlock("warped_trim", Blocks.WARPED_PLANKS);
 
+
+
+
+    // Hibiscus
+    Block RED_HIBISCUS = register("red_hibiscus", p -> new FlowerBlock(MobEffects.HASTE, 10.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block ORANGE_HIBISCUS = register("orange_hibiscus", p -> new FlowerBlock(MobEffects.HASTE, 10.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block YELLOW_HIBISCUS = register("yellow_hibiscus", p -> new FlowerBlock(MobEffects.HASTE, 10.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block BLUE_HIBISCUS = register("blue_hibiscus", p -> new FlowerBlock(MobEffects.HASTE, 10.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block PURPLE_HIBISCUS = register("purple_hibiscus", p -> new FlowerBlock(MobEffects.HASTE, 10.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block PINK_HIBISCUS = register("pink_hibiscus", p -> new FlowerBlock(MobEffects.HASTE, 10.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block WHITE_HIBISCUS = register("white_hibiscus", p -> new FlowerBlock(MobEffects.HASTE, 10.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+
+    Block POTTED_RED_HIBISCUS = register("potted_red_hibiscus", p -> new FlowerPotBlock(RED_HIBISCUS, p), false,
+            Blocks.flowerPotProperties()
+    );
+    Block POTTED_ORANGE_HIBISCUS = register("potted_orange_hibiscus", p -> new FlowerPotBlock(ORANGE_HIBISCUS, p), false,
+            Blocks.flowerPotProperties()
+    );
+    Block POTTED_YELLOW_HIBISCUS = register("potted_yellow_hibiscus", p -> new FlowerPotBlock(YELLOW_HIBISCUS, p), false,
+            Blocks.flowerPotProperties()
+    );
+    Block POTTED_BLUE_HIBISCUS = register("potted_blue_hibiscus", p -> new FlowerPotBlock(BLUE_HIBISCUS, p), false,
+            Blocks.flowerPotProperties()
+    );
+    Block POTTED_PURPLE_HIBISCUS = register("potted_purple_hibiscus", p -> new FlowerPotBlock(PURPLE_HIBISCUS, p), false,
+            Blocks.flowerPotProperties()
+    );
+    Block POTTED_PINK_HIBISCUS = register("potted_pink_hibiscus", p -> new FlowerPotBlock(PINK_HIBISCUS, p), false,
+            Blocks.flowerPotProperties()
+    );
+    Block POTTED_WHITE_HIBISCUS = register("potted_white_hibiscus", p -> new FlowerPotBlock(WHITE_HIBISCUS, p), false,
+            Blocks.flowerPotProperties()
+    );
 
     // Natural blocks
     Block BLUEBONNET = register("bluebonnet", p -> new FlowerBlock(MobEffects.RESISTANCE, 5.0F, p), true,
             BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
     );
     Block POTTED_BLUEBONNET = register("potted_bluebonnet", p -> new FlowerPotBlock(BLUEBONNET, p),false,
-            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
+            Blocks.flowerPotProperties()
     );
 
+    Block PEBBLE = register("pebble", PebbleBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instabreak().sound(SoundType.STONE).noOcclusion().noCollision()
+    );
+
+    Block LATERITE = register("laterite", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.WART_BLOCK)
+    );
+
+    Block RED_GRASS_BLOCK = register("red_grass_block", SnowyBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(0.5F).sound(SoundType.GRASS)
+    );
+    Block SHORT_RED_GRASS = register("short_red_grass", BushBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.TERRACOTTA_RED).sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block TALL_RED_GRASS = register("tall_red_grass", DoublePlantBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.TERRACOTTA_RED).sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block RED_SHRUB = register("red_shrub", BushBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.TERRACOTTA_RED).sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+
+    Block RUSTY_MOSS_BLOCK = register("rusty_moss_block", p -> new BonemealableFeaturePlacerBlock(VegetationFeatures.PALE_MOSS_PATCH_BONEMEAL, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.1F).sound(SoundType.GRASS)
+    );
+    Block RUSTY_MOSS_CARPET = register("rusty_moss_carpet", MossyCarpetBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(RUSTY_MOSS_BLOCK)
+    );
+
+    // Arid Dirt
+    ResourceKey<Block> ARID_DIRT_KEY = ResourceKey.create(Registries.BLOCK,
+            Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_dirt")
+    );
     Block ARID_DIRT = register("arid_dirt", Block::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5F).sound(SoundType.ROOTED_DIRT)
     );
+    Block ARID_GRASS_BLOCK = register("arid_grass_block", AridGrassBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5F).sound(SoundType.ROOTED_DIRT).randomTicks()
+    );
+    Map<Block, Block> DIRT_TO_GRASS = Map.of(
+            Blocks.DIRT, Blocks.GRASS_BLOCK,
+            ARID_DIRT, ARID_GRASS_BLOCK
+    );
+
+
 
 
 

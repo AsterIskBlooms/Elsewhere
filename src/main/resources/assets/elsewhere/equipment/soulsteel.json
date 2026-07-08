@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "elsewhere:soulsteel"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "elsewhere:soulsteel"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "elsewhere:soulsteel"
+      }
+    ]
+  }
+}

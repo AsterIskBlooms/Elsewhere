@@ -296,10 +296,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.shale_lapis_ore", "Shale Lapis Lazuli Ore");
         translationBuilder.add("block.elsewhere.shale_emerald_ore", "Shale Emerald Ore");
 
-        translationBuilder.add("block.elsewhere.silver_ore", "Silver Ore");
-        translationBuilder.add("block.elsewhere.shale_silver_ore", "Shale Silver Ore");
-        translationBuilder.add("block.elsewhere.deepslate_silver_ore", "Deepslate Silver Ore");
-
         translationBuilder.add("block.elsewhere.sulfur", "Sulfur");
         translationBuilder.add("block.elsewhere.sulfur_stairs", "Sulfur Stairs");
         translationBuilder.add("block.elsewhere.sulfur_slab", "Sulfur Slab");
@@ -347,7 +343,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.cinnabar_copper_ore", "Cinnabar Copper Ore");
         translationBuilder.add("block.elsewhere.cinnabar_iron_ore", "Cinnabar Iron Ore");
         translationBuilder.add("block.elsewhere.cinnabar_gold_ore", "Cinnabar Gold Ore");
-        translationBuilder.add("block.elsewhere.cinnabar_silver_ore", "Cinnabar Silver Ore");
         translationBuilder.add("block.elsewhere.cinnabar_redstone_ore", "Cinnabar Redstone Ore");
         translationBuilder.add("block.elsewhere.cinnabar_diamond_ore", "Cinnabar Diamond Ore");
         translationBuilder.add("block.elsewhere.cinnabar_lapis_ore", "Cinnabar Lapis Lazuli Ore");
@@ -418,60 +413,152 @@ public class LangProviderEN extends FabricLanguageProvider {
 
         translationBuilder.add("block.elsewhere.icicle", "Icicle");
 
+        translationBuilder.add("block.elsewhere.packed_mud_stairs", "Packed Mud Stairs");
+        translationBuilder.add("block.elsewhere.packed_mud_slab", "Packed Mud Slab");
+        translationBuilder.add("block.elsewhere.packed_mud_wall", "Packed Mud Wall");
+        translationBuilder.add("block.elsewhere.chiseled_mud_bricks", "Chiseled Mud Bricks");
+        translationBuilder.add("block.elsewhere.mud_brick_pillar", "Mud Brick Pillar");
 
         translationBuilder.add("block.elsewhere.oak_mosaic", "Oak Mosaic");
         translationBuilder.add("block.elsewhere.oak_mosaic_stairs", "Oak Mosaic Stairs");
         translationBuilder.add("block.elsewhere.oak_mosaic_slab", "Oak Mosaic Slab");
+        translationBuilder.add("block.elsewhere.oak_boards", "Oak Boards");
+        translationBuilder.add("block.elsewhere.oak_trim", "Oak Trim");
 
         translationBuilder.add("block.elsewhere.dark_oak_mosaic", "Dark Oak Mosaic");
         translationBuilder.add("block.elsewhere.dark_oak_mosaic_stairs", "Dark Oak Mosaic Stairs");
         translationBuilder.add("block.elsewhere.dark_oak_mosaic_slab", "Dark Oak Mosaic Slab");
+        translationBuilder.add("block.elsewhere.dark_oak_boards", "Dark Oak Boards");
+        translationBuilder.add("block.elsewhere.dark_oak_trim", "Dark Oak Trim");
 
         translationBuilder.add("block.elsewhere.pale_oak_mosaic", "Pale Oak Mosaic");
         translationBuilder.add("block.elsewhere.pale_oak_mosaic_stairs", "Pale Oak Mosaic Stairs");
         translationBuilder.add("block.elsewhere.pale_oak_mosaic_slab", "Pale Oak Mosaic Slab");
+        translationBuilder.add("block.elsewhere.pale_oak_boards", "Pale Oak Boards");
+        translationBuilder.add("block.elsewhere.pale_oak_trim", "Pale Oak Trim");
 
         translationBuilder.add("block.elsewhere.birch_mosaic", "Birch Mosaic");
         translationBuilder.add("block.elsewhere.birch_mosaic_stairs", "Birch Mosaic Stairs");
         translationBuilder.add("block.elsewhere.birch_mosaic_slab", "Birch Mosaic Slab");
+        translationBuilder.add("block.elsewhere.birch_boards", "Birch Boards");
+        translationBuilder.add("block.elsewhere.birch_trim", "Birch Trim");
 
         translationBuilder.add("block.elsewhere.spruce_mosaic", "Spruce Mosaic");
         translationBuilder.add("block.elsewhere.spruce_mosaic_stairs", "Spruce Mosaic Stairs");
         translationBuilder.add("block.elsewhere.spruce_mosaic_slab", "Spruce Mosaic Slab");
+        translationBuilder.add("block.elsewhere.spruce_boards", "Spruce Boards");
+        translationBuilder.add("block.elsewhere.spruce_trim", "Spruce Trim");
 
         translationBuilder.add("block.elsewhere.jungle_mosaic", "Jungle Mosaic");
         translationBuilder.add("block.elsewhere.jungle_mosaic_stairs", "Jungle Mosaic Stairs");
         translationBuilder.add("block.elsewhere.jungle_mosaic_slab", "Jungle Mosaic Slab");
+        translationBuilder.add("block.elsewhere.jungle_boards", "Jungle Boards");
+        translationBuilder.add("block.elsewhere.jungle_trim", "Jungle Trim");
 
         translationBuilder.add("block.elsewhere.acacia_mosaic", "Acacia Mosaic");
         translationBuilder.add("block.elsewhere.acacia_mosaic_stairs", "Acacia Mosaic Stairs");
         translationBuilder.add("block.elsewhere.acacia_mosaic_slab", "Acacia Mosaic Slab");
+        translationBuilder.add("block.elsewhere.acacia_boards", "Acacia Boards");
+        translationBuilder.add("block.elsewhere.acacia_trim", "Acacia Trim");
 
         translationBuilder.add("block.elsewhere.cherry_mosaic", "Cherry Mosaic");
         translationBuilder.add("block.elsewhere.cherry_mosaic_stairs", "Cherry Mosaic Stairs");
         translationBuilder.add("block.elsewhere.cherry_mosaic_slab", "Cherry Mosaic Slab");
+        translationBuilder.add("block.elsewhere.cherry_boards", "Cherry Boards");
+        translationBuilder.add("block.elsewhere.cherry_trim", "Cherry Trim");
 
         translationBuilder.add("block.elsewhere.mangrove_mosaic", "Mangrove Mosaic");
         translationBuilder.add("block.elsewhere.mangrove_mosaic_stairs", "Mangrove Mosaic Stairs");
         translationBuilder.add("block.elsewhere.mangrove_mosaic_slab", "Mangrove Mosaic Slab");
+        translationBuilder.add("block.elsewhere.mangrove_boards", "Mangrove Boards");
+        translationBuilder.add("block.elsewhere.mangrove_trim", "Mangrove Trim");
 
         translationBuilder.add("block.elsewhere.crimson_mosaic", "Crimson Mosaic");
         translationBuilder.add("block.elsewhere.crimson_mosaic_stairs", "Crimson Mosaic Stairs");
         translationBuilder.add("block.elsewhere.crimson_mosaic_slab", "Crimson Mosaic Slab");
+        translationBuilder.add("block.elsewhere.crimson_boards", "Crimson Boards");
+        translationBuilder.add("block.elsewhere.crimson_trim", "Crimson Trim");
 
         translationBuilder.add("block.elsewhere.warped_mosaic", "Warped Mosaic");
         translationBuilder.add("block.elsewhere.warped_mosaic_stairs", "Warped Mosaic Stairs");
         translationBuilder.add("block.elsewhere.warped_mosaic_slab", "Warped Mosaic Slab");
+        translationBuilder.add("block.elsewhere.warped_boards", "Warped Boards");
+        translationBuilder.add("block.elsewhere.warped_trim", "Warped Trim");
+
+
 
         translationBuilder.add("block.elsewhere.bluebonnet", "Bluebonnet");
         translationBuilder.add("block.elsewhere.potted_bluebonnet", "Potted Bluebonnet");
 
+        translationBuilder.add("block.elsewhere.red_hibiscus", "Red Hibiscus");
+        translationBuilder.add("block.elsewhere.potted_red_hibiscus", "Potted Red Hibiscus");
+        translationBuilder.add("block.elsewhere.orange_hibiscus", "Orange Hibiscus");
+        translationBuilder.add("block.elsewhere.potted_orange_hibiscus", "Potted Orange Hibiscus");
+        translationBuilder.add("block.elsewhere.yellow_hibiscus", "Yellow Hibiscus");
+        translationBuilder.add("block.elsewhere.potted_yellow_hibiscus", "Potted Yellow Hibiscus");
+        translationBuilder.add("block.elsewhere.blue_hibiscus", "Blue Hibiscus");
+        translationBuilder.add("block.elsewhere.potted_blue_hibiscus", "Potted Blue Hibiscus");
+        translationBuilder.add("block.elsewhere.purple_hibiscus", "Purple Hibiscus");
+        translationBuilder.add("block.elsewhere.potted_purple_hibiscus", "Potted Purple Hibiscus");
+        translationBuilder.add("block.elsewhere.pink_hibiscus", "Pink Hibiscus");
+        translationBuilder.add("block.elsewhere.potted_pink_hibiscus", "Potted Pink Hibiscus");
+        translationBuilder.add("block.elsewhere.white_hibiscus", "White Hibiscus");
+        translationBuilder.add("block.elsewhere.potted_white_hibiscus", "Potted White Hibiscus");
+
         translationBuilder.add("block.elsewhere.arid_dirt", "Arid Dirt");
+        translationBuilder.add("block.elsewhere.arid_grass_block", "Arid Grass Block");
+
+        translationBuilder.add("block.elsewhere.red_grass_block", "Red Grass Block");
+        translationBuilder.add("block.elsewhere.short_red_grass", "Short Red Grass");
+        translationBuilder.add("block.elsewhere.tall_red_grass", "Tall Red Grass");
+        translationBuilder.add("block.elsewhere.red_shrub", "Red Shrub");
+
+        translationBuilder.add("block.elsewhere.rusty_moss_block", "Rusty Moss Block");
+        translationBuilder.add("block.elsewhere.rusty_moss_carpet", "Rusty Moss Carpet");
+
+        translationBuilder.add("item.elsewhere.diamond_shard", "Diamond Shard");
+        translationBuilder.add("item.elsewhere.emerald_shard", "Emerald Shard");
+        translationBuilder.add("block.elsewhere.bejeweled_calcite", "Bejeweled Calcite");
+
+        translationBuilder.add("block.elsewhere.laterite", "Laterite");
+
+        translationBuilder.add("block.elsewhere.pebble", "Pebble");
 
 
+
+        translationBuilder.add("block.elsewhere.tin_ore", "Tin Ore");
+        translationBuilder.add("block.elsewhere.shale_tin_ore", "Shale Tin Ore");
+        translationBuilder.add("block.elsewhere.deepslate_tin_ore", "Deepslate Tin Ore");
+        translationBuilder.add("block.elsewhere.cinnabar_tin_ore", "Cinnabar Tin Ore");
+        translationBuilder.add("item.elsewhere.raw_tin", "Raw Tin");
+        translationBuilder.add("item.elsewhere.tin_ingot", "Tin Ingot");
+        translationBuilder.add("item.elsewhere.tin_nugget", "Tin Nugget");
+        translationBuilder.add("block.elsewhere.tin_block", "Block of Tin");
+        translationBuilder.add("block.elsewhere.raw_tin_block", "Block of Raw Tin");
+
+        translationBuilder.add("item.elsewhere.bronze_ingot", "Bronze Ingot");
+        translationBuilder.add("item.elsewhere.bronze_nugget", "Bronze Nugget");
+        translationBuilder.add("block.elsewhere.bronze_block", "Block of Bronze");
+        translationBuilder.add("item.elsewhere.bronze_helmet", "Bronze Helmet");
+        translationBuilder.add("item.elsewhere.bronze_chestplate", "Bronze Chestplate");
+        translationBuilder.add("item.elsewhere.bronze_leggings", "Bronze Leggings");
+        translationBuilder.add("item.elsewhere.bronze_boots", "Bronze Boots");
+        translationBuilder.add("item.elsewhere.bronze_sword", "Bronze Sword");
+        translationBuilder.add("item.elsewhere.bronze_axe", "Bronze Axe");
+        translationBuilder.add("item.elsewhere.bronze_spear", "Bronze Spear");
+        translationBuilder.add("item.elsewhere.bronze_pickaxe", "Bronze Pickaxe");
+        translationBuilder.add("item.elsewhere.bronze_shovel", "Bronze Shovel");
+        translationBuilder.add("item.elsewhere.bronze_hoe", "Bronze Hoe");
+
+        translationBuilder.add("block.elsewhere.silver_ore", "Silver Ore");
+        translationBuilder.add("block.elsewhere.shale_silver_ore", "Shale Silver Ore");
+        translationBuilder.add("block.elsewhere.deepslate_silver_ore", "Deepslate Silver Ore");
+        translationBuilder.add("block.elsewhere.cinnabar_silver_ore", "Cinnabar Silver Ore");
         translationBuilder.add("item.elsewhere.raw_silver", "Raw Silver");
         translationBuilder.add("item.elsewhere.silver_ingot", "Silver Ingot");
         translationBuilder.add("item.elsewhere.silver_nugget", "Silver Nugget");
+        translationBuilder.add("block.elsewhere.silver_block", "Block of Silver");
+        translationBuilder.add("block.elsewhere.raw_silver_block", "Block of Raw Silver");
         translationBuilder.add("item.elsewhere.silver_helmet", "Silver Helmet");
         translationBuilder.add("item.elsewhere.silver_chestplate", "Silver Chestplate");
         translationBuilder.add("item.elsewhere.silver_leggings", "Silver Leggings");
@@ -485,6 +572,7 @@ public class LangProviderEN extends FabricLanguageProvider {
 
         translationBuilder.add("item.elsewhere.soulsteel_ingot", "Soulsteel Ingot");
         translationBuilder.add("item.elsewhere.soulsteel_nugget", "Soulsteel Nugget");
+        translationBuilder.add("block.elsewhere.soulsteel_block", "Block of Soulsteel");
         translationBuilder.add("item.elsewhere.soulsteel_helmet", "Soulsteel Helmet");
         translationBuilder.add("item.elsewhere.soulsteel_chestplate", "Soulsteel Chestplate");
         translationBuilder.add("item.elsewhere.soulsteel_leggings", "Soulsteel Leggings");
@@ -504,14 +592,40 @@ public class LangProviderEN extends FabricLanguageProvider {
 
 
 
+        translationBuilder.add("entity.elsewhere.frostbite", "Frostbite");
+        translationBuilder.add("item.elsewhere.frostbite_spawn_egg", "Frostbite Spawn Egg");
+
+
 
         translationBuilder.add("tag.elsewhere.mosaics", "Mosaics");
+        translationBuilder.add("tag.elsewhere.mosaic_stairs", "Mosaic Stairs");
+        translationBuilder.add("tag.elsewhere.mosaic_slab", "Mosaic Slabs");
+        translationBuilder.add("tag.elsewhere.boards", "Boards");
+        translationBuilder.add("tag.elsewhere.trims", "Trims");
         translationBuilder.add("tag.elsewhere.shale_ore_replaceables", "Shale Ore Replaceables");
         translationBuilder.add("tag.elsewhere.cinnabar_ore_replaceables", "Cinnabar Ore Replaceables");
         translationBuilder.add("tag.elsewhere.sulfur_spike_replaceable", "Sulfur Spike Replaceable");
         translationBuilder.add("tag.elsewhere.icicle_replaceable", "Icicle Replaceable");
-        translationBuilder.add("tag.elsewhere.repairs_silver_armor", "Repairs Silver Armor");
         translationBuilder.add("tag.elsewhere.repairs_soulsteel_armor", "Repairs Soulsteel Armor");
+
+
+
+        // Generic Subtitles
+        translationBuilder.add("subtitles.elsewhere.block.generic.break", "Block broken");
+        translationBuilder.add("subtitles.elsewhere.block.generic.fall", "Something falls on a block");
+        translationBuilder.add("subtitles.elsewhere.block.generic.step", "Footsteps");
+        translationBuilder.add("subtitles.elsewhere.block.generic.hit", "Block breaking");
+        translationBuilder.add("subtitles.elsewhere.block.generic.place", "Block placed");
+
+        // Sulfur Pool Sounds
+        translationBuilder.add("subtitles.elsewhere.block.sulfur.noxious_gas", "Noxious Gas Bubbles");
+        translationBuilder.add("subtitles.elsewhere.block.geyser.eruption_start", "Geyser Erupts");
+        translationBuilder.add("subtitles.elsewhere.block.geyser.eruption_active", "Geyser Spraying");
+
+        // Mob Sounds
+        translationBuilder.add("subtitles.elsewhere.entity.frostbite.idle", "Frostbite Groans");
+        translationBuilder.add("subtitles.elsewhere.entity.frostbite.hurt", "Frostbite Hurts");
+        translationBuilder.add("subtitles.elsewhere.entity.frostbite.death", "Frostbite Dies");
 
 
 

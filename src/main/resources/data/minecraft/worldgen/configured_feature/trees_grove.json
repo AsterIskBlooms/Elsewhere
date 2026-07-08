@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "elsewhere:birch_on_snow",
+    "features": [
+      {
+        "chance": 0.33333334,
+        "feature": "elsewhere:birch_tall_on_snow"
+      }
+    ]
+  }
+}
