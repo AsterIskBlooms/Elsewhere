@@ -1,11 +1,16 @@
 package team.lookingglass.elsewhere.registry;
 
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.world.level.GrassColor;
 import team.lookingglass.elsewhere.registry.particles.*;
+
+import java.util.List;
 
 public class ERenderer {
 
-    public static void initialize()
+    public static void register()
 
     {
         ParticleProviderRegistry.getInstance().register(EParticles.SULFUR_BUBBLES, SulfurBubbleParticle.Provider::new);
@@ -15,5 +20,7 @@ public class ERenderer {
         ParticleProviderRegistry.getInstance().register(EParticles.GEYSER_BASE, GeyserBaseParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(EParticles.GEYSER_POOF, GeyserBaseParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(EParticles.GEYSER_PLUME, GeyserPlumeParticle.Provider::new);
+
+        BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), EBlocks.ARID_GRASS_BLOCK);
     }
 }

@@ -1,5 +1,7 @@
 package team.lookingglass.elsewhere.datagen;
 
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
@@ -29,48 +31,53 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
 
     @Override
     public void generate() {
-        // Copper Ore Changes
+        // Copper & Coal Ore Changes
         add(Blocks.COPPER_ORE, createOreDrop(Blocks.COPPER_ORE, Items.RAW_COPPER));
-        add(Blocks.DEEPSLATE_COPPER_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER, 3.0F, 5.0F));
-
-        // Deepslate Buff
-        add(Blocks.DEEPSLATE_IRON_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_IRON_ORE, Items.RAW_IRON, 1.0F, 2.0F));
-        add(Blocks.DEEPSLATE_GOLD_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_GOLD_ORE, Items.RAW_GOLD, 1.0F, 2.0F));
-        add(Blocks.DEEPSLATE_REDSTONE_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_REDSTONE_ORE, Items.REDSTONE, 5.0F, 7.0F));
-        // Diamond remains unchanged as it's meant to be scarce
-        add(Blocks.DEEPSLATE_LAPIS_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_LAPIS_ORE, Items.LAPIS_LAZULI, 6.0F, 11.0F));
-        add(Blocks.DEEPSLATE_EMERALD_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_EMERALD_ORE, Items.EMERALD, 1.0F, 2.0F));
+        add(Blocks.DEEPSLATE_COPPER_ORE, createOreDrop(Blocks.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER));
 
         // Shale Ores
-        add(EBlocks.SHALE_COAL_ORE, createMultipleOreDrops(EBlocks.SHALE_COAL_ORE, Items.COAL, 1.0F, 2.0F));
-        add(EBlocks.SHALE_COPPER_ORE, createMultipleOreDrops(EBlocks.SHALE_COPPER_ORE, Items.RAW_COPPER, 1.0F, 2.0F));
+        add(EBlocks.SHALE_COAL_ORE, createOreDrop(EBlocks.SHALE_COAL_ORE, Items.COAL));
+        add(EBlocks.SHALE_COPPER_ORE, createOreDrop(EBlocks.SHALE_COPPER_ORE, Items.RAW_COPPER));
         add(EBlocks.SHALE_IRON_ORE, createOreDrop(EBlocks.SHALE_IRON_ORE, Items.RAW_IRON));
         add(EBlocks.SHALE_GOLD_ORE, createOreDrop(EBlocks.SHALE_GOLD_ORE, Items.RAW_GOLD));
-        add(EBlocks.SHALE_REDSTONE_ORE, createMultipleOreDrops(EBlocks.SHALE_REDSTONE_ORE, Items.REDSTONE, 4.0F, 6.0F));
+        add(EBlocks.SHALE_REDSTONE_ORE, createMultipleOreDrops(EBlocks.SHALE_REDSTONE_ORE, Items.REDSTONE, 4.0F, 5.0F));
         add(EBlocks.SHALE_DIAMOND_ORE, createOreDrop(EBlocks.SHALE_DIAMOND_ORE, Items.DIAMOND));
         add(EBlocks.SHALE_LAPIS_ORE, createMultipleOreDrops(EBlocks.SHALE_LAPIS_ORE, Items.LAPIS_LAZULI, 4.0F, 9.0F));
         add(EBlocks.SHALE_EMERALD_ORE, createOreDrop(EBlocks.SHALE_EMERALD_ORE, Items.EMERALD));
 
-        // Silver Ores
-        add(EBlocks.SILVER_ORE, createOreDrop(EBlocks.SILVER_ORE, EItems.RAW_SILVER));
-        add(EBlocks.SHALE_SILVER_ORE, createOreDrop(EBlocks.SHALE_SILVER_ORE, EItems.RAW_SILVER));
-        add(EBlocks.DEEPSLATE_SILVER_ORE, createMultipleOreDrops(EBlocks.DEEPSLATE_SILVER_ORE, EItems.RAW_SILVER, 1.0F, 2.0F));
-
-        add(EBlocks.CINNABAR_COAL_ORE, createMultipleOreDrops(EBlocks.CINNABAR_COAL_ORE, Items.COAL, 1.0F, 2.0F));
-        add(EBlocks.CINNABAR_COPPER_ORE, createMultipleOreDrops(EBlocks.CINNABAR_COPPER_ORE, Items.RAW_COPPER, 1.0F, 2.0F));
+        // Cinnabar Ores
+        add(EBlocks.CINNABAR_COAL_ORE, createOreDrop(EBlocks.CINNABAR_COAL_ORE, Items.COAL));
+        add(EBlocks.CINNABAR_COPPER_ORE, createOreDrop(EBlocks.CINNABAR_COPPER_ORE, Items.RAW_COPPER));
         add(EBlocks.CINNABAR_IRON_ORE, createOreDrop(EBlocks.CINNABAR_IRON_ORE, Items.RAW_IRON));
         add(EBlocks.CINNABAR_GOLD_ORE, createOreDrop(EBlocks.CINNABAR_GOLD_ORE, Items.RAW_GOLD));
-        add(EBlocks.CINNABAR_REDSTONE_ORE, createMultipleOreDrops(EBlocks.CINNABAR_REDSTONE_ORE, Items.REDSTONE, 4.0F, 6.0F));
+        add(EBlocks.CINNABAR_REDSTONE_ORE, createMultipleOreDrops(EBlocks.CINNABAR_REDSTONE_ORE, Items.REDSTONE, 4.0F, 5.0F));
         add(EBlocks.CINNABAR_DIAMOND_ORE, createOreDrop(EBlocks.CINNABAR_DIAMOND_ORE, Items.DIAMOND));
         add(EBlocks.CINNABAR_LAPIS_ORE, createMultipleOreDrops(EBlocks.CINNABAR_LAPIS_ORE, Items.LAPIS_LAZULI, 4.0F, 9.0F));
         add(EBlocks.CINNABAR_EMERALD_ORE, createOreDrop(EBlocks.CINNABAR_EMERALD_ORE, Items.EMERALD));
 
+        // Tin
+        add(EBlocks.TIN_ORE, createOreDrop(EBlocks.TIN_ORE, EItems.RAW_TIN));
+        add(EBlocks.SHALE_TIN_ORE, createOreDrop(EBlocks.SHALE_TIN_ORE, EItems.RAW_TIN));
+        add(EBlocks.DEEPSLATE_TIN_ORE, createOreDrop(EBlocks.DEEPSLATE_TIN_ORE, EItems.RAW_TIN));
+        add(EBlocks.CINNABAR_TIN_ORE, createOreDrop(EBlocks.CINNABAR_TIN_ORE, EItems.RAW_TIN));
 
-        // Quartz Brick Fill
+        // Silver
+        add(EBlocks.SILVER_ORE, createOreDrop(EBlocks.SILVER_ORE, EItems.RAW_SILVER));
+        add(EBlocks.SHALE_SILVER_ORE, createOreDrop(EBlocks.SHALE_SILVER_ORE, EItems.RAW_SILVER));
+        add(EBlocks.DEEPSLATE_SILVER_ORE, createOreDrop(EBlocks.DEEPSLATE_SILVER_ORE, EItems.RAW_SILVER));
+        add(EBlocks.CINNABAR_SILVER_ORE, createOreDrop(EBlocks.CINNABAR_SILVER_ORE, EItems.RAW_SILVER));
+
+        dropSelf(EBlocks.RAW_TIN_BLOCK);
+        dropSelf(EBlocks.TIN_BLOCK);
+        dropSelf(EBlocks.BRONZE_BLOCK);
+        dropSelf(EBlocks.SILVER_BLOCK);
+        dropSelf(EBlocks.RAW_SILVER_BLOCK);
+        dropSelf(EBlocks.SOULSTEEL_BLOCK);
+
+        // Stones
         dropSelf(EBlocks.QUARTZ_BRICK_STAIRS);
         add(EBlocks.QUARTZ_BRICK_SLAB, createSlabItemTable(EBlocks.QUARTZ_BRICK_SLAB));
 
-        // Amethyst-Obsidian Set
         dropSelf(EBlocks.AMETHYST_STAIRS);
         add(EBlocks.AMETHYST_SLAB, createSlabItemTable(EBlocks.AMETHYST_SLAB));
         dropSelf(EBlocks.AMETHYST_BRICKS);
@@ -436,7 +443,44 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
 
         add(EBlocks.ICICLE, createSilkTouchOnlyTable(EBlocks.ICICLE));
 
+        dropSelf(EBlocks.PACKED_MUD_STAIRS);
+        add(EBlocks.PACKED_MUD_SLAB, createSlabItemTable(EBlocks.PACKED_MUD_SLAB));
+        dropSelf(EBlocks.PACKED_MUD_WALL);
+        dropSelf(EBlocks.CHISELED_MUD_BRICKS);
+        dropSelf(EBlocks.MUD_BRICK_PILLAR);
+
         dropSelf(EBlocks.ARID_DIRT);
+        add(EBlocks.ARID_GRASS_BLOCK, createSingleItemTableWithSilkTouch(EBlocks.ARID_GRASS_BLOCK, EBlocks.ARID_DIRT));
+
+        add(EBlocks.RED_GRASS_BLOCK, createSingleItemTableWithSilkTouch(EBlocks.RED_GRASS_BLOCK, Blocks.DIRT));
+        add(EBlocks.SHORT_RED_GRASS, createShearsOrSilkTouchOnlyDrop(EBlocks.SHORT_RED_GRASS));
+        add(EBlocks.TALL_RED_GRASS, createDoublePlantShearsOrSilkTouchDrop(EBlocks.TALL_RED_GRASS));
+        add(EBlocks.RED_SHRUB, createShearsOrSilkTouchOnlyDrop(EBlocks.RED_SHRUB));
+
+        dropSelf(EBlocks.RUSTY_MOSS_BLOCK);
+        dropSelf(EBlocks.RUSTY_MOSS_CARPET);
+
+        dropSelf(EBlocks.LATERITE);
+
+        add(EBlocks.BEJEWELED_CALCITE, createMultipleOreDrops(EBlocks.BEJEWELED_CALCITE, EItems.EMERALD_SHARD, 3, 5));
+
+        dropSelf(EBlocks.BLUEBONNET);
+        add(EBlocks.POTTED_BLUEBONNET, createPotFlowerItemTable(EBlocks.BLUEBONNET));
+
+        dropSelf(EBlocks.RED_HIBISCUS);
+        add(EBlocks.POTTED_RED_HIBISCUS, createPotFlowerItemTable(EBlocks.RED_HIBISCUS));
+        dropSelf(EBlocks.ORANGE_HIBISCUS);
+        add(EBlocks.POTTED_ORANGE_HIBISCUS, createPotFlowerItemTable(EBlocks.ORANGE_HIBISCUS));
+        dropSelf(EBlocks.YELLOW_HIBISCUS);
+        add(EBlocks.POTTED_YELLOW_HIBISCUS, createPotFlowerItemTable(EBlocks.YELLOW_HIBISCUS));
+        dropSelf(EBlocks.BLUE_HIBISCUS);
+        add(EBlocks.POTTED_BLUE_HIBISCUS, createPotFlowerItemTable(EBlocks.BLUE_HIBISCUS));
+        dropSelf(EBlocks.PURPLE_HIBISCUS);
+        add(EBlocks.POTTED_PURPLE_HIBISCUS, createPotFlowerItemTable(EBlocks.PURPLE_HIBISCUS));
+        dropSelf(EBlocks.PINK_HIBISCUS);
+        add(EBlocks.POTTED_PINK_HIBISCUS, createPotFlowerItemTable(EBlocks.PINK_HIBISCUS));
+        dropSelf(EBlocks.WHITE_HIBISCUS);
+        add(EBlocks.POTTED_WHITE_HIBISCUS, createPotFlowerItemTable(EBlocks.WHITE_HIBISCUS));
 
         dropSelf(EBlocks.OAK_MOSAIC);
         dropSelf(EBlocks.OAK_MOSAIC_STAIRS);
@@ -485,6 +529,10 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
                                 .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))
                 )
         );
+    }
+
+    public LootTable.Builder createDoublePlantShearsOrSilkTouchDrop(final Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().when(this.hasShearsOrSilkTouch()).add(LootItem.lootTableItem(block).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))));
     }
 
 }

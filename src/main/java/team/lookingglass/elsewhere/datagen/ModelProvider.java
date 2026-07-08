@@ -16,7 +16,6 @@ public class ModelProvider extends FabricModelProvider {
     }
 
 
-
     @Override
     public void generateBlockStateModels(BlockModelGenerators gen) {
 
@@ -155,8 +154,8 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.DIORITE_BRICK_SLAB)
                 .wall(EBlocks.DIORITE_BRICK_WALL)
         ;
-        gen.createTrivialCube(EBlocks.CHISELED_DIORITE);
-        gen.createTrivialCube(EBlocks.CHISELED_DIORITE_BRICKS);
+        gen.createTrivialBlock(EBlocks.CHISELED_DIORITE, TexturedModel.COLUMN);
+        gen.createTrivialBlock(EBlocks.CHISELED_DIORITE_BRICKS, TexturedModel.COLUMN);
         gen.createAxisAlignedPillarBlock(EBlocks.DIORITE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(Blocks.CALCITE)
@@ -266,8 +265,8 @@ public class ModelProvider extends FabricModelProvider {
         gen.family(Blocks.PRISMARINE_BRICKS)
                 .wall(EBlocks.PRISMARINE_BRICK_WALL)
         ;
-        gen.createTrivialBlock(EBlocks.CHISELED_PRISMARINE, TexturedModel.COLUMN);
-        gen.createTrivialBlock(EBlocks.CHISELED_PRISMARINE_BRICKS, TexturedModel.COLUMN);
+        gen.createTrivialCube(EBlocks.CHISELED_PRISMARINE);
+        gen.createTrivialCube(EBlocks.CHISELED_PRISMARINE_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.PRISMARINE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(Blocks.DARK_PRISMARINE)
@@ -396,10 +395,6 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.SHALE_LAPIS_ORE);
         gen.createTrivialCube(EBlocks.SHALE_EMERALD_ORE);
 
-        gen.createTrivialCube(EBlocks.SILVER_ORE);
-        gen.createTrivialCube(EBlocks.SHALE_SILVER_ORE);
-        gen.createTrivialCube(EBlocks.DEEPSLATE_SILVER_ORE);
-
         // Sulfur & Cinnabar
         gen.family(EBlocks.SULFUR)
                 .stairs(EBlocks.SULFUR_STAIRS)
@@ -457,7 +452,6 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.CINNABAR_COPPER_ORE);
         gen.createTrivialCube(EBlocks.CINNABAR_IRON_ORE);
         gen.createTrivialCube(EBlocks.CINNABAR_GOLD_ORE);
-        gen.createTrivialCube(EBlocks.CINNABAR_SILVER_ORE);
         gen.createTrivialCube(EBlocks.CINNABAR_REDSTONE_ORE);
         gen.createTrivialCube(EBlocks.CINNABAR_DIAMOND_ORE);
         gen.createTrivialCube(EBlocks.CINNABAR_LAPIS_ORE);
@@ -547,58 +541,105 @@ public class ModelProvider extends FabricModelProvider {
 
         customGen.generateStalactite(gen, EBlocks.ICICLE);
 
+        // Mud
+        gen.family(Blocks.PACKED_MUD)
+                .stairs(EBlocks.PACKED_MUD_STAIRS)
+                .slab(EBlocks.PACKED_MUD_SLAB)
+                .wall(EBlocks.PACKED_MUD_WALL)
+        ;
+        gen.createTrivialCube(EBlocks.CHISELED_MUD_BRICKS);
+        gen.createRotatedPillarWithHorizontalVariant(EBlocks.MUD_BRICK_PILLAR, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
+
 
         // Wood Sets
-        gen.family(EBlocks.OAK_MOSAIC)
-                .stairs(EBlocks.OAK_MOSAIC_STAIRS)
-                .slab(EBlocks.OAK_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.DARK_OAK_MOSAIC)
-                .stairs(EBlocks.DARK_OAK_MOSAIC_STAIRS)
-                .slab(EBlocks.DARK_OAK_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.PALE_OAK_MOSAIC)
-                .stairs(EBlocks.PALE_OAK_MOSAIC_STAIRS)
-                .slab(EBlocks.PALE_OAK_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.BIRCH_MOSAIC)
-                .stairs(EBlocks.BIRCH_MOSAIC_STAIRS)
-                .slab(EBlocks.BIRCH_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.SPRUCE_MOSAIC)
-                .stairs(EBlocks.SPRUCE_MOSAIC_STAIRS)
-                .slab(EBlocks.SPRUCE_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.JUNGLE_MOSAIC)
-                .stairs(EBlocks.JUNGLE_MOSAIC_STAIRS)
-                .slab(EBlocks.JUNGLE_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.ACACIA_MOSAIC)
-                .stairs(EBlocks.ACACIA_MOSAIC_STAIRS)
-                .slab(EBlocks.ACACIA_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.CHERRY_MOSAIC)
-                .stairs(EBlocks.CHERRY_MOSAIC_STAIRS)
-                .slab(EBlocks.CHERRY_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.MANGROVE_MOSAIC)
-                .stairs(EBlocks.MANGROVE_MOSAIC_STAIRS)
-                .slab(EBlocks.MANGROVE_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.CRIMSON_MOSAIC)
-                .stairs(EBlocks.CRIMSON_MOSAIC_STAIRS)
-                .slab(EBlocks.CRIMSON_MOSAIC_SLAB)
-        ;
-        gen.family(EBlocks.WARPED_MOSAIC)
-                .stairs(EBlocks.WARPED_MOSAIC_STAIRS)
-                .slab(EBlocks.WARPED_MOSAIC_SLAB)
-        ;
+        gen.family(EBlocks.OAK_MOSAIC).stairs(EBlocks.OAK_MOSAIC_STAIRS).slab(EBlocks.OAK_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.OAK_BOARDS);
+        gen.createTrivialCube(EBlocks.OAK_TRIM);
+
+        gen.family(EBlocks.DARK_OAK_MOSAIC).stairs(EBlocks.DARK_OAK_MOSAIC_STAIRS).slab(EBlocks.DARK_OAK_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.DARK_OAK_BOARDS);
+        gen.createTrivialCube(EBlocks.DARK_OAK_TRIM);
+
+        gen.family(EBlocks.PALE_OAK_MOSAIC).stairs(EBlocks.PALE_OAK_MOSAIC_STAIRS).slab(EBlocks.PALE_OAK_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.PALE_OAK_BOARDS);
+        gen.createTrivialCube(EBlocks.PALE_OAK_TRIM);
+
+        gen.family(EBlocks.BIRCH_MOSAIC).stairs(EBlocks.BIRCH_MOSAIC_STAIRS).slab(EBlocks.BIRCH_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.BIRCH_BOARDS);
+        gen.createTrivialCube(EBlocks.BIRCH_TRIM);
+
+        gen.family(EBlocks.SPRUCE_MOSAIC).stairs(EBlocks.SPRUCE_MOSAIC_STAIRS).slab(EBlocks.SPRUCE_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.SPRUCE_BOARDS);
+        gen.createTrivialCube(EBlocks.SPRUCE_TRIM);
+
+        gen.family(EBlocks.JUNGLE_MOSAIC).stairs(EBlocks.JUNGLE_MOSAIC_STAIRS).slab(EBlocks.JUNGLE_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.JUNGLE_BOARDS);
+        gen.createTrivialCube(EBlocks.JUNGLE_TRIM);
+
+        gen.family(EBlocks.ACACIA_MOSAIC).stairs(EBlocks.ACACIA_MOSAIC_STAIRS).slab(EBlocks.ACACIA_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.ACACIA_BOARDS);
+        gen.createTrivialCube(EBlocks.ACACIA_TRIM);
+
+        gen.family(EBlocks.CHERRY_MOSAIC).stairs(EBlocks.CHERRY_MOSAIC_STAIRS).slab(EBlocks.CHERRY_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.CHERRY_BOARDS);
+        gen.createTrivialCube(EBlocks.CHERRY_TRIM);
+
+        gen.family(EBlocks.MANGROVE_MOSAIC).stairs(EBlocks.MANGROVE_MOSAIC_STAIRS).slab(EBlocks.MANGROVE_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.MANGROVE_BOARDS);
+        gen.createTrivialCube(EBlocks.MANGROVE_TRIM);
+
+        gen.family(EBlocks.CRIMSON_MOSAIC).stairs(EBlocks.CRIMSON_MOSAIC_STAIRS).slab(EBlocks.CRIMSON_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.CRIMSON_BOARDS);
+        gen.createTrivialCube(EBlocks.CRIMSON_TRIM);
+
+        gen.family(EBlocks.WARPED_MOSAIC).stairs(EBlocks.WARPED_MOSAIC_STAIRS).slab(EBlocks.WARPED_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.WARPED_BOARDS);
+        gen.createTrivialCube(EBlocks.WARPED_TRIM);
 
 
-        gen.createPlantWithDefaultItem(EBlocks.BLUEBONNET, EBlocks.POTTED_BLUEBONNET, BlockModelGenerators.PlantType.TINTED);
+        customGen.createPlantWithUniquePottedTexture(EBlocks.BLUEBONNET, EBlocks.POTTED_BLUEBONNET, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        gen.createPlantWithDefaultItem(EBlocks.RED_HIBISCUS, EBlocks.POTTED_RED_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.ORANGE_HIBISCUS, EBlocks.POTTED_ORANGE_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.YELLOW_HIBISCUS, EBlocks.POTTED_YELLOW_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.BLUE_HIBISCUS, EBlocks.POTTED_BLUE_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.PURPLE_HIBISCUS, EBlocks.POTTED_PURPLE_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.PINK_HIBISCUS, EBlocks.POTTED_PINK_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.WHITE_HIBISCUS, EBlocks.POTTED_WHITE_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
 
         gen.createTrivialBlock(EBlocks.ARID_DIRT, TexturedModel.COLUMN);
+        customGen.createAridGrassBlock();
 
+        customGen.createTundraGrassBlock();
+        gen.createCrossBlockWithDefaultItem(EBlocks.SHORT_RED_GRASS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createDoublePlantWithDefaultItem(EBlocks.TALL_RED_GRASS, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createCrossBlockWithDefaultItem(EBlocks.RED_SHRUB, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        gen.createFullAndCarpetBlocks(EBlocks.RUSTY_MOSS_BLOCK, EBlocks.RUSTY_MOSS_CARPET);
+
+        gen.createTrivialBlock(EBlocks.LATERITE, TexturedModel.COLUMN);
+
+        gen.createTrivialCube(EBlocks.BEJEWELED_CALCITE);
+
+        gen.createTrivialCube(EBlocks.TIN_ORE);
+        gen.createTrivialCube(EBlocks.SHALE_TIN_ORE);
+        gen.createTrivialCube(EBlocks.DEEPSLATE_TIN_ORE);
+        gen.createTrivialCube(EBlocks.CINNABAR_TIN_ORE);
+        gen.createTrivialCube(EBlocks.RAW_TIN_BLOCK);
+        gen.createTrivialCube(EBlocks.TIN_BLOCK);
+
+        gen.createTrivialCube(EBlocks.BRONZE_BLOCK);
+
+        gen.createTrivialCube(EBlocks.SILVER_ORE);
+        gen.createTrivialCube(EBlocks.SHALE_SILVER_ORE);
+        gen.createTrivialCube(EBlocks.DEEPSLATE_SILVER_ORE);
+        gen.createTrivialCube(EBlocks.CINNABAR_SILVER_ORE);
+        gen.createTrivialCube(EBlocks.RAW_SILVER_BLOCK);
+        gen.createTrivialCube(EBlocks.SILVER_BLOCK);
+
+        gen.createTrivialCube(EBlocks.SOULSTEEL_BLOCK);
+
+        customGen.generatePebble(EBlocks.PEBBLE);
 
     }
 
@@ -606,33 +647,49 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
-        itemModelGenerator.generateFlatItem(EBlocks.SULFUR_SPIKE.asItem(), ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EBlocks.ICICLE.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EBlocks.SULFUR_SPIKE.asItem(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EBlocks.ICICLE.asItem(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModelGenerator.generateFlatItem(EBlocks.PEBBLE.asItem(), ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.DIAMOND_SHARD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.EMERALD_SHARD, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.RAW_TIN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.TIN_INGOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.TIN_NUGGET, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_INGOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_NUGGET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_HELMET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_CHESTPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_LEGGINGS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_BOOTS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateSpear(EItems.BRONZE_SPEAR);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.RAW_SILVER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SILVER_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_HELMET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_CHESTPLATE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_LEGGINGS, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateSpear(EItems.SILVER_SPEAR);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SILVER_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HELMET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_CHESTPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_LEGGINGS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_BOOTS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateSpear(EItems.SOULSTEEL_SPEAR);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.FROSTBITE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
     }
 
 

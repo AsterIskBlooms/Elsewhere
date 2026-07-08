@@ -22,6 +22,8 @@ public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(LootTableProvider::new);
 		pack.addProvider(ItemRecipeProvider::new);
 		pack.addProvider(ParticleProvider::new);
+		pack.addProvider(EntityLootTableProvider::new);
+		pack.addProvider(EntityTagProvider::new);
 	}
 
 	@Override
