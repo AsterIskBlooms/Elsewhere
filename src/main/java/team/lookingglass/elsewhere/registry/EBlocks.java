@@ -820,10 +820,10 @@ public interface EBlocks {
     );
 
     Block RUSTY_MOSS_BLOCK = register("rusty_moss_block", p -> new BonemealableFeaturePlacerBlock(VegetationFeatures.PALE_MOSS_PATCH_BONEMEAL, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.1F).sound(SoundType.GRASS)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.1F).sound(SoundType.MOSS)
     );
     Block RUSTY_MOSS_CARPET = register("rusty_moss_carpet", MossyCarpetBlock::new, true,
-            BlockBehaviour.Properties.ofFullCopy(RUSTY_MOSS_BLOCK)
+            BlockBehaviour.Properties.ofFullCopy(RUSTY_MOSS_BLOCK).sound(SoundType.MOSS_CARPET)
     );
 
     // Arid Dirt

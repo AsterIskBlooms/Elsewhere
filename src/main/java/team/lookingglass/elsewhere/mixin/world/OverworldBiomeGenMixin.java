@@ -3,6 +3,7 @@ package team.lookingglass.elsewhere.mixin.world;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.OverworldBiomeBuilder;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +19,7 @@ import java.util.function.Consumer;
 public class OverworldBiomeGenMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void injectOutback(CallbackInfo ci) {
+    private void injectCustomWorldgen(CallbackInfo ci) {
         OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor) this;
 
         // Array is [0-4] row, [0-4] column
@@ -31,12 +32,14 @@ public class OverworldBiomeGenMixin {
         middleA[4][0] = EBiomes.OUTBACK;
         middleA[4][1] = EBiomes.OUTBACK;
 
-        middleB[1][0] = EBiomes.TUNDRA;
-        middleB[1][1] = EBiomes.TUNDRA;
-        plateauB[1][1] = EBiomes.TUNDRA;
+        middleB[0][0] = EBiomes.TUNDRA;
+        middleB[0][1] = EBiomes.TUNDRA;
 
-//        middleB[1][2] = EBiomes.DAPPLED_FOREST;
-//        plateauB[1][2] = EBiomes.DAPPLED_FOREST;
+        plateauB[0][1] = Biomes.ICE_SPIKES;
+        plateauB[1][1] = Biomes.CHERRY_GROVE;
+
+        middleB[1][2] = EBiomes.DAPPLED_FOREST;
+        plateauB[1][2] = EBiomes.DAPPLED_FOREST;
 
     }
 
@@ -71,5 +74,29 @@ public class OverworldBiomeGenMixin {
                 0.0F,
                 EBiomes.FRIGID_CAVES
         );
+    }
+
+    @SuppressWarnings("unchecked")
+    @Redirect(method = "addValleys", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/OverworldBiomeBuilder;addSurfaceBiome(Ljava/util/function/Consumer;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;FLnet/minecraft/resources/ResourceKey;)V"))
+    private void elsewhere$splitRiverTemperatures(OverworldBiomeBuilder builder,
+                                                  Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes,
+                                                  Climate.Parameter temperature,
+                                                  Climate.Parameter humidity,
+                                                  Climate.Parameter continentalness,
+                                                  Climate.Parameter erosion,
+                                                  Climate.Parameter weirdness,
+                                                  float offset,
+                                                  ResourceKey<Biome> biome
+    ) {
+        OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor)(Object) builder;
+        if (biome == Biomes.RIVER && temperature == accessor.getUnfrozenRange()) {
+            Climate.Parameter[] temperatures = accessor.getTemperatures();
+            ResourceKey<Biome>[] rivers = new ResourceKey[]{Biomes.FROZEN_RIVER, EBiomes.COLD_RIVER, Biomes.RIVER, EBiomes.LUKEWARM_RIVER, EBiomes.WARM_RIVER};
+            for (int i = 1; i < temperatures.length; i++) {
+                accessor.invokeAddSurfaceBiome(biomes, temperatures[i], humidity, continentalness, erosion, weirdness, offset, rivers[i]);
+            }
+        } else {
+            accessor.invokeAddSurfaceBiome(biomes, temperature, humidity, continentalness, erosion, weirdness, offset, biome);
+        }
     }
 }

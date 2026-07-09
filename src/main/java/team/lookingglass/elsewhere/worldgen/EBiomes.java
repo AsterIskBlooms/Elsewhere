@@ -24,6 +24,11 @@ public class EBiomes {
         context.register(OUTBACK, createOutback(context));
         context.register(TUNDRA, createTundra(context));
         context.register(DAPPLED_FOREST, createDappledForest(context));
+
+        context.register(WARM_RIVER, createWarmRiver(context));
+        context.register(LUKEWARM_RIVER, createLukewarmRiver(context));
+        context.register(COLD_RIVER, createColdRiver(context));
+
         context.register(CRYSTAL_CAVERNS, createCrystalCaverns(context));
         context.register(SULFUR_CAVES, createSulfurCaves(context));
         context.register(ARID_CAVES, createAridCaves(context));
@@ -32,22 +37,24 @@ public class EBiomes {
 
     public static final ResourceKey<Biome> OUTBACK = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "outback"));
-
     public static final ResourceKey<Biome> TUNDRA = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tundra"));
-
     public static final ResourceKey<Biome> DAPPLED_FOREST = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "dappled_forest"));
 
+    public static final ResourceKey<Biome> WARM_RIVER = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "warm_river"));
+    public static final ResourceKey<Biome> LUKEWARM_RIVER = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "lukewarm_river"));
+    public static final ResourceKey<Biome> COLD_RIVER = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cold_river"));
+
     public static final ResourceKey<Biome> CRYSTAL_CAVERNS = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "crystal_caverns"));
-
     public static final ResourceKey<Biome> SULFUR_CAVES = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_caves"));
-
     public static final ResourceKey<Biome> ARID_CAVES = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_caves"));
-
     public static final ResourceKey<Biome> FRIGID_CAVES = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frigid_caves"));
 
@@ -96,7 +103,8 @@ public class EBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 75, new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
@@ -113,7 +121,6 @@ public class EBiomes {
         );
 
         BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
-
         BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
         BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
@@ -126,13 +133,12 @@ public class EBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.5F)
-                .downfall(1.0F)
+                .temperature(0.8F)
+                .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .grassColorOverride(0xC6FF42)
-                        .waterColor(0x3F76E4)
+                        .waterColor(0x3D57D6)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, -16448205)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -141,22 +147,8 @@ public class EBiomes {
     private static Biome createDappledForest(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 4, 6));
-        spawnBuilder.addSpawn(MobCategory.AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.BAT, 8, 8));
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_HORSE, 1, 1));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
-
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.POLAR_BEAR, 1, 2));
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -170,21 +162,153 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
         BiomeDefaultFeatures.addDefaultSprings(genBuilder);
-        BiomeDefaultFeatures.addBushes(genBuilder);
-        BiomeDefaultFeatures.addFerns(genBuilder);
-        BiomeDefaultFeatures.addLeafLitterPatch(genBuilder);
+//        BiomeDefaultFeatures.addBushes(genBuilder);
+//        BiomeDefaultFeatures.addFerns(genBuilder);
         BiomeDefaultFeatures.addForestGrass(genBuilder);
+        BiomeDefaultFeatures.addLeafLitterPatch(genBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(genBuilder, false);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.8F)
+                .temperature(0.6F)
+                .downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .grassColorOverride(0xDF9C27)
+                        .foliageColorOverride(0xE68E30)
+                        .dryFoliageColorOverride(0x8C3A04)
+                        .waterColor(0x375154)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xE68E30)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createWarmRiver(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
+
+        spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(2.0F)
+                .downfall(0.5F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x43D5EE)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createLukewarmRiver(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
+
+        spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.5F)
                 .downfall(1.2F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .grassColorOverride(0xFFD321)
-                        .waterColor(0x3F76E4)
+                        .waterColor(0x45ADF2)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, -16448205)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createColdRiver(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.DROWNED, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
+
+        spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
+
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(0.5F)
+                .downfall(1.2F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x3D57D6)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -214,9 +338,9 @@ public class EBiomes {
                 .temperature(1.0F)
                 .downfall(2.0F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x43D5EE)
+                        .waterColor(0x6B38C9)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, -16506061)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x140533)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -253,15 +377,15 @@ public class EBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
-                .temperature(2.0F)
-                .downfall(1.0F)
+                .temperature(0.8F)
+                .downfall(0.4F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x34BF89)
                         .build())
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, -7555023)
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, -14267102)
-                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.2F)
-                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.75F)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x8CB831)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x17543C)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.1F)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.6F)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -297,8 +421,9 @@ public class EBiomes {
                 .temperature(2.0F)
                 .downfall(0.0F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x3F76E4)
+                        .waterColor(0x45ADF2)
                         .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -335,9 +460,9 @@ public class EBiomes {
                 .temperature(0.0F)
                 .downfall(0.0F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x3D57D6)
+                        .waterColor(0x3938C9)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, -16448205)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();

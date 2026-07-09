@@ -120,8 +120,8 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.ANDESITE_BRICK_SLAB)
                 .wall(EBlocks.ANDESITE_BRICK_WALL)
         ;
-        gen.createTrivialBlock(EBlocks.CHISELED_ANDESITE, TexturedModel.COLUMN);
-        gen.createTrivialCube(EBlocks.CHISELED_ANDESITE_BRICKS);
+        gen.createTrivialCube(EBlocks.CHISELED_ANDESITE);
+        gen.createTrivialBlock(EBlocks.CHISELED_ANDESITE_BRICKS, TexturedModel.COLUMN);
         gen.createAxisAlignedPillarBlock(EBlocks.ANDESITE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(Blocks.POLISHED_GRANITE)

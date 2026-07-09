@@ -50,7 +50,7 @@ public interface ESounds {
     SoundEvent STONE_BRICKS_FALL = register("block.stone_bricks.fall");
     SoundType STONE_BRICKS = new SoundType(1F, 1F,
             STONE_BRICKS_BREAK, STONE_BRICKS_STEP, STONE_BRICKS_PLACE, STONE_BRICKS_HIT, STONE_BRICKS_FALL);
-    SoundType STONE_TILES = new SoundType(1F, 1.4F,
+    SoundType STONE_TILES = new SoundType(1F, 1.2F,
             STONE_BRICKS_BREAK, STONE_BRICKS_STEP, STONE_BRICKS_PLACE, STONE_BRICKS_HIT, STONE_BRICKS_FALL);
     SoundType SHALE_TILES = new SoundType(1F, 1.2F,
             SoundEvents.TUFF_BRICKS_BREAK, SoundEvents.TUFF_BRICKS_STEP, SoundEvents.TUFF_BRICKS_PLACE, SoundEvents.TUFF_BRICKS_HIT, SoundEvents.TUFF_BRICKS_FALL);

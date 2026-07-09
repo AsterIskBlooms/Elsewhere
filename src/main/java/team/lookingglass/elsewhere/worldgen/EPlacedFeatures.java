@@ -193,7 +193,7 @@ public class EPlacedFeatures {
         registerPlaced(context, SULFUR_POOL,
                 configured.getOrThrow(EConfiguredFeatures.SULFUR_POOL_KEY),
                 List.of(
-                        CountPlacement.of(256),
+                        CountPlacement.of(316),
                         InSquarePlacement.spread(),
                         PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
                         BlockPredicateFilter.forPredicate(BlockPredicate.solid()),

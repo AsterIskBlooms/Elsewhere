@@ -26,9 +26,24 @@ public interface OverworldBiomeGenAccessor {
     @Accessor("PLATEAU_BIOMES_VARIANT")
     ResourceKey<Biome>[][] getPlateauBiomesVariant();
 
+    @Accessor("UNFROZEN_RANGE")
+    Climate.Parameter getUnfrozenRange();
+
+    @Accessor("temperatures")
+    Climate.Parameter[] getTemperatures();
+
     @Accessor("FULL_RANGE")
     Climate.Parameter getFULL_RANGE();
 
+    @Invoker("addSurfaceBiome")
+    void invokeAddSurfaceBiome(
+            Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes,
+            Climate.Parameter temperature, Climate.Parameter humidity,
+            Climate.Parameter continentalness, Climate.Parameter erosion,
+            Climate.Parameter weirdness,
+            float offset,
+            ResourceKey<Biome> biome
+    );
     @Invoker("addUndergroundBiome")
     void invokeAddUndergroundBiome(
             Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes,
