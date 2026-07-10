@@ -4,6 +4,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
+import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.entity.EEntities;
 
@@ -200,7 +202,7 @@ public class EBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
 
         spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
-        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EEntities.PERCH, 1, 5));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -212,7 +214,8 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
@@ -243,7 +246,7 @@ public class EBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
 
         spawnBuilder.addSpawn(MobCategory.WATER_CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 4));
-        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 1, 5));
+        spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, 1, new MobSpawnSettings.SpawnerData(EEntities.PERCH, 1, 5));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -255,7 +258,8 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_SAND);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
@@ -299,7 +303,8 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)

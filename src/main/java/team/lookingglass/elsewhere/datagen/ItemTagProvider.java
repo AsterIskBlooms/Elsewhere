@@ -23,6 +23,13 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
+        // Food
+        valueLookupBuilder(ItemTags.CAT_FOOD).add(EItems.RAW_PERCH);
+        valueLookupBuilder(ItemTags.OCELOT_FOOD).add(EItems.RAW_PERCH);
+        valueLookupBuilder(ItemTags.WOLF_FOOD).add(EItems.RAW_PERCH, EItems.COOKED_PERCH);
+        valueLookupBuilder(ItemTags.MEAT).add(EItems.RAW_PERCH, EItems.COOKED_PERCH);
+
+
         // Repair tags
         valueLookupBuilder(EItemTags.REPAIRS_BRONZE_ARMOR).add(EItems.BRONZE_INGOT);
         valueLookupBuilder(EItemTags.REPAIRS_SILVER_ARMOR).add(EItems.SILVER_INGOT);

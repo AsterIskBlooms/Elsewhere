@@ -690,6 +690,11 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.FROSTBITE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.PERCH_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.RAW_PERCH, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.COOKED_PERCH, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.PERCH_BUCKET, ModelTemplates.FLAT_ITEM);
     }
 
 

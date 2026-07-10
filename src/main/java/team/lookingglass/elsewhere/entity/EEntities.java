@@ -10,12 +10,16 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.fish.AbstractFish;
+import net.minecraft.world.level.SpawnData;
 import net.minecraft.world.level.levelgen.Heightmap;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.entity.hostile.Frostbite;
+import team.lookingglass.elsewhere.entity.mob.Frostbite;
+import team.lookingglass.elsewhere.entity.mob.Perch;
 
 public interface EEntities {
     ResourceKey<EntityType<?>> FROSTBITE_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frostbite"));
+    ResourceKey<EntityType<?>> PERCH_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "perch"));
 
     EntityType<Frostbite> FROSTBITE = Registry.register(
             BuiltInRegistries.ENTITY_TYPE,
@@ -26,8 +30,19 @@ public interface EEntities {
                     .build(FROSTBITE_KEY)
     );
 
+    EntityType<Perch> PERCH = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE,
+            PERCH_KEY,
+            EntityType.Builder.of(Perch::new, MobCategory.WATER_AMBIENT)
+                    .sized(0.4F, 0.4F)
+                    .build(PERCH_KEY)
+    );
+
     static void initialize() {
-        FabricDefaultAttributeRegistry.register(EEntities.FROSTBITE, Frostbite.createAttributes().build());
-        SpawnPlacements.register(EEntities.FROSTBITE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Frostbite::checkFrostbiteSpawnRules);
+        FabricDefaultAttributeRegistry.register(FROSTBITE, Frostbite.createAttributes().build());
+        SpawnPlacements.register(FROSTBITE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Frostbite::checkFrostbiteSpawnRules);
+
+        FabricDefaultAttributeRegistry.register(PERCH, Perch.createAttributes().build());
+        SpawnPlacements.register(PERCH, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Perch::checkMobSpawnRules);
     }
 }

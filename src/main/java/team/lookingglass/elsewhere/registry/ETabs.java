@@ -845,6 +845,11 @@ public class ETabs {
 
         });
 
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> {
+            output.insertAfter(Items.DROWNED_SPAWN_EGG, EItems.FROSTBITE_SPAWN_EGG);
+            output.insertBefore(Items.PUFFERFISH_SPAWN_EGG, EItems.PERCH_SPAWN_EGG);
+        });
+
 
     }
 

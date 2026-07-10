@@ -374,35 +374,73 @@ public class EWorldgen {
                                                         SurfaceRules.state(EBlocks.RUSTY_MOSS_BLOCK.defaultBlockState())))
                                 )));
 
-                SurfaceRules.RuleSource warmRiverRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.WARM_RIVER),
-                        prelimAndWaterCheck(
-                                SurfaceRules.sequence(
-                                        sandstoneCliffsRule,
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())),
-                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState()))
-                                )));
+                SurfaceRules.RuleSource riverRules = SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.WARM_RIVER),
+                                        SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.RED_SAND.defaultBlockState()))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.RED_SANDSTONE.defaultBlockState()))))),
 
-                SurfaceRules.RuleSource lukewarmRiverRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.LUKEWARM_RIVER),
-                        prelimAndWaterCheck(
-                                SurfaceRules.sequence(
-                                        sandstoneCliffsRule,
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())),
-                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState()))
-                                )));
+                                SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.LUKEWARM_RIVER),
+                                        SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.MUD.defaultBlockState())),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.DIRT.defaultBlockState())))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.MUD.defaultBlockState()))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.MUD.defaultBlockState()))))),
 
-                SurfaceRules.RuleSource coldRiverRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.COLD_RIVER),
-                        prelimAndWaterCheck(
-                                SurfaceRules.sequence(
-                                        stoneCliffsRule,
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.state(Blocks.GRAVEL.defaultBlockState())),
-                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.STONE.defaultBlockState()))
-                                )));
+                                SurfaceRules.ifTrue(SurfaceRules.isBiome(Biomes.RIVER),
+                                        SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.DIRT.defaultBlockState())))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.MUD.defaultBlockState()))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.DIRT.defaultBlockState()))))),
+
+                                SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.COLD_RIVER),
+                                        SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(
+                                                stoneCliffsRule,
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.GRAVEL.defaultBlockState())),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.STONE.defaultBlockState())))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.MUD.defaultBlockState()))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.GRAVEL.defaultBlockState()))))),
+
+                                SurfaceRules.ifTrue(SurfaceRules.isBiome(Biomes.FROZEN_RIVER),
+                                        SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.GRAVEL.defaultBlockState())),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.STONE.defaultBlockState())))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                                SurfaceRules.state(Blocks.MUD.defaultBlockState()))),
+                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
+                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                                SurfaceRules.state(Blocks.STONE.defaultBlockState())))))
+                        );
 
                 SurfaceRules.RuleSource crystalCavernRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.CRYSTAL_CAVERNS),
                         SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
@@ -468,7 +506,7 @@ public class EWorldgen {
                         )));
 
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
-                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, outbackRules, tundraRules, dappledForestRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
+                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules, outbackRules, tundraRules, dappledForestRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 deepslateRule, shaleRule, object.surfaceRule()
                         ));
             });

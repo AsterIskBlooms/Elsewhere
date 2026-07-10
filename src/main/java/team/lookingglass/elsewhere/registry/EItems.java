@@ -1,10 +1,15 @@
 package team.lookingglass.elsewhere.registry;
 
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.material.Fluids;
 import team.lookingglass.elsewhere.Elsewhere;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -110,6 +115,12 @@ public interface EItems {
     );
 
     Item FROSTBITE_SPAWN_EGG = register("frostbite_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.FROSTBITE));
+    Item PERCH_SPAWN_EGG = register("perch_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.PERCH));
+
+    Item RAW_PERCH = register("raw_perch", Item::new, new Item.Properties().food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.5F).build()));
+    Item COOKED_PERCH = register("cooked_perch", Item::new, new Item.Properties().food((new FoodProperties.Builder()).nutrition(5).saturationModifier(8.8F).build()));
+
+    Item PERCH_BUCKET = register("perch_bucket", p -> new MobBucketItem(EEntities.PERCH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, p), new Item.Properties());
 
 
     // Method

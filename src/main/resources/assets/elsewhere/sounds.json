@@ -295,5 +295,32 @@
       "elsewhere:entity/frostbite/death1",
       "elsewhere:entity/frostbite/death2"
     ]
+  },
+  "entity.perch.flop": {
+    "subtitle": "subtitles.elsewhere.entity.perch.flop",
+    "sounds": [
+      "minecraft:entity/fish/flop1",
+      "minecraft:entity/fish/flop2",
+      "minecraft:entity/fish/flop3",
+      "minecraft:entity/fish/flop4"
+    ]
+  },
+  "entity.perch.hurt": {
+    "subtitle": "subtitles.elsewhere.entity.perch.hurt",
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ]
+  },
+  "entity.perch.death": {
+    "subtitle": "subtitles.elsewhere.entity.perch.death",
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ]
   }
 }

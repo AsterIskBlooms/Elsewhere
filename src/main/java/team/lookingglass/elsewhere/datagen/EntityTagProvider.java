@@ -19,5 +19,9 @@ public class EntityTagProvider extends FabricTagsProvider.EntityTypeTagsProvider
 
         valueLookupBuilder(EntityTypeTags.BURN_IN_DAYLIGHT).add(EEntities.FROSTBITE);
         valueLookupBuilder(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(EEntities.FROSTBITE);
+
+        valueLookupBuilder(EntityTypeTags.AQUATIC).add(EEntities.PERCH);
+        valueLookupBuilder(EntityTypeTags.NOT_SCARY_FOR_PUFFERFISH).add(EEntities.PERCH);
+        valueLookupBuilder(EntityTypeTags.CAN_BREATHE_UNDER_WATER).add(EEntities.PERCH);
     }
 }

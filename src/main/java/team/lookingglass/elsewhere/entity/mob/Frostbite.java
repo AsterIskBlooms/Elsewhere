@@ -1,4 +1,4 @@
-package team.lookingglass.elsewhere.entity.hostile;
+package team.lookingglass.elsewhere.entity.mob;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

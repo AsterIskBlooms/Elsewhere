@@ -61,6 +61,10 @@ public interface ESounds {
     SoundEvent FROSTBITE_HURT = register("entity.frostbite.hurt");
     SoundEvent FROSTBITE_DEATH = register("entity.frostbite.death");
 
+    SoundEvent PERCH_FLOP = register("entity.perch.flop");
+    SoundEvent PERCH_HURT = register("entity.perch.hurt");
+    SoundEvent PERCH_DEATH = register("entity.perch.death");
+
 
 
 

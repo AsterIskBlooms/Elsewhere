@@ -1,4 +1,4 @@
-package team.lookingglass.elsewhere.entity.render;
+package team.lookingglass.elsewhere.entity.renderer;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

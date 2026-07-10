@@ -586,6 +586,12 @@ public class LangProviderEN extends FabricLanguageProvider {
 
 
 
+        translationBuilder.add("item.elsewhere.raw_perch", "Perch Spawn Egg");
+        translationBuilder.add("item.elsewhere.cooked_perch", "Perch Spawn Egg");
+        translationBuilder.add("item.elsewhere.perch_bucket", "Bucket of Perch");
+
+
+
         translationBuilder.add("biome.elsewhere.outback", "Outback");
         translationBuilder.add("biome.elsewhere.sulfur_caves", "Sulfur Caves");
         translationBuilder.add("biome.elsewhere.crystalline_caves", "Crystalline Caves");
@@ -595,6 +601,8 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("entity.elsewhere.frostbite", "Frostbite");
         translationBuilder.add("item.elsewhere.frostbite_spawn_egg", "Frostbite Spawn Egg");
 
+        translationBuilder.add("entity.elsewhere.perch", "Perch");
+        translationBuilder.add("item.elsewhere.perch_spawn_egg", "Perch Spawn Egg");
 
 
         translationBuilder.add("tag.elsewhere.mosaics", "Mosaics");
@@ -618,14 +626,18 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("subtitles.elsewhere.block.generic.place", "Block placed");
 
         // Sulfur Pool Sounds
-        translationBuilder.add("subtitles.elsewhere.block.sulfur.noxious_gas", "Noxious Gas Bubbles");
-        translationBuilder.add("subtitles.elsewhere.block.geyser.eruption_start", "Geyser Erupts");
-        translationBuilder.add("subtitles.elsewhere.block.geyser.eruption_active", "Geyser Spraying");
+        translationBuilder.add("subtitles.elsewhere.block.sulfur.noxious_gas", "Noxious gas bubbles");
+        translationBuilder.add("subtitles.elsewhere.block.geyser.eruption_start", "Geyser erupts");
+        translationBuilder.add("subtitles.elsewhere.block.geyser.eruption_active", "Geyser spraying");
 
         // Mob Sounds
-        translationBuilder.add("subtitles.elsewhere.entity.frostbite.idle", "Frostbite Groans");
-        translationBuilder.add("subtitles.elsewhere.entity.frostbite.hurt", "Frostbite Hurts");
-        translationBuilder.add("subtitles.elsewhere.entity.frostbite.death", "Frostbite Dies");
+        translationBuilder.add("subtitles.elsewhere.entity.frostbite.idle", "Frostbite groans");
+        translationBuilder.add("subtitles.elsewhere.entity.frostbite.hurt", "Frostbite hurts");
+        translationBuilder.add("subtitles.elsewhere.entity.frostbite.death", "Frostbite dies");
+
+        translationBuilder.add("subtitles.elsewhere.entity.perch.flop", "Perch flops");
+        translationBuilder.add("subtitles.elsewhere.entity.perch.hurt", "Perch hurts");
+        translationBuilder.add("subtitles.elsewhere.entity.perch.death", "Perch dies");
 
 
 

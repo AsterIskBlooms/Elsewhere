@@ -1,0 +1,21 @@
+{
+  "type": "elsewhere:flower_patch",
+  "config": {
+    "base_count": 12,
+    "base_radius": 4,
+    "count_variance": 6,
+    "radius_variance": 1,
+    "state_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "elsewhere:bluebonnet"
+          },
+          "weight": 1
+        }
+      ]
+    },
+    "valid_ground": "#minecraft:dirt"
+  }
+}

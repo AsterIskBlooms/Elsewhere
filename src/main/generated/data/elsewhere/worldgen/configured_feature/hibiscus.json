@@ -1,0 +1,57 @@
+{
+  "type": "elsewhere:flower_patch",
+  "config": {
+    "base_count": 7,
+    "base_radius": 6,
+    "count_variance": 5,
+    "radius_variance": 3,
+    "state_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "elsewhere:red_hibiscus"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "elsewhere:orange_hibiscus"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "elsewhere:yellow_hibiscus"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "elsewhere:blue_hibiscus"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "elsewhere:purple_hibiscus"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "elsewhere:pink_hibiscus"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "elsewhere:white_hibiscus"
+          },
+          "weight": 1
+        }
+      ]
+    },
+    "valid_ground": "#minecraft:dirt"
+  }
+}

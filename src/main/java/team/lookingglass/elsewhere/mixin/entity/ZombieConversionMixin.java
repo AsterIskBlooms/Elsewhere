@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import team.lookingglass.elsewhere.entity.EEntities;
-import team.lookingglass.elsewhere.entity.hostile.Frostbite;
+import team.lookingglass.elsewhere.entity.mob.Frostbite;
 
 @Mixin(Zombie.class)
 public abstract class ZombieConversionMixin {

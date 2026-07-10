@@ -14,9 +14,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.CookingBookCategory;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.Nullable;
@@ -66,6 +64,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(provider, wrappedOutput) {
             @Override
             public void buildRecipes() {
+                fullCookingBook(EItems.RAW_PERCH, EItems.COOKED_PERCH);
+
                 shapeless(RecipeCategory.MISC, EItems.DIAMOND_SHARD, 9).requires(Items.DIAMOND)
                         .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND)).save(output);
                 shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(EItems.DIAMOND_SHARD, 9)
@@ -300,6 +300,11 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
 
 
+            private void fullCookingBook(ItemLike raw, ItemLike cooked) {
+                simpleCookingRecipe("smelting", SmeltingRecipe::new, 200, raw, cooked, 0.35F);
+                simpleCookingRecipe("smoking", SmokingRecipe::new, 100, raw, cooked, 0.35F);
+                simpleCookingRecipe("campfire", CampfireCookingRecipe::new, 600, raw, cooked, 0.35F);
+            }
 
             private void itemSmeltableNBSet(RecipeOutput output,
                                    ItemLike oreBlock, ItemLike shaleOreBlock, ItemLike deepslateOreBlock, ItemLike cinnabarOreBlock,

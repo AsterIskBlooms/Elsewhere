@@ -14,6 +14,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import team.lookingglass.elsewhere.entity.EEntities;
+import team.lookingglass.elsewhere.registry.EItems;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -29,21 +30,21 @@ public class EntityLootTableProvider extends FabricEntityLootSubProvider {
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(Items.ROTTEN_FLESH)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
-                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, 1)))
-                        )
-                )
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0, 1)))))
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(Items.SNOWBALL)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
-                                .setWeight(5)
-                        )
+                                .setWeight(5))
                         .add(LootItem.lootTableItem(Items.LEATHER)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
-                                .setWeight(1)
-                        )
-                        .add(EmptyLootItem.emptyItem().setWeight(12))
+                                .setWeight(1))
+                        .add(EmptyLootItem.emptyItem().setWeight(6))
                 )
+        );
+
+        add(EEntities.FROSTBITE, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(EItems.RAW_PERCH).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
         );
     }
 }
