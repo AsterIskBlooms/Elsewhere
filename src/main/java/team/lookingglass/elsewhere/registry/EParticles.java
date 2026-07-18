@@ -19,20 +19,24 @@ import team.lookingglass.elsewhere.registry.particles.*;
 
 import java.util.function.Function;
 
-public class EParticles {
-    public static final SimpleParticleType SULFUR_BUBBLES = register("sulfur_bubbles", false);
-    public static final SimpleParticleType NOXIOUS_GAS = register("noxious_gas", false);
-    public static final SimpleParticleType NOXIOUS_GAS_CLOUD = register("noxious_gas_cloud", false);
-    public static final ParticleType<GeyserParticleOptions> GEYSER = register("geyser", true, GeyserParticleOptions::codec, GeyserParticleOptions::streamCodec);
-    public static final ParticleType<GeyserBaseParticleOptions> GEYSER_BASE = register(
+public interface EParticles {
+    SimpleParticleType SULFUR_BUBBLES = register("sulfur_bubbles", false);
+    SimpleParticleType NOXIOUS_GAS = register("noxious_gas", false);
+    SimpleParticleType NOXIOUS_GAS_CLOUD = register("noxious_gas_cloud", false);
+    ParticleType<GeyserParticleOptions> GEYSER = register("geyser", true, GeyserParticleOptions::codec, GeyserParticleOptions::streamCodec);
+    ParticleType<GeyserBaseParticleOptions> GEYSER_BASE = register(
             "geyser_base", true, GeyserBaseParticleOptions::codec, GeyserBaseParticleOptions::streamCodec
     );
-    public static final ParticleType<GeyserBaseParticleOptions> GEYSER_POOF = register(
+    ParticleType<GeyserBaseParticleOptions> GEYSER_POOF = register(
             "geyser_poof", true, GeyserBaseParticleOptions::codec, GeyserBaseParticleOptions::streamCodec
     );
-    public static final ParticleType<GeyserParticleOptions> GEYSER_PLUME = register(
+    ParticleType<GeyserParticleOptions> GEYSER_PLUME = register(
             "geyser_plume", true, GeyserParticleOptions::codec, GeyserParticleOptions::streamCodec
     );
+
+    SimpleParticleType RED_POPLAR_LEAVES = register("red_poplar_leaves", false);
+    SimpleParticleType ORANGE_POPLAR_LEAVES = register("orange_poplar_leaves", false);
+    SimpleParticleType YELLOW_POPLAR_LEAVES = register("yellow_poplar_leaves", false);
 
     private static SimpleParticleType register(String name, boolean overrideLimiter) {
         return Registry.register(BuiltInRegistries.PARTICLE_TYPE,
@@ -49,5 +53,5 @@ public class EParticles {
                 FabricParticleTypes.complex(overrideLimiter, codec, streamCodec));
     }
 
-    public static void initialize() {}
+    static void initialize() {}
 }

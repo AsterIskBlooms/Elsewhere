@@ -7,12 +7,16 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.registry.EBlockTags;
+import team.lookingglass.elsewhere.registry.tags.EBlockTags;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.worldgen.features.*;
 import team.lookingglass.elsewhere.worldgen.features.config.ExposedDoubleDiskConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.config.BlockPatchConfiguration;
+import team.lookingglass.elsewhere.worldgen.features.placers.PoplarFoliagePlacer;
+import team.lookingglass.elsewhere.worldgen.features.placers.PoplarTrunkPlacer;
 import team.lookingglass.elsewhere.worldgen.features.spike.SpikeClusterFeature;
 import team.lookingglass.elsewhere.worldgen.features.spike.SpikeFeature;
 import team.lookingglass.elsewhere.worldgen.features.spike.utils.SpikeBlockSet;
@@ -74,6 +78,17 @@ public class EFeatures {
             Registry.register(BuiltInRegistries.FEATURE,
                     Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_pool"),
                     new SulfurPoolFeature());
+
+    // Poplar Forest
+    public static final TrunkPlacerType<PoplarTrunkPlacer> POPLAR_TRUNK_PLACER =
+            Registry.register(BuiltInRegistries.TRUNK_PLACER_TYPE,
+                    Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_trunk_placer"),
+                    new TrunkPlacerType<>(PoplarTrunkPlacer.CODEC));
+
+    public static final FoliagePlacerType<PoplarFoliagePlacer> POPLAR_FOLIAGE_PLACER =
+            Registry.register(BuiltInRegistries.FOLIAGE_PLACER_TYPE,
+                    Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_foliage_placer"),
+                    new FoliagePlacerType<>(PoplarFoliagePlacer.CODEC));
 
     public static void initialize() {}
 }

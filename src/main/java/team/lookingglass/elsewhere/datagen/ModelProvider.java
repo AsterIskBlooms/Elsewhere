@@ -1,6 +1,7 @@
 package team.lookingglass.elsewhere.datagen;
 
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.data.BlockFamily;
 import team.lookingglass.elsewhere.datagen.helpers.EBlockModelGenerators;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -554,47 +555,52 @@ public class ModelProvider extends FabricModelProvider {
         // Wood Sets
         gen.family(EBlocks.OAK_MOSAIC).stairs(EBlocks.OAK_MOSAIC_STAIRS).slab(EBlocks.OAK_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.OAK_BOARDS);
-        gen.createTrivialCube(EBlocks.OAK_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.OAK_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.DARK_OAK_MOSAIC).stairs(EBlocks.DARK_OAK_MOSAIC_STAIRS).slab(EBlocks.DARK_OAK_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.DARK_OAK_BOARDS);
-        gen.createTrivialCube(EBlocks.DARK_OAK_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.DARK_OAK_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.PALE_OAK_MOSAIC).stairs(EBlocks.PALE_OAK_MOSAIC_STAIRS).slab(EBlocks.PALE_OAK_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.PALE_OAK_BOARDS);
-        gen.createTrivialCube(EBlocks.PALE_OAK_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.PALE_OAK_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.BIRCH_MOSAIC).stairs(EBlocks.BIRCH_MOSAIC_STAIRS).slab(EBlocks.BIRCH_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.BIRCH_BOARDS);
-        gen.createTrivialCube(EBlocks.BIRCH_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.BIRCH_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.SPRUCE_MOSAIC).stairs(EBlocks.SPRUCE_MOSAIC_STAIRS).slab(EBlocks.SPRUCE_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.SPRUCE_BOARDS);
-        gen.createTrivialCube(EBlocks.SPRUCE_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.SPRUCE_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.JUNGLE_MOSAIC).stairs(EBlocks.JUNGLE_MOSAIC_STAIRS).slab(EBlocks.JUNGLE_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.JUNGLE_BOARDS);
-        gen.createTrivialCube(EBlocks.JUNGLE_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.JUNGLE_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.ACACIA_MOSAIC).stairs(EBlocks.ACACIA_MOSAIC_STAIRS).slab(EBlocks.ACACIA_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.ACACIA_BOARDS);
-        gen.createTrivialCube(EBlocks.ACACIA_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.ACACIA_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.CHERRY_MOSAIC).stairs(EBlocks.CHERRY_MOSAIC_STAIRS).slab(EBlocks.CHERRY_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.CHERRY_BOARDS);
-        gen.createTrivialCube(EBlocks.CHERRY_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.CHERRY_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.MANGROVE_MOSAIC).stairs(EBlocks.MANGROVE_MOSAIC_STAIRS).slab(EBlocks.MANGROVE_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.MANGROVE_BOARDS);
-        gen.createTrivialCube(EBlocks.MANGROVE_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.MANGROVE_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.CRIMSON_MOSAIC).stairs(EBlocks.CRIMSON_MOSAIC_STAIRS).slab(EBlocks.CRIMSON_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.CRIMSON_BOARDS);
-        gen.createTrivialCube(EBlocks.CRIMSON_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.CRIMSON_TRIM, TexturedModel.CUBE);
 
         gen.family(EBlocks.WARPED_MOSAIC).stairs(EBlocks.WARPED_MOSAIC_STAIRS).slab(EBlocks.WARPED_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.WARPED_BOARDS);
-        gen.createTrivialCube(EBlocks.WARPED_TRIM);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.WARPED_TRIM, TexturedModel.CUBE);
+
+        gen.createRotatedPillarWithHorizontalVariant(EBlocks.BAMBOO_STEM, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
+        gen.createRotatedPillarWithHorizontalVariant(EBlocks.STRIPPED_BAMBOO_STEM, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
+        customGen.createWoodenBoards(EBlocks.BAMBOO_BOARDS);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.BAMBOO_TRIM, TexturedModel.CUBE);
 
 
         customGen.createPlantWithUniquePottedTexture(EBlocks.BLUEBONNET, EBlocks.POTTED_BLUEBONNET, BlockModelGenerators.PlantType.NOT_TINTED);
@@ -607,6 +613,11 @@ public class ModelProvider extends FabricModelProvider {
         gen.createPlantWithDefaultItem(EBlocks.PINK_HIBISCUS, EBlocks.POTTED_PINK_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
         gen.createPlantWithDefaultItem(EBlocks.WHITE_HIBISCUS, EBlocks.POTTED_WHITE_HIBISCUS, BlockModelGenerators.PlantType.NOT_TINTED);
 
+        gen.createPlantWithDefaultItem(EBlocks.MAGENTA_CONEFLOWER, EBlocks.POTTED_MAGENTA_CONEFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.YELLOW_CONEFLOWER, EBlocks.POTTED_YELLOW_CONEFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        gen.createDoublePlantWithDefaultItem(EBlocks.IRONWEED, BlockModelGenerators.PlantType.NOT_TINTED);
+
         gen.createTrivialBlock(EBlocks.ARID_DIRT, TexturedModel.COLUMN);
         customGen.createAridGrassBlock();
 
@@ -615,7 +626,53 @@ public class ModelProvider extends FabricModelProvider {
         gen.createDoublePlantWithDefaultItem(EBlocks.TALL_RED_GRASS, BlockModelGenerators.PlantType.NOT_TINTED);
         gen.createCrossBlockWithDefaultItem(EBlocks.RED_SHRUB, BlockModelGenerators.PlantType.NOT_TINTED);
 
+        gen.woodProvider(EBlocks.POPLAR_LOG).logWithHorizontal(EBlocks.POPLAR_LOG).wood(EBlocks.POPLAR_WOOD);
+        gen.woodProvider(EBlocks.STRIPPED_POPLAR_LOG).logWithHorizontal(EBlocks.STRIPPED_POPLAR_LOG).wood(EBlocks.STRIPPED_POPLAR_WOOD);
+        gen.family(EBlocks.POPLAR_PLANKS)
+                .stairs(EBlocks.POPLAR_STAIRS)
+                .slab(EBlocks.POPLAR_SLAB)
+                .fence(EBlocks.POPLAR_FENCE)
+                .fenceGate(EBlocks.POPLAR_FENCE_GATE)
+                .pressurePlate(EBlocks.POPLAR_PRESSURE_PLATE)
+                .button(EBlocks.POPLAR_BUTTON)
+        ;
+        gen.createDoor(EBlocks.POPLAR_DOOR);
+        gen.createTrapdoor(EBlocks.POPLAR_TRAPDOOR);
+        gen.createParticleOnlyBlock(EBlocks.POPLAR_SIGN, EBlocks.POPLAR_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.POPLAR_WALL_SIGN, EBlocks.POPLAR_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.POPLAR_HANGING_SIGN, EBlocks.STRIPPED_POPLAR_LOG);
+        gen.createParticleOnlyBlock(EBlocks.POPLAR_WALL_HANGING_SIGN, EBlocks.STRIPPED_POPLAR_LOG);
+        gen.family(EBlocks.POPLAR_MOSAIC).stairs(EBlocks.POPLAR_MOSAIC_STAIRS).slab(EBlocks.POPLAR_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.POPLAR_BOARDS);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.POPLAR_TRIM, TexturedModel.CUBE);
+
+        gen.createPlantWithDefaultItem(EBlocks.POPLAR_SAPLING, EBlocks.POTTED_POPLAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        gen.createTrivialCube(EBlocks.RED_POPLAR_LEAVES);
+        gen.createTrivialCube(EBlocks.ORANGE_POPLAR_LEAVES);
+        gen.createTrivialCube(EBlocks.YELLOW_POPLAR_LEAVES);
+
         gen.createFullAndCarpetBlocks(EBlocks.RUSTY_MOSS_BLOCK, EBlocks.RUSTY_MOSS_CARPET);
+
+        gen.woodProvider(EBlocks.AZALEA_LOG).logWithHorizontal(EBlocks.AZALEA_LOG).wood(EBlocks.AZALEA_WOOD);
+        gen.woodProvider(EBlocks.STRIPPED_AZALEA_LOG).logWithHorizontal(EBlocks.STRIPPED_AZALEA_LOG).wood(EBlocks.STRIPPED_AZALEA_WOOD);
+        gen.family(EBlocks.AZALEA_PLANKS)
+                .stairs(EBlocks.AZALEA_STAIRS)
+                .slab(EBlocks.AZALEA_SLAB)
+                .fence(EBlocks.AZALEA_FENCE)
+                .fenceGate(EBlocks.AZALEA_FENCE_GATE)
+                .pressurePlate(EBlocks.AZALEA_PRESSURE_PLATE)
+                .button(EBlocks.AZALEA_BUTTON)
+        ;
+        gen.createDoor(EBlocks.AZALEA_DOOR);
+        gen.createTrapdoor(EBlocks.AZALEA_TRAPDOOR);
+        gen.createParticleOnlyBlock(EBlocks.AZALEA_SIGN, EBlocks.AZALEA_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.AZALEA_WALL_SIGN, EBlocks.AZALEA_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.AZALEA_HANGING_SIGN, EBlocks.STRIPPED_AZALEA_LOG);
+        gen.createParticleOnlyBlock(EBlocks.AZALEA_WALL_HANGING_SIGN, EBlocks.STRIPPED_AZALEA_LOG);
+        gen.family(EBlocks.AZALEA_MOSAIC).stairs(EBlocks.AZALEA_MOSAIC_STAIRS).slab(EBlocks.AZALEA_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.AZALEA_BOARDS);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.AZALEA_TRIM, TexturedModel.CUBE);
 
         gen.createTrivialBlock(EBlocks.LATERITE, TexturedModel.COLUMN);
 
@@ -638,8 +695,6 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.SILVER_BLOCK);
 
         gen.createTrivialCube(EBlocks.SOULSTEEL_BLOCK);
-
-        customGen.generatePebble(EBlocks.PEBBLE);
 
     }
 
@@ -695,6 +750,16 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.RAW_PERCH, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.COOKED_PERCH, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.PERCH_BUCKET, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.POPLAR_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.POPLAR_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.POPLAR_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.POPLAR_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.AZALEA_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.AZALEA_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.AZALEA_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.AZALEA_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
     }
 
 

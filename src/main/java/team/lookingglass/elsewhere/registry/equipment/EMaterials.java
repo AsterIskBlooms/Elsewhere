@@ -11,8 +11,8 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.registry.EBlockTags;
-import team.lookingglass.elsewhere.registry.EItemTags;
+import team.lookingglass.elsewhere.registry.tags.EBlockTags;
+import team.lookingglass.elsewhere.registry.tags.EItemTags;
 
 import java.util.Map;
 

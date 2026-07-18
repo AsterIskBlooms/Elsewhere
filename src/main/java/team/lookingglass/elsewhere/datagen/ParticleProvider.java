@@ -8,6 +8,8 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
+import net.minecraft.resources.Identifier;
+import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.EParticles;
 
 import java.nio.file.Path;
@@ -32,11 +34,14 @@ public class ParticleProvider implements DataProvider {
         futures.add(saveParticle(cache, EParticles.GEYSER_BASE, false,"geyser_base", true, 8));
         futures.add(saveParticle(cache, EParticles.GEYSER_POOF, false,"geyser_poof", true, 8));
         futures.add(saveParticle(cache, EParticles.GEYSER_PLUME, false,"geyser_plume", true, 8));
+        futures.add(saveParticle(cache, EParticles.RED_POPLAR_LEAVES, false, "red_poplar", true, 4));
+        futures.add(saveParticle(cache, EParticles.ORANGE_POPLAR_LEAVES, false, "orange_poplar", true, 4));
+        futures.add(saveParticle(cache, EParticles.YELLOW_POPLAR_LEAVES, false, "yellow_poplar", true, 4));
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
 
     private CompletableFuture<?> saveParticle(CachedOutput cache, ParticleType<?> type,  boolean vanilla, String name, boolean animated, int frames) {
-        String namespace = vanilla ? "minecraft" : "elsewhere";
+        String namespace = vanilla ? Identifier.DEFAULT_NAMESPACE : Elsewhere.MODID;
         JsonObject json = new JsonObject();
         JsonArray textures = new JsonArray();
         if (animated) {

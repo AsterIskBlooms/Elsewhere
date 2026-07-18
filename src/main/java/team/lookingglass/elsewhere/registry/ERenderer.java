@@ -3,7 +3,12 @@ package team.lookingglass.elsewhere.registry;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.minecraft.client.color.block.BlockTintSources;
+import net.minecraft.client.particle.FallingLeavesParticle;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
+import net.minecraft.client.renderer.blockentity.StandingSignRenderer;
 import net.minecraft.world.level.GrassColor;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import team.lookingglass.elsewhere.registry.particles.*;
 
 import java.util.List;
@@ -20,6 +25,10 @@ public class ERenderer {
         ParticleProviderRegistry.getInstance().register(EParticles.GEYSER_BASE, GeyserBaseParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(EParticles.GEYSER_POOF, GeyserBaseParticle.Provider::new);
         ParticleProviderRegistry.getInstance().register(EParticles.GEYSER_PLUME, GeyserPlumeParticle.Provider::new);
+
+        ParticleProviderRegistry.getInstance().register(EParticles.RED_POPLAR_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
+        ParticleProviderRegistry.getInstance().register(EParticles.ORANGE_POPLAR_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
+        ParticleProviderRegistry.getInstance().register(EParticles.YELLOW_POPLAR_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
 
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), EBlocks.ARID_GRASS_BLOCK);
     }

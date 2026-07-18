@@ -4,9 +4,9 @@ import team.lookingglass.elsewhere.entity.EEntities;
 import team.lookingglass.elsewhere.entity.EEntitySpawns;
 import team.lookingglass.elsewhere.registry.*;
 import net.fabricmc.api.ModInitializer;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import team.lookingglass.elsewhere.registry.tags.*;
 import team.lookingglass.elsewhere.worldgen.EFeatures;
 import team.lookingglass.elsewhere.worldgen.ENoise;
 import team.lookingglass.elsewhere.worldgen.EWorldgen;
@@ -32,5 +32,6 @@ public class Elsewhere implements ModInitializer {
 		EItemTags.initialize();
 		EEntities.initialize();
 		EEntitySpawns.initialize();
+		ETreeGrowers.initialize();
 	}
 }

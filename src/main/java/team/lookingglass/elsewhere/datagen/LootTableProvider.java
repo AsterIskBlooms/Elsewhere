@@ -457,12 +457,64 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         add(EBlocks.TALL_RED_GRASS, createDoublePlantShearsOrSilkTouchDrop(EBlocks.TALL_RED_GRASS));
         add(EBlocks.RED_SHRUB, createShearsOrSilkTouchOnlyDrop(EBlocks.RED_SHRUB));
 
+        dropSelf(EBlocks.POPLAR_LOG);
+        dropSelf(EBlocks.STRIPPED_POPLAR_LOG);
+        dropSelf(EBlocks.POPLAR_WOOD);
+        dropSelf(EBlocks.STRIPPED_POPLAR_WOOD);
+        dropSelf(EBlocks.POPLAR_PLANKS);
+        dropSelf(EBlocks.POPLAR_MOSAIC);
+        dropSelf(EBlocks.POPLAR_BOARDS);
+        dropSelf(EBlocks.POPLAR_TRIM);
+        dropSelf(EBlocks.POPLAR_STAIRS);
+        dropSelf(EBlocks.POPLAR_MOSAIC_STAIRS);
+        dropSelf(EBlocks.POPLAR_FENCE);
+        dropSelf(EBlocks.POPLAR_FENCE_GATE);
+        add(EBlocks.POPLAR_SLAB, createSlabItemTable(EBlocks.POPLAR_SLAB));
+        add(EBlocks.POPLAR_MOSAIC_SLAB, createSlabItemTable(EBlocks.POPLAR_MOSAIC_SLAB));
+        add(EBlocks.POPLAR_DOOR, createDoorTable(EBlocks.POPLAR_DOOR));
+        dropSelf(EBlocks.POPLAR_TRAPDOOR);
+        dropSelf(EBlocks.POPLAR_PRESSURE_PLATE);
+        dropSelf(EBlocks.POPLAR_BUTTON);
+        dropOther(EBlocks.POPLAR_SIGN, EItems.POPLAR_SIGN);
+        dropOther(EBlocks.POPLAR_WALL_SIGN, EItems.POPLAR_SIGN);
+        dropOther(EBlocks.POPLAR_HANGING_SIGN, EItems.POPLAR_HANGING_SIGN);
+        dropOther(EBlocks.POPLAR_WALL_HANGING_SIGN, EItems.POPLAR_HANGING_SIGN);
+
+        add(EBlocks.RED_POPLAR_LEAVES, createLeavesDrops(EBlocks.RED_POPLAR_LEAVES, EBlocks.POPLAR_SAPLING, 0.05F));
+        add(EBlocks.ORANGE_POPLAR_LEAVES, createLeavesDrops(EBlocks.ORANGE_POPLAR_LEAVES, EBlocks.POPLAR_SAPLING, 0.05F));
+        add(EBlocks.YELLOW_POPLAR_LEAVES, createLeavesDrops(EBlocks.YELLOW_POPLAR_LEAVES, EBlocks.POPLAR_SAPLING, 0.05F));
+
         dropSelf(EBlocks.RUSTY_MOSS_BLOCK);
         dropSelf(EBlocks.RUSTY_MOSS_CARPET);
+
+        dropSelf(EBlocks.AZALEA_LOG);
+        dropSelf(EBlocks.STRIPPED_AZALEA_LOG);
+        dropSelf(EBlocks.AZALEA_WOOD);
+        dropSelf(EBlocks.STRIPPED_AZALEA_WOOD);
+        dropSelf(EBlocks.AZALEA_PLANKS);
+        dropSelf(EBlocks.AZALEA_MOSAIC);
+        dropSelf(EBlocks.AZALEA_BOARDS);
+        dropSelf(EBlocks.AZALEA_TRIM);
+        dropSelf(EBlocks.AZALEA_STAIRS);
+        dropSelf(EBlocks.AZALEA_MOSAIC_STAIRS);
+        dropSelf(EBlocks.AZALEA_FENCE);
+        dropSelf(EBlocks.AZALEA_FENCE_GATE);
+        add(EBlocks.AZALEA_SLAB, createSlabItemTable(EBlocks.AZALEA_SLAB));
+        add(EBlocks.AZALEA_MOSAIC_SLAB, createSlabItemTable(EBlocks.AZALEA_MOSAIC_SLAB));
+        add(EBlocks.AZALEA_DOOR, createDoorTable(EBlocks.AZALEA_DOOR));
+        dropSelf(EBlocks.AZALEA_TRAPDOOR);
+        dropSelf(EBlocks.AZALEA_PRESSURE_PLATE);
+        dropSelf(EBlocks.AZALEA_BUTTON);
+        dropOther(EBlocks.AZALEA_SIGN, EItems.AZALEA_SIGN);
+        dropOther(EBlocks.AZALEA_WALL_SIGN, EItems.AZALEA_SIGN);
+        dropOther(EBlocks.AZALEA_HANGING_SIGN, EItems.AZALEA_HANGING_SIGN);
+        dropOther(EBlocks.AZALEA_WALL_HANGING_SIGN, EItems.AZALEA_HANGING_SIGN);
 
         dropSelf(EBlocks.LATERITE);
 
         add(EBlocks.BEJEWELED_CALCITE, createMultipleOreDrops(EBlocks.BEJEWELED_CALCITE, EItems.EMERALD_SHARD, 3, 5));
+
+        dropSelf(EBlocks.PEBBLE);
 
         dropSelf(EBlocks.BLUEBONNET);
         add(EBlocks.POTTED_BLUEBONNET, createPotFlowerItemTable(EBlocks.BLUEBONNET));
@@ -485,36 +537,64 @@ public class LootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.OAK_MOSAIC);
         dropSelf(EBlocks.OAK_MOSAIC_STAIRS);
         add(EBlocks.OAK_MOSAIC_SLAB, createSlabItemTable(EBlocks.OAK_MOSAIC_SLAB));
+        dropSelf(EBlocks.OAK_BOARDS);
+        dropSelf(EBlocks.OAK_TRIM);
         dropSelf(EBlocks.DARK_OAK_MOSAIC);
         dropSelf(EBlocks.DARK_OAK_MOSAIC_STAIRS);
         add(EBlocks.DARK_OAK_MOSAIC_SLAB, createSlabItemTable(EBlocks.DARK_OAK_MOSAIC_SLAB));
+        dropSelf(EBlocks.DARK_OAK_BOARDS);
+        dropSelf(EBlocks.DARK_OAK_TRIM);
         dropSelf(EBlocks.PALE_OAK_MOSAIC);
         dropSelf(EBlocks.PALE_OAK_MOSAIC_STAIRS);
         add(EBlocks.PALE_OAK_MOSAIC_SLAB, createSlabItemTable(EBlocks.PALE_OAK_MOSAIC_SLAB));
+        dropSelf(EBlocks.PALE_OAK_BOARDS);
+        dropSelf(EBlocks.PALE_OAK_TRIM);
         dropSelf(EBlocks.BIRCH_MOSAIC);
         dropSelf(EBlocks.BIRCH_MOSAIC_STAIRS);
         add(EBlocks.BIRCH_MOSAIC_SLAB, createSlabItemTable(EBlocks.BIRCH_MOSAIC_SLAB));
+        dropSelf(EBlocks.BIRCH_BOARDS);
+        dropSelf(EBlocks.BIRCH_TRIM);
         dropSelf(EBlocks.SPRUCE_MOSAIC);
         dropSelf(EBlocks.SPRUCE_MOSAIC_STAIRS);
         add(EBlocks.SPRUCE_MOSAIC_SLAB, createSlabItemTable(EBlocks.SPRUCE_MOSAIC_SLAB));
+        dropSelf(EBlocks.SPRUCE_BOARDS);
+        dropSelf(EBlocks.SPRUCE_TRIM);
         dropSelf(EBlocks.JUNGLE_MOSAIC);
         dropSelf(EBlocks.JUNGLE_MOSAIC_STAIRS);
         add(EBlocks.JUNGLE_MOSAIC_SLAB, createSlabItemTable(EBlocks.JUNGLE_MOSAIC_SLAB));
+        dropSelf(EBlocks.JUNGLE_BOARDS);
+        dropSelf(EBlocks.JUNGLE_TRIM);
         dropSelf(EBlocks.ACACIA_MOSAIC);
         dropSelf(EBlocks.ACACIA_MOSAIC_STAIRS);
         add(EBlocks.ACACIA_MOSAIC_SLAB, createSlabItemTable(EBlocks.ACACIA_MOSAIC_SLAB));
+        dropSelf(EBlocks.ACACIA_BOARDS);
+        dropSelf(EBlocks.ACACIA_TRIM);
         dropSelf(EBlocks.CHERRY_MOSAIC);
         dropSelf(EBlocks.CHERRY_MOSAIC_STAIRS);
         add(EBlocks.CHERRY_MOSAIC_SLAB, createSlabItemTable(EBlocks.CHERRY_MOSAIC_SLAB));
+        dropSelf(EBlocks.CHERRY_BOARDS);
+        dropSelf(EBlocks.CHERRY_TRIM);
         dropSelf(EBlocks.MANGROVE_MOSAIC);
         dropSelf(EBlocks.MANGROVE_MOSAIC_STAIRS);
         add(EBlocks.MANGROVE_MOSAIC_SLAB, createSlabItemTable(EBlocks.MANGROVE_MOSAIC_SLAB));
+        dropSelf(EBlocks.MANGROVE_BOARDS);
+        dropSelf(EBlocks.MANGROVE_TRIM);
         dropSelf(EBlocks.CRIMSON_MOSAIC);
         dropSelf(EBlocks.CRIMSON_MOSAIC_STAIRS);
         add(EBlocks.CRIMSON_MOSAIC_SLAB, createSlabItemTable(EBlocks.CRIMSON_MOSAIC_SLAB));
+        dropSelf(EBlocks.CRIMSON_BOARDS);
+        dropSelf(EBlocks.CRIMSON_TRIM);
         dropSelf(EBlocks.WARPED_MOSAIC);
         dropSelf(EBlocks.WARPED_MOSAIC_STAIRS);
         add(EBlocks.WARPED_MOSAIC_SLAB, createSlabItemTable(EBlocks.WARPED_MOSAIC_SLAB));
+        dropSelf(EBlocks.WARPED_BOARDS);
+        dropSelf(EBlocks.WARPED_TRIM);
+
+        dropSelf(EBlocks.BAMBOO_STEM);
+        dropSelf(EBlocks.STRIPPED_BAMBOO_STEM);
+        dropSelf(EBlocks.BAMBOO_BOARDS);
+        dropSelf(EBlocks.BAMBOO_TRIM);
+
     }
 
     // Secondary Ore Method

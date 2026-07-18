@@ -22,5 +22,15 @@ public class EBlockEntityTypes {
                 FabricBlockEntityTypeBuilder.create(factory, validBlocks).build());
     }
 
-    public static void initialize() {}
+    public static void initialize() {
+        BlockEntityType.SIGN.addValidBlock(EBlocks.POPLAR_SIGN);
+        BlockEntityType.SIGN.addValidBlock(EBlocks.POPLAR_WALL_SIGN);
+        BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.POPLAR_HANGING_SIGN);
+        BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.POPLAR_WALL_HANGING_SIGN);
+
+        BlockEntityType.SIGN.addValidBlock(EBlocks.AZALEA_SIGN);
+        BlockEntityType.SIGN.addValidBlock(EBlocks.AZALEA_WALL_SIGN);
+        BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.AZALEA_HANGING_SIGN);
+        BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.AZALEA_WALL_HANGING_SIGN);
+    }
 }

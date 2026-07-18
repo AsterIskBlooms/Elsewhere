@@ -1,15 +1,17 @@
 package team.lookingglass.elsewhere.worldgen;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -55,7 +57,11 @@ public class EPlacedFeatures {
     public static final ResourceKey<PlacedFeature> TIN_ORE_LARGE = registerKey("tin_ore_large");
     public static final ResourceKey<PlacedFeature> TIN_ORE_SMALL = registerKey("tin_ore_small");
 
-    public static final ResourceKey<PlacedFeature> PEBBLES = registerKey("pebbles");
+    public static final ResourceKey<PlacedFeature> PEBBLE = registerKey("pebble");
+
+    public static final ResourceKey<PlacedFeature> DAPPLED_FOREST_TREES = registerKey("dappled_forest_trees");
+
+    public static final ResourceKey<PlacedFeature> RED_SHRUB_PATCH = registerKey("red_shrub_patch");
 
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -279,10 +285,31 @@ public class EPlacedFeatures {
                 ));
 
 
-        registerPlaced(context, PEBBLES,
-                configured.getOrThrow(EConfiguredFeatures.PEBBLES_KEY),
+        registerPlaced(context, PEBBLE,
+                configured.getOrThrow(EConfiguredFeatures.PEBBLE_KEY),
                 List.of(
-                        CountPlacement.of(UniformInt.of(2, 5)),
+                        CountPlacement.of(1),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                ));
+
+
+        registerPlaced(context, DAPPLED_FOREST_TREES,
+                configured.getOrThrow(EConfiguredFeatures.RANDOM_POPLAR_KEY),
+                List.of(
+                        CountPlacement.of(7),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.wouldSurvive(EBlocks.POPLAR_SAPLING.defaultBlockState(), Vec3i.ZERO.below(0))),
+                        BiomeFilter.biome()
+                ));
+
+        registerPlaced(context, RED_SHRUB_PATCH,
+                configured.getOrThrow(EConfiguredFeatures.RED_SHRUB_PATCH_KEY),
+                List.of(
+                        CountPlacement.of(1),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()

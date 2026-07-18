@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.EBlocks;
-import team.lookingglass.elsewhere.registry.blocktypes.PebbleBlock;
 
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -140,7 +139,17 @@ public class EBlockModelGenerators extends BlockModelGenerators {
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(PropertyDispatch.initial(BlockStateProperties.AXIS)
                 .select(Direction.Axis.Y, model)
                 .select(Direction.Axis.Z, horizontalModel.with(X_ROT_90))
-                .select(Direction.Axis.X, horizontalModel.with(X_ROT_90).with(Y_ROT_270))
+                .select(Direction.Axis.X, horizontalModel.with(X_ROT_90).with(Y_ROT_90))
+        ));
+    }
+
+    public final void createSimpleHorizontallyRotatedBlock(final Block block, final TexturedModel.Provider modelProvider) {
+        MultiVariant model = plainVariant(modelProvider.create(block, this.modelOutput));
+        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_FACING)
+                .select(Direction.NORTH, model)
+                .select(Direction.SOUTH, model)
+                .select(Direction.EAST, model.with(Y_ROT_270))
+                .select(Direction.WEST, model.with(Y_ROT_270))
         ));
     }
 
@@ -226,24 +235,6 @@ public class EBlockModelGenerators extends BlockModelGenerators {
                         generator.modelOutput
                 )
         );
-    }
-
-    public void generatePebble(Block block) {
-        PropertyDispatch.C1<MultiVariant, Integer> dispatch =
-                PropertyDispatch.initial(PebbleBlock.COUNT);
-        for (int count = 1; count <= 4; count++) {
-            dispatch.select(count, plainVariant(ModelLocationUtils.getModelLocation(block, "_" + count)));
-        }
-
-        PropertyDispatch<VariantMutator> facingDispatch = PropertyDispatch.modify(BlockStateProperties.HORIZONTAL_FACING)
-                .select(Direction.NORTH, NOP)
-                .select(Direction.EAST, Y_ROT_90)
-                .select(Direction.SOUTH, Y_ROT_180)
-                .select(Direction.WEST, Y_ROT_270);
-
-        blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
-                .with(dispatch)
-                .with(facingDispatch));
     }
 
 

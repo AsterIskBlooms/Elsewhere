@@ -135,8 +135,8 @@ public class EBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.8F)
-                .downfall(0.6F)
+                .temperature(0.5F)
+                .downfall(0.4F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x3D57D6)
                         .build())
@@ -151,6 +151,8 @@ public class EBiomes {
 
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -164,8 +166,7 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
         BiomeDefaultFeatures.addDefaultSprings(genBuilder);
-//        BiomeDefaultFeatures.addBushes(genBuilder);
-//        BiomeDefaultFeatures.addFerns(genBuilder);
+        BiomeDefaultFeatures.addBirchForestFlowers(genBuilder);
         BiomeDefaultFeatures.addForestGrass(genBuilder);
         BiomeDefaultFeatures.addLeafLitterPatch(genBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(genBuilder, false);
@@ -175,12 +176,12 @@ public class EBiomes {
                 .temperature(0.6F)
                 .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .grassColorOverride(0xDF9C27)
+                        .grassColorOverride(0xDF6827)
                         .foliageColorOverride(0xE68E30)
                         .dryFoliageColorOverride(0x8C3A04)
                         .waterColor(0x375154)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xE68E30)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xCCD8E2)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();

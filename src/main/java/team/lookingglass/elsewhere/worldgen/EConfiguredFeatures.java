@@ -1,31 +1,37 @@
 package team.lookingglass.elsewhere.worldgen;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
-import net.minecraft.util.valueproviders.ConstantFloat;
-import net.minecraft.util.valueproviders.UniformFloat;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.registry.EBlockTags;
+import team.lookingglass.elsewhere.registry.tags.EBlockTags;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.blocktypes.PebbleBlock;
 import team.lookingglass.elsewhere.worldgen.features.config.ExposedDoubleDiskConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.config.BlockPatchConfiguration;
+import team.lookingglass.elsewhere.worldgen.features.placers.PoplarFoliagePlacer;
+import team.lookingglass.elsewhere.worldgen.features.placers.PoplarTrunkPlacer;
 import team.lookingglass.elsewhere.worldgen.features.spike.utils.SpikeClusterConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.spike.utils.SpikeConfiguration;
 
@@ -62,7 +68,16 @@ public class EConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE_LARGE_KEY = registerKey("tin_ore_large");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE_SMALL_KEY = registerKey("tin_ore_small");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> PEBBLES_KEY = registerKey("pebbles");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PEBBLE_KEY = registerKey("pebble");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MEGA_ACACIA_KEY = registerKey("mega_acacia_tree");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_POPLAR_KEY = registerKey("red_poplar_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_POPLAR_KEY = registerKey("orange_poplar_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> YELLOW_POPLAR_KEY = registerKey("yellow_poplar_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RANDOM_POPLAR_KEY = registerKey("random_poplar_tree");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_SHRUB_PATCH_KEY = registerKey("red_shrub_patch");
 
 
     @SuppressWarnings("deprecation")
@@ -215,29 +230,85 @@ public class EConfiguredFeatures {
                 4  // vein size
         ));
 
-        registerFeature(context, PEBBLES_KEY, Feature.SIMPLE_BLOCK,
+        registerFeature(context, PEBBLE_KEY, Feature.SIMPLE_BLOCK,
                 new SimpleBlockConfiguration(new WeightedStateProvider(
                         WeightedList.<BlockState>builder()
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 1).setValue(PebbleBlock.FACING, Direction.NORTH), 5)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 1).setValue(PebbleBlock.FACING, Direction.EAST), 5)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 1).setValue(PebbleBlock.FACING, Direction.SOUTH), 5)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 1).setValue(PebbleBlock.FACING, Direction.WEST), 5)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 2).setValue(PebbleBlock.FACING, Direction.NORTH), 3)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 2).setValue(PebbleBlock.FACING, Direction.EAST), 3)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 2).setValue(PebbleBlock.FACING, Direction.SOUTH), 3)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 2).setValue(PebbleBlock.FACING, Direction.WEST), 3)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 3).setValue(PebbleBlock.FACING, Direction.NORTH), 2)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 3).setValue(PebbleBlock.FACING, Direction.EAST), 2)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 3).setValue(PebbleBlock.FACING, Direction.SOUTH), 2)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 3).setValue(PebbleBlock.FACING, Direction.WEST), 2)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 4).setValue(PebbleBlock.FACING, Direction.NORTH), 1)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 4).setValue(PebbleBlock.FACING, Direction.EAST), 1)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 4).setValue(PebbleBlock.FACING, Direction.SOUTH), 1)
-                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.COUNT, 4).setValue(PebbleBlock.FACING, Direction.WEST), 1)
+                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.FACING, Direction.NORTH))
+                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.FACING, Direction.EAST))
+                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.FACING, Direction.SOUTH))
+                                .add(EBlocks.PEBBLE.defaultBlockState().setValue(PebbleBlock.FACING, Direction.WEST))
                                 .build()
                 )));
 
+        registerFeature(context, MEGA_ACACIA_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.ACACIA_LOG),
+                new MegaJungleTrunkPlacer(5, 2, 0),
+                BlockStateProvider.simple(Blocks.ACACIA_LEAVES),
+                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 1),
+                new TwoLayersFeatureSize(7, 2, 5)
+        ).build());
 
+        registerFeature(context, RED_POPLAR_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.POPLAR_LOG),
+                new PoplarTrunkPlacer(7, 4, 0, ConstantInt.of(4), UniformInt.of(1, 4)),
+                BlockStateProvider.simple(EBlocks.RED_POPLAR_LEAVES),
+                new PoplarFoliagePlacer(
+                        new WeightedListInt(WeightedList.<IntProvider>builder()
+                                .add(ConstantInt.of(5), 5)
+                                .add(ConstantInt.of(6), 5)
+                                .add(ConstantInt.of(7), 1)
+                                .add(ConstantInt.of(8), 1)
+                                .build()),
+                        ConstantInt.of(0), UniformInt.of(5, 6), 0.15F
+                ),
+                new TwoLayersFeatureSize(1, 0, 2)
+        ).build());
+        registerFeature(context, ORANGE_POPLAR_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.POPLAR_LOG),
+                new PoplarTrunkPlacer(7, 4, 0, ConstantInt.of(4), UniformInt.of(1, 4)),
+                BlockStateProvider.simple(EBlocks.ORANGE_POPLAR_LEAVES),
+                new PoplarFoliagePlacer(
+                        new WeightedListInt(WeightedList.<IntProvider>builder()
+                                .add(ConstantInt.of(5), 5)
+                                .add(ConstantInt.of(6), 5)
+                                .add(ConstantInt.of(7), 1)
+                                .add(ConstantInt.of(8), 1)
+                                .build()),
+                        ConstantInt.of(0), UniformInt.of(5, 6), 0.15F
+                ),
+                new TwoLayersFeatureSize(1, 0, 2)
+        ).build());
+        registerFeature(context, YELLOW_POPLAR_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.POPLAR_LOG),
+                new PoplarTrunkPlacer(7, 4, 0, ConstantInt.of(4), UniformInt.of(1, 4)),
+                BlockStateProvider.simple(EBlocks.YELLOW_POPLAR_LEAVES),
+                new PoplarFoliagePlacer(
+                        new WeightedListInt(WeightedList.<IntProvider>builder()
+                                .add(ConstantInt.of(5), 5)
+                                .add(ConstantInt.of(6), 5)
+                                .add(ConstantInt.of(7), 1)
+                                .add(ConstantInt.of(8), 1)
+                                .build()),
+                        ConstantInt.of(0), UniformInt.of(5, 6), 0.15F
+                ),
+                new TwoLayersFeatureSize(1, 0, 2)
+        ).build());
+
+        registerFeature(context, RED_SHRUB_PATCH_KEY, EFeatures.BLOCK_PATCH,
+                new BlockPatchConfiguration(
+                        BlockStateProvider.simple(EBlocks.RED_SHRUB),
+                        BlockTags.DIRT, 3, 1, 4, 2));
+
+        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+        registerFeature(context, RANDOM_POPLAR_KEY, Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(RED_POPLAR_KEY)), 0.33F),
+                                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(YELLOW_POPLAR_KEY)), 0.33F)
+                        ),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(ORANGE_POPLAR_KEY))
+                )
+        );
 
     }
 

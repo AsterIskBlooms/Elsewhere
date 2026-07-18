@@ -47,7 +47,7 @@ public class EWorldgen {
         BiomeModifications.addFeature(
                 ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD) && !ctx.hasTag(BiomeTags.IS_OCEAN),
                 GenerationStep.Decoration.VEGETAL_DECORATION,
-                EPlacedFeatures.PEBBLES
+                EPlacedFeatures.PEBBLE
         );
         BiomeModifications.addFeature(
                 ctx -> outcropBiomes.contains(ctx.getBiomeKey()),
@@ -183,6 +183,17 @@ public class EWorldgen {
                 EPlacedFeatures.TIN_ORE_SMALL
         );
 
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.DAPPLED_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                EPlacedFeatures.DAPPLED_FOREST_TREES
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.DAPPLED_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                EPlacedFeatures.RED_SHRUB_PATCH
+        );
+
 
 
 
@@ -229,6 +240,7 @@ public class EWorldgen {
                                         Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.DARK_FOREST, Biomes.CHERRY_GROVE,
                                         Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.GROVE,
                                         Biomes.TAIGA, Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA,
+                                        EBiomes.DAPPLED_FOREST,
                                         Biomes.SWAMP, Biomes.MANGROVE_SWAMP,
                                         Biomes.JUNGLE, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE,
                                         Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU, Biomes.WINDSWEPT_SAVANNA,
@@ -362,18 +374,6 @@ public class EWorldgen {
                                                         SurfaceRules.state(EBlocks.RED_GRASS_BLOCK.defaultBlockState())))
                                 )));
 
-                SurfaceRules.RuleSource dappledForestRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.DAPPLED_FOREST),
-                        prelimAndWaterCheck(
-                                SurfaceRules.sequence(
-                                        stoneCliffsRule,
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.3, 1.0),
-                                                        SurfaceRules.state(EBlocks.RUSTY_MOSS_BLOCK.defaultBlockState()))),
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.3),
-                                                        SurfaceRules.state(EBlocks.RUSTY_MOSS_BLOCK.defaultBlockState())))
-                                )));
-
                 SurfaceRules.RuleSource riverRules = SurfaceRules.sequence(
                                 SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.WARM_RIVER),
                                         SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
@@ -406,7 +406,7 @@ public class EWorldgen {
                                                         SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
                                                                 SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())),
                                                         SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                                SurfaceRules.state(Blocks.DIRT.defaultBlockState())))),
+                                                                SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())))),
                                                 SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
                                                         SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
                                                                 SurfaceRules.state(Blocks.MUD.defaultBlockState()))),
@@ -443,7 +443,6 @@ public class EWorldgen {
                         );
 
                 SurfaceRules.RuleSource crystalCavernRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.CRYSTAL_CAVERNS),
-                        SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
                         SurfaceRules.sequence(
                                 // Sodalite Bands
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.25, -0.2),
@@ -461,11 +460,16 @@ public class EWorldgen {
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.2, 0.4),
                                         SurfaceRules.state(Blocks.SMOOTH_BASALT.defaultBlockState())),
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4),
-                                        SurfaceRules.state(Blocks.CALCITE.defaultBlockState()))
-                        )));
+                                        SurfaceRules.state(Blocks.CALCITE.defaultBlockState())),
+
+                                // Surface Stone
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState()))),
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState())))
+                        ));
 
                 SurfaceRules.RuleSource sulfurCaveRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.SULFUR_CAVES),
-                        SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
                         SurfaceRules.sequence(
                                 // Cave Bands
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.4F, -0.1F),
@@ -475,8 +479,14 @@ public class EWorldgen {
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.325F, 0.4F),
                                         SurfaceRules.state(EBlocks.ORPIMENT.defaultBlockState())),
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4F),
-                                        SurfaceRules.state(EBlocks.CINNABAR.defaultBlockState()))
-                        )));
+                                        SurfaceRules.state(EBlocks.CINNABAR.defaultBlockState())),
+
+                                // Surface Stone
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState()))),
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState())))
+                        ));
 
                 SurfaceRules.RuleSource aridCaveRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.ARID_CAVES),
                         SurfaceRules.sequence(
@@ -488,11 +498,16 @@ public class EWorldgen {
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.2F, 0.5F),
                                         SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())),
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.5F),
-                                        SurfaceRules.state(Blocks.SAND.defaultBlockState()))
+                                        SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+
+                                // Surface Stone
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState()))),
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState())))
                         ));
 
                 SurfaceRules.RuleSource frigidCaveRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.FRIGID_CAVES),
-                        SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.abovePreliminarySurface()),
                         SurfaceRules.sequence(
                                 // Cave Bands
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, -0.4F, -0.2F),
@@ -502,11 +517,17 @@ public class EWorldgen {
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.2F, 0.4F),
                                         SurfaceRules.state(Blocks.PACKED_ICE.defaultBlockState())),
                                 SurfaceRules.ifTrue(NoiseCondition3D.of(ENoise.CAVE_GRADIENT_3D, 0.4F, 0.65F),
-                                        SurfaceRules.state(Blocks.SNOW_BLOCK.defaultBlockState()))
-                        )));
+                                        SurfaceRules.state(Blocks.SNOW_BLOCK.defaultBlockState())),
+
+                                // Surface Stone
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState()))),
+                                SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState())))
+                        ));
 
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
-                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules, outbackRules, tundraRules, dappledForestRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
+                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules, outbackRules, tundraRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 deepslateRule, shaleRule, object.surfaceRule()
                         ));
             });

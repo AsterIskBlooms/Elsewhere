@@ -7,6 +7,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.fish.AbstractFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import team.lookingglass.elsewhere.registry.EItems;
 import team.lookingglass.elsewhere.registry.ESounds;
 
 public class Perch extends AbstractFish {
@@ -24,5 +25,5 @@ public class Perch extends AbstractFish {
     protected SoundEvent getDeathSound() { return ESounds.PERCH_DEATH; }
 
     @Override
-    public ItemStack getBucketItemStack() { return ItemStack.EMPTY; }
+    public ItemStack getBucketItemStack() { return new ItemStack(EItems.PERCH_BUCKET); }
 }

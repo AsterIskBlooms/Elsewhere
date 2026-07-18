@@ -660,7 +660,9 @@ public interface EBlocks {
     Block OAK_BOARDS = register("oak_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)
     );
-    Block OAK_TRIM = registerSubBlock("oak_trim", Blocks.OAK_PLANKS);
+    Block OAK_TRIM = register("oak_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)
+    );
 
     Block DARK_OAK_MOSAIC = registerSubBlock("dark_oak_mosaic", Blocks.DARK_OAK_PLANKS);
     Block DARK_OAK_MOSAIC_STAIRS = registerStair("dark_oak_mosaic_stairs", DARK_OAK_MOSAIC);
@@ -668,7 +670,9 @@ public interface EBlocks {
     Block DARK_OAK_BOARDS = register("dark_oak_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_PLANKS)
     );
-    Block DARK_OAK_TRIM = registerSubBlock("dark_oak_trim", Blocks.DARK_OAK_PLANKS);
+    Block DARK_OAK_TRIM = register("dark_oak_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_PLANKS)
+    );
 
     Block PALE_OAK_MOSAIC = registerSubBlock("pale_oak_mosaic", Blocks.PALE_OAK_PLANKS);
     Block PALE_OAK_MOSAIC_STAIRS = registerStair("pale_oak_mosaic_stairs", PALE_OAK_MOSAIC);
@@ -676,7 +680,9 @@ public interface EBlocks {
     Block PALE_OAK_BOARDS = register("pale_oak_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.PALE_OAK_PLANKS)
     );
-    Block PALE_OAK_TRIM = registerSubBlock("pale_oak_trim", Blocks.PALE_OAK_PLANKS);
+    Block PALE_OAK_TRIM = register("pale_oak_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PALE_OAK_PLANKS)
+    );
 
     Block BIRCH_MOSAIC = registerSubBlock("birch_mosaic", Blocks.BIRCH_PLANKS);
     Block BIRCH_MOSAIC_STAIRS = registerStair("birch_mosaic_stairs", BIRCH_MOSAIC);
@@ -684,7 +690,9 @@ public interface EBlocks {
     Block BIRCH_BOARDS = register("birch_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_PLANKS)
     );
-    Block BIRCH_TRIM = registerSubBlock("birch_trim", Blocks.BIRCH_PLANKS);
+    Block BIRCH_TRIM = register("birch_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_PLANKS)
+    );
 
     Block SPRUCE_MOSAIC = registerSubBlock("spruce_mosaic", Blocks.SPRUCE_PLANKS);
     Block SPRUCE_MOSAIC_STAIRS = registerStair("spruce_mosaic_stairs", SPRUCE_MOSAIC);
@@ -692,7 +700,9 @@ public interface EBlocks {
     Block SPRUCE_BOARDS = register("spruce_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_PLANKS)
     );
-    Block SPRUCE_TRIM = registerSubBlock("spruce_trim", Blocks.SPRUCE_PLANKS);
+    Block SPRUCE_TRIM = register("spruce_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_PLANKS)
+    );
 
     Block JUNGLE_MOSAIC = registerSubBlock("jungle_mosaic", Blocks.JUNGLE_PLANKS);
     Block JUNGLE_MOSAIC_STAIRS = registerStair("jungle_mosaic_stairs", JUNGLE_MOSAIC);
@@ -700,7 +710,9 @@ public interface EBlocks {
     Block JUNGLE_BOARDS = register("jungle_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_PLANKS)
     );
-    Block JUNGLE_TRIM = registerSubBlock("jungle_trim", Blocks.JUNGLE_PLANKS);
+    Block JUNGLE_TRIM = register("jungle_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_PLANKS)
+    );
 
     Block ACACIA_MOSAIC = registerSubBlock("acacia_mosaic", Blocks.ACACIA_PLANKS);
     Block ACACIA_MOSAIC_STAIRS = registerStair("acacia_mosaic_stairs", ACACIA_MOSAIC);
@@ -708,7 +720,9 @@ public interface EBlocks {
     Block ACACIA_BOARDS = register("acacia_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS)
     );
-    Block ACACIA_TRIM = registerSubBlock("acacia_trim", Blocks.ACACIA_PLANKS);
+    Block ACACIA_TRIM = register("acacia_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS)
+    );
 
     Block CHERRY_MOSAIC = registerSubBlock("cherry_mosaic", Blocks.CHERRY_PLANKS);
     Block CHERRY_MOSAIC_STAIRS = registerStair("cherry_mosaic_stairs", CHERRY_MOSAIC);
@@ -716,7 +730,9 @@ public interface EBlocks {
     Block CHERRY_BOARDS = register("cherry_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)
     );
-    Block CHERRY_TRIM = registerSubBlock("cherry_trim", Blocks.CHERRY_PLANKS);
+    Block CHERRY_TRIM = register("cherry_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)
+    );
 
     Block MANGROVE_MOSAIC = registerSubBlock("mangrove_mosaic", Blocks.MANGROVE_PLANKS);
     Block MANGROVE_MOSAIC_STAIRS = registerStair("mangrove_mosaic_stairs", MANGROVE_MOSAIC);
@@ -724,7 +740,9 @@ public interface EBlocks {
     Block MANGROVE_BOARDS = register("mangrove_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_PLANKS)
     );
-    Block MANGROVE_TRIM = registerSubBlock("mangrove_trim", Blocks.MANGROVE_PLANKS);
+    Block MANGROVE_TRIM = register("mangrove_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_PLANKS)
+    );
 
     Block CRIMSON_MOSAIC = registerSubBlock("crimson_mosaic", Blocks.CRIMSON_PLANKS);
     Block CRIMSON_MOSAIC_STAIRS = registerStair("crimson_mosaic_stairs", CRIMSON_MOSAIC);
@@ -732,7 +750,9 @@ public interface EBlocks {
     Block CRIMSON_BOARDS = register("crimson_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS)
     );
-    Block CRIMSON_TRIM = registerSubBlock("crimson_trim", Blocks.CRIMSON_PLANKS);
+    Block CRIMSON_TRIM = register("crimson_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS)
+    );
 
     Block WARPED_MOSAIC = registerSubBlock("warped_mosaic", Blocks.WARPED_PLANKS);
     Block WARPED_MOSAIC_STAIRS = registerStair("warped_mosaic_stairs", WARPED_MOSAIC);
@@ -740,8 +760,22 @@ public interface EBlocks {
     Block WARPED_BOARDS = register("warped_boards", RotatedPillarBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)
     );
-    Block WARPED_TRIM = registerSubBlock("warped_trim", Blocks.WARPED_PLANKS);
+    Block WARPED_TRIM = register("warped_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)
+    );
 
+    Block BAMBOO_STEM = register("bamboo_stem", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_BLOCK)
+    );
+    Block STRIPPED_BAMBOO_STEM = register("stripped_bamboo_stem", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_BAMBOO_BLOCK)
+    );
+    Block BAMBOO_BOARDS = register("bamboo_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)
+    );
+    Block BAMBOO_TRIM = register("bamboo_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)
+    );
 
 
 
@@ -798,8 +832,25 @@ public interface EBlocks {
             Blocks.flowerPotProperties()
     );
 
+    Block MAGENTA_CONEFLOWER = register("magenta_coneflower", p -> new FlowerBlock(MobEffects.POISON, 3.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block YELLOW_CONEFLOWER = register("yellow_coneflower", p -> new FlowerBlock(MobEffects.POISON, 3.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block POTTED_MAGENTA_CONEFLOWER = register("potted_magenta_coneflower", p -> new FlowerPotBlock(MAGENTA_CONEFLOWER, p),false,
+            Blocks.flowerPotProperties()
+    );
+    Block POTTED_YELLOW_CONEFLOWER = register("potted_yellow_coneflower", p -> new FlowerPotBlock(YELLOW_CONEFLOWER, p),false,
+            Blocks.flowerPotProperties()
+    );
+
+    Block IRONWEED = register("ironweed", TallFlowerBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+
     Block PEBBLE = register("pebble", PebbleBlock::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instabreak().sound(SoundType.STONE).noOcclusion().noCollision()
+            BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instabreak().sound(SoundType.STONE).noOcclusion()
     );
 
     Block LATERITE = register("laterite", Block::new, true,
@@ -819,12 +870,111 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.TERRACOTTA_RED).sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
     );
 
+
+
+
+    // Dappled Forest
+    Block POPLAR_LOG = register("poplar_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.CHERRY_WOOD)
+    );
+    Block STRIPPED_POPLAR_LOG = register("stripped_poplar_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(2.0F, 2.0F).sound(SoundType.CHERRY_WOOD)
+    );
+    Block POPLAR_WOOD = register("poplar_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.CHERRY_WOOD)
+    );
+    Block STRIPPED_POPLAR_WOOD = register("stripped_poplar_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(2.0F, 2.0F).sound(SoundType.CHERRY_WOOD)
+    );
+    Block POPLAR_PLANKS = register("poplar_planks", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(2.0F, 2.0F).sound(SoundType.CHERRY_WOOD)
+    );
+    Block POPLAR_STAIRS = registerStair("poplar_stairs", POPLAR_PLANKS);
+    Block POPLAR_SLAB = registerSlab("poplar_slab", POPLAR_PLANKS);
+    Block POPLAR_MOSAIC = registerSubBlock("poplar_mosaic", POPLAR_PLANKS);
+    Block POPLAR_MOSAIC_STAIRS = registerStair("poplar_mosaic_stairs", POPLAR_MOSAIC);
+    Block POPLAR_MOSAIC_SLAB = registerSlab("poplar_mosaic_slab", POPLAR_MOSAIC);
+    Block POPLAR_BOARDS = register("poplar_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(POPLAR_PLANKS)
+    );
+    Block POPLAR_TRIM = register("poplar_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(POPLAR_PLANKS)
+    );
+    Block POPLAR_FENCE = registerFence("poplar_fence", POPLAR_PLANKS);
+    Block POPLAR_FENCE_GATE = registerFenceGate("poplar_fence_gate", EWoodTypes.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_DOOR = registerDoor("poplar_door", EBlockSets.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_TRAPDOOR = registerTrapdoor("poplar_trapdoor", EBlockSets.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_PRESSURE_PLATE = registerPressurePlate("poplar_pressure_plate", EBlockSets.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_BUTTON = registerButton("poplar_button", EBlockSets.POPLAR, POPLAR_PLANKS, 30);
+    Block POPLAR_SIGN = registerSign("poplar_sign", EWoodTypes.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_WALL_SIGN = registerWallSign("poplar_wall_sign", EWoodTypes.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_HANGING_SIGN = registerCeilingHangingSign("poplar_hanging_sign", EWoodTypes.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_WALL_HANGING_SIGN = registerWallHangingSign("poplar_wall_hanging_sign", EWoodTypes.POPLAR, POPLAR_PLANKS);
+
+    Block RED_POPLAR_LEAVES = register("red_poplar_leaves",
+            p -> new UntintedParticleLeavesBlock(0.01F, EParticles.RED_POPLAR_LEAVES, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(2.0F, 2.0F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
+    );
+    Block ORANGE_POPLAR_LEAVES = register("orange_poplar_leaves",
+            p -> new UntintedParticleLeavesBlock(0.01F, EParticles.ORANGE_POPLAR_LEAVES, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(2.0F, 2.0F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
+    );
+    Block YELLOW_POPLAR_LEAVES = register("yellow_poplar_leaves",
+            p -> new UntintedParticleLeavesBlock(0.01F, EParticles.YELLOW_POPLAR_LEAVES, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(2.0F, 2.0F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
+    );
+    Block POPLAR_SAPLING = registerSapling( "poplar_sapling", ETreeGrowers.POPLAR);
+    Block POTTED_POPLAR_SAPLING = registerPottedSapling( "potted_poplar_sapling", POPLAR_SAPLING);
+
     Block RUSTY_MOSS_BLOCK = register("rusty_moss_block", p -> new BonemealableFeaturePlacerBlock(VegetationFeatures.PALE_MOSS_PATCH_BONEMEAL, p), true,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.1F).sound(SoundType.MOSS)
     );
     Block RUSTY_MOSS_CARPET = register("rusty_moss_carpet", MossyCarpetBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(RUSTY_MOSS_BLOCK).sound(SoundType.MOSS_CARPET)
     );
+
+
+
+    // Azalea
+    Block AZALEA_LOG = register("azalea_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block STRIPPED_AZALEA_LOG = register("stripped_azalea_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block AZALEA_WOOD = register("azalea_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block STRIPPED_AZALEA_WOOD = register("stripped_azalea_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block AZALEA_PLANKS = register("azalea_planks", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block AZALEA_STAIRS = registerStair("azalea_stairs", AZALEA_PLANKS);
+    Block AZALEA_SLAB = registerSlab("azalea_slab", AZALEA_PLANKS);
+    Block AZALEA_MOSAIC = registerSubBlock("azalea_mosaic", AZALEA_PLANKS);
+    Block AZALEA_MOSAIC_STAIRS = registerStair("azalea_mosaic_stairs", AZALEA_MOSAIC);
+    Block AZALEA_MOSAIC_SLAB = registerSlab("azalea_mosaic_slab", AZALEA_MOSAIC);
+    Block AZALEA_BOARDS = register("azalea_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(AZALEA_PLANKS)
+    );
+    Block AZALEA_TRIM = register("azalea_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(AZALEA_PLANKS)
+    );
+    Block AZALEA_FENCE = registerFence("azalea_fence", AZALEA_PLANKS);
+    Block AZALEA_FENCE_GATE = registerFenceGate("azalea_fence_gate", EWoodTypes.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_DOOR = registerDoor("azalea_door", EBlockSets.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_TRAPDOOR = registerTrapdoor("azalea_trapdoor", EBlockSets.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_PRESSURE_PLATE = registerPressurePlate("azalea_pressure_plate", EBlockSets.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_BUTTON = registerButton("azalea_button", EBlockSets.AZALEA, AZALEA_PLANKS, 30);
+    Block AZALEA_SIGN = registerSign("azalea_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_WALL_SIGN = registerWallSign("azalea_wall_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_HANGING_SIGN = registerCeilingHangingSign("azalea_hanging_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_WALL_HANGING_SIGN = registerWallHangingSign("azalea_wall_hanging_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
+
+
+
 
     // Arid Dirt
     ResourceKey<Block> ARID_DIRT_KEY = ResourceKey.create(Registries.BLOCK,
@@ -936,20 +1086,20 @@ public interface EBlocks {
         return register(name, p -> new SaplingBlock(treeGrower, p), true, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING));
     }
     private static Block registerPottedSapling(final String name, Block block) {
-        return register(name, p -> new FlowerPotBlock(block, p), true, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING));
+        return register(name, p -> new FlowerPotBlock(block, p), false, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING));
     }
 
     // Sign Methods (HELP ME)
     private static Block registerSign(final String name, WoodType woodType, Block block) {
-        return register(name, p -> new StandingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block));
+        return register(name, p -> new StandingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block).noCollision());
     }
 
     private static Block registerWallSign(final String name, WoodType woodType, Block block) {
-        return register(name, p -> new WallSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block));
+        return register(name, p -> new WallSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block).noCollision());
     }
 
     private static Block registerCeilingHangingSign(final String name, WoodType woodType, Block block) {
-        return register(name, p -> new CeilingHangingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block));
+        return register(name, p -> new CeilingHangingSignBlock(woodType, p), false, BlockBehaviour.Properties.ofFullCopy(block).noCollision());
     }
 
     private static Block registerWallHangingSign(final String name, WoodType woodType, Block block) {

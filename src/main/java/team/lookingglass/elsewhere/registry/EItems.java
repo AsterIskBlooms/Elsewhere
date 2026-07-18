@@ -1,13 +1,12 @@
 package team.lookingglass.elsewhere.registry;
 
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.MobBucketItem;
-import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.material.Fluids;
 import team.lookingglass.elsewhere.Elsewhere;
@@ -16,7 +15,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
 import team.lookingglass.elsewhere.entity.EEntities;
 import team.lookingglass.elsewhere.registry.equipment.AttributeArmorItem;
 import team.lookingglass.elsewhere.registry.equipment.EMaterials;
@@ -25,6 +23,26 @@ import team.lookingglass.elsewhere.registry.uuid.ArmorAttributes;
 import java.util.function.Function;
 
 public interface EItems {
+
+    Item POPLAR_SIGN = register("poplar_sign",
+            p -> new SignItem(EBlocks.POPLAR_SIGN, EBlocks.POPLAR_WALL_SIGN, p), new Item.Properties().stacksTo(16));
+    Item POPLAR_HANGING_SIGN = register("poplar_hanging_sign",
+            p -> new HangingSignItem(EBlocks.POPLAR_HANGING_SIGN, EBlocks.POPLAR_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
+
+    Item AZALEA_SIGN = register("azalea_sign",
+            p -> new SignItem(EBlocks.POPLAR_SIGN, EBlocks.POPLAR_WALL_SIGN, p), new Item.Properties().stacksTo(16));
+    Item AZALEA_HANGING_SIGN = register("azalea_hanging_sign",
+            p -> new HangingSignItem(EBlocks.AZALEA_HANGING_SIGN, EBlocks.AZALEA_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
+
+    Item POPLAR_BOAT = register("poplar_boat",
+            p -> new BoatItem(EEntities.POPLAR_BOAT, p), new Item.Properties().stacksTo(1));
+    Item POPLAR_CHEST_BOAT = register("poplar_chest_boat",
+            p -> new BoatItem(EEntities.POPLAR_CHEST_BOAT, p), new Item.Properties().stacksTo(1));
+
+    Item AZALEA_BOAT = register("azalea_boat",
+            p -> new BoatItem(EEntities.AZALEA_BOAT, p), new Item.Properties().stacksTo(1));
+    Item AZALEA_CHEST_BOAT = register("azalea_chest_boat",
+            p -> new BoatItem(EEntities.AZALEA_CHEST_BOAT, p), new Item.Properties().stacksTo(1));
 
     Item DIAMOND_SHARD = register("diamond_shard", Item::new, new Item.Properties());
     Item EMERALD_SHARD = register("emerald_shard", Item::new, new Item.Properties());

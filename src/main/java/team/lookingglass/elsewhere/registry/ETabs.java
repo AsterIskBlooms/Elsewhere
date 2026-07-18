@@ -843,6 +843,32 @@ public class ETabs {
             output.insertAfter(Items.WARPED_STAIRS, EBlocks.WARPED_MOSAIC_STAIRS);
             output.insertAfter(Items.WARPED_SLAB, EBlocks.WARPED_MOSAIC_SLAB, EBlocks.WARPED_BOARDS, EBlocks.WARPED_TRIM);
 
+            output.insertAfter(Items.BAMBOO_BLOCK, EBlocks.BAMBOO_STEM);
+            output.insertAfter(Items.STRIPPED_BAMBOO_BLOCK, EBlocks.STRIPPED_BAMBOO_STEM);
+            output.insertAfter(Items.BAMBOO_MOSAIC_SLAB, EBlocks.BAMBOO_BOARDS, EBlocks.BAMBOO_TRIM);
+
+            output.insertAfter(Blocks.PALE_OAK_BUTTON,
+                    EBlocks.POPLAR_LOG, EBlocks.POPLAR_WOOD,
+                    EBlocks.STRIPPED_POPLAR_LOG, EBlocks.STRIPPED_POPLAR_WOOD,
+                    EBlocks.POPLAR_PLANKS, EBlocks.POPLAR_MOSAIC,
+                    EBlocks.POPLAR_STAIRS, EBlocks.POPLAR_MOSAIC_STAIRS,
+                    EBlocks.POPLAR_SLAB, EBlocks.POPLAR_MOSAIC_SLAB,
+                    EBlocks.POPLAR_BOARDS, EBlocks.POPLAR_TRIM,
+                    EBlocks.POPLAR_FENCE, EBlocks.POPLAR_FENCE_GATE,
+                    EBlocks.POPLAR_DOOR, EBlocks.POPLAR_TRAPDOOR,
+                    EBlocks.POPLAR_PRESSURE_PLATE, EBlocks.POPLAR_BUTTON,
+
+                    EBlocks.AZALEA_LOG, EBlocks.AZALEA_WOOD,
+                    EBlocks.STRIPPED_AZALEA_LOG, EBlocks.STRIPPED_AZALEA_WOOD,
+                    EBlocks.AZALEA_PLANKS, EBlocks.AZALEA_MOSAIC,
+                    EBlocks.AZALEA_STAIRS, EBlocks.AZALEA_MOSAIC_STAIRS,
+                    EBlocks.AZALEA_SLAB, EBlocks.AZALEA_MOSAIC_SLAB,
+                    EBlocks.AZALEA_BOARDS, EBlocks.AZALEA_TRIM,
+                    EBlocks.AZALEA_FENCE, EBlocks.AZALEA_FENCE_GATE,
+                    EBlocks.AZALEA_DOOR, EBlocks.AZALEA_TRAPDOOR,
+                    EBlocks.AZALEA_PRESSURE_PLATE, EBlocks.AZALEA_BUTTON
+            );
+
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> {

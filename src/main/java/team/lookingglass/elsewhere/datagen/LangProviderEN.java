@@ -485,6 +485,12 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.warped_boards", "Warped Boards");
         translationBuilder.add("block.elsewhere.warped_trim", "Warped Trim");
 
+        translationBuilder.add("block.elsewhere.bamboo_stem", "Bamboo Stem");
+        translationBuilder.add("block.elsewhere.stripped_bamboo_stem", "Stripped Bamboo Stem");
+        translationBuilder.add("block.elsewhere.bamboo_boards", "Bamboo Boards");
+        translationBuilder.add("block.elsewhere.bamboo_trim", "Bamboo Trim");
+
+
 
 
         translationBuilder.add("block.elsewhere.bluebonnet", "Bluebonnet");
@@ -505,6 +511,11 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.white_hibiscus", "White Hibiscus");
         translationBuilder.add("block.elsewhere.potted_white_hibiscus", "Potted White Hibiscus");
 
+        translationBuilder.add("block.elsewhere.magenta_coneflower", "Magenta Coneflower");
+        translationBuilder.add("block.elsewhere.yellow_coneflower", "Magenta Coneflower");
+        translationBuilder.add("block.elsewhere.ironweed", "Ironweed");
+
+
         translationBuilder.add("block.elsewhere.arid_dirt", "Arid Dirt");
         translationBuilder.add("block.elsewhere.arid_grass_block", "Arid Grass Block");
 
@@ -512,6 +523,79 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.short_red_grass", "Short Red Grass");
         translationBuilder.add("block.elsewhere.tall_red_grass", "Tall Red Grass");
         translationBuilder.add("block.elsewhere.red_shrub", "Red Shrub");
+
+        translationBuilder.add("block.elsewhere.poplar_log", "Poplar Log");
+        translationBuilder.add("block.elsewhere.stripped_poplar_log", "Stripped Poplar Log");
+        translationBuilder.add("block.elsewhere.poplar_wood", "Poplar Wood");
+        translationBuilder.add("block.elsewhere.stripped_poplar_wood", "Stripped Poplar Wood");
+
+        translationBuilder.add("block.elsewhere.poplar_planks", "Poplar Planks");
+        translationBuilder.add("block.elsewhere.poplar_stairs", "Poplar Stairs");
+        translationBuilder.add("block.elsewhere.poplar_slab", "Poplar Slab");
+        translationBuilder.add("block.elsewhere.poplar_mosaic", "Poplar Mosaic");
+        translationBuilder.add("block.elsewhere.poplar_mosaic_stairs", "Poplar Mosaic Stairs");
+        translationBuilder.add("block.elsewhere.poplar_mosaic_slab", "Poplar Mosaic Slab");
+        translationBuilder.add("block.elsewhere.poplar_boards", "Poplar Boards");
+        translationBuilder.add("block.elsewhere.poplar_trim", "Poplar Trim");
+
+        translationBuilder.add("block.elsewhere.poplar_fence", "Poplar Fence");
+        translationBuilder.add("block.elsewhere.poplar_fence_gate", "Poplar Fence Gate");
+        translationBuilder.add("block.elsewhere.poplar_door", "Poplar Door");
+        translationBuilder.add("block.elsewhere.poplar_trapdoor", "Poplar Trapdoor");
+        translationBuilder.add("block.elsewhere.poplar_pressure_plate", "Poplar Pressure Plate");
+        translationBuilder.add("block.elsewhere.poplar_button", "Poplar Button");
+
+        translationBuilder.add("block.elsewhere.poplar_sign", "Poplar Sign");
+        translationBuilder.add("block.elsewhere.poplar_wall_sign", "Poplar Wall Sign");
+        translationBuilder.add("block.elsewhere.poplar_hanging_sign", "Poplar Hanging Sign");
+        translationBuilder.add("block.elsewhere.poplar_wall_hanging_sign", "Poplar Wall Hanging Sign");
+
+        translationBuilder.add("item.elsewhere.poplar_sign", "Poplar Sign");
+        translationBuilder.add("item.elsewhere.poplar_hanging_sign", "Poplar Hanging Sign");
+        translationBuilder.add("item.elsewhere.poplar_boat", "Poplar Boat");
+        translationBuilder.add("item.elsewhere.poplar_chest_boat", "Poplar Boat with Chest");
+
+        translationBuilder.add("entity.elsewhere.poplar_boat", "Poplar Boat");
+        translationBuilder.add("entity.elsewhere.poplar_chest_boat", "Poplar Boat with Chest");
+
+        translationBuilder.add("block.elsewhere.poplar_sapling", "Poplar Sapling");
+        translationBuilder.add("block.elsewhere.red_poplar_leaves", "Red Poplar Leaves");
+        translationBuilder.add("block.elsewhere.orange_poplar_leaves", "Orange Poplar Leaves");
+        translationBuilder.add("block.elsewhere.yellow_poplar_leaves", "Yellow Poplar Leaves");
+
+        translationBuilder.add("block.elsewhere.azalea_log", "Azalea Log");
+        translationBuilder.add("block.elsewhere.stripped_azalea_log", "Stripped Azalea Log");
+        translationBuilder.add("block.elsewhere.azalea_wood", "Azalea Wood");
+        translationBuilder.add("block.elsewhere.stripped_azalea_wood", "Stripped Azalea Wood");
+
+        translationBuilder.add("block.elsewhere.azalea_planks", "Azalea Planks");
+        translationBuilder.add("block.elsewhere.azalea_stairs", "Azalea Stairs");
+        translationBuilder.add("block.elsewhere.azalea_slab", "Azalea Slab");
+        translationBuilder.add("block.elsewhere.azalea_mosaic", "Azalea Mosaic");
+        translationBuilder.add("block.elsewhere.azalea_mosaic_stairs", "Azalea Mosaic Stairs");
+        translationBuilder.add("block.elsewhere.azalea_mosaic_slab", "Azalea Mosaic Slab");
+        translationBuilder.add("block.elsewhere.azalea_boards", "Azalea Boards");
+        translationBuilder.add("block.elsewhere.azalea_trim", "Azalea Trim");
+
+        translationBuilder.add("block.elsewhere.azalea_fence", "Azalea Fence");
+        translationBuilder.add("block.elsewhere.azalea_fence_gate", "Azalea Fence Gate");
+        translationBuilder.add("block.elsewhere.azalea_door", "Azalea Door");
+        translationBuilder.add("block.elsewhere.azalea_trapdoor", "Azalea Trapdoor");
+        translationBuilder.add("block.elsewhere.azalea_pressure_plate", "Azalea Pressure Plate");
+        translationBuilder.add("block.elsewhere.azalea_button", "Azalea Button");
+
+        translationBuilder.add("block.elsewhere.azalea_sign", "Azalea Sign");
+        translationBuilder.add("block.elsewhere.azalea_wall_sign", "Azalea Wall Sign");
+        translationBuilder.add("block.elsewhere.azalea_hanging_sign", "Azalea Hanging Sign");
+        translationBuilder.add("block.elsewhere.azalea_wall_hanging_sign", "Azalea Wall Hanging Sign");
+
+        translationBuilder.add("item.elsewhere.azalea_sign", "Azalea Sign");
+        translationBuilder.add("item.elsewhere.azalea_hanging_sign", "Azalea Hanging Sign");
+        translationBuilder.add("item.elsewhere.azalea_boat", "Azalea Boat");
+        translationBuilder.add("item.elsewhere.azalea_chest_boat", "Azalea Boat with Chest");
+
+        translationBuilder.add("entity.elsewhere.azalea_boat", "Azalea Boat");
+        translationBuilder.add("entity.elsewhere.azalea_chest_boat", "Azalea Boat with Chest");
 
         translationBuilder.add("block.elsewhere.rusty_moss_block", "Rusty Moss Block");
         translationBuilder.add("block.elsewhere.rusty_moss_carpet", "Rusty Moss Carpet");
@@ -523,8 +607,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.laterite", "Laterite");
 
         translationBuilder.add("block.elsewhere.pebble", "Pebble");
-
-
 
         translationBuilder.add("block.elsewhere.tin_ore", "Tin Ore");
         translationBuilder.add("block.elsewhere.shale_tin_ore", "Shale Tin Ore");
@@ -586,15 +668,18 @@ public class LangProviderEN extends FabricLanguageProvider {
 
 
 
-        translationBuilder.add("item.elsewhere.raw_perch", "Perch Spawn Egg");
-        translationBuilder.add("item.elsewhere.cooked_perch", "Perch Spawn Egg");
-        translationBuilder.add("item.elsewhere.perch_bucket", "Bucket of Perch");
-
-
-
         translationBuilder.add("biome.elsewhere.outback", "Outback");
+        translationBuilder.add("biome.elsewhere.tundra", "Tundra");
+        translationBuilder.add("biome.elsewhere.dappled_forest", "Dappled Forest");
+
+        translationBuilder.add("biome.elsewhere.cold_river", "Cold River");
+        translationBuilder.add("biome.elsewhere.lukewarm_river", "Lukewarm River");
+        translationBuilder.add("biome.elsewhere.warm_river", "Warm River");
+
         translationBuilder.add("biome.elsewhere.sulfur_caves", "Sulfur Caves");
         translationBuilder.add("biome.elsewhere.crystalline_caves", "Crystalline Caves");
+        translationBuilder.add("biome.elsewhere.arid_caves", "Arid Caves");
+        translationBuilder.add("biome.elsewhere.frigid_caves", "Frigid Caves");
 
 
 
@@ -603,18 +688,30 @@ public class LangProviderEN extends FabricLanguageProvider {
 
         translationBuilder.add("entity.elsewhere.perch", "Perch");
         translationBuilder.add("item.elsewhere.perch_spawn_egg", "Perch Spawn Egg");
+        translationBuilder.add("item.elsewhere.raw_perch", "Raw Perch");
+        translationBuilder.add("item.elsewhere.cooked_perch", "Cooked Perch");
+        translationBuilder.add("item.elsewhere.perch_bucket", "Bucket of Perch");
 
 
         translationBuilder.add("tag.elsewhere.mosaics", "Mosaics");
         translationBuilder.add("tag.elsewhere.mosaic_stairs", "Mosaic Stairs");
-        translationBuilder.add("tag.elsewhere.mosaic_slab", "Mosaic Slabs");
+        translationBuilder.add("tag.elsewhere.mosaic_slabs", "Mosaic Slabs");
         translationBuilder.add("tag.elsewhere.boards", "Boards");
         translationBuilder.add("tag.elsewhere.trims", "Trims");
+        translationBuilder.add("tag.elsewhere.bamboo_stems", "Bamboo Stems");
+
         translationBuilder.add("tag.elsewhere.shale_ore_replaceables", "Shale Ore Replaceables");
         translationBuilder.add("tag.elsewhere.cinnabar_ore_replaceables", "Cinnabar Ore Replaceables");
+        translationBuilder.add("tag.elsewhere.calcite_ore_replaceables", "Calcite Ore Replaceables");
         translationBuilder.add("tag.elsewhere.sulfur_spike_replaceable", "Sulfur Spike Replaceable");
         translationBuilder.add("tag.elsewhere.icicle_replaceable", "Icicle Replaceable");
-        translationBuilder.add("tag.elsewhere.repairs_soulsteel_armor", "Repairs Soulsteel Armor");
+
+        translationBuilder.add("tag.elsewhere.tundra_red_grass", "Tundra Red Grass");
+        translationBuilder.add("tag.elsewhere.tundra_green_grass", "Tundra Green Grass");
+
+        translationBuilder.add("tag.elsewhere.needs_copper_tool", "Needs Copper Tool");
+        translationBuilder.add("tag.elsewhere.needs_bronze_tool", "Needs Bronze Tool");
+        translationBuilder.add("tag.elsewhere.incorrect_for_bronze_tool", "Incorrect For Bronze Tool");
 
 
 

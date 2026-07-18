@@ -3,13 +3,8 @@ package team.lookingglass.elsewhere.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.registry.EItemTags;
+import team.lookingglass.elsewhere.registry.tags.EItemTags;
 import team.lookingglass.elsewhere.registry.EItems;
 
 import java.util.concurrent.CompletableFuture;
