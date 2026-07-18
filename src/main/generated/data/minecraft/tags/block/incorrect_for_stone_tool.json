@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#elsewhere:needs_copper_tool",
+    "#elsewhere:needs_bronze_tool",
+    "#minecraft:needs_iron_tool",
+    "#minecraft:needs_diamond_tool"
+  ]
+}

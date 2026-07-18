@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:soul_sandstone_brick_stairs",
+  "result": {
+    "id": "elsewhere:soul_sandstone"
+  }
+}

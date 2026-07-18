@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:smooth_soul_sandstone_wall",
+  "result": {
+    "id": "elsewhere:smooth_soul_sandstone"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:red_sandstone_bricks",
+  "result": {
+    "id": "elsewhere:polished_red_sandstone_wall"
+  }
+}

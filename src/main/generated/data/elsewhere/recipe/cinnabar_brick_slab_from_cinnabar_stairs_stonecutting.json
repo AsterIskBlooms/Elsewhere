@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:cinnabar_stairs",
+  "result": {
+    "count": 2,
+    "id": "elsewhere:cinnabar_brick_slab"
+  }
+}

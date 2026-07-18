@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.tags.EItemTags;
 import team.lookingglass.elsewhere.registry.EItems;
 
@@ -24,6 +25,39 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
         valueLookupBuilder(ItemTags.WOLF_FOOD).add(EItems.RAW_PERCH, EItems.COOKED_PERCH);
         valueLookupBuilder(ItemTags.MEAT).add(EItems.RAW_PERCH, EItems.COOKED_PERCH);
 
+        // Wood
+        valueLookupBuilder(EItemTags.POPLAR_LOGS).add(
+                EBlocks.POPLAR_LOG.asItem(), EBlocks.STRIPPED_POPLAR_LOG.asItem(),
+                EBlocks.POPLAR_WOOD.asItem(), EBlocks.STRIPPED_POPLAR_WOOD.asItem()
+        );
+        valueLookupBuilder(EItemTags.AZALEA_LOGS).add(
+                EBlocks.AZALEA_LOG.asItem(), EBlocks.STRIPPED_AZALEA_LOG.asItem(),
+                EBlocks.AZALEA_WOOD.asItem(), EBlocks.STRIPPED_AZALEA_WOOD.asItem()
+        );
+        valueLookupBuilder(ItemTags.LOGS).add(
+                EBlocks.POPLAR_LOG.asItem(), EBlocks.STRIPPED_POPLAR_LOG.asItem(),
+                EBlocks.POPLAR_WOOD.asItem(), EBlocks.STRIPPED_POPLAR_WOOD.asItem(),
+                EBlocks.AZALEA_LOG.asItem(), EBlocks.STRIPPED_AZALEA_LOG.asItem(),
+                EBlocks.AZALEA_WOOD.asItem(), EBlocks.STRIPPED_AZALEA_WOOD.asItem()
+        );
+        valueLookupBuilder(ItemTags.LOGS_THAT_BURN).add(
+                EBlocks.POPLAR_LOG.asItem(), EBlocks.STRIPPED_POPLAR_LOG.asItem(),
+                EBlocks.POPLAR_WOOD.asItem(), EBlocks.STRIPPED_POPLAR_WOOD.asItem(),
+                EBlocks.AZALEA_LOG.asItem(), EBlocks.STRIPPED_AZALEA_LOG.asItem(),
+                EBlocks.AZALEA_WOOD.asItem(), EBlocks.STRIPPED_AZALEA_WOOD.asItem()
+        );
+        valueLookupBuilder(ItemTags.PLANKS).add(EBlocks.POPLAR_PLANKS.asItem(), EBlocks.AZALEA_PLANKS.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_STAIRS).add(EBlocks.POPLAR_STAIRS.asItem(), EBlocks.AZALEA_STAIRS.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_SLABS).add(EBlocks.POPLAR_SLAB.asItem(), EBlocks.AZALEA_SLAB.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_FENCES).add(EBlocks.POPLAR_FENCE.asItem(), EBlocks.AZALEA_FENCE.asItem());
+        valueLookupBuilder(ItemTags.FENCE_GATES).add(EBlocks.POPLAR_FENCE_GATE.asItem(), EBlocks.AZALEA_FENCE_GATE.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_DOORS).add(EBlocks.POPLAR_DOOR.asItem(), EBlocks.AZALEA_DOOR.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_TRAPDOORS).add(EBlocks.POPLAR_TRAPDOOR.asItem(), EBlocks.AZALEA_TRAPDOOR.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(EBlocks.POPLAR_PRESSURE_PLATE.asItem(), EBlocks.AZALEA_PRESSURE_PLATE.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_BUTTONS).add(EBlocks.POPLAR_BUTTON.asItem(), EBlocks.AZALEA_BUTTON.asItem());
+        valueLookupBuilder(ItemTags.SIGNS).add(EBlocks.POPLAR_SIGN.asItem(), EBlocks.AZALEA_SIGN.asItem());
+        valueLookupBuilder(ItemTags.HANGING_SIGNS).add(EBlocks.POPLAR_HANGING_SIGN.asItem(), EBlocks.AZALEA_HANGING_SIGN.asItem());
+        valueLookupBuilder(ItemTags.BOATS).add(EItems.POPLAR_BOAT, EItems.AZALEA_BOAT);
 
         // Repair tags
         valueLookupBuilder(EItemTags.REPAIRS_BRONZE_ARMOR).add(EItems.BRONZE_INGOT);

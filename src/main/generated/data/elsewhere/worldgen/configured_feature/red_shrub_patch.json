@@ -1,0 +1,16 @@
+{
+  "type": "elsewhere:flower_patch",
+  "config": {
+    "base_count": 4,
+    "base_radius": 3,
+    "count_variance": 2,
+    "radius_variance": 1,
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "elsewhere:red_shrub"
+      }
+    },
+    "valid_ground": "#minecraft:dirt"
+  }
+}

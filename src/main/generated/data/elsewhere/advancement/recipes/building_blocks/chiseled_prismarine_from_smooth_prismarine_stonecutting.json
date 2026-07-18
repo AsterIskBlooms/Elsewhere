@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smooth_prismarine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "elsewhere:smooth_prismarine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "elsewhere:chiseled_prismarine_from_smooth_prismarine_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smooth_prismarine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "elsewhere:chiseled_prismarine_from_smooth_prismarine_stonecutting"
+    ]
+  }
+}

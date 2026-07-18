@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "elsewhere:block/smooth_deepslate_slab"
+    },
+    "type=double": {
+      "model": "elsewhere:block/smooth_deepslate"
+    },
+    "type=top": {
+      "model": "elsewhere:block/smooth_deepslate_slab_top"
+    }
+  }
+}

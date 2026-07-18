@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "elsewhere:block/smooth_orpiment_slab"
+    },
+    "type=double": {
+      "model": "elsewhere:block/smooth_orpiment"
+    },
+    "type=top": {
+      "model": "elsewhere:block/smooth_orpiment_slab_top"
+    }
+  }
+}

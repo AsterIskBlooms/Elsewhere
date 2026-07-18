@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cut_soul_sandstone_stairs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "elsewhere:cut_soul_sandstone_stairs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "elsewhere:cut_soul_sandstone_from_cut_soul_sandstone_stairs_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cut_soul_sandstone_stairs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "elsewhere:cut_soul_sandstone_from_cut_soul_sandstone_stairs_stonecutting"
+    ]
+  }
+}

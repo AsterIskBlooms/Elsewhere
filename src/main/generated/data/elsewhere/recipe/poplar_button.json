@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "elsewhere:poplar_planks"
+  ],
+  "result": {
+    "id": "elsewhere:poplar_button"
+  }
+}

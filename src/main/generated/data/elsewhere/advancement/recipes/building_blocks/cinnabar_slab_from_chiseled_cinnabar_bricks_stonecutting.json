@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chiseled_cinnabar_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "elsewhere:chiseled_cinnabar_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "elsewhere:cinnabar_slab_from_chiseled_cinnabar_bricks_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chiseled_cinnabar_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "elsewhere:cinnabar_slab_from_chiseled_cinnabar_bricks_stonecutting"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:dripstone_caves",
+    "minecraft:lush_caves",
+    "elsewhere:sulfur_caves",
+    "elsewhere:crystal_caverns",
+    "elsewhere:arid_caves",
+    "elsewhere:frigid_caves"
+  ]
+}

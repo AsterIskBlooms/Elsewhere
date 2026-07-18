@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "elsewhere:block/cinnabar_bricks",
+    "side": "elsewhere:block/cinnabar_bricks",
+    "top": "elsewhere:block/cinnabar_bricks"
+  }
+}

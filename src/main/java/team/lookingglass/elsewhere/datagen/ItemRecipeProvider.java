@@ -12,6 +12,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
@@ -20,6 +21,8 @@ import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.Nullable;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.EItems;
+import team.lookingglass.elsewhere.registry.tags.EBlockTags;
+import team.lookingglass.elsewhere.registry.tags.EItemTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -297,6 +300,25 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Items.PURPUR_PILLAR, EBlocks.CHISELED_PURPUR
                 );
 
+                // Wood
+                fullWoodSet(output,
+                        EBlocks.POPLAR_LOG, EBlocks.STRIPPED_POPLAR_LOG, EBlocks.POPLAR_WOOD, EBlocks.STRIPPED_POPLAR_WOOD, EItemTags.POPLAR_LOGS,
+                        EBlocks.POPLAR_PLANKS, EBlocks.POPLAR_STAIRS, EBlocks.POPLAR_SLAB,
+                        EBlocks.POPLAR_MOSAIC, EBlocks.POPLAR_MOSAIC_STAIRS, EBlocks.POPLAR_MOSAIC_SLAB,
+                        EBlocks.POPLAR_BOARDS, EBlocks.POPLAR_TRIM,
+                        EBlocks.POPLAR_FENCE, EBlocks.POPLAR_FENCE_GATE, EBlocks.POPLAR_DOOR, EBlocks.POPLAR_TRAPDOOR,
+                        EBlocks.POPLAR_PRESSURE_PLATE, EBlocks.POPLAR_BUTTON, EItems.POPLAR_SIGN, EItems.POPLAR_HANGING_SIGN,
+                        EItems.POPLAR_BOAT)
+                ;
+                fullWoodSet(output,
+                        EBlocks.AZALEA_LOG, EBlocks.STRIPPED_AZALEA_LOG, EBlocks.AZALEA_WOOD, EBlocks.STRIPPED_AZALEA_WOOD, EItemTags.AZALEA_LOGS,
+                        EBlocks.AZALEA_PLANKS, EBlocks.AZALEA_STAIRS, EBlocks.AZALEA_SLAB,
+                        EBlocks.AZALEA_MOSAIC, EBlocks.AZALEA_MOSAIC_STAIRS, EBlocks.AZALEA_MOSAIC_SLAB,
+                        EBlocks.AZALEA_BOARDS, EBlocks.AZALEA_TRIM,
+                        EBlocks.AZALEA_FENCE, EBlocks.AZALEA_FENCE_GATE, EBlocks.AZALEA_DOOR, EBlocks.AZALEA_TRAPDOOR,
+                        EBlocks.AZALEA_PRESSURE_PLATE, EBlocks.AZALEA_BUTTON, EItems.AZALEA_SIGN, EItems.AZALEA_HANGING_SIGN,
+                        EItems.AZALEA_BOAT
+                );
                 woodSet(wrappedOutput,
                         Items.OAK_PLANKS, Items.OAK_STAIRS, Items.OAK_SLAB,
                         EBlocks.OAK_MOSAIC, EBlocks.OAK_MOSAIC_STAIRS, EBlocks.OAK_MOSAIC_SLAB,
@@ -854,27 +876,86 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
             }
 
             private void woodSet(RecipeOutput output,
-                                   ItemLike planks, ItemLike plankStair, ItemLike plankSlab,
+                                 ItemLike planks, ItemLike plankStair, ItemLike plankSlab,
                                  ItemLike mosaic, ItemLike mosaicStair, ItemLike mosaicSlab,
                                  ItemLike boards, ItemLike trim) {
 
-                // Shaped
                 shaped(RecipeCategory.BUILDING_BLOCKS, plankStair, 6).define('#', planks).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output, shapedId(plankStair));
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
                 shaped(RecipeCategory.BUILDING_BLOCKS, plankSlab, 6).define('#', planks).pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output, shapedId(plankSlab));
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaic, 4).define('#', planks).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output, shapedId(mosaic));
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaicStair, 6).define('#', mosaic).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output, shapedId(mosaicStair));
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaicSlab, 6).define('#', mosaic).pattern("###")
-                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output, shapedId(mosaicSlab));
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, boards).define('#', plankSlab).pattern("#").pattern("#")
-                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output, shapedId(boards));
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
                 shaped(RecipeCategory.BUILDING_BLOCKS, trim, 3).define('#', plankSlab).pattern("###").pattern("###")
-                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output, shapedId(trim));
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
+            }
+
+            private void fullWoodSet(RecipeOutput output,
+                                     ItemLike log, ItemLike strippedLog, ItemLike wood, ItemLike strippedWood, TagKey<Item> logTag,
+                                     ItemLike planks, ItemLike plankStair, ItemLike plankSlab,
+                                     ItemLike mosaic, ItemLike mosaicStair, ItemLike mosaicSlab,
+                                     ItemLike boards, ItemLike trim,
+                                     ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor,
+                                     ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign,
+                                     ItemLike boat) {
+
+                // Log/Wood tag -> Planks
+                shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 4).requires(logTag)
+                        .unlockedBy(getHasName(log), has(logTag)).save(output);
+
+                // Log -> Wood
+                shaped(RecipeCategory.BUILDING_BLOCKS, wood, 3).define('#', log).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(log), has(log)).save(output);
+                shaped(RecipeCategory.BUILDING_BLOCKS, strippedWood, 3).define('#', strippedLog).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(output);
+
+                // Planks derivatives
+                shaped(RecipeCategory.BUILDING_BLOCKS, plankStair, 6).define('#', planks).pattern("#  ").pattern("## ").pattern("###")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.BUILDING_BLOCKS, plankSlab, 6).define('#', planks).pattern("###")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, mosaic, 4).define('#', planks).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.BUILDING_BLOCKS, mosaicStair, 6).define('#', mosaic).pattern("#  ").pattern("## ").pattern("###")
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
+                shaped(RecipeCategory.BUILDING_BLOCKS, mosaicSlab, 6).define('#', mosaic).pattern("###")
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, boards).define('#', plankSlab).pattern("#").pattern("#")
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
+                shaped(RecipeCategory.BUILDING_BLOCKS, trim, 3).define('#', plankSlab).pattern("###").pattern("###")
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
+
+                // Functional blocks
+                shaped(RecipeCategory.DECORATIONS, fence, 3).define('#', Items.STICK).define('W', planks).pattern("W#W").pattern("W#W")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.REDSTONE, fenceGate).define('#', Items.STICK).define('W', planks).pattern("#W#").pattern("#W#")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.REDSTONE, door, 3).define('#', planks).pattern("##").pattern("##").pattern("##")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.REDSTONE, trapdoor, 2).define('#', planks).pattern("###").pattern("###")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.REDSTONE, pressurePlate).define('#', planks).pattern("##")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shapeless(RecipeCategory.REDSTONE, button).requires(planks)
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.DECORATIONS, sign, 3).define('#', planks).define('X', Items.STICK).pattern("###").pattern("###").pattern(" X ")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.DECORATIONS, hangingSign, 6).define('#', strippedLog).define('C', Items.IRON_CHAIN).pattern("C C").pattern("###").pattern("###")
+                        .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(output);
+
+                // Boat
+                shaped(RecipeCategory.TRANSPORTATION, boat).define('#', planks).pattern("# #").pattern("###")
+                        .unlockedBy(getHasName(planks), has(planks)).save(output);
             }
 
 

@@ -3,9 +3,9 @@
 	"id": "elsewhere",
 	"version": "${version}",
 	"name": "Elsewhere",
-	"description": "A new world... Somewhere else.",
+	"description": "A new world... In another place.",
 	"authors": [
-		"Aster-Isk, mesadev, Pixion, asof, SurelyBerry"
+		"Team LookingGlass"
 	],
 	"contact": {
 		"homepage": "",

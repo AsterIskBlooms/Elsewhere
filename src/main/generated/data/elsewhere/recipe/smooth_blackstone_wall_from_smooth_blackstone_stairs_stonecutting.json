@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:smooth_blackstone_stairs",
+  "result": {
+    "id": "elsewhere:smooth_blackstone_wall"
+  }
+}

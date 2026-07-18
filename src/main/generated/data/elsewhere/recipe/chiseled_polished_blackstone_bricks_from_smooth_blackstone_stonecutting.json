@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:smooth_blackstone",
+  "result": {
+    "id": "elsewhere:chiseled_polished_blackstone_bricks"
+  }
+}

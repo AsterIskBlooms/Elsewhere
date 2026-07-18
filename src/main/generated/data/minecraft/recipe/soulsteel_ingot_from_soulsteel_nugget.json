@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget",
+    "elsewhere:soulsteel_nugget"
+  ],
+  "result": {
+    "id": "elsewhere:soulsteel_ingot"
+  }
+}

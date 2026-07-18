@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "elsewhere:soulsteel_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "elsewhere:soulsteel_ingot"
+  }
+}

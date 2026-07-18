@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard",
+    "elsewhere:diamond_shard"
+  ],
+  "result": {
+    "id": "minecraft:diamond"
+  }
+}

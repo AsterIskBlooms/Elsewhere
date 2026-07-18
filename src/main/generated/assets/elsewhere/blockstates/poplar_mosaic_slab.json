@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "elsewhere:block/poplar_mosaic_slab"
+    },
+    "type=double": {
+      "model": "elsewhere:block/poplar_mosaic"
+    },
+    "type=top": {
+      "model": "elsewhere:block/poplar_mosaic_slab_top"
+    }
+  }
+}

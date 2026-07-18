@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:cut_sandstone_stairs",
+  "result": {
+    "id": "minecraft:chiseled_sandstone"
+  }
+}

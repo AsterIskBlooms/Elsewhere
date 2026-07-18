@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "elsewhere:block/cobbleshale_slab"
+    },
+    "type=double": {
+      "model": "elsewhere:block/cobbleshale"
+    },
+    "type=top": {
+      "model": "elsewhere:block/cobbleshale_slab_top"
+    }
+  }
+}

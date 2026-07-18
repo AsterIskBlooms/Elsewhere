@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:smooth_diorite_wall",
+  "result": {
+    "count": 2,
+    "id": "minecraft:polished_diorite_slab"
+  }
+}

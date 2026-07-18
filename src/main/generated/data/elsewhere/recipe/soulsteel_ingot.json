@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:netherite_scrap",
+    "minecraft:netherite_scrap",
+    "minecraft:netherite_scrap",
+    "minecraft:netherite_scrap",
+    "elsewhere:silver_ingot",
+    "elsewhere:silver_ingot",
+    "elsewhere:silver_ingot",
+    "elsewhere:silver_ingot"
+  ],
+  "result": {
+    "id": "elsewhere:soulsteel_ingot"
+  }
+}

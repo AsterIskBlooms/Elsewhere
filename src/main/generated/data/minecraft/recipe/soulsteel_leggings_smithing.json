@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "elsewhere:soulsteel_ingot",
+  "base": "minecraft:diamond_leggings",
+  "result": {
+    "id": "elsewhere:soulsteel_leggings"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:smooth_cinnabar_slab",
+  "result": {
+    "id": "elsewhere:cinnabar_brick_slab"
+  }
+}

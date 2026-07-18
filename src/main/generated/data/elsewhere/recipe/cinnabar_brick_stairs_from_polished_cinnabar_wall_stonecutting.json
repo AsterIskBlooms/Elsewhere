@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "elsewhere:polished_cinnabar_wall",
+  "result": {
+    "id": "elsewhere:cinnabar_brick_stairs"
+  }
+}

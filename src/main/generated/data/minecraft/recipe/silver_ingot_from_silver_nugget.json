@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget",
+    "elsewhere:silver_nugget"
+  ],
+  "result": {
+    "id": "elsewhere:silver_ingot"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "fabric:remove": [
+    "minecraft:gold_ore",
+    "minecraft:deepslate_gold_ore",
+    "minecraft:redstone_ore",
+    "minecraft:diamond_ore",
+    "minecraft:deepslate_diamond_ore",
+    "minecraft:diamond_block",
+    "minecraft:emerald_ore",
+    "minecraft:deepslate_emerald_ore",
+    "minecraft:emerald_block"
+  ],
+  "values": [
+    "minecraft:obsidian",
+    "elsewhere:obsidian_stairs",
+    "elsewhere:obsidian_slab",
+    "elsewhere:obsidian_bricks",
+    "elsewhere:obsidian_brick_stairs",
+    "elsewhere:obsidian_brick_slab",
+    "elsewhere:obsidian_pillar",
+    "elsewhere:chiseled_obsidian",
+    "minecraft:crying_obsidian",
+    "minecraft:respawn_anchor"
+  ]
+}
