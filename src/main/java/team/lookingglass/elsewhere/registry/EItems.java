@@ -1,7 +1,6 @@
 package team.lookingglass.elsewhere.registry;
 
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -18,7 +17,7 @@ import net.minecraft.resources.ResourceKey;
 import team.lookingglass.elsewhere.entity.EEntities;
 import team.lookingglass.elsewhere.registry.equipment.AttributeArmorItem;
 import team.lookingglass.elsewhere.registry.equipment.EMaterials;
-import team.lookingglass.elsewhere.registry.uuid.ArmorAttributes;
+import team.lookingglass.elsewhere.registry.equipment.ArmorAttributes;
 
 import java.util.function.Function;
 
@@ -30,7 +29,7 @@ public interface EItems {
             p -> new HangingSignItem(EBlocks.POPLAR_HANGING_SIGN, EBlocks.POPLAR_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
 
     Item AZALEA_SIGN = register("azalea_sign",
-            p -> new SignItem(EBlocks.POPLAR_SIGN, EBlocks.POPLAR_WALL_SIGN, p), new Item.Properties().stacksTo(16));
+            p -> new SignItem(EBlocks.AZALEA_SIGN, EBlocks.AZALEA_WALL_SIGN, p), new Item.Properties().stacksTo(16));
     Item AZALEA_HANGING_SIGN = register("azalea_hanging_sign",
             p -> new HangingSignItem(EBlocks.AZALEA_HANGING_SIGN, EBlocks.AZALEA_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
 
@@ -51,6 +50,7 @@ public interface EItems {
     Item TIN_INGOT = register("tin_ingot", Item::new, new Item.Properties());
     Item TIN_NUGGET = register("tin_nugget", Item::new, new Item.Properties());
 
+    Item BRONZE_MIX = register("bronze_mix", Item::new, new Item.Properties());
     Item BRONZE_INGOT = register("bronze_ingot", Item::new, new Item.Properties());
     Item BRONZE_NUGGET = register("bronze_nugget", Item::new, new Item.Properties());
     Item BRONZE_HELMET = register("bronze_helmet", Item::new, new Item.Properties()
@@ -94,8 +94,6 @@ public interface EItems {
     Item SILVER_NUGGET = register("silver_nugget", Item::new, new Item.Properties());
 
     Item SOULSTEEL_INGOT = register("soulsteel_ingot", Item::new, new Item.Properties());
-    Item SOULSTEEL_NUGGET = register("soulsteel_nugget", Item::new, new Item.Properties()
-    );
     Item SOULSTEEL_HELMET = register("soulsteel_helmet", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
             EMaterials.SOULSTEEL_ARMOR, ArmorType.HELMET, EquipmentSlotGroup.HEAD,
             Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_HELMET_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE)

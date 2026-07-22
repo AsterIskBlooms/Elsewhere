@@ -11,7 +11,7 @@
 		"homepage": "",
 		"sources": "https://github.com/AsterIskBlooms/ElsewhereMod"
 	},
-	"license": "MIT",
+	"license": "LGPL-3.0-only",
 	"icon": "assets/elsewhere/icon.png",
 	"environment": "*",
 	"entrypoints": {

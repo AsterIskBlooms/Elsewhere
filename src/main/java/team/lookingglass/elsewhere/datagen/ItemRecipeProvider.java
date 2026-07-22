@@ -10,7 +10,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -19,9 +18,9 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.Nullable;
+import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.EItems;
-import team.lookingglass.elsewhere.registry.tags.EBlockTags;
 import team.lookingglass.elsewhere.registry.tags.EItemTags;
 
 import java.util.ArrayList;
@@ -67,51 +66,55 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(provider, wrappedOutput) {
             @Override
             public void buildRecipes() {
+
+
                 fullCookingBook(EItems.RAW_PERCH, EItems.COOKED_PERCH);
 
                 shapeless(RecipeCategory.MISC, EItems.DIAMOND_SHARD, 9).requires(Items.DIAMOND)
-                        .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND)).save(output);
+                        .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND)).save(wrappedOutput);
                 shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(EItems.DIAMOND_SHARD, 9)
-                        .unlockedBy(getHasName(EItems.DIAMOND_SHARD), has(EItems.DIAMOND_SHARD)).save(output);
+                        .unlockedBy(getHasName(EItems.DIAMOND_SHARD), has(EItems.DIAMOND_SHARD)).save(wrappedOutput);
 
                 shapeless(RecipeCategory.MISC, EItems.EMERALD_SHARD, 9).requires(Items.EMERALD)
-                        .unlockedBy(getHasName(Items.EMERALD), has(Items.EMERALD)).save(output);
+                        .unlockedBy(getHasName(Items.EMERALD), has(Items.EMERALD)).save(wrappedOutput);
                 shapeless(RecipeCategory.MISC, Items.EMERALD).requires(EItems.EMERALD_SHARD, 9)
-                        .unlockedBy(getHasName(EItems.EMERALD_SHARD), has(EItems.EMERALD_SHARD)).save(output);
+                        .unlockedBy(getHasName(EItems.EMERALD_SHARD), has(EItems.EMERALD_SHARD)).save(wrappedOutput);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLESTONE, 1).pattern("##").pattern("##").define('#', EBlocks.PEBBLE)
-                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(output);
+                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
 
                 // Tin
-                itemSmeltableNBSet(wrappedOutput,
+                itemFullSmeltableNBSet(wrappedOutput,
                         EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.DEEPSLATE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE, EItems.RAW_TIN,
                         EItems.TIN_INGOT, EItems.TIN_NUGGET, EBlocks.RAW_TIN_BLOCK, EBlocks.TIN_BLOCK
                 );
 
                 // Bronze
-                shapeless(RecipeCategory.MISC, EItems.BRONZE_INGOT).requires(Items.COPPER_INGOT, 2).requires(EItems.TIN_INGOT, 1)
-                        .unlockedBy(getHasName(EItems.TIN_INGOT), has(EItems.TIN_INGOT)).save(output);
-                itemUnsmeltableNBSet(wrappedOutput,
-                        EItems.BRONZE_INGOT, EItems.BRONZE_NUGGET, EBlocks.BRONZE_BLOCK
+                shapeless(RecipeCategory.MISC, EItems.BRONZE_MIX).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.TIN_MATERIALS)
+                        .unlockedBy(getHasName(EItems.RAW_TIN), has(EItems.RAW_TIN)).save(wrappedOutput);
+                itemSmeltableNBSet(wrappedOutput,
+                        EItems.BRONZE_MIX, EItems.BRONZE_INGOT, EItems.BRONZE_NUGGET, EBlocks.BRONZE_BLOCK
                 );
                 equipmentSetCrafting(wrappedOutput,
                         EItems.BRONZE_INGOT, Items.STICK,
                         
                         EItems.BRONZE_SWORD, EItems.BRONZE_AXE, EItems.BRONZE_SPEAR, EItems.BRONZE_PICKAXE, EItems.BRONZE_SHOVEL, EItems.BRONZE_HOE,
-                        EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS
+                        EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS,
+
+                        EItems.BRONZE_NUGGET
                 );
 
                 // Silver
-                itemSmeltableNBSet(wrappedOutput,
+                itemFullSmeltableNBSet(wrappedOutput,
                         EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE, EItems.RAW_SILVER,
                         EItems.SILVER_INGOT, EItems.SILVER_NUGGET, EBlocks.SILVER_BLOCK, EBlocks.RAW_SILVER_BLOCK
                 );
 
                 // Soulsteel
                 shapeless(RecipeCategory.MISC, EItems.SOULSTEEL_INGOT).requires(Items.NETHERITE_SCRAP, 4).requires(EItems.SILVER_INGOT, 4)
-                        .unlockedBy(getHasName(Items.NETHERITE_SCRAP), has(Items.NETHERITE_SCRAP)).save(output);
-                itemUnsmeltableNBSet(wrappedOutput,
-                        EItems.SOULSTEEL_INGOT, EItems.SOULSTEEL_NUGGET, EBlocks.SOULSTEEL_BLOCK
+                        .unlockedBy(getHasName(Items.NETHERITE_SCRAP), has(Items.NETHERITE_SCRAP)).save(wrappedOutput);
+                itemUnsmeltableBSet(wrappedOutput,
+                        EItems.SOULSTEEL_INGOT, EBlocks.SOULSTEEL_BLOCK
                 );
                 equipmentSetSmithing(wrappedOutput,
                         EItems.SOULSTEEL_INGOT, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
@@ -120,7 +123,9 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS,
 
                         EItems.SOULSTEEL_SWORD, EItems.SOULSTEEL_AXE, EItems.SOULSTEEL_SPEAR, EItems.SOULSTEEL_PICKAXE, EItems.SOULSTEEL_SHOVEL, EItems.SOULSTEEL_HOE,
-                        EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS
+                        EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS,
+
+                        Items.NETHERITE_SCRAP
                 );
 
                 // Stones
@@ -169,7 +174,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Items.CHISELED_RED_SANDSTONE
                 );
                 shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.SOUL_SANDSTONE).pattern("##").pattern("##").define('#', ItemTags.SOUL_FIRE_BASE_BLOCKS)
-                        .unlockedBy(getHasName(Blocks.SOUL_SAND), has(ItemTags.SOUL_FIRE_BASE_BLOCKS)).save(output);
+                        .unlockedBy(getHasName(Blocks.SOUL_SAND), has(ItemTags.SOUL_FIRE_BASE_BLOCKS)).save(wrappedOutput);
                 sandstoneSet(wrappedOutput,
                         EBlocks.SOUL_SANDSTONE, EBlocks.SOUL_SANDSTONE_STAIRS, EBlocks.SOUL_SANDSTONE_SLAB, EBlocks.SOUL_SANDSTONE_WALL,
                         EBlocks.SMOOTH_SOUL_SANDSTONE, EBlocks.SMOOTH_SOUL_SANDSTONE_STAIRS, EBlocks.SMOOTH_SOUL_SANDSTONE_SLAB, EBlocks.SMOOTH_SOUL_SANDSTONE_WALL,
@@ -301,7 +306,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 );
 
                 // Wood
-                fullWoodSet(output,
+                fullWoodSet(wrappedOutput,
                         EBlocks.POPLAR_LOG, EBlocks.STRIPPED_POPLAR_LOG, EBlocks.POPLAR_WOOD, EBlocks.STRIPPED_POPLAR_WOOD, EItemTags.POPLAR_LOGS,
                         EBlocks.POPLAR_PLANKS, EBlocks.POPLAR_STAIRS, EBlocks.POPLAR_SLAB,
                         EBlocks.POPLAR_MOSAIC, EBlocks.POPLAR_MOSAIC_STAIRS, EBlocks.POPLAR_MOSAIC_SLAB,
@@ -310,7 +315,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.POPLAR_PRESSURE_PLATE, EBlocks.POPLAR_BUTTON, EItems.POPLAR_SIGN, EItems.POPLAR_HANGING_SIGN,
                         EItems.POPLAR_BOAT)
                 ;
-                fullWoodSet(output,
+                fullWoodSet(wrappedOutput,
                         EBlocks.AZALEA_LOG, EBlocks.STRIPPED_AZALEA_LOG, EBlocks.AZALEA_WOOD, EBlocks.STRIPPED_AZALEA_WOOD, EItemTags.AZALEA_LOGS,
                         EBlocks.AZALEA_PLANKS, EBlocks.AZALEA_STAIRS, EBlocks.AZALEA_SLAB,
                         EBlocks.AZALEA_MOSAIC, EBlocks.AZALEA_MOSAIC_STAIRS, EBlocks.AZALEA_MOSAIC_SLAB,
@@ -380,11 +385,11 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.BAMBOO_BOARDS, EBlocks.BAMBOO_TRIM
                 );
                 shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.BAMBOO_STEM).pattern("###").pattern("###").pattern("###").define('#', Items.BAMBOO)
-                        .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO)).save(output, shapedId(Items.BAMBOO));
+                        .unlockedBy(getHasName(Items.BAMBOO), has(Items.BAMBOO)).save(wrappedOutput, shapedId(Items.BAMBOO));
                 shapeless(RecipeCategory.BUILDING_BLOCKS, Items.BAMBOO).requires(EBlocks.BAMBOO_STEM)
-                        .unlockedBy(getHasName(EBlocks.BAMBOO_STEM), has(EBlocks.BAMBOO_STEM)).save(output, shapedId(EBlocks.BAMBOO_STEM));
+                        .unlockedBy(getHasName(EBlocks.BAMBOO_STEM), has(EBlocks.BAMBOO_STEM)).save(wrappedOutput, shapedId(EBlocks.BAMBOO_STEM));
                 shapeless(RecipeCategory.BUILDING_BLOCKS, Items.BAMBOO).requires(EBlocks.STRIPPED_BAMBOO_STEM)
-                        .unlockedBy(getHasName(EBlocks.BAMBOO_STEM), has(EBlocks.BAMBOO_STEM)).save(output, shapedId(EBlocks.STRIPPED_BAMBOO_STEM));
+                        .unlockedBy(getHasName(EBlocks.BAMBOO_STEM), has(EBlocks.BAMBOO_STEM)).save(wrappedOutput, shapedId(EBlocks.STRIPPED_BAMBOO_STEM));
 
                 itemToDye(EBlocks.BLUEBONNET, Items.BLUE_DYE);
                 itemToDye(EBlocks.RED_HIBISCUS, Items.RED_DYE);
@@ -394,126 +399,230 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 itemToDye(EBlocks.PURPLE_HIBISCUS, Items.PURPLE_DYE);
                 itemToDye(EBlocks.PINK_HIBISCUS, Items.PINK_DYE);
                 itemToDye(EBlocks.WHITE_HIBISCUS, Items.WHITE_DYE);
+
+                stairAndSlabSet(wrappedOutput, Blocks.WHITE_WOOL, EBlocks.WHITE_WOOL_STAIRS, EBlocks.WHITE_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_GRAY_WOOL, EBlocks.LIGHT_GRAY_WOOL_STAIRS, EBlocks.LIGHT_GRAY_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.GRAY_WOOL, EBlocks.GRAY_WOOL_STAIRS, EBlocks.GRAY_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BLACK_WOOL, EBlocks.BLACK_WOOL_STAIRS, EBlocks.BLACK_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BROWN_WOOL, EBlocks.BROWN_WOOL_STAIRS, EBlocks.BROWN_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.RED_WOOL, EBlocks.RED_WOOL_STAIRS, EBlocks.RED_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.ORANGE_WOOL, EBlocks.ORANGE_WOOL_STAIRS, EBlocks.ORANGE_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.YELLOW_WOOL, EBlocks.YELLOW_WOOL_STAIRS, EBlocks.YELLOW_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIME_WOOL, EBlocks.LIME_WOOL_STAIRS, EBlocks.LIME_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.GREEN_WOOL, EBlocks.GREEN_WOOL_STAIRS, EBlocks.GREEN_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.CYAN_WOOL, EBlocks.CYAN_WOOL_STAIRS, EBlocks.CYAN_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_BLUE_WOOL, EBlocks.LIGHT_BLUE_WOOL_STAIRS, EBlocks.LIGHT_BLUE_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BLUE_WOOL, EBlocks.BLUE_WOOL_STAIRS, EBlocks.BLUE_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.PURPLE_WOOL, EBlocks.PURPLE_WOOL_STAIRS, EBlocks.PURPLE_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.MAGENTA_WOOL, EBlocks.MAGENTA_WOOL_STAIRS, EBlocks.MAGENTA_WOOL_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.PINK_WOOL, EBlocks.PINK_WOOL_STAIRS, EBlocks.PINK_WOOL_SLAB);
+
+                stairAndSlabSet(wrappedOutput, Blocks.TERRACOTTA, EBlocks.TERRACOTTA_STAIRS, EBlocks.TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.WHITE_TERRACOTTA, EBlocks.WHITE_TERRACOTTA_STAIRS, EBlocks.WHITE_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_GRAY_TERRACOTTA, EBlocks.LIGHT_GRAY_TERRACOTTA_STAIRS, EBlocks.LIGHT_GRAY_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.GRAY_TERRACOTTA, EBlocks.GRAY_TERRACOTTA_STAIRS, EBlocks.GRAY_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BLACK_TERRACOTTA, EBlocks.BLACK_TERRACOTTA_STAIRS, EBlocks.BLACK_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BROWN_TERRACOTTA, EBlocks.BROWN_TERRACOTTA_STAIRS, EBlocks.BROWN_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.RED_TERRACOTTA, EBlocks.RED_TERRACOTTA_STAIRS, EBlocks.RED_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.ORANGE_TERRACOTTA, EBlocks.ORANGE_TERRACOTTA_STAIRS, EBlocks.ORANGE_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.YELLOW_TERRACOTTA, EBlocks.YELLOW_TERRACOTTA_STAIRS, EBlocks.YELLOW_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIME_TERRACOTTA, EBlocks.LIME_TERRACOTTA_STAIRS, EBlocks.LIME_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.GREEN_TERRACOTTA, EBlocks.GREEN_TERRACOTTA_STAIRS, EBlocks.GREEN_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.CYAN_TERRACOTTA, EBlocks.CYAN_TERRACOTTA_STAIRS, EBlocks.CYAN_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_BLUE_TERRACOTTA, EBlocks.LIGHT_BLUE_TERRACOTTA_STAIRS, EBlocks.LIGHT_BLUE_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BLUE_TERRACOTTA, EBlocks.BLUE_TERRACOTTA_STAIRS, EBlocks.BLUE_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.PURPLE_TERRACOTTA, EBlocks.PURPLE_TERRACOTTA_STAIRS, EBlocks.PURPLE_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.MAGENTA_TERRACOTTA, EBlocks.MAGENTA_TERRACOTTA_STAIRS, EBlocks.MAGENTA_TERRACOTTA_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.PINK_TERRACOTTA, EBlocks.PINK_TERRACOTTA_STAIRS, EBlocks.PINK_TERRACOTTA_SLAB);
+
+                stairAndSlabSet(wrappedOutput, Blocks.WHITE_CONCRETE, EBlocks.WHITE_CONCRETE_STAIRS, EBlocks.WHITE_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_GRAY_CONCRETE, EBlocks.LIGHT_GRAY_CONCRETE_STAIRS, EBlocks.LIGHT_GRAY_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.GRAY_CONCRETE, EBlocks.GRAY_CONCRETE_STAIRS, EBlocks.GRAY_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BLACK_CONCRETE, EBlocks.BLACK_CONCRETE_STAIRS, EBlocks.BLACK_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BROWN_CONCRETE, EBlocks.BROWN_CONCRETE_STAIRS, EBlocks.BROWN_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.RED_CONCRETE, EBlocks.RED_CONCRETE_STAIRS, EBlocks.RED_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.ORANGE_CONCRETE, EBlocks.ORANGE_CONCRETE_STAIRS, EBlocks.ORANGE_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.YELLOW_CONCRETE, EBlocks.YELLOW_CONCRETE_STAIRS, EBlocks.YELLOW_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIME_CONCRETE, EBlocks.LIME_CONCRETE_STAIRS, EBlocks.LIME_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.GREEN_CONCRETE, EBlocks.GREEN_CONCRETE_STAIRS, EBlocks.GREEN_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.CYAN_CONCRETE, EBlocks.CYAN_CONCRETE_STAIRS, EBlocks.CYAN_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_BLUE_CONCRETE, EBlocks.LIGHT_BLUE_CONCRETE_STAIRS, EBlocks.LIGHT_BLUE_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.BLUE_CONCRETE, EBlocks.BLUE_CONCRETE_STAIRS, EBlocks.BLUE_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.PURPLE_CONCRETE, EBlocks.PURPLE_CONCRETE_STAIRS, EBlocks.PURPLE_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.MAGENTA_CONCRETE, EBlocks.MAGENTA_CONCRETE_STAIRS, EBlocks.MAGENTA_CONCRETE_SLAB);
+                stairAndSlabSet(wrappedOutput, Blocks.PINK_CONCRETE, EBlocks.PINK_CONCRETE_STAIRS, EBlocks.PINK_CONCRETE_SLAB);
             }
 
 
 
             private void itemToDye(ItemLike item, ItemLike dye) {
                 shapeless(RecipeCategory.MISC, dye).requires(item)
-                        .unlockedBy(getHasName(item), has(item)).save(output, shapedId(item));
+                        .unlockedBy(getHasName(item), has(item)).save(wrappedOutput, shapedId(item));
             }
             private void fullCookingBook(ItemLike raw, ItemLike cooked) {
-                simpleCookingRecipe("smelting", SmeltingRecipe::new, 200, raw, cooked, 0.35F);
-                simpleCookingRecipe("smoking", SmokingRecipe::new, 100, raw, cooked, 0.35F);
-                simpleCookingRecipe("campfire", CampfireCookingRecipe::new, 600, raw, cooked, 0.35F);
+                customSimpleCookingRecipe("smelting", SmeltingRecipe::new, 200, raw, cooked, 0.35F);
+                customSimpleCookingRecipe("smoking", SmokingRecipe::new, 100, raw, cooked, 0.35F);
+                customSimpleCookingRecipe("campfire", CampfireCookingRecipe::new, 600, raw, cooked, 0.35F);
             }
-            private void itemSmeltableNBSet(RecipeOutput output,
-                                   ItemLike oreBlock, ItemLike shaleOreBlock, ItemLike deepslateOreBlock, ItemLike cinnabarOreBlock,
-                                   ItemLike raw, ItemLike ingot, ItemLike nugget,
-                                   ItemLike rawBlock, ItemLike compBlock) {
+            private void itemFullSmeltableNBSet(RecipeOutput output,
+                                                ItemLike oreBlock, ItemLike shaleOreBlock, ItemLike deepslateOreBlock, ItemLike cinnabarOreBlock,
+                                                ItemLike raw, ItemLike ingot, ItemLike nugget,
+                                                ItemLike rawBlock, ItemLike compBlock) {
                 List<ItemLike> smeltables = new ArrayList<>();
                 smeltables.add(oreBlock); smeltables.add(shaleOreBlock); smeltables.add(deepslateOreBlock); smeltables.add(cinnabarOreBlock); smeltables.add(raw);
+
+                customOreSmelting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 200, getItemName(ingot));
+                customOreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 100, getItemName(ingot));
+
+                shapeless(RecipeCategory.BUILDING_BLOCKS, rawBlock).requires(raw, 9)
+                        .unlockedBy(getHasName(rawBlock), has(rawBlock)).save(output, specificPath(rawBlock, "_from_" + getItemName(raw)));
+                shapeless(RecipeCategory.MISC, raw, 9).requires(rawBlock)
+                        .unlockedBy(getHasName(raw), has(raw)).save(output, specificPath(raw, "_from_" + getItemName(rawBlock)));
+
+                shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
+                shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(output, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+
+                shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
+            }
+            private void itemSmeltableNBSet(RecipeOutput output,
+                                            ItemLike raw, ItemLike ingot, ItemLike nugget,
+                                            ItemLike compBlock) {
+                List<ItemLike> smeltables = new ArrayList<>();
+                smeltables.add(raw);
 
                 oreSmelting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 200, getItemName(ingot));
                 oreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 100, getItemName(ingot));
 
-                shapeless(RecipeCategory.BUILDING_BLOCKS, rawBlock).requires(raw, 9)
-                        .unlockedBy(getHasName(rawBlock), has(rawBlock)).save(output);
-                shapeless(RecipeCategory.MISC, raw, 9).requires(rawBlock)
-                        .unlockedBy(getHasName(raw), has(raw)).save(output);
-
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output,
-                                BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath());
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(output,
-                                BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath());
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(output, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output,
-                                BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath());
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
-                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output,
-                                BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath());
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
             }
             private void itemUnsmeltableNBSet(RecipeOutput output,
-                                            ItemLike ingot, ItemLike nugget, ItemLike compBlock) {
+                                              ItemLike ingot, ItemLike nugget, ItemLike compBlock) {
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output,
-                                BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath());
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(output,
-                                BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath());
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(output, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output,
-                                BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath());
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
-                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output,
-                                BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath());
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
             }
-            private void equipmentSetCrafting(RecipeOutput output, 
-                                              ItemLike material, ItemLike handle, 
-                                              ItemLike sword, ItemLike axe, ItemLike spear, ItemLike pickaxe, ItemLike shovel, ItemLike hoe, 
-                                              ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots) {
+            private void itemUnsmeltableBSet(RecipeOutput output,
+                                             ItemLike ingot, ItemLike compBlock) {
+                shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
+                shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+            }
+            private void equipmentSetCrafting(RecipeOutput output,
+                                              ItemLike material, ItemLike handle,
+                                              ItemLike sword, ItemLike axe, ItemLike spear, ItemLike pickaxe, ItemLike shovel, ItemLike hoe,
+                                              ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots,
+                                              ItemLike scrapResult) {
                 shaped(RecipeCategory.COMBAT, sword).define('#', material).define('T', handle)
                         .pattern("#").pattern("#").pattern("T")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(sword));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.TOOLS, axe).define('#', material).define('T', handle)
                         .pattern("##").pattern("#T").pattern(" T")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(axe));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.COMBAT, spear).define('#', material).define('T', handle)
                         .pattern("  #").pattern(" T ").pattern("T  ")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(spear));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.TOOLS, pickaxe).define('#', material).define('T', handle)
                         .pattern("###").pattern(" T ").pattern(" T ")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(pickaxe));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.TOOLS, shovel).define('#', material).define('T', handle)
                         .pattern("#").pattern("T").pattern("T")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(shovel));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.TOOLS, hoe).define('#', material).define('T', handle)
                         .pattern("##").pattern(" T").pattern(" T")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(hoe));
+                        .unlockedBy(getHasName(material), has(material));
 
                 shaped(RecipeCategory.COMBAT, helmet).define('#', material)
                         .pattern("###").pattern("# #")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(helmet));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.COMBAT, chestplate).define('#', material)
                         .pattern("# #").pattern("###").pattern("###")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(chestplate));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.COMBAT, leggings).define('#', material)
                         .pattern("###").pattern("# #").pattern("# #")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(leggings));
+                        .unlockedBy(getHasName(material), has(material));
                 shaped(RecipeCategory.COMBAT, boots).define('#', material)
                         .pattern("# #").pattern("# #")
-                        .unlockedBy(getHasName(material), has(material)).save(output, shapedId(boots));
+                        .unlockedBy(getHasName(material), has(material));
+
+                SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
+                        RecipeCategory.MISC, CookingBookCategory.MISC,
+                        scrapResult, 0.1F, 200
+                ).unlockedBy(getHasName(material), has(material)).save(output,
+                        ResourceKey.create(Registries.RECIPE,
+                                Identifier.fromNamespaceAndPath(Elsewhere.MODID, getSmeltingRecipeName(scrapResult))));
+
+                SimpleCookingRecipeBuilder.blasting(
+                        Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
+                        RecipeCategory.MISC, CookingBookCategory.MISC,
+                        scrapResult, 0.1F, 200
+                ).unlockedBy(getHasName(material), has(material)).save(output,
+                        ResourceKey.create(Registries.RECIPE,
+                                Identifier.fromNamespaceAndPath(Elsewhere.MODID, getBlastingRecipeName(scrapResult))));
             }
             private void equipmentSetSmithing(RecipeOutput output,
                                               ItemLike material, ItemLike template,
-                                              ItemLike baseSword, ItemLike baseAxe, ItemLike baseSpear, ItemLike basePickaxe, ItemLike baseShovel, ItemLike baseHoe, 
+                                              ItemLike baseSword, ItemLike baseAxe, ItemLike baseSpear, ItemLike basePickaxe, ItemLike baseShovel, ItemLike baseHoe,
                                               ItemLike baseHelmet, ItemLike baseChestplate, ItemLike baseLeggings, ItemLike baseBoots,
                                               Item sword, Item axe, Item spear, Item pickaxe, Item shovel, Item hoe,
-                                              Item helmet, Item chestplate, Item leggings, Item boots) {
+                                              Item helmet, Item chestplate, Item leggings, Item boots,
+                                              ItemLike scrapResult) {
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseSword), Ingredient.of(material), RecipeCategory.COMBAT, sword)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(sword) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(sword, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseAxe), Ingredient.of(material), RecipeCategory.TOOLS, axe)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(axe) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(axe, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseSpear), Ingredient.of(material), RecipeCategory.COMBAT, spear)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(spear) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(spear, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(basePickaxe), Ingredient.of(material), RecipeCategory.TOOLS, pickaxe)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(pickaxe) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(pickaxe, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseShovel), Ingredient.of(material), RecipeCategory.TOOLS, shovel)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(shovel) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(shovel, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseHoe), Ingredient.of(material), RecipeCategory.TOOLS, hoe)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(hoe) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(hoe, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseHelmet), Ingredient.of(material), RecipeCategory.COMBAT, helmet)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(helmet) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(helmet, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseChestplate), Ingredient.of(material), RecipeCategory.COMBAT, chestplate)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(chestplate) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(chestplate, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseLeggings), Ingredient.of(material), RecipeCategory.COMBAT, leggings)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(leggings) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(leggings, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseBoots), Ingredient.of(material), RecipeCategory.COMBAT, boots)
-                        .unlocks(getHasName(material), has(material)).save(output, getItemName(boots) + "_smithing");
+                        .unlocks(getHasName(material), has(material)).save(output, specificPath(boots, "_smithing"));
+
+                SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
+                        RecipeCategory.MISC, CookingBookCategory.MISC,
+                        scrapResult, 0.1F, 200
+                ).unlockedBy(getHasName(material), has(material)).save(output,
+                        ResourceKey.create(Registries.RECIPE,
+                                Identifier.fromNamespaceAndPath(Elsewhere.MODID, getSmeltingRecipeName(scrapResult))));
+
+                SimpleCookingRecipeBuilder.blasting(
+                        Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
+                        RecipeCategory.MISC, CookingBookCategory.MISC,
+                        scrapResult, 0.1F, 200
+                ).unlockedBy(getHasName(material), has(material)).save(output,
+                        ResourceKey.create(Registries.RECIPE,
+                                Identifier.fromNamespaceAndPath(Elsewhere.MODID, getBlastingRecipeName(scrapResult))));
             }
             
             private void cobbledStoneSet(RecipeOutput output,
@@ -542,6 +651,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
+                smeltingResultFromBase(smooth, base);
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothStair, 6).define('#', smooth).pattern("#  ").pattern("## ").pattern("###")
                         .unlockedBy(getHasName(smooth), has(smooth)).save(output, shapedId(smoothStair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothSlab, 6).define('#', smooth).pattern("###")
@@ -593,8 +703,6 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 shaped(RecipeCategory.BUILDING_BLOCKS, tileWall, 6).define('#', tile).pattern("###").pattern("###")
                         .unlockedBy(getHasName(tile), has(tile)).save(output, shapedId(tileWall));
 
-                smeltingResultFromBase(smooth, base);
-
                 // Stonecutter
                 stonecutterSet(output,
                         List.of(base, baseStair, baseWall,
@@ -634,6 +742,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
+                smeltingResultFromBase(smooth, base);
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothStair, 6).define('#', smooth).pattern("#  ").pattern("## ").pattern("###")
                         .unlockedBy(getHasName(smooth), has(smooth)).save(output, shapedId(smoothStair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothSlab, 6).define('#', smooth).pattern("###")
@@ -666,8 +775,6 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(brickSlab), has(brickSlab)).save(output, shapedId(chiseledBrick));
                 shaped(RecipeCategory.BUILDING_BLOCKS, pillar, 2).define('#', brick).pattern("#").pattern("#")
                         .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(pillar));
-
-                smeltingResultFromBase(smooth, base);
 
                 // Stonecutter
                 stonecutterSet(output,
@@ -707,6 +814,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
+                smeltingResultFromBase(smooth, base);
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothStair, 6).define('#', smooth).pattern("#  ").pattern("## ").pattern("###")
                         .unlockedBy(getHasName(smooth), has(smooth)).save(output, shapedId(smoothStair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothSlab, 6).define('#', smooth).pattern("###")
@@ -746,8 +854,6 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 shaped(RecipeCategory.BUILDING_BLOCKS, chiseled).define('#', polishedSlab).pattern("#").pattern("#")
                         .unlockedBy(getHasName(polishedSlab), has(polishedSlab)).save(output, shapedId(chiseled));
 
-                smeltingResultFromBase(smooth, base);
-
                 // Stonecutter
                 stonecutterSet(output,
                         List.of(base, baseStair, baseWall,
@@ -781,6 +887,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
+                smeltingResultFromBase(smooth, base);
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothStair, 6).define('#', smooth).pattern("#  ").pattern("## ").pattern("###")
                         .unlockedBy(getHasName(smooth), has(smooth)).save(output, shapedId(smoothStair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, smoothSlab, 6).define('#', smooth).pattern("###")
@@ -807,8 +914,6 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(polishedSlab), has(polishedSlab)).save(output, shapedId(chiseled));
                 shaped(RecipeCategory.BUILDING_BLOCKS, chiseledBrick).define('#', brickSlab).pattern("#").pattern("#")
                         .unlockedBy(getHasName(brickSlab), has(brickSlab)).save(output, shapedId(chiseledBrick));
-
-                smeltingResultFromBase(smooth, base);
 
                 // Stonecutter
                 stonecutterSet(output,
@@ -842,8 +947,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, pillar, 2).define('#', brick).pattern("#").pattern("#")
                         .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(pillar));
-                shaped(RecipeCategory.BUILDING_BLOCKS, chiseled, 2).define('#', brick).pattern(" #").pattern("# ")
-                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(chiseled));
+                shaped(RecipeCategory.BUILDING_BLOCKS, chiseled, 2).define('#', baseSlab).pattern("#").pattern("#")
+                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(chiseled));
 
                 // Stonecutter
                 stonecutterSet(output,
@@ -865,7 +970,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, pillar, 2).define('#', base).pattern("#").pattern("#")
                         .unlockedBy(getHasName(base), has(base)).save(output, shapedId(pillar));
-                shaped(RecipeCategory.BUILDING_BLOCKS, chiseled, 2).define('#', base).pattern(" #").pattern("# ")
+                shaped(RecipeCategory.BUILDING_BLOCKS, chiseled, 2).define('#', baseSlab).pattern("#").pattern("#")
                         .unlockedBy(getHasName(base), has(base)).save(output, shapedId(chiseled));
 
                 // Stonecutter
@@ -958,6 +1063,15 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(planks), has(planks)).save(output);
             }
 
+            private void stairAndSlabSet(RecipeOutput output,
+                                   ItemLike block, ItemLike stair, ItemLike slab) {
+
+                // Shaped
+                shaped(RecipeCategory.BUILDING_BLOCKS, stair, 6).define('#', block).pattern("#  ").pattern("## ").pattern("###")
+                        .unlockedBy(getHasName(block), has(block)).save(output, shapedId(stair));
+                shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6).define('#', block).pattern("###")
+                        .unlockedBy(getHasName(block), has(block)).save(output, shapedId(slab));
+            }
 
 
 
@@ -965,9 +1079,40 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
 
             // Helper Methods
+            private String specificPath(ItemLike item, String suffix) {
+                Identifier id = BuiltInRegistries.ITEM.getKey(item.asItem());
+                return Identifier.fromNamespaceAndPath(Elsewhere.MODID, id.getPath() + suffix).toString();
+            }
             private ResourceKey<Recipe<?>> shapedId(ItemLike result) {
                 Identifier id = BuiltInRegistries.ITEM.getKey(result.asItem());
                 return ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(id.getNamespace(), id.getPath()));
+            }
+
+            public void customOreSmelting(List<ItemLike> smeltables, RecipeCategory craftingCategory, CookingBookCategory cookingCategory, ItemLike result, float experience, int cookingTime, String group) {
+                customOreCooking(SmeltingRecipe::new, smeltables, craftingCategory, cookingCategory, result, experience, cookingTime, group, "_from_smelting");
+            }
+
+            public void customOreBlasting(List<ItemLike> smeltables, RecipeCategory craftingCategory, CookingBookCategory cookingCategory, ItemLike result, float experience, int cookingTime, String group) {
+                customOreCooking(BlastingRecipe::new, smeltables, craftingCategory, cookingCategory, result, experience, cookingTime, group, "_from_blasting");
+            }
+
+            public <T extends AbstractCookingRecipe> void customOreCooking(AbstractCookingRecipe.Factory<T> factory, List<ItemLike> smeltables, RecipeCategory craftingCategory, CookingBookCategory cookingCategory, ItemLike result, float experience, int cookingTime, String group, String fromDesc) {
+                for (ItemLike item : smeltables) {
+                    ResourceKey<Recipe<?>> key = ResourceKey.create(Registries.RECIPE,
+                            Identifier.fromNamespaceAndPath(Elsewhere.MODID, getItemName(result) + fromDesc + "_" + getItemName(item)));
+                    SimpleCookingRecipeBuilder.generic(Ingredient.of(item), craftingCategory, cookingCategory, result, experience, cookingTime, factory)
+                            .group(group)
+                            .unlockedBy(getHasName(item), this.has(item))
+                            .save(this.output, key);
+                }
+            }
+
+            public <T extends AbstractCookingRecipe> void customSimpleCookingRecipe(String source, AbstractCookingRecipe.Factory<T> factory, int cookingTime, ItemLike base, ItemLike result, float experience) {
+                ResourceKey<Recipe<?>> key = ResourceKey.create(Registries.RECIPE,
+                        Identifier.fromNamespaceAndPath(Elsewhere.MODID, getItemName(result) + "_from_" + source));
+                SimpleCookingRecipeBuilder.generic(Ingredient.of(base), RecipeCategory.FOOD, CookingBookCategory.FOOD, result, experience, cookingTime, factory)
+                        .unlockedBy(getHasName(base), this.has(base))
+                        .save(this.output, key);
             }
 
             private void stonecutterSet(RecipeOutput output,

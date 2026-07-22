@@ -20,10 +20,8 @@ public interface ArmorMaterialsMixin {
         mutate(ArmorMaterials.COPPER, 6, makeDefense(1, 2, 2, 1, 5), 18, 0.0F, 0.0F);
         mutate(ArmorMaterials.LEATHER, 5, makeDefense(1, 2, 2, 1, 5), 6, 0.0F, 0.0F);
         mutate(ArmorMaterials.CHAINMAIL, 22, makeDefense(3, 5, 4, 2, 12), 24, 0.0F, 0.1F);
-        mutate(ArmorMaterials.IRON, 42, makeDefense(4, 6, 5, 3, 16), 10, 1.0F, 0.05F);
+        mutate(ArmorMaterials.IRON, 42, makeDefense(4, 6, 5, 3, 16), 10, 0.0F, 0.00F);
         mutate(ArmorMaterials.GOLD, 18, makeDefense(3, 5, 4, 2, 12), 22, 2.0F, 0.0F);
-        mutate(ArmorMaterials.DIAMOND, 80, makeDefense(4, 7, 6, 3, 20), 18, 2.0F, 0.0F);
-        mutate(ArmorMaterials.NETHERITE, 125, makeDefense(4, 7, 6, 3, 20), 12, 3.0F, 0.1F);
     }
 
     @Unique

@@ -6,7 +6,12 @@ import team.lookingglass.elsewhere.registry.*;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import team.lookingglass.elsewhere.registry.blocktypes.EBlockEntityTypes;
+import team.lookingglass.elsewhere.registry.events.EServerEvents;
+import team.lookingglass.elsewhere.registry.util.EPoiTypes;
+import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.tags.*;
+import team.lookingglass.elsewhere.registry.properties.EBlockInteractions;
 import team.lookingglass.elsewhere.worldgen.EFeatures;
 import team.lookingglass.elsewhere.worldgen.ENoise;
 import team.lookingglass.elsewhere.worldgen.EWorldgen;
@@ -33,5 +38,6 @@ public class Elsewhere implements ModInitializer {
 		EEntities.initialize();
 		EEntitySpawns.initialize();
 		ETreeGrowers.initialize();
+		EPoiTypes.initialize();
 	}
 }

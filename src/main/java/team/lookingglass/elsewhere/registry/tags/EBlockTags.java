@@ -31,5 +31,18 @@ public interface EBlockTags {
 
     TagKey<Block> INCORRECT_FOR_BRONZE_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "incorrect_for_bronze_tool"));
 
+    TagKey<Block> WOOL_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "wool_blocks"));
+    TagKey<Block> WOOL_STAIRS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "wool_stairs"));
+    TagKey<Block> WOOL_SLABS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "wool_slabs"));
+
+    TagKey<Block> TERRACOTTA_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_blocks"));
+    TagKey<Block> TERRACOTTA_STAIRS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_stairs"));
+    TagKey<Block> TERRACOTTA_SLABS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_slabs"));
+
+    TagKey<Block> CONCRETE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "concrete"));
+    TagKey<Block> CONCRETE_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "concrete_blocks"));
+    TagKey<Block> CONCRETE_STAIRS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "concrete_stairs"));
+    TagKey<Block> CONCRETE_SLABS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "concrete_slabs"));
+
     static void initialize() {}
 }

@@ -19,10 +19,11 @@ public class RegistryDataGenerator extends FabricDynamicRegistryProvider {
         entries.addAll(registries.lookupOrThrow(Registries.PLACED_FEATURE));
         entries.addAll(registries.lookupOrThrow(Registries.BIOME));
         entries.addAll(registries.lookupOrThrow(Registries.NOISE));
+        entries.addAll(registries.lookupOrThrow(Registries.DIMENSION_TYPE));
     }
 
     @Override
     public String getName() {
-        return "Elsewhere Worldgen";
+        return "ElsewhereDataRegistry";
     }
 }

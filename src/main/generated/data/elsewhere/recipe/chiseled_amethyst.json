@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "elsewhere:amethyst_bricks"
+    "#": "elsewhere:amethyst_slab"
   },
   "pattern": [
-    " #",
-    "# "
+    "#",
+    "#"
   ],
   "result": {
     "count": 2,

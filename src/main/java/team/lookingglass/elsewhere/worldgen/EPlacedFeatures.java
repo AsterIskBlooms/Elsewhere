@@ -250,7 +250,7 @@ public class EPlacedFeatures {
         registerPlaced(context, TIN_ORE,
                 configured.getOrThrow(EConfiguredFeatures.TIN_ORE_KEY),
                 List.of(
-                        CountPlacement.of(24),
+                        CountPlacement.of(18),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.of(
                                 TrapezoidHeight.of(
@@ -264,18 +264,18 @@ public class EPlacedFeatures {
         registerPlaced(context, TIN_ORE_LARGE,
                 configured.getOrThrow(EConfiguredFeatures.TIN_ORE_LARGE_KEY),
                 List.of(
-                        CountPlacement.of(7),
+                        CountPlacement.of(2),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(
                                 VerticalAnchor.aboveBottom(-80),
-                                VerticalAnchor.absolute(0)
+                                VerticalAnchor.absolute(-30)
                         ),
                         BiomeFilter.biome()
                 ));
         registerPlaced(context, TIN_ORE_SMALL,
                 configured.getOrThrow(EConfiguredFeatures.TIN_ORE_SMALL_KEY),
                 List.of(
-                        CountPlacement.of(32),
+                        CountPlacement.of(24),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(
                                 VerticalAnchor.absolute(68),

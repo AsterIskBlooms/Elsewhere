@@ -218,7 +218,7 @@ public class EConfiguredFeatures {
                         OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), EBlocks.DEEPSLATE_TIN_ORE.defaultBlockState()),
                         OreConfiguration.target(new TagMatchTest(EBlockTags.CINNABAR_ORE_REPLACEABLES), EBlocks.CINNABAR_TIN_ORE.defaultBlockState())
                 ),
-                12  // vein size
+                15  // vein size
         ));
         registerFeature(context, TIN_ORE_SMALL_KEY, Feature.ORE, new OreConfiguration(
                 List.of(

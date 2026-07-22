@@ -3,8 +3,8 @@
   "package": "team.lookingglass.elsewhere.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "ExtraGrassesMixin",
-    "MegaAcaciaMixin",
+    "world.feature.ExtraGrassesMixin",
+    "world.feature.MegaAcaciaMixin",
     "SoundMixin",
     "entity.ZombieConversionMixin",
     "equipment.ArmorMaterialsMixin",

@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "elsewhere:obsidian_bricks"
+    "#": "elsewhere:obsidian_slab"
   },
   "pattern": [
-    " #",
-    "# "
+    "#",
+    "#"
   ],
   "result": {
     "count": 2,

@@ -23,11 +23,10 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import org.jetbrains.annotations.Nullable;
-import team.lookingglass.elsewhere.registry.EBlockEntityTypes;
-import team.lookingglass.elsewhere.registry.EParticles;
+import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.ESounds;
-import team.lookingglass.elsewhere.registry.particles.GeyserParticleOptions;
-import team.lookingglass.elsewhere.registry.properties.PotentSulfurState;
+import team.lookingglass.elsewhere.registry.render.particles.GeyserParticleOptions;
+import team.lookingglass.elsewhere.registry.properties.blockstates.PotentSulfurState;
 
 import java.util.*;
 import java.util.function.Predicate;

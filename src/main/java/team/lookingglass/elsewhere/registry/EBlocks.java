@@ -5,6 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.material.PushReaction;
 import team.lookingglass.elsewhere.Elsewhere;
+import team.lookingglass.elsewhere.dimension.portal.VeilrootPortalBlock;
 import team.lookingglass.elsewhere.registry.blocktypes.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,6 +22,9 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
+import team.lookingglass.elsewhere.registry.render.EParticles;
+import team.lookingglass.elsewhere.registry.sets.EBlockSets;
+import team.lookingglass.elsewhere.registry.sets.EWoodTypes;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -973,9 +977,6 @@ public interface EBlocks {
     Block AZALEA_HANGING_SIGN = registerCeilingHangingSign("azalea_hanging_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
     Block AZALEA_WALL_HANGING_SIGN = registerWallHangingSign("azalea_wall_hanging_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
 
-
-
-
     // Arid Dirt
     ResourceKey<Block> ARID_DIRT_KEY = ResourceKey.create(Registries.BLOCK,
             Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_dirt")
@@ -989,6 +990,119 @@ public interface EBlocks {
     Map<Block, Block> DIRT_TO_GRASS = Map.of(
             Blocks.DIRT, Blocks.GRASS_BLOCK,
             ARID_DIRT, ARID_GRASS_BLOCK
+    );
+
+
+    // Wool Stairs & Slabs
+    Block WHITE_WOOL_STAIRS = registerStair("white_wool_stairs", Blocks.WHITE_WOOL);
+    Block WHITE_WOOL_SLAB = registerSlab("white_wool_slab", Blocks.WHITE_WOOL);
+    Block LIGHT_GRAY_WOOL_STAIRS = registerStair("light_gray_wool_stairs", Blocks.LIGHT_GRAY_WOOL);
+    Block LIGHT_GRAY_WOOL_SLAB = registerSlab("light_gray_wool_slab", Blocks.LIGHT_GRAY_WOOL);
+    Block GRAY_WOOL_STAIRS = registerStair("gray_wool_stairs", Blocks.GRAY_WOOL);
+    Block GRAY_WOOL_SLAB = registerSlab("gray_wool_slab", Blocks.GRAY_WOOL);
+    Block BLACK_WOOL_STAIRS = registerStair("black_wool_stairs", Blocks.BLACK_WOOL);
+    Block BLACK_WOOL_SLAB = registerSlab("black_wool_slab", Blocks.BLACK_WOOL);
+    Block BROWN_WOOL_STAIRS = registerStair("brown_wool_stairs", Blocks.BROWN_WOOL);
+    Block BROWN_WOOL_SLAB = registerSlab("brown_wool_slab", Blocks.BROWN_WOOL);
+    Block RED_WOOL_STAIRS = registerStair("red_wool_stairs", Blocks.RED_WOOL);
+    Block RED_WOOL_SLAB = registerSlab("red_wool_slab", Blocks.RED_WOOL);
+    Block ORANGE_WOOL_STAIRS = registerStair("orange_wool_stairs", Blocks.ORANGE_WOOL);
+    Block ORANGE_WOOL_SLAB = registerSlab("orange_wool_slab", Blocks.ORANGE_WOOL);
+    Block YELLOW_WOOL_STAIRS = registerStair("yellow_wool_stairs", Blocks.YELLOW_WOOL);
+    Block YELLOW_WOOL_SLAB = registerSlab("yellow_wool_slab", Blocks.YELLOW_WOOL);
+    Block LIME_WOOL_STAIRS = registerStair("lime_wool_stairs", Blocks.LIME_WOOL);
+    Block LIME_WOOL_SLAB = registerSlab("lime_wool_slab", Blocks.LIME_WOOL);
+    Block GREEN_WOOL_STAIRS = registerStair("green_wool_stairs", Blocks.GREEN_WOOL);
+    Block GREEN_WOOL_SLAB = registerSlab("green_wool_slab", Blocks.GREEN_WOOL);
+    Block CYAN_WOOL_STAIRS = registerStair("cyan_wool_stairs", Blocks.CYAN_WOOL);
+    Block CYAN_WOOL_SLAB = registerSlab("cyan_wool_slab", Blocks.CYAN_WOOL);
+    Block LIGHT_BLUE_WOOL_STAIRS = registerStair("light_blue_wool_stairs", Blocks.LIGHT_BLUE_WOOL);
+    Block LIGHT_BLUE_WOOL_SLAB = registerSlab("light_blue_wool_slab", Blocks.LIGHT_BLUE_WOOL);
+    Block BLUE_WOOL_STAIRS = registerStair("blue_wool_stairs", Blocks.BLUE_WOOL);
+    Block BLUE_WOOL_SLAB = registerSlab("blue_wool_slab", Blocks.BLUE_WOOL);
+    Block PURPLE_WOOL_STAIRS = registerStair("purple_wool_stairs", Blocks.PURPLE_WOOL);
+    Block PURPLE_WOOL_SLAB = registerSlab("purple_wool_slab", Blocks.PURPLE_WOOL);
+    Block MAGENTA_WOOL_STAIRS = registerStair("magenta_wool_stairs", Blocks.MAGENTA_WOOL);
+    Block MAGENTA_WOOL_SLAB = registerSlab("magenta_wool_slab", Blocks.MAGENTA_WOOL);
+    Block PINK_WOOL_STAIRS = registerStair("pink_wool_stairs", Blocks.PINK_WOOL);
+    Block PINK_WOOL_SLAB = registerSlab("pink_wool_slab", Blocks.PINK_WOOL);
+
+    Block TERRACOTTA_STAIRS = registerStair("terracotta_stairs", Blocks.TERRACOTTA);
+    Block TERRACOTTA_SLAB = registerSlab("terracotta_slab", Blocks.TERRACOTTA);
+    Block WHITE_TERRACOTTA_STAIRS = registerStair("white_terracotta_stairs", Blocks.WHITE_TERRACOTTA);
+    Block WHITE_TERRACOTTA_SLAB = registerSlab("white_terracotta_slab", Blocks.WHITE_TERRACOTTA);
+    Block LIGHT_GRAY_TERRACOTTA_STAIRS = registerStair("light_gray_terracotta_stairs", Blocks.LIGHT_GRAY_TERRACOTTA);
+    Block LIGHT_GRAY_TERRACOTTA_SLAB = registerSlab("light_gray_terracotta_slab", Blocks.LIGHT_GRAY_TERRACOTTA);
+    Block GRAY_TERRACOTTA_STAIRS = registerStair("gray_terracotta_stairs", Blocks.GRAY_TERRACOTTA);
+    Block GRAY_TERRACOTTA_SLAB = registerSlab("gray_terracotta_slab", Blocks.GRAY_TERRACOTTA);
+    Block BLACK_TERRACOTTA_STAIRS = registerStair("black_terracotta_stairs", Blocks.BLACK_TERRACOTTA);
+    Block BLACK_TERRACOTTA_SLAB = registerSlab("black_terracotta_slab", Blocks.BLACK_TERRACOTTA);
+    Block BROWN_TERRACOTTA_STAIRS = registerStair("brown_terracotta_stairs", Blocks.BROWN_TERRACOTTA);
+    Block BROWN_TERRACOTTA_SLAB = registerSlab("brown_terracotta_slab", Blocks.BROWN_TERRACOTTA);
+    Block RED_TERRACOTTA_STAIRS = registerStair("red_terracotta_stairs", Blocks.RED_TERRACOTTA);
+    Block RED_TERRACOTTA_SLAB = registerSlab("red_terracotta_slab", Blocks.RED_TERRACOTTA);
+    Block ORANGE_TERRACOTTA_STAIRS = registerStair("orange_terracotta_stairs", Blocks.ORANGE_TERRACOTTA);
+    Block ORANGE_TERRACOTTA_SLAB = registerSlab("orange_terracotta_slab", Blocks.ORANGE_TERRACOTTA);
+    Block YELLOW_TERRACOTTA_STAIRS = registerStair("yellow_terracotta_stairs", Blocks.YELLOW_TERRACOTTA);
+    Block YELLOW_TERRACOTTA_SLAB = registerSlab("yellow_terracotta_slab", Blocks.YELLOW_TERRACOTTA);
+    Block LIME_TERRACOTTA_STAIRS = registerStair("lime_terracotta_stairs", Blocks.LIME_TERRACOTTA);
+    Block LIME_TERRACOTTA_SLAB = registerSlab("lime_terracotta_slab", Blocks.LIME_TERRACOTTA);
+    Block GREEN_TERRACOTTA_STAIRS = registerStair("green_terracotta_stairs", Blocks.GREEN_TERRACOTTA);
+    Block GREEN_TERRACOTTA_SLAB = registerSlab("green_terracotta_slab", Blocks.GREEN_TERRACOTTA);
+    Block CYAN_TERRACOTTA_STAIRS = registerStair("cyan_terracotta_stairs", Blocks.CYAN_TERRACOTTA);
+    Block CYAN_TERRACOTTA_SLAB = registerSlab("cyan_terracotta_slab", Blocks.CYAN_TERRACOTTA);
+    Block LIGHT_BLUE_TERRACOTTA_STAIRS = registerStair("light_blue_terracotta_stairs", Blocks.LIGHT_BLUE_TERRACOTTA);
+    Block LIGHT_BLUE_TERRACOTTA_SLAB = registerSlab("light_blue_terracotta_slab", Blocks.LIGHT_BLUE_TERRACOTTA);
+    Block BLUE_TERRACOTTA_STAIRS = registerStair("blue_terracotta_stairs", Blocks.BLUE_TERRACOTTA);
+    Block BLUE_TERRACOTTA_SLAB = registerSlab("blue_terracotta_slab", Blocks.BLUE_TERRACOTTA);
+    Block PURPLE_TERRACOTTA_STAIRS = registerStair("purple_terracotta_stairs", Blocks.PURPLE_TERRACOTTA);
+    Block PURPLE_TERRACOTTA_SLAB = registerSlab("purple_terracotta_slab", Blocks.PURPLE_TERRACOTTA);
+    Block MAGENTA_TERRACOTTA_STAIRS = registerStair("magenta_terracotta_stairs", Blocks.MAGENTA_TERRACOTTA);
+    Block MAGENTA_TERRACOTTA_SLAB = registerSlab("magenta_terracotta_slab", Blocks.MAGENTA_TERRACOTTA);
+    Block PINK_TERRACOTTA_STAIRS = registerStair("pink_terracotta_stairs", Blocks.PINK_TERRACOTTA);
+    Block PINK_TERRACOTTA_SLAB = registerSlab("pink_terracotta_slab", Blocks.PINK_TERRACOTTA);
+
+    Block WHITE_CONCRETE_STAIRS = registerStair("white_concrete_stairs", Blocks.WHITE_CONCRETE);
+    Block WHITE_CONCRETE_SLAB = registerSlab("white_concrete_slab", Blocks.WHITE_CONCRETE);
+    Block LIGHT_GRAY_CONCRETE_STAIRS = registerStair("light_gray_concrete_stairs", Blocks.LIGHT_GRAY_CONCRETE);
+    Block LIGHT_GRAY_CONCRETE_SLAB = registerSlab("light_gray_concrete_slab", Blocks.LIGHT_GRAY_CONCRETE);
+    Block GRAY_CONCRETE_STAIRS = registerStair("gray_concrete_stairs", Blocks.GRAY_CONCRETE);
+    Block GRAY_CONCRETE_SLAB = registerSlab("gray_concrete_slab", Blocks.GRAY_CONCRETE);
+    Block BLACK_CONCRETE_STAIRS = registerStair("black_concrete_stairs", Blocks.BLACK_CONCRETE);
+    Block BLACK_CONCRETE_SLAB = registerSlab("black_concrete_slab", Blocks.BLACK_CONCRETE);
+    Block BROWN_CONCRETE_STAIRS = registerStair("brown_concrete_stairs", Blocks.BROWN_CONCRETE);
+    Block BROWN_CONCRETE_SLAB = registerSlab("brown_concrete_slab", Blocks.BROWN_CONCRETE);
+    Block RED_CONCRETE_STAIRS = registerStair("red_concrete_stairs", Blocks.RED_CONCRETE);
+    Block RED_CONCRETE_SLAB = registerSlab("red_concrete_slab", Blocks.RED_CONCRETE);
+    Block ORANGE_CONCRETE_STAIRS = registerStair("orange_concrete_stairs", Blocks.ORANGE_CONCRETE);
+    Block ORANGE_CONCRETE_SLAB = registerSlab("orange_concrete_slab", Blocks.ORANGE_CONCRETE);
+    Block YELLOW_CONCRETE_STAIRS = registerStair("yellow_concrete_stairs", Blocks.YELLOW_CONCRETE);
+    Block YELLOW_CONCRETE_SLAB = registerSlab("yellow_concrete_slab", Blocks.YELLOW_CONCRETE);
+    Block LIME_CONCRETE_STAIRS = registerStair("lime_concrete_stairs", Blocks.LIME_CONCRETE);
+    Block LIME_CONCRETE_SLAB = registerSlab("lime_concrete_slab", Blocks.LIME_CONCRETE);
+    Block GREEN_CONCRETE_STAIRS = registerStair("green_concrete_stairs", Blocks.GREEN_CONCRETE);
+    Block GREEN_CONCRETE_SLAB = registerSlab("green_concrete_slab", Blocks.GREEN_CONCRETE);
+    Block CYAN_CONCRETE_STAIRS = registerStair("cyan_concrete_stairs", Blocks.CYAN_CONCRETE);
+    Block CYAN_CONCRETE_SLAB = registerSlab("cyan_concrete_slab", Blocks.CYAN_CONCRETE);
+    Block LIGHT_BLUE_CONCRETE_STAIRS = registerStair("light_blue_concrete_stairs", Blocks.LIGHT_BLUE_CONCRETE);
+    Block LIGHT_BLUE_CONCRETE_SLAB = registerSlab("light_blue_concrete_slab", Blocks.LIGHT_BLUE_CONCRETE);
+    Block BLUE_CONCRETE_STAIRS = registerStair("blue_concrete_stairs", Blocks.BLUE_CONCRETE);
+    Block BLUE_CONCRETE_SLAB = registerSlab("blue_concrete_slab", Blocks.BLUE_CONCRETE);
+    Block PURPLE_CONCRETE_STAIRS = registerStair("purple_concrete_stairs", Blocks.PURPLE_CONCRETE);
+    Block PURPLE_CONCRETE_SLAB = registerSlab("purple_concrete_slab", Blocks.PURPLE_CONCRETE);
+    Block MAGENTA_CONCRETE_STAIRS = registerStair("magenta_concrete_stairs", Blocks.MAGENTA_CONCRETE);
+    Block MAGENTA_CONCRETE_SLAB = registerSlab("magenta_concrete_slab", Blocks.MAGENTA_CONCRETE);
+    Block PINK_CONCRETE_STAIRS = registerStair("pink_concrete_stairs", Blocks.PINK_CONCRETE);
+    Block PINK_CONCRETE_SLAB = registerSlab("pink_concrete_slab", Blocks.PINK_CONCRETE);
+
+
+
+
+
+
+    // Veilroot!
+    Block VEILROOT_PORTAL = register("veilroot_portal", VeilrootPortalBlock::new, false,
+            BlockBehaviour.Properties.of().noCollision().noOcclusion().strength(-1F).lightLevel((_) -> 5)
     );
 
 
@@ -1031,7 +1145,7 @@ public interface EBlocks {
         // Create the block instance
         Block block = blockFactory.apply(settings.setId(blockKey));
 
-        // Register if it needs an item (ex: register piston, don't register moving piston)
+        // Register if it needs an item (ex: initialize piston, don't initialize moving piston)
         if (shouldRegisterItem) {
             ResourceKey<Item> itemKey = keyOfItem(name);
             BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix());

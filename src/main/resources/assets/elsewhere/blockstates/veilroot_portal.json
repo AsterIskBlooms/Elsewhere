@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "axis=x,fading=false": { "model": "elsewhere:block/veilroot_portal", "y": 90 },
+    "axis=z,fading=false": { "model": "elsewhere:block/veilroot_portal" },
+    "axis=x,fading=true":  { "model": "elsewhere:block/veilroot_portal_fading", "y": 90 },
+    "axis=z,fading=true":  { "model": "elsewhere:block/veilroot_portal_fading"}
+  }
+}

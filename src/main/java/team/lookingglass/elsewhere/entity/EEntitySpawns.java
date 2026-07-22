@@ -1,6 +1,7 @@
 package team.lookingglass.elsewhere.entity;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -43,5 +44,8 @@ public class EEntitySpawns {
                         spawn -> spawn.getMobSpawnSettings().addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4), 75))
         ;
+
+        BiomeModifications.addSpawn(ctx -> ctx.getBiomeKey() == Biomes.RIVER,
+                MobCategory.WATER_AMBIENT, EEntities.PERCH, 1, 3, 5);
     }
 }

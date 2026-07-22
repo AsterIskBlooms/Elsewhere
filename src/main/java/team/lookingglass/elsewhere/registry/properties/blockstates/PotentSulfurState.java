@@ -1,0 +1,25 @@
+package team.lookingglass.elsewhere.registry.properties.blockstates;
+
+import net.minecraft.util.StringRepresentable;
+
+public enum PotentSulfurState implements StringRepresentable {
+    DRY("dry"),
+    WET("wet"),
+    DORMANT("dormant"),
+    ERUPTING("erupting");
+
+    private final String name;
+
+    PotentSulfurState(final String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public String getSerializedName() {
+        return this.name;
+    }
+}
