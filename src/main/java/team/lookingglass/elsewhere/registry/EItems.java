@@ -73,12 +73,15 @@ public interface EItems {
             .sword(EMaterials.BRONZE_TOOL, 3.0F, -2.4F)
     );
     Item BRONZE_AXE = register("bronze_axe", Item::new, new Item.Properties()
-            .axe(EMaterials.BRONZE_TOOL, 7.0F, -3.0F)
+            .axe(EMaterials.BRONZE_TOOL, 7.0F, -3.1F)
     );
     Item BRONZE_SPEAR = register("bronze_spear", Item::new, new Item.Properties()
             .spear(EMaterials.BRONZE_TOOL,
-                    1.05F, 1.075F, 0.5F, 3.0F, 10.0F, 6.5F, 5.1F, 10.0F, 4.6F)
-    );
+                    0.9F, 0.87F, 0.65F,
+                    3.3F, 11.5F,
+                    7.5F, 5.1F,
+                    11.9F, 4.6F
+            ));
     Item BRONZE_PICKAXE = register("bronze_pickaxe", Item::new, new Item.Properties()
             .pickaxe(EMaterials.BRONZE_TOOL, 1.0F, -2.8F)
     );
@@ -86,48 +89,50 @@ public interface EItems {
             .shovel(EMaterials.BRONZE_TOOL, 1.5F, -3.0F)
     );
     Item BRONZE_HOE = register("bronze_hoe", Item::new, new Item.Properties()
-            .hoe(EMaterials.BRONZE_TOOL, -3.0F, 0.0F)
+            .hoe(EMaterials.BRONZE_TOOL, -1.0F, -1.0F)
     );
 
     Item RAW_SILVER = register("raw_silver", Item::new, new Item.Properties());
     Item SILVER_INGOT = register("silver_ingot", Item::new, new Item.Properties());
     Item SILVER_NUGGET = register("silver_nugget", Item::new, new Item.Properties());
 
-    Item SOULSTEEL_INGOT = register("soulsteel_ingot", Item::new, new Item.Properties());
+    Item SOULSTEEL_INGOT = register("soulsteel_ingot", Item::new, new Item.Properties().fireResistant());
     Item SOULSTEEL_HELMET = register("soulsteel_helmet", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
             EMaterials.SOULSTEEL_ARMOR, ArmorType.HELMET, EquipmentSlotGroup.HEAD,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_HELMET_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE)
+            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_HELMET_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
     );
     Item SOULSTEEL_CHESTPLATE = register("soulsteel_chestplate", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
             EMaterials.SOULSTEEL_ARMOR, ArmorType.CHESTPLATE, EquipmentSlotGroup.CHEST,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_CHESTPLATE_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE)
+            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_CHESTPLATE_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
     );
     Item SOULSTEEL_LEGGINGS = register("soulsteel_leggings", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
                     EMaterials.SOULSTEEL_ARMOR, ArmorType.LEGGINGS, EquipmentSlotGroup.LEGS,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_LEGGINGS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE)
+            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_LEGGINGS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
     );
     Item SOULSTEEL_BOOTS = register("soulsteel_boots", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
                     EMaterials.SOULSTEEL_ARMOR, ArmorType.BOOTS, EquipmentSlotGroup.FEET,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_BOOTS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE)
+            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_BOOTS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
     );
-    Item SOULSTEEL_SWORD = register("soulsteel_sword", Item::new, new Item.Properties()
+    Item SOULSTEEL_SWORD = register("soulsteel_sword", Item::new, new Item.Properties().fireResistant()
             .sword(EMaterials.SOULSTEEL_TOOL, 3.0F, -2.4F)
     );
-    Item SOULSTEEL_AXE = register("soulsteel_axe", Item::new, new Item.Properties()
+    Item SOULSTEEL_AXE = register("soulsteel_axe", Item::new, new Item.Properties().fireResistant()
             .axe(EMaterials.SOULSTEEL_TOOL, 5.0F, -3.0F)
     );
-    Item SOULSTEEL_SPEAR = register("soulsteel_spear", Item::new, new Item.Properties()
+    Item SOULSTEEL_SPEAR = register("soulsteel_spear", Item::new, new Item.Properties().fireResistant()
             .spear(EMaterials.SOULSTEEL_TOOL,
-                    1.15F, 1.2F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)
-    );
-    Item SOULSTEEL_PICKAXE = register("soulsteel_pickaxe", Item::new, new Item.Properties()
+                    1.10F, 1.14F, 0.45F,
+                    2.6F, 9.5F, 6.0F,
+                    5.1F, 9.4F, 4.6F
+            ));
+    Item SOULSTEEL_PICKAXE = register("soulsteel_pickaxe", Item::new, new Item.Properties().fireResistant()
             .pickaxe(EMaterials.SOULSTEEL_TOOL, 1.0F, -2.8F)
     );
-    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", Item::new, new Item.Properties()
+    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", Item::new, new Item.Properties().fireResistant()
             .shovel(EMaterials.SOULSTEEL_TOOL, 1.5F, -3.0F)
     );
-    Item SOULSTEEL_HOE = register("soulsteel_hoe", Item::new, new Item.Properties()
-            .hoe(EMaterials.SOULSTEEL_TOOL, -3.0F, 0.0F)
+    Item SOULSTEEL_HOE = register("soulsteel_hoe", Item::new, new Item.Properties().fireResistant()
+            .hoe(EMaterials.SOULSTEEL_TOOL, -4.0F, 0.0F)
     );
 
     Item FROSTBITE_SPAWN_EGG = register("frostbite_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.FROSTBITE));

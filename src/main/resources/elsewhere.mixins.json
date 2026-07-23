@@ -3,18 +3,20 @@
   "package": "team.lookingglass.elsewhere.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "world.feature.ExtraGrassesMixin",
-    "world.feature.MegaAcaciaMixin",
     "SoundMixin",
     "entity.ZombieConversionMixin",
     "equipment.ArmorMaterialsMixin",
     "equipment.ToolMaterialMixin",
     "equipment.toolstats.AxeReconfig",
     "equipment.toolstats.HoeReconfig",
+    "equipment.toolstats.ShovelReconfig",
+    "equipment.toolstats.SwordPickReconfig",
     "world.NoiseGeneratorSettingsAccessor",
     "world.OreConfigurationAccessor",
     "world.OverworldBiomeGenAccessor",
-    "world.OverworldBiomeGenMixin"
+    "world.OverworldBiomeGenMixin",
+    "world.feature.ExtraGrassesMixin",
+    "world.feature.MegaAcaciaMixin"
   ],
   "injectors": {
     "defaultRequire": 1

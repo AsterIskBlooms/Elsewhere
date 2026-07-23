@@ -17,11 +17,11 @@ public interface ArmorMaterialsMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void patchMaterials(CallbackInfo ci) {
-        mutate(ArmorMaterials.COPPER, 6, makeDefense(1, 2, 2, 1, 5), 18, 0.0F, 0.0F);
-        mutate(ArmorMaterials.LEATHER, 5, makeDefense(1, 2, 2, 1, 5), 6, 0.0F, 0.0F);
-        mutate(ArmorMaterials.CHAINMAIL, 22, makeDefense(3, 5, 4, 2, 12), 24, 0.0F, 0.1F);
-        mutate(ArmorMaterials.IRON, 42, makeDefense(4, 6, 5, 3, 16), 10, 0.0F, 0.00F);
-        mutate(ArmorMaterials.GOLD, 18, makeDefense(3, 5, 4, 2, 12), 22, 2.0F, 0.0F);
+        mutate(ArmorMaterials.LEATHER, 5, makeDefense(1, 3, 2, 1, 3), 6, 0.0F, 0.0F);
+        mutate(ArmorMaterials.COPPER, 5, makeDefense(1, 3, 2, 1, 4), 8, 0.0F, 0.0F);
+        mutate(ArmorMaterials.CHAINMAIL, 15, makeDefense(2, 4, 3, 1, 5), 12, 0.0F, 0.1F);
+        mutate(ArmorMaterials.IRON, 15, makeDefense(3, 5, 4, 2, 9), 9, 0.0F, 0.0F);
+        mutate(ArmorMaterials.GOLD, 7, makeDefense(2, 4, 3, 1, 7), 25, 0.0F, 0.0F);
     }
 
     @Unique

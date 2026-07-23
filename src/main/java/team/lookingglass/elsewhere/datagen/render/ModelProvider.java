@@ -288,7 +288,7 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.DARK_PRISMARINE_BRICK_WALL)
         ;
         gen.createTrivialBlock(EBlocks.CHISELED_DARK_PRISMARINE, TexturedModel.COLUMN);
-        gen.createTrivialBlock(EBlocks.CHISELED_DARK_PRISMARINE_BRICKS, TexturedModel.COLUMN);
+        gen.createTrivialCube(EBlocks.CHISELED_DARK_PRISMARINE_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.DARK_PRISMARINE_PILLAR, TexturedModel.COLUMN);
 
         customGen.axisAlignedPillarFamily(Blocks.BASALT, TexturedModel.COLUMN)
@@ -636,7 +636,7 @@ public class ModelProvider extends FabricModelProvider {
                 .button(EBlocks.POPLAR_BUTTON)
         ;
         gen.createDoor(EBlocks.POPLAR_DOOR);
-        gen.createTrapdoor(EBlocks.POPLAR_TRAPDOOR);
+        gen.createOrientableTrapdoor(EBlocks.POPLAR_TRAPDOOR);
         gen.createParticleOnlyBlock(EBlocks.POPLAR_SIGN, EBlocks.POPLAR_PLANKS);
         gen.createParticleOnlyBlock(EBlocks.POPLAR_WALL_SIGN, EBlocks.POPLAR_PLANKS);
         gen.createParticleOnlyBlock(EBlocks.POPLAR_HANGING_SIGN, EBlocks.STRIPPED_POPLAR_LOG);
@@ -664,7 +664,7 @@ public class ModelProvider extends FabricModelProvider {
                 .button(EBlocks.AZALEA_BUTTON)
         ;
         gen.createDoor(EBlocks.AZALEA_DOOR);
-        gen.createTrapdoor(EBlocks.AZALEA_TRAPDOOR);
+        gen.createOrientableTrapdoor(EBlocks.AZALEA_TRAPDOOR);
         gen.createParticleOnlyBlock(EBlocks.AZALEA_SIGN, EBlocks.AZALEA_PLANKS);
         gen.createParticleOnlyBlock(EBlocks.AZALEA_WALL_SIGN, EBlocks.AZALEA_PLANKS);
         gen.createParticleOnlyBlock(EBlocks.AZALEA_HANGING_SIGN, EBlocks.STRIPPED_AZALEA_LOG);

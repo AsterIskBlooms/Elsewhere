@@ -1,7 +1,6 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "end": "elsewhere:block/chiseled_dark_prismarine_bricks_top",
-    "side": "elsewhere:block/chiseled_dark_prismarine_bricks_side"
+    "all": "elsewhere:block/chiseled_dark_prismarine_bricks"
   }
 }

@@ -20,19 +20,19 @@ public interface EMaterials {
 
     ResourceKey<EquipmentAsset> BRONZE_ARMOR_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID,
             Identifier.fromNamespaceAndPath(Elsewhere.MODID, "bronze"));
-    int BRONZE_DURABILITY = 23;
+    int BRONZE_DURABILITY = 7;
 
     ToolMaterial BRONZE_TOOL = new ToolMaterial(
             EBlockTags.INCORRECT_FOR_BRONZE_TOOL,
-            365,
-            6F,
+            150,
+            5F,
             1F,
             18,
             EItemTags.REPAIRS_BRONZE_ARMOR
     );
     ArmorMaterial BRONZE_ARMOR = new ArmorMaterial(
             BRONZE_DURABILITY,
-            makeDefense(3, 5, 4, 2, 12),
+            makeDefense(2, 4, 3, 1),
             15,
             SoundEvents.ARMOR_EQUIP_GOLD,
             0F,
@@ -43,19 +43,19 @@ public interface EMaterials {
 
     ResourceKey<EquipmentAsset> SOULSTEEL_ARMOR_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID,
             Identifier.fromNamespaceAndPath(Elsewhere.MODID, "soulsteel"));
-    int SOULSTEEL_DURABILITY = 33;
+    int SOULSTEEL_DURABILITY = 35;
 
     ToolMaterial SOULSTEEL_TOOL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
-            1920,
+            1851,
             10F,
-            3F,
+            4F,
             16,
             EItemTags.REPAIRS_SOULSTEEL_ARMOR
     );
     ArmorMaterial SOULSTEEL_ARMOR = new ArmorMaterial(
             SOULSTEEL_DURABILITY,
-            makeDefense(4, 7, 6, 3, 20),
+            makeDefense(3, 8, 6, 3),
             16,
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             2F,
@@ -64,6 +64,13 @@ public interface EMaterials {
             SOULSTEEL_ARMOR_KEY
     );
 
+    private static Map<ArmorType, Integer> makeDefense( int helm, int chest, int legs, int boots) {
+        return Maps.newEnumMap(Map.of(
+                ArmorType.BOOTS, boots,
+                ArmorType.LEGGINGS, legs,
+                ArmorType.CHESTPLATE, chest,
+                ArmorType.HELMET, helm));
+    }
     private static Map<ArmorType, Integer> makeDefense( int helm, int chest, int legs, int boots, int body) {
         return Maps.newEnumMap(Map.of(
                 ArmorType.BOOTS, boots,
