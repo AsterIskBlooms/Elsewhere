@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:cobbleshale",
-  "result": {
-    "id": "elsewhere:shale_bricks"
-  }
-}

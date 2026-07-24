@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_deepslate_slab",
-  "result": {
-    "id": "elsewhere:deepslate_slab"
-  }
-}

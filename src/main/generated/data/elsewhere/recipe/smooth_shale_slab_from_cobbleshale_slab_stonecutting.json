@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:cobbleshale_slab",
-  "result": {
-    "id": "elsewhere:smooth_shale_slab"
-  }
-}

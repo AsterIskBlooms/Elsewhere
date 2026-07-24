@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:sulfur_brick_slab",
-  "result": {
-    "id": "elsewhere:polished_sulfur_slab"
-  }
-}

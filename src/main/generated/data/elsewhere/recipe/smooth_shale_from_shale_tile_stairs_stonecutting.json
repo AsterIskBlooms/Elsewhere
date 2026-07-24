@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:shale_tile_stairs",
-  "result": {
-    "id": "elsewhere:smooth_shale"
-  }
-}

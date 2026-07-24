@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_tuff_wall",
-  "result": {
-    "id": "minecraft:chiseled_tuff_bricks"
-  }
-}

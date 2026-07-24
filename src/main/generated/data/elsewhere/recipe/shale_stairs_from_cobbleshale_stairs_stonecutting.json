@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:cobbleshale_stairs",
-  "result": {
-    "id": "elsewhere:shale_stairs"
-  }
-}

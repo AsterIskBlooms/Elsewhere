@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:basalt_brick_wall",
-  "result": {
-    "count": 2,
-    "id": "elsewhere:smooth_basalt_slab"
-  }
-}

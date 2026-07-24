@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:quartz_block",
-  "result": {
-    "id": "elsewhere:quartz_brick_stairs"
-  }
-}

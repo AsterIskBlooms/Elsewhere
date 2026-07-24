@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_dark_prismarine_stairs",
-  "result": {
-    "id": "elsewhere:dark_prismarine_wall"
-  }
-}

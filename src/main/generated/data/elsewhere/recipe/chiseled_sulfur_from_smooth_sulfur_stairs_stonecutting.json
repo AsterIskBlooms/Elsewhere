@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_sulfur_stairs",
-  "result": {
-    "id": "elsewhere:chiseled_sulfur"
-  }
-}

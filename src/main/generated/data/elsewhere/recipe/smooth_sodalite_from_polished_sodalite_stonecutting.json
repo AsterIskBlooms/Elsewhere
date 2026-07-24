@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:polished_sodalite",
-  "result": {
-    "id": "elsewhere:smooth_sodalite"
-  }
-}

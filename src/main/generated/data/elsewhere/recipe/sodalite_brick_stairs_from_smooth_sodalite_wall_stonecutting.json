@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_sodalite_wall",
-  "result": {
-    "id": "elsewhere:sodalite_brick_stairs"
-  }
-}

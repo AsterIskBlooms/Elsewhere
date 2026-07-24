@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:polished_andesite_wall",
-  "result": {
-    "id": "elsewhere:smooth_andesite_stairs"
-  }
-}
