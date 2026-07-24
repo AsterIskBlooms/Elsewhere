@@ -2,6 +2,7 @@ package team.lookingglass.elsewhere.registry;
 
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.material.PushReaction;
 import team.lookingglass.elsewhere.Elsewhere;
