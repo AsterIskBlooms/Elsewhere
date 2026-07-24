@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_tuff",
-  "result": {
-    "id": "elsewhere:tuff_pillar"
-  }
-}

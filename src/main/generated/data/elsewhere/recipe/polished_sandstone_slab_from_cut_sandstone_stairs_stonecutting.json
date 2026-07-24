@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:cut_sandstone_stairs",
-  "result": {
-    "count": 2,
-    "id": "elsewhere:polished_sandstone_slab"
-  }
-}

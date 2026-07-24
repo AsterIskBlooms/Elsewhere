@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:chiseled_basalt_bricks",
-  "result": {
-    "id": "minecraft:polished_basalt"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:andesite_brick_slab",
-  "result": {
-    "id": "elsewhere:smooth_andesite_slab"
-  }
-}

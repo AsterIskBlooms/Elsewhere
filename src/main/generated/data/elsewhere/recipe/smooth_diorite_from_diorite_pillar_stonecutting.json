@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:diorite_pillar",
-  "result": {
-    "id": "elsewhere:smooth_diorite"
-  }
-}

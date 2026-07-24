@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "minecraft:prismarine_slab",
-  "result": {
-    "id": "minecraft:prismarine_brick_slab"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:chiseled_end_stone",
-  "result": {
-    "id": "elsewhere:end_stone_wall"
-  }
-}

@@ -85,6 +85,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
                 // Tin
                 itemFullSmeltableNBSet(wrappedOutput,
+                        0.7F,
                         EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.DEEPSLATE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE, EItems.RAW_TIN,
                         EItems.TIN_INGOT, EItems.TIN_NUGGET, EBlocks.RAW_TIN_BLOCK, EBlocks.TIN_BLOCK
                 );
@@ -93,6 +94,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 shapeless(RecipeCategory.MISC, EItems.BRONZE_MIX).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.TIN_MATERIALS)
                         .unlockedBy(getHasName(EItems.RAW_TIN), has(EItems.RAW_TIN)).save(wrappedOutput);
                 itemSmeltableNBSet(wrappedOutput,
+                        0.7F,
                         EItems.BRONZE_MIX, EItems.BRONZE_INGOT, EItems.BRONZE_NUGGET, EBlocks.BRONZE_BLOCK
                 );
                 equipmentSetCrafting(wrappedOutput,
@@ -106,6 +108,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
                 // Silver
                 itemFullSmeltableNBSet(wrappedOutput,
+                        1.0F,
                         EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE, EItems.RAW_SILVER,
                         EItems.SILVER_INGOT, EItems.SILVER_NUGGET, EBlocks.SILVER_BLOCK, EBlocks.RAW_SILVER_BLOCK
                 );
@@ -464,15 +467,15 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 customSimpleCookingRecipe("smoking", SmokingRecipe::new, 100, raw, cooked, 0.35F);
                 customSimpleCookingRecipe("campfire", CampfireCookingRecipe::new, 600, raw, cooked, 0.35F);
             }
-            private void itemFullSmeltableNBSet(RecipeOutput output,
+            private void itemFullSmeltableNBSet(RecipeOutput output, Float exp,
                                                 ItemLike oreBlock, ItemLike shaleOreBlock, ItemLike deepslateOreBlock, ItemLike cinnabarOreBlock,
                                                 ItemLike raw, ItemLike ingot, ItemLike nugget,
                                                 ItemLike rawBlock, ItemLike compBlock) {
                 List<ItemLike> smeltables = new ArrayList<>();
                 smeltables.add(oreBlock); smeltables.add(shaleOreBlock); smeltables.add(deepslateOreBlock); smeltables.add(cinnabarOreBlock); smeltables.add(raw);
 
-                customOreSmelting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 200, getItemName(ingot));
-                customOreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 100, getItemName(ingot));
+                customOreSmelting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, exp, 200, getItemName(ingot));
+                customOreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, exp, 100, getItemName(ingot));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, rawBlock).requires(raw, 9)
                         .unlockedBy(getHasName(rawBlock), has(rawBlock)).save(output, specificPath(rawBlock, "_from_" + getItemName(raw)));
@@ -489,14 +492,14 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
                         .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
             }
-            private void itemSmeltableNBSet(RecipeOutput output,
+            private void itemSmeltableNBSet(RecipeOutput output, Float exp,
                                             ItemLike raw, ItemLike ingot, ItemLike nugget,
                                             ItemLike compBlock) {
                 List<ItemLike> smeltables = new ArrayList<>();
                 smeltables.add(raw);
 
-                oreSmelting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 200, getItemName(ingot));
-                oreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, 1.0F, 100, getItemName(ingot));
+                customOreSmelting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, exp, 200, getItemName(ingot));
+                customOreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, exp, 100, getItemName(ingot));
 
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
                         .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
@@ -534,35 +537,35 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                               ItemLike scrapResult) {
                 shaped(RecipeCategory.COMBAT, sword).define('#', material).define('T', handle)
                         .pattern("#").pattern("#").pattern("T")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.TOOLS, axe).define('#', material).define('T', handle)
                         .pattern("##").pattern("#T").pattern(" T")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.COMBAT, spear).define('#', material).define('T', handle)
                         .pattern("  #").pattern(" T ").pattern("T  ")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.TOOLS, pickaxe).define('#', material).define('T', handle)
                         .pattern("###").pattern(" T ").pattern(" T ")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.TOOLS, shovel).define('#', material).define('T', handle)
                         .pattern("#").pattern("T").pattern("T")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.TOOLS, hoe).define('#', material).define('T', handle)
                         .pattern("##").pattern(" T").pattern(" T")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
 
                 shaped(RecipeCategory.COMBAT, helmet).define('#', material)
                         .pattern("###").pattern("# #")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.COMBAT, chestplate).define('#', material)
                         .pattern("# #").pattern("###").pattern("###")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.COMBAT, leggings).define('#', material)
                         .pattern("###").pattern("# #").pattern("# #")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
                 shaped(RecipeCategory.COMBAT, boots).define('#', material)
                         .pattern("# #").pattern("# #")
-                        .unlockedBy(getHasName(material), has(material));
+                        .unlockedBy(getHasName(material), has(material)).save(wrappedOutput);
 
                 SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
@@ -646,8 +649,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(base), has(base)).save(output, shapedId(polished));
 
                 // Polished from Smooth
-                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', base).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(base), has(base)).save(output,
+                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', smooth).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(smooth), has(smooth)).save(output,
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
@@ -737,8 +740,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(base), has(base)).save(output, shapedId(polished));
 
                 // Polished from Smooth
-                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', base).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(base), has(base)).save(output,
+                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', smooth).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(smooth), has(smooth)).save(output,
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
@@ -809,8 +812,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(base), has(base)).save(output, shapedId(polished));
 
                 // Polished from Smooth
-                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', base).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(base), has(base)).save(output,
+                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', smooth).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(smooth), has(smooth)).save(output,
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
@@ -882,8 +885,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(base), has(base)).save(output, shapedId(polished));
 
                 // Polished from Smooth
-                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', base).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(base), has(base)).save(output,
+                shaped(RecipeCategory.BUILDING_BLOCKS, polished, 4).define('#', smooth).pattern("##").pattern("##")
+                        .unlockedBy(getHasName(smooth), has(smooth)).save(output,
                                 BuiltInRegistries.ITEM.getKey(polished.asItem()).getPath() + "_from_" + BuiltInRegistries.ITEM.getKey(smooth.asItem()).getPath());
 
                 // Smooth
@@ -1103,7 +1106,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                     SimpleCookingRecipeBuilder.generic(Ingredient.of(item), craftingCategory, cookingCategory, result, experience, cookingTime, factory)
                             .group(group)
                             .unlockedBy(getHasName(item), this.has(item))
-                            .save(this.output, key);
+                            .save(wrappedOutput, key);
                 }
             }
 
@@ -1112,7 +1115,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Identifier.fromNamespaceAndPath(Elsewhere.MODID, getItemName(result) + "_from_" + source));
                 SimpleCookingRecipeBuilder.generic(Ingredient.of(base), RecipeCategory.FOOD, CookingBookCategory.FOOD, result, experience, cookingTime, factory)
                         .unlockedBy(getHasName(base), this.has(base))
-                        .save(this.output, key);
+                        .save(wrappedOutput, key);
             }
 
             private void stonecutterSet(RecipeOutput output,

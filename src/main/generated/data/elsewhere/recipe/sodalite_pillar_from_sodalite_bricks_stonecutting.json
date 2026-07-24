@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:sodalite_bricks",
-  "result": {
-    "id": "elsewhere:sodalite_pillar"
-  }
-}

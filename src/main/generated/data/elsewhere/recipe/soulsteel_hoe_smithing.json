@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smithing_transform",
-  "addition": "elsewhere:soulsteel_ingot",
-  "base": "minecraft:diamond_hoe",
-  "result": {
-    "id": "elsewhere:soulsteel_hoe"
-  },
-  "template": "minecraft:netherite_upgrade_smithing_template"
-}

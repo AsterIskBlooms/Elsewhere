@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:polished_prismarine",
-  "result": {
-    "id": "elsewhere:smooth_prismarine_wall"
-  }
-}

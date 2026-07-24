@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:chiseled_cinnabar_bricks",
-  "result": {
-    "id": "elsewhere:cinnabar_pillar"
-  }
-}

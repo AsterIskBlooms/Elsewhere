@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smithing_transform",
-  "addition": "elsewhere:soulsteel_ingot",
-  "base": "minecraft:diamond_chestplate",
-  "result": {
-    "id": "elsewhere:soulsteel_chestplate"
-  },
-  "template": "minecraft:netherite_upgrade_smithing_template"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:granite_pillar",
-  "result": {
-    "id": "minecraft:granite"
-  }
-}

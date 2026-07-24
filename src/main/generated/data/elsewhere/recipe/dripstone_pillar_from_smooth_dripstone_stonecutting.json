@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_dripstone",
-  "result": {
-    "id": "elsewhere:dripstone_pillar"
-  }
-}

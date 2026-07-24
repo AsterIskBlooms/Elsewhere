@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:shale_pillar",
-  "result": {
-    "id": "elsewhere:polished_shale_wall"
-  }
-}

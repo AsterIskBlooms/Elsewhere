@@ -1106,6 +1106,13 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().noCollision().noOcclusion().strength(-1F).lightLevel((_) -> 5)
     );
 
+    Block UMBRAL_SAND = register("umbral_sand", p -> new SandBlock(new ColorRGBA(0xFF201010), p), true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.COLOR_BLACK)
+    );
+    Block UMBRAL_SANDSTONE = register("umbral_sandstone", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).mapColor(MapColor.COLOR_BLACK)
+    );
+
 
 
 

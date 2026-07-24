@@ -1,9 +1,0 @@
-{
-  "values": [
-    "#minecraft:is_river",
-    "#elsewhere:is_cave",
-    "elsewhere:outback",
-    "elsewhere:dappled_forest",
-    "elsewhere:tundra"
-  ]
-}

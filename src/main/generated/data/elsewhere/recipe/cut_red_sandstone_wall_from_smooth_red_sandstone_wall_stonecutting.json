@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "elsewhere:smooth_red_sandstone_wall",
-  "result": {
-    "id": "elsewhere:cut_red_sandstone_wall"
-  }
-}
