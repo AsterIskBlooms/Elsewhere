@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "elsewhere:block/laterite_top",
-    "side": "elsewhere:block/laterite_side"
-  }
-}

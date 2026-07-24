@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "elsewhere:block/poplar_mosaic",
-    "side": "elsewhere:block/poplar_mosaic",
-    "top": "elsewhere:block/poplar_mosaic"
-  }
-}

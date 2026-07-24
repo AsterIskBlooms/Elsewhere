@@ -1,6 +1,0 @@
-{
-  "parent": "elsewhere:block/cube_directional",
-  "textures": {
-    "all": "elsewhere:block/oak_boards"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "elsewhere:block/smooth_sulfur",
-    "side": "elsewhere:block/smooth_sulfur",
-    "top": "elsewhere:block/smooth_sulfur"
-  }
-}
