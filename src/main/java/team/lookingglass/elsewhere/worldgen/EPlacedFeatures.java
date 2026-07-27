@@ -12,6 +12,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -62,6 +63,10 @@ public class EPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DAPPLED_FOREST_TREES = registerKey("dappled_forest_trees");
 
     public static final ResourceKey<PlacedFeature> RED_SHRUB_PATCH = registerKey("red_shrub_patch");
+
+    public static final ResourceKey<PlacedFeature> EXTRA_LUSH_CACTUS = registerKey("extra_lush_cactus");
+
+    public static final ResourceKey<PlacedFeature> AZALEA_SHRUB = registerKey("azalea_shrub");
 
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -312,7 +317,34 @@ public class EPlacedFeatures {
                         CountPlacement.of(1),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                        BlockPredicate.wouldSurvive(EBlocks.RED_SHRUB.defaultBlockState(), BlockPos.ZERO)))
+                ));
+
+        registerPlaced(context, EXTRA_LUSH_CACTUS,
+                configured.getOrThrow(EConfiguredFeatures.LUSH_DESERT_CACTUS),
+                List.of(
+                        CountPlacement.of(2),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                        BlockPredicate.wouldSurvive(Blocks.CACTUS.defaultBlockState(), BlockPos.ZERO)))
+                ));
+
+        registerPlaced(context, AZALEA_SHRUB,
+                configured.getOrThrow(EConfiguredFeatures.AZALEA_SHRUB_KEY),
+                List.of(
+                        CountPlacement.of(1),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                        BlockPredicate.wouldSurvive(Blocks.CACTUS.defaultBlockState(), BlockPos.ZERO)))
                 ));
 
 

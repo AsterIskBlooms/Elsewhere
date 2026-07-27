@@ -5,6 +5,7 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
@@ -24,6 +25,7 @@ public class EBiomes {
 
     public static void bootstrap(BootstrapContext<Biome> context) {
         context.register(OUTBACK, createOutback(context));
+        context.register(LUSH_DESERT, createLushDesert(context));
         context.register(TUNDRA, createTundra(context));
         context.register(DAPPLED_FOREST, createDappledForest(context));
 
@@ -39,6 +41,8 @@ public class EBiomes {
 
     public static final ResourceKey<Biome> OUTBACK = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "outback"));
+    public static final ResourceKey<Biome> LUSH_DESERT = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "lush_desert"));
     public static final ResourceKey<Biome> TUNDRA = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tundra"));
     public static final ResourceKey<Biome> DAPPLED_FOREST = ResourceKey.create(
@@ -91,6 +95,44 @@ public class EBiomes {
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x43D5EE)
                         .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x02B0E5)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createLushDesert(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.desertSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addExtraGold(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addSavannaGrass(genBuilder);
+        BiomeDefaultFeatures.addWarmFlowers(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DRY_GRASS_DESERT);
+        BiomeDefaultFeatures.addDesertExtraVegetation(genBuilder);
+        BiomeDefaultFeatures.addDesertExtraDecoration(genBuilder);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(2.0F)
+                .downfall(0.4F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x43D5EE)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x02B0E5)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();

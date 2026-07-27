@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.equipment.EquipmentAssets;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -20,6 +21,7 @@ public class RegistryDataGenerator extends FabricDynamicRegistryProvider {
         entries.addAll(registries.lookupOrThrow(Registries.BIOME));
         entries.addAll(registries.lookupOrThrow(Registries.NOISE));
         entries.addAll(registries.lookupOrThrow(Registries.DIMENSION_TYPE));
+        entries.addAll(registries.lookupOrThrow(Registries.TRIM_MATERIAL));
     }
 
     @Override

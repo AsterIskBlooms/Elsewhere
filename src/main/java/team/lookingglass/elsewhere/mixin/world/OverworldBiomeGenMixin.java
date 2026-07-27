@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import team.lookingglass.elsewhere.worldgen.EBiomes;
 
 import java.util.function.Consumer;
@@ -18,6 +19,7 @@ import java.util.function.Consumer;
 @Mixin(OverworldBiomeBuilder.class)
 public class OverworldBiomeGenMixin {
 
+    // Surface Biomes
     @Inject(method = "<init>", at = @At("TAIL"))
     private void injectCustomWorldgen(CallbackInfo ci) {
         OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor) this;
@@ -29,20 +31,36 @@ public class OverworldBiomeGenMixin {
         ResourceKey<Biome>[][] plateauA = accessor.getPlateauBiomes();
         ResourceKey<Biome>[][] plateauB = accessor.getPlateauBiomes();
 
-        middleA[4][0] = EBiomes.OUTBACK;
-        middleA[4][1] = EBiomes.OUTBACK;
+        middleB[3][0] = EBiomes.OUTBACK;
 
-        middleB[0][0] = EBiomes.TUNDRA;
-        middleB[0][1] = EBiomes.TUNDRA;
+        middleA[4][3] = EBiomes.LUSH_DESERT;
+        middleA[4][4] = EBiomes.LUSH_DESERT;
+        plateauA[4][3] = EBiomes.LUSH_DESERT;
+        plateauA[4][4] = EBiomes.LUSH_DESERT;
+
+        middleA[1][0] = EBiomes.TUNDRA;
+        middleA[1][1] = EBiomes.TUNDRA;
+        middleB[1][1] = Biomes.PLAINS;
 
         plateauB[0][1] = Biomes.ICE_SPIKES;
         plateauB[1][1] = Biomes.CHERRY_GROVE;
 
         middleB[1][2] = EBiomes.DAPPLED_FOREST;
         plateauB[1][2] = EBiomes.DAPPLED_FOREST;
+        plateauB[1][3] = EBiomes.DAPPLED_FOREST;
 
     }
 
+    // Desert Beaches
+    @Inject(method = "pickBeachBiome", at = @At("HEAD"), cancellable = true)
+    private void elsewhere$desertBeachVariants(int temperatureIndex, int humidityIndex, CallbackInfoReturnable<ResourceKey<Biome>> cir) {
+        if (temperatureIndex == 4) {
+            OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor) this;
+            cir.setReturnValue(accessor.getMiddleBiomes()[temperatureIndex][humidityIndex]);
+        }
+    }
+
+    // Cave Biomes
     @Inject(method = "addUndergroundBiomes", at = @At("TAIL"))
     private void injectCustomCaveBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes, CallbackInfo ci) {
         OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor) this;
@@ -76,6 +94,7 @@ public class OverworldBiomeGenMixin {
         );
     }
 
+    // River Biomes
     @SuppressWarnings("unchecked")
     @Redirect(method = "addValleys", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/OverworldBiomeBuilder;addSurfaceBiome(Ljava/util/function/Consumer;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;Lnet/minecraft/world/level/biome/Climate$Parameter;FLnet/minecraft/resources/ResourceKey;)V"))
     private void elsewhere$splitRiverTemperatures(OverworldBiomeBuilder builder,

@@ -20,9 +20,11 @@ import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.tags.EBlockTags;
@@ -78,6 +80,10 @@ public class EConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> RANDOM_POPLAR_KEY = registerKey("random_poplar_tree");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> RED_SHRUB_PATCH_KEY = registerKey("red_shrub_patch");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LUSH_DESERT_CACTUS = registerKey("lush_desert_cactus");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AZALEA_SHRUB_KEY = registerKey("azalea_shrub");
 
 
     @SuppressWarnings("deprecation")
@@ -294,11 +300,6 @@ public class EConfiguredFeatures {
                 new TwoLayersFeatureSize(1, 0, 2)
         ).build());
 
-        registerFeature(context, RED_SHRUB_PATCH_KEY, EFeatures.BLOCK_PATCH,
-                new BlockPatchConfiguration(
-                        BlockStateProvider.simple(EBlocks.RED_SHRUB),
-                        BlockTags.DIRT, 3, 1, 4, 2));
-
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         registerFeature(context, RANDOM_POPLAR_KEY, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfiguration(
@@ -309,6 +310,35 @@ public class EConfiguredFeatures {
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(ORANGE_POPLAR_KEY))
                 )
         );
+
+        registerFeature(context, RED_SHRUB_PATCH_KEY, EFeatures.BLOCK_PATCH,
+                new BlockPatchConfiguration(
+                        BlockStateProvider.simple(EBlocks.RED_SHRUB.defaultBlockState()),
+                        BlockTags.DIRT, 2, 1, 2, 2));
+
+        registerFeature(context, LUSH_DESERT_CACTUS, Feature.BLOCK_COLUMN,
+                new BlockColumnConfiguration(
+                        List.of(BlockColumnConfiguration.layer(BiasedToBottomInt.of(1, 4), BlockStateProvider.simple(Blocks.CACTUS)),
+                                BlockColumnConfiguration.layer(new WeightedListInt(WeightedList.<IntProvider>builder()
+                                                .add(ConstantInt.of(0), 3).add(ConstantInt.of(1), 1).build()),
+                                        BlockStateProvider.simple(Blocks.CACTUS_FLOWER))),
+                        Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, false)
+        );
+
+        registerFeature(context, AZALEA_SHRUB_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.AZALEA_LOG),
+                new StraightTrunkPlacer(1, 0, 0),
+                new WeightedStateProvider(WeightedList.<BlockState>builder()
+                        .add(Blocks.AZALEA_LEAVES.defaultBlockState(), 4)
+                        .add(Blocks.FLOWERING_AZALEA_LEAVES.defaultBlockState(), 1)
+                        .build()),
+                new BushFoliagePlacer(
+                        UniformInt.of(1,2),
+                        ConstantInt.of(0),
+                        1
+                ),
+                new TwoLayersFeatureSize(0, 0, 0)
+        ).build());
 
     }
 

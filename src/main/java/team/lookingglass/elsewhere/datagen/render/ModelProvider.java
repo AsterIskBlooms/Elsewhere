@@ -1,7 +1,11 @@
 package team.lookingglass.elsewhere.datagen.render;
 
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.equipment.EquipmentAssets;
 import team.lookingglass.elsewhere.datagen.helpers.EBlockModelGenerators;
+import team.lookingglass.elsewhere.datagen.helpers.EItemModelGenerators;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -9,6 +13,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.world.level.block.Blocks;
 import team.lookingglass.elsewhere.registry.EItems;
+import team.lookingglass.elsewhere.registry.trim.EEquipmentAssets;
 
 public class ModelProvider extends FabricModelProvider {
     public ModelProvider(FabricPackOutput output) {
@@ -82,38 +87,16 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.DEEPSLATE_SLAB)
                 .wall(EBlocks.DEEPSLATE_WALL)
         ;
-        gen.family(EBlocks.SMOOTH_DEEPSLATE)
-                .stairs(EBlocks.SMOOTH_DEEPSLATE_STAIRS)
-                .slab(EBlocks.SMOOTH_DEEPSLATE_SLAB)
-                .wall(EBlocks.SMOOTH_DEEPSLATE_WALL)
-        ;
         gen.createTrivialBlock(EBlocks.CHISELED_DEEPSLATE_BRICKS, TexturedModel.COLUMN);
         gen.createAxisAlignedPillarBlock(EBlocks.DEEPSLATE_PILLAR, TexturedModel.COLUMN);
 
-        gen.family(EBlocks.SMOOTH_TUFF)
-                .stairs(EBlocks.SMOOTH_TUFF_STAIRS)
-                .slab(EBlocks.SMOOTH_TUFF_SLAB)
-                .wall(EBlocks.SMOOTH_TUFF_WALL)
-        ;
         gen.createAxisAlignedPillarBlock(EBlocks.TUFF_PILLAR, TexturedModel.COLUMN);
-
-        gen.family(EBlocks.SMOOTH_BLACKSTONE)
-                .stairs(EBlocks.SMOOTH_BLACKSTONE_STAIRS)
-                .slab(EBlocks.SMOOTH_BLACKSTONE_SLAB)
-                .wall(EBlocks.SMOOTH_BLACKSTONE_WALL)
-        ;
-        gen.createTrivialCube(EBlocks.CHISELED_POLISHED_BLACKSTONE_BRICKS);
-        gen.createAxisAlignedPillarBlock(EBlocks.POLISHED_BLACKSTONE_PILLAR, TexturedModel.COLUMN);
+        gen.createAxisAlignedPillarBlock(EBlocks.BLACKSTONE_PILLAR, TexturedModel.COLUMN);
 
 
         // Stone Sets
         gen.family(Blocks.POLISHED_ANDESITE)
                 .wall(EBlocks.POLISHED_ANDESITE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_ANDESITE)
-                .stairs(EBlocks.SMOOTH_ANDESITE_STAIRS)
-                .slab(EBlocks.SMOOTH_ANDESITE_SLAB)
-                .wall(EBlocks.SMOOTH_ANDESITE_WALL)
         ;
         gen.family(EBlocks.ANDESITE_BRICKS)
                 .stairs(EBlocks.ANDESITE_BRICK_STAIRS)
@@ -121,16 +104,10 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.ANDESITE_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_ANDESITE);
-        gen.createTrivialBlock(EBlocks.CHISELED_ANDESITE_BRICKS, TexturedModel.COLUMN);
         gen.createAxisAlignedPillarBlock(EBlocks.ANDESITE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(Blocks.POLISHED_GRANITE)
                 .wall(EBlocks.POLISHED_GRANITE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_GRANITE)
-                .stairs(EBlocks.SMOOTH_GRANITE_STAIRS)
-                .slab(EBlocks.SMOOTH_GRANITE_SLAB)
-                .wall(EBlocks.SMOOTH_GRANITE_WALL)
         ;
         gen.family(EBlocks.GRANITE_BRICKS)
                 .stairs(EBlocks.GRANITE_BRICK_STAIRS)
@@ -138,16 +115,9 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.GRANITE_BRICK_WALL)
         ;
         gen.createTrivialBlock(EBlocks.CHISELED_GRANITE, TexturedModel.COLUMN);
-        gen.createTrivialBlock(EBlocks.CHISELED_GRANITE_BRICKS, TexturedModel.COLUMN);
-        gen.createAxisAlignedPillarBlock(EBlocks.GRANITE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(Blocks.POLISHED_DIORITE)
                 .wall(EBlocks.POLISHED_DIORITE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_DIORITE)
-                .stairs(EBlocks.SMOOTH_DIORITE_STAIRS)
-                .slab(EBlocks.SMOOTH_DIORITE_SLAB)
-                .wall(EBlocks.SMOOTH_DIORITE_WALL)
         ;
         gen.family(EBlocks.DIORITE_BRICKS)
                 .stairs(EBlocks.DIORITE_BRICK_STAIRS)
@@ -155,18 +125,11 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.DIORITE_BRICK_WALL)
         ;
         gen.createTrivialBlock(EBlocks.CHISELED_DIORITE, TexturedModel.COLUMN);
-        gen.createTrivialBlock(EBlocks.CHISELED_DIORITE_BRICKS, TexturedModel.COLUMN);
-        gen.createAxisAlignedPillarBlock(EBlocks.DIORITE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(Blocks.CALCITE)
                 .stairs(EBlocks.CALCITE_STAIRS)
                 .slab(EBlocks.CALCITE_SLAB)
                 .wall(EBlocks.CALCITE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_CALCITE)
-                .stairs(EBlocks.SMOOTH_CALCITE_STAIRS)
-                .slab(EBlocks.SMOOTH_CALCITE_SLAB)
-                .wall(EBlocks.SMOOTH_CALCITE_WALL)
         ;
         gen.family(EBlocks.POLISHED_CALCITE)
                 .stairs(EBlocks.POLISHED_CALCITE_STAIRS)
@@ -187,23 +150,17 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.DRIPSTONE_SLAB)
                 .wall(EBlocks.DRIPSTONE_WALL)
         ;
-        gen.family(EBlocks.SMOOTH_DRIPSTONE)
-                .stairs(EBlocks.SMOOTH_DRIPSTONE_STAIRS)
-                .slab(EBlocks.SMOOTH_DRIPSTONE_SLAB)
-                .wall(EBlocks.SMOOTH_DRIPSTONE_WALL)
-        ;
         gen.family(EBlocks.POLISHED_DRIPSTONE)
                 .stairs(EBlocks.POLISHED_DRIPSTONE_STAIRS)
                 .slab(EBlocks.POLISHED_DRIPSTONE_SLAB)
                 .wall(EBlocks.POLISHED_DRIPSTONE_WALL)
         ;
-        gen.family(EBlocks.DRIPSTONE_BRICKS)
-                .stairs(EBlocks.DRIPSTONE_BRICK_STAIRS)
-                .slab(EBlocks.DRIPSTONE_BRICK_SLAB)
-                .wall(EBlocks.DRIPSTONE_BRICK_WALL)
+        gen.family(EBlocks.DRIPSTONE_TILES)
+                .stairs(EBlocks.DRIPSTONE_TILE_STAIRS)
+                .slab(EBlocks.DRIPSTONE_TILE_SLAB)
+                .wall(EBlocks.DRIPSTONE_TILE_WALL)
         ;
-        gen.createTrivialCube(EBlocks.CHISELED_DRIPSTONE);
-        gen.createTrivialCube(EBlocks.CHISELED_DRIPSTONE_BRICKS);
+        gen.createTrivialCube(EBlocks.CHISELED_DRIPSTONE_TILES);
         gen.createAxisAlignedPillarBlock(EBlocks.DRIPSTONE_PILLAR, TexturedModel.COLUMN);
 
 
@@ -219,16 +176,6 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.POLISHED_RED_SANDSTONE_WALL)
         ;
 
-        customGen.columnFamily(EBlocks.SANDSTONE_BRICKS)
-                .stairs(EBlocks.SANDSTONE_BRICK_STAIRS)
-                .slab(EBlocks.SANDSTONE_BRICK_SLAB)
-                .wall(EBlocks.SANDSTONE_BRICK_WALL)
-        ;
-        customGen.columnFamily(EBlocks.RED_SANDSTONE_BRICKS)
-                .stairs(EBlocks.RED_SANDSTONE_BRICK_STAIRS)
-                .slab(EBlocks.RED_SANDSTONE_BRICK_SLAB)
-                .wall(EBlocks.RED_SANDSTONE_BRICK_WALL)
-        ;
         gen.createTrivialBlock(Blocks.CHISELED_SANDSTONE, TexturedModel.COLUMN);
         gen.createTrivialBlock(Blocks.CHISELED_RED_SANDSTONE, TexturedModel.COLUMN);
 
@@ -252,11 +199,6 @@ public class ModelProvider extends FabricModelProvider {
 
 
         // Prismarine
-        gen.family(EBlocks.SMOOTH_PRISMARINE)
-                .stairs(EBlocks.SMOOTH_PRISMARINE_STAIRS)
-                .slab(EBlocks.SMOOTH_PRISMARINE_SLAB)
-                .wall(EBlocks.SMOOTH_PRISMARINE_WALL)
-        ;
         gen.family(EBlocks.POLISHED_PRISMARINE)
                 .stairs(EBlocks.POLISHED_PRISMARINE_STAIRS)
                 .slab(EBlocks.POLISHED_PRISMARINE_SLAB)
@@ -266,30 +208,22 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.PRISMARINE_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_PRISMARINE);
-        gen.createTrivialCube(EBlocks.CHISELED_PRISMARINE_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.PRISMARINE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(Blocks.DARK_PRISMARINE)
                 .wall(EBlocks.DARK_PRISMARINE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_DARK_PRISMARINE)
-                .stairs(EBlocks.SMOOTH_DARK_PRISMARINE_STAIRS)
-                .slab(EBlocks.SMOOTH_DARK_PRISMARINE_SLAB)
-                .wall(EBlocks.SMOOTH_DARK_PRISMARINE_WALL)
         ;
         gen.family(EBlocks.POLISHED_DARK_PRISMARINE)
                 .stairs(EBlocks.POLISHED_DARK_PRISMARINE_STAIRS)
                 .slab(EBlocks.POLISHED_DARK_PRISMARINE_SLAB)
                 .wall(EBlocks.POLISHED_DARK_PRISMARINE_WALL)
         ;
-        gen.family(EBlocks.DARK_PRISMARINE_BRICKS)
-                .stairs(EBlocks.DARK_PRISMARINE_BRICK_STAIRS)
-                .slab(EBlocks.DARK_PRISMARINE_BRICK_SLAB)
-                .wall(EBlocks.DARK_PRISMARINE_BRICK_WALL)
+        gen.family(EBlocks.DARK_PRISMARINE_SCALES)
+                .stairs(EBlocks.DARK_PRISMARINE_SCALE_STAIRS)
+                .slab(EBlocks.DARK_PRISMARINE_SCALE_SLAB)
+                .wall(EBlocks.DARK_PRISMARINE_SCALE_WALL)
         ;
         gen.createTrivialBlock(EBlocks.CHISELED_DARK_PRISMARINE, TexturedModel.COLUMN);
-        gen.createTrivialCube(EBlocks.CHISELED_DARK_PRISMARINE_BRICKS);
-        gen.createAxisAlignedPillarBlock(EBlocks.DARK_PRISMARINE_PILLAR, TexturedModel.COLUMN);
 
         customGen.axisAlignedPillarFamily(Blocks.BASALT, TexturedModel.COLUMN)
                 .slab(EBlocks.BASALT_SLAB)
@@ -302,23 +236,26 @@ public class ModelProvider extends FabricModelProvider {
         customGen.axisAlignedPillarFamily(Blocks.POLISHED_BASALT, TexturedModel.COLUMN)
                 .slab(EBlocks.POLISHED_BASALT_SLAB)
         ;
-        gen.family(EBlocks.BASALT_BRICKS)
-                .stairs(EBlocks.BASALT_BRICK_STAIRS)
-                .slab(EBlocks.BASALT_BRICK_SLAB)
-                .wall(EBlocks.BASALT_BRICK_WALL)
+        gen.family(EBlocks.POLISHED_SMOOTH_BASALT)
+                .stairs(EBlocks.POLISHED_SMOOTH_BASALT_STAIRS)
+                .slab(EBlocks.POLISHED_SMOOTH_BASALT_SLAB)
+                .wall(EBlocks.POLISHED_SMOOTH_BASALT_WALL)
         ;
-        gen.createAxisAlignedPillarBlock(EBlocks.CHISELED_BASALT, TexturedModel.COLUMN);
-        gen.createRotatedPillarWithHorizontalVariant(EBlocks.CHISELED_BASALT_BRICKS, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
+        gen.family(EBlocks.SMOOTH_BASALT_BRICKS)
+                .stairs(EBlocks.SMOOTH_BASALT_BRICK_STAIRS)
+                .slab(EBlocks.SMOOTH_BASALT_BRICK_SLAB)
+                .wall(EBlocks.SMOOTH_BASALT_BRICK_WALL)
+        ;
+        gen.family(EBlocks.SMOOTH_BASALT_TILES)
+                .stairs(EBlocks.SMOOTH_BASALT_TILE_STAIRS)
+                .slab(EBlocks.SMOOTH_BASALT_TILE_SLAB)
+                .wall(EBlocks.SMOOTH_BASALT_TILE_WALL)
+        ;
 
         gen.family(Blocks.END_STONE)
                 .stairs(EBlocks.END_STONE_STAIRS)
                 .slab(EBlocks.END_STONE_SLAB)
                 .wall(EBlocks.END_STONE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_END_STONE)
-                .stairs(EBlocks.SMOOTH_END_STONE_STAIRS)
-                .slab(EBlocks.SMOOTH_END_STONE_SLAB)
-                .wall(EBlocks.SMOOTH_END_STONE_WALL)
         ;
         gen.family(EBlocks.POLISHED_END_STONE)
                 .stairs(EBlocks.POLISHED_END_STONE_STAIRS)
@@ -326,18 +263,12 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.POLISHED_END_STONE_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_END_STONE);
-        gen.createTrivialBlock(EBlocks.CHISELED_END_STONE_BRICKS, TexturedModel.COLUMN);
         gen.createAxisAlignedPillarBlock(EBlocks.END_STONE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(EBlocks.SODALITE)
                 .stairs(EBlocks.SODALITE_STAIRS)
                 .slab(EBlocks.SODALITE_SLAB)
                 .wall(EBlocks.SODALITE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_SODALITE)
-                .stairs(EBlocks.SMOOTH_SODALITE_STAIRS)
-                .slab(EBlocks.SMOOTH_SODALITE_SLAB)
-                .wall(EBlocks.SMOOTH_SODALITE_WALL)
         ;
         gen.family(EBlocks.POLISHED_SODALITE)
                 .stairs(EBlocks.POLISHED_SODALITE_STAIRS)
@@ -350,18 +281,13 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.SODALITE_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_SODALITE);
-        gen.createTrivialBlock(EBlocks.CHISELED_SODALITE_BRICKS, TexturedModel.CUBE_TOP_BOTTOM);
+        gen.createTrivialBlock(EBlocks.CHISELED_SODALITE_BRICKS, TexturedModel.COLUMN);
         gen.createAxisAlignedPillarBlock(EBlocks.SODALITE_PILLAR, TexturedModel.COLUMN);
 
         gen.family(EBlocks.SHALE)
                 .stairs(EBlocks.SHALE_STAIRS)
                 .slab(EBlocks.SHALE_SLAB)
                 .wall(EBlocks.SHALE_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_SHALE)
-                .stairs(EBlocks.SMOOTH_SHALE_STAIRS)
-                .slab(EBlocks.SMOOTH_SHALE_SLAB)
-                .wall(EBlocks.SMOOTH_SHALE_WALL)
         ;
         gen.family(EBlocks.POLISHED_SHALE)
                 .stairs(EBlocks.POLISHED_SHALE_STAIRS)
@@ -401,11 +327,6 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.SULFUR_SLAB)
                 .wall(EBlocks.SULFUR_WALL)
         ;
-        gen.family(EBlocks.SMOOTH_SULFUR)
-                .stairs(EBlocks.SMOOTH_SULFUR_STAIRS)
-                .slab(EBlocks.SMOOTH_SULFUR_SLAB)
-                .wall(EBlocks.SMOOTH_SULFUR_WALL)
-        ;
         gen.family(EBlocks.POLISHED_SULFUR)
                 .stairs(EBlocks.POLISHED_SULFUR_STAIRS)
                 .slab(EBlocks.POLISHED_SULFUR_SLAB)
@@ -417,7 +338,6 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.SULFUR_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_SULFUR);
-        gen.createTrivialCube(EBlocks.CHISELED_SULFUR_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.SULFUR_PILLAR, TexturedModel.COLUMN);
 
         customGen.generateStalactite(gen, EBlocks.SULFUR_SPIKE);
@@ -428,11 +348,6 @@ public class ModelProvider extends FabricModelProvider {
                 .stairs(EBlocks.CINNABAR_STAIRS)
                 .slab(EBlocks.CINNABAR_SLAB)
                 .wall(EBlocks.CINNABAR_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_CINNABAR)
-                .stairs(EBlocks.SMOOTH_CINNABAR_STAIRS)
-                .slab(EBlocks.SMOOTH_CINNABAR_SLAB)
-                .wall(EBlocks.SMOOTH_CINNABAR_WALL)
         ;
         gen.family(EBlocks.POLISHED_CINNABAR)
                 .stairs(EBlocks.POLISHED_CINNABAR_STAIRS)
@@ -445,7 +360,6 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.CINNABAR_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_CINNABAR);
-        gen.createTrivialCube(EBlocks.CHISELED_CINNABAR_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.CINNABAR_PILLAR, TexturedModel.COLUMN);
 
         gen.createTrivialCube(EBlocks.CINNABAR_COAL_ORE);
@@ -462,11 +376,6 @@ public class ModelProvider extends FabricModelProvider {
                 .stairs(EBlocks.NETHERRACK_STAIRS)
                 .slab(EBlocks.NETHERRACK_SLAB)
                 .wall(EBlocks.NETHERRACK_WALL)
-        ;
-        gen.family(EBlocks.SMOOTH_NETHERRACK)
-                .stairs(EBlocks.SMOOTH_NETHERRACK_STAIRS)
-                .slab(EBlocks.SMOOTH_NETHERRACK_SLAB)
-                .wall(EBlocks.SMOOTH_NETHERRACK_WALL)
         ;
         gen.family(EBlocks.POLISHED_NETHERRACK)
                 .stairs(EBlocks.POLISHED_NETHERRACK_STAIRS)
@@ -488,11 +397,6 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.ORPIMENT_SLAB)
                 .wall(EBlocks.ORPIMENT_WALL)
         ;
-        gen.family(EBlocks.SMOOTH_ORPIMENT)
-                .stairs(EBlocks.SMOOTH_ORPIMENT_STAIRS)
-                .slab(EBlocks.SMOOTH_ORPIMENT_SLAB)
-                .wall(EBlocks.SMOOTH_ORPIMENT_WALL)
-        ;
         gen.family(EBlocks.POLISHED_ORPIMENT)
                 .stairs(EBlocks.POLISHED_ORPIMENT_STAIRS)
                 .slab(EBlocks.POLISHED_ORPIMENT_SLAB)
@@ -504,7 +408,6 @@ public class ModelProvider extends FabricModelProvider {
                 .wall(EBlocks.ORPIMENT_BRICK_WALL)
         ;
         gen.createTrivialCube(EBlocks.CHISELED_ORPIMENT);
-        gen.createTrivialCube(EBlocks.CHISELED_ORPIMENT_BRICKS);
         gen.createAxisAlignedPillarBlock(EBlocks.ORPIMENT_PILLAR, TexturedModel.COLUMN);
 
         // Soul Sandstone
@@ -528,12 +431,31 @@ public class ModelProvider extends FabricModelProvider {
                 .slab(EBlocks.POLISHED_SOUL_SANDSTONE_SLAB)
                 .wall(EBlocks.POLISHED_SOUL_SANDSTONE_WALL)
         ;
-        customGen.columnFamily(EBlocks.SOUL_SANDSTONE_BRICKS)
-                .stairs(EBlocks.SOUL_SANDSTONE_BRICK_STAIRS)
-                .slab(EBlocks.SOUL_SANDSTONE_BRICK_SLAB)
-                .wall(EBlocks.SOUL_SANDSTONE_BRICK_WALL)
-        ;
         gen.createTrivialBlock(EBlocks.CHISELED_SOUL_SANDSTONE, TexturedModel.COLUMN);
+
+
+        gen.createRotatedVariantBlock(EBlocks.PINK_SAND);
+        customGen.cubeTopFamily(EBlocks.PINK_SANDSTONE)
+                .stairs(EBlocks.PINK_SANDSTONE_STAIRS)
+                .slab(EBlocks.PINK_SANDSTONE_SLAB)
+                .wall(EBlocks.PINK_SANDSTONE_WALL)
+        ;
+        gen.family(EBlocks.SMOOTH_PINK_SANDSTONE)
+                .stairs(EBlocks.SMOOTH_PINK_SANDSTONE_STAIRS)
+                .slab(EBlocks.SMOOTH_PINK_SANDSTONE_SLAB)
+                .wall(EBlocks.SMOOTH_PINK_SANDSTONE_WALL)
+        ;
+        customGen.columnFamily(EBlocks.CUT_PINK_SANDSTONE)
+                .stairs(EBlocks.CUT_PINK_SANDSTONE_STAIRS)
+                .slab(EBlocks.CUT_PINK_SANDSTONE_SLAB)
+                .wall(EBlocks.CUT_PINK_SANDSTONE_WALL)
+        ;
+        gen.family(EBlocks.POLISHED_PINK_SANDSTONE)
+                .stairs(EBlocks.POLISHED_PINK_SANDSTONE_STAIRS)
+                .slab(EBlocks.POLISHED_PINK_SANDSTONE_SLAB)
+                .wall(EBlocks.POLISHED_PINK_SANDSTONE_WALL)
+        ;
+        gen.createTrivialBlock(EBlocks.CHISELED_PINK_SANDSTONE, TexturedModel.COLUMN);
 
 
         // Purpur
@@ -753,6 +675,8 @@ public class ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
+        EItemModelGenerators armorModelGenerator = new EItemModelGenerators(itemModelGenerator.itemModelOutput, itemModelGenerator.modelOutput);
+        
         itemModelGenerator.generateFlatItem(EBlocks.SULFUR_SPIKE.asItem(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EBlocks.ICICLE.asItem(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
@@ -768,10 +692,14 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.BRONZE_MIX, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_NUGGET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.BRONZE_HELMET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.BRONZE_CHESTPLATE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.BRONZE_LEGGINGS, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.BRONZE_BOOTS, ModelTemplates.FLAT_ITEM);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_HELMET, EEquipmentAssets.BRONZE,
+                Identifier.withDefaultNamespace("trims/items/helmet_trim"), false);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_CHESTPLATE, EEquipmentAssets.BRONZE,
+                Identifier.withDefaultNamespace("trims/items/chestplate_trim"), false);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_LEGGINGS, EEquipmentAssets.BRONZE,
+                Identifier.withDefaultNamespace("trims/items/leggings_trim"), false);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_BOOTS, EEquipmentAssets.BRONZE,
+                Identifier.withDefaultNamespace("trims/items/boots_trim"), false);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateSpear(EItems.BRONZE_SPEAR);
@@ -783,11 +711,18 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SILVER_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerator.generateFlatItem(EItems.NETHERITE_MIX, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_MIX, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_INGOT, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HELMET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_CHESTPLATE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_LEGGINGS, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_BOOTS, ModelTemplates.FLAT_ITEM);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_HELMET, EEquipmentAssets.SOULSTEEL,
+                Identifier.withDefaultNamespace("trims/items/helmet_trim"), false);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_CHESTPLATE, EEquipmentAssets.SOULSTEEL,
+                Identifier.withDefaultNamespace("trims/items/chestplate_trim"), false);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_LEGGINGS, EEquipmentAssets.SOULSTEEL,
+                Identifier.withDefaultNamespace("trims/items/leggings_trim"), false);
+        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_BOOTS, EEquipmentAssets.SOULSTEEL,
+                Identifier.withDefaultNamespace("trims/items/boots_trim"), false);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateSpear(EItems.SOULSTEEL_SPEAR);
@@ -811,6 +746,43 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.AZALEA_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.AZALEA_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.AZALEA_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_HELMET, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_HELMET, true);
+        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_CHESTPLATE, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, true);
+        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_LEGGINGS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, true);
+        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_BOOTS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_BOOTS, true);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_HELMET, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_CHESTPLATE, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_LEGGINGS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_BOOTS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_HELMET, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_CHESTPLATE, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_LEGGINGS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_BOOTS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_HELMET, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_CHESTPLATE, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_LEGGINGS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_BOOTS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_HELMET, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_CHESTPLATE, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_LEGGINGS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_BOOTS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_HELMET, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_CHESTPLATE, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_LEGGINGS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_BOOTS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
+        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_HELMET, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_CHESTPLATE, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_LEGGINGS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_BOOTS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
     }
 
 

@@ -26,20 +26,19 @@ public class BiomeTagProvider extends FabricTagsProvider<Biome> {
                 EBiomes.SULFUR_CAVES, EBiomes.CRYSTAL_CAVERNS, EBiomes.ARID_CAVES, EBiomes.FRIGID_CAVES
         );
 
-        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS).add(EBiomes.OUTBACK);
-        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS).add(EBiomes.OUTBACK);
-        this.builder(BiomeTags.SPAWNS_GOLD_RABBITS).add(EBiomes.OUTBACK);
-        this.builder(BiomeTags.HAS_VILLAGE_DESERT).add(EBiomes.OUTBACK);
+        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT);
+        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT);
+        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS).add(EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA);
+        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS).add(EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA);
 
-        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS).add(EBiomes.DAPPLED_FOREST);
-        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS).add(EBiomes.DAPPLED_FOREST);
-
-        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS).add(EBiomes.TUNDRA);
-        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS).add(EBiomes.TUNDRA);
+        this.builder(BiomeTags.SPAWNS_GOLD_RABBITS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT);
         this.builder(BiomeTags.SPAWNS_SNOW_FOXES).add(EBiomes.TUNDRA);
+
+        this.builder(BiomeTags.HAS_VILLAGE_DESERT).add(EBiomes.LUSH_DESERT);
+        this.builder(BiomeTags.HAS_VILLAGE_SAVANNA).add(EBiomes.OUTBACK);
         this.builder(BiomeTags.HAS_VILLAGE_TAIGA).add(EBiomes.TUNDRA);
 
         this.builder(BiomeTags.IS_OVERWORLD).addTag(BiomeTags.IS_RIVER).addTag(EBiomeTags.IS_CAVE)
-                .add(EBiomes.OUTBACK, EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA);
+                .add(EBiomes.OUTBACK, EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA, EBiomes.LUSH_DESERT);
     }
 }

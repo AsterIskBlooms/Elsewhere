@@ -1,12 +1,15 @@
 package team.lookingglass.elsewhere;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.equipment.EquipmentAssets;
 import team.lookingglass.elsewhere.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import team.lookingglass.elsewhere.datagen.loot.EntityLootTableProvider;
 import team.lookingglass.elsewhere.datagen.loot.BlockLootTableProvider;
+import team.lookingglass.elsewhere.registry.trim.EEquipmentAssets;
+import team.lookingglass.elsewhere.registry.trim.ETrimMaterials;
 import team.lookingglass.elsewhere.datagen.render.ModelProvider;
 import team.lookingglass.elsewhere.datagen.render.ParticleProvider;
 import team.lookingglass.elsewhere.datagen.tags.BiomeTagProvider;
@@ -46,5 +49,7 @@ public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.NOISE, ENoise::bootstrap);
 		registryBuilder.add(Registries.DIMENSION_TYPE, EDimensions::bootstrapType);
 		registryBuilder.add(Registries.LEVEL_STEM, EDimensions::bootstrapStem);
+		registryBuilder.add(Registries.TRIM_MATERIAL, ETrimMaterials::bootstrap);
+		registryBuilder.add(EquipmentAssets.ROOT_ID, EEquipmentAssets::bootstrap);
 	}
 }

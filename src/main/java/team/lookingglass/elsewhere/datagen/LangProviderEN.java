@@ -59,72 +59,37 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.deepslate_stairs", "Deepslate Stairs");
         translationBuilder.add("block.elsewhere.deepslate_slab", "Deepslate Slab");
         translationBuilder.add("block.elsewhere.deepslate_wall", "Deepslate Wall");
-        translationBuilder.add("block.elsewhere.smooth_deepslate", "Smooth Deepslate");
-        translationBuilder.add("block.elsewhere.smooth_deepslate_stairs", "Smooth Deepslate Stairs");
-        translationBuilder.add("block.elsewhere.smooth_deepslate_slab", "Smooth Deepslate Slab");
-        translationBuilder.add("block.elsewhere.smooth_deepslate_wall", "Smooth Deepslate Wall");
         translationBuilder.add("block.elsewhere.chiseled_deepslate_bricks", "Chiseled Deepslate Bricks");
         translationBuilder.add("block.elsewhere.deepslate_pillar", "Deepslate Pillar");
 
-        translationBuilder.add("block.elsewhere.smooth_tuff", "Smooth Tuff");
-        translationBuilder.add("block.elsewhere.smooth_tuff_stairs", "Smooth Tuff Stairs");
-        translationBuilder.add("block.elsewhere.smooth_tuff_slab", "Smooth Tuff Slab");
-        translationBuilder.add("block.elsewhere.smooth_tuff_wall", "Smooth Tuff Wall");
         translationBuilder.add("block.elsewhere.tuff_pillar", "Tuff Pillar");
-
-        translationBuilder.add("block.elsewhere.smooth_blackstone", "Smooth Blackstone");
-        translationBuilder.add("block.elsewhere.smooth_blackstone_stairs", "Smooth Blackstone Stairs");
-        translationBuilder.add("block.elsewhere.smooth_blackstone_slab", "Smooth Blackstone Slab");
-        translationBuilder.add("block.elsewhere.smooth_blackstone_wall", "Smooth Blackstone Wall");
-        translationBuilder.add("block.elsewhere.chiseled_polished_blackstone_bricks", "Chiseled Polished Blackstone Bricks");
-        translationBuilder.add("block.elsewhere.polished_blackstone_pillar", "Polished Blackstone Pillar");
+        translationBuilder.add("block.elsewhere.blackstone_pillar", "Blackstone Pillar");
 
         translationBuilder.add("block.elsewhere.polished_andesite_wall", "Polished Andesite Wall");
-        translationBuilder.add("block.elsewhere.smooth_andesite", "Smooth Andesite");
-        translationBuilder.add("block.elsewhere.smooth_andesite_stairs", "Smooth Andesite Stairs");
-        translationBuilder.add("block.elsewhere.smooth_andesite_slab", "Smooth Andesite Slab");
-        translationBuilder.add("block.elsewhere.smooth_andesite_wall", "Smooth Andesite Wall");
         translationBuilder.add("block.elsewhere.andesite_bricks", "Andesite Bricks");
         translationBuilder.add("block.elsewhere.andesite_brick_stairs", "Andesite Brick Stairs");
         translationBuilder.add("block.elsewhere.andesite_brick_slab", "Andesite Brick Slab");
         translationBuilder.add("block.elsewhere.andesite_brick_wall", "Andesite Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_andesite", "Chiseled Andesite");
-        translationBuilder.add("block.elsewhere.chiseled_andesite_bricks", "Chiseled Andesite Bricks");
         translationBuilder.add("block.elsewhere.andesite_pillar", "Andesite Pillar");
 
         translationBuilder.add("block.elsewhere.polished_granite_wall", "Polished Granite Wall");
-        translationBuilder.add("block.elsewhere.smooth_granite", "Smooth Granite");
-        translationBuilder.add("block.elsewhere.smooth_granite_stairs", "Smooth Granite Stairs");
-        translationBuilder.add("block.elsewhere.smooth_granite_slab", "Smooth Granite Slab");
-        translationBuilder.add("block.elsewhere.smooth_granite_wall", "Smooth Granite Wall");
         translationBuilder.add("block.elsewhere.granite_bricks", "Granite Bricks");
         translationBuilder.add("block.elsewhere.granite_brick_stairs", "Granite Brick Stairs");
         translationBuilder.add("block.elsewhere.granite_brick_slab", "Granite Brick Slab");
         translationBuilder.add("block.elsewhere.granite_brick_wall", "Granite Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_granite", "Chiseled Granite");
-        translationBuilder.add("block.elsewhere.chiseled_granite_bricks", "Chiseled Granite Bricks");
-        translationBuilder.add("block.elsewhere.granite_pillar", "Granite Pillar");
 
         translationBuilder.add("block.elsewhere.polished_diorite_wall", "Polished Diorite Wall");
-        translationBuilder.add("block.elsewhere.smooth_diorite", "Smooth Diorite");
-        translationBuilder.add("block.elsewhere.smooth_diorite_stairs", "Smooth Diorite Stairs");
-        translationBuilder.add("block.elsewhere.smooth_diorite_slab", "Smooth Diorite Slab");
-        translationBuilder.add("block.elsewhere.smooth_diorite_wall", "Smooth Diorite Wall");
         translationBuilder.add("block.elsewhere.diorite_bricks", "Diorite Bricks");
         translationBuilder.add("block.elsewhere.diorite_brick_stairs", "Diorite Brick Stairs");
         translationBuilder.add("block.elsewhere.diorite_brick_slab", "Diorite Brick Slab");
         translationBuilder.add("block.elsewhere.diorite_brick_wall", "Diorite Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_diorite", "Chiseled Diorite");
-        translationBuilder.add("block.elsewhere.chiseled_diorite_bricks", "Chiseled Diorite Bricks");
-        translationBuilder.add("block.elsewhere.diorite_pillar", "Diorite Pillar");
 
         translationBuilder.add("block.elsewhere.calcite_stairs", "Calcite Stairs");
         translationBuilder.add("block.elsewhere.calcite_slab", "Calcite Slab");
         translationBuilder.add("block.elsewhere.calcite_wall", "Calcite Wall");
-        translationBuilder.add("block.elsewhere.smooth_calcite", "Smooth Calcite");
-        translationBuilder.add("block.elsewhere.smooth_calcite_stairs", "Smooth Calcite Stairs");
-        translationBuilder.add("block.elsewhere.smooth_calcite_slab", "Smooth Calcite Slab");
-        translationBuilder.add("block.elsewhere.smooth_calcite_wall", "Smooth Calcite Wall");
         translationBuilder.add("block.elsewhere.polished_calcite", "Polished Calcite");
         translationBuilder.add("block.elsewhere.polished_calcite_stairs", "Polished Calcite Stairs");
         translationBuilder.add("block.elsewhere.polished_calcite_slab", "Polished Calcite Slab");
@@ -140,20 +105,10 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.dripstone_stairs", "Dripstone Stairs");
         translationBuilder.add("block.elsewhere.dripstone_slab", "Dripstone Slab");
         translationBuilder.add("block.elsewhere.dripstone_wall", "Dripstone Wall");
-        translationBuilder.add("block.elsewhere.smooth_dripstone", "Smooth Dripstone");
-        translationBuilder.add("block.elsewhere.smooth_dripstone_stairs", "Smooth Dripstone Stairs");
-        translationBuilder.add("block.elsewhere.smooth_dripstone_slab", "Smooth Dripstone Slab");
-        translationBuilder.add("block.elsewhere.smooth_dripstone_wall", "Smooth Dripstone Wall");
         translationBuilder.add("block.elsewhere.polished_dripstone", "Polished Dripstone");
         translationBuilder.add("block.elsewhere.polished_dripstone_stairs", "Polished Dripstone Stairs");
         translationBuilder.add("block.elsewhere.polished_dripstone_slab", "Polished Dripstone Slab");
         translationBuilder.add("block.elsewhere.polished_dripstone_wall", "Polished Dripstone Wall");
-        translationBuilder.add("block.elsewhere.dripstone_bricks", "Dripstone Bricks");
-        translationBuilder.add("block.elsewhere.dripstone_brick_stairs", "Dripstone Brick Stairs");
-        translationBuilder.add("block.elsewhere.dripstone_brick_slab", "Dripstone Brick Slab");
-        translationBuilder.add("block.elsewhere.dripstone_brick_wall", "Dripstone Brick Wall");
-        translationBuilder.add("block.elsewhere.chiseled_dripstone", "Chiseled Dripstone");
-        translationBuilder.add("block.elsewhere.chiseled_dripstone_bricks", "Chiseled Dripstone Bricks");
         translationBuilder.add("block.elsewhere.dripstone_pillar", "Dripstone Pillar");
 
         translationBuilder.add("block.elsewhere.polished_sandstone", "Polished Sandstone");
@@ -165,15 +120,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.polished_red_sandstone_slab", "Polished Red Sandstone Slab");
         translationBuilder.add("block.elsewhere.polished_red_sandstone_wall", "Polished Red Sandstone Wall");
 
-        translationBuilder.add("block.elsewhere.sandstone_bricks", "Sandstone Bricks");
-        translationBuilder.add("block.elsewhere.sandstone_brick_stairs", "Sandstone Brick Stairs");
-        translationBuilder.add("block.elsewhere.sandstone_brick_slab", "Sandstone Brick Slab");
-        translationBuilder.add("block.elsewhere.sandstone_brick_wall", "Sandstone Brick Wall");
-        translationBuilder.add("block.elsewhere.red_sandstone_bricks", "Red Sandstone Bricks");
-        translationBuilder.add("block.elsewhere.red_sandstone_brick_stairs", "Red Sandstone Brick Stairs");
-        translationBuilder.add("block.elsewhere.red_sandstone_brick_slab", "Red Sandstone Brick Slab");
-        translationBuilder.add("block.elsewhere.red_sandstone_brick_wall", "Red Sandstone Brick Wall");
-
         translationBuilder.add("block.elsewhere.smooth_sandstone_wall", "Smooth Sandstone Wall");
         translationBuilder.add("block.elsewhere.smooth_red_sandstone_wall", "Smooth Red Sandstone Wall");
 
@@ -182,71 +128,60 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.cut_red_sandstone_stairs", "Cut Red Sandstone Stairs");
         translationBuilder.add("block.elsewhere.cut_red_sandstone_wall", "Cut Red Sandstone Wall");
 
-        translationBuilder.add("block.elsewhere.smooth_prismarine", "Smooth Prismarine");
-        translationBuilder.add("block.elsewhere.smooth_prismarine_stairs", "Smooth Prismarine Stairs");
-        translationBuilder.add("block.elsewhere.smooth_prismarine_slab", "Smooth Prismarine Slab");
-        translationBuilder.add("block.elsewhere.smooth_prismarine_wall", "Smooth Prismarine Wall");
         translationBuilder.add("block.elsewhere.polished_prismarine", "Polished Prismarine");
         translationBuilder.add("block.elsewhere.polished_prismarine_stairs", "Polished Prismarine Stairs");
         translationBuilder.add("block.elsewhere.polished_prismarine_slab", "Polished Prismarine Slab");
         translationBuilder.add("block.elsewhere.polished_prismarine_wall", "Polished Prismarine Wall");
         translationBuilder.add("block.elsewhere.prismarine_brick_wall", "Prismarine Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_prismarine", "Chiseled Prismarine");
-        translationBuilder.add("block.elsewhere.chiseled_prismarine_bricks", "Chiseled Prismarine Bricks");
         translationBuilder.add("block.elsewhere.prismarine_pillar", "Prismarine Pillar");
 
         translationBuilder.add("block.elsewhere.dark_prismarine_wall", "Dark Prismarine Wall");
-        translationBuilder.add("block.elsewhere.smooth_dark_prismarine", "Smooth Dark Prismarine");
-        translationBuilder.add("block.elsewhere.smooth_dark_prismarine_stairs", "Smooth Dark Prismarine Stairs");
-        translationBuilder.add("block.elsewhere.smooth_dark_prismarine_slab", "Smooth Dark Prismarine Slab");
-        translationBuilder.add("block.elsewhere.smooth_dark_prismarine_wall", "Smooth Dark Prismarine Wall");
         translationBuilder.add("block.elsewhere.polished_dark_prismarine", "Polished Dark Prismarine");
         translationBuilder.add("block.elsewhere.polished_dark_prismarine_stairs", "Polished Dark Prismarine Stairs");
         translationBuilder.add("block.elsewhere.polished_dark_prismarine_slab", "Polished Dark Prismarine Slab");
         translationBuilder.add("block.elsewhere.polished_dark_prismarine_wall", "Polished Dark Prismarine Wall");
-        translationBuilder.add("block.elsewhere.dark_prismarine_bricks", "Dark Prismarine Bricks");
-        translationBuilder.add("block.elsewhere.dark_prismarine_brick_stairs", "Dark Prismarine Brick Stairs");
-        translationBuilder.add("block.elsewhere.dark_prismarine_brick_slab", "Dark Prismarine Brick Slab");
-        translationBuilder.add("block.elsewhere.dark_prismarine_brick_wall", "Dark Prismarine Brick Wall");
+        translationBuilder.add("block.elsewhere.dark_prismarine_scales", "Dark Prismarine Scales");
+        translationBuilder.add("block.elsewhere.dark_prismarine_scale_stairs", "Dark Prismarine Scale Stairs");
+        translationBuilder.add("block.elsewhere.dark_prismarine_scale_slab", "Dark Prismarine Scale Slab");
+        translationBuilder.add("block.elsewhere.dark_prismarine_scale_wall", "Dark Prismarine Scale Wall");
         translationBuilder.add("block.elsewhere.chiseled_dark_prismarine", "Chiseled Dark Prismarine");
-        translationBuilder.add("block.elsewhere.chiseled_dark_prismarine_bricks", "Chiseled Dark Prismarine Bricks");
-        translationBuilder.add("block.elsewhere.dark_prismarine_pillar", "Dark Prismarine Pillar");
 
         translationBuilder.add("block.elsewhere.basalt_slab", "Basalt Slab");
         translationBuilder.add("block.elsewhere.smooth_basalt_stairs", "Smooth Basalt Stairs");
         translationBuilder.add("block.elsewhere.smooth_basalt_slab", "Smooth Basalt Slab");
         translationBuilder.add("block.elsewhere.smooth_basalt_wall", "Smooth Basalt Wall");
         translationBuilder.add("block.elsewhere.polished_basalt_slab", "Polished Basalt Slab");
-        translationBuilder.add("block.elsewhere.basalt_bricks", "Basalt Bricks");
-        translationBuilder.add("block.elsewhere.basalt_brick_stairs", "Basalt Brick Stairs");
-        translationBuilder.add("block.elsewhere.basalt_brick_slab", "Basalt Brick Slab");
-        translationBuilder.add("block.elsewhere.basalt_brick_wall", "Basalt Brick Wall");
-        translationBuilder.add("block.elsewhere.chiseled_basalt", "Chiseled Basalt");
-        translationBuilder.add("block.elsewhere.chiseled_basalt_bricks", "Chiseled Basalt Bricks");
+
+        translationBuilder.add("block.elsewhere.polished_smooth_basalt", "Polished Smooth Basalt");
+        translationBuilder.add("block.elsewhere.polished_smooth_basalt_stairs", "Polished Smooth Basalt Stairs");
+        translationBuilder.add("block.elsewhere.polished_smooth_basalt_slab", "Polished Smooth Basalt Slab");
+        translationBuilder.add("block.elsewhere.polished_smooth_basalt_wall", "Polished Smooth Basalt Wall");
+        translationBuilder.add("block.elsewhere.smooth_basalt_bricks", "Smooth Basalt Bricks");
+        translationBuilder.add("block.elsewhere.smooth_basalt_brick_stairs", "Smooth Basalt Brick Stairs");
+        translationBuilder.add("block.elsewhere.smooth_basalt_brick_slab", "Smooth Basalt Brick Slab");
+        translationBuilder.add("block.elsewhere.smooth_basalt_brick_wall", "Smooth Basalt Brick Wall");
+        translationBuilder.add("block.elsewhere.smooth_basalt_tiles", "Smooth Basalt Tiles");
+        translationBuilder.add("block.elsewhere.smooth_basalt_tile_stairs", "Smooth Basalt Tile Stairs");
+        translationBuilder.add("block.elsewhere.smooth_basalt_tile_slab", "Smooth Basalt Tile Slab");
+        translationBuilder.add("block.elsewhere.smooth_basalt_tile_wall", "Smooth Basalt Tile Wall");
+
+
 
         translationBuilder.add("block.elsewhere.end_stone_stairs", "End Stone Stairs");
         translationBuilder.add("block.elsewhere.end_stone_slab", "End Stone Slab");
         translationBuilder.add("block.elsewhere.end_stone_wall", "End Stone Wall");
-        translationBuilder.add("block.elsewhere.smooth_end_stone", "Smooth End Stone");
-        translationBuilder.add("block.elsewhere.smooth_end_stone_stairs", "Smooth End Stone Stairs");
-        translationBuilder.add("block.elsewhere.smooth_end_stone_slab", "Smooth End Stone Slab");
-        translationBuilder.add("block.elsewhere.smooth_end_stone_wall", "Smooth End Stone Wall");
         translationBuilder.add("block.elsewhere.polished_end_stone", "Polished End Stone");
         translationBuilder.add("block.elsewhere.polished_end_stone_stairs", "Polished End Stone Stairs");
         translationBuilder.add("block.elsewhere.polished_end_stone_slab", "Polished End Stone Slab");
         translationBuilder.add("block.elsewhere.polished_end_stone_wall", "Polished End Stone Wall");
         translationBuilder.add("block.elsewhere.chiseled_end_stone", "Chiseled End Stone");
-        translationBuilder.add("block.elsewhere.chiseled_end_stone_bricks", "Chiseled End Stone Bricks");
         translationBuilder.add("block.elsewhere.end_stone_pillar", "End Stone Pillar");
 
         translationBuilder.add("block.elsewhere.sodalite", "Sodalite");
         translationBuilder.add("block.elsewhere.sodalite_stairs", "Sodalite Stairs");
         translationBuilder.add("block.elsewhere.sodalite_slab", "Sodalite Slab");
         translationBuilder.add("block.elsewhere.sodalite_wall", "Sodalite Wall");
-        translationBuilder.add("block.elsewhere.smooth_sodalite", "Smooth Sodalite");
-        translationBuilder.add("block.elsewhere.smooth_sodalite_stairs", "Smooth Sodalite Stairs");
-        translationBuilder.add("block.elsewhere.smooth_sodalite_slab", "Smooth Sodalite Slab");
-        translationBuilder.add("block.elsewhere.smooth_sodalite_wall", "Smooth Sodalite Wall");
         translationBuilder.add("block.elsewhere.polished_sodalite", "Polished Sodalite");
         translationBuilder.add("block.elsewhere.polished_sodalite_stairs", "Polished Sodalite Stairs");
         translationBuilder.add("block.elsewhere.polished_sodalite_slab", "Polished Sodalite Slab");
@@ -263,10 +198,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.shale_stairs", "Shale Stairs");
         translationBuilder.add("block.elsewhere.shale_slab", "Shale Slab");
         translationBuilder.add("block.elsewhere.shale_wall", "Shale Wall");
-        translationBuilder.add("block.elsewhere.smooth_shale", "Smooth Shale");
-        translationBuilder.add("block.elsewhere.smooth_shale_stairs", "Smooth Shale Stairs");
-        translationBuilder.add("block.elsewhere.smooth_shale_slab", "Smooth Shale Slab");
-        translationBuilder.add("block.elsewhere.smooth_shale_wall", "Smooth Shale Wall");
         translationBuilder.add("block.elsewhere.polished_shale", "Polished Shale");
         translationBuilder.add("block.elsewhere.polished_shale_stairs", "Polished Shale Stairs");
         translationBuilder.add("block.elsewhere.polished_shale_slab", "Polished Shale Slab");
@@ -300,10 +231,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.sulfur_stairs", "Sulfur Stairs");
         translationBuilder.add("block.elsewhere.sulfur_slab", "Sulfur Slab");
         translationBuilder.add("block.elsewhere.sulfur_wall", "Sulfur Wall");
-        translationBuilder.add("block.elsewhere.smooth_sulfur", "Smooth Sulfur");
-        translationBuilder.add("block.elsewhere.smooth_sulfur_stairs", "Smooth Sulfur Stairs");
-        translationBuilder.add("block.elsewhere.smooth_sulfur_slab", "Smooth Sulfur Slab");
-        translationBuilder.add("block.elsewhere.smooth_sulfur_wall", "Smooth Sulfur Wall");
         translationBuilder.add("block.elsewhere.polished_sulfur", "Polished Sulfur");
         translationBuilder.add("block.elsewhere.polished_sulfur_stairs", "Polished Sulfur Stairs");
         translationBuilder.add("block.elsewhere.polished_sulfur_slab", "Polished Sulfur Slab");
@@ -313,7 +240,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.sulfur_brick_slab", "Sulfur Brick Slab");
         translationBuilder.add("block.elsewhere.sulfur_brick_wall", "Sulfur Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_sulfur", "Chiseled Sulfur");
-        translationBuilder.add("block.elsewhere.chiseled_sulfur_bricks", "Chiseled Sulfur Bricks");
         translationBuilder.add("block.elsewhere.sulfur_pillar", "Sulfur Pillar");
 
         translationBuilder.add("block.elsewhere.sulfur_spike", "Sulfur Spike");
@@ -323,10 +249,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.cinnabar_stairs", "Cinnabar Stairs");
         translationBuilder.add("block.elsewhere.cinnabar_slab", "Cinnabar Slab");
         translationBuilder.add("block.elsewhere.cinnabar_wall", "Cinnabar Wall");
-        translationBuilder.add("block.elsewhere.smooth_cinnabar", "Smooth Cinnabar");
-        translationBuilder.add("block.elsewhere.smooth_cinnabar_stairs", "Smooth Cinnabar Stairs");
-        translationBuilder.add("block.elsewhere.smooth_cinnabar_slab", "Smooth Cinnabar Slab");
-        translationBuilder.add("block.elsewhere.smooth_cinnabar_wall", "Smooth Cinnabar Wall");
         translationBuilder.add("block.elsewhere.polished_cinnabar", "Polished Cinnabar");
         translationBuilder.add("block.elsewhere.polished_cinnabar_stairs", "Polished Cinnabar Stairs");
         translationBuilder.add("block.elsewhere.polished_cinnabar_slab", "Polished Cinnabar Slab");
@@ -336,7 +258,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.cinnabar_brick_slab", "Cinnabar Brick Slab");
         translationBuilder.add("block.elsewhere.cinnabar_brick_wall", "Cinnabar Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_cinnabar", "Chiseled Cinnabar");
-        translationBuilder.add("block.elsewhere.chiseled_cinnabar_bricks", "Chiseled Cinnabar Bricks");
         translationBuilder.add("block.elsewhere.cinnabar_pillar", "Cinnabar Pillar");
 
         translationBuilder.add("block.elsewhere.cinnabar_coal_ore", "Cinnabar Coal Ore");
@@ -352,10 +273,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.orpiment_stairs", "Orpiment Stairs");
         translationBuilder.add("block.elsewhere.orpiment_slab", "Orpiment Slab");
         translationBuilder.add("block.elsewhere.orpiment_wall", "Orpiment Wall");
-        translationBuilder.add("block.elsewhere.smooth_orpiment", "Smooth Orpiment");
-        translationBuilder.add("block.elsewhere.smooth_orpiment_stairs", "Smooth Orpiment Stairs");
-        translationBuilder.add("block.elsewhere.smooth_orpiment_slab", "Smooth Orpiment Slab");
-        translationBuilder.add("block.elsewhere.smooth_orpiment_wall", "Smooth Orpiment Wall");
         translationBuilder.add("block.elsewhere.polished_orpiment", "Polished Orpiment");
         translationBuilder.add("block.elsewhere.polished_orpiment_stairs", "Polished Orpiment Stairs");
         translationBuilder.add("block.elsewhere.polished_orpiment_slab", "Polished Orpiment Slab");
@@ -365,16 +282,11 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.orpiment_brick_slab", "Orpiment Brick Slab");
         translationBuilder.add("block.elsewhere.orpiment_brick_wall", "Orpiment Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_orpiment", "Chiseled Orpiment");
-        translationBuilder.add("block.elsewhere.chiseled_orpiment_bricks", "Chiseled Orpiment Bricks");
         translationBuilder.add("block.elsewhere.orpiment_pillar", "Orpiment Pillar");
 
         translationBuilder.add("block.elsewhere.netherrack_stairs", "Netherrack Stairs");
         translationBuilder.add("block.elsewhere.netherrack_slab", "Netherrack Slab");
         translationBuilder.add("block.elsewhere.netherrack_wall", "Netherrack Wall");
-        translationBuilder.add("block.elsewhere.smooth_netherrack", "Smooth Netherrack");
-        translationBuilder.add("block.elsewhere.smooth_netherrack_stairs", "Smooth Netherrack Stairs");
-        translationBuilder.add("block.elsewhere.smooth_netherrack_slab", "Smooth Netherrack Slab");
-        translationBuilder.add("block.elsewhere.smooth_netherrack_wall", "Smooth Netherrack Wall");
         translationBuilder.add("block.elsewhere.polished_netherrack", "Polished Netherrack");
         translationBuilder.add("block.elsewhere.polished_netherrack_stairs", "Polished Netherrack Stairs");
         translationBuilder.add("block.elsewhere.polished_netherrack_slab", "Polished Netherrack Slab");
@@ -403,11 +315,26 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.polished_soul_sandstone_stairs", "Polished Soul Sandstone Stairs");
         translationBuilder.add("block.elsewhere.polished_soul_sandstone_slab", "Polished Soul Sandstone Slab");
         translationBuilder.add("block.elsewhere.polished_soul_sandstone_wall", "Polished Soul Sandstone Wall");
-        translationBuilder.add("block.elsewhere.soul_sandstone_bricks", "Soul Sandstone Bricks");
-        translationBuilder.add("block.elsewhere.soul_sandstone_brick_stairs", "Soul Sandstone Brick Stairs");
-        translationBuilder.add("block.elsewhere.soul_sandstone_brick_slab", "Soul Sandstone Brick Slab");
-        translationBuilder.add("block.elsewhere.soul_sandstone_brick_wall", "Soul Sandstone Brick Wall");
         translationBuilder.add("block.elsewhere.chiseled_soul_sandstone", "Chiseled Soul Sandstone");
+
+        translationBuilder.add("block.elsewhere.pink_sand", "Pink Sand");
+        translationBuilder.add("block.elsewhere.pink_sandstone", "Pink Sandstone");
+        translationBuilder.add("block.elsewhere.pink_sandstone_stairs", "Pink Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.pink_sandstone_slab", "Pink Sandstone Slab");
+        translationBuilder.add("block.elsewhere.pink_sandstone_wall", "Pink Sandstone Wall");
+        translationBuilder.add("block.elsewhere.smooth_pink_sandstone", "Smooth Pink Sandstone");
+        translationBuilder.add("block.elsewhere.smooth_pink_sandstone_stairs", "Smooth Pink Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.smooth_pink_sandstone_slab", "Smooth Pink Sandstone Slab");
+        translationBuilder.add("block.elsewhere.smooth_pink_sandstone_wall", "Smooth Pink Sandstone Wall");
+        translationBuilder.add("block.elsewhere.cut_pink_sandstone", "Cut Pink Sandstone");
+        translationBuilder.add("block.elsewhere.cut_pink_sandstone_stairs", "Cut Pink Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.cut_pink_sandstone_slab", "Cut Pink Sandstone Slab");
+        translationBuilder.add("block.elsewhere.cut_pink_sandstone_wall", "Cut Pink Sandstone Wall");
+        translationBuilder.add("block.elsewhere.polished_pink_sandstone", "Polished Pink Sandstone");
+        translationBuilder.add("block.elsewhere.polished_pink_sandstone_stairs", "Polished Pink Sandstone Stairs");
+        translationBuilder.add("block.elsewhere.polished_pink_sandstone_slab", "Polished Pink Sandstone Slab");
+        translationBuilder.add("block.elsewhere.polished_pink_sandstone_wall", "Polished Pink Sandstone Wall");
+        translationBuilder.add("block.elsewhere.chiseled_pink_sandstone", "Chiseled Pink Sandstone");
 
         translationBuilder.add("block.elsewhere.chiseled_purpur", "Chiseled Purpur");
 
@@ -743,16 +670,9 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("item.elsewhere.silver_nugget", "Silver Nugget");
         translationBuilder.add("block.elsewhere.silver_block", "Block of Silver");
         translationBuilder.add("block.elsewhere.raw_silver_block", "Block of Raw Silver");
-        translationBuilder.add("item.elsewhere.silver_helmet", "Silver Helmet");
-        translationBuilder.add("item.elsewhere.silver_chestplate", "Silver Chestplate");
-        translationBuilder.add("item.elsewhere.silver_leggings", "Silver Leggings");
-        translationBuilder.add("item.elsewhere.silver_boots", "Silver Boots");
-        translationBuilder.add("item.elsewhere.silver_sword", "Silver Sword");
-        translationBuilder.add("item.elsewhere.silver_axe", "Silver Axe");
-        translationBuilder.add("item.elsewhere.silver_spear", "Silver Spear");
-        translationBuilder.add("item.elsewhere.silver_pickaxe", "Silver Pickaxe");
-        translationBuilder.add("item.elsewhere.silver_shovel", "Silver Shovel");
-        translationBuilder.add("item.elsewhere.silver_hoe", "Silver Hoe");
+
+        translationBuilder.add("item.elsewhere.netherite_mix", "Netherite Mix");
+        translationBuilder.add("item.elsewhere.soulsteel_mix", "Soulsteel Mix");
 
         translationBuilder.add("item.elsewhere.soulsteel_ingot", "Soulsteel Ingot");
         translationBuilder.add("block.elsewhere.soulsteel_block", "Block of Soulsteel");
@@ -813,6 +733,14 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("tag.elsewhere.needs_copper_tool", "Needs Copper Tool");
         translationBuilder.add("tag.elsewhere.needs_bronze_tool", "Needs Bronze Tool");
         translationBuilder.add("tag.elsewhere.incorrect_for_bronze_tool", "Incorrect For Bronze Tool");
+
+
+
+        // Trims
+        translationBuilder.add("trim_material.elsewhere.tin", "Tin Material");
+        translationBuilder.add("trim_material.elsewhere.bronze", "Bronze Material");
+        translationBuilder.add("trim_material.elsewhere.silver", "Silver Material");
+        translationBuilder.add("trim_material.elsewhere.soulsteel", "Soulsteel Material");
 
 
 

@@ -18,6 +18,7 @@ import team.lookingglass.elsewhere.entity.EEntities;
 import team.lookingglass.elsewhere.registry.equipment.AttributeArmorItem;
 import team.lookingglass.elsewhere.registry.equipment.EMaterials;
 import team.lookingglass.elsewhere.registry.equipment.ArmorAttributes;
+import team.lookingglass.elsewhere.registry.trim.ETrimMaterials;
 
 import java.util.function.Function;
 
@@ -47,11 +48,11 @@ public interface EItems {
     Item EMERALD_SHARD = register("emerald_shard", Item::new, new Item.Properties());
 
     Item RAW_TIN = register("raw_tin", Item::new, new Item.Properties());
-    Item TIN_INGOT = register("tin_ingot", Item::new, new Item.Properties());
+    Item TIN_INGOT = register("tin_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.TIN));
     Item TIN_NUGGET = register("tin_nugget", Item::new, new Item.Properties());
 
     Item BRONZE_MIX = register("bronze_mix", Item::new, new Item.Properties());
-    Item BRONZE_INGOT = register("bronze_ingot", Item::new, new Item.Properties());
+    Item BRONZE_INGOT = register("bronze_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.BRONZE));
     Item BRONZE_NUGGET = register("bronze_nugget", Item::new, new Item.Properties());
     Item BRONZE_HELMET = register("bronze_helmet", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.BRONZE_ARMOR, ArmorType.HELMET)
@@ -93,10 +94,13 @@ public interface EItems {
     );
 
     Item RAW_SILVER = register("raw_silver", Item::new, new Item.Properties());
-    Item SILVER_INGOT = register("silver_ingot", Item::new, new Item.Properties());
+    Item SILVER_INGOT = register("silver_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.SILVER));
     Item SILVER_NUGGET = register("silver_nugget", Item::new, new Item.Properties());
 
-    Item SOULSTEEL_INGOT = register("soulsteel_ingot", Item::new, new Item.Properties().fireResistant());
+    Item NETHERITE_MIX = register("netherite_mix", Item::new, new Item.Properties().fireResistant());
+    Item SOULSTEEL_MIX = register("soulsteel_mix", Item::new, new Item.Properties().fireResistant());
+
+    Item SOULSTEEL_INGOT = register("soulsteel_ingot", Item::new, new Item.Properties().fireResistant().trimMaterial(ETrimMaterials.SOULSTEEL));
     Item SOULSTEEL_HELMET = register("soulsteel_helmet", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
             EMaterials.SOULSTEEL_ARMOR, ArmorType.HELMET, EquipmentSlotGroup.HEAD,
             Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_HELMET_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()

@@ -112,7 +112,18 @@ public class EWorldgen {
                 EPlacedFeatures.TUNDRA_GREEN_VEGETATION_PATCH
         );
 
-        // Amethyst Spires
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.LUSH_DESERT,
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                EPlacedFeatures.EXTRA_LUSH_CACTUS
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.LUSH_DESERT,
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                EPlacedFeatures.AZALEA_SHRUB
+        );
+
+        // Amethyst Nodes
         BiomeModifications.addFeature(
                 ctx -> ctx.getBiomeKey() == EBiomes.CRYSTAL_CAVERNS,
                 GenerationStep.Decoration.UNDERGROUND_DECORATION,
@@ -231,6 +242,17 @@ public class EWorldgen {
                                 )
                         )
                 );
+                SurfaceRules.RuleSource sandstonePinkCliffsRule = SurfaceRules.ifTrue(
+                        SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.state(EBlocks.PINK_SAND.defaultBlockState())),
+                                        SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                SurfaceRules.state(EBlocks.PINK_SANDSTONE.defaultBlockState()))
+                                )
+                        )
+                );
 
 
                 SurfaceRules.RuleSource biomeCliffRules = SurfaceRules.sequence(
@@ -337,7 +359,6 @@ public class EWorldgen {
                 SurfaceRules.RuleSource outbackRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.OUTBACK),
                         prelimAndWaterCheck(
                                 SurfaceRules.sequence(
-                                        stoneCliffsRule,
                                         // On Floor
                                         SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
                                                 SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -1.0, 0.0),
@@ -348,19 +369,44 @@ public class EWorldgen {
                                         SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
                                                 SurfaceRules.state(EBlocks.ARID_GRASS_BLOCK.defaultBlockState())),
 
-                                // Under Floor
-                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -1.0, 0.0),
-                                                SurfaceRules.state(Blocks.RED_SAND.defaultBlockState()))),
-                                SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
-                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -1.0, 0.0),
-                                                SurfaceRules.state(Blocks.RED_SANDSTONE.defaultBlockState()))),
-                                SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
-                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.2, 1.0),
-                                                SurfaceRules.state(Blocks.DIRT.defaultBlockState()))),
-                                SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
-                                        SurfaceRules.state(EBlocks.ARID_DIRT.defaultBlockState()))
-                        )));
+                                        // Under Floor
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -1.0, 0.0),
+                                                        SurfaceRules.state(Blocks.RED_SAND.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -1.0, 0.0),
+                                                        SurfaceRules.state(Blocks.RED_SANDSTONE.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.2, 1.0),
+                                                        SurfaceRules.state(Blocks.DIRT.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
+                                                SurfaceRules.state(EBlocks.ARID_DIRT.defaultBlockState()))
+                                )));
+
+                SurfaceRules.RuleSource lushDesertRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.LUSH_DESERT),
+                        prelimAndWaterCheck(
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.5, 0.0), sandstonePinkCliffsRule),
+                                        sandstoneCliffsRule,
+                                        // On Floor
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.5, 0.0),
+                                                        SurfaceRules.state(EBlocks.PINK_SAND.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                        SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.5, 0.0),
+                                                        SurfaceRules.state(EBlocks.PINK_SAND.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+
+                                        // Under Floor
+                                        SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.5, 0.0),
+                                                        SurfaceRules.state(EBlocks.PINK_SANDSTONE.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState()))
+                                )));
 
                 SurfaceRules.RuleSource tundraRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.TUNDRA),
                         prelimAndWaterCheck(
@@ -527,7 +573,7 @@ public class EWorldgen {
                         ));
 
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
-                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules, outbackRules, tundraRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
+                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules, outbackRules, lushDesertRules, tundraRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 deepslateRule, shaleRule, object.surfaceRule()
                         ));
             });

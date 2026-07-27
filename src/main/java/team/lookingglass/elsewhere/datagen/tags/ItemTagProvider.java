@@ -60,6 +60,9 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
         valueLookupBuilder(ItemTags.HANGING_SIGNS).add(EBlocks.POPLAR_HANGING_SIGN.asItem(), EBlocks.AZALEA_HANGING_SIGN.asItem());
         valueLookupBuilder(ItemTags.BOATS).add(EItems.POPLAR_BOAT, EItems.AZALEA_BOAT);
 
+        // Sand
+        valueLookupBuilder(ItemTags.SAND).add(EBlocks.PINK_SAND.asItem());
+
         // Stone
         valueLookupBuilder(ItemTags.STONE_CRAFTING_MATERIALS).add(EBlocks.COBBLESHALE.asItem());
         valueLookupBuilder(ItemTags.STONE_TOOL_MATERIALS).add(EBlocks.COBBLESHALE.asItem());
@@ -153,6 +156,16 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                         EItems.SOULSTEEL_SWORD, EItems.SOULSTEEL_AXE, EItems.SOULSTEEL_SPEAR, EItems.SOULSTEEL_PICKAXE, EItems.SOULSTEEL_SHOVEL, EItems.SOULSTEEL_HOE,
                         EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS
                 );
+
+
+        // Trim Tags
+        valueLookupBuilder(ItemTags.TRIM_MATERIALS).add(
+                EItems.TIN_INGOT, EItems.BRONZE_INGOT, EItems.SILVER_INGOT, EItems.SOULSTEEL_INGOT
+        );
+        valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR).add(
+                EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS,
+                EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS
+        );
 
 
 
