@@ -3,16 +3,13 @@ package team.lookingglass.elsewhere.worldgen;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -28,6 +25,9 @@ public class EBiomes {
         context.register(LUSH_DESERT, createLushDesert(context));
         context.register(TUNDRA, createTundra(context));
         context.register(DAPPLED_FOREST, createDappledForest(context));
+
+        context.register(SANDY_TIDEPOOLS, createSandyTidepools(context));
+        context.register(STONY_TIDEPOOLS, createStonyTidepools(context));
 
         context.register(WARM_RIVER, createWarmRiver(context));
         context.register(LUKEWARM_RIVER, createLukewarmRiver(context));
@@ -47,6 +47,11 @@ public class EBiomes {
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tundra"));
     public static final ResourceKey<Biome> DAPPLED_FOREST = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "dappled_forest"));
+
+    public static final ResourceKey<Biome> SANDY_TIDEPOOLS = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sandy_tidepools"));
+    public static final ResourceKey<Biome> STONY_TIDEPOOLS = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "stony_tidepools"));
 
     public static final ResourceKey<Biome> WARM_RIVER = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "warm_river"));
@@ -95,7 +100,7 @@ public class EBiomes {
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x43D5EE)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x02B0E5)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -132,7 +137,7 @@ public class EBiomes {
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x43D5EE)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x02B0E5)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -177,8 +182,8 @@ public class EBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.5F)
-                .downfall(0.4F)
+                .temperature(0.4F)
+                .downfall(0.5F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x3D57D6)
                         .build())
@@ -224,6 +229,74 @@ public class EBiomes {
                         .waterColor(0x375154)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xCCD8E2)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createSandyTidepools(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 3, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 2));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.5F)
+                .downfall(0.4F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x43D5EE)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createStonyTidepools(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 2));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.8F)
+                .downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x45ADF2)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -307,7 +380,7 @@ public class EBiomes {
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(1.5F)
-                .downfall(1.2F)
+                .downfall(0.7F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x45ADF2)
                         .build())
@@ -352,7 +425,7 @@ public class EBiomes {
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.5F)
-                .downfall(1.2F)
+                .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x3D57D6)
                         .build())
@@ -384,7 +457,7 @@ public class EBiomes {
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(1.0F)
-                .downfall(2.0F)
+                .downfall(1.0F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x6B38C9)
                         .build())
@@ -425,7 +498,7 @@ public class EBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
-                .temperature(0.8F)
+                .temperature(2.4F)
                 .downfall(0.4F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x34BF89)
@@ -506,7 +579,7 @@ public class EBiomes {
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.0F)
-                .downfall(0.0F)
+                .downfall(0.3F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x3938C9)
                         .build())

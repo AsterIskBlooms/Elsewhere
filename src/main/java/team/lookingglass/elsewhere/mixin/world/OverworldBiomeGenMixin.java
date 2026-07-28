@@ -30,6 +30,8 @@ public class OverworldBiomeGenMixin {
         ResourceKey<Biome>[][] middleB = accessor.getMiddleBiomesVariant();
         ResourceKey<Biome>[][] plateauA = accessor.getPlateauBiomes();
         ResourceKey<Biome>[][] plateauB = accessor.getPlateauBiomes();
+        ResourceKey<Biome>[][] shattered = accessor.getShatteredBiomes();
+        ResourceKey<Biome>[][] ocean = accessor.getOceans();
 
         middleB[3][0] = EBiomes.OUTBACK;
 
@@ -38,9 +40,8 @@ public class OverworldBiomeGenMixin {
         plateauA[4][3] = EBiomes.LUSH_DESERT;
         plateauA[4][4] = EBiomes.LUSH_DESERT;
 
-        middleA[1][0] = EBiomes.TUNDRA;
-        middleA[1][1] = EBiomes.TUNDRA;
-        middleB[1][1] = Biomes.PLAINS;
+        middleA[0][0] = EBiomes.TUNDRA;
+        plateauA[0][0] = EBiomes.TUNDRA;
 
         plateauB[0][1] = Biomes.ICE_SPIKES;
         plateauB[1][1] = Biomes.CHERRY_GROVE;
@@ -49,14 +50,17 @@ public class OverworldBiomeGenMixin {
         plateauB[1][2] = EBiomes.DAPPLED_FOREST;
         plateauB[1][3] = EBiomes.DAPPLED_FOREST;
 
+        ocean[0][4] = EBiomes.STONY_TIDEPOOLS;
+
     }
 
     // Desert Beaches
     @Inject(method = "pickBeachBiome", at = @At("HEAD"), cancellable = true)
     private void elsewhere$desertBeachVariants(int temperatureIndex, int humidityIndex, CallbackInfoReturnable<ResourceKey<Biome>> cir) {
-        if (temperatureIndex == 4) {
-            OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor) this;
-            cir.setReturnValue(accessor.getMiddleBiomes()[temperatureIndex][humidityIndex]);
+        if (temperatureIndex >= 3) {
+            if (humidityIndex >= 3 || temperatureIndex == 4) {
+                cir.setReturnValue(EBiomes.SANDY_TIDEPOOLS);
+            } else cir.setReturnValue(EBiomes.STONY_TIDEPOOLS);
         }
     }
 

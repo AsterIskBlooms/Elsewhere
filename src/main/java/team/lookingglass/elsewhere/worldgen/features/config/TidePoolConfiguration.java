@@ -1,0 +1,12 @@
+package team.lookingglass.elsewhere.worldgen.features.config;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+
+public record TidePoolConfiguration(IntProvider lobeCount, IntProvider lobeRadius, IntProvider lobeOffset, IntProvider depth, IntProvider deepSpotRadius, IntProvider deepSpotBonus, IntProvider rimHeight, float tallRimChance, IntProvider clearHeight, IntProvider foundationDepth, BlockStateProvider floor, BlockStateProvider rim, BlockStateProvider coral, float coralProbability, float seagrassProbability, float tallSeagrassChance) implements FeatureConfiguration {
+    public static final Codec<TidePoolConfiguration> CODEC = RecordCodecBuilder.create((i) -> i.group(IntProviders.CODEC.fieldOf("lobe_count").forGetter(TidePoolConfiguration::lobeCount), IntProviders.CODEC.fieldOf("lobe_radius").forGetter(TidePoolConfiguration::lobeRadius), IntProviders.CODEC.fieldOf("lobe_offset").forGetter(TidePoolConfiguration::lobeOffset), IntProviders.CODEC.fieldOf("depth").forGetter(TidePoolConfiguration::depth), IntProviders.CODEC.fieldOf("deep_spot_radius").forGetter(TidePoolConfiguration::deepSpotRadius), IntProviders.CODEC.fieldOf("deep_spot_bonus").forGetter(TidePoolConfiguration::deepSpotBonus), IntProviders.CODEC.fieldOf("rim_height").forGetter(TidePoolConfiguration::rimHeight), Codec.floatRange(0.0F, 1.0F).fieldOf("tall_rim_chance").forGetter(TidePoolConfiguration::tallRimChance), IntProviders.CODEC.fieldOf("clear_height").forGetter(TidePoolConfiguration::clearHeight), IntProviders.CODEC.fieldOf("foundation_depth").forGetter(TidePoolConfiguration::foundationDepth), BlockStateProvider.CODEC.fieldOf("floor").forGetter(TidePoolConfiguration::floor), BlockStateProvider.CODEC.fieldOf("rim").forGetter(TidePoolConfiguration::rim), BlockStateProvider.CODEC.fieldOf("coral").forGetter(TidePoolConfiguration::coral), Codec.floatRange(0.0F, 1.0F).fieldOf("coral_probability").forGetter(TidePoolConfiguration::coralProbability), Codec.floatRange(0.0F, 1.0F).fieldOf("seagrass_probability").forGetter(TidePoolConfiguration::seagrassProbability), Codec.floatRange(0.0F, 1.0F).fieldOf("tall_seagrass_chance").forGetter(TidePoolConfiguration::tallSeagrassChance)).apply(i, TidePoolConfiguration::new));
+}

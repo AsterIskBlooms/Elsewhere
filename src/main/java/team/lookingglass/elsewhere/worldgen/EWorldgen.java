@@ -16,6 +16,8 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import team.lookingglass.elsewhere.mixin.world.NoiseGeneratorSettingsAccessor;
 import team.lookingglass.elsewhere.registry.EBlocks;
+import team.lookingglass.elsewhere.worldgen.noise.ENoise;
+import team.lookingglass.elsewhere.worldgen.noise.NoiseCondition3D;
 
 import java.util.List;
 
@@ -121,6 +123,38 @@ public class EWorldgen {
                 ctx -> ctx.getBiomeKey() == EBiomes.LUSH_DESERT,
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 EPlacedFeatures.AZALEA_SHRUB
+        );
+
+        List<ResourceKey<Biome>> beaches = List.of(
+                Biomes.BEACH,
+                Biomes.SNOWY_BEACH,
+                EBiomes.SANDY_TIDEPOOLS
+        );
+        BiomeModifications.addFeature(
+                ctx -> beaches.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                EPlacedFeatures.DENSE_DRY_GRASS
+        );
+        BiomeModifications.addFeature(
+                ctx -> beaches.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                EPlacedFeatures.BEACHSTONE_ROCKS
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.SANDY_TIDEPOOLS,
+                GenerationStep.Decoration.LOCAL_MODIFICATIONS,
+                EPlacedFeatures.EXTRA_BEACHSTONE_ROCKS
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.SANDY_TIDEPOOLS,
+                GenerationStep.Decoration.LOCAL_MODIFICATIONS,
+                EPlacedFeatures.TIDEPOOL
+        );
+
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == EBiomes.STONY_TIDEPOOLS,
+                GenerationStep.Decoration.LOCAL_MODIFICATIONS,
+                EPlacedFeatures.STONY_TIDEPOOL
         );
 
         // Amethyst Nodes
@@ -420,6 +454,26 @@ public class EWorldgen {
                                                         SurfaceRules.state(EBlocks.RED_GRASS_BLOCK.defaultBlockState())))
                                 )));
 
+                SurfaceRules.RuleSource tidepoolRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.SANDY_TIDEPOOLS),
+                        SurfaceRules.sequence(
+                                sandstoneCliffsRule,
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState()))
+                        ));
+
+                SurfaceRules.RuleSource tidepoolIslandRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.STONY_TIDEPOOLS),
+                        SurfaceRules.sequence(
+                                sandstoneCliffsRule,
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState()))
+                        ));
+
                 SurfaceRules.RuleSource riverRules = SurfaceRules.sequence(
                                 SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.WARM_RIVER),
                                         SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
@@ -573,7 +627,10 @@ public class EWorldgen {
                         ));
 
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
-                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules, outbackRules, lushDesertRules, tundraRules, crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
+                        SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules,
+                                outbackRules, lushDesertRules, tundraRules,
+                                tidepoolRules, tidepoolIslandRules,
+                                crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 deepslateRule, shaleRule, object.surfaceRule()
                         ));
             });

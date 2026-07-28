@@ -30,8 +30,10 @@ import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.tags.EBlockTags;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.blocktypes.PebbleBlock;
+import team.lookingglass.elsewhere.worldgen.features.config.BlockColumnClusterConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.config.ExposedDoubleDiskConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.config.BlockPatchConfiguration;
+import team.lookingglass.elsewhere.worldgen.features.config.TidePoolConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.placers.PoplarFoliagePlacer;
 import team.lookingglass.elsewhere.worldgen.features.placers.PoplarTrunkPlacer;
 import team.lookingglass.elsewhere.worldgen.features.spike.utils.SpikeClusterConfiguration;
@@ -84,6 +86,11 @@ public class EConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LUSH_DESERT_CACTUS = registerKey("lush_desert_cactus");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> AZALEA_SHRUB_KEY = registerKey("azalea_shrub");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BEACHSTONE_ROCK_KEY = registerKey("beachstone_rock");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TIDEPOOL_KEY = registerKey("tidepool");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STONY_TIDEPOOL_KEY = registerKey("stony_tidepool");
 
 
     @SuppressWarnings("deprecation")
@@ -140,8 +147,8 @@ public class EConfiguredFeatures {
                 new BlockPatchConfiguration(
                         new WeightedStateProvider(
                                 WeightedList.<BlockState>builder()
-                                        .add(EBlocks.SHORT_RED_GRASS.defaultBlockState(), 8)
-                                        .add(EBlocks.TALL_RED_GRASS.defaultBlockState(), 3)
+                                        .add(EBlocks.SHORT_RED_GRASS.defaultBlockState(), 18)
+                                        .add(EBlocks.TALL_RED_GRASS.defaultBlockState(), 2)
                                         .add(EBlocks.RED_SHRUB.defaultBlockState(), 1)
                                         .build()
                         ),
@@ -151,10 +158,9 @@ public class EConfiguredFeatures {
                 new BlockPatchConfiguration(
                         new WeightedStateProvider(
                                 WeightedList.<BlockState>builder()
-                                        .add(Blocks.SHORT_GRASS.defaultBlockState(), 8)
-                                        .add(Blocks.TALL_GRASS.defaultBlockState(), 3)
-                                        .add(Blocks.BUSH.defaultBlockState(), 1)
-                                        .add(Blocks.FERN.defaultBlockState(), 1)
+                                        .add(Blocks.SHORT_GRASS.defaultBlockState(), 10)
+                                        .add(Blocks.TALL_GRASS.defaultBlockState(), 1)
+                                        .add(Blocks.BUSH.defaultBlockState(), 2)
                                         .build()
                         ),
                         EBlockTags.TUNDRA_GREEN_GRASS, 3, 1, 5, 2));
@@ -340,7 +346,90 @@ public class EConfiguredFeatures {
                 new TwoLayersFeatureSize(0, 0, 0)
         ).build());
 
+        registerFeature(context, BEACHSTONE_ROCK_KEY, EFeatures.BLOCK_COLUMN_CLUSTER,
+                new BlockColumnClusterConfiguration(
+                        List.of(BlockColumnConfiguration.layer(UniformInt.of(2, 4), BlockStateProvider.simple(EBlocks.BEACHSTONE.defaultBlockState()))),
+                        Direction.UP,
+                        BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        true,
+                        UniformInt.of(2, 3),
+                        UniformInt.of(2, 3),
+                        UniformInt.of(-1, 2),
+                        UniformInt.of(3, 4)
+                )
+        );
+
+        registerFeature(context, TIDEPOOL_KEY, EFeatures.TIDEPOOL,
+                new TidePoolConfiguration(
+                        UniformInt.of(3, 4),
+                        UniformInt.of(4, 7),
+                        UniformInt.of(1, 4),
+                        UniformInt.of(1, 3),
+                        UniformInt.of(3, 4),
+                        UniformInt.of(0, 1),
+                        UniformInt.of(0, 1),
+                        0.45F,
+                        ConstantInt.of(6),
+                        UniformInt.of(5, 7),
+                        new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                .add(Blocks.SAND.defaultBlockState(), 3)
+                                .add(EBlocks.BEACHSTONE.defaultBlockState(), 2)
+                                .build()),
+                        BlockStateProvider.simple(EBlocks.BEACHSTONE.defaultBlockState()),
+                        new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                .add(Blocks.BRAIN_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.BUBBLE_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.TUBE_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.FIRE_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.HORN_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.HORN_CORAL_BLOCK.defaultBlockState(), 1)
+                                .build()),
+                        0.15F,
+                        0.30F,
+                        0.25F
+                )
+        );
+        registerFeature(context, STONY_TIDEPOOL_KEY, EFeatures.TIDEPOOL,
+                new TidePoolConfiguration(
+                        UniformInt.of(3, 4),
+                        UniformInt.of(4, 7),
+                        UniformInt.of(1, 4),
+                        UniformInt.of(1, 3),
+                        UniformInt.of(3, 4),
+                        UniformInt.of(0, 1),
+                        UniformInt.of(0, 1),
+                        0.30F,
+                        ConstantInt.of(6),
+                        UniformInt.of(5, 7),
+                        new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                .add(EBlocks.BEACHSTONE.defaultBlockState(), 2)
+                                .add(Blocks.TUFF.defaultBlockState(), 1)
+                                .build()),
+                        BlockStateProvider.simple(Blocks.TUFF.defaultBlockState()),
+                        new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                .add(Blocks.BRAIN_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.BUBBLE_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.TUBE_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.FIRE_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.HORN_CORAL.defaultBlockState(), 3)
+                                .add(Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.HORN_CORAL_BLOCK.defaultBlockState(), 1)
+                                .build()),
+                        0.15F,
+                        0.30F,
+                        0.25F
+                )
+        );
+
     }
+
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE,

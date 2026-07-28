@@ -7,10 +7,10 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
+import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.EBlocks;
+import team.lookingglass.elsewhere.worldgen.features.placement.SeaLevelFilter;
 
 import java.util.List;
 
@@ -67,6 +68,14 @@ public class EPlacedFeatures {
     public static final ResourceKey<PlacedFeature> EXTRA_LUSH_CACTUS = registerKey("extra_lush_cactus");
 
     public static final ResourceKey<PlacedFeature> AZALEA_SHRUB = registerKey("azalea_shrub");
+
+    public static final ResourceKey<PlacedFeature> DENSE_DRY_GRASS = registerKey("dense_dry_grass");
+
+    public static final ResourceKey<PlacedFeature> BEACHSTONE_ROCKS = registerKey("beachstone_rocks");
+    public static final ResourceKey<PlacedFeature> EXTRA_BEACHSTONE_ROCKS = registerKey("extra_beachstone_rocks");
+
+    public static final ResourceKey<PlacedFeature> TIDEPOOL = registerKey("tidepool");
+    public static final ResourceKey<PlacedFeature> STONY_TIDEPOOL = registerKey("stony_tidepool");
 
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -296,7 +305,10 @@ public class EPlacedFeatures {
                         CountPlacement.of(1),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                        BlockPredicate.wouldSurvive(EBlocks.PEBBLE.defaultBlockState(), BlockPos.ZERO)))
                 ));
 
 
@@ -347,6 +359,66 @@ public class EPlacedFeatures {
                                         BlockPredicate.wouldSurvive(Blocks.CACTUS.defaultBlockState(), BlockPos.ZERO)))
                 ));
 
+        registerPlaced(context, DENSE_DRY_GRASS,
+                configured.getOrThrow(VegetationFeatures.DRY_GRASS),
+                List.of(
+                        CountPlacement.of(18),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                        BlockPredicate.wouldSurvive(Blocks.SHORT_DRY_GRASS.defaultBlockState(), BlockPos.ZERO)))
+                ));
+
+        registerPlaced(context, BEACHSTONE_ROCKS,
+                configured.getOrThrow(EConfiguredFeatures.BEACHSTONE_ROCK_KEY),
+                List.of(
+                        CountPlacement.of(1),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                        BlockPredicate.wouldSurvive(Blocks.SHORT_DRY_GRASS.defaultBlockState(), BlockPos.ZERO)))
+                ));
+        registerPlaced(context, EXTRA_BEACHSTONE_ROCKS,
+                configured.getOrThrow(EConfiguredFeatures.BEACHSTONE_ROCK_KEY),
+                List.of(
+                        CountPlacement.of(2),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                        BlockPredicate.wouldSurvive(Blocks.SHORT_DRY_GRASS.defaultBlockState(), BlockPos.ZERO)))
+                ));
+
+        registerPlaced(context, TIDEPOOL,
+                configured.getOrThrow(EConfiguredFeatures.TIDEPOOL_KEY),
+                List.of(
+                        CountPlacement.of(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, 32),
+                        RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.SAND)),
+                        SeaLevelFilter.of(-1, 0)
+                ));
+
+        registerPlaced(context, STONY_TIDEPOOL,
+                configured.getOrThrow(EConfiguredFeatures.STONY_TIDEPOOL_KEY),
+                List.of(
+                        CountPlacement.of(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, 32),
+                        RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.STONE)),
+                        SeaLevelFilter.of(-1, 0)
+                ));
 
     }
 

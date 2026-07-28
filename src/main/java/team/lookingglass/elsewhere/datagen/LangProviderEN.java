@@ -336,6 +336,8 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.polished_pink_sandstone_wall", "Polished Pink Sandstone Wall");
         translationBuilder.add("block.elsewhere.chiseled_pink_sandstone", "Chiseled Pink Sandstone");
 
+        translationBuilder.add("block.elsewhere.beachstone", "Beachstone");
+
         translationBuilder.add("block.elsewhere.chiseled_purpur", "Chiseled Purpur");
 
         translationBuilder.add("block.elsewhere.icicle", "Icicle");

@@ -349,6 +349,10 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 stonecutterSet(List.of(Blocks.BASALT, Blocks.POLISHED_BASALT, Blocks.SMOOTH_BASALT, EBlocks.SMOOTH_BASALT_STAIRS, EBlocks.SMOOTH_BASALT_WALL, EBlocks.POLISHED_SMOOTH_BASALT, EBlocks.POLISHED_SMOOTH_BASALT_STAIRS, EBlocks.POLISHED_SMOOTH_BASALT_WALL, EBlocks.SMOOTH_BASALT_BRICKS, EBlocks.SMOOTH_BASALT_BRICK_STAIRS, EBlocks.SMOOTH_BASALT_BRICK_WALL, EBlocks.SMOOTH_BASALT_TILES, EBlocks.SMOOTH_BASALT_TILE_STAIRS, EBlocks.SMOOTH_BASALT_TILE_WALL), List.of(EBlocks.BASALT_SLAB, EBlocks.POLISHED_BASALT_SLAB, EBlocks.SMOOTH_BASALT_SLAB, EBlocks.POLISHED_SMOOTH_BASALT_SLAB, EBlocks.SMOOTH_BASALT_BRICK_SLAB, EBlocks.SMOOTH_BASALT_TILE_SLAB));
 
 
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.BEACHSTONE).define('S', Blocks.SAND).define('#', EBlocks.PEBBLE)
+                        .pattern("#S").pattern("S#")
+                        .unlockedBy(getHasName(Blocks.SAND), has(Blocks.SAND)).save(wrappedOutput);
+
 
                 quartzSet(wrappedOutput,
                         Blocks.QUARTZ_BLOCK, Blocks.QUARTZ_STAIRS, Blocks.QUARTZ_SLAB,

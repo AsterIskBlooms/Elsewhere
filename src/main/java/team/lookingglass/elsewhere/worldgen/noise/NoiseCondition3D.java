@@ -1,16 +1,12 @@
-package team.lookingglass.elsewhere.worldgen;
+package team.lookingglass.elsewhere.worldgen.noise;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
-import team.lookingglass.elsewhere.Elsewhere;
 
 public record NoiseCondition3D(
         ResourceKey<NormalNoise.NoiseParameters> noise,

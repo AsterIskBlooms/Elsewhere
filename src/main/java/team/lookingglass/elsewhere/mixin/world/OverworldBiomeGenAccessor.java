@@ -29,6 +29,9 @@ public interface OverworldBiomeGenAccessor {
     @Accessor("SHATTERED_BIOMES")
     ResourceKey<Biome>[][] getShatteredBiomes();
 
+    @Accessor("OCEANS")
+    ResourceKey<Biome>[][] getOceans();
+
     @Accessor("UNFROZEN_RANGE")
     Climate.Parameter getUnfrozenRange();
 

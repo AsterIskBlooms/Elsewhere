@@ -958,6 +958,10 @@ public interface EBlocks {
     Block PINK_CONCRETE_STAIRS = registerStair("pink_concrete_stairs", Blocks.PINK_CONCRETE);
     Block PINK_CONCRETE_SLAB = registerSlab("pink_concrete_slab", Blocks.PINK_CONCRETE);
 
+    Block BEACHSTONE = register("beachstone", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.5F, 1.0F).sound(SoundType.DRIPSTONE_BLOCK)
+    );
+
     Block PINK_SAND = register("pink_sand", p -> new SandBlock(new ColorRGBA(0xFFECCFBD), p), true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.TERRACOTTA_PINK)
     );

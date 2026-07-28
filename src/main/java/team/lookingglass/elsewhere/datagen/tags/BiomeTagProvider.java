@@ -25,9 +25,10 @@ public class BiomeTagProvider extends FabricTagsProvider<Biome> {
                 Biomes.DRIPSTONE_CAVES, Biomes.LUSH_CAVES,
                 EBiomes.SULFUR_CAVES, EBiomes.CRYSTAL_CAVERNS, EBiomes.ARID_CAVES, EBiomes.FRIGID_CAVES
         );
+        this.builder(BiomeTags.IS_BEACH).add(EBiomes.SANDY_TIDEPOOLS);
 
-        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT);
-        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT);
+        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT, EBiomes.SANDY_TIDEPOOLS);
+        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT, EBiomes.SANDY_TIDEPOOLS);
         this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS).add(EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA);
         this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS).add(EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA);
 
@@ -38,7 +39,7 @@ public class BiomeTagProvider extends FabricTagsProvider<Biome> {
         this.builder(BiomeTags.HAS_VILLAGE_SAVANNA).add(EBiomes.OUTBACK);
         this.builder(BiomeTags.HAS_VILLAGE_TAIGA).add(EBiomes.TUNDRA);
 
-        this.builder(BiomeTags.IS_OVERWORLD).addTag(BiomeTags.IS_RIVER).addTag(EBiomeTags.IS_CAVE)
+        this.builder(BiomeTags.IS_OVERWORLD).addTag(BiomeTags.IS_RIVER).addTag(EBiomeTags.IS_CAVE).addTag(BiomeTags.IS_BEACH)
                 .add(EBiomes.OUTBACK, EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA, EBiomes.LUSH_DESERT);
     }
 }

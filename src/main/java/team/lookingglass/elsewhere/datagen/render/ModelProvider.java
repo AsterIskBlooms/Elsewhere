@@ -457,6 +457,8 @@ public class ModelProvider extends FabricModelProvider {
         ;
         gen.createTrivialBlock(EBlocks.CHISELED_PINK_SANDSTONE, TexturedModel.COLUMN);
 
+        gen.createTrivialCube(EBlocks.BEACHSTONE);
+
 
         // Purpur
         gen.createTrivialBlock(EBlocks.CHISELED_PURPUR, TexturedModel.COLUMN);

@@ -13,8 +13,9 @@ import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.tags.*;
 import team.lookingglass.elsewhere.registry.properties.EBlockInteractions;
 import team.lookingglass.elsewhere.worldgen.EFeatures;
-import team.lookingglass.elsewhere.worldgen.ENoise;
+import team.lookingglass.elsewhere.worldgen.noise.ENoise;
 import team.lookingglass.elsewhere.worldgen.EWorldgen;
+import team.lookingglass.elsewhere.worldgen.features.placement.EPlacementModifiers;
 
 public class Elsewhere implements ModInitializer {
 	public static final String MODID = "elsewhere";
@@ -39,5 +40,6 @@ public class Elsewhere implements ModInitializer {
 		EEntitySpawns.initialize();
 		ETreeGrowers.initialize();
 		EPoiTypes.initialize();
+		EPlacementModifiers.initialize();
 	}
 }

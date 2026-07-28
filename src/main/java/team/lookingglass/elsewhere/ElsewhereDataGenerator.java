@@ -20,7 +20,7 @@ import team.lookingglass.elsewhere.dimension.DimensionDataGenerator;
 import team.lookingglass.elsewhere.dimension.EDimensions;
 import team.lookingglass.elsewhere.worldgen.EBiomes;
 import team.lookingglass.elsewhere.worldgen.EConfiguredFeatures;
-import team.lookingglass.elsewhere.worldgen.ENoise;
+import team.lookingglass.elsewhere.worldgen.noise.ENoise;
 import team.lookingglass.elsewhere.worldgen.EPlacedFeatures;
 
 public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {

@@ -1,4 +1,4 @@
-package team.lookingglass.elsewhere.worldgen;
+package team.lookingglass.elsewhere.worldgen.noise;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

@@ -13,8 +13,10 @@ import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.registry.tags.EBlockTags;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.worldgen.features.*;
+import team.lookingglass.elsewhere.worldgen.features.config.BlockColumnClusterConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.config.ExposedDoubleDiskConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.config.BlockPatchConfiguration;
+import team.lookingglass.elsewhere.worldgen.features.config.TidePoolConfiguration;
 import team.lookingglass.elsewhere.worldgen.features.placers.PoplarFoliagePlacer;
 import team.lookingglass.elsewhere.worldgen.features.placers.PoplarTrunkPlacer;
 import team.lookingglass.elsewhere.worldgen.features.spike.SpikeClusterFeature;
@@ -32,8 +34,16 @@ public class EFeatures {
                     new ExposedDoubleDiskFeature(ExposedDoubleDiskConfiguration.CODEC));
 
     public static final Feature<BlockPatchConfiguration> BLOCK_PATCH = Registry.register(
-            BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath("elsewhere", "flower_patch"),
+            BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "block_patch"),
             new BlockPatchFeature());
+
+    public static final Feature<BlockColumnClusterConfiguration> BLOCK_COLUMN_CLUSTER = Registry.register(
+            BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "block_column_cluster"),
+            new BlockColumnClusterFeature(BlockColumnClusterConfiguration.CODEC));
+
+    public static final Feature<TidePoolConfiguration> TIDEPOOL = Registry.register(
+            BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tidepool"),
+            new TidePoolFeature(TidePoolConfiguration.CODEC));
 
     public static final Feature<NoneFeatureConfiguration> AMETHYST_NODE =
             Registry.register(BuiltInRegistries.FEATURE,

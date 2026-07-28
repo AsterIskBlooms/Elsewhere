@@ -375,6 +375,8 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.POLISHED_PINK_SANDSTONE_WALL);
         dropSelf(EBlocks.CHISELED_PINK_SANDSTONE);
 
+        dropSelf(EBlocks.BEACHSTONE);
+
         dropSelf(EBlocks.CHISELED_PURPUR);
 
         add(EBlocks.ICICLE, createSilkTouchOnlyTable(EBlocks.ICICLE));
