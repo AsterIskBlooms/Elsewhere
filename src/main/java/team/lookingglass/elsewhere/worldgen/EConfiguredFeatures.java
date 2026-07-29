@@ -399,31 +399,23 @@ public class EConfiguredFeatures {
                         UniformInt.of(4, 7),
                         UniformInt.of(1, 4),
                         UniformInt.of(1, 3),
-                        UniformInt.of(3, 4),
-                        UniformInt.of(0, 1),
+                        UniformInt.of(5, 8),
+                        UniformInt.of(1, 2),
                         UniformInt.of(0, 1),
                         0.30F,
                         ConstantInt.of(6),
                         UniformInt.of(5, 7),
                         new WeightedStateProvider(WeightedList.<BlockState>builder()
-                                .add(EBlocks.BEACHSTONE.defaultBlockState(), 2)
+                                .add(Blocks.GRAVEL.defaultBlockState(), 2)
                                 .add(Blocks.TUFF.defaultBlockState(), 1)
+                                .add(Blocks.STONE.defaultBlockState(), 1)
                                 .build()),
                         BlockStateProvider.simple(Blocks.TUFF.defaultBlockState()),
                         new WeightedStateProvider(WeightedList.<BlockState>builder()
-                                .add(Blocks.BRAIN_CORAL.defaultBlockState(), 3)
-                                .add(Blocks.BUBBLE_CORAL.defaultBlockState(), 3)
-                                .add(Blocks.TUBE_CORAL.defaultBlockState(), 3)
-                                .add(Blocks.FIRE_CORAL.defaultBlockState(), 3)
-                                .add(Blocks.HORN_CORAL.defaultBlockState(), 3)
-                                .add(Blocks.BRAIN_CORAL_BLOCK.defaultBlockState(), 1)
-                                .add(Blocks.BUBBLE_CORAL_BLOCK.defaultBlockState(), 1)
-                                .add(Blocks.TUBE_CORAL_BLOCK.defaultBlockState(), 1)
-                                .add(Blocks.FIRE_CORAL_BLOCK.defaultBlockState(), 1)
-                                .add(Blocks.HORN_CORAL_BLOCK.defaultBlockState(), 1)
+                                .add(Blocks.SEAGRASS.defaultBlockState(), 1)
                                 .build()),
-                        0.15F,
-                        0.30F,
+                        0.0F,
+                        0.45F,
                         0.25F
                 )
         );

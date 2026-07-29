@@ -46,6 +46,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
         valueLookupBuilder(BlockTags.SAND).add(
                 EBlocks.PINK_SAND
         );
+        valueLookupBuilder(BlockTags.SUPPORTS_DRY_VEGETATION).add(Blocks.GRAVEL);
 
         valueLookupBuilder(BlockTags.REPLACEABLE).add(
                 EBlocks.PEBBLE,

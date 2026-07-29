@@ -691,21 +691,6 @@ public class LangProviderEN extends FabricLanguageProvider {
 
 
 
-        translationBuilder.add("biome.elsewhere.outback", "Outback");
-        translationBuilder.add("biome.elsewhere.tundra", "Tundra");
-        translationBuilder.add("biome.elsewhere.dappled_forest", "Dappled Forest");
-
-        translationBuilder.add("biome.elsewhere.cold_river", "Cold River");
-        translationBuilder.add("biome.elsewhere.lukewarm_river", "Lukewarm River");
-        translationBuilder.add("biome.elsewhere.warm_river", "Warm River");
-
-        translationBuilder.add("biome.elsewhere.sulfur_caves", "Sulfur Caves");
-        translationBuilder.add("biome.elsewhere.crystalline_caves", "Crystalline Caves");
-        translationBuilder.add("biome.elsewhere.arid_caves", "Arid Caves");
-        translationBuilder.add("biome.elsewhere.frigid_caves", "Frigid Caves");
-
-
-
         translationBuilder.add("entity.elsewhere.frostbite", "Frostbite");
         translationBuilder.add("item.elsewhere.frostbite_spawn_egg", "Frostbite Spawn Egg");
 
@@ -735,6 +720,27 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("tag.elsewhere.needs_copper_tool", "Needs Copper Tool");
         translationBuilder.add("tag.elsewhere.needs_bronze_tool", "Needs Bronze Tool");
         translationBuilder.add("tag.elsewhere.incorrect_for_bronze_tool", "Incorrect For Bronze Tool");
+
+
+
+        // Biomes
+        translationBuilder.add("biome.elsewhere.outback", "Outback");
+        translationBuilder.add("biome.elsewhere.tundra", "Tundra");
+        translationBuilder.add("biome.elsewhere.dappled_forest", "Dappled Forest");
+
+        translationBuilder.add("biome.elsewhere.tidepools", "Tidepools");
+        translationBuilder.add("biome.elsewhere.cold_tidepools", "Cold Tidepools");
+        translationBuilder.add("biome.elsewhere.cold_beach", "Cold Beach");
+        translationBuilder.add("biome.elsewhere.frozen_beach", "Frozen Beach");
+
+        translationBuilder.add("biome.elsewhere.cold_river", "Cold River");
+        translationBuilder.add("biome.elsewhere.lukewarm_river", "Lukewarm River");
+        translationBuilder.add("biome.elsewhere.warm_river", "Warm River");
+
+        translationBuilder.add("biome.elsewhere.sulfur_caves", "Sulfur Caves");
+        translationBuilder.add("biome.elsewhere.crystalline_caves", "Crystalline Caves");
+        translationBuilder.add("biome.elsewhere.arid_caves", "Arid Caves");
+        translationBuilder.add("biome.elsewhere.frigid_caves", "Frigid Caves");
 
 
 

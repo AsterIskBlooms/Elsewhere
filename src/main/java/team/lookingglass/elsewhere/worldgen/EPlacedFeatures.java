@@ -416,7 +416,7 @@ public class EPlacedFeatures {
                         BiomeFilter.biome(),
                         EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.ONLY_IN_AIR_PREDICATE, 32),
                         RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.STONE)),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.GRAVEL)),
                         SeaLevelFilter.of(-1, 0)
                 ));
 

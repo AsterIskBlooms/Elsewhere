@@ -33,7 +33,24 @@ public class OverworldBiomeGenMixin {
         ResourceKey<Biome>[][] shattered = accessor.getShatteredBiomes();
         ResourceKey<Biome>[][] ocean = accessor.getOceans();
 
+        // Edited Biomes
+        plateauB[0][1] = Biomes.ICE_SPIKES;
+        plateauB[1][1] = Biomes.CHERRY_GROVE;
+
+        plateauB[3][3] = Biomes.BAMBOO_JUNGLE;
+        plateauB[3][4] = Biomes.BAMBOO_JUNGLE;
+
+        plateauB[1][3] = Biomes.TAIGA;
+        plateauA[2][3] = Biomes.OLD_GROWTH_BIRCH_FOREST;
+        plateauB[2][3] = Biomes.OLD_GROWTH_BIRCH_FOREST;
+
+        plateauA[1][2] = Biomes.MEADOW;
+        plateauA[2][2] = Biomes.MEADOW;
+
+
+        // New Biomes
         middleB[3][0] = EBiomes.OUTBACK;
+        middleB[3][1] = EBiomes.OUTBACK;
 
         middleA[4][3] = EBiomes.LUSH_DESERT;
         middleA[4][4] = EBiomes.LUSH_DESERT;
@@ -42,25 +59,26 @@ public class OverworldBiomeGenMixin {
 
         middleA[0][0] = EBiomes.TUNDRA;
         plateauA[0][0] = EBiomes.TUNDRA;
-
-        plateauB[0][1] = Biomes.ICE_SPIKES;
-        plateauB[1][1] = Biomes.CHERRY_GROVE;
+        plateauA[0][1] = EBiomes.TUNDRA;
 
         middleB[1][2] = EBiomes.DAPPLED_FOREST;
+        middleB[1][3] = EBiomes.DAPPLED_FOREST;
         plateauB[1][2] = EBiomes.DAPPLED_FOREST;
         plateauB[1][3] = EBiomes.DAPPLED_FOREST;
-
-        ocean[0][4] = EBiomes.STONY_TIDEPOOLS;
 
     }
 
     // Desert Beaches
     @Inject(method = "pickBeachBiome", at = @At("HEAD"), cancellable = true)
-    private void elsewhere$desertBeachVariants(int temperatureIndex, int humidityIndex, CallbackInfoReturnable<ResourceKey<Biome>> cir) {
+    private void elsewhere$pickBeachBiome(int temperatureIndex, int humidityIndex, CallbackInfoReturnable<ResourceKey<Biome>> cir) {
         if (temperatureIndex >= 3) {
-            if (humidityIndex >= 3 || temperatureIndex == 4) {
-                cir.setReturnValue(EBiomes.SANDY_TIDEPOOLS);
-            } else cir.setReturnValue(EBiomes.STONY_TIDEPOOLS);
+            cir.setReturnValue(humidityIndex >= 2 ? EBiomes.TIDEPOOLS : Biomes.BEACH);
+        } else if (temperatureIndex == 1) {
+            cir.setReturnValue(humidityIndex >= 3 ? EBiomes.COLD_TIDEPOOLS : EBiomes.COLD_BEACH);
+        } else if (temperatureIndex == 0) {
+            cir.setReturnValue(humidityIndex >= 3 ? Biomes.SNOWY_BEACH : EBiomes.FROZEN_BEACH);
+        } else {
+            cir.setReturnValue(Biomes.BEACH);
         }
     }
 

@@ -26,8 +26,10 @@ public class EBiomes {
         context.register(TUNDRA, createTundra(context));
         context.register(DAPPLED_FOREST, createDappledForest(context));
 
-        context.register(SANDY_TIDEPOOLS, createSandyTidepools(context));
-        context.register(STONY_TIDEPOOLS, createStonyTidepools(context));
+        context.register(TIDEPOOLS, createTidepools(context));
+        context.register(COLD_TIDEPOOLS, createColdTidepools(context));
+        context.register(COLD_BEACH, createColdBeach(context));
+        context.register(FROZEN_BEACH, createFrozenBeach(context));
 
         context.register(WARM_RIVER, createWarmRiver(context));
         context.register(LUKEWARM_RIVER, createLukewarmRiver(context));
@@ -48,10 +50,14 @@ public class EBiomes {
     public static final ResourceKey<Biome> DAPPLED_FOREST = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "dappled_forest"));
 
-    public static final ResourceKey<Biome> SANDY_TIDEPOOLS = ResourceKey.create(
-            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sandy_tidepools"));
-    public static final ResourceKey<Biome> STONY_TIDEPOOLS = ResourceKey.create(
-            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "stony_tidepools"));
+    public static final ResourceKey<Biome> TIDEPOOLS = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tidepools"));
+    public static final ResourceKey<Biome> COLD_TIDEPOOLS = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cold_tidepools"));
+    public static final ResourceKey<Biome> COLD_BEACH = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cold_beach"));
+    public static final ResourceKey<Biome> FROZEN_BEACH = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frozen_beach"));
 
     public static final ResourceKey<Biome> WARM_RIVER = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "warm_river"));
@@ -234,13 +240,13 @@ public class EBiomes {
                 .build();
     }
 
-    private static Biome createSandyTidepools(BootstrapContext<Biome> context) {
+    private static Biome createTidepools(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 3, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 2));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 3));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -256,7 +262,7 @@ public class EBiomes {
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
 
         return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
+                .hasPrecipitation(true)
                 .temperature(1.5F)
                 .downfall(0.4F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
@@ -268,13 +274,13 @@ public class EBiomes {
                 .build();
     }
 
-    private static Biome createStonyTidepools(BootstrapContext<Biome> context) {
+    private static Biome createColdTidepools(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
         spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 2));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 3));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -290,13 +296,88 @@ public class EBiomes {
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
 
         return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
-                .temperature(1.8F)
+                .hasPrecipitation(true)
+                .temperature(0.6F)
                 .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x45ADF2)
+                        .waterColor(0x3D57D6)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createColdBeach(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.6F)
+                .downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x3D57D6)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createFrozenBeach(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 75, new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(0.1F)
+                .downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x3938C9)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -378,7 +459,7 @@ public class EBiomes {
         genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_CLAY);
 
         return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
+                .hasPrecipitation(true)
                 .temperature(1.5F)
                 .downfall(0.7F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
@@ -423,7 +504,7 @@ public class EBiomes {
         genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, MiscOverworldPlacements.DISK_GRAVEL);
 
         return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
+                .hasPrecipitation(true)
                 .temperature(0.5F)
                 .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()

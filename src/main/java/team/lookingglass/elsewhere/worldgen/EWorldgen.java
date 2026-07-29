@@ -128,7 +128,7 @@ public class EWorldgen {
         List<ResourceKey<Biome>> beaches = List.of(
                 Biomes.BEACH,
                 Biomes.SNOWY_BEACH,
-                EBiomes.SANDY_TIDEPOOLS
+                EBiomes.TIDEPOOLS
         );
         BiomeModifications.addFeature(
                 ctx -> beaches.contains(ctx.getBiomeKey()),
@@ -141,18 +141,18 @@ public class EWorldgen {
                 EPlacedFeatures.BEACHSTONE_ROCKS
         );
         BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == EBiomes.SANDY_TIDEPOOLS,
+                ctx -> ctx.getBiomeKey() == EBiomes.TIDEPOOLS,
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS,
                 EPlacedFeatures.EXTRA_BEACHSTONE_ROCKS
         );
         BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == EBiomes.SANDY_TIDEPOOLS,
+                ctx -> ctx.getBiomeKey() == EBiomes.TIDEPOOLS,
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS,
                 EPlacedFeatures.TIDEPOOL
         );
 
         BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == EBiomes.STONY_TIDEPOOLS,
+                ctx -> ctx.getBiomeKey() == EBiomes.COLD_TIDEPOOLS,
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS,
                 EPlacedFeatures.STONY_TIDEPOOL
         );
@@ -454,7 +454,7 @@ public class EWorldgen {
                                                         SurfaceRules.state(EBlocks.RED_GRASS_BLOCK.defaultBlockState())))
                                 )));
 
-                SurfaceRules.RuleSource tidepoolRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.SANDY_TIDEPOOLS),
+                SurfaceRules.RuleSource sandyTidepoolRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.TIDEPOOLS),
                         SurfaceRules.sequence(
                                 sandstoneCliffsRule,
                                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
@@ -465,11 +465,29 @@ public class EWorldgen {
                                         SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState()))
                         ));
 
-                SurfaceRules.RuleSource tidepoolIslandRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.STONY_TIDEPOOLS),
+                SurfaceRules.RuleSource stonyTidepoolRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.COLD_TIDEPOOLS),
                         SurfaceRules.sequence(
-                                sandstoneCliffsRule,
+                                stoneCliffsRule,
                                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                        SurfaceRules.state(Blocks.STONE.defaultBlockState())),
+                                        SurfaceRules.state(Blocks.GRAVEL.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.STONE.defaultBlockState()))
+                        ));
+
+                SurfaceRules.RuleSource coldBeachRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.COLD_BEACH),
+                        SurfaceRules.sequence(
+                                stoneCliffsRule,
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.GRAVEL.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(Blocks.GRAVEL.defaultBlockState()))
+                        ));
+
+                SurfaceRules.RuleSource frozenBeachRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.FROZEN_BEACH),
+                        SurfaceRules.sequence(
+                                stoneCliffsRule,
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.state(Blocks.PACKED_ICE.defaultBlockState())),
                                 SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
                                         SurfaceRules.state(Blocks.STONE.defaultBlockState()))
                         ));
@@ -629,7 +647,8 @@ public class EWorldgen {
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
                         SurfaceRules.sequence(biomeCliffRules, overworldChanges, riverRules,
                                 outbackRules, lushDesertRules, tundraRules,
-                                tidepoolRules, tidepoolIslandRules,
+                                sandyTidepoolRules, stonyTidepoolRules,
+                                coldBeachRules, frozenBeachRules,
                                 crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 deepslateRule, shaleRule, object.surfaceRule()
                         ));

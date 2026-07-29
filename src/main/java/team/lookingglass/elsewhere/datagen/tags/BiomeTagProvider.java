@@ -25,15 +25,29 @@ public class BiomeTagProvider extends FabricTagsProvider<Biome> {
                 Biomes.DRIPSTONE_CAVES, Biomes.LUSH_CAVES,
                 EBiomes.SULFUR_CAVES, EBiomes.CRYSTAL_CAVERNS, EBiomes.ARID_CAVES, EBiomes.FRIGID_CAVES
         );
-        this.builder(BiomeTags.IS_BEACH).add(EBiomes.SANDY_TIDEPOOLS);
+        this.builder(BiomeTags.IS_BEACH).add(
+                EBiomes.TIDEPOOLS, EBiomes.COLD_TIDEPOOLS,
+                EBiomes.COLD_BEACH, EBiomes.FROZEN_BEACH
+        );
 
-        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT, EBiomes.SANDY_TIDEPOOLS);
-        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT, EBiomes.SANDY_TIDEPOOLS);
-        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS).add(EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA);
-        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS).add(EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA);
+        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FARM_ANIMALS).add(
+                EBiomes.OUTBACK, EBiomes.LUSH_DESERT, EBiomes.TIDEPOOLS
+        );
+        this.builder(BiomeTags.SPAWNS_WARM_VARIANT_FROGS).add(
+                EBiomes.OUTBACK, EBiomes.LUSH_DESERT, EBiomes.TIDEPOOLS
+        );
+
+        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FARM_ANIMALS).add(
+                EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA,
+                EBiomes.COLD_TIDEPOOLS, EBiomes.COLD_BEACH, EBiomes.FROZEN_BEACH
+        );
+        this.builder(BiomeTags.SPAWNS_COLD_VARIANT_FROGS).add(
+                EBiomes.DAPPLED_FOREST, EBiomes.TUNDRA,
+                EBiomes.COLD_TIDEPOOLS, EBiomes.COLD_BEACH, EBiomes.FROZEN_BEACH
+        );
 
         this.builder(BiomeTags.SPAWNS_GOLD_RABBITS).add(EBiomes.OUTBACK, EBiomes.LUSH_DESERT);
-        this.builder(BiomeTags.SPAWNS_SNOW_FOXES).add(EBiomes.TUNDRA);
+        this.builder(BiomeTags.SPAWNS_SNOW_FOXES).add(EBiomes.TUNDRA, EBiomes.FROZEN_BEACH);
 
         this.builder(BiomeTags.HAS_VILLAGE_DESERT).add(EBiomes.LUSH_DESERT);
         this.builder(BiomeTags.HAS_VILLAGE_SAVANNA).add(EBiomes.OUTBACK);
