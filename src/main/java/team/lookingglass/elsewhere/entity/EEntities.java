@@ -27,11 +27,6 @@ public interface EEntities {
     ResourceKey<EntityType<?>> FROSTBITE_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frostbite"));
     ResourceKey<EntityType<?>> PERCH_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "perch"));
 
-    ResourceKey<EntityType<?>> POPLAR_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_boat"));
-    ResourceKey<EntityType<?>> POPLAR_CHEST_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_chest_boat"));
-    ResourceKey<EntityType<?>> AZALEA_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "azalea_boat"));
-    ResourceKey<EntityType<?>> AZALEA_CHEST_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "azalea_chest_boat"));
-
     EntityType<Frostbite> FROSTBITE = Registry.register(
             BuiltInRegistries.ENTITY_TYPE,
             FROSTBITE_KEY,
@@ -49,47 +44,29 @@ public interface EEntities {
                     .build(PERCH_KEY)
     );
 
-    EntityType<Boat> POPLAR_BOAT = Registry.register(
-            BuiltInRegistries.ENTITY_TYPE,
-            POPLAR_BOAT_KEY,
-            EntityType.Builder.of(boatFactory(() -> EItems.POPLAR_BOAT), MobCategory.MISC)
-                    .noLootTable()
-                    .sized(1.375F, 0.5625F)
-                    .eyeHeight(0.5625F)
-                    .clientTrackingRange(10)
-                    .build(POPLAR_BOAT_KEY)
-    );
-    EntityType<ChestBoat> POPLAR_CHEST_BOAT = Registry.register(
-            BuiltInRegistries.ENTITY_TYPE,
-            POPLAR_CHEST_BOAT_KEY,
-            EntityType.Builder.of(chestBoatFactory(() -> EItems.POPLAR_CHEST_BOAT), MobCategory.MISC)
-                    .noLootTable()
-                    .sized(1.375F, 0.5625F)
-                    .eyeHeight(0.5625F)
-                    .clientTrackingRange(10)
-                    .build(POPLAR_CHEST_BOAT_KEY)
-    );
 
-    EntityType<Boat> AZALEA_BOAT = Registry.register(
-            BuiltInRegistries.ENTITY_TYPE,
-            AZALEA_BOAT_KEY,
-            EntityType.Builder.of(boatFactory(() -> EItems.AZALEA_BOAT), MobCategory.MISC)
-                    .noLootTable()
-                    .sized(1.375F, 0.5625F)
-                    .eyeHeight(0.5625F)
-                    .clientTrackingRange(10)
-                    .build(AZALEA_BOAT_KEY)
-    );
-    EntityType<ChestBoat> AZALEA_CHEST_BOAT = Registry.register(
-            BuiltInRegistries.ENTITY_TYPE,
-            AZALEA_CHEST_BOAT_KEY,
-            EntityType.Builder.of(chestBoatFactory(() -> EItems.AZALEA_CHEST_BOAT), MobCategory.MISC)
-                    .noLootTable()
-                    .sized(1.375F, 0.5625F)
-                    .eyeHeight(0.5625F)
-                    .clientTrackingRange(10)
-                    .build(AZALEA_CHEST_BOAT_KEY)
-    );
+    // Boats
+    ResourceKey<EntityType<?>> POPLAR_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_boat"));
+    ResourceKey<EntityType<?>> POPLAR_CHEST_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_chest_boat"));
+    ResourceKey<EntityType<?>> AZALEA_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "azalea_boat"));
+    ResourceKey<EntityType<?>> AZALEA_CHEST_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "azalea_chest_boat"));
+    ResourceKey<EntityType<?>> CEDAR_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cedar_boat"));
+    ResourceKey<EntityType<?>> CEDAR_CHEST_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cedar_chest_boat"));
+
+    EntityType<Boat> POPLAR_BOAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, POPLAR_BOAT_KEY, EntityType.Builder.of(boatFactory(() -> EItems.POPLAR_BOAT), MobCategory.MISC)
+            .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10).build(POPLAR_BOAT_KEY));
+    EntityType<ChestBoat> POPLAR_CHEST_BOAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, POPLAR_CHEST_BOAT_KEY, EntityType.Builder.of(chestBoatFactory(() -> EItems.POPLAR_CHEST_BOAT), MobCategory.MISC)
+            .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10).build(POPLAR_CHEST_BOAT_KEY));
+
+    EntityType<Boat> AZALEA_BOAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, AZALEA_BOAT_KEY, EntityType.Builder.of(boatFactory(() -> EItems.AZALEA_BOAT), MobCategory.MISC)
+            .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10).build(AZALEA_BOAT_KEY));
+    EntityType<ChestBoat> AZALEA_CHEST_BOAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, AZALEA_CHEST_BOAT_KEY, EntityType.Builder.of(chestBoatFactory(() -> EItems.AZALEA_CHEST_BOAT), MobCategory.MISC)
+            .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10).build(AZALEA_CHEST_BOAT_KEY));
+
+    EntityType<Boat> CEDAR_BOAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, CEDAR_BOAT_KEY, EntityType.Builder.of(boatFactory(() -> EItems.CEDAR_BOAT), MobCategory.MISC)
+            .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10).build(CEDAR_BOAT_KEY));
+    EntityType<ChestBoat> CEDAR_CHEST_BOAT = Registry.register(BuiltInRegistries.ENTITY_TYPE, CEDAR_CHEST_BOAT_KEY, EntityType.Builder.of(chestBoatFactory(() -> EItems.CEDAR_CHEST_BOAT), MobCategory.MISC)
+            .noLootTable().sized(1.375F, 0.5625F).eyeHeight(0.5625F).clientTrackingRange(10).build(CEDAR_CHEST_BOAT_KEY));
 
     static void initialize() {
         FabricDefaultAttributeRegistry.register(FROSTBITE, Frostbite.createAttributes().build());

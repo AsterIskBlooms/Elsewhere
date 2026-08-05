@@ -48,7 +48,9 @@ public class TidePoolFeature extends Feature<TidePoolConfiguration> {
             }
         }
 
-        int bounds = maxReach + 2;
+        int rimThickness = Math.max(1, config.rimThickness().sample(random));
+
+        int bounds = maxReach + rimThickness + 1;
         int width = bounds * 2 + 1;
         int[][] classification = new int[width][width];
 
@@ -67,7 +69,7 @@ public class TidePoolFeature extends Feature<TidePoolConfiguration> {
 
                 if (edgeDistance <= 0.0) {
                     classification[xi][zi] = BASIN;
-                } else if (edgeDistance <= 1.0) {
+                } else if (edgeDistance <= rimThickness) {
                     classification[xi][zi] = RIM;
                 }
             }

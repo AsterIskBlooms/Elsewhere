@@ -23,6 +23,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEvent.Context;
 import net.minecraft.world.level.material.Fluids;
 import org.jspecify.annotations.Nullable;
+import team.lookingglass.elsewhere.registry.EBlockEntityTypes;
 import team.lookingglass.elsewhere.registry.properties.EBlockStateProperties;
 import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.ESounds;

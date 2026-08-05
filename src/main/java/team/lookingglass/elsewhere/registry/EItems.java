@@ -1,11 +1,15 @@
 package team.lookingglass.elsewhere.registry;
 
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.material.Fluids;
 import team.lookingglass.elsewhere.Elsewhere;
@@ -28,24 +32,31 @@ public interface EItems {
             p -> new SignItem(EBlocks.POPLAR_SIGN, EBlocks.POPLAR_WALL_SIGN, p), new Item.Properties().stacksTo(16));
     Item POPLAR_HANGING_SIGN = register("poplar_hanging_sign",
             p -> new HangingSignItem(EBlocks.POPLAR_HANGING_SIGN, EBlocks.POPLAR_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
-
-    Item AZALEA_SIGN = register("azalea_sign",
-            p -> new SignItem(EBlocks.AZALEA_SIGN, EBlocks.AZALEA_WALL_SIGN, p), new Item.Properties().stacksTo(16));
-    Item AZALEA_HANGING_SIGN = register("azalea_hanging_sign",
-            p -> new HangingSignItem(EBlocks.AZALEA_HANGING_SIGN, EBlocks.AZALEA_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
-
     Item POPLAR_BOAT = register("poplar_boat",
             p -> new BoatItem(EEntities.POPLAR_BOAT, p), new Item.Properties().stacksTo(1));
     Item POPLAR_CHEST_BOAT = register("poplar_chest_boat",
             p -> new BoatItem(EEntities.POPLAR_CHEST_BOAT, p), new Item.Properties().stacksTo(1));
 
+    Item AZALEA_SIGN = register("azalea_sign",
+            p -> new SignItem(EBlocks.AZALEA_SIGN, EBlocks.AZALEA_WALL_SIGN, p), new Item.Properties().stacksTo(16));
+    Item AZALEA_HANGING_SIGN = register("azalea_hanging_sign",
+            p -> new HangingSignItem(EBlocks.AZALEA_HANGING_SIGN, EBlocks.AZALEA_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
     Item AZALEA_BOAT = register("azalea_boat",
             p -> new BoatItem(EEntities.AZALEA_BOAT, p), new Item.Properties().stacksTo(1));
     Item AZALEA_CHEST_BOAT = register("azalea_chest_boat",
             p -> new BoatItem(EEntities.AZALEA_CHEST_BOAT, p), new Item.Properties().stacksTo(1));
 
-    Item DIAMOND_SHARD = register("diamond_shard", Item::new, new Item.Properties());
-    Item EMERALD_SHARD = register("emerald_shard", Item::new, new Item.Properties());
+    Item CEDAR_SIGN = register("cedar_sign",
+            p -> new SignItem(EBlocks.CEDAR_SIGN, EBlocks.CEDAR_WALL_SIGN, p), new Item.Properties().stacksTo(16));
+    Item CEDAR_HANGING_SIGN = register("cedar_hanging_sign",
+            p -> new HangingSignItem(EBlocks.CEDAR_HANGING_SIGN, EBlocks.CEDAR_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
+    Item CEDAR_BOAT = register("cedar_boat",
+            p -> new BoatItem(EEntities.CEDAR_BOAT, p), new Item.Properties().stacksTo(1));
+    Item CEDAR_CHEST_BOAT = register("cedar_chest_boat",
+            p -> new BoatItem(EEntities.CEDAR_CHEST_BOAT, p), new Item.Properties().stacksTo(1));
+
+    Item DIAMOND_NUGGET = register("diamond_nugget", Item::new, new Item.Properties());
+    Item EMERALD_NUGGET = register("emerald_nugget", Item::new, new Item.Properties());
 
     Item RAW_TIN = register("raw_tin", Item::new, new Item.Properties());
     Item TIN_INGOT = register("tin_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.TIN));
@@ -142,8 +153,15 @@ public interface EItems {
     Item FROSTBITE_SPAWN_EGG = register("frostbite_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.FROSTBITE));
     Item PERCH_SPAWN_EGG = register("perch_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.PERCH));
 
-    Item RAW_PERCH = register("raw_perch", Item::new, new Item.Properties().food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.5F).build()));
-    Item COOKED_PERCH = register("cooked_perch", Item::new, new Item.Properties().food((new FoodProperties.Builder()).nutrition(5).saturationModifier(8.8F).build()));
+    Item RAW_PERCH = register("raw_perch", Item::new, new Item.Properties()
+            .food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.25F).build()));
+    Item COOKED_PERCH = register("cooked_perch", Item::new, new Item.Properties()
+            .food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.75F).build()));
+    Item SHINING_PERCH = register("shining_perch", Item::new, new Item.Properties()
+            .food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.25F).alwaysEdible().build(), Consumables.defaultFood()
+                    .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HASTE, 45 * 20,1), 1.0F))
+                    .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 90 * 20,0), 1.0F))
+                    .build()));
 
     Item PERCH_BUCKET = register("perch_bucket", p -> new MobBucketItem(EEntities.PERCH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, p), new Item.Properties());
 

@@ -27,25 +27,25 @@ public class EItemModelGenerators extends ItemModelGenerators {
     public EItemModelGenerators(ItemModelOutput itemModelOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         super(itemModelOutput, modelOutput);
     }
-    private static final List<TrimMaterialData> CUSTOM_TRIM_MATERIAL_MODELS =
-            Stream.concat(
-                    ItemModelGenerators.TRIM_MATERIAL_MODELS.stream(),
-                    Stream.of(
-                            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("tin"), ETrimMaterials.TIN),
-                            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("silver"), ETrimMaterials.SILVER),
-                            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("bronze", Map.of(EEquipmentAssets.BRONZE, "bronze_darker")), ETrimMaterials.BRONZE),
-                            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("soulsteel", Map.of(EEquipmentAssets.SOULSTEEL, "soulsteel_darker")), ETrimMaterials.SOULSTEEL)
-                    )
-            ).toList();
+    private static final List<TrimMaterialData> CUSTOM_TRIM_MATERIAL_MODELS = List.of(
+            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("tin"), ETrimMaterials.TIN),
+            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("silver"), ETrimMaterials.SILVER),
+            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("bronze", Map.of(EEquipmentAssets.BRONZE, "bronze_darker")), ETrimMaterials.BRONZE),
+            new ItemModelGenerators.TrimMaterialData(MaterialAssetGroup.create("soulsteel", Map.of(EEquipmentAssets.SOULSTEEL, "soulsteel_darker")), ETrimMaterials.SOULSTEEL)
+    );
 
-    public final void customGenerateTrimmableItem(Item armor, ResourceKey<EquipmentAsset> equipmentAssetId,
-                                                  Identifier slotTrimPrefix, boolean hasDyedLayer) {
-        Identifier modelLocation = ModelLocationUtils.getModelLocation(armor);
-        Material itemTexture = TextureMapping.getItemTexture(armor);
-        Material overlayTexture = TextureMapping.getItemTexture(armor, "_overlay");
-        List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> cases = new ArrayList<>(CUSTOM_TRIM_MATERIAL_MODELS.size());
+    private ItemModel.Unbaked generateUntrimmedModel(Identifier modelLocation, Material itemTexture, Material overlayTexture, boolean hasDyedLayer) {
+        if (hasDyedLayer) {
+            this.generateLayeredItem(modelLocation, itemTexture, overlayTexture);
+            return ItemModelUtils.tintedModel(modelLocation, new Dye(-6265536));
+        }
+        ModelTemplates.FLAT_ITEM.create(modelLocation, TextureMapping.layer0(itemTexture), this.modelOutput);
+        return ItemModelUtils.plainModel(modelLocation);
+    }
 
-        for (ItemModelGenerators.TrimMaterialData material : CUSTOM_TRIM_MATERIAL_MODELS) {
+    private List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> buildTrimCases(List<ItemModelGenerators.TrimMaterialData> materials, Identifier modelLocation, Material itemTexture, Material overlayTexture, Identifier slotTrimPrefix, ResourceKey<EquipmentAsset> equipmentAssetId, boolean hasDyedLayer) {
+        List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> cases = new ArrayList<>(materials.size());
+        for (ItemModelGenerators.TrimMaterialData material : materials) {
             Identifier trimModelLocation = modelLocation.withSuffix("_" + material.assets().base().suffix() + "_trim");
             Material trimOverlayTexture = new Material(slotTrimPrefix.withSuffix("_" + material.assets().assetId(equipmentAssetId).suffix()));
             ItemModel.Unbaked trimModel;
@@ -58,16 +58,23 @@ public class EItemModelGenerators extends ItemModelGenerators {
             }
             cases.add(ItemModelUtils.when(material.materialKey(), trimModel));
         }
+        return cases;
+    }
 
-        ItemModel.Unbaked untrimmedModel;
-        if (hasDyedLayer) {
-            ModelTemplates.TWO_LAYERED_ITEM.create(modelLocation, TextureMapping.layered(itemTexture, overlayTexture), this.modelOutput);
-            untrimmedModel = ItemModelUtils.tintedModel(modelLocation, new Dye(-6265536));
-        } else {
-            ModelTemplates.FLAT_ITEM.create(modelLocation, TextureMapping.layer0(itemTexture), this.modelOutput);
-            untrimmedModel = ItemModelUtils.plainModel(modelLocation);
-        }
-
+    public final void generateFullTrimmableItem(Item armor, ResourceKey<EquipmentAsset> equipmentAssetId, Identifier slotTrimPrefix, boolean hasDyedLayer) {
+        Identifier modelLocation = ModelLocationUtils.getModelLocation(armor);
+        Material itemTexture = TextureMapping.getItemTexture(armor);
+        Material overlayTexture = TextureMapping.getItemTexture(armor, "_overlay");
+        List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> cases = new ArrayList<>(buildTrimCases(ItemModelGenerators.TRIM_MATERIAL_MODELS, modelLocation, itemTexture, overlayTexture, slotTrimPrefix, equipmentAssetId, hasDyedLayer));
+        cases.addAll(buildTrimCases(CUSTOM_TRIM_MATERIAL_MODELS, modelLocation, itemTexture, overlayTexture, slotTrimPrefix, equipmentAssetId, hasDyedLayer));
+        ItemModel.Unbaked untrimmedModel = generateUntrimmedModel(modelLocation, itemTexture, overlayTexture, hasDyedLayer);
         this.itemModelOutput.accept(armor, ItemModelUtils.select(new TrimMaterialProperty(), untrimmedModel, cases));
+    }
+
+    public final List<SelectItemModel.SwitchCase<ResourceKey<TrimMaterial>>> generateCustomTrimCases(Item armor, ResourceKey<EquipmentAsset> equipmentAssetId, Identifier slotTrimPrefix, boolean hasDyedLayer) {
+        Identifier modelLocation = ModelLocationUtils.getModelLocation(armor);
+        Material itemTexture = TextureMapping.getItemTexture(armor);
+        Material overlayTexture = TextureMapping.getItemTexture(armor, "_overlay");
+        return buildTrimCases(CUSTOM_TRIM_MATERIAL_MODELS, modelLocation, itemTexture, overlayTexture, slotTrimPrefix, equipmentAssetId, hasDyedLayer);
     }
 }

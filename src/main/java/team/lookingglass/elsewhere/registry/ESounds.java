@@ -19,7 +19,7 @@ public interface ESounds {
     SoundType END_STONE = new SoundType(1F, 1F,
             END_STONE_BREAK, END_STONE_STEP, END_STONE_PLACE, END_STONE_HIT, END_STONE_FALL);
 
-    // Sulfur Caves
+    // Sulfur Cave Blocks
     SoundEvent SULFUR_BREAK = register("block.sulfur.break");
     SoundEvent SULFUR_STEP = register("block.sulfur.step");
     SoundEvent SULFUR_PLACE = register("block.sulfur.place");
@@ -41,7 +41,6 @@ public interface ESounds {
     SoundEvent GEYSER_ERUPTION_START = register("block.geyser.eruption_start");
     SoundEvent GEYSER_ERUPTION_ACTIVE = register("block.geyser.eruption_active");
 
-
     // Stone Bricks & Tiles
     SoundEvent STONE_BRICKS_BREAK = register("block.stone_bricks.break");
     SoundEvent STONE_BRICKS_STEP = register("block.stone_bricks.step");
@@ -52,8 +51,41 @@ public interface ESounds {
             STONE_BRICKS_BREAK, STONE_BRICKS_STEP, STONE_BRICKS_PLACE, STONE_BRICKS_HIT, STONE_BRICKS_FALL);
     SoundType STONE_TILES = new SoundType(1F, 1.2F,
             STONE_BRICKS_BREAK, STONE_BRICKS_STEP, STONE_BRICKS_PLACE, STONE_BRICKS_HIT, STONE_BRICKS_FALL);
+
+    // Shale & Shale Tiles
+    SoundEvent SHALE_BREAK = register("block.shale.break");
+    SoundEvent SHALE_STEP = register("block.shale.step");
+    SoundEvent SHALE_PLACE = register("block.shale.place");
+    SoundEvent SHALE_HIT = register("block.shale.hit");
+    SoundEvent SHALE_FALL = register("block.shale.fall");
+    SoundType SHALE = new SoundType(1F, 1F,
+            SHALE_BREAK, SHALE_STEP, SHALE_PLACE, SHALE_HIT, SHALE_FALL);
+
+    SoundEvent SHALE_BRICKS_BREAK = register("block.shale_bricks.break");
+    SoundEvent SHALE_BRICKS_STEP = register("block.shale_bricks.step");
+    SoundEvent SHALE_BRICKS_PLACE = register("block.shale_bricks.place");
+    SoundEvent SHALE_BRICKS_HIT = register("block.shale_bricks.hit");
+    SoundEvent SHALE_BRICKS_FALL = register("block.shale_bricks.fall");
+    SoundType SHALE_BRICKS = new SoundType(1F, 1F,
+            SHALE_BRICKS_BREAK, SHALE_BRICKS_STEP, SHALE_BRICKS_PLACE, SHALE_BRICKS_HIT, SHALE_BRICKS_FALL);
     SoundType SHALE_TILES = new SoundType(1F, 1.2F,
-            SoundEvents.TUFF_BRICKS_BREAK, SoundEvents.TUFF_BRICKS_STEP, SoundEvents.TUFF_BRICKS_PLACE, SoundEvents.TUFF_BRICKS_HIT, SoundEvents.TUFF_BRICKS_FALL);
+            SHALE_BRICKS_BREAK, SHALE_BRICKS_STEP, SHALE_BRICKS_PLACE, SHALE_BRICKS_HIT, SHALE_BRICKS_FALL);
+
+    SoundEvent CACTUS_BREAK = register("block.cactus.break");
+    SoundEvent CACTUS_STEP = register("block.cactus.step");
+    SoundEvent CACTUS_PLACE = register("block.cactus.place");
+    SoundEvent CACTUS_HIT = register("block.cactus.hit");
+    SoundEvent CACTUS_FALL = register("block.cactus.fall");
+    SoundType CACTUS = new SoundType(0.2F, 1F,
+            CACTUS_BREAK, CACTUS_STEP, CACTUS_PLACE, CACTUS_HIT, CACTUS_FALL);
+
+    SoundEvent ROCKWEED_BASALT_BREAK = register("block.rockweed_basalt.break");
+    SoundEvent ROCKWEED_BASALT_STEP = register("block.rockweed_basalt.step");
+    SoundEvent ROCKWEED_BASALT_PLACE = register("block.rockweed_basalt.place");
+    SoundEvent ROCKWEED_BASALT_HIT = register("block.rockweed_basalt.hit");
+    SoundEvent ROCKWEED_BASALT_FALL = register("block.rockweed_basalt.fall");
+    SoundType ROCKWEED_BASALT = new SoundType(1F, 1F,
+            ROCKWEED_BASALT_BREAK, ROCKWEED_BASALT_STEP, ROCKWEED_BASALT_PLACE, ROCKWEED_BASALT_HIT, ROCKWEED_BASALT_FALL);
 
 
     // Frostbite

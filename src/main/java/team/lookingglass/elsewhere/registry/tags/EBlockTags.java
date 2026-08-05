@@ -15,7 +15,11 @@ public interface EBlockTags {
 
     TagKey<Block> POPLAR_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_logs"));
     TagKey<Block> AZALEA_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "azalea_logs"));
+    TagKey<Block> CEDAR_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cedar_logs"));
     TagKey<Block> BAMBOO_STEMS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "bamboo_stems"));
+
+    TagKey<Block> NATURAL_STONE_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "natural_stone_blocks"));
+    TagKey<Block> SOIL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "soil"));
 
     TagKey<Block> SHALE_ORE_REPLACEABLES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "shale_ore_replaceables"));
     TagKey<Block> CINNABAR_ORE_REPLACEABLES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cinnabar_ore_replaceables"));
@@ -38,6 +42,14 @@ public interface EBlockTags {
     TagKey<Block> TERRACOTTA_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_blocks"));
     TagKey<Block> TERRACOTTA_STAIRS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_stairs"));
     TagKey<Block> TERRACOTTA_SLABS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_slabs"));
+
+    TagKey<Block> TERRACOTTA_BRICKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_bricks"));
+    TagKey<Block> TERRACOTTA_BRICK_STAIRS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_brick_stairs"));
+    TagKey<Block> TERRACOTTA_BRICK_SLABS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_brick_slabs"));
+
+    TagKey<Block> TERRACOTTA_BRICK_TILES = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_brick_tiles"));
+    TagKey<Block> TERRACOTTA_BRICK_TILE_STAIRS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_brick_tile_stairs"));
+    TagKey<Block> TERRACOTTA_BRICK_TILE_SLABS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "terracotta_brick_tile_slabs"));
 
     TagKey<Block> CONCRETE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "concrete"));
     TagKey<Block> CONCRETE_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "concrete_blocks"));

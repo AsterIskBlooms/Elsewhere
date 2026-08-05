@@ -1,9 +1,10 @@
 package team.lookingglass.elsewhere.registry;
 
-import net.minecraft.data.worldgen.features.VegetationFeatures;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorResolverRegistry;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.PushReaction;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.dimension.portal.VeilrootPortalBlock;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.material.MapColor;
 import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.sets.EBlockSets;
 import team.lookingglass.elsewhere.registry.sets.EWoodTypes;
+import team.lookingglass.elsewhere.worldgen.EConfiguredFeatures;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -232,7 +234,7 @@ public interface EBlocks {
     Block POLISHED_DARK_PRISMARINE_SLAB = registerSlab("polished_dark_prismarine_slab", POLISHED_DARK_PRISMARINE);
     Block POLISHED_DARK_PRISMARINE_WALL = registerWall("polished_dark_prismarine_wall", POLISHED_DARK_PRISMARINE);
     Block DARK_PRISMARINE_SCALES = register("dark_prismarine_scales", Block::new, true,
-            BlockBehaviour.Properties.ofFullCopy(POLISHED_DARK_PRISMARINE)
+            BlockBehaviour.Properties.ofFullCopy(POLISHED_DARK_PRISMARINE).sound(ESounds.STONE_TILES)
     );
     Block DARK_PRISMARINE_SCALE_STAIRS = registerStair("dark_prismarine_scale_stairs", DARK_PRISMARINE_SCALES);
     Block DARK_PRISMARINE_SCALE_SLAB = registerSlab("dark_prismarine_scale_slab", DARK_PRISMARINE_SCALES);
@@ -271,9 +273,9 @@ public interface EBlocks {
     Block POLISHED_END_STONE_STAIRS = registerStair("polished_end_stone_stairs", POLISHED_END_STONE);
     Block POLISHED_END_STONE_SLAB = registerSlab("polished_end_stone_slab", POLISHED_END_STONE);
     Block POLISHED_END_STONE_WALL = registerWall("polished_end_stone_wall", POLISHED_END_STONE);
-    Block CHISELED_END_STONE = registerSubBlock("chiseled_end_stone", POLISHED_END_STONE);
+    Block CHISELED_END_STONE = registerSubBlock("chiseled_end_stone", Blocks.END_STONE_BRICKS);
     Block END_STONE_PILLAR = register("end_stone_pillar", RotatedPillarBlock::new, true,
-            BlockBehaviour.Properties.ofFullCopy(POLISHED_END_STONE)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE_BRICKS)
     );
 
 
@@ -299,24 +301,24 @@ public interface EBlocks {
     Block CHISELED_SODALITE = registerSubBlock("chiseled_sodalite", POLISHED_SODALITE);
     Block CHISELED_SODALITE_BRICKS = registerSubBlock("chiseled_sodalite_bricks", SODALITE_BRICKS);
     Block SODALITE_PILLAR = register("sodalite_pillar", RotatedPillarBlock::new, true,
-            BlockBehaviour.Properties.ofFullCopy(POLISHED_SODALITE)
+            BlockBehaviour.Properties.ofFullCopy(SODALITE_BRICKS)
     );
 
     // SHAAAALE
     Block SHALE = register("shale", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(SoundType.TUFF)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(ESounds.SHALE)
     );
     Block SHALE_STAIRS = registerStair("shale_stairs", SHALE);
     Block SHALE_SLAB = registerSlab("shale_slab", SHALE);
     Block SHALE_WALL = registerWall("shale_wall", SHALE);
     Block POLISHED_SHALE = register("polished_shale", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.POLISHED_TUFF)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(ESounds.SHALE)
     );
     Block POLISHED_SHALE_STAIRS = registerStair("polished_shale_stairs", POLISHED_SHALE);
     Block POLISHED_SHALE_SLAB = registerSlab("polished_shale_slab", POLISHED_SHALE);
     Block POLISHED_SHALE_WALL = registerWall("polished_shale_wall", POLISHED_SHALE);
     Block SHALE_BRICKS = register("shale_bricks", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.TUFF_BRICKS)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(ESounds.SHALE_BRICKS)
     );
     Block SHALE_BRICK_STAIRS = registerStair("shale_brick_stairs", SHALE_BRICKS);
     Block SHALE_BRICK_SLAB = registerSlab("shale_brick_slab", SHALE_BRICKS);
@@ -324,10 +326,10 @@ public interface EBlocks {
     Block CHISELED_SHALE = registerSubBlock("chiseled_shale", POLISHED_SHALE);
     Block CHISELED_SHALE_BRICKS = registerSubBlock("chiseled_shale_bricks", SHALE_BRICKS);
     Block SHALE_PILLAR = register("shale_pillar", RotatedPillarBlock::new, true,
-            BlockBehaviour.Properties.ofFullCopy(POLISHED_SHALE)
+            BlockBehaviour.Properties.ofFullCopy(SHALE_BRICKS)
     );
     Block COBBLESHALE = register("cobbleshale", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.TUFF)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(ESounds.SHALE)
     );
     Block COBBLESHALE_STAIRS = registerStair("cobbleshale_stairs", SHALE);
     Block COBBLESHALE_SLAB = registerSlab("cobbleshale_slab", SHALE);
@@ -340,13 +342,13 @@ public interface EBlocks {
     Block SHALE_TILE_WALL = registerWall("shale_tile_wall", SHALE);
 
     Block SHALE_COAL_ORE = register("shale_coal_ore", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F, 6.0F).sound(SoundType.TUFF)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F, 6.0F).sound(ESounds.SHALE)
     );
     Block SHALE_COPPER_ORE = registerSubBlock("shale_copper_ore", SHALE_COAL_ORE);
     Block SHALE_IRON_ORE = registerSubBlock("shale_iron_ore", SHALE_COAL_ORE);
     Block SHALE_GOLD_ORE = registerSubBlock("shale_gold_ore", SHALE_COAL_ORE);
     Block SHALE_REDSTONE_ORE = register("shale_redstone_ore", RedStoneOreBlock::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().randomTicks().lightLevel(Blocks.litBlockEmission(9)).strength(3.0F, 6.0F).sound(ESounds.CINNABAR)
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().randomTicks().lightLevel(Blocks.litBlockEmission(9)).strength(3.0F, 6.0F).sound(ESounds.SHALE)
     );
     Block SHALE_DIAMOND_ORE = registerSubBlock("shale_diamond_ore", SHALE_COAL_ORE);
     Block SHALE_LAPIS_ORE = registerSubBlock("shale_lapis_ore", SHALE_COAL_ORE);
@@ -777,27 +779,34 @@ public interface EBlocks {
     Block POPLAR_WALL_SIGN = registerWallSign("poplar_wall_sign", EWoodTypes.POPLAR, POPLAR_PLANKS);
     Block POPLAR_HANGING_SIGN = registerCeilingHangingSign("poplar_hanging_sign", EWoodTypes.POPLAR, POPLAR_PLANKS);
     Block POPLAR_WALL_HANGING_SIGN = registerWallHangingSign("poplar_wall_hanging_sign", EWoodTypes.POPLAR, POPLAR_PLANKS);
+    Block POPLAR_SHELF = register("poplar_shelf", ShelfBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(POPLAR_PLANKS).sound(SoundType.SHELF)
+    );
 
     Block RED_POPLAR_LEAVES = register("red_poplar_leaves",
             p -> new UntintedParticleLeavesBlock(0.01F, EParticles.RED_POPLAR_LEAVES, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(2.0F, 2.0F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
     );
     Block ORANGE_POPLAR_LEAVES = register("orange_poplar_leaves",
             p -> new UntintedParticleLeavesBlock(0.01F, EParticles.ORANGE_POPLAR_LEAVES, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(2.0F, 2.0F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.2F, 0.2F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
     );
     Block YELLOW_POPLAR_LEAVES = register("yellow_poplar_leaves",
             p -> new UntintedParticleLeavesBlock(0.01F, EParticles.YELLOW_POPLAR_LEAVES, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(2.0F, 2.0F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(0.2F, 0.2F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
     );
     Block POPLAR_SAPLING = registerSapling( "poplar_sapling", ETreeGrowers.POPLAR);
     Block POTTED_POPLAR_SAPLING = registerPottedSapling( "potted_poplar_sapling", POPLAR_SAPLING);
 
-    Block RUSTY_MOSS_BLOCK = register("rusty_moss_block", p -> new BonemealableFeaturePlacerBlock(VegetationFeatures.PALE_MOSS_PATCH_BONEMEAL, p), true,
+    Block RUSTY_MOSS_BLOCK = register("rusty_moss_block", p -> new BonemealableFeaturePlacerBlock(EConfiguredFeatures.RUSTY_MOSS_PATCH_BONEMEAL, p), true,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.1F).sound(SoundType.MOSS)
     );
-    Block RUSTY_MOSS_CARPET = register("rusty_moss_carpet", MossyCarpetBlock::new, true,
+    Block RUSTY_MOSS_CARPET = register("rusty_moss_carpet", CarpetBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(RUSTY_MOSS_BLOCK).sound(SoundType.MOSS_CARPET)
+    );
+
+    Block SEAGRASS_SAND = register("seagrass_sand", p -> new SandBlock(new ColorRGBA(14406560), p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(0.5F, 0.5F).sound(SoundType.WET_GRASS)
     );
 
 
@@ -839,6 +848,57 @@ public interface EBlocks {
     Block AZALEA_WALL_SIGN = registerWallSign("azalea_wall_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
     Block AZALEA_HANGING_SIGN = registerCeilingHangingSign("azalea_hanging_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
     Block AZALEA_WALL_HANGING_SIGN = registerWallHangingSign("azalea_wall_hanging_sign", EWoodTypes.AZALEA, AZALEA_PLANKS);
+    Block AZALEA_SHELF = register("azalea_shelf", ShelfBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(AZALEA_PLANKS).sound(SoundType.SHELF)
+    );
+
+    // Cedar
+    Block CEDAR_LOG = register("cedar_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block STRIPPED_CEDAR_LOG = register("stripped_cedar_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block CEDAR_WOOD = register("cedar_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block STRIPPED_CEDAR_WOOD = register("stripped_cedar_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block CEDAR_PLANKS = register("cedar_planks", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block CEDAR_STAIRS = registerStair("cedar_stairs", CEDAR_PLANKS);
+    Block CEDAR_SLAB = registerSlab("cedar_slab", CEDAR_PLANKS);
+    Block CEDAR_MOSAIC = registerSubBlock("cedar_mosaic", CEDAR_PLANKS);
+    Block CEDAR_MOSAIC_STAIRS = registerStair("cedar_mosaic_stairs", CEDAR_MOSAIC);
+    Block CEDAR_MOSAIC_SLAB = registerSlab("cedar_mosaic_slab", CEDAR_MOSAIC);
+    Block CEDAR_BOARDS = register("cedar_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(CEDAR_PLANKS)
+    );
+    Block CEDAR_TRIM = register("cedar_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(CEDAR_PLANKS)
+    );
+    Block CEDAR_FENCE = registerFence("cedar_fence", CEDAR_PLANKS);
+    Block CEDAR_FENCE_GATE = registerFenceGate("cedar_fence_gate", EWoodTypes.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_DOOR = registerDoor("cedar_door", EBlockSets.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_TRAPDOOR = registerTrapdoor("cedar_trapdoor", EBlockSets.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_PRESSURE_PLATE = registerPressurePlate("cedar_pressure_plate", EBlockSets.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_BUTTON = registerButton("cedar_button", EBlockSets.CEDAR, CEDAR_PLANKS, 30);
+    Block CEDAR_SIGN = registerSign("cedar_sign", EWoodTypes.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_WALL_SIGN = registerWallSign("cedar_wall_sign", EWoodTypes.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_HANGING_SIGN = registerCeilingHangingSign("cedar_hanging_sign", EWoodTypes.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_WALL_HANGING_SIGN = registerWallHangingSign("cedar_wall_hanging_sign", EWoodTypes.CEDAR, CEDAR_PLANKS);
+    Block CEDAR_SHELF = register("cedar_shelf", ShelfBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(CEDAR_PLANKS).sound(SoundType.SHELF)
+    );
+
+    Block CEDAR_SAPLING = registerSapling( "cedar_sapling", ETreeGrowers.CEDAR);
+    Block POTTED_CEDAR_SAPLING = registerPottedSapling( "potted_cedar_sapling", CEDAR_SAPLING);
+    Block CEDAR_LEAVES = register("cedar_leaves",
+            p -> new TintedParticleLeavesBlock(0.01F, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.GRASS).noOcclusion()
+    );
 
     // Arid Dirt
     ResourceKey<Block> ARID_DIRT_KEY = ResourceKey.create(Registries.BLOCK,
@@ -848,7 +908,7 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5F).sound(SoundType.ROOTED_DIRT)
     );
     Block ARID_GRASS_BLOCK = register("arid_grass_block", AridGrassBlock::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5F).sound(SoundType.ROOTED_DIRT).randomTicks()
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(0.5F).sound(SoundType.ROOTED_DIRT).randomTicks()
     );
     Map<Block, Block> DIRT_TO_GRASS = Map.of(
             Blocks.DIRT, Blocks.GRASS_BLOCK,
@@ -925,6 +985,110 @@ public interface EBlocks {
     Block PINK_TERRACOTTA_STAIRS = registerStair("pink_terracotta_stairs", Blocks.PINK_TERRACOTTA);
     Block PINK_TERRACOTTA_SLAB = registerSlab("pink_terracotta_slab", Blocks.PINK_TERRACOTTA);
 
+    Block TERRACOTTA_BRICKS = registerTerracottaBricks("terracotta_bricks", Blocks.TERRACOTTA);
+    Block TERRACOTTA_BRICK_STAIRS = registerStair("terracotta_brick_stairs", TERRACOTTA_BRICKS);
+    Block TERRACOTTA_BRICK_SLAB = registerSlab("terracotta_brick_slab", TERRACOTTA_BRICKS);
+    Block WHITE_TERRACOTTA_BRICKS = registerTerracottaBricks("white_terracotta_bricks", Blocks.WHITE_TERRACOTTA);
+    Block WHITE_TERRACOTTA_BRICK_STAIRS = registerStair("white_terracotta_brick_stairs", WHITE_TERRACOTTA_BRICKS);
+    Block WHITE_TERRACOTTA_BRICK_SLAB = registerSlab("white_terracotta_brick_slab", WHITE_TERRACOTTA_BRICKS);
+    Block LIGHT_GRAY_TERRACOTTA_BRICKS = registerTerracottaBricks("light_gray_terracotta_bricks", Blocks.LIGHT_GRAY_TERRACOTTA);
+    Block LIGHT_GRAY_TERRACOTTA_BRICK_STAIRS = registerStair("light_gray_terracotta_brick_stairs", LIGHT_GRAY_TERRACOTTA_BRICKS);
+    Block LIGHT_GRAY_TERRACOTTA_BRICK_SLAB = registerSlab("light_gray_terracotta_brick_slab", LIGHT_GRAY_TERRACOTTA_BRICKS);
+    Block GRAY_TERRACOTTA_BRICKS = registerTerracottaBricks("gray_terracotta_bricks", Blocks.GRAY_TERRACOTTA);
+    Block GRAY_TERRACOTTA_BRICK_STAIRS = registerStair("gray_terracotta_brick_stairs", GRAY_TERRACOTTA_BRICKS);
+    Block GRAY_TERRACOTTA_BRICK_SLAB = registerSlab("gray_terracotta_brick_slab", GRAY_TERRACOTTA_BRICKS);
+    Block BLACK_TERRACOTTA_BRICKS = registerTerracottaBricks("black_terracotta_bricks", Blocks.BLACK_TERRACOTTA);
+    Block BLACK_TERRACOTTA_BRICK_STAIRS = registerStair("black_terracotta_brick_stairs", BLACK_TERRACOTTA_BRICKS);
+    Block BLACK_TERRACOTTA_BRICK_SLAB = registerSlab("black_terracotta_brick_slab", BLACK_TERRACOTTA_BRICKS);
+    Block BROWN_TERRACOTTA_BRICKS = registerTerracottaBricks("brown_terracotta_bricks", Blocks.BROWN_TERRACOTTA);
+    Block BROWN_TERRACOTTA_BRICK_STAIRS = registerStair("brown_terracotta_brick_stairs", BROWN_TERRACOTTA_BRICKS);
+    Block BROWN_TERRACOTTA_BRICK_SLAB = registerSlab("brown_terracotta_brick_slab", BROWN_TERRACOTTA_BRICKS);
+    Block RED_TERRACOTTA_BRICKS = registerTerracottaBricks("red_terracotta_bricks", Blocks.RED_TERRACOTTA);
+    Block RED_TERRACOTTA_BRICK_STAIRS = registerStair("red_terracotta_brick_stairs", RED_TERRACOTTA_BRICKS);
+    Block RED_TERRACOTTA_BRICK_SLAB = registerSlab("red_terracotta_brick_slab", RED_TERRACOTTA_BRICKS);
+    Block ORANGE_TERRACOTTA_BRICKS = registerTerracottaBricks("orange_terracotta_bricks", Blocks.ORANGE_TERRACOTTA);
+    Block ORANGE_TERRACOTTA_BRICK_STAIRS = registerStair("orange_terracotta_brick_stairs", ORANGE_TERRACOTTA_BRICKS);
+    Block ORANGE_TERRACOTTA_BRICK_SLAB = registerSlab("orange_terracotta_brick_slab", ORANGE_TERRACOTTA_BRICKS);
+    Block YELLOW_TERRACOTTA_BRICKS = registerTerracottaBricks("yellow_terracotta_bricks", Blocks.YELLOW_TERRACOTTA);
+    Block YELLOW_TERRACOTTA_BRICK_STAIRS = registerStair("yellow_terracotta_brick_stairs", YELLOW_TERRACOTTA_BRICKS);
+    Block YELLOW_TERRACOTTA_BRICK_SLAB = registerSlab("yellow_terracotta_brick_slab", YELLOW_TERRACOTTA_BRICKS);
+    Block LIME_TERRACOTTA_BRICKS = registerTerracottaBricks("lime_terracotta_bricks", Blocks.LIME_TERRACOTTA);
+    Block LIME_TERRACOTTA_BRICK_STAIRS = registerStair("lime_terracotta_brick_stairs", LIME_TERRACOTTA_BRICKS);
+    Block LIME_TERRACOTTA_BRICK_SLAB = registerSlab("lime_terracotta_brick_slab", LIME_TERRACOTTA_BRICKS);
+    Block GREEN_TERRACOTTA_BRICKS = registerTerracottaBricks("green_terracotta_bricks", Blocks.GREEN_TERRACOTTA);
+    Block GREEN_TERRACOTTA_BRICK_STAIRS = registerStair("green_terracotta_brick_stairs", GREEN_TERRACOTTA_BRICKS);
+    Block GREEN_TERRACOTTA_BRICK_SLAB = registerSlab("green_terracotta_brick_slab", GREEN_TERRACOTTA_BRICKS);
+    Block CYAN_TERRACOTTA_BRICKS = registerTerracottaBricks("cyan_terracotta_bricks", Blocks.CYAN_TERRACOTTA);
+    Block CYAN_TERRACOTTA_BRICK_STAIRS = registerStair("cyan_terracotta_brick_stairs", CYAN_TERRACOTTA_BRICKS);
+    Block CYAN_TERRACOTTA_BRICK_SLAB = registerSlab("cyan_terracotta_brick_slab", CYAN_TERRACOTTA_BRICKS);
+    Block LIGHT_BLUE_TERRACOTTA_BRICKS = registerTerracottaBricks("light_blue_terracotta_bricks", Blocks.LIGHT_BLUE_TERRACOTTA);
+    Block LIGHT_BLUE_TERRACOTTA_BRICK_STAIRS = registerStair("light_blue_terracotta_brick_stairs", LIGHT_BLUE_TERRACOTTA_BRICKS);
+    Block LIGHT_BLUE_TERRACOTTA_BRICK_SLAB = registerSlab("light_blue_terracotta_brick_slab", LIGHT_BLUE_TERRACOTTA_BRICKS);
+    Block BLUE_TERRACOTTA_BRICKS = registerTerracottaBricks("blue_terracotta_bricks", Blocks.BLUE_TERRACOTTA);
+    Block BLUE_TERRACOTTA_BRICK_STAIRS = registerStair("blue_terracotta_brick_stairs", BLUE_TERRACOTTA_BRICKS);
+    Block BLUE_TERRACOTTA_BRICK_SLAB = registerSlab("blue_terracotta_brick_slab", BLUE_TERRACOTTA_BRICKS);
+    Block PURPLE_TERRACOTTA_BRICKS = registerTerracottaBricks("purple_terracotta_bricks", Blocks.PURPLE_TERRACOTTA);
+    Block PURPLE_TERRACOTTA_BRICK_STAIRS = registerStair("purple_terracotta_brick_stairs", PURPLE_TERRACOTTA_BRICKS);
+    Block PURPLE_TERRACOTTA_BRICK_SLAB = registerSlab("purple_terracotta_brick_slab", PURPLE_TERRACOTTA_BRICKS);
+    Block MAGENTA_TERRACOTTA_BRICKS = registerTerracottaBricks("magenta_terracotta_bricks", Blocks.MAGENTA_TERRACOTTA);
+    Block MAGENTA_TERRACOTTA_BRICK_STAIRS = registerStair("magenta_terracotta_brick_stairs", MAGENTA_TERRACOTTA_BRICKS);
+    Block MAGENTA_TERRACOTTA_BRICK_SLAB = registerSlab("magenta_terracotta_brick_slab", MAGENTA_TERRACOTTA_BRICKS);
+    Block PINK_TERRACOTTA_BRICKS = registerTerracottaBricks("pink_terracotta_bricks", Blocks.PINK_TERRACOTTA);
+    Block PINK_TERRACOTTA_BRICK_STAIRS = registerStair("pink_terracotta_brick_stairs", PINK_TERRACOTTA_BRICKS);
+    Block PINK_TERRACOTTA_BRICK_SLAB = registerSlab("pink_terracotta_brick_slab", PINK_TERRACOTTA_BRICKS);
+
+    Block TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("terracotta_brick_tiles", Blocks.TERRACOTTA);
+    Block TERRACOTTA_BRICK_TILE_STAIRS = registerStair("terracotta_brick_tile_stairs", TERRACOTTA_BRICK_TILES);
+    Block TERRACOTTA_BRICK_TILE_SLAB = registerSlab("terracotta_brick_tile_slab", TERRACOTTA_BRICK_TILES);
+    Block WHITE_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("white_terracotta_brick_tiles", Blocks.WHITE_TERRACOTTA);
+    Block WHITE_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("white_terracotta_brick_tile_stairs", WHITE_TERRACOTTA_BRICK_TILES);
+    Block WHITE_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("white_terracotta_brick_tile_slab", WHITE_TERRACOTTA_BRICK_TILES);
+    Block LIGHT_GRAY_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("light_gray_terracotta_brick_tiles", Blocks.LIGHT_GRAY_TERRACOTTA);
+    Block LIGHT_GRAY_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("light_gray_terracotta_brick_tile_stairs", LIGHT_GRAY_TERRACOTTA_BRICK_TILES);
+    Block LIGHT_GRAY_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("light_gray_terracotta_brick_tile_slab", LIGHT_GRAY_TERRACOTTA_BRICK_TILES);
+    Block GRAY_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("gray_terracotta_brick_tiles", Blocks.GRAY_TERRACOTTA);
+    Block GRAY_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("gray_terracotta_brick_tile_stairs", GRAY_TERRACOTTA_BRICK_TILES);
+    Block GRAY_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("gray_terracotta_brick_tile_slab", GRAY_TERRACOTTA_BRICK_TILES);
+    Block BLACK_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("black_terracotta_brick_tiles", Blocks.BLACK_TERRACOTTA);
+    Block BLACK_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("black_terracotta_brick_tile_stairs", BLACK_TERRACOTTA_BRICK_TILES);
+    Block BLACK_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("black_terracotta_brick_tile_slab", BLACK_TERRACOTTA_BRICK_TILES);
+    Block BROWN_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("brown_terracotta_brick_tiles", Blocks.BROWN_TERRACOTTA);
+    Block BROWN_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("brown_terracotta_brick_tile_stairs", BROWN_TERRACOTTA_BRICK_TILES);
+    Block BROWN_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("brown_terracotta_brick_tile_slab", BROWN_TERRACOTTA_BRICK_TILES);
+    Block RED_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("red_terracotta_brick_tiles", Blocks.RED_TERRACOTTA);
+    Block RED_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("red_terracotta_brick_tile_stairs", RED_TERRACOTTA_BRICK_TILES);
+    Block RED_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("red_terracotta_brick_tile_slab", RED_TERRACOTTA_BRICK_TILES);
+    Block ORANGE_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("orange_terracotta_brick_tiles", Blocks.ORANGE_TERRACOTTA);
+    Block ORANGE_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("orange_terracotta_brick_tile_stairs", ORANGE_TERRACOTTA_BRICK_TILES);
+    Block ORANGE_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("orange_terracotta_brick_tile_slab", ORANGE_TERRACOTTA_BRICK_TILES);
+    Block YELLOW_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("yellow_terracotta_brick_tiles", Blocks.YELLOW_TERRACOTTA);
+    Block YELLOW_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("yellow_terracotta_brick_tile_stairs", YELLOW_TERRACOTTA_BRICK_TILES);
+    Block YELLOW_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("yellow_terracotta_brick_tile_slab", YELLOW_TERRACOTTA_BRICK_TILES);
+    Block LIME_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("lime_terracotta_brick_tiles", Blocks.LIME_TERRACOTTA);
+    Block LIME_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("lime_terracotta_brick_tile_stairs", LIME_TERRACOTTA_BRICK_TILES);
+    Block LIME_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("lime_terracotta_brick_tile_slab", LIME_TERRACOTTA_BRICK_TILES);
+    Block GREEN_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("green_terracotta_brick_tiles", Blocks.GREEN_TERRACOTTA);
+    Block GREEN_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("green_terracotta_brick_tile_stairs", GREEN_TERRACOTTA_BRICK_TILES);
+    Block GREEN_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("green_terracotta_brick_tile_slab", GREEN_TERRACOTTA_BRICK_TILES);
+    Block CYAN_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("cyan_terracotta_brick_tiles", Blocks.CYAN_TERRACOTTA);
+    Block CYAN_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("cyan_terracotta_brick_tile_stairs", CYAN_TERRACOTTA_BRICK_TILES);
+    Block CYAN_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("cyan_terracotta_brick_tile_slab", CYAN_TERRACOTTA_BRICK_TILES);
+    Block LIGHT_BLUE_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("light_blue_terracotta_brick_tiles", Blocks.LIGHT_BLUE_TERRACOTTA);
+    Block LIGHT_BLUE_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("light_blue_terracotta_brick_tile_stairs", LIGHT_BLUE_TERRACOTTA_BRICK_TILES);
+    Block LIGHT_BLUE_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("light_blue_terracotta_brick_tile_slab", LIGHT_BLUE_TERRACOTTA_BRICK_TILES);
+    Block BLUE_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("blue_terracotta_brick_tiles", Blocks.BLUE_TERRACOTTA);
+    Block BLUE_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("blue_terracotta_brick_tile_stairs", BLUE_TERRACOTTA_BRICK_TILES);
+    Block BLUE_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("blue_terracotta_brick_tile_slab", BLUE_TERRACOTTA_BRICK_TILES);
+    Block PURPLE_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("purple_terracotta_brick_tiles", Blocks.PURPLE_TERRACOTTA);
+    Block PURPLE_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("purple_terracotta_brick_tile_stairs", PURPLE_TERRACOTTA_BRICK_TILES);
+    Block PURPLE_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("purple_terracotta_brick_tile_slab", PURPLE_TERRACOTTA_BRICK_TILES);
+    Block MAGENTA_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("magenta_terracotta_brick_tiles", Blocks.MAGENTA_TERRACOTTA);
+    Block MAGENTA_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("magenta_terracotta_brick_tile_stairs", MAGENTA_TERRACOTTA_BRICK_TILES);
+    Block MAGENTA_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("magenta_terracotta_brick_tile_slab", MAGENTA_TERRACOTTA_BRICK_TILES);
+    Block PINK_TERRACOTTA_BRICK_TILES = registerTerracottaBrickTiles("pink_terracotta_brick_tiles", Blocks.PINK_TERRACOTTA);
+    Block PINK_TERRACOTTA_BRICK_TILE_STAIRS = registerStair("pink_terracotta_brick_tile_stairs", PINK_TERRACOTTA_BRICK_TILES);
+    Block PINK_TERRACOTTA_BRICK_TILE_SLAB = registerSlab("pink_terracotta_brick_tile_slab", PINK_TERRACOTTA_BRICK_TILES);
+
     Block WHITE_CONCRETE_STAIRS = registerStair("white_concrete_stairs", Blocks.WHITE_CONCRETE);
     Block WHITE_CONCRETE_SLAB = registerSlab("white_concrete_slab", Blocks.WHITE_CONCRETE);
     Block LIGHT_GRAY_CONCRETE_STAIRS = registerStair("light_gray_concrete_stairs", Blocks.LIGHT_GRAY_CONCRETE);
@@ -960,6 +1124,13 @@ public interface EBlocks {
 
     Block BEACHSTONE = register("beachstone", Block::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.5F, 1.0F).sound(SoundType.DRIPSTONE_BLOCK)
+    );
+    Block ROCKWEED_BASALT = register("rockweed_basalt", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SMOOTH_BASALT).sound(ESounds.ROCKWEED_BASALT)
+    );
+    Block BASALT_VENT = register("basalt_vent", BasaltVentBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BASALT).lightLevel(state -> state.getValue(BasaltVentBlock.ACTIVE) ? 3 : 0)
+                    .emissiveRendering((state, _, _) -> state.getValue(BasaltVentBlock.ACTIVE))
     );
 
     Block PINK_SAND = register("pink_sand", p -> new SandBlock(new ColorRGBA(0xFFECCFBD), p), true,
@@ -1065,6 +1236,12 @@ public interface EBlocks {
     // Helper Methods
     private static Block registerSubBlock(final String name, Block block) {
         return register(name, Block::new, true, BlockBehaviour.Properties.ofFullCopy(block));
+    }
+    private static Block registerTerracottaBricks(final String name, Block block) {
+        return register(name, Block::new, true, BlockBehaviour.Properties.ofFullCopy(block).sound(ESounds.STONE_BRICKS));
+    }
+    private static Block registerTerracottaBrickTiles(final String name, Block block) {
+        return register(name, Block::new, true, BlockBehaviour.Properties.ofFullCopy(block).sound(ESounds.STONE_TILES));
     }
     private static Block registerStair(final String name, Block block) {
         return register(name, p -> new StairBlock(block.defaultBlockState(), p), true, BlockBehaviour.Properties.ofFullCopy(block));

@@ -1,12 +1,13 @@
 package team.lookingglass.elsewhere;
 
+import team.lookingglass.elsewhere.datagen.tags.FlammableBlocks;
 import team.lookingglass.elsewhere.entity.EEntities;
 import team.lookingglass.elsewhere.entity.EEntitySpawns;
 import team.lookingglass.elsewhere.registry.*;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import team.lookingglass.elsewhere.registry.blocktypes.EBlockEntityTypes;
+import team.lookingglass.elsewhere.registry.EBlockEntityTypes;
 import team.lookingglass.elsewhere.registry.events.EServerEvents;
 import team.lookingglass.elsewhere.registry.util.EPoiTypes;
 import team.lookingglass.elsewhere.registry.render.EParticles;
@@ -41,5 +42,6 @@ public class Elsewhere implements ModInitializer {
 		ETreeGrowers.initialize();
 		EPoiTypes.initialize();
 		EPlacementModifiers.initialize();
+		FlammableBlocks.initialize();
 	}
 }

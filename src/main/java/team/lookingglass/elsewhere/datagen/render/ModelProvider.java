@@ -4,6 +4,7 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.EquipmentAssets;
+import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.datagen.helpers.EBlockModelGenerators;
 import team.lookingglass.elsewhere.datagen.helpers.EItemModelGenerators;
 import team.lookingglass.elsewhere.registry.EBlocks;
@@ -372,11 +373,10 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.CINNABAR_EMERALD_ORE);
 
         // Netherrack
-        gen.family(Blocks.NETHERRACK)
+        customGen.netherrackFamily(Blocks.NETHERRACK)
                 .stairs(EBlocks.NETHERRACK_STAIRS)
                 .slab(EBlocks.NETHERRACK_SLAB)
-                .wall(EBlocks.NETHERRACK_WALL)
-        ;
+                .wall(EBlocks.NETHERRACK_WALL);
         gen.family(EBlocks.POLISHED_NETHERRACK)
                 .stairs(EBlocks.POLISHED_NETHERRACK_STAIRS)
                 .slab(EBlocks.POLISHED_NETHERRACK_SLAB)
@@ -457,7 +457,12 @@ public class ModelProvider extends FabricModelProvider {
         ;
         gen.createTrivialBlock(EBlocks.CHISELED_PINK_SANDSTONE, TexturedModel.COLUMN);
 
+
+        // Beach Overhaul
         gen.createTrivialCube(EBlocks.BEACHSTONE);
+        gen.createTrivialCube(EBlocks.ROCKWEED_BASALT);
+
+        customGen.createSeagrassSandBlock();
 
 
         // Purpur
@@ -568,6 +573,7 @@ public class ModelProvider extends FabricModelProvider {
         gen.family(EBlocks.POPLAR_MOSAIC).stairs(EBlocks.POPLAR_MOSAIC_STAIRS).slab(EBlocks.POPLAR_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.POPLAR_BOARDS);
         customGen.createSimpleHorizontallyRotatedBlock(EBlocks.POPLAR_TRIM, TexturedModel.CUBE);
+        gen.createShelf(EBlocks.POPLAR_SHELF, EBlocks.STRIPPED_POPLAR_LOG);
 
         gen.createPlantWithDefaultItem(EBlocks.POPLAR_SAPLING, EBlocks.POTTED_POPLAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
@@ -596,6 +602,30 @@ public class ModelProvider extends FabricModelProvider {
         gen.family(EBlocks.AZALEA_MOSAIC).stairs(EBlocks.AZALEA_MOSAIC_STAIRS).slab(EBlocks.AZALEA_MOSAIC_SLAB);
         customGen.createWoodenBoards(EBlocks.AZALEA_BOARDS);
         customGen.createSimpleHorizontallyRotatedBlock(EBlocks.AZALEA_TRIM, TexturedModel.CUBE);
+        gen.createShelf(EBlocks.AZALEA_SHELF, EBlocks.STRIPPED_AZALEA_LOG);
+
+        gen.woodProvider(EBlocks.CEDAR_LOG).logWithHorizontal(EBlocks.CEDAR_LOG).wood(EBlocks.CEDAR_WOOD);
+        gen.woodProvider(EBlocks.STRIPPED_CEDAR_LOG).logWithHorizontal(EBlocks.STRIPPED_CEDAR_LOG).wood(EBlocks.STRIPPED_CEDAR_WOOD);
+        gen.family(EBlocks.CEDAR_PLANKS)
+                .stairs(EBlocks.CEDAR_STAIRS)
+                .slab(EBlocks.CEDAR_SLAB)
+                .fence(EBlocks.CEDAR_FENCE)
+                .fenceGate(EBlocks.CEDAR_FENCE_GATE)
+                .pressurePlate(EBlocks.CEDAR_PRESSURE_PLATE)
+                .button(EBlocks.CEDAR_BUTTON)
+        ;
+        gen.createDoor(EBlocks.CEDAR_DOOR);
+        gen.createOrientableTrapdoor(EBlocks.CEDAR_TRAPDOOR);
+        gen.createParticleOnlyBlock(EBlocks.CEDAR_SIGN, EBlocks.CEDAR_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.CEDAR_WALL_SIGN, EBlocks.CEDAR_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.CEDAR_HANGING_SIGN, EBlocks.STRIPPED_CEDAR_LOG);
+        gen.createParticleOnlyBlock(EBlocks.CEDAR_WALL_HANGING_SIGN, EBlocks.STRIPPED_CEDAR_LOG);
+        gen.family(EBlocks.CEDAR_MOSAIC).stairs(EBlocks.CEDAR_MOSAIC_STAIRS).slab(EBlocks.CEDAR_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.CEDAR_BOARDS);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.CEDAR_TRIM, TexturedModel.CUBE);
+        gen.createShelf(EBlocks.CEDAR_SHELF, EBlocks.STRIPPED_CEDAR_LOG);
+        gen.createTintedLeaves(EBlocks.CEDAR_LEAVES, TexturedModel.LEAVES, 0x65A65B);
+        gen.createPlantWithDefaultItem(EBlocks.CEDAR_SAPLING, EBlocks.POTTED_CEDAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         gen.createTrivialBlock(EBlocks.LATERITE, TexturedModel.COLUMN);
 
@@ -654,6 +684,42 @@ public class ModelProvider extends FabricModelProvider {
         gen.family(Blocks.MAGENTA_TERRACOTTA).stairs(EBlocks.MAGENTA_TERRACOTTA_STAIRS).slab(EBlocks.MAGENTA_TERRACOTTA_SLAB);
         gen.family(Blocks.PINK_TERRACOTTA).stairs(EBlocks.PINK_TERRACOTTA_STAIRS).slab(EBlocks.PINK_TERRACOTTA_SLAB);
 
+        gen.family(EBlocks.TERRACOTTA_BRICKS).stairs(EBlocks.TERRACOTTA_BRICK_STAIRS).slab(EBlocks.TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.WHITE_TERRACOTTA_BRICKS).stairs(EBlocks.WHITE_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.WHITE_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS).stairs(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.GRAY_TERRACOTTA_BRICKS).stairs(EBlocks.GRAY_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.GRAY_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.BLACK_TERRACOTTA_BRICKS).stairs(EBlocks.BLACK_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.BLACK_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.BROWN_TERRACOTTA_BRICKS).stairs(EBlocks.BROWN_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.BROWN_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.RED_TERRACOTTA_BRICKS).stairs(EBlocks.RED_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.RED_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.ORANGE_TERRACOTTA_BRICKS).stairs(EBlocks.ORANGE_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.ORANGE_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.YELLOW_TERRACOTTA_BRICKS).stairs(EBlocks.YELLOW_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.YELLOW_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.LIME_TERRACOTTA_BRICKS).stairs(EBlocks.LIME_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.LIME_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.GREEN_TERRACOTTA_BRICKS).stairs(EBlocks.GREEN_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.GREEN_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.CYAN_TERRACOTTA_BRICKS).stairs(EBlocks.CYAN_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.CYAN_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS).stairs(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.BLUE_TERRACOTTA_BRICKS).stairs(EBlocks.BLUE_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.BLUE_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.PURPLE_TERRACOTTA_BRICKS).stairs(EBlocks.PURPLE_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.PURPLE_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.MAGENTA_TERRACOTTA_BRICKS).stairs(EBlocks.MAGENTA_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.MAGENTA_TERRACOTTA_BRICK_SLAB);
+        gen.family(EBlocks.PINK_TERRACOTTA_BRICKS).stairs(EBlocks.PINK_TERRACOTTA_BRICK_STAIRS).slab(EBlocks.PINK_TERRACOTTA_BRICK_SLAB);
+
+        gen.family(EBlocks.TERRACOTTA_BRICK_TILES).stairs(EBlocks.TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.WHITE_TERRACOTTA_BRICK_TILES).stairs(EBlocks.WHITE_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.WHITE_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILES).stairs(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.GRAY_TERRACOTTA_BRICK_TILES).stairs(EBlocks.GRAY_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.GRAY_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.BLACK_TERRACOTTA_BRICK_TILES).stairs(EBlocks.BLACK_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.BLACK_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.BROWN_TERRACOTTA_BRICK_TILES).stairs(EBlocks.BROWN_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.BROWN_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.RED_TERRACOTTA_BRICK_TILES).stairs(EBlocks.RED_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.RED_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.ORANGE_TERRACOTTA_BRICK_TILES).stairs(EBlocks.ORANGE_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.ORANGE_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.YELLOW_TERRACOTTA_BRICK_TILES).stairs(EBlocks.YELLOW_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.YELLOW_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.LIME_TERRACOTTA_BRICK_TILES).stairs(EBlocks.LIME_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.LIME_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.GREEN_TERRACOTTA_BRICK_TILES).stairs(EBlocks.GREEN_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.GREEN_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.CYAN_TERRACOTTA_BRICK_TILES).stairs(EBlocks.CYAN_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.CYAN_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILES).stairs(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.BLUE_TERRACOTTA_BRICK_TILES).stairs(EBlocks.BLUE_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.BLUE_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.PURPLE_TERRACOTTA_BRICK_TILES).stairs(EBlocks.PURPLE_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.PURPLE_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.MAGENTA_TERRACOTTA_BRICK_TILES).stairs(EBlocks.MAGENTA_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.MAGENTA_TERRACOTTA_BRICK_TILE_SLAB);
+        gen.family(EBlocks.PINK_TERRACOTTA_BRICK_TILES).stairs(EBlocks.PINK_TERRACOTTA_BRICK_TILE_STAIRS).slab(EBlocks.PINK_TERRACOTTA_BRICK_TILE_SLAB);
+
         gen.family(Blocks.WHITE_CONCRETE).stairs(EBlocks.WHITE_CONCRETE_STAIRS).slab(EBlocks.WHITE_CONCRETE_SLAB);
         gen.family(Blocks.LIGHT_GRAY_CONCRETE).stairs(EBlocks.LIGHT_GRAY_CONCRETE_STAIRS).slab(EBlocks.LIGHT_GRAY_CONCRETE_SLAB);
         gen.family(Blocks.GRAY_CONCRETE).stairs(EBlocks.GRAY_CONCRETE_STAIRS).slab(EBlocks.GRAY_CONCRETE_SLAB);
@@ -684,8 +750,8 @@ public class ModelProvider extends FabricModelProvider {
 
         itemModelGenerator.generateFlatItem(EBlocks.PEBBLE.asItem(), ModelTemplates.FLAT_ITEM);
 
-        itemModelGenerator.generateFlatItem(EItems.DIAMOND_SHARD, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.EMERALD_SHARD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.DIAMOND_NUGGET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.EMERALD_NUGGET, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.RAW_TIN, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.TIN_INGOT, ModelTemplates.FLAT_ITEM);
@@ -694,14 +760,10 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.BRONZE_MIX, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_NUGGET, ModelTemplates.FLAT_ITEM);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_HELMET, EEquipmentAssets.BRONZE,
-                Identifier.withDefaultNamespace("trims/items/helmet_trim"), false);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_CHESTPLATE, EEquipmentAssets.BRONZE,
-                Identifier.withDefaultNamespace("trims/items/chestplate_trim"), false);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_LEGGINGS, EEquipmentAssets.BRONZE,
-                Identifier.withDefaultNamespace("trims/items/leggings_trim"), false);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.BRONZE_BOOTS, EEquipmentAssets.BRONZE,
-                Identifier.withDefaultNamespace("trims/items/boots_trim"), false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_HELMET, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_CHESTPLATE, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_LEGGINGS, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_BOOTS, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateSpear(EItems.BRONZE_SPEAR);
@@ -717,14 +779,10 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_MIX, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_INGOT, ModelTemplates.FLAT_ITEM);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_HELMET, EEquipmentAssets.SOULSTEEL,
-                Identifier.withDefaultNamespace("trims/items/helmet_trim"), false);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_CHESTPLATE, EEquipmentAssets.SOULSTEEL,
-                Identifier.withDefaultNamespace("trims/items/chestplate_trim"), false);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_LEGGINGS, EEquipmentAssets.SOULSTEEL,
-                Identifier.withDefaultNamespace("trims/items/leggings_trim"), false);
-        armorModelGenerator.customGenerateTrimmableItem(EItems.SOULSTEEL_BOOTS, EEquipmentAssets.SOULSTEEL,
-                Identifier.withDefaultNamespace("trims/items/boots_trim"), false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_HELMET, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_CHESTPLATE, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_LEGGINGS, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_BOOTS, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateSpear(EItems.SOULSTEEL_SPEAR);
@@ -737,6 +795,7 @@ public class ModelProvider extends FabricModelProvider {
 
         itemModelGenerator.generateFlatItem(EItems.RAW_PERCH, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.COOKED_PERCH, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SHINING_PERCH, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.PERCH_BUCKET, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.POPLAR_SIGN, ModelTemplates.FLAT_ITEM);
@@ -749,42 +808,47 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.AZALEA_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.AZALEA_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModelGenerator.generateFlatItem(EItems.CEDAR_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.CEDAR_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.CEDAR_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.CEDAR_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_HELMET, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_HELMET, true);
-        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_CHESTPLATE, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, true);
-        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_LEGGINGS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, true);
-        armorModelGenerator.customGenerateTrimmableItem(Items.LEATHER_BOOTS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_BOOTS, true);
+        armorModelGenerator.generateCustomTrimCases(Items.TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_HELMET, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_CHESTPLATE, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_LEGGINGS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.COPPER_BOOTS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_HELMET, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_HELMET, true);
+        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_CHESTPLATE, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, true);
+        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_LEGGINGS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, true);
+        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_BOOTS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_BOOTS, true);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_HELMET, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_CHESTPLATE, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_LEGGINGS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.CHAINMAIL_BOOTS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.COPPER_HELMET, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateCustomTrimCases(Items.COPPER_CHESTPLATE, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateCustomTrimCases(Items.COPPER_LEGGINGS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.COPPER_BOOTS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_HELMET, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_CHESTPLATE, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_LEGGINGS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.IRON_BOOTS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_HELMET, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_CHESTPLATE, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_LEGGINGS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_BOOTS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_HELMET, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_CHESTPLATE, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_LEGGINGS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.DIAMOND_BOOTS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.IRON_HELMET, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateCustomTrimCases(Items.IRON_CHESTPLATE, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateCustomTrimCases(Items.IRON_LEGGINGS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.IRON_BOOTS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_HELMET, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_CHESTPLATE, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_LEGGINGS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.GOLDEN_BOOTS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_HELMET, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_CHESTPLATE, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_LEGGINGS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_BOOTS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_HELMET, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_CHESTPLATE, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_LEGGINGS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.customGenerateTrimmableItem(Items.NETHERITE_BOOTS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_HELMET, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_CHESTPLATE, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_LEGGINGS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_BOOTS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
+        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_HELMET, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_CHESTPLATE, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_LEGGINGS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_BOOTS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
     }
 
 

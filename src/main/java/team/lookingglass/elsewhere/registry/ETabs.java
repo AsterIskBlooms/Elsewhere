@@ -1,19 +1,9 @@
 package team.lookingglass.elsewhere.registry;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import team.lookingglass.elsewhere.Elsewhere;
 
 public class ETabs {
 
@@ -24,13 +14,25 @@ public class ETabs {
             output.insertAfter(Items.PODZOL, EBlocks.LATERITE);
             output.insertAfter(Items.PACKED_ICE, EBlocks.ICICLE);
 
-            output.insertAfter(Items.SAND, EBlocks.PINK_SAND);
+            output.insertAfter(Items.SANDSTONE, EBlocks.PINK_SAND, EBlocks.PINK_SANDSTONE);
 
             output.insertAfter(Items.SHORT_GRASS, EBlocks.SHORT_RED_GRASS);
             output.insertAfter(Items.DEAD_BUSH, EBlocks.RED_SHRUB);
             output.insertAfter(Items.TALL_GRASS, EBlocks.TALL_RED_GRASS);
 
             output.insertAfter(Items.MOSS_CARPET, EBlocks.RUSTY_MOSS_BLOCK, EBlocks.RUSTY_MOSS_CARPET);
+
+            output.insertAfter(Items.RED_SANDSTONE, EBlocks.BEACHSTONE);
+            output.insertAfter(Items.SMOOTH_BASALT, EBlocks.ROCKWEED_BASALT);
+            output.insertAfter(Items.SEAGRASS, EBlocks.SEAGRASS_SAND);
+
+            output.insertAfter(Items.BIRCH_SAPLING, EBlocks.CEDAR_SAPLING);
+            output.insertAfter(Items.BIRCH_LOG, EBlocks.CEDAR_LOG);
+            output.insertAfter(Items.BIRCH_LEAVES, EBlocks.CEDAR_LEAVES);
+
+            output.insertAfter(Items.PALE_OAK_SAPLING, EBlocks.POPLAR_SAPLING);
+            output.insertAfter(Items.PALE_OAK_LOG, EBlocks.POPLAR_LOG);
+            output.insertAfter(Items.PALE_OAK_LEAVES, EBlocks.RED_POPLAR_LEAVES, EBlocks.ORANGE_POPLAR_LEAVES, EBlocks.YELLOW_POPLAR_LEAVES);
 
             output.insertAfter(Items.STONE, EBlocks.SHALE);
             output.insertAfter(Items.CALCITE, EBlocks.SODALITE);
@@ -283,6 +285,18 @@ public class ETabs {
             output.insertAfter(Items.STRIPPED_BAMBOO_BLOCK, EBlocks.STRIPPED_BAMBOO_STEM);
             output.insertAfter(Items.BAMBOO_MOSAIC_SLAB, EBlocks.BAMBOO_BOARDS, EBlocks.BAMBOO_TRIM);
 
+            output.insertAfter(Items.BIRCH_BUTTON,
+                    EBlocks.CEDAR_LOG, EBlocks.CEDAR_WOOD,
+                    EBlocks.STRIPPED_CEDAR_LOG, EBlocks.STRIPPED_CEDAR_WOOD,
+                    EBlocks.CEDAR_PLANKS, EBlocks.CEDAR_MOSAIC,
+                    EBlocks.CEDAR_STAIRS, EBlocks.CEDAR_MOSAIC_STAIRS,
+                    EBlocks.CEDAR_SLAB, EBlocks.CEDAR_MOSAIC_SLAB,
+                    EBlocks.CEDAR_BOARDS, EBlocks.CEDAR_TRIM,
+                    EBlocks.CEDAR_FENCE, EBlocks.CEDAR_FENCE_GATE,
+                    EBlocks.CEDAR_DOOR, EBlocks.CEDAR_TRAPDOOR,
+                    EBlocks.CEDAR_PRESSURE_PLATE, EBlocks.CEDAR_BUTTON
+            );
+
             output.insertAfter(Blocks.PALE_OAK_BUTTON,
                     EBlocks.POPLAR_LOG, EBlocks.POPLAR_WOOD,
                     EBlocks.STRIPPED_POPLAR_LOG, EBlocks.STRIPPED_POPLAR_WOOD,
@@ -340,7 +354,44 @@ public class ETabs {
             output.insertAfter(Items.BLUE_TERRACOTTA, EBlocks.BLUE_TERRACOTTA_STAIRS, EBlocks.BLUE_TERRACOTTA_SLAB);
             output.insertAfter(Items.PURPLE_TERRACOTTA, EBlocks.PURPLE_TERRACOTTA_STAIRS, EBlocks.PURPLE_TERRACOTTA_SLAB);
             output.insertAfter(Items.MAGENTA_TERRACOTTA, EBlocks.MAGENTA_TERRACOTTA_STAIRS, EBlocks.MAGENTA_TERRACOTTA_SLAB);
-            output.insertAfter(Items.PINK_TERRACOTTA, EBlocks.PINK_TERRACOTTA_STAIRS, EBlocks.PINK_TERRACOTTA_SLAB);
+            output.insertAfter(Items.PINK_TERRACOTTA, EBlocks.PINK_TERRACOTTA_STAIRS, EBlocks.PINK_TERRACOTTA_SLAB,
+
+                    EBlocks.TERRACOTTA_BRICKS, EBlocks.TERRACOTTA_BRICK_STAIRS, EBlocks.TERRACOTTA_BRICK_SLAB,
+                    EBlocks.WHITE_TERRACOTTA_BRICKS, EBlocks.WHITE_TERRACOTTA_BRICK_STAIRS, EBlocks.WHITE_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_STAIRS, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.GRAY_TERRACOTTA_BRICKS, EBlocks.GRAY_TERRACOTTA_BRICK_STAIRS, EBlocks.GRAY_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.BLACK_TERRACOTTA_BRICKS, EBlocks.BLACK_TERRACOTTA_BRICK_STAIRS, EBlocks.BLACK_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.BROWN_TERRACOTTA_BRICKS, EBlocks.BROWN_TERRACOTTA_BRICK_STAIRS, EBlocks.BROWN_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.RED_TERRACOTTA_BRICKS, EBlocks.RED_TERRACOTTA_BRICK_STAIRS, EBlocks.RED_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.ORANGE_TERRACOTTA_BRICKS, EBlocks.ORANGE_TERRACOTTA_BRICK_STAIRS, EBlocks.ORANGE_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.YELLOW_TERRACOTTA_BRICKS, EBlocks.YELLOW_TERRACOTTA_BRICK_STAIRS, EBlocks.YELLOW_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.LIME_TERRACOTTA_BRICKS, EBlocks.LIME_TERRACOTTA_BRICK_STAIRS, EBlocks.LIME_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.GREEN_TERRACOTTA_BRICKS, EBlocks.GREEN_TERRACOTTA_BRICK_STAIRS, EBlocks.GREEN_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.CYAN_TERRACOTTA_BRICKS, EBlocks.CYAN_TERRACOTTA_BRICK_STAIRS, EBlocks.CYAN_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_STAIRS, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.BLUE_TERRACOTTA_BRICKS, EBlocks.BLUE_TERRACOTTA_BRICK_STAIRS, EBlocks.BLUE_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.PURPLE_TERRACOTTA_BRICKS, EBlocks.PURPLE_TERRACOTTA_BRICK_STAIRS, EBlocks.PURPLE_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.MAGENTA_TERRACOTTA_BRICKS, EBlocks.MAGENTA_TERRACOTTA_BRICK_STAIRS, EBlocks.MAGENTA_TERRACOTTA_BRICK_SLAB,
+                    EBlocks.PINK_TERRACOTTA_BRICKS, EBlocks.PINK_TERRACOTTA_BRICK_STAIRS, EBlocks.PINK_TERRACOTTA_BRICK_SLAB,
+
+                    EBlocks.TERRACOTTA_BRICK_TILES, EBlocks.TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.WHITE_TERRACOTTA_BRICK_TILES, EBlocks.WHITE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.WHITE_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILES, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.GRAY_TERRACOTTA_BRICK_TILES, EBlocks.GRAY_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.GRAY_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.BLACK_TERRACOTTA_BRICK_TILES, EBlocks.BLACK_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.BLACK_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.BROWN_TERRACOTTA_BRICK_TILES, EBlocks.BROWN_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.BROWN_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.RED_TERRACOTTA_BRICK_TILES, EBlocks.RED_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.RED_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.ORANGE_TERRACOTTA_BRICK_TILES, EBlocks.ORANGE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.ORANGE_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.YELLOW_TERRACOTTA_BRICK_TILES, EBlocks.YELLOW_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.YELLOW_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.LIME_TERRACOTTA_BRICK_TILES, EBlocks.LIME_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.LIME_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.GREEN_TERRACOTTA_BRICK_TILES, EBlocks.GREEN_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.GREEN_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.CYAN_TERRACOTTA_BRICK_TILES, EBlocks.CYAN_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.CYAN_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILES, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.BLUE_TERRACOTTA_BRICK_TILES, EBlocks.BLUE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.BLUE_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.PURPLE_TERRACOTTA_BRICK_TILES, EBlocks.PURPLE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.PURPLE_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.MAGENTA_TERRACOTTA_BRICK_TILES, EBlocks.MAGENTA_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.MAGENTA_TERRACOTTA_BRICK_TILE_SLAB,
+                    EBlocks.PINK_TERRACOTTA_BRICK_TILES, EBlocks.PINK_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.PINK_TERRACOTTA_BRICK_TILE_SLAB
+            );
 
             output.insertAfter(Items.WHITE_CONCRETE, EBlocks.WHITE_CONCRETE_STAIRS, EBlocks.WHITE_CONCRETE_SLAB);
             output.insertAfter(Items.LIGHT_GRAY_CONCRETE, EBlocks.LIGHT_GRAY_CONCRETE_STAIRS, EBlocks.LIGHT_GRAY_CONCRETE_SLAB);
@@ -358,6 +409,49 @@ public class ETabs {
             output.insertAfter(Items.PURPLE_CONCRETE, EBlocks.PURPLE_CONCRETE_STAIRS, EBlocks.PURPLE_CONCRETE_SLAB);
             output.insertAfter(Items.MAGENTA_CONCRETE, EBlocks.MAGENTA_CONCRETE_STAIRS, EBlocks.MAGENTA_CONCRETE_SLAB);
             output.insertAfter(Items.PINK_CONCRETE, EBlocks.PINK_CONCRETE_STAIRS, EBlocks.PINK_CONCRETE_SLAB);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(output -> {
+            output.insertAfter(Items.BIRCH_SHELF, EBlocks.CEDAR_SHELF);
+            output.insertAfter(Items.BIRCH_HANGING_SIGN, EItems.CEDAR_SIGN, EItems.CEDAR_HANGING_SIGN);
+
+            output.insertAfter(Items.PALE_OAK_SHELF, EBlocks.POPLAR_SHELF, EBlocks.AZALEA_SHELF);
+            output.insertAfter(Items.PALE_OAK_HANGING_SIGN, EItems.POPLAR_SIGN, EItems.POPLAR_HANGING_SIGN, EItems.AZALEA_SIGN, EItems.AZALEA_HANGING_SIGN);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(output -> {
+            output.insertAfter(Items.COPPER_HOE, EItems.BRONZE_SHOVEL, EItems.BRONZE_PICKAXE, EItems.BRONZE_AXE, EItems.BRONZE_HOE);
+            output.insertAfter(Items.NETHERITE_HOE, EItems.SOULSTEEL_SHOVEL, EItems.SOULSTEEL_PICKAXE, EItems.SOULSTEEL_AXE, EItems.SOULSTEEL_HOE);
+
+            output.insertAfter(Items.BIRCH_CHEST_BOAT, EItems.CEDAR_BOAT, EItems.CEDAR_CHEST_BOAT);
+            output.insertAfter(Items.PALE_OAK_BOAT, EItems.POPLAR_BOAT, EItems.POPLAR_CHEST_BOAT, EItems.AZALEA_BOAT, EItems.AZALEA_CHEST_BOAT);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(output -> {
+            output.insertAfter(Items.COPPER_SWORD, EItems.BRONZE_SWORD);
+            output.insertAfter(Items.COPPER_SPEAR, EItems.BRONZE_SPEAR);
+            output.insertAfter(Items.COPPER_AXE, EItems.BRONZE_AXE);
+            output.insertAfter(Items.COPPER_BOOTS, EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS);
+
+            output.insertAfter(Items.NETHERITE_SWORD, EItems.SOULSTEEL_SWORD);
+            output.insertAfter(Items.NETHERITE_SPEAR, EItems.SOULSTEEL_SPEAR);
+            output.insertAfter(Items.NETHERITE_AXE, EItems.SOULSTEEL_AXE);
+            output.insertAfter(Items.NETHERITE_BOOTS, EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(output -> {
+            output.insertAfter(Items.RAW_COPPER, EItems.RAW_TIN);
+            output.insertAfter(Items.RAW_GOLD, EItems.RAW_SILVER);
+            output.insertAfter(Items.COPPER_NUGGET, EItems.TIN_NUGGET, EItems.BRONZE_NUGGET);
+            output.insertAfter(Items.GOLD_NUGGET, EItems.SILVER_NUGGET);
+            output.insertAfter(Items.COPPER_INGOT, EItems.TIN_INGOT, EItems.BRONZE_MIX, EItems.BRONZE_INGOT);
+            output.insertAfter(Items.GOLD_INGOT, EItems.SILVER_INGOT);
+            output.insertBefore(Items.NETHERITE_INGOT, EItems.NETHERITE_MIX);
+            output.insertAfter(Items.NETHERITE_INGOT, EItems.SOULSTEEL_MIX, EItems.SOULSTEEL_INGOT);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(output -> {
+            output.insertAfter(Items.COOKED_SALMON, EItems.RAW_PERCH, EItems.COOKED_PERCH, EItems.SHINING_PERCH);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> {

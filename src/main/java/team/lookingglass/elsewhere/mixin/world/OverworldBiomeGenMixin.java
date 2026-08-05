@@ -33,53 +33,61 @@ public class OverworldBiomeGenMixin {
         ResourceKey<Biome>[][] shattered = accessor.getShatteredBiomes();
         ResourceKey<Biome>[][] ocean = accessor.getOceans();
 
-        // Edited Biomes
-        plateauB[0][1] = Biomes.ICE_SPIKES;
-        plateauB[1][1] = Biomes.CHERRY_GROVE;
-
-        plateauB[3][3] = Biomes.BAMBOO_JUNGLE;
-        plateauB[3][4] = Biomes.BAMBOO_JUNGLE;
-
-        plateauB[1][3] = Biomes.TAIGA;
-        plateauA[2][3] = Biomes.OLD_GROWTH_BIRCH_FOREST;
-        plateauB[2][3] = Biomes.OLD_GROWTH_BIRCH_FOREST;
-
-        plateauA[1][2] = Biomes.MEADOW;
-        plateauA[2][2] = Biomes.MEADOW;
-
-
-        // New Biomes
-        middleB[3][0] = EBiomes.OUTBACK;
-        middleB[3][1] = EBiomes.OUTBACK;
+        // Desert
+        middleA[4][0] = EBiomes.GLASS_DESERT;
+        middleB[4][0] = Biomes.DESERT;
 
         middleA[4][3] = EBiomes.LUSH_DESERT;
         middleA[4][4] = EBiomes.LUSH_DESERT;
-        plateauA[4][3] = EBiomes.LUSH_DESERT;
-        plateauA[4][4] = EBiomes.LUSH_DESERT;
 
+        // Warm
+        middleB[3][0] = EBiomes.OUTBACK;
+        middleB[3][1] = EBiomes.OUTBACK;
+
+        middleA[3][2] = EBiomes.CEDAR_FOREST;
+        middleB[3][2] = EBiomes.SHRUBLAND;
+        middleA[3][3] = EBiomes.CEDAR_FOREST;
+        middleB[3][3] = Biomes.SPARSE_JUNGLE;
+        plateauA[3][2] = EBiomes.CEDAR_FOREST;
+        plateauA[3][3] = EBiomes.CEDAR_FOREST;
+
+        middleB[3][3] = EBiomes.RAINFOREST;
+        middleB[3][4] = EBiomes.RAINFOREST;
+        plateauA[3][3] = Biomes.BAMBOO_JUNGLE;
+        plateauA[3][4] = Biomes.BAMBOO_JUNGLE;
+
+        // Temperate
+        plateauA[2][3] = Biomes.OLD_GROWTH_BIRCH_FOREST;
+        plateauB[2][3] = Biomes.OLD_GROWTH_BIRCH_FOREST;
+
+        // Cold
+        plateauB[1][3] = Biomes.TAIGA;
+
+        middleB[1][2] = EBiomes.DAPPLED_FOREST;
+        plateauB[1][2] = EBiomes.DAPPLED_FOREST;
+
+        // Frozen
         middleA[0][0] = EBiomes.TUNDRA;
         plateauA[0][0] = EBiomes.TUNDRA;
         plateauA[0][1] = EBiomes.TUNDRA;
+        plateauB[0][1] = Biomes.ICE_SPIKES;
 
-        middleB[1][2] = EBiomes.DAPPLED_FOREST;
-        middleB[1][3] = EBiomes.DAPPLED_FOREST;
-        plateauB[1][2] = EBiomes.DAPPLED_FOREST;
-        plateauB[1][3] = EBiomes.DAPPLED_FOREST;
+        // Misc Variants
+        plateauA[1][2] = Biomes.MEADOW;
+        plateauA[2][2] = Biomes.MEADOW;
+        plateauA[2][3] = Biomes.MEADOW;
+        plateauB[2][3] = Biomes.FLOWER_FOREST;
+        plateauB[1][1] = Biomes.CHERRY_GROVE;
 
     }
 
     // Desert Beaches
     @Inject(method = "pickBeachBiome", at = @At("HEAD"), cancellable = true)
     private void elsewhere$pickBeachBiome(int temperatureIndex, int humidityIndex, CallbackInfoReturnable<ResourceKey<Biome>> cir) {
-        if (temperatureIndex >= 3) {
-            cir.setReturnValue(humidityIndex >= 2 ? EBiomes.TIDEPOOLS : Biomes.BEACH);
-        } else if (temperatureIndex == 1) {
-            cir.setReturnValue(humidityIndex >= 3 ? EBiomes.COLD_TIDEPOOLS : EBiomes.COLD_BEACH);
-        } else if (temperatureIndex == 0) {
-            cir.setReturnValue(humidityIndex >= 3 ? Biomes.SNOWY_BEACH : EBiomes.FROZEN_BEACH);
-        } else {
-            cir.setReturnValue(Biomes.BEACH);
-        }
+        if (temperatureIndex >= 2) { cir.setReturnValue(humidityIndex >= 3 ? EBiomes.TIDEPOOLS : Biomes.BEACH); }
+        else if (temperatureIndex == 1) { cir.setReturnValue(humidityIndex >= 3 ? EBiomes.TIDEPOOLS : EBiomes.COLD_BEACH); }
+        else if (temperatureIndex == 0) { cir.setReturnValue(humidityIndex >= 3 ? Biomes.SNOWY_BEACH : EBiomes.FROZEN_BEACH); }
+        else { cir.setReturnValue(Biomes.BEACH); }
     }
 
     // Cave Biomes
@@ -99,7 +107,7 @@ public class OverworldBiomeGenMixin {
         accessor.invokeAddUndergroundBiome(biomes,
                 Climate.Parameter.span(-1.0F, 0.2F),
                 accessor.getFULL_RANGE(),
-                Climate.Parameter.span(0.03F, 0.8F),
+                Climate.Parameter.span(-0.11F, 0.8F),
                 Climate.Parameter.span(0.45F, 0.55F),
                 accessor.getFULL_RANGE(),
                 0.0F,
@@ -113,6 +121,25 @@ public class OverworldBiomeGenMixin {
                 accessor.getFULL_RANGE(),
                 0.0F,
                 EBiomes.FRIGID_CAVES
+        );
+        accessor.invokeAddUndergroundBiome(biomes,
+                Climate.Parameter.span(-0.45F, -0.15F),
+                Climate.Parameter.span(-1.0F, -0.35F),
+                accessor.getFULL_RANGE(),
+                accessor.getFULL_RANGE(),
+                accessor.getFULL_RANGE(),
+                0.0F,
+                EBiomes.PALE_GROTTO
+        );
+
+        addDeepUndergroundBiome(biomes,
+                Climate.Parameter.span(0.2F, 1.0F),
+                Climate.Parameter.span(0.1F, 1.0F),
+                Climate.Parameter.span(-0.455F, 0.3F),
+                Climate.Parameter.span(-0.375F, 1.0F),
+                accessor.getFULL_RANGE(),
+                0.0F,
+                EBiomes.VOLCANIC_DEPTHS
         );
     }
 
@@ -139,5 +166,18 @@ public class OverworldBiomeGenMixin {
         } else {
             accessor.invokeAddSurfaceBiome(biomes, temperature, humidity, continentalness, erosion, weirdness, offset, biome);
         }
+    }
+
+    private void addDeepUndergroundBiome(
+            final Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes,
+            final Climate.Parameter temperature,
+            final Climate.Parameter humidity,
+            final Climate.Parameter continentalness,
+            final Climate.Parameter erosion,
+            final Climate.Parameter weirdness,
+            final float offset,
+            final ResourceKey<Biome> biome
+    ) {
+        biomes.accept(Pair.of(Climate.parameters(temperature, humidity, continentalness, erosion, Climate.Parameter.span(0.9F, 1.1F), weirdness, offset), biome));
     }
 }

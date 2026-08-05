@@ -13,6 +13,7 @@ public interface EItemTags {
 
     TagKey<Item> POPLAR_LOGS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_logs"));
     TagKey<Item> AZALEA_LOGS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "azalea_logs"));
+    TagKey<Item> CEDAR_LOGS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cedar_logs"));
 
     TagKey<Item> BRONZE_TOOLS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "bronze_tools"));
     TagKey<Item> BRONZE_EQUIPMENT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "bronze_equipment"));

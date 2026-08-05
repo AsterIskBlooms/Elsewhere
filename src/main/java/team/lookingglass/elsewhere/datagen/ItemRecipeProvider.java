@@ -69,15 +69,15 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
                 fullCookingBook(EItems.RAW_PERCH, EItems.COOKED_PERCH);
 
-                shapeless(RecipeCategory.MISC, EItems.DIAMOND_SHARD, 9).requires(Items.DIAMOND)
+                shapeless(RecipeCategory.MISC, EItems.DIAMOND_NUGGET, 9).requires(Items.DIAMOND)
                         .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND)).save(wrappedOutput);
-                shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(EItems.DIAMOND_SHARD, 9)
-                        .unlockedBy(getHasName(EItems.DIAMOND_SHARD), has(EItems.DIAMOND_SHARD)).save(wrappedOutput);
+                shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(EItems.DIAMOND_NUGGET, 9)
+                        .unlockedBy(getHasName(EItems.DIAMOND_NUGGET), has(EItems.DIAMOND_NUGGET)).save(wrappedOutput);
 
-                shapeless(RecipeCategory.MISC, EItems.EMERALD_SHARD, 9).requires(Items.EMERALD)
+                shapeless(RecipeCategory.MISC, EItems.EMERALD_NUGGET, 9).requires(Items.EMERALD)
                         .unlockedBy(getHasName(Items.EMERALD), has(Items.EMERALD)).save(wrappedOutput);
-                shapeless(RecipeCategory.MISC, Items.EMERALD).requires(EItems.EMERALD_SHARD, 9)
-                        .unlockedBy(getHasName(EItems.EMERALD_SHARD), has(EItems.EMERALD_SHARD)).save(wrappedOutput);
+                shapeless(RecipeCategory.MISC, Items.EMERALD).requires(EItems.EMERALD_NUGGET, 9)
+                        .unlockedBy(getHasName(EItems.EMERALD_NUGGET), has(EItems.EMERALD_NUGGET)).save(wrappedOutput);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.COBBLESTONE, 1).pattern("##").pattern("##").define('#', EBlocks.PEBBLE)
                         .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
@@ -150,11 +150,11 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.STONE, Blocks.STONE_STAIRS, Blocks.STONE_SLAB, EBlocks.STONE_WALL);
                 recipe2x2(Blocks.STONE, EBlocks.POLISHED_STONE);
                 recipeStairSlabWall(EBlocks.POLISHED_STONE, EBlocks.POLISHED_STONE_STAIRS, EBlocks.POLISHED_STONE_SLAB, EBlocks.POLISHED_STONE_WALL);
-                recipe2x1(EBlocks.POLISHED_STONE_SLAB, EBlocks.CHISELED_STONE);
-                recipe2x1(EBlocks.POLISHED_STONE, EBlocks.STONE_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_STONE_SLAB, EBlocks.CHISELED_STONE);
+                recipe2x1t2(EBlocks.POLISHED_STONE, EBlocks.STONE_PILLAR);
                 recipe2x2(EBlocks.POLISHED_STONE, Blocks.STONE_BRICKS);
                 recipeStairSlabWall(Blocks.STONE_BRICKS, Blocks.STONE_BRICK_STAIRS, Blocks.STONE_BRICK_SLAB, Blocks.STONE_BRICK_WALL);
-                recipe2x1(Blocks.STONE_BRICK_SLAB, Blocks.CHISELED_STONE_BRICKS);
+                recipe2x1t1(Blocks.STONE_BRICK_SLAB, Blocks.CHISELED_STONE_BRICKS);
                 recipeStairSlabWall(Blocks.SMOOTH_STONE, EBlocks.SMOOTH_STONE_STAIRS, Blocks.SMOOTH_STONE_SLAB, EBlocks.SMOOTH_STONE_WALL);
                 recipe2x2(Blocks.COBBLESTONE, EBlocks.STONE_TILES);
                 recipeStairSlabWall(EBlocks.STONE_TILES, EBlocks.STONE_TILE_STAIRS, EBlocks.STONE_TILE_SLAB, EBlocks.STONE_TILE_WALL);
@@ -164,11 +164,11 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.DEEPSLATE, EBlocks.DEEPSLATE_STAIRS, EBlocks.DEEPSLATE_SLAB, EBlocks.DEEPSLATE_WALL);
                 recipe2x2(Blocks.DEEPSLATE, Blocks.POLISHED_DEEPSLATE);
                 recipeStairSlabWall(Blocks.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE_STAIRS, Blocks.POLISHED_DEEPSLATE_SLAB, Blocks.POLISHED_DEEPSLATE_WALL);
-                recipe2x1(Blocks.POLISHED_DEEPSLATE_SLAB, Blocks.CHISELED_DEEPSLATE);
-                recipe2x1(Blocks.POLISHED_DEEPSLATE, EBlocks.DEEPSLATE_PILLAR);
+                recipe2x1t1(Blocks.POLISHED_DEEPSLATE_SLAB, Blocks.CHISELED_DEEPSLATE);
+                recipe2x1t2(Blocks.POLISHED_DEEPSLATE, EBlocks.DEEPSLATE_PILLAR);
                 recipe2x2(Blocks.POLISHED_DEEPSLATE, Blocks.DEEPSLATE_BRICKS);
                 recipeStairSlabWall(Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICK_STAIRS, Blocks.DEEPSLATE_BRICK_SLAB, Blocks.DEEPSLATE_BRICK_WALL);
-                recipe2x1(Blocks.DEEPSLATE_BRICK_SLAB, EBlocks.CHISELED_DEEPSLATE_BRICKS);
+                recipe2x1t1(Blocks.DEEPSLATE_BRICK_SLAB, EBlocks.CHISELED_DEEPSLATE_BRICKS);
                 recipe2x2(Blocks.COBBLED_DEEPSLATE, Blocks.DEEPSLATE_TILES);
                 recipeStairSlabWall(Blocks.DEEPSLATE_TILES, Blocks.DEEPSLATE_TILE_STAIRS, Blocks.DEEPSLATE_TILE_SLAB, Blocks.DEEPSLATE_TILE_WALL);
                 stonecutterSet(List.of(Blocks.DEEPSLATE, EBlocks.DEEPSLATE_STAIRS, EBlocks.DEEPSLATE_WALL, Blocks.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE_STAIRS, Blocks.POLISHED_DEEPSLATE_WALL, Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICK_STAIRS, Blocks.DEEPSLATE_BRICK_WALL, Blocks.CRACKED_DEEPSLATE_BRICKS, Blocks.CHISELED_DEEPSLATE, EBlocks.CHISELED_DEEPSLATE_BRICKS, EBlocks.DEEPSLATE_PILLAR, Blocks.COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE_STAIRS, Blocks.COBBLED_DEEPSLATE_WALL, Blocks.DEEPSLATE_TILES, Blocks.DEEPSLATE_TILE_STAIRS, Blocks.DEEPSLATE_TILE_WALL, Blocks.CRACKED_DEEPSLATE_TILES), List.of(EBlocks.DEEPSLATE_SLAB, Blocks.POLISHED_DEEPSLATE_SLAB, Blocks.DEEPSLATE_BRICK_SLAB, Blocks.COBBLED_DEEPSLATE_SLAB, Blocks.DEEPSLATE_TILE_SLAB));
@@ -177,11 +177,11 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(EBlocks.SHALE, EBlocks.SHALE_STAIRS, EBlocks.SHALE_SLAB, EBlocks.SHALE_WALL);
                 recipe2x2(EBlocks.SHALE, EBlocks.POLISHED_SHALE);
                 recipeStairSlabWall(EBlocks.POLISHED_SHALE, EBlocks.POLISHED_SHALE_STAIRS, EBlocks.POLISHED_SHALE_SLAB, EBlocks.POLISHED_SHALE_WALL);
-                recipe2x1(EBlocks.POLISHED_SHALE_SLAB, EBlocks.CHISELED_SHALE);
-                recipe2x1(EBlocks.POLISHED_SHALE, EBlocks.SHALE_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_SHALE_SLAB, EBlocks.CHISELED_SHALE);
+                recipe2x1t2(EBlocks.POLISHED_SHALE, EBlocks.SHALE_PILLAR);
                 recipe2x2(EBlocks.POLISHED_SHALE, EBlocks.SHALE_BRICKS);
                 recipeStairSlabWall(EBlocks.SHALE_BRICKS, EBlocks.SHALE_BRICK_STAIRS, EBlocks.SHALE_BRICK_SLAB, EBlocks.SHALE_BRICK_WALL);
-                recipe2x1(EBlocks.SHALE_BRICK_SLAB, EBlocks.CHISELED_SHALE_BRICKS);
+                recipe2x1t1(EBlocks.SHALE_BRICK_SLAB, EBlocks.CHISELED_SHALE_BRICKS);
                 recipeStairSlabWall(EBlocks.COBBLESHALE, EBlocks.COBBLESHALE_STAIRS, EBlocks.COBBLESHALE_SLAB, EBlocks.COBBLESHALE_WALL);
                 recipe2x2(EBlocks.COBBLESHALE, EBlocks.SHALE_TILES);
                 recipeStairSlabWall(EBlocks.SHALE_TILES, EBlocks.SHALE_TILE_STAIRS, EBlocks.SHALE_TILE_SLAB, EBlocks.SHALE_TILE_WALL);
@@ -191,8 +191,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.ANDESITE, Blocks.ANDESITE_STAIRS, Blocks.ANDESITE_SLAB, Blocks.ANDESITE_WALL);
                 recipe2x2(Blocks.ANDESITE, Blocks.POLISHED_ANDESITE);
                 recipeStairSlabWall(Blocks.POLISHED_ANDESITE, Blocks.POLISHED_ANDESITE_STAIRS, Blocks.POLISHED_ANDESITE_SLAB, EBlocks.POLISHED_ANDESITE_WALL);
-                recipe2x1(Blocks.POLISHED_ANDESITE_SLAB, EBlocks.CHISELED_ANDESITE);
-                recipe2x1(Blocks.POLISHED_ANDESITE, EBlocks.ANDESITE_PILLAR);
+                recipe2x1t1(Blocks.POLISHED_ANDESITE_SLAB, EBlocks.CHISELED_ANDESITE);
+                recipe2x1t2(Blocks.POLISHED_ANDESITE, EBlocks.ANDESITE_PILLAR);
                 recipe2x2(Blocks.POLISHED_ANDESITE, EBlocks.ANDESITE_BRICKS);
                 recipeStairSlabWall(EBlocks.ANDESITE_BRICKS, EBlocks.ANDESITE_BRICK_STAIRS, EBlocks.ANDESITE_BRICK_SLAB, EBlocks.ANDESITE_BRICK_WALL);
                 stonecutterSet(List.of(Blocks.ANDESITE, Blocks.ANDESITE_STAIRS, Blocks.ANDESITE_WALL, Blocks.POLISHED_ANDESITE, Blocks.POLISHED_ANDESITE_STAIRS, EBlocks.POLISHED_ANDESITE_WALL, EBlocks.ANDESITE_BRICKS, EBlocks.ANDESITE_BRICK_STAIRS, EBlocks.ANDESITE_BRICK_WALL, EBlocks.ANDESITE_PILLAR, EBlocks.CHISELED_ANDESITE), List.of(Blocks.ANDESITE_SLAB, Blocks.POLISHED_ANDESITE_SLAB, EBlocks.ANDESITE_BRICK_SLAB));
@@ -201,7 +201,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.GRANITE, Blocks.GRANITE_STAIRS, Blocks.GRANITE_SLAB, Blocks.GRANITE_WALL);
                 recipe2x2(Blocks.GRANITE, Blocks.POLISHED_GRANITE);
                 recipeStairSlabWall(Blocks.POLISHED_GRANITE, Blocks.POLISHED_GRANITE_STAIRS, Blocks.POLISHED_GRANITE_SLAB, EBlocks.POLISHED_GRANITE_WALL);
-                recipe2x1(Blocks.POLISHED_GRANITE_SLAB, EBlocks.CHISELED_GRANITE);
+                recipe2x1t1(Blocks.POLISHED_GRANITE_SLAB, EBlocks.CHISELED_GRANITE);
                 recipe2x2(Blocks.POLISHED_GRANITE, EBlocks.GRANITE_BRICKS);
                 recipeStairSlabWall(EBlocks.GRANITE_BRICKS, EBlocks.GRANITE_BRICK_STAIRS, EBlocks.GRANITE_BRICK_SLAB, EBlocks.GRANITE_BRICK_WALL);
                 stonecutterSet(List.of(Blocks.GRANITE, Blocks.GRANITE_STAIRS, Blocks.GRANITE_WALL, Blocks.POLISHED_GRANITE, Blocks.POLISHED_GRANITE_STAIRS, EBlocks.POLISHED_GRANITE_WALL, EBlocks.GRANITE_BRICKS, EBlocks.GRANITE_BRICK_STAIRS, EBlocks.GRANITE_BRICK_WALL, EBlocks.CHISELED_GRANITE), List.of(Blocks.GRANITE_SLAB, Blocks.POLISHED_GRANITE_SLAB, EBlocks.GRANITE_BRICK_SLAB));
@@ -210,7 +210,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.DIORITE, Blocks.DIORITE_STAIRS, Blocks.DIORITE_SLAB, Blocks.DIORITE_WALL);
                 recipe2x2(Blocks.DIORITE, Blocks.POLISHED_DIORITE);
                 recipeStairSlabWall(Blocks.POLISHED_DIORITE, Blocks.POLISHED_DIORITE_STAIRS, Blocks.POLISHED_DIORITE_SLAB, EBlocks.POLISHED_DIORITE_WALL);
-                recipe2x1(Blocks.POLISHED_DIORITE_SLAB, EBlocks.CHISELED_DIORITE);
+                recipe2x1t1(Blocks.POLISHED_DIORITE_SLAB, EBlocks.CHISELED_DIORITE);
                 recipe2x2(Blocks.POLISHED_DIORITE, EBlocks.DIORITE_BRICKS);
                 recipeStairSlabWall(EBlocks.DIORITE_BRICKS, EBlocks.DIORITE_BRICK_STAIRS, EBlocks.DIORITE_BRICK_SLAB, EBlocks.DIORITE_BRICK_WALL);
                 stonecutterSet(List.of(Blocks.DIORITE, Blocks.DIORITE_STAIRS, Blocks.DIORITE_WALL, Blocks.POLISHED_DIORITE, Blocks.POLISHED_DIORITE_STAIRS, EBlocks.POLISHED_DIORITE_WALL, EBlocks.DIORITE_BRICKS, EBlocks.DIORITE_BRICK_STAIRS, EBlocks.DIORITE_BRICK_WALL, EBlocks.CHISELED_DIORITE), List.of(Blocks.DIORITE_SLAB, Blocks.POLISHED_DIORITE_SLAB, EBlocks.DIORITE_BRICK_SLAB));
@@ -219,40 +219,40 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.TUFF, Blocks.TUFF_STAIRS, Blocks.TUFF_SLAB, Blocks.TUFF_WALL);
                 recipe2x2(Blocks.TUFF, Blocks.POLISHED_TUFF);
                 recipeStairSlabWall(Blocks.POLISHED_TUFF, Blocks.POLISHED_TUFF_STAIRS, Blocks.POLISHED_TUFF_SLAB, Blocks.POLISHED_TUFF_WALL);
-                recipe2x1(Blocks.POLISHED_TUFF_SLAB, Blocks.CHISELED_TUFF);
-                recipe2x1(Blocks.POLISHED_TUFF, EBlocks.TUFF_PILLAR);
+                recipe2x1t1(Blocks.POLISHED_TUFF_SLAB, Blocks.CHISELED_TUFF);
+                recipe2x1t2(Blocks.POLISHED_TUFF, EBlocks.TUFF_PILLAR);
                 recipe2x2(Blocks.POLISHED_TUFF, Blocks.TUFF_BRICKS);
                 recipeStairSlabWall(Blocks.TUFF_BRICKS, Blocks.TUFF_BRICK_STAIRS, Blocks.TUFF_BRICK_SLAB, Blocks.TUFF_BRICK_WALL);
-                recipe2x1(Blocks.TUFF_BRICK_SLAB, Blocks.CHISELED_TUFF_BRICKS);
+                recipe2x1t1(Blocks.TUFF_BRICK_SLAB, Blocks.CHISELED_TUFF_BRICKS);
                 stonecutterSet(List.of(Blocks.TUFF, Blocks.TUFF_STAIRS, Blocks.TUFF_WALL, Blocks.POLISHED_TUFF, Blocks.POLISHED_TUFF_STAIRS, Blocks.POLISHED_TUFF_WALL, Blocks.TUFF_BRICKS, Blocks.TUFF_BRICK_STAIRS, Blocks.TUFF_BRICK_WALL, EBlocks.TUFF_PILLAR, Blocks.CHISELED_TUFF), List.of(Blocks.TUFF_SLAB, Blocks.POLISHED_TUFF_SLAB, Blocks.TUFF_BRICK_SLAB));
 
                 // Calcite
                 recipeStairSlabWall(Blocks.CALCITE, EBlocks.CALCITE_STAIRS, EBlocks.CALCITE_SLAB, EBlocks.CALCITE_WALL);
                 recipe2x2(Blocks.CALCITE, EBlocks.POLISHED_CALCITE);
                 recipeStairSlabWall(EBlocks.POLISHED_CALCITE, EBlocks.POLISHED_CALCITE_STAIRS, EBlocks.POLISHED_CALCITE_SLAB, EBlocks.POLISHED_CALCITE_WALL);
-                recipe2x1(EBlocks.POLISHED_CALCITE_SLAB, EBlocks.CHISELED_CALCITE);
-                recipe2x1(EBlocks.POLISHED_CALCITE, EBlocks.CALCITE_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_CALCITE_SLAB, EBlocks.CHISELED_CALCITE);
+                recipe2x1t2(EBlocks.POLISHED_CALCITE, EBlocks.CALCITE_PILLAR);
                 recipe2x2(EBlocks.POLISHED_CALCITE, EBlocks.CALCITE_BRICKS);
                 recipeStairSlabWall(EBlocks.CALCITE_BRICKS, EBlocks.CALCITE_BRICK_STAIRS, EBlocks.CALCITE_BRICK_SLAB, EBlocks.CALCITE_BRICK_WALL);
-                recipe2x1(EBlocks.CALCITE_BRICK_SLAB, EBlocks.CHISELED_CALCITE_BRICKS);
+                recipe2x1t1(EBlocks.CALCITE_BRICK_SLAB, EBlocks.CHISELED_CALCITE_BRICKS);
                 stonecutterSet(List.of(Blocks.CALCITE, EBlocks.CALCITE_STAIRS, EBlocks.CALCITE_WALL, EBlocks.POLISHED_CALCITE, EBlocks.POLISHED_CALCITE_STAIRS, EBlocks.POLISHED_CALCITE_WALL, EBlocks.CALCITE_BRICKS, EBlocks.CALCITE_BRICK_STAIRS, EBlocks.CALCITE_BRICK_WALL, EBlocks.CALCITE_PILLAR, EBlocks.CHISELED_CALCITE, EBlocks.CHISELED_CALCITE_BRICKS), List.of(EBlocks.CALCITE_SLAB, EBlocks.POLISHED_CALCITE_SLAB, EBlocks.CALCITE_BRICK_SLAB));
 
                 // Dripstone
                 recipeStairSlabWall(Blocks.DRIPSTONE_BLOCK, EBlocks.DRIPSTONE_STAIRS, EBlocks.DRIPSTONE_SLAB, EBlocks.DRIPSTONE_WALL);
                 recipe2x2(Blocks.DRIPSTONE_BLOCK, EBlocks.POLISHED_DRIPSTONE);
                 recipeStairSlabWall(EBlocks.POLISHED_DRIPSTONE, EBlocks.POLISHED_DRIPSTONE_STAIRS, EBlocks.POLISHED_DRIPSTONE_SLAB, EBlocks.POLISHED_DRIPSTONE_WALL);
-                recipe2x1(EBlocks.POLISHED_DRIPSTONE, EBlocks.DRIPSTONE_PILLAR);
+                recipe2x1t2(EBlocks.POLISHED_DRIPSTONE, EBlocks.DRIPSTONE_PILLAR);
                 recipe2x2(EBlocks.POLISHED_DRIPSTONE, EBlocks.DRIPSTONE_TILES);
                 recipeStairSlabWall(EBlocks.DRIPSTONE_TILES, EBlocks.DRIPSTONE_TILE_STAIRS, EBlocks.DRIPSTONE_TILE_SLAB, EBlocks.DRIPSTONE_TILE_WALL);
-                recipe2x1(EBlocks.DRIPSTONE_TILE_SLAB, EBlocks.CHISELED_DRIPSTONE_TILES);
+                recipe2x1t1(EBlocks.DRIPSTONE_TILE_SLAB, EBlocks.CHISELED_DRIPSTONE_TILES);
                 stonecutterSet(List.of(Blocks.DRIPSTONE_BLOCK, EBlocks.DRIPSTONE_STAIRS, EBlocks.DRIPSTONE_WALL, EBlocks.POLISHED_DRIPSTONE, EBlocks.POLISHED_DRIPSTONE_STAIRS, EBlocks.POLISHED_DRIPSTONE_WALL, EBlocks.DRIPSTONE_TILES, EBlocks.DRIPSTONE_TILE_STAIRS, EBlocks.DRIPSTONE_TILE_WALL, EBlocks.DRIPSTONE_PILLAR, EBlocks.CHISELED_DRIPSTONE_TILES), List.of(EBlocks.DRIPSTONE_SLAB, EBlocks.POLISHED_DRIPSTONE_SLAB, EBlocks.DRIPSTONE_TILE_SLAB));
 
                 // Blackstone
                 recipeStairSlabWall(Blocks.BLACKSTONE, Blocks.BLACKSTONE_STAIRS, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE_WALL);
-                recipe2x1(Blocks.BLACKSTONE, EBlocks.BLACKSTONE_PILLAR);
+                recipe2x1t2(Blocks.BLACKSTONE, EBlocks.BLACKSTONE_PILLAR);
                 recipe2x2(Blocks.BLACKSTONE, Blocks.POLISHED_BLACKSTONE);
                 recipeStairSlabWall(Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_BLACKSTONE_STAIRS, Blocks.POLISHED_BLACKSTONE_SLAB, Blocks.POLISHED_BLACKSTONE_WALL);
-                recipe2x1(Blocks.POLISHED_BLACKSTONE_SLAB, Blocks.CHISELED_POLISHED_BLACKSTONE);
+                recipe2x1t1(Blocks.POLISHED_BLACKSTONE_SLAB, Blocks.CHISELED_POLISHED_BLACKSTONE);
                 recipe2x2(Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_BLACKSTONE_BRICKS);
                 recipeStairSlabWall(Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
                 stonecutterSet(List.of(Items.BLACKSTONE, Items.BLACKSTONE_STAIRS, Items.BLACKSTONE_WALL, Items.POLISHED_BLACKSTONE, Items.POLISHED_BLACKSTONE_STAIRS, Items.POLISHED_BLACKSTONE_WALL, Items.POLISHED_BLACKSTONE_BRICKS, Items.POLISHED_BLACKSTONE_BRICK_STAIRS, Items.POLISHED_BLACKSTONE_BRICK_WALL, EBlocks.BLACKSTONE_PILLAR, Items.CHISELED_POLISHED_BLACKSTONE), List.of(Items.BLACKSTONE_SLAB, Items.POLISHED_BLACKSTONE_SLAB, Items.POLISHED_BLACKSTONE_BRICK_SLAB));
@@ -261,8 +261,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.PRISMARINE, Blocks.PRISMARINE_STAIRS, Blocks.PRISMARINE_SLAB, Blocks.PRISMARINE_WALL);
                 recipe2x2(Blocks.PRISMARINE, EBlocks.POLISHED_PRISMARINE);
                 recipeStairSlabWall(EBlocks.POLISHED_PRISMARINE, EBlocks.POLISHED_PRISMARINE_STAIRS, EBlocks.POLISHED_PRISMARINE_SLAB, EBlocks.POLISHED_PRISMARINE_WALL);
-                recipe2x1(EBlocks.POLISHED_PRISMARINE_SLAB, EBlocks.CHISELED_PRISMARINE);
-                recipe2x1(EBlocks.POLISHED_PRISMARINE, EBlocks.PRISMARINE_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_PRISMARINE_SLAB, EBlocks.CHISELED_PRISMARINE);
+                recipe2x1t2(EBlocks.POLISHED_PRISMARINE, EBlocks.PRISMARINE_PILLAR);
                 recipe2x2(EBlocks.POLISHED_PRISMARINE, Blocks.PRISMARINE_BRICKS);
                 recipeStairSlabWall(Blocks.PRISMARINE_BRICKS, Blocks.PRISMARINE_BRICK_STAIRS, Blocks.PRISMARINE_BRICK_SLAB, EBlocks.PRISMARINE_BRICK_WALL);
                 stonecutterSet(List.of(Blocks.PRISMARINE, Blocks.PRISMARINE_STAIRS, Blocks.PRISMARINE_WALL, EBlocks.POLISHED_PRISMARINE, EBlocks.POLISHED_PRISMARINE_STAIRS, EBlocks.POLISHED_PRISMARINE_WALL, Blocks.PRISMARINE_BRICKS, EBlocks.PRISMARINE_BRICK_WALL, EBlocks.PRISMARINE_PILLAR, EBlocks.CHISELED_PRISMARINE), List.of(Blocks.PRISMARINE_SLAB, EBlocks.POLISHED_PRISMARINE_SLAB));
@@ -271,7 +271,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.DARK_PRISMARINE, Blocks.DARK_PRISMARINE_STAIRS, Blocks.DARK_PRISMARINE_SLAB, EBlocks.DARK_PRISMARINE_WALL);
                 recipe2x2(Blocks.DARK_PRISMARINE, EBlocks.POLISHED_DARK_PRISMARINE);
                 recipeStairSlabWall(EBlocks.POLISHED_DARK_PRISMARINE, EBlocks.POLISHED_DARK_PRISMARINE_STAIRS, EBlocks.POLISHED_DARK_PRISMARINE_SLAB, EBlocks.POLISHED_DARK_PRISMARINE_WALL);
-                recipe2x1(EBlocks.POLISHED_DARK_PRISMARINE_SLAB, EBlocks.CHISELED_DARK_PRISMARINE);
+                recipe2x1t1(EBlocks.POLISHED_DARK_PRISMARINE_SLAB, EBlocks.CHISELED_DARK_PRISMARINE);
                 recipe2x2(EBlocks.POLISHED_DARK_PRISMARINE, EBlocks.DARK_PRISMARINE_SCALES);
                 recipeStairSlabWall(EBlocks.DARK_PRISMARINE_SCALES, EBlocks.DARK_PRISMARINE_SCALE_STAIRS, EBlocks.DARK_PRISMARINE_SCALE_SLAB, EBlocks.DARK_PRISMARINE_SCALE_WALL);
                 stonecutterSet(List.of(Blocks.DARK_PRISMARINE, Items.DARK_PRISMARINE_STAIRS, EBlocks.DARK_PRISMARINE_WALL, EBlocks.POLISHED_DARK_PRISMARINE, EBlocks.POLISHED_DARK_PRISMARINE_STAIRS, EBlocks.POLISHED_DARK_PRISMARINE_WALL, EBlocks.DARK_PRISMARINE_SCALES, EBlocks.DARK_PRISMARINE_SCALE_STAIRS, EBlocks.DARK_PRISMARINE_SCALE_WALL, EBlocks.CHISELED_DARK_PRISMARINE), List.of(Items.DARK_PRISMARINE_SLAB, EBlocks.POLISHED_DARK_PRISMARINE_SLAB, EBlocks.DARK_PRISMARINE_SCALE_SLAB));
@@ -280,19 +280,19 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(Blocks.NETHERRACK, EBlocks.NETHERRACK_STAIRS, EBlocks.NETHERRACK_SLAB, EBlocks.NETHERRACK_WALL);
                 recipe2x2(Blocks.NETHERRACK, EBlocks.POLISHED_NETHERRACK);
                 recipeStairSlabWall(EBlocks.POLISHED_NETHERRACK, EBlocks.POLISHED_NETHERRACK_STAIRS, EBlocks.POLISHED_NETHERRACK_SLAB, EBlocks.POLISHED_NETHERRACK_WALL);
-                recipe2x1(EBlocks.POLISHED_NETHERRACK_SLAB, EBlocks.CHISELED_NETHERRACK);
-                recipe2x1(EBlocks.POLISHED_NETHERRACK, EBlocks.NETHERRACK_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_NETHERRACK_SLAB, EBlocks.CHISELED_NETHERRACK);
+                recipe2x1t2(EBlocks.POLISHED_NETHERRACK, EBlocks.NETHERRACK_PILLAR);
                 recipe2x2(EBlocks.POLISHED_NETHERRACK, EBlocks.NETHERRACK_BRICKS);
                 recipeStairSlabWall(EBlocks.NETHERRACK_BRICKS, EBlocks.NETHERRACK_BRICK_STAIRS, EBlocks.NETHERRACK_BRICK_SLAB, EBlocks.NETHERRACK_BRICK_WALL);
-                recipe2x1(EBlocks.NETHERRACK_BRICK_SLAB, EBlocks.CHISELED_NETHERRACK_BRICKS);
+                recipe2x1t1(EBlocks.NETHERRACK_BRICK_SLAB, EBlocks.CHISELED_NETHERRACK_BRICKS);
                 stonecutterSet(List.of(Blocks.NETHERRACK, EBlocks.NETHERRACK_STAIRS, EBlocks.NETHERRACK_WALL, EBlocks.POLISHED_NETHERRACK, EBlocks.POLISHED_NETHERRACK_STAIRS, EBlocks.POLISHED_NETHERRACK_WALL, EBlocks.NETHERRACK_BRICKS, EBlocks.NETHERRACK_BRICK_STAIRS, EBlocks.NETHERRACK_BRICK_WALL, EBlocks.NETHERRACK_PILLAR, EBlocks.CHISELED_NETHERRACK, EBlocks.CHISELED_NETHERRACK_BRICKS), List.of(EBlocks.NETHERRACK_SLAB, EBlocks.POLISHED_NETHERRACK_SLAB, EBlocks.NETHERRACK_BRICK_SLAB));
 
                 // End Stone
                 recipeStairSlabWall(Blocks.END_STONE, EBlocks.END_STONE_STAIRS, EBlocks.END_STONE_SLAB, EBlocks.END_STONE_WALL);
                 recipe2x2(Blocks.END_STONE, EBlocks.POLISHED_END_STONE);
                 recipeStairSlabWall(EBlocks.POLISHED_END_STONE, EBlocks.POLISHED_END_STONE_STAIRS, EBlocks.POLISHED_END_STONE_SLAB, EBlocks.POLISHED_END_STONE_WALL);
-                recipe2x1(EBlocks.POLISHED_END_STONE_SLAB, EBlocks.CHISELED_END_STONE);
-                recipe2x1(EBlocks.POLISHED_END_STONE, EBlocks.END_STONE_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_END_STONE_SLAB, EBlocks.CHISELED_END_STONE);
+                recipe2x1t2(EBlocks.POLISHED_END_STONE, EBlocks.END_STONE_PILLAR);
                 recipe2x2(EBlocks.POLISHED_END_STONE, Blocks.END_STONE_BRICKS);
                 recipeStairSlabWall(Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL);
                 stonecutterSet(List.of(Blocks.END_STONE, EBlocks.END_STONE_STAIRS, EBlocks.END_STONE_WALL, EBlocks.POLISHED_END_STONE, EBlocks.POLISHED_END_STONE_STAIRS, EBlocks.POLISHED_END_STONE_WALL, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_WALL, EBlocks.END_STONE_PILLAR, EBlocks.CHISELED_END_STONE), List.of(EBlocks.END_STONE_SLAB, EBlocks.POLISHED_END_STONE_SLAB, Blocks.END_STONE_BRICK_SLAB));
@@ -301,19 +301,19 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(EBlocks.SODALITE, EBlocks.SODALITE_STAIRS, EBlocks.SODALITE_SLAB, EBlocks.SODALITE_WALL);
                 recipe2x2(EBlocks.SODALITE, EBlocks.POLISHED_SODALITE);
                 recipeStairSlabWall(EBlocks.POLISHED_SODALITE, EBlocks.POLISHED_SODALITE_STAIRS, EBlocks.POLISHED_SODALITE_SLAB, EBlocks.POLISHED_SODALITE_WALL);
-                recipe2x1(EBlocks.POLISHED_SODALITE_SLAB, EBlocks.CHISELED_SODALITE);
-                recipe2x1(EBlocks.POLISHED_SODALITE, EBlocks.SODALITE_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_SODALITE_SLAB, EBlocks.CHISELED_SODALITE);
+                recipe2x1t2(EBlocks.POLISHED_SODALITE, EBlocks.SODALITE_PILLAR);
                 recipe2x2(EBlocks.POLISHED_SODALITE, EBlocks.SODALITE_BRICKS);
                 recipeStairSlabWall(EBlocks.SODALITE_BRICKS, EBlocks.SODALITE_BRICK_STAIRS, EBlocks.SODALITE_BRICK_SLAB, EBlocks.SODALITE_BRICK_WALL);
-                recipe2x1(EBlocks.SODALITE_BRICK_SLAB, EBlocks.CHISELED_SODALITE_BRICKS);
+                recipe2x1t1(EBlocks.SODALITE_BRICK_SLAB, EBlocks.CHISELED_SODALITE_BRICKS);
                 stonecutterSet(List.of(EBlocks.SODALITE, EBlocks.SODALITE_STAIRS, EBlocks.SODALITE_WALL, EBlocks.POLISHED_SODALITE, EBlocks.POLISHED_SODALITE_STAIRS, EBlocks.POLISHED_SODALITE_WALL, EBlocks.SODALITE_BRICKS, EBlocks.SODALITE_BRICK_STAIRS, EBlocks.SODALITE_BRICK_WALL, EBlocks.SODALITE_PILLAR, EBlocks.CHISELED_SODALITE, EBlocks.CHISELED_SODALITE_BRICKS), List.of(EBlocks.SODALITE_SLAB, EBlocks.POLISHED_SODALITE_SLAB, EBlocks.SODALITE_BRICK_SLAB));
 
                 // Sulfur
                 recipeStairSlabWall(EBlocks.SULFUR, EBlocks.SULFUR_STAIRS, EBlocks.SULFUR_SLAB, EBlocks.SULFUR_WALL);
                 recipe2x2(EBlocks.SULFUR, EBlocks.POLISHED_SULFUR);
                 recipeStairSlabWall(EBlocks.POLISHED_SULFUR, EBlocks.POLISHED_SULFUR_STAIRS, EBlocks.POLISHED_SULFUR_SLAB, EBlocks.POLISHED_SULFUR_WALL);
-                recipe2x1(EBlocks.POLISHED_SULFUR_SLAB, EBlocks.CHISELED_SULFUR);
-                recipe2x1(EBlocks.POLISHED_SULFUR, EBlocks.SULFUR_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_SULFUR_SLAB, EBlocks.CHISELED_SULFUR);
+                recipe2x1t2(EBlocks.POLISHED_SULFUR, EBlocks.SULFUR_PILLAR);
                 recipe2x2(EBlocks.POLISHED_SULFUR, EBlocks.SULFUR_BRICKS);
                 recipeStairSlabWall(EBlocks.SULFUR_BRICKS, EBlocks.SULFUR_BRICK_STAIRS, EBlocks.SULFUR_BRICK_SLAB, EBlocks.SULFUR_BRICK_WALL);
                 stonecutterSet(List.of(EBlocks.SULFUR, EBlocks.SULFUR_STAIRS, EBlocks.SULFUR_WALL, EBlocks.POLISHED_SULFUR, EBlocks.POLISHED_SULFUR_STAIRS, EBlocks.POLISHED_SULFUR_WALL, EBlocks.SULFUR_BRICKS, EBlocks.SULFUR_BRICK_STAIRS, EBlocks.SULFUR_BRICK_WALL, EBlocks.SULFUR_PILLAR, EBlocks.CHISELED_SULFUR), List.of(EBlocks.SULFUR_SLAB, EBlocks.POLISHED_SULFUR_SLAB, EBlocks.SULFUR_BRICK_SLAB));
@@ -322,8 +322,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(EBlocks.ORPIMENT, EBlocks.ORPIMENT_STAIRS, EBlocks.ORPIMENT_SLAB, EBlocks.ORPIMENT_WALL);
                 recipe2x2(EBlocks.ORPIMENT, EBlocks.POLISHED_ORPIMENT);
                 recipeStairSlabWall(EBlocks.POLISHED_ORPIMENT, EBlocks.POLISHED_ORPIMENT_STAIRS, EBlocks.POLISHED_ORPIMENT_SLAB, EBlocks.POLISHED_ORPIMENT_WALL);
-                recipe2x1(EBlocks.POLISHED_ORPIMENT_SLAB, EBlocks.CHISELED_ORPIMENT);
-                recipe2x1(EBlocks.POLISHED_ORPIMENT, EBlocks.ORPIMENT_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_ORPIMENT_SLAB, EBlocks.CHISELED_ORPIMENT);
+                recipe2x1t2(EBlocks.POLISHED_ORPIMENT, EBlocks.ORPIMENT_PILLAR);
                 recipe2x2(EBlocks.POLISHED_ORPIMENT, EBlocks.ORPIMENT_BRICKS);
                 recipeStairSlabWall(EBlocks.ORPIMENT_BRICKS, EBlocks.ORPIMENT_BRICK_STAIRS, EBlocks.ORPIMENT_BRICK_SLAB, EBlocks.ORPIMENT_BRICK_WALL);
                 stonecutterSet(List.of(EBlocks.ORPIMENT, EBlocks.ORPIMENT_STAIRS, EBlocks.ORPIMENT_WALL, EBlocks.POLISHED_ORPIMENT, EBlocks.POLISHED_ORPIMENT_STAIRS, EBlocks.POLISHED_ORPIMENT_WALL, EBlocks.ORPIMENT_BRICKS, EBlocks.ORPIMENT_BRICK_STAIRS, EBlocks.ORPIMENT_BRICK_WALL, EBlocks.ORPIMENT_PILLAR, EBlocks.CHISELED_ORPIMENT), List.of(EBlocks.ORPIMENT_SLAB, EBlocks.POLISHED_ORPIMENT_SLAB, EBlocks.ORPIMENT_BRICK_SLAB));
@@ -332,8 +332,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(EBlocks.CINNABAR, EBlocks.CINNABAR_STAIRS, EBlocks.CINNABAR_SLAB, EBlocks.CINNABAR_WALL);
                 recipe2x2(EBlocks.CINNABAR, EBlocks.POLISHED_CINNABAR);
                 recipeStairSlabWall(EBlocks.POLISHED_CINNABAR, EBlocks.POLISHED_CINNABAR_STAIRS, EBlocks.POLISHED_CINNABAR_SLAB, EBlocks.POLISHED_CINNABAR_WALL);
-                recipe2x1(EBlocks.POLISHED_CINNABAR_SLAB, EBlocks.CHISELED_CINNABAR);
-                recipe2x1(EBlocks.POLISHED_CINNABAR, EBlocks.CINNABAR_PILLAR);
+                recipe2x1t1(EBlocks.POLISHED_CINNABAR_SLAB, EBlocks.CHISELED_CINNABAR);
+                recipe2x1t2(EBlocks.POLISHED_CINNABAR, EBlocks.CINNABAR_PILLAR);
                 recipe2x2(EBlocks.POLISHED_CINNABAR, EBlocks.CINNABAR_BRICKS);
                 recipeStairSlabWall(EBlocks.CINNABAR_BRICKS, EBlocks.CINNABAR_BRICK_STAIRS, EBlocks.CINNABAR_BRICK_SLAB, EBlocks.CINNABAR_BRICK_WALL);
                 stonecutterSet(List.of(EBlocks.CINNABAR, EBlocks.CINNABAR_STAIRS, EBlocks.CINNABAR_WALL, EBlocks.POLISHED_CINNABAR, EBlocks.POLISHED_CINNABAR_STAIRS, EBlocks.POLISHED_CINNABAR_WALL, EBlocks.CINNABAR_BRICKS, EBlocks.CINNABAR_BRICK_STAIRS, EBlocks.CINNABAR_BRICK_WALL, EBlocks.CINNABAR_PILLAR, EBlocks.CHISELED_CINNABAR), List.of(EBlocks.CINNABAR_SLAB, EBlocks.POLISHED_CINNABAR_SLAB, EBlocks.CINNABAR_BRICK_SLAB));
@@ -344,10 +344,9 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(EBlocks.POLISHED_SMOOTH_BASALT, EBlocks.POLISHED_SMOOTH_BASALT_STAIRS, EBlocks.POLISHED_SMOOTH_BASALT_SLAB, EBlocks.POLISHED_SMOOTH_BASALT_WALL);
                 recipe2x2(EBlocks.POLISHED_SMOOTH_BASALT, EBlocks.SMOOTH_BASALT_BRICKS);
                 recipeStairSlabWall(EBlocks.SMOOTH_BASALT_BRICKS, EBlocks.SMOOTH_BASALT_BRICK_STAIRS, EBlocks.SMOOTH_BASALT_BRICK_SLAB, EBlocks.SMOOTH_BASALT_BRICK_WALL);
-                recipe2x1(EBlocks.SMOOTH_BASALT_BRICK_SLAB, EBlocks.SMOOTH_BASALT_TILES);
+                recipe2x1t1(EBlocks.SMOOTH_BASALT_BRICK_SLAB, EBlocks.SMOOTH_BASALT_TILES);
                 recipeStairSlabWall(EBlocks.SMOOTH_BASALT_TILES, EBlocks.SMOOTH_BASALT_TILE_STAIRS, EBlocks.SMOOTH_BASALT_TILE_SLAB, EBlocks.SMOOTH_BASALT_TILE_WALL);
                 stonecutterSet(List.of(Blocks.BASALT, Blocks.POLISHED_BASALT, Blocks.SMOOTH_BASALT, EBlocks.SMOOTH_BASALT_STAIRS, EBlocks.SMOOTH_BASALT_WALL, EBlocks.POLISHED_SMOOTH_BASALT, EBlocks.POLISHED_SMOOTH_BASALT_STAIRS, EBlocks.POLISHED_SMOOTH_BASALT_WALL, EBlocks.SMOOTH_BASALT_BRICKS, EBlocks.SMOOTH_BASALT_BRICK_STAIRS, EBlocks.SMOOTH_BASALT_BRICK_WALL, EBlocks.SMOOTH_BASALT_TILES, EBlocks.SMOOTH_BASALT_TILE_STAIRS, EBlocks.SMOOTH_BASALT_TILE_WALL), List.of(EBlocks.BASALT_SLAB, EBlocks.POLISHED_BASALT_SLAB, EBlocks.SMOOTH_BASALT_SLAB, EBlocks.POLISHED_SMOOTH_BASALT_SLAB, EBlocks.SMOOTH_BASALT_BRICK_SLAB, EBlocks.SMOOTH_BASALT_TILE_SLAB));
-
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.BEACHSTONE).define('S', Blocks.SAND).define('#', EBlocks.PEBBLE)
                         .pattern("#S").pattern("S#")
@@ -376,7 +375,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 );
 
                 // Wood
-                fullWoodSet(wrappedOutput,
+                fullWoodSet(
                         EBlocks.POPLAR_LOG, EBlocks.STRIPPED_POPLAR_LOG, EBlocks.POPLAR_WOOD, EBlocks.STRIPPED_POPLAR_WOOD, EItemTags.POPLAR_LOGS,
                         EBlocks.POPLAR_PLANKS, EBlocks.POPLAR_STAIRS, EBlocks.POPLAR_SLAB,
                         EBlocks.POPLAR_MOSAIC, EBlocks.POPLAR_MOSAIC_STAIRS, EBlocks.POPLAR_MOSAIC_SLAB,
@@ -385,7 +384,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.POPLAR_PRESSURE_PLATE, EBlocks.POPLAR_BUTTON, EItems.POPLAR_SIGN, EItems.POPLAR_HANGING_SIGN,
                         EItems.POPLAR_BOAT)
                 ;
-                fullWoodSet(wrappedOutput,
+                fullWoodSet(
                         EBlocks.AZALEA_LOG, EBlocks.STRIPPED_AZALEA_LOG, EBlocks.AZALEA_WOOD, EBlocks.STRIPPED_AZALEA_WOOD, EItemTags.AZALEA_LOGS,
                         EBlocks.AZALEA_PLANKS, EBlocks.AZALEA_STAIRS, EBlocks.AZALEA_SLAB,
                         EBlocks.AZALEA_MOSAIC, EBlocks.AZALEA_MOSAIC_STAIRS, EBlocks.AZALEA_MOSAIC_SLAB,
@@ -393,6 +392,15 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.AZALEA_FENCE, EBlocks.AZALEA_FENCE_GATE, EBlocks.AZALEA_DOOR, EBlocks.AZALEA_TRAPDOOR,
                         EBlocks.AZALEA_PRESSURE_PLATE, EBlocks.AZALEA_BUTTON, EItems.AZALEA_SIGN, EItems.AZALEA_HANGING_SIGN,
                         EItems.AZALEA_BOAT
+                );
+                fullWoodSet(
+                        EBlocks.CEDAR_LOG, EBlocks.STRIPPED_CEDAR_LOG, EBlocks.CEDAR_WOOD, EBlocks.STRIPPED_CEDAR_WOOD, EItemTags.CEDAR_LOGS,
+                        EBlocks.CEDAR_PLANKS, EBlocks.CEDAR_STAIRS, EBlocks.CEDAR_SLAB,
+                        EBlocks.CEDAR_MOSAIC, EBlocks.CEDAR_MOSAIC_STAIRS, EBlocks.CEDAR_MOSAIC_SLAB,
+                        EBlocks.CEDAR_BOARDS, EBlocks.CEDAR_TRIM,
+                        EBlocks.CEDAR_FENCE, EBlocks.CEDAR_FENCE_GATE, EBlocks.CEDAR_DOOR, EBlocks.CEDAR_TRAPDOOR,
+                        EBlocks.CEDAR_PRESSURE_PLATE, EBlocks.CEDAR_BUTTON, EItems.CEDAR_SIGN, EItems.CEDAR_HANGING_SIGN,
+                        EItems.CEDAR_BOAT
                 );
                 woodSet(wrappedOutput,
                         Blocks.OAK_PLANKS, Blocks.OAK_STAIRS, Blocks.OAK_SLAB,
@@ -470,57 +478,126 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 itemToDye(EBlocks.PINK_HIBISCUS, Items.PINK_DYE);
                 itemToDye(EBlocks.WHITE_HIBISCUS, Items.WHITE_DYE);
 
-                stairAndSlabSet(wrappedOutput, Blocks.WHITE_WOOL, EBlocks.WHITE_WOOL_STAIRS, EBlocks.WHITE_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_GRAY_WOOL, EBlocks.LIGHT_GRAY_WOOL_STAIRS, EBlocks.LIGHT_GRAY_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.GRAY_WOOL, EBlocks.GRAY_WOOL_STAIRS, EBlocks.GRAY_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BLACK_WOOL, EBlocks.BLACK_WOOL_STAIRS, EBlocks.BLACK_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BROWN_WOOL, EBlocks.BROWN_WOOL_STAIRS, EBlocks.BROWN_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.RED_WOOL, EBlocks.RED_WOOL_STAIRS, EBlocks.RED_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.ORANGE_WOOL, EBlocks.ORANGE_WOOL_STAIRS, EBlocks.ORANGE_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.YELLOW_WOOL, EBlocks.YELLOW_WOOL_STAIRS, EBlocks.YELLOW_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIME_WOOL, EBlocks.LIME_WOOL_STAIRS, EBlocks.LIME_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.GREEN_WOOL, EBlocks.GREEN_WOOL_STAIRS, EBlocks.GREEN_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.CYAN_WOOL, EBlocks.CYAN_WOOL_STAIRS, EBlocks.CYAN_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_BLUE_WOOL, EBlocks.LIGHT_BLUE_WOOL_STAIRS, EBlocks.LIGHT_BLUE_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BLUE_WOOL, EBlocks.BLUE_WOOL_STAIRS, EBlocks.BLUE_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.PURPLE_WOOL, EBlocks.PURPLE_WOOL_STAIRS, EBlocks.PURPLE_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.MAGENTA_WOOL, EBlocks.MAGENTA_WOOL_STAIRS, EBlocks.MAGENTA_WOOL_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.PINK_WOOL, EBlocks.PINK_WOOL_STAIRS, EBlocks.PINK_WOOL_SLAB);
+                recipeStairSlab(Blocks.WHITE_WOOL, EBlocks.WHITE_WOOL_STAIRS, EBlocks.WHITE_WOOL_SLAB);
+                recipeStairSlab(Blocks.LIGHT_GRAY_WOOL, EBlocks.LIGHT_GRAY_WOOL_STAIRS, EBlocks.LIGHT_GRAY_WOOL_SLAB);
+                recipeStairSlab(Blocks.GRAY_WOOL, EBlocks.GRAY_WOOL_STAIRS, EBlocks.GRAY_WOOL_SLAB);
+                recipeStairSlab(Blocks.BLACK_WOOL, EBlocks.BLACK_WOOL_STAIRS, EBlocks.BLACK_WOOL_SLAB);
+                recipeStairSlab(Blocks.BROWN_WOOL, EBlocks.BROWN_WOOL_STAIRS, EBlocks.BROWN_WOOL_SLAB);
+                recipeStairSlab(Blocks.RED_WOOL, EBlocks.RED_WOOL_STAIRS, EBlocks.RED_WOOL_SLAB);
+                recipeStairSlab(Blocks.ORANGE_WOOL, EBlocks.ORANGE_WOOL_STAIRS, EBlocks.ORANGE_WOOL_SLAB);
+                recipeStairSlab(Blocks.YELLOW_WOOL, EBlocks.YELLOW_WOOL_STAIRS, EBlocks.YELLOW_WOOL_SLAB);
+                recipeStairSlab(Blocks.LIME_WOOL, EBlocks.LIME_WOOL_STAIRS, EBlocks.LIME_WOOL_SLAB);
+                recipeStairSlab(Blocks.GREEN_WOOL, EBlocks.GREEN_WOOL_STAIRS, EBlocks.GREEN_WOOL_SLAB);
+                recipeStairSlab(Blocks.CYAN_WOOL, EBlocks.CYAN_WOOL_STAIRS, EBlocks.CYAN_WOOL_SLAB);
+                recipeStairSlab(Blocks.LIGHT_BLUE_WOOL, EBlocks.LIGHT_BLUE_WOOL_STAIRS, EBlocks.LIGHT_BLUE_WOOL_SLAB);
+                recipeStairSlab(Blocks.BLUE_WOOL, EBlocks.BLUE_WOOL_STAIRS, EBlocks.BLUE_WOOL_SLAB);
+                recipeStairSlab(Blocks.PURPLE_WOOL, EBlocks.PURPLE_WOOL_STAIRS, EBlocks.PURPLE_WOOL_SLAB);
+                recipeStairSlab(Blocks.MAGENTA_WOOL, EBlocks.MAGENTA_WOOL_STAIRS, EBlocks.MAGENTA_WOOL_SLAB);
+                recipeStairSlab(Blocks.PINK_WOOL, EBlocks.PINK_WOOL_STAIRS, EBlocks.PINK_WOOL_SLAB);
 
-                stairAndSlabSet(wrappedOutput, Blocks.TERRACOTTA, EBlocks.TERRACOTTA_STAIRS, EBlocks.TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.WHITE_TERRACOTTA, EBlocks.WHITE_TERRACOTTA_STAIRS, EBlocks.WHITE_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_GRAY_TERRACOTTA, EBlocks.LIGHT_GRAY_TERRACOTTA_STAIRS, EBlocks.LIGHT_GRAY_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.GRAY_TERRACOTTA, EBlocks.GRAY_TERRACOTTA_STAIRS, EBlocks.GRAY_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BLACK_TERRACOTTA, EBlocks.BLACK_TERRACOTTA_STAIRS, EBlocks.BLACK_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BROWN_TERRACOTTA, EBlocks.BROWN_TERRACOTTA_STAIRS, EBlocks.BROWN_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.RED_TERRACOTTA, EBlocks.RED_TERRACOTTA_STAIRS, EBlocks.RED_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.ORANGE_TERRACOTTA, EBlocks.ORANGE_TERRACOTTA_STAIRS, EBlocks.ORANGE_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.YELLOW_TERRACOTTA, EBlocks.YELLOW_TERRACOTTA_STAIRS, EBlocks.YELLOW_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIME_TERRACOTTA, EBlocks.LIME_TERRACOTTA_STAIRS, EBlocks.LIME_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.GREEN_TERRACOTTA, EBlocks.GREEN_TERRACOTTA_STAIRS, EBlocks.GREEN_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.CYAN_TERRACOTTA, EBlocks.CYAN_TERRACOTTA_STAIRS, EBlocks.CYAN_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_BLUE_TERRACOTTA, EBlocks.LIGHT_BLUE_TERRACOTTA_STAIRS, EBlocks.LIGHT_BLUE_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BLUE_TERRACOTTA, EBlocks.BLUE_TERRACOTTA_STAIRS, EBlocks.BLUE_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.PURPLE_TERRACOTTA, EBlocks.PURPLE_TERRACOTTA_STAIRS, EBlocks.PURPLE_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.MAGENTA_TERRACOTTA, EBlocks.MAGENTA_TERRACOTTA_STAIRS, EBlocks.MAGENTA_TERRACOTTA_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.PINK_TERRACOTTA, EBlocks.PINK_TERRACOTTA_STAIRS, EBlocks.PINK_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.TERRACOTTA, EBlocks.TERRACOTTA_STAIRS, EBlocks.TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.WHITE_TERRACOTTA, EBlocks.WHITE_TERRACOTTA_STAIRS, EBlocks.WHITE_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.LIGHT_GRAY_TERRACOTTA, EBlocks.LIGHT_GRAY_TERRACOTTA_STAIRS, EBlocks.LIGHT_GRAY_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.GRAY_TERRACOTTA, EBlocks.GRAY_TERRACOTTA_STAIRS, EBlocks.GRAY_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.BLACK_TERRACOTTA, EBlocks.BLACK_TERRACOTTA_STAIRS, EBlocks.BLACK_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.BROWN_TERRACOTTA, EBlocks.BROWN_TERRACOTTA_STAIRS, EBlocks.BROWN_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.RED_TERRACOTTA, EBlocks.RED_TERRACOTTA_STAIRS, EBlocks.RED_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.ORANGE_TERRACOTTA, EBlocks.ORANGE_TERRACOTTA_STAIRS, EBlocks.ORANGE_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.YELLOW_TERRACOTTA, EBlocks.YELLOW_TERRACOTTA_STAIRS, EBlocks.YELLOW_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.LIME_TERRACOTTA, EBlocks.LIME_TERRACOTTA_STAIRS, EBlocks.LIME_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.GREEN_TERRACOTTA, EBlocks.GREEN_TERRACOTTA_STAIRS, EBlocks.GREEN_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.CYAN_TERRACOTTA, EBlocks.CYAN_TERRACOTTA_STAIRS, EBlocks.CYAN_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.LIGHT_BLUE_TERRACOTTA, EBlocks.LIGHT_BLUE_TERRACOTTA_STAIRS, EBlocks.LIGHT_BLUE_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.BLUE_TERRACOTTA, EBlocks.BLUE_TERRACOTTA_STAIRS, EBlocks.BLUE_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.PURPLE_TERRACOTTA, EBlocks.PURPLE_TERRACOTTA_STAIRS, EBlocks.PURPLE_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.MAGENTA_TERRACOTTA, EBlocks.MAGENTA_TERRACOTTA_STAIRS, EBlocks.MAGENTA_TERRACOTTA_SLAB);
+                recipeStairSlab(Blocks.PINK_TERRACOTTA, EBlocks.PINK_TERRACOTTA_STAIRS, EBlocks.PINK_TERRACOTTA_SLAB);
 
-                stairAndSlabSet(wrappedOutput, Blocks.WHITE_CONCRETE, EBlocks.WHITE_CONCRETE_STAIRS, EBlocks.WHITE_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_GRAY_CONCRETE, EBlocks.LIGHT_GRAY_CONCRETE_STAIRS, EBlocks.LIGHT_GRAY_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.GRAY_CONCRETE, EBlocks.GRAY_CONCRETE_STAIRS, EBlocks.GRAY_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BLACK_CONCRETE, EBlocks.BLACK_CONCRETE_STAIRS, EBlocks.BLACK_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BROWN_CONCRETE, EBlocks.BROWN_CONCRETE_STAIRS, EBlocks.BROWN_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.RED_CONCRETE, EBlocks.RED_CONCRETE_STAIRS, EBlocks.RED_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.ORANGE_CONCRETE, EBlocks.ORANGE_CONCRETE_STAIRS, EBlocks.ORANGE_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.YELLOW_CONCRETE, EBlocks.YELLOW_CONCRETE_STAIRS, EBlocks.YELLOW_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIME_CONCRETE, EBlocks.LIME_CONCRETE_STAIRS, EBlocks.LIME_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.GREEN_CONCRETE, EBlocks.GREEN_CONCRETE_STAIRS, EBlocks.GREEN_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.CYAN_CONCRETE, EBlocks.CYAN_CONCRETE_STAIRS, EBlocks.CYAN_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.LIGHT_BLUE_CONCRETE, EBlocks.LIGHT_BLUE_CONCRETE_STAIRS, EBlocks.LIGHT_BLUE_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.BLUE_CONCRETE, EBlocks.BLUE_CONCRETE_STAIRS, EBlocks.BLUE_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.PURPLE_CONCRETE, EBlocks.PURPLE_CONCRETE_STAIRS, EBlocks.PURPLE_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.MAGENTA_CONCRETE, EBlocks.MAGENTA_CONCRETE_STAIRS, EBlocks.MAGENTA_CONCRETE_SLAB);
-                stairAndSlabSet(wrappedOutput, Blocks.PINK_CONCRETE, EBlocks.PINK_CONCRETE_STAIRS, EBlocks.PINK_CONCRETE_SLAB);
+                recipe2x2(Blocks.TERRACOTTA, EBlocks.TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.TERRACOTTA_BRICKS, EBlocks.TERRACOTTA_BRICK_STAIRS,  EBlocks.TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.TERRACOTTA_BRICK_SLAB, EBlocks.TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.TERRACOTTA_BRICK_TILES, EBlocks.TERRACOTTA_BRICK_TILE_STAIRS,  EBlocks.TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.WHITE_TERRACOTTA, EBlocks.WHITE_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.WHITE_TERRACOTTA_BRICKS, EBlocks.WHITE_TERRACOTTA_BRICK_STAIRS, EBlocks.WHITE_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.WHITE_TERRACOTTA_BRICK_SLAB, EBlocks.WHITE_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.WHITE_TERRACOTTA_BRICK_TILES, EBlocks.WHITE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.WHITE_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.LIGHT_GRAY_TERRACOTTA, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_STAIRS, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_SLAB, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILES, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.LIGHT_GRAY_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.GRAY_TERRACOTTA, EBlocks.GRAY_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.GRAY_TERRACOTTA_BRICKS, EBlocks.GRAY_TERRACOTTA_BRICK_STAIRS, EBlocks.GRAY_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.GRAY_TERRACOTTA_BRICK_SLAB, EBlocks.GRAY_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.GRAY_TERRACOTTA_BRICK_TILES, EBlocks.GRAY_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.GRAY_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.BLACK_TERRACOTTA, EBlocks.BLACK_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.BLACK_TERRACOTTA_BRICKS, EBlocks.BLACK_TERRACOTTA_BRICK_STAIRS, EBlocks.BLACK_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.BLACK_TERRACOTTA_BRICK_SLAB, EBlocks.BLACK_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.BLACK_TERRACOTTA_BRICK_TILES, EBlocks.BLACK_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.BLACK_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.BROWN_TERRACOTTA, EBlocks.BROWN_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.BROWN_TERRACOTTA_BRICKS, EBlocks.BROWN_TERRACOTTA_BRICK_STAIRS, EBlocks.BROWN_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.BROWN_TERRACOTTA_BRICK_SLAB, EBlocks.BROWN_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.BROWN_TERRACOTTA_BRICK_TILES, EBlocks.BROWN_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.BROWN_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.RED_TERRACOTTA, EBlocks.RED_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.RED_TERRACOTTA_BRICKS, EBlocks.RED_TERRACOTTA_BRICK_STAIRS, EBlocks.RED_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.RED_TERRACOTTA_BRICK_SLAB, EBlocks.RED_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.RED_TERRACOTTA_BRICK_TILES, EBlocks.RED_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.RED_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.ORANGE_TERRACOTTA, EBlocks.ORANGE_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.ORANGE_TERRACOTTA_BRICKS, EBlocks.ORANGE_TERRACOTTA_BRICK_STAIRS, EBlocks.ORANGE_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.ORANGE_TERRACOTTA_BRICK_SLAB, EBlocks.ORANGE_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.ORANGE_TERRACOTTA_BRICK_TILES, EBlocks.ORANGE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.ORANGE_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.YELLOW_TERRACOTTA, EBlocks.YELLOW_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.YELLOW_TERRACOTTA_BRICKS, EBlocks.YELLOW_TERRACOTTA_BRICK_STAIRS, EBlocks.YELLOW_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.YELLOW_TERRACOTTA_BRICK_SLAB, EBlocks.YELLOW_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.YELLOW_TERRACOTTA_BRICK_TILES, EBlocks.YELLOW_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.YELLOW_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.LIME_TERRACOTTA, EBlocks.LIME_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.LIME_TERRACOTTA_BRICKS, EBlocks.LIME_TERRACOTTA_BRICK_STAIRS, EBlocks.LIME_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.LIME_TERRACOTTA_BRICK_SLAB, EBlocks.LIME_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.LIME_TERRACOTTA_BRICK_TILES, EBlocks.LIME_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.LIME_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.GREEN_TERRACOTTA, EBlocks.GREEN_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.GREEN_TERRACOTTA_BRICKS, EBlocks.GREEN_TERRACOTTA_BRICK_STAIRS, EBlocks.GREEN_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.GREEN_TERRACOTTA_BRICK_SLAB, EBlocks.GREEN_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.GREEN_TERRACOTTA_BRICK_TILES, EBlocks.GREEN_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.GREEN_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.CYAN_TERRACOTTA, EBlocks.CYAN_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.CYAN_TERRACOTTA_BRICKS, EBlocks.CYAN_TERRACOTTA_BRICK_STAIRS, EBlocks.CYAN_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.CYAN_TERRACOTTA_BRICK_SLAB, EBlocks.CYAN_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.CYAN_TERRACOTTA_BRICK_TILES, EBlocks.CYAN_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.CYAN_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.LIGHT_BLUE_TERRACOTTA, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_STAIRS, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_SLAB, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILES, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.LIGHT_BLUE_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.BLUE_TERRACOTTA, EBlocks.BLUE_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.BLUE_TERRACOTTA_BRICKS, EBlocks.BLUE_TERRACOTTA_BRICK_STAIRS, EBlocks.BLUE_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.BLUE_TERRACOTTA_BRICK_SLAB, EBlocks.BLUE_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.BLUE_TERRACOTTA_BRICK_TILES, EBlocks.BLUE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.BLUE_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.PURPLE_TERRACOTTA, EBlocks.PURPLE_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.PURPLE_TERRACOTTA_BRICKS, EBlocks.PURPLE_TERRACOTTA_BRICK_STAIRS, EBlocks.PURPLE_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.PURPLE_TERRACOTTA_BRICK_SLAB, EBlocks.PURPLE_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.PURPLE_TERRACOTTA_BRICK_TILES, EBlocks.PURPLE_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.PURPLE_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.MAGENTA_TERRACOTTA, EBlocks.MAGENTA_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.MAGENTA_TERRACOTTA_BRICKS, EBlocks.MAGENTA_TERRACOTTA_BRICK_STAIRS, EBlocks.MAGENTA_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.MAGENTA_TERRACOTTA_BRICK_SLAB, EBlocks.MAGENTA_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.MAGENTA_TERRACOTTA_BRICK_TILES, EBlocks.MAGENTA_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.MAGENTA_TERRACOTTA_BRICK_TILE_SLAB);
+                recipe2x2(Blocks.PINK_TERRACOTTA, EBlocks.PINK_TERRACOTTA_BRICKS);
+                recipeStairSlab(EBlocks.PINK_TERRACOTTA_BRICKS, EBlocks.PINK_TERRACOTTA_BRICK_STAIRS, EBlocks.PINK_TERRACOTTA_BRICK_SLAB);
+                recipe2x1t1(EBlocks.PINK_TERRACOTTA_BRICK_SLAB, EBlocks.PINK_TERRACOTTA_BRICK_TILES);
+                recipeStairSlab(EBlocks.PINK_TERRACOTTA_BRICK_TILES, EBlocks.PINK_TERRACOTTA_BRICK_TILE_STAIRS, EBlocks.PINK_TERRACOTTA_BRICK_TILE_SLAB);
+
+                recipeStairSlab(Blocks.WHITE_CONCRETE, EBlocks.WHITE_CONCRETE_STAIRS, EBlocks.WHITE_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.LIGHT_GRAY_CONCRETE, EBlocks.LIGHT_GRAY_CONCRETE_STAIRS, EBlocks.LIGHT_GRAY_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.GRAY_CONCRETE, EBlocks.GRAY_CONCRETE_STAIRS, EBlocks.GRAY_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.BLACK_CONCRETE, EBlocks.BLACK_CONCRETE_STAIRS, EBlocks.BLACK_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.BROWN_CONCRETE, EBlocks.BROWN_CONCRETE_STAIRS, EBlocks.BROWN_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.RED_CONCRETE, EBlocks.RED_CONCRETE_STAIRS, EBlocks.RED_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.ORANGE_CONCRETE, EBlocks.ORANGE_CONCRETE_STAIRS, EBlocks.ORANGE_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.YELLOW_CONCRETE, EBlocks.YELLOW_CONCRETE_STAIRS, EBlocks.YELLOW_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.LIME_CONCRETE, EBlocks.LIME_CONCRETE_STAIRS, EBlocks.LIME_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.GREEN_CONCRETE, EBlocks.GREEN_CONCRETE_STAIRS, EBlocks.GREEN_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.CYAN_CONCRETE, EBlocks.CYAN_CONCRETE_STAIRS, EBlocks.CYAN_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.LIGHT_BLUE_CONCRETE, EBlocks.LIGHT_BLUE_CONCRETE_STAIRS, EBlocks.LIGHT_BLUE_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.BLUE_CONCRETE, EBlocks.BLUE_CONCRETE_STAIRS, EBlocks.BLUE_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.PURPLE_CONCRETE, EBlocks.PURPLE_CONCRETE_STAIRS, EBlocks.PURPLE_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.MAGENTA_CONCRETE, EBlocks.MAGENTA_CONCRETE_STAIRS, EBlocks.MAGENTA_CONCRETE_SLAB);
+                recipeStairSlab(Blocks.PINK_CONCRETE, EBlocks.PINK_CONCRETE_STAIRS, EBlocks.PINK_CONCRETE_SLAB);
             }
 
 
@@ -696,7 +773,12 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
             }
 
             private void recipe2x2(ItemLike block, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result, 4).define('#', block).pattern("##").pattern("##").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(result));}
-            private void recipe2x1(ItemLike block, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', block).pattern("#").pattern("#").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(result));}
+            private void recipe2x1t2(ItemLike block, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', block).pattern("#").pattern("#").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(result));}
+            private void recipe2x1t1(ItemLike block, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', block).pattern("#").pattern("#").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(result));}
+            private void recipeStairSlab(ItemLike block, ItemLike stair, ItemLike slab) {
+                shaped(RecipeCategory.BUILDING_BLOCKS, stair, 6).define('#', block).pattern("#  ").pattern("## ").pattern("###").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(stair));
+                shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6).define('#', block).pattern("###").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(slab));
+            }
             private void recipeStairSlabWall(ItemLike block, ItemLike stair, ItemLike slab, ItemLike wall){
                 shaped(RecipeCategory.BUILDING_BLOCKS, stair, 6).define('#', block).pattern("#  ").pattern("## ").pattern("###").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(stair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6).define('#', block).pattern("###").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(slab));
@@ -780,7 +862,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
             }
 
-            private void fullWoodSet(RecipeOutput output,
+            private void fullWoodSet(
                                      ItemLike log, ItemLike strippedLog, ItemLike wood, ItemLike strippedWood, TagKey<Item> logTag,
                                      ItemLike planks, ItemLike plankStair, ItemLike plankSlab,
                                      ItemLike mosaic, ItemLike mosaicStair, ItemLike mosaicSlab,
@@ -791,64 +873,56 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
                 // Log/Wood tag -> Planks
                 shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 4).requires(logTag)
-                        .unlockedBy(getHasName(log), has(logTag)).save(output);
+                        .unlockedBy(getHasName(log), has(logTag)).save(wrappedOutput);
 
                 // Log -> Wood
                 shaped(RecipeCategory.BUILDING_BLOCKS, wood, 3).define('#', log).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(log), has(log)).save(output);
+                        .unlockedBy(getHasName(log), has(log)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, strippedWood, 3).define('#', strippedLog).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(output);
+                        .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(wrappedOutput);
 
                 // Planks derivatives
                 shaped(RecipeCategory.BUILDING_BLOCKS, plankStair, 6).define('#', planks).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, plankSlab, 6).define('#', planks).pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, mosaic, 4).define('#', planks).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                shaped(RecipeCategory.BUILDING_BLOCKS, mosaic, 1).define('#', plankSlab).pattern("#").pattern("#")
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaicStair, 6).define('#', mosaic).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaicSlab, 6).define('#', mosaic).pattern("###")
-                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(wrappedOutput);
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, boards).define('#', plankSlab).pattern("#").pattern("#")
-                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
+                shaped(RecipeCategory.BUILDING_BLOCKS, boards, 3).define('#', planks).pattern("#").pattern("#").pattern("#")
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, trim, 3).define('#', plankSlab).pattern("###").pattern("###")
-                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(wrappedOutput);
 
                 // Functional blocks
                 shaped(RecipeCategory.DECORATIONS, fence, 3).define('#', Items.STICK).define('W', planks).pattern("W#W").pattern("W#W")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.REDSTONE, fenceGate).define('#', Items.STICK).define('W', planks).pattern("#W#").pattern("#W#")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.REDSTONE, door, 3).define('#', planks).pattern("##").pattern("##").pattern("##")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
-                shaped(RecipeCategory.REDSTONE, trapdoor, 2).define('#', planks).pattern("###").pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
+                shaped(RecipeCategory.REDSTONE, trapdoor, 6).define('#', planks).pattern("###").pattern("###")
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.REDSTONE, pressurePlate).define('#', planks).pattern("##")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shapeless(RecipeCategory.REDSTONE, button).requires(planks)
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.DECORATIONS, sign, 3).define('#', planks).define('X', Items.STICK).pattern("###").pattern("###").pattern(" X ")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.DECORATIONS, hangingSign, 6).define('#', strippedLog).define('C', Items.IRON_CHAIN).pattern("C C").pattern("###").pattern("###")
-                        .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(output);
+                        .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(wrappedOutput);
 
                 // Boat
                 shaped(RecipeCategory.TRANSPORTATION, boat).define('#', planks).pattern("# #").pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
             }
 
-            private void stairAndSlabSet(RecipeOutput output,
-                                   ItemLike block, ItemLike stair, ItemLike slab) {
 
-                // Shaped
-                shaped(RecipeCategory.BUILDING_BLOCKS, stair, 6).define('#', block).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(block), has(block)).save(output, shapedId(stair));
-                shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6).define('#', block).pattern("###")
-                        .unlockedBy(getHasName(block), has(block)).save(output, shapedId(slab));
-            }
 
 
 

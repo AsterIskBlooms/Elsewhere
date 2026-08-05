@@ -9,18 +9,24 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class PebbleBlock extends HorizontalDirectionalBlock {
+public class PebbleBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
-    private static final VoxelShape SHAPE = Block.box(2, 0, 3, 13, 4, 13);
+    private static final VoxelShape SHAPE = Block.box(2, 0, 3, 13, 4, 14);
 
     public PebbleBlock(Properties props) {
         super(props);
-        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
+        registerDefaultState(stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(BlockStateProperties.WATERLOGGED, false));
     }
 
     @Override
@@ -30,12 +36,22 @@ public class PebbleBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING, BlockStateProperties.WATERLOGGED);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        return defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+        FluidState fluid = ctx.getLevel().getFluidState(ctx.getClickedPos());
+        return defaultBlockState()
+                .setValue(FACING, ctx.getHorizontalDirection().getOpposite())
+                .setValue(BlockStateProperties.WATERLOGGED, fluid.getType() == Fluids.WATER);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(BlockStateProperties.WATERLOGGED)
+                ? Fluids.WATER.getSource(false)
+                : super.getFluidState(state);
     }
 
     @Override
@@ -49,6 +65,9 @@ public class PebbleBlock extends HorizontalDirectionalBlock {
                                      BlockState neighbourState, RandomSource random) {
         if (dir == Direction.DOWN && !state.canSurvive(level, pos)) {
             return Blocks.AIR.defaultBlockState();
+        }
+        if (state.getValue(BlockStateProperties.WATERLOGGED)) {
+            ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
         return super.updateShape(state, level, ticks, pos, dir, neighbourPos, neighbourState, random);
     }

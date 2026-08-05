@@ -18,16 +18,20 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.entity.EEntities;
 
-public class EBiomes {
+public interface  EBiomes {
 
-    public static void bootstrap(BootstrapContext<Biome> context) {
+    static void bootstrap(BootstrapContext<Biome> context) {
         context.register(OUTBACK, createOutback(context));
         context.register(LUSH_DESERT, createLushDesert(context));
         context.register(TUNDRA, createTundra(context));
         context.register(DAPPLED_FOREST, createDappledForest(context));
+        context.register(SHRUBLAND, createShrubland(context));
+        context.register(CEDAR_FOREST, createCedarForest(context));
+        context.register(RAINFOREST, createRainforest(context));
+        context.register(GLASS_DESERT, createGlassDesert(context));
+
 
         context.register(TIDEPOOLS, createTidepools(context));
-        context.register(COLD_TIDEPOOLS, createColdTidepools(context));
         context.register(COLD_BEACH, createColdBeach(context));
         context.register(FROZEN_BEACH, createFrozenBeach(context));
 
@@ -39,41 +43,54 @@ public class EBiomes {
         context.register(SULFUR_CAVES, createSulfurCaves(context));
         context.register(ARID_CAVES, createAridCaves(context));
         context.register(FRIGID_CAVES, createFrigidCaves(context));
+        context.register(VOLCANIC_DEPTHS, createVolcanicDepths(context));
+        context.register(PALE_GROTTO, createPaleGrotto(context));
     }
 
-    public static final ResourceKey<Biome> OUTBACK = ResourceKey.create(
+    ResourceKey<Biome> OUTBACK = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "outback"));
-    public static final ResourceKey<Biome> LUSH_DESERT = ResourceKey.create(
+    ResourceKey<Biome> LUSH_DESERT = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "lush_desert"));
-    public static final ResourceKey<Biome> TUNDRA = ResourceKey.create(
+    ResourceKey<Biome> TUNDRA = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tundra"));
-    public static final ResourceKey<Biome> DAPPLED_FOREST = ResourceKey.create(
+    ResourceKey<Biome> DAPPLED_FOREST = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "dappled_forest"));
+    ResourceKey<Biome> SHRUBLAND = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "shrubland"));
+    ResourceKey<Biome> CEDAR_FOREST = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cedar_forest"));
+    ResourceKey<Biome> RAINFOREST = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "rainforest"));
+    ResourceKey<Biome> GLASS_DESERT = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "glass_desert"));
 
-    public static final ResourceKey<Biome> TIDEPOOLS = ResourceKey.create(
+    ResourceKey<Biome> TIDEPOOLS = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tidepools"));
-    public static final ResourceKey<Biome> COLD_TIDEPOOLS = ResourceKey.create(
-            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cold_tidepools"));
-    public static final ResourceKey<Biome> COLD_BEACH = ResourceKey.create(
+    ResourceKey<Biome> COLD_BEACH = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cold_beach"));
-    public static final ResourceKey<Biome> FROZEN_BEACH = ResourceKey.create(
+    ResourceKey<Biome> FROZEN_BEACH = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frozen_beach"));
 
-    public static final ResourceKey<Biome> WARM_RIVER = ResourceKey.create(
+    ResourceKey<Biome> WARM_RIVER = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "warm_river"));
-    public static final ResourceKey<Biome> LUKEWARM_RIVER = ResourceKey.create(
+    ResourceKey<Biome> LUKEWARM_RIVER = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "lukewarm_river"));
-    public static final ResourceKey<Biome> COLD_RIVER = ResourceKey.create(
+    ResourceKey<Biome> COLD_RIVER = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cold_river"));
 
-    public static final ResourceKey<Biome> CRYSTAL_CAVERNS = ResourceKey.create(
+    ResourceKey<Biome> CRYSTAL_CAVERNS = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "crystal_caverns"));
-    public static final ResourceKey<Biome> SULFUR_CAVES = ResourceKey.create(
+    ResourceKey<Biome> SULFUR_CAVES = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_caves"));
-    public static final ResourceKey<Biome> ARID_CAVES = ResourceKey.create(
+    ResourceKey<Biome> ARID_CAVES = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_caves"));
-    public static final ResourceKey<Biome> FRIGID_CAVES = ResourceKey.create(
+    ResourceKey<Biome> FRIGID_CAVES = ResourceKey.create(
             Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frigid_caves"));
+    ResourceKey<Biome> VOLCANIC_DEPTHS = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "volcanic_depths"));
+    ResourceKey<Biome> PALE_GROTTO = ResourceKey.create(
+            Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "pale_grotto"));
+
 
     private static Biome createOutback(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
@@ -96,17 +113,23 @@ public class EBiomes {
         BiomeDefaultFeatures.addWarmFlowers(genBuilder);
         BiomeDefaultFeatures.addSavannaExtraGrass(genBuilder);
         BiomeDefaultFeatures.addDesertVegetation(genBuilder);
-        BiomeDefaultFeatures.addDesertExtraVegetation(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_PUMPKIN);
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
 
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.OUTBACK_ACACIA);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_SHORT_CACTUS);
+
         return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
+                .hasPrecipitation(true)
                 .temperature(2.0F)
                 .downfall(0.0F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
+                        .grassColorOverride(0xD1B430)
                         .waterColor(0x43D5EE)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -128,13 +151,22 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addExtraGold(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
-        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
-        BiomeDefaultFeatures.addSavannaGrass(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_BUSH);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_BADLANDS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DRY_GRASS_BADLANDS);
         BiomeDefaultFeatures.addWarmFlowers(genBuilder);
         genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_DRY_GRASS_DESERT);
-        BiomeDefaultFeatures.addDesertExtraVegetation(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);
         BiomeDefaultFeatures.addDesertExtraDecoration(genBuilder);
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.LUSH_SHORT_CACTUS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.LUSH_TALL_CACTUS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.AZALEA_SHRUB);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.LUSH_DIRT_PATCH);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DENSE_DRY_GRASS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.LUSH_DESERT_ROCKS);
+
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
@@ -144,6 +176,40 @@ public class EBiomes {
                         .waterColor(0x43D5EE)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createGlassDesert(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.desertSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addExtraGold(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(2.5F)
+                .downfall(0.0F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x666951)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x2D3012)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -186,14 +252,19 @@ public class EBiomes {
         BiomeDefaultFeatures.addNearWaterVegetation(genBuilder);
         BiomeDefaultFeatures.addRareBerryBushes(genBuilder);
 
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.TUNDRA_GREEN_VEGETATION_PATCH);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.TUNDRA_RED_VEGETATION_PATCH);
+        genBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.FOREST_ROCK_SPARSE);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.4F)
-                .downfall(0.5F)
+                .temperature(0.1F)
+                .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x3D57D6)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -203,7 +274,6 @@ public class EBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
-        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
         spawnBuilder.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 2, 3));
 
@@ -218,23 +288,149 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
-        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
         BiomeDefaultFeatures.addBirchForestFlowers(genBuilder);
         BiomeDefaultFeatures.addForestGrass(genBuilder);
         BiomeDefaultFeatures.addLeafLitterPatch(genBuilder);
-        BiomeDefaultFeatures.addDefaultExtraVegetation(genBuilder, false);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(genBuilder, true);
+
+        genBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.FOREST_ROCK_SPARSE);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DAPPLED_FOREST_TREES);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RED_SHRUB_PATCH);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RUSTY_MOSS_PATCH);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
                 .temperature(0.6F)
                 .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .grassColorOverride(0xDF6827)
-                        .foliageColorOverride(0xE68E30)
-                        .dryFoliageColorOverride(0x8C3A04)
+                        .grassColorOverride(0xE0A928)
+                        .foliageColorOverride(0xE6C949)
+                        .dryFoliageColorOverride(0xD9800D)
                         .waterColor(0x375154)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xCCD8E2)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createShrubland(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addExtraGold(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addWarmFlowers(genBuilder);
+        BiomeDefaultFeatures.addSavannaExtraGrass(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_PUMPKIN);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_SHORT_CACTUS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.OAK_SHRUBS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CEDAR_TREES_SPARSE);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(1.8F)
+                .downfall(0.05F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .grassColorOverride(0xCCC549)
+                        .waterColor(0x45ADF2)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createCedarForest(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addExtraGold(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addWarmFlowers(genBuilder);
+        BiomeDefaultFeatures.addForestGrass(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_PUMPKIN);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CEDAR_FOREST_TREES);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(1.8F)
+                .downfall(0.15F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .grassColorOverride(0xC3CC49)
+                        .waterColor(0x45ADF2)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createRainforest(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addExtraGold(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addWarmFlowers(genBuilder);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_PUMPKIN);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_MELON);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RAINFOREST_MAHOGANY);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(1.7F)
+                .downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x45ADF2)
+                        .build())
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -244,7 +440,6 @@ public class EBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
-        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
         spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
         spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 3));
 
@@ -258,51 +453,25 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
-        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        genBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.BEACHSTONE_ROCKS);
+        genBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.EXTRA_BEACHSTONE_ROCKS);
+        genBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.ROCKWEED_BASALT_PATCH);
+
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DENSE_DRY_GRASS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.TIDEPOOL);
+
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(1.5F)
-                .downfall(0.4F)
-                .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x43D5EE)
-                        .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(genBuilder.build())
-                .build();
-    }
-
-    private static Biome createColdTidepools(BootstrapContext<Biome> context) {
-        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
-        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 3));
-
-        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
-                context.lookup(Registries.PLACED_FEATURE),
-                context.lookup(Registries.CONFIGURED_CARVER)
-        );
-
-        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
-        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
-        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
-        BiomeDefaultFeatures.addDefaultOres(genBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
-        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
-        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
-
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(true)
-                .temperature(0.6F)
+                .temperature(1.0F)
                 .downfall(0.6F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x3D57D6)
+                        .waterColor(0x537C94)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -312,7 +481,6 @@ public class EBiomes {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
-        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
         spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.TURTLE, 2, 5));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
@@ -325,7 +493,6 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
-        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
 
         return new Biome.BiomeBuilder()
@@ -336,6 +503,7 @@ public class EBiomes {
                         .waterColor(0x3D57D6)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -367,7 +535,6 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
-        BiomeDefaultFeatures.addDefaultSprings(genBuilder);
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
 
         return new Biome.BiomeBuilder()
@@ -378,6 +545,7 @@ public class EBiomes {
                         .waterColor(0x3938C9)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -422,6 +590,7 @@ public class EBiomes {
                         .waterColor(0x43D5EE)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -466,6 +635,7 @@ public class EBiomes {
                         .waterColor(0x45ADF2)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -511,6 +681,7 @@ public class EBiomes {
                         .waterColor(0x3D57D6)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -519,7 +690,6 @@ public class EBiomes {
     private static Biome createCrystalCaverns(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
@@ -535,6 +705,8 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(genBuilder);
 
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EPlacedFeatures.AMETHYST_NODE);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(1.0F)
@@ -543,6 +715,7 @@ public class EBiomes {
                         .waterColor(0x6B38C9)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x140533)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -577,6 +750,10 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
 
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EPlacedFeatures.SULFUR_POOL);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EPlacedFeatures.SULFUR_SPIKE);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EPlacedFeatures.SULFUR_SPIKE_CLUSTER);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(2.4F)
@@ -586,8 +763,8 @@ public class EBiomes {
                         .build())
                 .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x8CB831)
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x17543C)
-                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.1F)
-                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0.6F)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -20F)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -596,15 +773,10 @@ public class EBiomes {
     private static Biome createAridCaves(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
+        BiomeDefaultFeatures.monsters(spawnBuilder, 19, 1, 0, 50, false);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 4, 4));
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -616,6 +788,7 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addExtraGold(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
 
         return new Biome.BiomeBuilder()
@@ -623,9 +796,12 @@ public class EBiomes {
                 .temperature(2.0F)
                 .downfall(0.0F)
                 .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x45ADF2)
+                        .waterColor(0x43D5EE)
                         .build())
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041633)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0xFFE991)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -20F)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -657,6 +833,9 @@ public class EBiomes {
         BiomeDefaultFeatures.addDefaultOres(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
 
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EPlacedFeatures.ICICLE);
+        genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EPlacedFeatures.ICICLE_CLUSTER);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.0F)
@@ -665,6 +844,78 @@ public class EBiomes {
                         .waterColor(0x3938C9)
                         .build())
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createVolcanicDepths(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        BiomeDefaultFeatures.monsters(spawnBuilder, 19, 1, 0, 50, false);
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 4, 4));
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(3.0F)
+                .downfall(0.0F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x43D5EE)
+                        .build())
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0xFF7300)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -20F)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
+                .mobSpawnSettings(spawnBuilder.build())
+                .generationSettings(genBuilder.build())
+                .build();
+    }
+
+    private static Biome createPaleGrotto(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 1, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.BAT, 8, 8));
+
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
+                context.lookup(Registries.PLACED_FEATURE),
+                context.lookup(Registries.CONFIGURED_CARVER)
+        );
+
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
+        BiomeDefaultFeatures.addDefaultOres(genBuilder);
+        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(3.0F)
+                .downfall(0.0F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x43D5EE)
+                        .build())
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0xB9B9B9)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x817770)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -20F)
+                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();
@@ -673,7 +924,7 @@ public class EBiomes {
 
 
     // Global features --- Don't use this, this is just for reference... -w-"
-    public static void globalOverworldGeneration(BiomeGenerationSettings.Builder genBuilder) {
+     static void globalOverworldGeneration(BiomeGenerationSettings.Builder genBuilder) {
         BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
 
         BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);

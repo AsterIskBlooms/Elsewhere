@@ -109,6 +109,11 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.polished_dripstone_stairs", "Polished Dripstone Stairs");
         translationBuilder.add("block.elsewhere.polished_dripstone_slab", "Polished Dripstone Slab");
         translationBuilder.add("block.elsewhere.polished_dripstone_wall", "Polished Dripstone Wall");
+        translationBuilder.add("block.elsewhere.dripstone_tiles", "Dripstone Tiles");
+        translationBuilder.add("block.elsewhere.dripstone_tile_stairs", "Dripstone Tile Stairs");
+        translationBuilder.add("block.elsewhere.dripstone_tile_slab", "Dripstone Tile Slab");
+        translationBuilder.add("block.elsewhere.dripstone_tile_wall", "Dripstone Tile Wall");
+        translationBuilder.add("block.elsewhere.chiseled_dripstone_tiles", "Chiseled Dripstone Tiles");
         translationBuilder.add("block.elsewhere.dripstone_pillar", "Dripstone Pillar");
 
         translationBuilder.add("block.elsewhere.polished_sandstone", "Polished Sandstone");
@@ -337,6 +342,9 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.chiseled_pink_sandstone", "Chiseled Pink Sandstone");
 
         translationBuilder.add("block.elsewhere.beachstone", "Beachstone");
+        translationBuilder.add("block.elsewhere.rockweed_basalt", "Rockweed Basalt");
+        translationBuilder.add("block.elsewhere.basalt_vent", "Basalt Vent");
+        translationBuilder.add("block.elsewhere.seagrass_sand", "Seagrass Sand");
 
         translationBuilder.add("block.elsewhere.chiseled_purpur", "Chiseled Purpur");
 
@@ -473,6 +481,7 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.poplar_trapdoor", "Poplar Trapdoor");
         translationBuilder.add("block.elsewhere.poplar_pressure_plate", "Poplar Pressure Plate");
         translationBuilder.add("block.elsewhere.poplar_button", "Poplar Button");
+        translationBuilder.add("block.elsewhere.poplar_shelf", "Poplar Shelf");
 
         translationBuilder.add("block.elsewhere.poplar_sign", "Poplar Sign");
         translationBuilder.add("block.elsewhere.poplar_wall_sign", "Poplar Wall Sign");
@@ -488,6 +497,7 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("entity.elsewhere.poplar_chest_boat", "Poplar Boat with Chest");
 
         translationBuilder.add("block.elsewhere.poplar_sapling", "Poplar Sapling");
+        translationBuilder.add("block.elsewhere.potted_poplar_sapling", "Potted Poplar Sapling");
         translationBuilder.add("block.elsewhere.red_poplar_leaves", "Red Poplar Leaves");
         translationBuilder.add("block.elsewhere.orange_poplar_leaves", "Orange Poplar Leaves");
         translationBuilder.add("block.elsewhere.yellow_poplar_leaves", "Yellow Poplar Leaves");
@@ -512,6 +522,7 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.azalea_trapdoor", "Azalea Trapdoor");
         translationBuilder.add("block.elsewhere.azalea_pressure_plate", "Azalea Pressure Plate");
         translationBuilder.add("block.elsewhere.azalea_button", "Azalea Button");
+        translationBuilder.add("block.elsewhere.azalea_shelf", "Azalea Shelf");
 
         translationBuilder.add("block.elsewhere.azalea_sign", "Azalea Sign");
         translationBuilder.add("block.elsewhere.azalea_wall_sign", "Azalea Wall Sign");
@@ -526,11 +537,50 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("entity.elsewhere.azalea_boat", "Azalea Boat");
         translationBuilder.add("entity.elsewhere.azalea_chest_boat", "Azalea Boat with Chest");
 
+        translationBuilder.add("block.elsewhere.cedar_log", "Cedar Log");
+        translationBuilder.add("block.elsewhere.stripped_cedar_log", "Stripped Cedar Log");
+        translationBuilder.add("block.elsewhere.cedar_wood", "Cedar Wood");
+        translationBuilder.add("block.elsewhere.stripped_cedar_wood", "Stripped Cedar Wood");
+
+        translationBuilder.add("block.elsewhere.cedar_planks", "Cedar Planks");
+        translationBuilder.add("block.elsewhere.cedar_stairs", "Cedar Stairs");
+        translationBuilder.add("block.elsewhere.cedar_slab", "Cedar Slab");
+        translationBuilder.add("block.elsewhere.cedar_mosaic", "Cedar Mosaic");
+        translationBuilder.add("block.elsewhere.cedar_mosaic_stairs", "Cedar Mosaic Stairs");
+        translationBuilder.add("block.elsewhere.cedar_mosaic_slab", "Cedar Mosaic Slab");
+        translationBuilder.add("block.elsewhere.cedar_boards", "Cedar Boards");
+        translationBuilder.add("block.elsewhere.cedar_trim", "Cedar Trim");
+
+        translationBuilder.add("block.elsewhere.cedar_fence", "Cedar Fence");
+        translationBuilder.add("block.elsewhere.cedar_fence_gate", "Cedar Fence Gate");
+        translationBuilder.add("block.elsewhere.cedar_door", "Cedar Door");
+        translationBuilder.add("block.elsewhere.cedar_trapdoor", "Cedar Trapdoor");
+        translationBuilder.add("block.elsewhere.cedar_pressure_plate", "Cedar Pressure Plate");
+        translationBuilder.add("block.elsewhere.cedar_button", "Cedar Button");
+        translationBuilder.add("block.elsewhere.cedar_shelf", "Cedar Shelf");
+
+        translationBuilder.add("block.elsewhere.cedar_sign", "Cedar Sign");
+        translationBuilder.add("block.elsewhere.cedar_wall_sign", "Cedar Wall Sign");
+        translationBuilder.add("block.elsewhere.cedar_hanging_sign", "Cedar Hanging Sign");
+        translationBuilder.add("block.elsewhere.cedar_wall_hanging_sign", "Cedar Wall Hanging Sign");
+
+        translationBuilder.add("item.elsewhere.cedar_sign", "Cedar Sign");
+        translationBuilder.add("item.elsewhere.cedar_hanging_sign", "Cedar Hanging Sign");
+        translationBuilder.add("item.elsewhere.cedar_boat", "Cedar Boat");
+        translationBuilder.add("item.elsewhere.cedar_chest_boat", "Cedar Boat with Chest");
+
+        translationBuilder.add("entity.elsewhere.cedar_boat", "Cedar Boat");
+        translationBuilder.add("entity.elsewhere.cedar_chest_boat", "Cedar Boat with Chest");
+
+        translationBuilder.add("block.elsewhere.cedar_sapling", "Cedar Sapling");
+        translationBuilder.add("block.elsewhere.potted_cedar_sapling", "Potted Cedar Sapling");
+        translationBuilder.add("block.elsewhere.cedar_leaves", "Cedar Leaves");
+
         translationBuilder.add("block.elsewhere.rusty_moss_block", "Rusty Moss Block");
         translationBuilder.add("block.elsewhere.rusty_moss_carpet", "Rusty Moss Carpet");
 
-        translationBuilder.add("item.elsewhere.diamond_shard", "Diamond Shard");
-        translationBuilder.add("item.elsewhere.emerald_shard", "Emerald Shard");
+        translationBuilder.add("item.elsewhere.diamond_nugget", "Diamond Nugget");
+        translationBuilder.add("item.elsewhere.emerald_nugget", "Emerald Nugget");
         translationBuilder.add("block.elsewhere.bejeweled_calcite", "Bejeweled Calcite");
 
         translationBuilder.add("block.elsewhere.laterite", "Laterite");
@@ -604,6 +654,110 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.magenta_terracotta_slab", "Magenta Terracotta Slab");
         translationBuilder.add("block.elsewhere.pink_terracotta_stairs", "Pink Terracotta Stairs");
         translationBuilder.add("block.elsewhere.pink_terracotta_slab", "Pink Terracotta Slab");
+
+        translationBuilder.add("block.elsewhere.terracotta_bricks", "Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.terracotta_brick_stairs", "Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.terracotta_brick_slab", "Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.white_terracotta_bricks", "White Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.white_terracotta_brick_stairs", "White Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.white_terracotta_brick_slab", "White Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.light_gray_terracotta_bricks", "Light Gray Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.light_gray_terracotta_brick_stairs", "Light Gray Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.light_gray_terracotta_brick_slab", "Light Gray Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.gray_terracotta_bricks", "Gray Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.gray_terracotta_brick_stairs", "Gray Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.gray_terracotta_brick_slab", "Gray Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.black_terracotta_bricks", "Black Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.black_terracotta_brick_stairs", "Black Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.black_terracotta_brick_slab", "Black Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.brown_terracotta_bricks", "Brown Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.brown_terracotta_brick_stairs", "Brown Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.brown_terracotta_brick_slab", "Brown Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.red_terracotta_bricks", "Red Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.red_terracotta_brick_stairs", "Red Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.red_terracotta_brick_slab", "Red Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.orange_terracotta_bricks", "Orange Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.orange_terracotta_brick_stairs", "Orange Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.orange_terracotta_brick_slab", "Orange Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.yellow_terracotta_bricks", "Yellow Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.yellow_terracotta_brick_stairs", "Yellow Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.yellow_terracotta_brick_slab", "Yellow Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.lime_terracotta_bricks", "Lime Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.lime_terracotta_brick_stairs", "Lime Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.lime_terracotta_brick_slab", "Lime Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.green_terracotta_bricks", "Green Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.green_terracotta_brick_stairs", "Green Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.green_terracotta_brick_slab", "Green Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.cyan_terracotta_bricks", "Cyan Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.cyan_terracotta_brick_stairs", "Cyan Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.cyan_terracotta_brick_slab", "Cyan Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.light_blue_terracotta_bricks", "Light Blue Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.light_blue_terracotta_brick_stairs", "Light Blue Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.light_blue_terracotta_brick_slab", "Light Blue Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.blue_terracotta_bricks", "Blue Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.blue_terracotta_brick_stairs", "Blue Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.blue_terracotta_brick_slab", "Blue Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.purple_terracotta_bricks", "Purple Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.purple_terracotta_brick_stairs", "Purple Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.purple_terracotta_brick_slab", "Purple Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.magenta_terracotta_bricks", "Magenta Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.magenta_terracotta_brick_stairs", "Magenta Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.magenta_terracotta_brick_slab", "Magenta Terracotta Brick Slab");
+        translationBuilder.add("block.elsewhere.pink_terracotta_bricks", "Pink Terracotta Bricks");
+        translationBuilder.add("block.elsewhere.pink_terracotta_brick_stairs", "Pink Terracotta Brick Stairs");
+        translationBuilder.add("block.elsewhere.pink_terracotta_brick_slab", "Pink Terracotta Brick Slab");
+
+        translationBuilder.add("block.elsewhere.terracotta_brick_tiles", "Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.terracotta_brick_tile_stairs", "Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.terracotta_brick_tile_slab", "Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.white_terracotta_brick_tiles", "White Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.white_terracotta_brick_tile_stairs", "White Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.white_terracotta_brick_tile_slab", "White Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.light_gray_terracotta_brick_tiles", "Light Gray Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.light_gray_terracotta_brick_tile_stairs", "Light Gray Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.light_gray_terracotta_brick_tile_slab", "Light Gray Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.gray_terracotta_brick_tiles", "Gray Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.gray_terracotta_brick_tile_stairs", "Gray Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.gray_terracotta_brick_tile_slab", "Gray Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.black_terracotta_brick_tiles", "Black Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.black_terracotta_brick_tile_stairs", "Black Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.black_terracotta_brick_tile_slab", "Black Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.brown_terracotta_brick_tiles", "Brown Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.brown_terracotta_brick_tile_stairs", "Brown Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.brown_terracotta_brick_tile_slab", "Brown Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.red_terracotta_brick_tiles", "Red Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.red_terracotta_brick_tile_stairs", "Red Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.red_terracotta_brick_tile_slab", "Red Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.orange_terracotta_brick_tiles", "Orange Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.orange_terracotta_brick_tile_stairs", "Orange Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.orange_terracotta_brick_tile_slab", "Orange Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.yellow_terracotta_brick_tiles", "Yellow Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.yellow_terracotta_brick_tile_stairs", "Yellow Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.yellow_terracotta_brick_tile_slab", "Yellow Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.lime_terracotta_brick_tiles", "Lime Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.lime_terracotta_brick_tile_stairs", "Lime Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.lime_terracotta_brick_tile_slab", "Lime Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.green_terracotta_brick_tiles", "Green Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.green_terracotta_brick_tile_stairs", "Green Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.green_terracotta_brick_tile_slab", "Green Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.cyan_terracotta_brick_tiles", "Cyan Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.cyan_terracotta_brick_tile_stairs", "Cyan Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.cyan_terracotta_brick_tile_slab", "Cyan Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.light_blue_terracotta_brick_tiles", "Light Blue Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.light_blue_terracotta_brick_tile_stairs", "Light Blue Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.light_blue_terracotta_brick_tile_slab", "Light Blue Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.blue_terracotta_brick_tiles", "Blue Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.blue_terracotta_brick_tile_stairs", "Blue Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.blue_terracotta_brick_tile_slab", "Blue Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.purple_terracotta_brick_tiles", "Purple Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.purple_terracotta_brick_tile_stairs", "Purple Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.purple_terracotta_brick_tile_slab", "Purple Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.magenta_terracotta_brick_tiles", "Magenta Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.magenta_terracotta_brick_tile_stairs", "Magenta Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.magenta_terracotta_brick_tile_slab", "Magenta Terracotta Brick Tile Slab");
+        translationBuilder.add("block.elsewhere.pink_terracotta_brick_tiles", "Pink Terracotta Brick Tiles");
+        translationBuilder.add("block.elsewhere.pink_terracotta_brick_tile_stairs", "Pink Terracotta Brick Tile Stairs");
+        translationBuilder.add("block.elsewhere.pink_terracotta_brick_tile_slab", "Pink Terracotta Brick Tile Slab");
 
         translationBuilder.add("block.elsewhere.white_concrete_stairs", "White Concrete Stairs");
         translationBuilder.add("block.elsewhere.white_concrete_slab", "White Concrete Slab");
@@ -698,6 +852,7 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("item.elsewhere.perch_spawn_egg", "Perch Spawn Egg");
         translationBuilder.add("item.elsewhere.raw_perch", "Raw Perch");
         translationBuilder.add("item.elsewhere.cooked_perch", "Cooked Perch");
+        translationBuilder.add("item.elsewhere.shining_perch", "Shining Perch");
         translationBuilder.add("item.elsewhere.perch_bucket", "Bucket of Perch");
 
 
@@ -729,7 +884,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("biome.elsewhere.dappled_forest", "Dappled Forest");
 
         translationBuilder.add("biome.elsewhere.tidepools", "Tidepools");
-        translationBuilder.add("biome.elsewhere.cold_tidepools", "Cold Tidepools");
         translationBuilder.add("biome.elsewhere.cold_beach", "Cold Beach");
         translationBuilder.add("biome.elsewhere.frozen_beach", "Frozen Beach");
 
@@ -751,13 +905,6 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("trim_material.elsewhere.soulsteel", "Soulsteel Material");
 
 
-
-        // Generic Subtitles
-        translationBuilder.add("subtitles.elsewhere.block.generic.break", "Block broken");
-        translationBuilder.add("subtitles.elsewhere.block.generic.fall", "Something falls on a block");
-        translationBuilder.add("subtitles.elsewhere.block.generic.step", "Footsteps");
-        translationBuilder.add("subtitles.elsewhere.block.generic.hit", "Block breaking");
-        translationBuilder.add("subtitles.elsewhere.block.generic.place", "Block placed");
 
         // Sulfur Pool Sounds
         translationBuilder.add("subtitles.elsewhere.block.sulfur.noxious_gas", "Noxious gas bubbles");

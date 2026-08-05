@@ -8,6 +8,7 @@ import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerato
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
@@ -25,15 +26,15 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class EBlockModelGenerators extends BlockModelGenerators {
+    private static final PropertyDispatch<VariantMutator> ROTATION_HORIZONTAL_FACING = PropertyDispatch.modify(BlockStateProperties.HORIZONTAL_FACING)
+            .select(Direction.EAST, Y_ROT_90)
+            .select(Direction.SOUTH, Y_ROT_180)
+            .select(Direction.WEST, Y_ROT_270)
+            .select(Direction.NORTH, NOP);
+
     public EBlockModelGenerators(Consumer<BlockModelDefinitionGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         super(blockStateOutput, itemModelOutput, modelOutput);
     }
-
-    public static final ModelTemplate CUBE_MIRRORED_HORIZONTAL = new ModelTemplate(
-            Optional.of(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "block/cube_mirrored_horizontal")),
-            Optional.empty(),
-            TextureSlot.ALL
-    );
 
     public static final ModelTemplate CUBE_ALL_DIRECTIONAL = new ModelTemplate(
             Optional.of(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "block/cube_directional")),
@@ -41,7 +42,7 @@ public class EBlockModelGenerators extends BlockModelGenerators {
             TextureSlot.ALL
     );
     public static final ModelTemplate CUBE_ALL_DIRECTIONAL_HORIZONTAL = new ModelTemplate(
-            Optional.of(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "block/cube_directional")),
+            Optional.of(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "block/cube_directional_horizontal")),
             Optional.of("_horizontal"),
             TextureSlot.ALL
     );
@@ -53,6 +54,16 @@ public class EBlockModelGenerators extends BlockModelGenerators {
             block -> new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(block)),
             CUBE_ALL_DIRECTIONAL_HORIZONTAL
     );
+
+    public final void createWoodenBoards(final Block block) {
+        MultiVariant model = plainVariant(CUBE_DIRECTIONAL.create(block, this.modelOutput));
+        MultiVariant horizontalModel = plainVariant(CUBE_DIRECTIONAL_HORIZONTAL.create(block, this.modelOutput));
+        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(PropertyDispatch.initial(BlockStateProperties.AXIS)
+                .select(Direction.Axis.Y, model)
+                .select(Direction.Axis.Z, horizontalModel.with(X_ROT_90))
+                .select(Direction.Axis.X, horizontalModel.with(X_ROT_90).with(Y_ROT_90))
+        ));
+    }
 
      public void createAridGrassBlock() {
          Material bottomTexture = TextureMapping.getBlockTexture(EBlocks.ARID_DIRT);
@@ -96,6 +107,23 @@ public class EBlockModelGenerators extends BlockModelGenerators {
         createGrassLikeBlock(EBlocks.RED_GRASS_BLOCK, normalModel, snowyModel);
     }
 
+    public void createSeagrassSandBlock() {
+        Material bottomTexture = TextureMapping.getBlockTexture(Blocks.SAND);
+
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.BOTTOM, bottomTexture)
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(EBlocks.SEAGRASS_SAND, "_top"))
+                .copyForced(TextureSlot.TOP, TextureSlot.PARTICLE)
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(EBlocks.SEAGRASS_SAND, "_side"));
+
+        Variant normal = plainModel(
+                ModelTemplates.CUBE_BOTTOM_TOP.create(EBlocks.SEAGRASS_SAND, mapping, this.modelOutput)
+        );
+        this.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(EBlocks.SEAGRASS_SAND, createRotatedVariants(normal))
+        );
+    }
+
     public final void createPlantWithUniquePottedTexture(final Block standAlone, final Block potted, final PlantType plantType) {
         this.registerSimpleItemModel(standAlone.asItem(), plantType.createItemModel(this, standAlone));
 
@@ -133,16 +161,6 @@ public class EBlockModelGenerators extends BlockModelGenerators {
         return new BlockFamilyProvider(mapping).fullBlock(block, model.getTemplate());
     }
 
-    public final void createWoodenBoards(final Block block) {
-        MultiVariant model = plainVariant(CUBE_DIRECTIONAL.create(block, this.modelOutput));
-        MultiVariant horizontalModel = plainVariant(CUBE_DIRECTIONAL_HORIZONTAL.create(block, this.modelOutput));
-        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(PropertyDispatch.initial(BlockStateProperties.AXIS)
-                .select(Direction.Axis.Y, model)
-                .select(Direction.Axis.Z, horizontalModel.with(X_ROT_90))
-                .select(Direction.Axis.X, horizontalModel.with(X_ROT_90).with(Y_ROT_90))
-        ));
-    }
-
     public final void createSimpleHorizontallyRotatedBlock(final Block block, final TexturedModel.Provider modelProvider) {
         MultiVariant model = plainVariant(modelProvider.create(block, this.modelOutput));
         this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block).with(PropertyDispatch.initial(BlockStateProperties.HORIZONTAL_FACING)
@@ -151,6 +169,12 @@ public class EBlockModelGenerators extends BlockModelGenerators {
                 .select(Direction.EAST, model.with(Y_ROT_270))
                 .select(Direction.WEST, model.with(Y_ROT_270))
         ));
+    }
+
+    public NetherrackFamilyProvider netherrackFamily(Block block) {
+        TextureMapping mapping = TextureMapping.cube(block);
+        Identifier model = ModelTemplates.CUBE_ALL.create(block, mapping, this.modelOutput);
+        return new NetherrackFamilyProvider(model, mapping);
     }
 
     // Fuck me.
@@ -238,4 +262,71 @@ public class EBlockModelGenerators extends BlockModelGenerators {
     }
 
 
+    public class NetherrackFamilyProvider {
+        private final Identifier modelLocation;
+        private final TextureMapping mapping;
+
+        public NetherrackFamilyProvider(Identifier modelLocation, TextureMapping mapping) {
+            this.modelLocation = modelLocation;
+            this.mapping = mapping;
+        }
+
+        public NetherrackFamilyProvider stairs(Block stairs) {
+            Identifier inner = ModelTemplates.STAIRS_INNER.create(stairs, mapping, modelOutput);
+            Identifier straight = ModelTemplates.STAIRS_STRAIGHT.create(stairs, mapping, modelOutput);
+            Identifier outer = ModelTemplates.STAIRS_OUTER.create(stairs, mapping, modelOutput);
+
+            blockStateOutput.accept(
+                    createStairs(
+                            stairs,
+                            plainVariant(inner),
+                            plainVariant(straight),
+                            plainVariant(outer)
+                    )
+            );
+
+            return this;
+        }
+
+        public NetherrackFamilyProvider slab(Block slab) {
+            Identifier bottom = ModelTemplates.SLAB_BOTTOM.create(slab, mapping, modelOutput);
+            Identifier top = ModelTemplates.SLAB_TOP.create(slab, mapping, modelOutput);
+
+            blockStateOutput.accept(
+                    createSlab(
+                            slab,
+                            plainVariant(bottom),
+                            plainVariant(top),
+                            plainVariant(modelLocation)
+                    )
+            );
+
+            return this;
+        }
+
+        public NetherrackFamilyProvider wall(Block wall) {
+            TextureMapping wallMapping = new TextureMapping()
+                    .put(TextureSlot.WALL, mapping.get(TextureSlot.ALL));
+
+            Identifier post = ModelTemplates.WALL_POST.create(wall, wallMapping, modelOutput);
+            Identifier low = ModelTemplates.WALL_LOW_SIDE.create(wall, wallMapping, modelOutput);
+            Identifier tall = ModelTemplates.WALL_TALL_SIDE.create(wall, wallMapping, modelOutput);
+
+            blockStateOutput.accept(
+                    createWall(
+                            wall,
+                            plainVariant(post),
+                            plainVariant(low),
+                            plainVariant(tall)
+                    )
+            );
+
+            registerSimpleItemModel(
+                    wall,
+                    ModelTemplates.WALL_INVENTORY.create(wall, wallMapping, modelOutput)
+            );
+
+            return this;
+        }
+    }
 }
