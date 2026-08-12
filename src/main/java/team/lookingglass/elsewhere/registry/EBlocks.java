@@ -388,7 +388,7 @@ public interface EBlocks {
 
     // Sulfur & Cinnabar
     Block SULFUR = register("sulfur", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(ESounds.SULFUR)
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.0F, 6.0F).sound(ESounds.SULFUR)
     );
     Block SULFUR_STAIRS = registerStair("sulfur_stairs", SULFUR);
     Block SULFUR_SLAB = registerSlab("sulfur_slab", SULFUR);
@@ -866,7 +866,7 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
     );
     Block CEDAR_PLANKS = register("cedar_planks", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(2.0F, 2.0F).sound(SoundType.WOOD)
     );
     Block CEDAR_STAIRS = registerStair("cedar_stairs", CEDAR_PLANKS);
     Block CEDAR_SLAB = registerSlab("cedar_slab", CEDAR_PLANKS);
@@ -900,6 +900,54 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.GRASS).noOcclusion()
     );
 
+    // Mahogany
+    Block MAHOGANY_LOG = register("mahogany_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block STRIPPED_MAHOGANY_LOG = register("stripped_mahogany_log", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block MAHOGANY_WOOD = register("mahogany_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block STRIPPED_MAHOGANY_WOOD = register("stripped_mahogany_wood", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PURPLE).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block MAHOGANY_PLANKS = register("mahogany_planks", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(2.0F, 2.0F).sound(SoundType.WOOD)
+    );
+    Block MAHOGANY_STAIRS = registerStair("mahogany_stairs", MAHOGANY_PLANKS);
+    Block MAHOGANY_SLAB = registerSlab("mahogany_slab", MAHOGANY_PLANKS);
+    Block MAHOGANY_MOSAIC = registerSubBlock("mahogany_mosaic", MAHOGANY_PLANKS);
+    Block MAHOGANY_MOSAIC_STAIRS = registerStair("mahogany_mosaic_stairs", MAHOGANY_MOSAIC);
+    Block MAHOGANY_MOSAIC_SLAB = registerSlab("mahogany_mosaic_slab", MAHOGANY_MOSAIC);
+    Block MAHOGANY_BOARDS = register("mahogany_boards", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(MAHOGANY_PLANKS)
+    );
+    Block MAHOGANY_TRIM = register("mahogany_trim", HorizontalBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(MAHOGANY_PLANKS)
+    );
+    Block MAHOGANY_FENCE = registerFence("mahogany_fence", MAHOGANY_PLANKS);
+    Block MAHOGANY_FENCE_GATE = registerFenceGate("mahogany_fence_gate", EWoodTypes.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_DOOR = registerDoor("mahogany_door", EBlockSets.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_TRAPDOOR = registerTrapdoor("mahogany_trapdoor", EBlockSets.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_PRESSURE_PLATE = registerPressurePlate("mahogany_pressure_plate", EBlockSets.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_BUTTON = registerButton("mahogany_button", EBlockSets.MAHOGANY, MAHOGANY_PLANKS, 30);
+    Block MAHOGANY_SIGN = registerSign("mahogany_sign", EWoodTypes.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_WALL_SIGN = registerWallSign("mahogany_wall_sign", EWoodTypes.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_HANGING_SIGN = registerCeilingHangingSign("mahogany_hanging_sign", EWoodTypes.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_WALL_HANGING_SIGN = registerWallHangingSign("mahogany_wall_hanging_sign", EWoodTypes.MAHOGANY, MAHOGANY_PLANKS);
+    Block MAHOGANY_SHELF = register("mahogany_shelf", ShelfBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(MAHOGANY_PLANKS).sound(SoundType.SHELF)
+    );
+
+    Block MAHOGANY_SAPLING = registerSapling( "mahogany_sapling", ETreeGrowers.MAHOGANY);
+    Block POTTED_MAHOGANY_SAPLING = registerPottedSapling( "potted_mahogany_sapling", MAHOGANY_SAPLING);
+    Block MAHOGANY_LEAVES = register("mahogany_leaves",
+            p -> new TintedParticleLeavesBlock(0.01F, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.GRASS).noOcclusion()
+    );
+
     // Arid Dirt
     ResourceKey<Block> ARID_DIRT_KEY = ResourceKey.create(Registries.BLOCK,
             Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_dirt")
@@ -913,6 +961,22 @@ public interface EBlocks {
     Map<Block, Block> DIRT_TO_GRASS = Map.of(
             Blocks.DIRT, Blocks.GRASS_BLOCK,
             ARID_DIRT, ARID_GRASS_BLOCK
+    );
+
+    Block CATTAILS = register("cattails", AmphibiousDoublePlantBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
+                    .sound(SoundType.WET_GRASS).mapColor(MapColor.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+
+    // Cave Flora
+    Block CAVE_ROOT = register("cave_root", CaveRootBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
+                    .sound(SoundType.GRASS).mapColor(MapColor.GLOW_LICHEN).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block GLEAMSHROOM = register("gleamshroom", GleamshroomBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
+                    .sound(SoundType.GRASS).mapColor(MapColor.GLOW_LICHEN).offsetType(BlockBehaviour.OffsetType.XZ)
+                    .lightLevel(_ -> 5).emissiveRendering(Blocks::always)
     );
 
 
@@ -1125,12 +1189,38 @@ public interface EBlocks {
     Block BEACHSTONE = register("beachstone", Block::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.5F, 1.0F).sound(SoundType.DRIPSTONE_BLOCK)
     );
+    Block BEACHSTONE_STAIRS = registerStair("beachstone_stairs", BEACHSTONE);
+    Block BEACHSTONE_SLAB = registerSlab("beachstone_slab", BEACHSTONE);
+    Block BEACHSTONE_WALL = registerWall("beachstone_wall", BEACHSTONE);
+    Block POLISHED_BEACHSTONE = registerSubBlock("polished_beachstone", BEACHSTONE);
+    Block POLISHED_BEACHSTONE_STAIRS = registerStair("polished_beachstone_stairs", POLISHED_BEACHSTONE);
+    Block POLISHED_BEACHSTONE_SLAB = registerSlab("polished_beachstone_slab", POLISHED_BEACHSTONE);
+    Block POLISHED_BEACHSTONE_WALL = registerWall("polished_beachstone_wall", POLISHED_BEACHSTONE);
+
+    Block BEACHSTONE_BRICKS = registerSubBlock("beachstone_bricks", BEACHSTONE);
+    Block BEACHSTONE_BRICK_STAIRS = registerStair("beachstone_brick_stairs", BEACHSTONE_BRICKS);
+    Block BEACHSTONE_BRICK_SLAB = registerSlab("beachstone_brick_slab", BEACHSTONE_BRICKS);
+    Block BEACHSTONE_BRICK_WALL = registerWall("beachstone_brick_wall", BEACHSTONE_BRICKS);
+    Block CHISELED_BEACHSTONE = registerSubBlock("chiseled_beachstone", BEACHSTONE_BRICKS);
+
+    Block LIMESTONE = register("limestone", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).strength(1.5F, 1.0F).sound(ESounds.SHALE)
+    );
+    Block LIMESTONE_STAIRS = registerStair("limestone_stairs", LIMESTONE);
+    Block LIMESTONE_SLAB = registerSlab("limestone_slab", LIMESTONE);
+    Block LIMESTONE_WALL = registerWall("limestone_wall", LIMESTONE);
+    Block CUT_LIMESTONE = register("cut_limestone", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(LIMESTONE).sound(ESounds.SHALE_TILES)
+    );
+    Block CUT_LIMESTONE_STAIRS = registerStair("cut_limestone_stairs", CUT_LIMESTONE);
+    Block CUT_LIMESTONE_SLAB = registerSlab("cut_limestone_slab", CUT_LIMESTONE);
+    Block CUT_LIMESTONE_WALL = registerWall("cut_limestone_wall", CUT_LIMESTONE);
+
     Block ROCKWEED_BASALT = register("rockweed_basalt", Block::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.SMOOTH_BASALT).sound(ESounds.ROCKWEED_BASALT)
     );
     Block BASALT_VENT = register("basalt_vent", BasaltVentBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.BASALT).lightLevel(state -> state.getValue(BasaltVentBlock.ACTIVE) ? 3 : 0)
-                    .emissiveRendering((state, _, _) -> state.getValue(BasaltVentBlock.ACTIVE))
     );
 
     Block PINK_SAND = register("pink_sand", p -> new SandBlock(new ColorRGBA(0xFFECCFBD), p), true,

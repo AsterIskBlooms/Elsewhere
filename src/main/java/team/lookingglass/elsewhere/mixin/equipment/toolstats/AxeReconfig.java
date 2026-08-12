@@ -14,7 +14,7 @@ public class AxeReconfig {
         ToolMaterial material = args.get(0);
         if (material == ToolMaterial.WOOD) { args.set(1, 5.0F); args.set(2, -3.2F); }
         else if (material == ToolMaterial.STONE) { args.set(1, 6.0F); args.set(2, -3.2F); }
-        else if (material == ToolMaterial.COPPER) { args.set(1, 7.0F); args.set(2, -3.2F); }
+        else if (material == ToolMaterial.COPPER) { args.set(1, 6.5F); args.set(2, -3.2F); }
         else if (material == ToolMaterial.IRON) { args.set(1, 6.0F); args.set(2, -3.1F); }
         else if (material == ToolMaterial.GOLD) { args.set(1, 6.0F); args.set(2, -3.0F); }
         else if (material == ToolMaterial.DIAMOND) { args.set(1, 5.0F); args.set(2, -3.0F); }

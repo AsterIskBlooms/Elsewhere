@@ -16,6 +16,8 @@ public interface EBlockTags {
     TagKey<Block> POPLAR_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_logs"));
     TagKey<Block> AZALEA_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "azalea_logs"));
     TagKey<Block> CEDAR_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cedar_logs"));
+    TagKey<Block> MAHOGANY_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "mahogany_logs"));
+    TagKey<Block> REDWOOD_LOGS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "redwood_logs"));
     TagKey<Block> BAMBOO_STEMS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "bamboo_stems"));
 
     TagKey<Block> NATURAL_STONE_BLOCKS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "natural_stone_blocks"));

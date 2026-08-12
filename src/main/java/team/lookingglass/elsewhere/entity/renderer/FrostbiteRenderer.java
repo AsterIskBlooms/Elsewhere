@@ -11,8 +11,8 @@ import team.lookingglass.elsewhere.Elsewhere;
 
 @Environment(EnvType.CLIENT)
 public class FrostbiteRenderer extends ZombieRenderer {
-    private static final Identifier FROSTBITE_LOCATION = Identifier.fromNamespaceAndPath(Elsewhere.MODID, "textures/entity/zombie/frostbite.png");
-    private static final Identifier BABY_FROSTBITE_LOCATION = Identifier.fromNamespaceAndPath(Elsewhere.MODID, "textures/entity/zombie/frostbite_baby.png");
+    private static final Identifier FROSTBITE = Identifier.fromNamespaceAndPath(Elsewhere.MODID, "textures/entity/zombie/frostbite.png");
+    private static final Identifier BABY_FROSTBITE = Identifier.fromNamespaceAndPath(Elsewhere.MODID, "textures/entity/zombie/frostbite_baby.png");
 
     public FrostbiteRenderer(final EntityRendererProvider.Context context) {
         super(context, ModelLayers.ZOMBIE, ModelLayers.ZOMBIE_BABY, ModelLayers.ZOMBIE_ARMOR, ModelLayers.ZOMBIE_BABY_ARMOR);
@@ -20,6 +20,6 @@ public class FrostbiteRenderer extends ZombieRenderer {
 
     @Override
     public Identifier getTextureLocation(final ZombieRenderState state) {
-        return state.isBaby ? BABY_FROSTBITE_LOCATION : FROSTBITE_LOCATION;
+        return state.isBaby ? BABY_FROSTBITE : FROSTBITE;
     }
 }

@@ -376,6 +376,25 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.CHISELED_PINK_SANDSTONE);
 
         dropSelf(EBlocks.BEACHSTONE);
+        dropSelf(EBlocks.POLISHED_BEACHSTONE);
+        dropSelf(EBlocks.POLISHED_BEACHSTONE_STAIRS);
+        add(EBlocks.POLISHED_BEACHSTONE_SLAB, createSlabItemTable(EBlocks.POLISHED_BEACHSTONE_SLAB));
+        dropSelf(EBlocks.POLISHED_BEACHSTONE_WALL);
+        dropSelf(EBlocks.BEACHSTONE_BRICKS);
+        dropSelf(EBlocks.BEACHSTONE_BRICK_STAIRS);
+        add(EBlocks.BEACHSTONE_BRICK_SLAB, createSlabItemTable(EBlocks.BEACHSTONE_BRICK_SLAB));
+        dropSelf(EBlocks.BEACHSTONE_BRICK_WALL);
+        dropSelf(EBlocks.CHISELED_BEACHSTONE);
+
+        dropSelf(EBlocks.LIMESTONE);
+        dropSelf(EBlocks.LIMESTONE_STAIRS);
+        add(EBlocks.LIMESTONE_SLAB, createSlabItemTable(EBlocks.LIMESTONE_SLAB));
+        dropSelf(EBlocks.LIMESTONE_WALL);
+        dropSelf(EBlocks.CUT_LIMESTONE);
+        dropSelf(EBlocks.CUT_LIMESTONE_STAIRS);
+        add(EBlocks.CUT_LIMESTONE_SLAB, createSlabItemTable(EBlocks.CUT_LIMESTONE_SLAB));
+        dropSelf(EBlocks.CUT_LIMESTONE_WALL);
+
         dropSelf(EBlocks.ROCKWEED_BASALT);
         dropSelf(EBlocks.BASALT_VENT);
         dropSelf(EBlocks.SEAGRASS_SAND);
@@ -481,6 +500,33 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         add(EBlocks.POTTED_CEDAR_SAPLING, createPotFlowerItemTable(EBlocks.BLUEBONNET));
         add(EBlocks.CEDAR_LEAVES, createLeavesDrops(EBlocks.CEDAR_LEAVES, EBlocks.CEDAR_SAPLING, 0.05F));
 
+        dropSelf(EBlocks.MAHOGANY_LOG);
+        dropSelf(EBlocks.STRIPPED_MAHOGANY_LOG);
+        dropSelf(EBlocks.MAHOGANY_WOOD);
+        dropSelf(EBlocks.STRIPPED_MAHOGANY_WOOD);
+        dropSelf(EBlocks.MAHOGANY_PLANKS);
+        dropSelf(EBlocks.MAHOGANY_MOSAIC);
+        dropSelf(EBlocks.MAHOGANY_BOARDS);
+        dropSelf(EBlocks.MAHOGANY_TRIM);
+        dropSelf(EBlocks.MAHOGANY_STAIRS);
+        dropSelf(EBlocks.MAHOGANY_MOSAIC_STAIRS);
+        dropSelf(EBlocks.MAHOGANY_FENCE);
+        dropSelf(EBlocks.MAHOGANY_FENCE_GATE);
+        add(EBlocks.MAHOGANY_SLAB, createSlabItemTable(EBlocks.MAHOGANY_SLAB));
+        add(EBlocks.MAHOGANY_MOSAIC_SLAB, createSlabItemTable(EBlocks.MAHOGANY_MOSAIC_SLAB));
+        add(EBlocks.MAHOGANY_DOOR, createDoorTable(EBlocks.MAHOGANY_DOOR));
+        dropSelf(EBlocks.MAHOGANY_TRAPDOOR);
+        dropSelf(EBlocks.MAHOGANY_PRESSURE_PLATE);
+        dropSelf(EBlocks.MAHOGANY_BUTTON);
+        dropOther(EBlocks.MAHOGANY_SIGN, EItems.MAHOGANY_SIGN);
+        dropOther(EBlocks.MAHOGANY_WALL_SIGN, EItems.MAHOGANY_SIGN);
+        dropOther(EBlocks.MAHOGANY_HANGING_SIGN, EItems.MAHOGANY_HANGING_SIGN);
+        dropOther(EBlocks.MAHOGANY_WALL_HANGING_SIGN, EItems.MAHOGANY_HANGING_SIGN);
+        dropSelf(EBlocks.MAHOGANY_SHELF);
+        dropSelf(EBlocks.MAHOGANY_SAPLING);
+        add(EBlocks.POTTED_MAHOGANY_SAPLING, createPotFlowerItemTable(EBlocks.BLUEBONNET));
+        add(EBlocks.MAHOGANY_LEAVES, createLeavesDrops(EBlocks.MAHOGANY_LEAVES, EBlocks.MAHOGANY_SAPLING, 0.05F));
+
         dropSelf(EBlocks.LATERITE);
 
         add(EBlocks.BEJEWELED_CALCITE, createMultipleOreDrops(EBlocks.BEJEWELED_CALCITE, EItems.EMERALD_NUGGET, 3, 5));
@@ -504,6 +550,15 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         add(EBlocks.POTTED_PINK_HIBISCUS, createPotFlowerItemTable(EBlocks.PINK_HIBISCUS));
         dropSelf(EBlocks.WHITE_HIBISCUS);
         add(EBlocks.POTTED_WHITE_HIBISCUS, createPotFlowerItemTable(EBlocks.WHITE_HIBISCUS));
+
+        dropSelf(EBlocks.YELLOW_CONEFLOWER);
+        dropSelf(EBlocks.MAGENTA_CONEFLOWER);
+        add(EBlocks.POTTED_YELLOW_CONEFLOWER, createPotFlowerItemTable(EBlocks.YELLOW_CONEFLOWER));
+        add(EBlocks.POTTED_MAGENTA_CONEFLOWER, createPotFlowerItemTable(EBlocks.MAGENTA_CONEFLOWER));
+        add(EBlocks.IRONWEED, createDoublePlantShearsOrSilkTouchDrop(EBlocks.IRONWEED));
+        add(EBlocks.CATTAILS, createDoublePlantShearsOrSilkTouchDrop(EBlocks.CATTAILS));
+        dropSelf(EBlocks.CAVE_ROOT);
+        dropSelf(EBlocks.GLEAMSHROOM);
 
         dropSelf(EBlocks.OAK_MOSAIC);
         dropSelf(EBlocks.OAK_MOSAIC_STAIRS);

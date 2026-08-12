@@ -13,8 +13,12 @@ public class LangProviderEN extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider wrapperLookup, TranslationBuilder translationBuilder) {
-        // Tab Title
-        translationBuilder.add("elsewhere.tab", "Elsewhere");
+        // Translation Changes
+        translationBuilder.add("item.minecraft.netherite_scrap", "Ancient Scrap");
+        translationBuilder.add("item.minecraft.netherite_upgrade_smithing_template.new", "Nether Upgrade");
+        translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.additions_slot_description", "Add Netherite or Soulsteel Ingot");
+        translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.ingredients", "Netherite or Soulsteel Ingot");
+        translationBuilder.add("upgrade.minecraft.netherite_upgrade", "Netherite Upgrade");
 
         // Quartz Brick Fill
         translationBuilder.add("block.elsewhere.quartz_brick_stairs", "Quartz Brick Stairs");
@@ -342,6 +346,28 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.chiseled_pink_sandstone", "Chiseled Pink Sandstone");
 
         translationBuilder.add("block.elsewhere.beachstone", "Beachstone");
+        translationBuilder.add("block.elsewhere.beachstone_stairs", "Beachstone Stairs");
+        translationBuilder.add("block.elsewhere.beachstone_slab", "Beachstone Slab");
+        translationBuilder.add("block.elsewhere.beachstone_wall", "Beachstone Wall");
+        translationBuilder.add("block.elsewhere.polished_beachstone", "Polished Beachstone");
+        translationBuilder.add("block.elsewhere.polished_beachstone_stairs", "Polished Beachstone Stairs");
+        translationBuilder.add("block.elsewhere.polished_beachstone_slab", "Polished Beachstone Slab");
+        translationBuilder.add("block.elsewhere.polished_beachstone_wall", "Polished Beachstone Wall");
+        translationBuilder.add("block.elsewhere.beachstone_bricks", "Beachstone Bricks");
+        translationBuilder.add("block.elsewhere.beachstone_brick_stairs", "Beachstone Brick Stairs");
+        translationBuilder.add("block.elsewhere.beachstone_brick_slab", "Beachstone Brick Slab");
+        translationBuilder.add("block.elsewhere.beachstone_brick_wall", "Beachstone Brick Wall");
+        translationBuilder.add("block.elsewhere.chiseled_beachstone", "Chiseled Beachstone");
+
+        translationBuilder.add("block.elsewhere.limestone", "Limestone");
+        translationBuilder.add("block.elsewhere.limestone_stairs", "Limestone Stairs");
+        translationBuilder.add("block.elsewhere.limestone_slab", "Limestone Slab");
+        translationBuilder.add("block.elsewhere.limestone_wall", "Limestone Wall");
+        translationBuilder.add("block.elsewhere.cut_limestone", "Cut Limestone");
+        translationBuilder.add("block.elsewhere.cut_limestone_stairs", "Cut Limestone Stairs");
+        translationBuilder.add("block.elsewhere.cut_limestone_slab", "Cut Limestone Slab");
+        translationBuilder.add("block.elsewhere.cut_limestone_wall", "Cut Limestone Wall");
+
         translationBuilder.add("block.elsewhere.rockweed_basalt", "Rockweed Basalt");
         translationBuilder.add("block.elsewhere.basalt_vent", "Basalt Vent");
         translationBuilder.add("block.elsewhere.seagrass_sand", "Seagrass Sand");
@@ -451,7 +477,10 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.magenta_coneflower", "Magenta Coneflower");
         translationBuilder.add("block.elsewhere.yellow_coneflower", "Magenta Coneflower");
         translationBuilder.add("block.elsewhere.ironweed", "Ironweed");
+        translationBuilder.add("block.elsewhere.cattails", "Cattails");
 
+        translationBuilder.add("block.elsewhere.cave_root", "Cave Root");
+        translationBuilder.add("block.elsewhere.gleamshroom", "Gleamshroom");
 
         translationBuilder.add("block.elsewhere.arid_dirt", "Arid Dirt");
         translationBuilder.add("block.elsewhere.arid_grass_block", "Arid Grass Block");
@@ -575,6 +604,45 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("block.elsewhere.cedar_sapling", "Cedar Sapling");
         translationBuilder.add("block.elsewhere.potted_cedar_sapling", "Potted Cedar Sapling");
         translationBuilder.add("block.elsewhere.cedar_leaves", "Cedar Leaves");
+
+        translationBuilder.add("block.elsewhere.mahogany_log", "Mahogany Log");
+        translationBuilder.add("block.elsewhere.stripped_mahogany_log", "Stripped Mahogany Log");
+        translationBuilder.add("block.elsewhere.mahogany_wood", "Mahogany Wood");
+        translationBuilder.add("block.elsewhere.stripped_mahogany_wood", "Stripped Mahogany Wood");
+
+        translationBuilder.add("block.elsewhere.mahogany_planks", "Mahogany Planks");
+        translationBuilder.add("block.elsewhere.mahogany_stairs", "Mahogany Stairs");
+        translationBuilder.add("block.elsewhere.mahogany_slab", "Mahogany Slab");
+        translationBuilder.add("block.elsewhere.mahogany_mosaic", "Mahogany Mosaic");
+        translationBuilder.add("block.elsewhere.mahogany_mosaic_stairs", "Mahogany Mosaic Stairs");
+        translationBuilder.add("block.elsewhere.mahogany_mosaic_slab", "Mahogany Mosaic Slab");
+        translationBuilder.add("block.elsewhere.mahogany_boards", "Mahogany Boards");
+        translationBuilder.add("block.elsewhere.mahogany_trim", "Mahogany Trim");
+
+        translationBuilder.add("block.elsewhere.mahogany_fence", "Mahogany Fence");
+        translationBuilder.add("block.elsewhere.mahogany_fence_gate", "Mahogany Fence Gate");
+        translationBuilder.add("block.elsewhere.mahogany_door", "Mahogany Door");
+        translationBuilder.add("block.elsewhere.mahogany_trapdoor", "Mahogany Trapdoor");
+        translationBuilder.add("block.elsewhere.mahogany_pressure_plate", "Mahogany Pressure Plate");
+        translationBuilder.add("block.elsewhere.mahogany_button", "Mahogany Button");
+        translationBuilder.add("block.elsewhere.mahogany_shelf", "Mahogany Shelf");
+
+        translationBuilder.add("block.elsewhere.mahogany_sign", "Mahogany Sign");
+        translationBuilder.add("block.elsewhere.mahogany_wall_sign", "Mahogany Wall Sign");
+        translationBuilder.add("block.elsewhere.mahogany_hanging_sign", "Mahogany Hanging Sign");
+        translationBuilder.add("block.elsewhere.mahogany_wall_hanging_sign", "Mahogany Wall Hanging Sign");
+
+        translationBuilder.add("item.elsewhere.mahogany_sign", "Mahogany Sign");
+        translationBuilder.add("item.elsewhere.mahogany_hanging_sign", "Mahogany Hanging Sign");
+        translationBuilder.add("item.elsewhere.mahogany_boat", "Mahogany Boat");
+        translationBuilder.add("item.elsewhere.mahogany_chest_boat", "Mahogany Boat with Chest");
+
+        translationBuilder.add("entity.elsewhere.mahogany_boat", "Mahogany Boat");
+        translationBuilder.add("entity.elsewhere.mahogany_chest_boat", "Mahogany Boat with Chest");
+
+        translationBuilder.add("block.elsewhere.mahogany_sapling", "Mahogany Sapling");
+        translationBuilder.add("block.elsewhere.potted_mahogany_sapling", "Potted Mahogany Sapling");
+        translationBuilder.add("block.elsewhere.mahogany_leaves", "Mahogany Leaves");
 
         translationBuilder.add("block.elsewhere.rusty_moss_block", "Rusty Moss Block");
         translationBuilder.add("block.elsewhere.rusty_moss_carpet", "Rusty Moss Carpet");
@@ -847,6 +915,16 @@ public class LangProviderEN extends FabricLanguageProvider {
 
         translationBuilder.add("entity.elsewhere.frostbite", "Frostbite");
         translationBuilder.add("item.elsewhere.frostbite_spawn_egg", "Frostbite Spawn Egg");
+
+        translationBuilder.add("entity.elsewhere.werewolf", "Werewolf");
+        translationBuilder.add("item.elsewhere.werewolf_spawn_egg", "Werewolf Spawn Egg");
+
+        translationBuilder.add("entity.elsewhere.vanguard", "Vanguard");
+        translationBuilder.add("item.elsewhere.vanguard_spawn_egg", "Vanguard Spawn Egg");
+        translationBuilder.add("item.elsewhere.vanguard_mask", "Vanguard Mask");
+
+        translationBuilder.add("entity.elsewhere.sulfur_cube", "Sulfur Cube");
+        translationBuilder.add("item.elsewhere.sulfur_cube_spawn_egg", "Sulfur Cube Spawn Egg");
 
         translationBuilder.add("entity.elsewhere.perch", "Perch");
         translationBuilder.add("item.elsewhere.perch_spawn_egg", "Perch Spawn Egg");

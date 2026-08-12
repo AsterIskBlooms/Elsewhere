@@ -28,11 +28,6 @@ import team.lookingglass.elsewhere.worldgen.features.spike.utils.SpikeConfigurat
 @SuppressWarnings("deprecation")
 public interface EFeatures {
 
-    Feature<ExposedDoubleDiskConfiguration> EXPOSED_DOUBLE_DISK =
-            Registry.register(BuiltInRegistries.FEATURE,
-                    Identifier.fromNamespaceAndPath(Elsewhere.MODID, "exposed_double_disk"),
-                    new ExposedDoubleDiskFeature(ExposedDoubleDiskConfiguration.CODEC));
-
     Feature<BlockPatchConfiguration> BLOCK_PATCH = Registry.register(
             BuiltInRegistries.FEATURE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "block_patch"),
             new BlockPatchFeature());

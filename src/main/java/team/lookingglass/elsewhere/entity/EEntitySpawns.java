@@ -44,6 +44,10 @@ public class EEntitySpawns {
                         spawn -> spawn.getMobSpawnSettings().addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4), 75))
         ;
+        BiomeModifications.addSpawn(ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD),
+                MobCategory.MONSTER, EEntities.VANGUARD, 75, 1, 3);
+        BiomeModifications.addSpawn(ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD),
+                MobCategory.MONSTER, EEntities.WEREWOLF, 45, 1, 1);
 
         BiomeModifications.addSpawn(ctx -> ctx.getBiomeKey() == Biomes.RIVER,
                 MobCategory.WATER_AMBIENT, EEntities.PERCH, 1, 3, 5);

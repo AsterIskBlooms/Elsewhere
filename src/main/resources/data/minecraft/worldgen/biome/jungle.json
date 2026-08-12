@@ -8,7 +8,8 @@
       }
     },
     "minecraft:gameplay/increased_fire_burnout": true,
-    "minecraft:visual/sky_color": "#77a8ff"
+    "minecraft:visual/sky_color": "#77a8ff",
+    "minecraft:visual/water_fog_color": "#041633"
   },
   "carvers": [
     "minecraft:cave",
@@ -17,7 +18,7 @@
   ],
   "downfall": 0.9,
   "effects": {
-    "water_color": "#3f76e4"
+    "water_color": "#45adf2"
   },
   "features": [
     [],
@@ -73,7 +74,6 @@
     [
       "minecraft:glow_lichen",
       "minecraft:bamboo_light",
-      "minecraft:trees_jungle",
       "minecraft:flower_warm",
       "minecraft:patch_grass_jungle",
       "minecraft:brown_mushroom_normal",

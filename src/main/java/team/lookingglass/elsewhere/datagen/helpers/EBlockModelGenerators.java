@@ -65,22 +65,30 @@ public class EBlockModelGenerators extends BlockModelGenerators {
         ));
     }
 
-     public void createAridGrassBlock() {
-         Material bottomTexture = TextureMapping.getBlockTexture(EBlocks.ARID_DIRT);
-         TextureMapping snowyMapping = new TextureMapping()
-                 .put(TextureSlot.BOTTOM, bottomTexture)
-                 .copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
-                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.SNOW))
-                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(EBlocks.ARID_GRASS_BLOCK, "_snow"));
+    public void createAridGrassBlock() {
+        Material bottomTexture = TextureMapping.getBlockTexture(EBlocks.ARID_DIRT);
+        TextureMapping snowyMapping = new TextureMapping()
+                .put(TextureSlot.BOTTOM, bottomTexture)
+                .copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(Blocks.SNOW))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(EBlocks.ARID_GRASS_BLOCK, "_snow"));
 
-        MultiVariant aridSnowyGrass = plainVariant(
-                ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(EBlocks.ARID_GRASS_BLOCK, "_snow", snowyMapping, modelOutput)
+        MultiVariant aridSnowyGrass = createRotatedVariants(
+                plainModel(ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(EBlocks.ARID_GRASS_BLOCK, "_snow", snowyMapping, modelOutput))
         );
 
         Identifier aridPlainGrassModel = ModelLocationUtils.getModelLocation(EBlocks.ARID_GRASS_BLOCK);
-        createGrassLikeBlock(EBlocks.ARID_GRASS_BLOCK, plainVariant(aridPlainGrassModel), aridSnowyGrass);
+        MultiVariant aridPlainGrass = createRotatedVariants(plainModel(aridPlainGrassModel));
+
+        createGrassLikeBlock(EBlocks.ARID_GRASS_BLOCK, aridPlainGrass, aridSnowyGrass);
         registerSimpleTintedItemModel(EBlocks.ARID_GRASS_BLOCK, aridPlainGrassModel, new GrassColorSource(1.0F, 0.0F));
     }
+
+    public final void createRotatedVariantColumn(final Block block) {
+        Variant normal = plainModel(TexturedModel.COLUMN.create(block, this.modelOutput));
+        this.blockStateOutput.accept(MultiVariantGenerator.dispatch(block, createRotatedVariants(normal)));
+    }
+
 
     public void createTundraGrassBlock() {
         Material bottomTexture = TextureMapping.getBlockTexture(Blocks.DIRT);

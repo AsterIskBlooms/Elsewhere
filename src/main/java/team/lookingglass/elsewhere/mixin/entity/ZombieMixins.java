@@ -5,6 +5,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ConversionParams;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -18,7 +20,19 @@ import team.lookingglass.elsewhere.entity.EEntities;
 import team.lookingglass.elsewhere.entity.mob.Frostbite;
 
 @Mixin(Zombie.class)
-public abstract class ZombieConversionMixin {
+public abstract class ZombieMixins {
+    // Baby Nerf
+    @Inject(method = "setBaby", at = @At("TAIL"))
+    private void elsewhere$halveBabyHealth(boolean baby, CallbackInfo ci) {
+        Zombie self = (Zombie) (Object) this;
+        AttributeInstance maxHealth = self.getAttribute(Attributes.MAX_HEALTH);
+        if (maxHealth == null) return;
+
+        maxHealth.setBaseValue(baby ? 12.0D : 20.0D);
+        if (self.getHealth() > maxHealth.getValue()) {
+            self.setHealth((float) maxHealth.getValue());
+        }
+    }
 
     @Unique
     private static final EntityDataAccessor<Boolean> DATA_FROSTBITE_CONVERSION_ID = SynchedEntityData.defineId(Zombie.class, EntityDataSerializers.BOOLEAN);

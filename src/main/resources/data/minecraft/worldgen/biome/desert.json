@@ -8,7 +8,8 @@
       }
     },
     "minecraft:gameplay/snow_golem_melts": true,
-    "minecraft:visual/sky_color": "#6eb1ff"
+    "minecraft:visual/sky_color": "#6eb1ff",
+    "minecraft:visual/water_fog_color": "#041f33"
   },
   "carvers": [
     "minecraft:cave",
@@ -17,7 +18,7 @@
   ],
   "downfall": 0.0,
   "effects": {
-    "water_color": "#3f76e4"
+    "water_color": "#43d5ee"
   },
   "features": [
     [],

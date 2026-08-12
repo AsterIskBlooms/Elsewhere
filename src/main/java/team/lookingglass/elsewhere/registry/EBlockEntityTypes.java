@@ -40,5 +40,11 @@ public class EBlockEntityTypes {
         BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.CEDAR_HANGING_SIGN);
         BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.CEDAR_WALL_HANGING_SIGN);
         BlockEntityType.SHELF.addValidBlock(EBlocks.CEDAR_SHELF);
+
+        BlockEntityType.SIGN.addValidBlock(EBlocks.MAHOGANY_SIGN);
+        BlockEntityType.SIGN.addValidBlock(EBlocks.MAHOGANY_WALL_SIGN);
+        BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.MAHOGANY_HANGING_SIGN);
+        BlockEntityType.HANGING_SIGN.addValidBlock(EBlocks.MAHOGANY_WALL_HANGING_SIGN);
+        BlockEntityType.SHELF.addValidBlock(EBlocks.MAHOGANY_SHELF);
     }
 }

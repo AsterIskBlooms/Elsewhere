@@ -46,6 +46,15 @@ public interface EWoodTypes {
             SoundEvents.CHERRY_WOOD_FENCE_GATE_OPEN
     ));
 
+    WoodType MAHOGANY = WoodType.register(new WoodType(
+            Identifier.fromNamespaceAndPath(Elsewhere.MODID, "mahogany").toString(),
+            EBlockSets.MAHOGANY,
+            SoundType.CHERRY_WOOD,
+            SoundType.CHERRY_WOOD_HANGING_SIGN,
+            SoundEvents.CHERRY_WOOD_FENCE_GATE_CLOSE,
+            SoundEvents.CHERRY_WOOD_FENCE_GATE_OPEN
+    ));
+
 
     static void initialize() {}
 }

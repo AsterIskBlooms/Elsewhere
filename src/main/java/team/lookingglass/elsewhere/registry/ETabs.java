@@ -17,8 +17,11 @@ public class ETabs {
             output.insertAfter(Items.SANDSTONE, EBlocks.PINK_SAND, EBlocks.PINK_SANDSTONE);
 
             output.insertAfter(Items.SHORT_GRASS, EBlocks.SHORT_RED_GRASS);
+            output.insertAfter(Items.DRY_SHORT_GRASS, EBlocks.CAVE_ROOT);
             output.insertAfter(Items.DEAD_BUSH, EBlocks.RED_SHRUB);
             output.insertAfter(Items.TALL_GRASS, EBlocks.TALL_RED_GRASS);
+            output.insertAfter(Items.RED_MUSHROOM, EBlocks.GLEAMSHROOM);
+            output.insertAfter(Items.LARGE_FERN, EBlocks.CATTAILS);
 
             output.insertAfter(Items.MOSS_CARPET, EBlocks.RUSTY_MOSS_BLOCK, EBlocks.RUSTY_MOSS_CARPET);
 
@@ -30,12 +33,17 @@ public class ETabs {
             output.insertAfter(Items.BIRCH_LOG, EBlocks.CEDAR_LOG);
             output.insertAfter(Items.BIRCH_LEAVES, EBlocks.CEDAR_LEAVES);
 
+            output.insertAfter(Items.JUNGLE_SAPLING, EBlocks.MAHOGANY_SAPLING);
+            output.insertAfter(Items.JUNGLE_LOG, EBlocks.MAHOGANY_LOG);
+            output.insertAfter(Items.JUNGLE_LEAVES, EBlocks.MAHOGANY_LEAVES);
+
             output.insertAfter(Items.PALE_OAK_SAPLING, EBlocks.POPLAR_SAPLING);
             output.insertAfter(Items.PALE_OAK_LOG, EBlocks.POPLAR_LOG);
             output.insertAfter(Items.PALE_OAK_LEAVES, EBlocks.RED_POPLAR_LEAVES, EBlocks.ORANGE_POPLAR_LEAVES, EBlocks.YELLOW_POPLAR_LEAVES);
 
             output.insertAfter(Items.STONE, EBlocks.SHALE);
             output.insertAfter(Items.CALCITE, EBlocks.SODALITE);
+            output.insertAfter(Items.ANDESITE, EBlocks.LIMESTONE);
             output.insertAfter(Items.POINTED_DRIPSTONE, EBlocks.SULFUR, EBlocks.SULFUR_SPIKE, EBlocks.POTENT_SULFUR, EBlocks.ORPIMENT, EBlocks.CINNABAR);
             output.insertAfter(Items.SOUL_SOIL, EBlocks.SOUL_SANDSTONE);
 
@@ -297,6 +305,18 @@ public class ETabs {
                     EBlocks.CEDAR_PRESSURE_PLATE, EBlocks.CEDAR_BUTTON
             );
 
+            output.insertAfter(Items.JUNGLE_BUTTON,
+                    EBlocks.MAHOGANY_LOG, EBlocks.MAHOGANY_WOOD,
+                    EBlocks.STRIPPED_MAHOGANY_LOG, EBlocks.STRIPPED_MAHOGANY_WOOD,
+                    EBlocks.MAHOGANY_PLANKS, EBlocks.MAHOGANY_MOSAIC,
+                    EBlocks.MAHOGANY_STAIRS, EBlocks.MAHOGANY_MOSAIC_STAIRS,
+                    EBlocks.MAHOGANY_SLAB, EBlocks.MAHOGANY_MOSAIC_SLAB,
+                    EBlocks.MAHOGANY_BOARDS, EBlocks.MAHOGANY_TRIM,
+                    EBlocks.MAHOGANY_FENCE, EBlocks.MAHOGANY_FENCE_GATE,
+                    EBlocks.MAHOGANY_DOOR, EBlocks.MAHOGANY_TRAPDOOR,
+                    EBlocks.MAHOGANY_PRESSURE_PLATE, EBlocks.MAHOGANY_BUTTON
+            );
+
             output.insertAfter(Blocks.PALE_OAK_BUTTON,
                     EBlocks.POPLAR_LOG, EBlocks.POPLAR_WOOD,
                     EBlocks.STRIPPED_POPLAR_LOG, EBlocks.STRIPPED_POPLAR_WOOD,
@@ -415,6 +435,9 @@ public class ETabs {
             output.insertAfter(Items.BIRCH_SHELF, EBlocks.CEDAR_SHELF);
             output.insertAfter(Items.BIRCH_HANGING_SIGN, EItems.CEDAR_SIGN, EItems.CEDAR_HANGING_SIGN);
 
+            output.insertAfter(Items.JUNGLE_SHELF, EBlocks.MAHOGANY_SHELF);
+            output.insertAfter(Items.JUNGLE_HANGING_SIGN, EItems.MAHOGANY_SIGN, EItems.MAHOGANY_HANGING_SIGN);
+
             output.insertAfter(Items.PALE_OAK_SHELF, EBlocks.POPLAR_SHELF, EBlocks.AZALEA_SHELF);
             output.insertAfter(Items.PALE_OAK_HANGING_SIGN, EItems.POPLAR_SIGN, EItems.POPLAR_HANGING_SIGN, EItems.AZALEA_SIGN, EItems.AZALEA_HANGING_SIGN);
         });
@@ -424,6 +447,7 @@ public class ETabs {
             output.insertAfter(Items.NETHERITE_HOE, EItems.SOULSTEEL_SHOVEL, EItems.SOULSTEEL_PICKAXE, EItems.SOULSTEEL_AXE, EItems.SOULSTEEL_HOE);
 
             output.insertAfter(Items.BIRCH_CHEST_BOAT, EItems.CEDAR_BOAT, EItems.CEDAR_CHEST_BOAT);
+            output.insertAfter(Items.JUNGLE_CHEST_BOAT, EItems.MAHOGANY_BOAT, EItems.MAHOGANY_CHEST_BOAT);
             output.insertAfter(Items.PALE_OAK_BOAT, EItems.POPLAR_BOAT, EItems.POPLAR_CHEST_BOAT, EItems.AZALEA_BOAT, EItems.AZALEA_CHEST_BOAT);
         });
 
@@ -456,6 +480,10 @@ public class ETabs {
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(output -> {
             output.insertAfter(Items.DROWNED_SPAWN_EGG, EItems.FROSTBITE_SPAWN_EGG);
+            output.insertAfter(Items.WARDEN_SPAWN_EGG, EItems.WEREWOLF_SPAWN_EGG);
+            output.insertBefore(Items.WARDEN_SPAWN_EGG, EItems.VANGUARD_SPAWN_EGG);
+            output.insertAfter(Items.SLIME_SPAWN_EGG, EItems.SULFUR_CUBE_SPAWN_EGG);
+
             output.insertBefore(Items.PUFFERFISH_SPAWN_EGG, EItems.PERCH_SPAWN_EGG);
         });
 

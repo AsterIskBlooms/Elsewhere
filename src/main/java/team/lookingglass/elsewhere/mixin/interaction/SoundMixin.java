@@ -61,6 +61,11 @@ public class SoundMixin {
             map.put(ESounds.CACTUS, Set.of(
                     Blocks.CACTUS
             ));
+            map.put(SoundType.ROOTED_DIRT, Set.of(
+                    Blocks.CLAY
+            ));
+
+
             SOUND_OVERRIDES = Map.copyOf(map);
         }
         return SOUND_OVERRIDES;

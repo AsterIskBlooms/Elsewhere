@@ -106,6 +106,7 @@ public interface ESounds {
         Identifier identifier = Identifier.fromNamespaceAndPath(Elsewhere.MODID, id);
         return Registry.register(BuiltInRegistries.SOUND_EVENT, identifier, SoundEvent.createVariableRangeEvent(identifier));
     }
+
     // Initialize
     static void initialize() {}
 }

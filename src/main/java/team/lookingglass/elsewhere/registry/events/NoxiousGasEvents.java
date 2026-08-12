@@ -22,11 +22,7 @@ public class NoxiousGasEvents {
     private static final Map<Integer, Integer> timeInPool = new HashMap<>();
     private static final int TICKS_BEFORE_POISON = 120;
 
-    public static void register() {
-        ServerTickEvents.END_SERVER_TICK.register(NoxiousGasEvents::onServerTick);
-    }
-
-    private static void onServerTick(MinecraftServer server) {
+    public static void onServerTick(MinecraftServer server) {
         if (server.getTickCount() % 10 != 0) return;
 
         for (ServerLevel level : server.getAllLevels()) {

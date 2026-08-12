@@ -24,23 +24,15 @@ import java.util.List;
 public class EWorldgen {
 
     public static void initialize() {
-        // Rocky outcrop biomes
-        List<ResourceKey<Biome>> outcropBiomes = List.of(
-                Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW,
-                Biomes.SAVANNA, Biomes.WINDSWEPT_SAVANNA,
-                Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.WINDSWEPT_FOREST,
-                Biomes.BIRCH_FOREST, Biomes.GROVE, Biomes.OLD_GROWTH_BIRCH_FOREST,
-                Biomes.JUNGLE, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE,
-                Biomes.TAIGA, Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA
-        );
         List<ResourceKey<Biome>> forestRockBiomes = List.of(
                 Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.WINDSWEPT_FOREST, Biomes.DARK_FOREST,
                 Biomes.BIRCH_FOREST, Biomes.GROVE, Biomes.OLD_GROWTH_BIRCH_FOREST,
                 Biomes.JUNGLE, Biomes.BAMBOO_JUNGLE,
-                Biomes.TAIGA, Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA
+                Biomes.TAIGA, Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA,
+                EBiomes.CEDAR_FOREST
         );
         List<ResourceKey<Biome>> meadowRockBiomes = List.of(
-                Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW,
+                Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW, EBiomes.SHRUBLAND,
                 Biomes.SPARSE_JUNGLE
         );
 
@@ -48,10 +40,6 @@ public class EWorldgen {
         BiomeModifications.addFeature(
                 ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD) && !ctx.hasTag(BiomeTags.IS_OCEAN),
                 GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.PEBBLE
-        );
-        BiomeModifications.addFeature(
-                ctx -> outcropBiomes.contains(ctx.getBiomeKey()),
-                GenerationStep.Decoration.RAW_GENERATION, EPlacedFeatures.ROCKY_OUTCROP
         );
         BiomeModifications.addFeature(
                 ctx -> forestRockBiomes.contains(ctx.getBiomeKey()),
@@ -93,7 +81,7 @@ public class EWorldgen {
 
         BiomeModifications.addFeature(
                 ctx -> ctx.getBiomeKey() == Biomes.DESERT,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_ROCKS
+                GenerationStep.Decoration.RAW_GENERATION, EPlacedFeatures.DESERT_ROCKS
         );
         BiomeModifications.addFeature(
                 ctx -> ctx.getBiomeKey() == Biomes.DESERT,
@@ -170,6 +158,19 @@ public class EWorldgen {
         BiomeModifications.addFeature(
                 ctx -> ctx.getBiomeKey() == Biomes.DEEP_LUKEWARM_OCEAN,
                 GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.KELP_CLUSTER
+        );
+
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.JUNGLE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.JUNGLE_TREES
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.BAMBOO_JUNGLE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BAMBOO_JUNGLE_TREES
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.SPARSE_JUNGLE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SPARSE_JUNGLE_TREES
         );
 
 
@@ -330,6 +331,19 @@ public class EWorldgen {
                                                 SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.5, 1.0),
                                                         SurfaceRules.state(EBlocks.LATERITE.defaultBlockState())))
                                 ))
+                ));
+
+                SurfaceRules.RuleSource swampRules = SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(Biomes.SWAMP),
+                        SurfaceRules.sequence(
+                                prelimAndWaterCheck(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, 0.5, 1.0),
+                                                SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState())))),
+                                prelimAndWaterCheck(SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, 0.5, 1.0),
+                                                SurfaceRules.state(Blocks.DIRT.defaultBlockState())))),
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(Blocks.MUD.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, SurfaceRules.state(Blocks.MUD.defaultBlockState()))
                         ));
 
                 SurfaceRules.RuleSource outbackRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.OUTBACK),
@@ -388,6 +402,51 @@ public class EWorldgen {
                                                         SurfaceRules.state(EBlocks.ARID_DIRT.defaultBlockState()))),
                                         SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
                                                 SurfaceRules.state(Blocks.DIRT.defaultBlockState())),
+
+                                        // Deep Under Floor
+                                        SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
+                                                SurfaceRules.state(Blocks.STONE.defaultBlockState()))
+                                )));
+
+                SurfaceRules.RuleSource steppeRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.STEPPE),
+                        prelimAndWaterCheck(
+                                SurfaceRules.sequence(
+                                        stoneCliffsRule,
+                                        // On Floor
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.45),
+                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.45, 1.0),
+                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
+
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, 0.4, 0.6),
+                                                        SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, -0.2, 0.2),
+                                                        SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState()))),
+
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.state(EBlocks.ARID_GRASS_BLOCK.defaultBlockState())),
+
+                                        // Under Floor
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.45),
+                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.45, 1.0),
+                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
+
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, 0.4, 0.6),
+                                                        SurfaceRules.state(Blocks.DIRT.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, -0.2, 0.2),
+                                                        SurfaceRules.state(Blocks.DIRT.defaultBlockState()))),
+
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(EBlocks.ARID_DIRT.defaultBlockState())),
 
                                         // Deep Under Floor
                                         SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
@@ -660,13 +719,16 @@ public class EWorldgen {
 
                 ((NoiseGeneratorSettingsAccessor)(Object) object).setSurfaceRule(
                         SurfaceRules.sequence(biomeCliffRules, overworldChanges,
-                                riverRules, oceanRules,
-                                outbackRules, lushDesertRules, tundraRules,
-                                tidepoolRules,
-                                coldBeachRules, frozenBeachRules,
-                                crystalCavernRules, sulfurCaveRules,
-                                aridCaveRules, frigidCaveRules,
+                                swampRules, riverRules, oceanRules,
+                                tidepoolRules, coldBeachRules, frozenBeachRules,
+
+                                shrublandRules, steppeRules,
+                                outbackRules, lushDesertRules,
+                                tundraRules,
+
+                                crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 volcanicDepthsRules,
+
                                 deepslateRule, shaleRule, object.surfaceRule()
                         ));
             });

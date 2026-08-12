@@ -38,6 +38,10 @@ mutable field net/minecraft/world/item/equipment/ArmorMaterial knockbackResistan
 accessible field net/minecraft/world/item/equipment/ArmorMaterial repairIngredient Lnet/minecraft/tags/TagKey;
 mutable field net/minecraft/world/item/equipment/ArmorMaterial repairIngredient Lnet/minecraft/tags/TagKey;
 
+accessible class net/minecraft/world/entity/monster/Slime$SlimeRandomDirectionGoal
+accessible class net/minecraft/world/entity/monster/Slime$SlimeMoveControl
+accessible class net/minecraft/world/entity/monster/Slime$SlimeKeepOnJumpingGoal
+
 accessible field net/minecraft/world/item/ShovelItem FLATTENABLES Ljava/util/Map;
 
 accessible method net/minecraft/world/level/block/state/properties/BlockSetType register (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/state/properties/BlockSetType;

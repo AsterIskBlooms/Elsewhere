@@ -66,6 +66,25 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
             @Override
             public void buildRecipes() {
 
+                shaped(RecipeCategory.COMBAT, Items.STONE_SWORD, 1).pattern("#").pattern("#").pattern("S")
+                        .define('#', EBlocks.PEBBLE).define('S', Items.STICK)
+                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
+                shaped(RecipeCategory.TOOLS, Items.STONE_AXE, 1).pattern("##").pattern("#S").pattern(" S")
+                        .define('#', EBlocks.PEBBLE).define('S', Items.STICK)
+                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
+                shaped(RecipeCategory.COMBAT, Items.STONE_SPEAR, 1).pattern("  #").pattern(" S ").pattern("S  ")
+                        .define('#', EBlocks.PEBBLE).define('S', Items.STICK)
+                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
+                shaped(RecipeCategory.TOOLS, Items.STONE_PICKAXE, 1).pattern("###").pattern(" S ").pattern(" S ")
+                        .define('#', EBlocks.PEBBLE).define('S', Items.STICK)
+                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
+                shaped(RecipeCategory.TOOLS, Items.STONE_SHOVEL, 1).pattern("#").pattern("S").pattern("S")
+                        .define('#', EBlocks.PEBBLE).define('S', Items.STICK)
+                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
+                shaped(RecipeCategory.TOOLS, Items.STONE_HOE, 1).pattern("##").pattern(" S").pattern(" S")
+                        .define('#', EBlocks.PEBBLE).define('S', Items.STICK)
+                        .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
+
 
                 fullCookingBook(EItems.RAW_PERCH, EItems.COOKED_PERCH);
 
@@ -85,8 +104,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Blocks.COBBLESTONE), has(Blocks.COBBLESTONE)).save(wrappedOutput);
 
                 // Tin
-                itemFullSmeltableNBSet(wrappedOutput,
-                        0.7F,
+                itemFullSmeltableNBSet(0.7F,
                         EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.DEEPSLATE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE, EItems.RAW_TIN,
                         EItems.TIN_INGOT, EItems.TIN_NUGGET, EBlocks.RAW_TIN_BLOCK, EBlocks.TIN_BLOCK
                 );
@@ -94,11 +112,10 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 // Bronze
                 shapeless(RecipeCategory.MISC, EItems.BRONZE_MIX).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.TIN_MATERIALS)
                         .unlockedBy(getHasName(EItems.RAW_TIN), has(EItems.RAW_TIN)).save(wrappedOutput);
-                itemSmeltableNBSet(wrappedOutput,
-                        0.7F,
+                itemSmeltableNBSet(0.7F,
                         EItems.BRONZE_MIX, EItems.BRONZE_INGOT, EItems.BRONZE_NUGGET, EBlocks.BRONZE_BLOCK
                 );
-                equipmentSetCrafting(wrappedOutput,
+                equipmentSetCrafting(
                         EItems.BRONZE_INGOT, Items.STICK,
                         
                         EItems.BRONZE_SWORD, EItems.BRONZE_AXE, EItems.BRONZE_SPEAR, EItems.BRONZE_PICKAXE, EItems.BRONZE_SHOVEL, EItems.BRONZE_HOE,
@@ -108,10 +125,9 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 );
 
                 // Silver
-                itemFullSmeltableNBSet(wrappedOutput,
-                        1.0F,
+                itemFullSmeltableNBSet(1.0F,
                         EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE, EItems.RAW_SILVER,
-                        EItems.SILVER_INGOT, EItems.SILVER_NUGGET, EBlocks.SILVER_BLOCK, EBlocks.RAW_SILVER_BLOCK
+                        EItems.SILVER_INGOT, EItems.SILVER_NUGGET, EBlocks.RAW_SILVER_BLOCK, EBlocks.SILVER_BLOCK
                 );
 
                 // Mixes
@@ -131,10 +147,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EItems.SOULSTEEL_MIX, EItems.SOULSTEEL_INGOT, 2.5F);
 
                 // Soulsteel
-                itemUnsmeltableBSet(wrappedOutput,
-                        EItems.SOULSTEEL_INGOT, EBlocks.SOULSTEEL_BLOCK
-                );
-                equipmentSetSmithing(wrappedOutput,
+                itemUnsmeltableBSet(EItems.SOULSTEEL_INGOT, EBlocks.SOULSTEEL_BLOCK);
+                equipmentSetSmithing(
                         EItems.SOULSTEEL_INGOT, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
 
                         Items.DIAMOND_SWORD, Items.DIAMOND_AXE, Items.DIAMOND_SPEAR, Items.DIAMOND_PICKAXE, Items.DIAMOND_SHOVEL, Items.DIAMOND_HOE,
@@ -351,25 +365,37 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.BEACHSTONE).define('S', Blocks.SAND).define('#', EBlocks.PEBBLE)
                         .pattern("#S").pattern("S#")
                         .unlockedBy(getHasName(Blocks.SAND), has(Blocks.SAND)).save(wrappedOutput);
+                recipeStairSlabWall(EBlocks.BEACHSTONE, EBlocks.BEACHSTONE_STAIRS, EBlocks.BEACHSTONE_SLAB, EBlocks.BEACHSTONE_WALL);
+                recipe2x2(EBlocks.BEACHSTONE, EBlocks.POLISHED_BEACHSTONE);
+                recipeStairSlabWall(EBlocks.POLISHED_BEACHSTONE, EBlocks.POLISHED_BEACHSTONE_STAIRS, EBlocks.POLISHED_BEACHSTONE_SLAB, EBlocks.POLISHED_BEACHSTONE_WALL);
+                recipe2x2(EBlocks.POLISHED_BEACHSTONE, EBlocks.BEACHSTONE_BRICKS);
+                recipeStairSlabWall(EBlocks.BEACHSTONE_BRICKS, EBlocks.BEACHSTONE_BRICK_STAIRS, EBlocks.BEACHSTONE_BRICK_SLAB, EBlocks.BEACHSTONE_BRICK_WALL);
+                recipe2x1t1(EBlocks.POLISHED_BEACHSTONE_SLAB, EBlocks.CHISELED_BEACHSTONE);
+
+                recipeStairSlabWall(EBlocks.LIMESTONE, EBlocks.LIMESTONE_STAIRS, EBlocks.LIMESTONE_SLAB, EBlocks.LIMESTONE_WALL);
+                recipe2x2(EBlocks.LIMESTONE, EBlocks.CUT_LIMESTONE);
+                recipeStairSlabWall(EBlocks.CUT_LIMESTONE, EBlocks.CUT_LIMESTONE_STAIRS, EBlocks.CUT_LIMESTONE_SLAB, EBlocks.CUT_LIMESTONE_WALL);
 
 
-                quartzSet(wrappedOutput,
+
+
+                quartzSet(
                         Blocks.QUARTZ_BLOCK, Blocks.QUARTZ_STAIRS, Blocks.QUARTZ_SLAB,
                         Blocks.QUARTZ_BRICKS, EBlocks.QUARTZ_BRICK_STAIRS, EBlocks.QUARTZ_BRICK_SLAB,
                         Blocks.QUARTZ_PILLAR, Blocks.CHISELED_QUARTZ_BLOCK
                 );
-                quartzSet(wrappedOutput,
+                quartzSet(
                         Blocks.AMETHYST_BLOCK, EBlocks.AMETHYST_STAIRS, EBlocks.AMETHYST_SLAB,
                         EBlocks.AMETHYST_BRICKS, EBlocks.AMETHYST_BRICK_STAIRS, EBlocks.AMETHYST_BRICK_SLAB,
                         EBlocks.AMETHYST_PILLAR, EBlocks.CHISELED_AMETHYST
                 );
-                quartzSet(wrappedOutput,
+                quartzSet(
                         Blocks.OBSIDIAN, EBlocks.OBSIDIAN_STAIRS, EBlocks.OBSIDIAN_SLAB,
                         EBlocks.OBSIDIAN_BRICKS, EBlocks.OBSIDIAN_BRICK_STAIRS, EBlocks.OBSIDIAN_BRICK_SLAB,
                         EBlocks.OBSIDIAN_PILLAR, EBlocks.CHISELED_OBSIDIAN
                 );
 
-                purpurSet(wrappedOutput,
+                purpurSet(
                         Blocks.PURPUR_BLOCK, Blocks.PURPUR_STAIRS, Blocks.PURPUR_SLAB,
                         Blocks.PURPUR_PILLAR, EBlocks.CHISELED_PURPUR
                 );
@@ -382,8 +408,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.POPLAR_BOARDS, EBlocks.POPLAR_TRIM,
                         EBlocks.POPLAR_FENCE, EBlocks.POPLAR_FENCE_GATE, EBlocks.POPLAR_DOOR, EBlocks.POPLAR_TRAPDOOR,
                         EBlocks.POPLAR_PRESSURE_PLATE, EBlocks.POPLAR_BUTTON, EItems.POPLAR_SIGN, EItems.POPLAR_HANGING_SIGN,
-                        EItems.POPLAR_BOAT)
-                ;
+                        EItems.POPLAR_BOAT, EBlocks.POPLAR_SHELF
+                );
                 fullWoodSet(
                         EBlocks.AZALEA_LOG, EBlocks.STRIPPED_AZALEA_LOG, EBlocks.AZALEA_WOOD, EBlocks.STRIPPED_AZALEA_WOOD, EItemTags.AZALEA_LOGS,
                         EBlocks.AZALEA_PLANKS, EBlocks.AZALEA_STAIRS, EBlocks.AZALEA_SLAB,
@@ -391,7 +417,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.AZALEA_BOARDS, EBlocks.AZALEA_TRIM,
                         EBlocks.AZALEA_FENCE, EBlocks.AZALEA_FENCE_GATE, EBlocks.AZALEA_DOOR, EBlocks.AZALEA_TRAPDOOR,
                         EBlocks.AZALEA_PRESSURE_PLATE, EBlocks.AZALEA_BUTTON, EItems.AZALEA_SIGN, EItems.AZALEA_HANGING_SIGN,
-                        EItems.AZALEA_BOAT
+                        EItems.AZALEA_BOAT, EBlocks.AZALEA_SHELF
                 );
                 fullWoodSet(
                         EBlocks.CEDAR_LOG, EBlocks.STRIPPED_CEDAR_LOG, EBlocks.CEDAR_WOOD, EBlocks.STRIPPED_CEDAR_WOOD, EItemTags.CEDAR_LOGS,
@@ -400,64 +426,73 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.CEDAR_BOARDS, EBlocks.CEDAR_TRIM,
                         EBlocks.CEDAR_FENCE, EBlocks.CEDAR_FENCE_GATE, EBlocks.CEDAR_DOOR, EBlocks.CEDAR_TRAPDOOR,
                         EBlocks.CEDAR_PRESSURE_PLATE, EBlocks.CEDAR_BUTTON, EItems.CEDAR_SIGN, EItems.CEDAR_HANGING_SIGN,
-                        EItems.CEDAR_BOAT
+                        EItems.CEDAR_BOAT, EBlocks.CEDAR_SHELF
                 );
-                woodSet(wrappedOutput,
+                fullWoodSet(
+                        EBlocks.MAHOGANY_LOG, EBlocks.STRIPPED_MAHOGANY_LOG, EBlocks.MAHOGANY_WOOD, EBlocks.STRIPPED_MAHOGANY_WOOD, EItemTags.MAHOGANY_LOGS,
+                        EBlocks.MAHOGANY_PLANKS, EBlocks.MAHOGANY_STAIRS, EBlocks.MAHOGANY_SLAB,
+                        EBlocks.MAHOGANY_MOSAIC, EBlocks.MAHOGANY_MOSAIC_STAIRS, EBlocks.MAHOGANY_MOSAIC_SLAB,
+                        EBlocks.MAHOGANY_BOARDS, EBlocks.MAHOGANY_TRIM,
+                        EBlocks.MAHOGANY_FENCE, EBlocks.MAHOGANY_FENCE_GATE, EBlocks.MAHOGANY_DOOR, EBlocks.MAHOGANY_TRAPDOOR,
+                        EBlocks.MAHOGANY_PRESSURE_PLATE, EBlocks.MAHOGANY_BUTTON, EItems.MAHOGANY_SIGN, EItems.MAHOGANY_HANGING_SIGN,
+                        EItems.MAHOGANY_BOAT, EBlocks.MAHOGANY_SHELF
+                );
+                woodSet(
                         Blocks.OAK_PLANKS, Blocks.OAK_STAIRS, Blocks.OAK_SLAB,
                         EBlocks.OAK_MOSAIC, EBlocks.OAK_MOSAIC_STAIRS, EBlocks.OAK_MOSAIC_SLAB,
                         EBlocks.OAK_BOARDS, EBlocks.OAK_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_STAIRS, Blocks.DARK_OAK_SLAB,
                         EBlocks.DARK_OAK_MOSAIC, EBlocks.DARK_OAK_MOSAIC_STAIRS, EBlocks.DARK_OAK_MOSAIC_SLAB,
                         EBlocks.DARK_OAK_BOARDS, EBlocks.DARK_OAK_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.PALE_OAK_PLANKS, Blocks.PALE_OAK_STAIRS, Blocks.PALE_OAK_SLAB,
                         EBlocks.PALE_OAK_MOSAIC, EBlocks.PALE_OAK_MOSAIC_STAIRS, EBlocks.PALE_OAK_MOSAIC_SLAB,
                         EBlocks.PALE_OAK_BOARDS, EBlocks.PALE_OAK_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.BIRCH_PLANKS, Blocks.BIRCH_STAIRS, Blocks.BIRCH_SLAB,
                         EBlocks.BIRCH_MOSAIC, EBlocks.BIRCH_MOSAIC_STAIRS, EBlocks.BIRCH_MOSAIC_SLAB,
                         EBlocks.BIRCH_BOARDS, EBlocks.BIRCH_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_STAIRS, Blocks.SPRUCE_SLAB,
                         EBlocks.SPRUCE_MOSAIC, EBlocks.SPRUCE_MOSAIC_STAIRS, EBlocks.SPRUCE_MOSAIC_SLAB,
                         EBlocks.SPRUCE_BOARDS, EBlocks.SPRUCE_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_STAIRS, Blocks.JUNGLE_SLAB,
                         EBlocks.JUNGLE_MOSAIC, EBlocks.JUNGLE_MOSAIC_STAIRS, EBlocks.JUNGLE_MOSAIC_SLAB,
                         EBlocks.JUNGLE_BOARDS, EBlocks.JUNGLE_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.ACACIA_PLANKS, Blocks.ACACIA_STAIRS, Blocks.ACACIA_SLAB,
                         EBlocks.ACACIA_MOSAIC, EBlocks.ACACIA_MOSAIC_STAIRS, EBlocks.ACACIA_MOSAIC_SLAB,
                         EBlocks.ACACIA_BOARDS, EBlocks.ACACIA_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_STAIRS, Blocks.MANGROVE_SLAB,
                         EBlocks.MANGROVE_MOSAIC, EBlocks.MANGROVE_MOSAIC_STAIRS, EBlocks.MANGROVE_MOSAIC_SLAB,
                         EBlocks.MANGROVE_BOARDS, EBlocks.MANGROVE_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.CHERRY_PLANKS, Blocks.CHERRY_STAIRS, Blocks.CHERRY_SLAB,
                         EBlocks.CHERRY_MOSAIC, EBlocks.CHERRY_MOSAIC_STAIRS, EBlocks.CHERRY_MOSAIC_SLAB,
                         EBlocks.CHERRY_BOARDS, EBlocks.CHERRY_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_STAIRS, Blocks.CRIMSON_SLAB,
                         EBlocks.CRIMSON_MOSAIC, EBlocks.CRIMSON_MOSAIC_STAIRS, EBlocks.CRIMSON_MOSAIC_SLAB,
                         EBlocks.CRIMSON_BOARDS, EBlocks.CRIMSON_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.WARPED_PLANKS, Blocks.WARPED_STAIRS, Blocks.WARPED_SLAB,
                         EBlocks.WARPED_MOSAIC, EBlocks.WARPED_MOSAIC_STAIRS, EBlocks.WARPED_MOSAIC_SLAB,
                         EBlocks.WARPED_BOARDS, EBlocks.WARPED_TRIM
                 );
-                woodSet(wrappedOutput,
+                woodSet(
                         Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_STAIRS, Blocks.BAMBOO_SLAB,
                         Blocks.BAMBOO_MOSAIC, Blocks.BAMBOO_MOSAIC_STAIRS, Blocks.BAMBOO_MOSAIC_SLAB,
                         EBlocks.BAMBOO_BOARDS, EBlocks.BAMBOO_TRIM
@@ -611,7 +646,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 customSimpleCookingRecipe("smoking", SmokingRecipe::new, 100, raw, cooked, 0.35F);
                 customSimpleCookingRecipe("campfire", CampfireCookingRecipe::new, 600, raw, cooked, 0.35F);
             }
-            private void itemFullSmeltableNBSet(RecipeOutput output, Float exp,
+            private void itemFullSmeltableNBSet(Float exp,
                                                 ItemLike oreBlock, ItemLike shaleOreBlock, ItemLike deepslateOreBlock, ItemLike cinnabarOreBlock,
                                                 ItemLike raw, ItemLike ingot, ItemLike nugget,
                                                 ItemLike rawBlock, ItemLike compBlock) {
@@ -622,21 +657,21 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 customOreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, exp, 100, getItemName(ingot));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, rawBlock).requires(raw, 9)
-                        .unlockedBy(getHasName(rawBlock), has(rawBlock)).save(output, specificPath(rawBlock, "_from_" + getItemName(raw)));
+                        .unlockedBy(getHasName(rawBlock), has(rawBlock)).save(wrappedOutput, specificPath(rawBlock, "_from_" + getItemName(raw)));
                 shapeless(RecipeCategory.MISC, raw, 9).requires(rawBlock)
-                        .unlockedBy(getHasName(raw), has(raw)).save(output, specificPath(raw, "_from_" + getItemName(rawBlock)));
+                        .unlockedBy(getHasName(raw), has(raw)).save(wrappedOutput, specificPath(raw, "_from_" + getItemName(rawBlock)));
 
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(output, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
-                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
             }
-            private void itemSmeltableNBSet(RecipeOutput output, Float exp,
+            private void itemSmeltableNBSet(Float exp,
                                             ItemLike raw, ItemLike ingot, ItemLike nugget,
                                             ItemLike compBlock) {
                 List<ItemLike> smeltables = new ArrayList<>();
@@ -646,36 +681,33 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 customOreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, exp, 100, getItemName(ingot));
 
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(output, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
-                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
             }
-            private void itemUnsmeltableNBSet(RecipeOutput output,
-                                              ItemLike ingot, ItemLike nugget, ItemLike compBlock) {
+            private void itemUnsmeltableNBSet(ItemLike ingot, ItemLike nugget, ItemLike compBlock) {
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(output, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
-                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(wrappedOutput, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
             }
-            private void itemUnsmeltableBSet(RecipeOutput output,
-                                             ItemLike ingot, ItemLike compBlock) {
+            private void itemUnsmeltableBSet(ItemLike ingot, ItemLike compBlock) {
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(output, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, ingot, 9).requires(compBlock)
-                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(output, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(compBlock), has(compBlock)).save(wrappedOutput, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
             }
-            private void equipmentSetCrafting(RecipeOutput output,
-                                              ItemLike material, ItemLike handle,
+            private void equipmentSetCrafting(ItemLike material, ItemLike handle,
                                               ItemLike sword, ItemLike axe, ItemLike spear, ItemLike pickaxe, ItemLike shovel, ItemLike hoe,
                                               ItemLike helmet, ItemLike chestplate, ItemLike leggings, ItemLike boots,
                                               ItemLike scrapResult) {
@@ -715,7 +747,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
                         RecipeCategory.MISC, CookingBookCategory.MISC,
                         scrapResult, 0.1F, 200
-                ).unlockedBy(getHasName(material), has(material)).save(output,
+                ).unlockedBy(getHasName(material), has(material)).save(wrappedOutput,
                         ResourceKey.create(Registries.RECIPE,
                                 Identifier.fromNamespaceAndPath(Elsewhere.MODID, getSmeltingRecipeName(scrapResult))));
 
@@ -723,43 +755,42 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
                         RecipeCategory.MISC, CookingBookCategory.MISC,
                         scrapResult, 0.1F, 200
-                ).unlockedBy(getHasName(material), has(material)).save(output,
+                ).unlockedBy(getHasName(material), has(material)).save(wrappedOutput,
                         ResourceKey.create(Registries.RECIPE,
                                 Identifier.fromNamespaceAndPath(Elsewhere.MODID, getBlastingRecipeName(scrapResult))));
             }
-            private void equipmentSetSmithing(RecipeOutput output,
-                                              ItemLike material, ItemLike template,
+            private void equipmentSetSmithing(ItemLike material, ItemLike template,
                                               ItemLike baseSword, ItemLike baseAxe, ItemLike baseSpear, ItemLike basePickaxe, ItemLike baseShovel, ItemLike baseHoe,
                                               ItemLike baseHelmet, ItemLike baseChestplate, ItemLike baseLeggings, ItemLike baseBoots,
                                               Item sword, Item axe, Item spear, Item pickaxe, Item shovel, Item hoe,
                                               Item helmet, Item chestplate, Item leggings, Item boots,
                                               ItemLike scrapResult) {
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseSword), Ingredient.of(material), RecipeCategory.COMBAT, sword)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(sword, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(sword, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseAxe), Ingredient.of(material), RecipeCategory.TOOLS, axe)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(axe, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(axe, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseSpear), Ingredient.of(material), RecipeCategory.COMBAT, spear)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(spear, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(spear, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(basePickaxe), Ingredient.of(material), RecipeCategory.TOOLS, pickaxe)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(pickaxe, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(pickaxe, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseShovel), Ingredient.of(material), RecipeCategory.TOOLS, shovel)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(shovel, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(shovel, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseHoe), Ingredient.of(material), RecipeCategory.TOOLS, hoe)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(hoe, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(hoe, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseHelmet), Ingredient.of(material), RecipeCategory.COMBAT, helmet)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(helmet, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(helmet, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseChestplate), Ingredient.of(material), RecipeCategory.COMBAT, chestplate)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(chestplate, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(chestplate, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseLeggings), Ingredient.of(material), RecipeCategory.COMBAT, leggings)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(leggings, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(leggings, "_smithing"));
                 SmithingTransformRecipeBuilder.smithing(Ingredient.of(template), Ingredient.of(baseBoots), Ingredient.of(material), RecipeCategory.COMBAT, boots)
-                        .unlocks(getHasName(material), has(material)).save(output, specificPath(boots, "_smithing"));
+                        .unlocks(getHasName(material), has(material)).save(wrappedOutput, specificPath(boots, "_smithing"));
 
                 SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
                         RecipeCategory.MISC, CookingBookCategory.MISC,
                         scrapResult, 0.1F, 200
-                ).unlockedBy(getHasName(material), has(material)).save(output,
+                ).unlockedBy(getHasName(material), has(material)).save(wrappedOutput,
                         ResourceKey.create(Registries.RECIPE,
                                 Identifier.fromNamespaceAndPath(Elsewhere.MODID, getSmeltingRecipeName(scrapResult))));
 
@@ -767,7 +798,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Ingredient.of(sword, axe, spear, pickaxe, shovel, hoe, helmet, chestplate, leggings, boots),
                         RecipeCategory.MISC, CookingBookCategory.MISC,
                         scrapResult, 0.1F, 200
-                ).unlockedBy(getHasName(material), has(material)).save(output,
+                ).unlockedBy(getHasName(material), has(material)).save(wrappedOutput,
                         ResourceKey.create(Registries.RECIPE,
                                 Identifier.fromNamespaceAndPath(Elsewhere.MODID, getBlastingRecipeName(scrapResult))));
             }
@@ -786,28 +817,27 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
             }
 
 
-            private void quartzSet(RecipeOutput output,
-                                   ItemLike base, ItemLike baseStair, ItemLike baseSlab,
+            private void quartzSet(ItemLike base, ItemLike baseStair, ItemLike baseSlab,
                                    ItemLike brick, ItemLike brickStair, ItemLike brickSlab,
                                    ItemLike pillar, ItemLike chiseled) {
 
                 // Shaped
                 shaped(RecipeCategory.BUILDING_BLOCKS, baseStair, 6).define('#', base).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(baseStair));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(baseStair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, baseSlab, 6).define('#', base).pattern("###")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(baseSlab));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(baseSlab));
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, brick, 4).define('#', base).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(brick));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(brick));
                 shaped(RecipeCategory.BUILDING_BLOCKS, brickStair, 6).define('#', brick).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(brickStair));
+                        .unlockedBy(getHasName(brick), has(brick)).save(wrappedOutput, shapedId(brickStair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, brickSlab, 6).define('#', brick).pattern("###")
-                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(brickSlab));
+                        .unlockedBy(getHasName(brick), has(brick)).save(wrappedOutput, shapedId(brickSlab));
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, pillar, 2).define('#', brick).pattern("#").pattern("#")
-                        .unlockedBy(getHasName(brick), has(brick)).save(output, shapedId(pillar));
+                        .unlockedBy(getHasName(brick), has(brick)).save(wrappedOutput, shapedId(pillar));
                 shaped(RecipeCategory.BUILDING_BLOCKS, chiseled, 2).define('#', baseSlab).pattern("#").pattern("#")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(chiseled));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(chiseled));
 
                 // Stonecutter
                 stonecutterSet(
@@ -817,20 +847,19 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
             }
 
 
-            private void purpurSet(RecipeOutput output,
-                                   ItemLike base, ItemLike baseStair, ItemLike baseSlab,
+            private void purpurSet(ItemLike base, ItemLike baseStair, ItemLike baseSlab,
                                    ItemLike pillar, ItemLike chiseled) {
 
                 // Shaped
                 shaped(RecipeCategory.BUILDING_BLOCKS, baseStair, 6).define('#', base).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(baseStair));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(baseStair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, baseSlab, 6).define('#', base).pattern("###")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(baseSlab));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(baseSlab));
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, pillar, 2).define('#', base).pattern("#").pattern("#")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(pillar));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(pillar));
                 shaped(RecipeCategory.BUILDING_BLOCKS, chiseled, 2).define('#', baseSlab).pattern("#").pattern("#")
-                        .unlockedBy(getHasName(base), has(base)).save(output, shapedId(chiseled));
+                        .unlockedBy(getHasName(base), has(base)).save(wrappedOutput, shapedId(chiseled));
 
                 // Stonecutter
                 stonecutterSet(
@@ -839,27 +868,26 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 );
             }
 
-            private void woodSet(RecipeOutput output,
-                                 ItemLike planks, ItemLike plankStair, ItemLike plankSlab,
+            private void woodSet(ItemLike planks, ItemLike plankStair, ItemLike plankSlab,
                                  ItemLike mosaic, ItemLike mosaicStair, ItemLike mosaicSlab,
                                  ItemLike boards, ItemLike trim) {
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, plankStair, 6).define('#', planks).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, plankSlab, 6).define('#', planks).pattern("###")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaic, 4).define('#', planks).pattern("##").pattern("##")
-                        .unlockedBy(getHasName(planks), has(planks)).save(output);
+                        .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaicStair, 6).define('#', mosaic).pattern("#  ").pattern("## ").pattern("###")
-                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, mosaicSlab, 6).define('#', mosaic).pattern("###")
-                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(output);
+                        .unlockedBy(getHasName(mosaic), has(mosaic)).save(wrappedOutput);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, boards).define('#', plankSlab).pattern("#").pattern("#")
-                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(wrappedOutput);
                 shaped(RecipeCategory.BUILDING_BLOCKS, trim, 3).define('#', plankSlab).pattern("###").pattern("###")
-                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(output);
+                        .unlockedBy(getHasName(plankSlab), has(plankSlab)).save(wrappedOutput);
             }
 
             private void fullWoodSet(
@@ -869,7 +897,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                      ItemLike boards, ItemLike trim,
                                      ItemLike fence, ItemLike fenceGate, ItemLike door, ItemLike trapdoor,
                                      ItemLike pressurePlate, ItemLike button, ItemLike sign, ItemLike hangingSign,
-                                     ItemLike boat) {
+                                     ItemLike boat, ItemLike shelf) {
 
                 // Log/Wood tag -> Planks
                 shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 4).requires(logTag)
@@ -915,6 +943,8 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 shaped(RecipeCategory.DECORATIONS, sign, 3).define('#', planks).define('X', Items.STICK).pattern("###").pattern("###").pattern(" X ")
                         .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
                 shaped(RecipeCategory.DECORATIONS, hangingSign, 6).define('#', strippedLog).define('C', Items.IRON_CHAIN).pattern("C C").pattern("###").pattern("###")
+                        .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(wrappedOutput);
+                shaped(RecipeCategory.BUILDING_BLOCKS, shelf, 6).define('#', strippedLog).pattern("###").pattern("###")
                         .unlockedBy(getHasName(strippedLog), has(strippedLog)).save(wrappedOutput);
 
                 // Boat
@@ -968,13 +998,12 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
 
             private void stonecutterSet(List<ItemLike> fullBlocks,
                                         List<ItemLike> slabs) {
-                generateStonecutterGroup(wrappedOutput, fullBlocks, fullBlocks, 1);
-                generateStonecutterGroup(wrappedOutput, fullBlocks, slabs, 2);
-                generateStonecutterGroup(wrappedOutput, slabs, slabs, 1);
+                generateStonecutterGroup(fullBlocks, fullBlocks, 1);
+                generateStonecutterGroup(fullBlocks, slabs, 2);
+                generateStonecutterGroup(slabs, slabs, 1);
             }
 
-            private void generateStonecutterGroup(RecipeOutput output,
-                                                  List<ItemLike> inputs,
+            private void generateStonecutterGroup(List<ItemLike> inputs,
                                                   List<ItemLike> results,
                                                   int count) {
                 for (ItemLike input : inputs) {
@@ -1004,7 +1033,7 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         SingleItemRecipeBuilder
                                 .stonecutting(Ingredient.of(input), RecipeCategory.BUILDING_BLOCKS, result, count)
                                 .unlockedBy(getHasName(input), has(input))
-                                .save(output, recipeId);
+                                .save(wrappedOutput, recipeId);
                     }
                 }
             }

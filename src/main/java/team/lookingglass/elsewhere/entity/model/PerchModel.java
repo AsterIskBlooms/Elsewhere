@@ -23,11 +23,11 @@ public class PerchModel extends EntityModel<LivingEntityRenderState> {
 
     public PerchModel(ModelPart root) {
         super(root);
-        this.body = root.getChild("body");
-        this.head = this.body.getChild("head");
-        this.leftFin = this.body.getChild("leftFin");
-        this.rightFin = this.body.getChild("rightFin");
-        this.tailFin = this.body.getChild("tailfin");
+        body = root.getChild("body");
+        head = body.getChild("head");
+        leftFin = body.getChild("leftFin");
+        rightFin = body.getChild("rightFin");
+        tailFin = body.getChild("tailfin");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -54,14 +54,14 @@ public class PerchModel extends EntityModel<LivingEntityRenderState> {
         super.setupAnim(state);
 
         float amplitudeMultiplier = state.isInWater ? 1.0F : 1.5F;
-        this.tailFin.yRot = -amplitudeMultiplier * 0.45F * Mth.sin(0.6F * state.ageInTicks);
+        tailFin.yRot = -amplitudeMultiplier * 0.45F * Mth.sin(0.6F * state.ageInTicks);
 
-        this.body.yRot = -amplitudeMultiplier * 0.15F * Mth.sin(0.6F * state.ageInTicks + 0.3F);
+        body.yRot = -amplitudeMultiplier * 0.15F * Mth.sin(0.6F * state.ageInTicks + 0.3F);
 
         if (!state.isInWater) {
-            this.body.zRot = Mth.HALF_PI;
+            body.zRot = Mth.HALF_PI;
         } else {
-            this.body.zRot = 0.0F;
+            body.zRot = 0.0F;
         }
     }
 }

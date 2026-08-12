@@ -1,10 +1,8 @@
 package team.lookingglass.elsewhere.datagen.render;
 
 import net.minecraft.client.data.models.model.*;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.EquipmentAssets;
-import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.datagen.helpers.EBlockModelGenerators;
 import team.lookingglass.elsewhere.datagen.helpers.EItemModelGenerators;
 import team.lookingglass.elsewhere.registry.EBlocks;
@@ -458,8 +456,36 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialBlock(EBlocks.CHISELED_PINK_SANDSTONE, TexturedModel.COLUMN);
 
 
-        // Beach Overhaul
-        gen.createTrivialCube(EBlocks.BEACHSTONE);
+        // Beachstone
+        gen.family(EBlocks.BEACHSTONE)
+                .stairs(EBlocks.BEACHSTONE_STAIRS)
+                .slab(EBlocks.BEACHSTONE_SLAB)
+                .wall(EBlocks.BEACHSTONE_WALL)
+        ;
+        gen.family(EBlocks.POLISHED_BEACHSTONE)
+                .stairs(EBlocks.POLISHED_BEACHSTONE_STAIRS)
+                .slab(EBlocks.POLISHED_BEACHSTONE_SLAB)
+                .wall(EBlocks.POLISHED_BEACHSTONE_WALL)
+        ;
+        gen.family(EBlocks.BEACHSTONE_BRICKS)
+                .stairs(EBlocks.BEACHSTONE_BRICK_STAIRS)
+                .slab(EBlocks.BEACHSTONE_BRICK_SLAB)
+                .wall(EBlocks.BEACHSTONE_BRICK_WALL)
+        ;
+        gen.createTrivialBlock(EBlocks.CHISELED_BEACHSTONE, TexturedModel.COLUMN);
+
+        // Limestone
+        gen.family(EBlocks.LIMESTONE)
+                .stairs(EBlocks.LIMESTONE_STAIRS)
+                .slab(EBlocks.LIMESTONE_SLAB)
+                .wall(EBlocks.LIMESTONE_WALL)
+        ;
+        customGen.columnFamily(EBlocks.CUT_LIMESTONE)
+                .stairs(EBlocks.CUT_LIMESTONE_STAIRS)
+                .slab(EBlocks.CUT_LIMESTONE_SLAB)
+                .wall(EBlocks.CUT_LIMESTONE_WALL)
+        ;
+
         gen.createTrivialCube(EBlocks.ROCKWEED_BASALT);
 
         customGen.createSeagrassSandBlock();
@@ -545,8 +571,12 @@ public class ModelProvider extends FabricModelProvider {
         gen.createPlantWithDefaultItem(EBlocks.YELLOW_CONEFLOWER, EBlocks.POTTED_YELLOW_CONEFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
 
         gen.createDoublePlantWithDefaultItem(EBlocks.IRONWEED, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createDoublePlantWithDefaultItem(EBlocks.CATTAILS, BlockModelGenerators.PlantType.NOT_TINTED);
 
-        gen.createTrivialBlock(EBlocks.ARID_DIRT, TexturedModel.COLUMN);
+        gen.createCrossBlockWithDefaultItem(EBlocks.CAVE_ROOT, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createCrossBlockWithDefaultItem(EBlocks.GLEAMSHROOM, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        customGen.createRotatedVariantColumn(EBlocks.ARID_DIRT);
         customGen.createAridGrassBlock();
 
         customGen.createTundraGrassBlock();
@@ -624,8 +654,31 @@ public class ModelProvider extends FabricModelProvider {
         customGen.createWoodenBoards(EBlocks.CEDAR_BOARDS);
         customGen.createSimpleHorizontallyRotatedBlock(EBlocks.CEDAR_TRIM, TexturedModel.CUBE);
         gen.createShelf(EBlocks.CEDAR_SHELF, EBlocks.STRIPPED_CEDAR_LOG);
-        gen.createTintedLeaves(EBlocks.CEDAR_LEAVES, TexturedModel.LEAVES, 0x65A65B);
+        gen.createTintedLeaves(EBlocks.CEDAR_LEAVES, TexturedModel.LEAVES, 0x71AD4E);
         gen.createPlantWithDefaultItem(EBlocks.CEDAR_SAPLING, EBlocks.POTTED_CEDAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        gen.woodProvider(EBlocks.MAHOGANY_LOG).logWithHorizontal(EBlocks.MAHOGANY_LOG).wood(EBlocks.MAHOGANY_WOOD);
+        gen.woodProvider(EBlocks.STRIPPED_MAHOGANY_LOG).logWithHorizontal(EBlocks.STRIPPED_MAHOGANY_LOG).wood(EBlocks.STRIPPED_MAHOGANY_WOOD);
+        gen.family(EBlocks.MAHOGANY_PLANKS)
+                .stairs(EBlocks.MAHOGANY_STAIRS)
+                .slab(EBlocks.MAHOGANY_SLAB)
+                .fence(EBlocks.MAHOGANY_FENCE)
+                .fenceGate(EBlocks.MAHOGANY_FENCE_GATE)
+                .pressurePlate(EBlocks.MAHOGANY_PRESSURE_PLATE)
+                .button(EBlocks.MAHOGANY_BUTTON)
+        ;
+        gen.createDoor(EBlocks.MAHOGANY_DOOR);
+        gen.createOrientableTrapdoor(EBlocks.MAHOGANY_TRAPDOOR);
+        gen.createParticleOnlyBlock(EBlocks.MAHOGANY_SIGN, EBlocks.MAHOGANY_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.MAHOGANY_WALL_SIGN, EBlocks.MAHOGANY_PLANKS);
+        gen.createParticleOnlyBlock(EBlocks.MAHOGANY_HANGING_SIGN, EBlocks.STRIPPED_MAHOGANY_LOG);
+        gen.createParticleOnlyBlock(EBlocks.MAHOGANY_WALL_HANGING_SIGN, EBlocks.STRIPPED_MAHOGANY_LOG);
+        gen.family(EBlocks.MAHOGANY_MOSAIC).stairs(EBlocks.MAHOGANY_MOSAIC_STAIRS).slab(EBlocks.MAHOGANY_MOSAIC_SLAB);
+        customGen.createWoodenBoards(EBlocks.MAHOGANY_BOARDS);
+        customGen.createSimpleHorizontallyRotatedBlock(EBlocks.MAHOGANY_TRIM, TexturedModel.CUBE);
+        gen.createShelf(EBlocks.MAHOGANY_SHELF, EBlocks.STRIPPED_MAHOGANY_LOG);
+        gen.createTintedLeaves(EBlocks.MAHOGANY_LEAVES, TexturedModel.LEAVES, 0x62F728);
+        gen.createPlantWithDefaultItem(EBlocks.MAHOGANY_SAPLING, EBlocks.POTTED_MAHOGANY_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
 
         gen.createTrivialBlock(EBlocks.LATERITE, TexturedModel.COLUMN);
 
@@ -760,10 +813,10 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.BRONZE_MIX, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_NUGGET, ModelTemplates.FLAT_ITEM);
-        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_HELMET, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_CHESTPLATE, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_LEGGINGS, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateFullTrimmableItem(EItems.BRONZE_BOOTS, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_HELMET, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_CHESTPLATE, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_LEGGINGS, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_BOOTS, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateSpear(EItems.BRONZE_SPEAR);
@@ -779,10 +832,10 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_MIX, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_INGOT, ModelTemplates.FLAT_ITEM);
-        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_HELMET, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_CHESTPLATE, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_LEGGINGS, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateFullTrimmableItem(EItems.SOULSTEEL_BOOTS, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_HELMET, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_CHESTPLATE, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_LEGGINGS, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_BOOTS, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateSpear(EItems.SOULSTEEL_SPEAR);
@@ -791,8 +844,14 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.FROSTBITE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.PERCH_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.WEREWOLF_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerator.generateFlatItem(EItems.VANGUARD_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.VANGUARD_MASK, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.SULFUR_CUBE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.PERCH_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.RAW_PERCH, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.COOKED_PERCH, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SHINING_PERCH, ModelTemplates.FLAT_ITEM);
@@ -813,42 +872,47 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.CEDAR_BOAT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.CEDAR_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
 
-        armorModelGenerator.generateCustomTrimCases(Items.TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModelGenerator.generateFlatItem(EItems.MAHOGANY_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.MAHOGANY_HANGING_SIGN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.MAHOGANY_BOAT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.MAHOGANY_CHEST_BOAT, ModelTemplates.FLAT_ITEM);
 
-        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_HELMET, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_HELMET, true);
-        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_CHESTPLATE, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, true);
-        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_LEGGINGS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, true);
-        armorModelGenerator.generateCustomTrimCases(Items.LEATHER_BOOTS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_BOOTS, true);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
 
-        armorModelGenerator.generateCustomTrimCases(Items.COPPER_HELMET, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateCustomTrimCases(Items.COPPER_CHESTPLATE, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateCustomTrimCases(Items.COPPER_LEGGINGS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateCustomTrimCases(Items.COPPER_BOOTS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.LEATHER_HELMET, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_HELMET, true);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.LEATHER_CHESTPLATE, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, true);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.LEATHER_LEGGINGS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, true);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.LEATHER_BOOTS, EquipmentAssets.LEATHER, ItemModelGenerators.TRIM_PREFIX_BOOTS, true);
 
-        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_HELMET, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_CHESTPLATE, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_LEGGINGS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateCustomTrimCases(Items.CHAINMAIL_BOOTS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.COPPER_HELMET, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.COPPER_CHESTPLATE, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.COPPER_LEGGINGS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.COPPER_BOOTS, EquipmentAssets.COPPER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.generateCustomTrimCases(Items.IRON_HELMET, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateCustomTrimCases(Items.IRON_CHESTPLATE, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateCustomTrimCases(Items.IRON_LEGGINGS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateCustomTrimCases(Items.IRON_BOOTS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.CHAINMAIL_HELMET, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.CHAINMAIL_CHESTPLATE, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.CHAINMAIL_LEGGINGS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.CHAINMAIL_BOOTS, EquipmentAssets.CHAINMAIL, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_HELMET, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_CHESTPLATE, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_LEGGINGS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateCustomTrimCases(Items.DIAMOND_BOOTS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.IRON_HELMET, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.IRON_CHESTPLATE, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.IRON_LEGGINGS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.IRON_BOOTS, EquipmentAssets.IRON, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_HELMET, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_CHESTPLATE, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_LEGGINGS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateCustomTrimCases(Items.GOLDEN_BOOTS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.DIAMOND_HELMET, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.DIAMOND_CHESTPLATE, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.DIAMOND_LEGGINGS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.DIAMOND_BOOTS, EquipmentAssets.DIAMOND, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
-        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_HELMET, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_CHESTPLATE, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_LEGGINGS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        armorModelGenerator.generateCustomTrimCases(Items.NETHERITE_BOOTS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.GOLDEN_HELMET, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.GOLDEN_CHESTPLATE, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.GOLDEN_LEGGINGS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.GOLDEN_BOOTS, EquipmentAssets.GOLD, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.NETHERITE_HELMET, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.NETHERITE_CHESTPLATE, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.NETHERITE_LEGGINGS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(Items.NETHERITE_BOOTS, EquipmentAssets.NETHERITE, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
     }
 
 

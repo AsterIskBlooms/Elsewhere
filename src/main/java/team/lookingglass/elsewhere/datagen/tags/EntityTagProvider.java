@@ -16,9 +16,10 @@ public class EntityTagProvider extends FabricTagsProvider.EntityTypeTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         valueLookupBuilder(EntityTypeTags.ZOMBIES).add(EEntities.FROSTBITE);
+        valueLookupBuilder(EntityTypeTags.UNDEAD).add(EEntities.FROSTBITE, EEntities.VANGUARD, EEntities.WEREWOLF);
 
         valueLookupBuilder(EntityTypeTags.BURN_IN_DAYLIGHT).add(EEntities.FROSTBITE);
-        valueLookupBuilder(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(EEntities.FROSTBITE);
+        valueLookupBuilder(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(EEntities.FROSTBITE, EEntities.VANGUARD, EEntities.WEREWOLF);
 
         valueLookupBuilder(EntityTypeTags.AQUATIC).add(EEntities.PERCH);
         valueLookupBuilder(EntityTypeTags.NOT_SCARY_FOR_PUFFERFISH).add(EEntities.PERCH);

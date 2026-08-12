@@ -39,13 +39,19 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 EBlocks.CEDAR_LOG.asItem(), EBlocks.STRIPPED_CEDAR_LOG.asItem(),
                 EBlocks.CEDAR_WOOD.asItem(), EBlocks.STRIPPED_CEDAR_WOOD.asItem()
         );
+        valueLookupBuilder(EItemTags.MAHOGANY_LOGS).add(
+                EBlocks.MAHOGANY_LOG.asItem(), EBlocks.STRIPPED_MAHOGANY_LOG.asItem(),
+                EBlocks.MAHOGANY_WOOD.asItem(), EBlocks.STRIPPED_MAHOGANY_WOOD.asItem()
+        );
         valueLookupBuilder(ItemTags.LOGS).add(
                 EBlocks.POPLAR_LOG.asItem(), EBlocks.STRIPPED_POPLAR_LOG.asItem(),
                 EBlocks.POPLAR_WOOD.asItem(), EBlocks.STRIPPED_POPLAR_WOOD.asItem(),
                 EBlocks.AZALEA_LOG.asItem(), EBlocks.STRIPPED_AZALEA_LOG.asItem(),
                 EBlocks.AZALEA_WOOD.asItem(), EBlocks.STRIPPED_AZALEA_WOOD.asItem(),
                 EBlocks.CEDAR_LOG.asItem(), EBlocks.STRIPPED_CEDAR_LOG.asItem(),
-                EBlocks.CEDAR_WOOD.asItem(), EBlocks.STRIPPED_CEDAR_WOOD.asItem()
+                EBlocks.CEDAR_WOOD.asItem(), EBlocks.STRIPPED_CEDAR_WOOD.asItem(),
+                EBlocks.MAHOGANY_LOG.asItem(), EBlocks.STRIPPED_MAHOGANY_LOG.asItem(),
+                EBlocks.MAHOGANY_WOOD.asItem(), EBlocks.STRIPPED_MAHOGANY_WOOD.asItem()
         );
         valueLookupBuilder(ItemTags.LOGS_THAT_BURN).add(
                 EBlocks.POPLAR_LOG.asItem(), EBlocks.STRIPPED_POPLAR_LOG.asItem(),
@@ -53,13 +59,30 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 EBlocks.AZALEA_LOG.asItem(), EBlocks.STRIPPED_AZALEA_LOG.asItem(),
                 EBlocks.AZALEA_WOOD.asItem(), EBlocks.STRIPPED_AZALEA_WOOD.asItem(),
                 EBlocks.CEDAR_LOG.asItem(), EBlocks.STRIPPED_CEDAR_LOG.asItem(),
-                EBlocks.CEDAR_WOOD.asItem(), EBlocks.STRIPPED_CEDAR_WOOD.asItem()
+                EBlocks.CEDAR_WOOD.asItem(), EBlocks.STRIPPED_CEDAR_WOOD.asItem(),
+                EBlocks.MAHOGANY_LOG.asItem(), EBlocks.STRIPPED_MAHOGANY_LOG.asItem(),
+                EBlocks.MAHOGANY_WOOD.asItem(), EBlocks.STRIPPED_MAHOGANY_WOOD.asItem()
         );
-        valueLookupBuilder(ItemTags.PLANKS).add(EBlocks.POPLAR_PLANKS.asItem(), EBlocks.AZALEA_PLANKS.asItem(), EBlocks.CEDAR_PLANKS.asItem());
-        valueLookupBuilder(ItemTags.WOODEN_STAIRS).add(EBlocks.POPLAR_STAIRS.asItem(), EBlocks.AZALEA_STAIRS.asItem(), EBlocks.CEDAR_STAIRS.asItem());
-        valueLookupBuilder(ItemTags.WOODEN_SLABS).add(EBlocks.POPLAR_SLAB.asItem(), EBlocks.AZALEA_SLAB.asItem(), EBlocks.CEDAR_SLAB.asItem());
-        valueLookupBuilder(ItemTags.WOODEN_FENCES).add(EBlocks.POPLAR_FENCE.asItem(), EBlocks.AZALEA_FENCE.asItem(), EBlocks.CEDAR_FENCE.asItem());
-        valueLookupBuilder(ItemTags.FENCE_GATES).add(EBlocks.POPLAR_FENCE_GATE.asItem(), EBlocks.AZALEA_FENCE_GATE.asItem(), EBlocks.CEDAR_FENCE_GATE.asItem());
+        valueLookupBuilder(ItemTags.PLANKS).add(
+                EBlocks.POPLAR_PLANKS.asItem(), EBlocks.AZALEA_PLANKS.asItem(),
+                EBlocks.CEDAR_PLANKS.asItem(), EBlocks.MAHOGANY_PLANKS.asItem()
+        );
+        valueLookupBuilder(ItemTags.WOODEN_STAIRS).add(
+                EBlocks.POPLAR_STAIRS.asItem(), EBlocks.AZALEA_STAIRS.asItem(),
+                EBlocks.CEDAR_STAIRS.asItem(), EBlocks.MAHOGANY_STAIRS.asItem()
+        );
+        valueLookupBuilder(ItemTags.WOODEN_SLABS).add(
+                EBlocks.POPLAR_SLAB.asItem(), EBlocks.AZALEA_SLAB.asItem(),
+                EBlocks.CEDAR_SLAB.asItem(), EBlocks.MAHOGANY_SLAB.asItem()
+        );
+        valueLookupBuilder(ItemTags.WOODEN_FENCES).add(
+                EBlocks.POPLAR_FENCE.asItem(), EBlocks.AZALEA_FENCE.asItem(),
+                EBlocks.CEDAR_FENCE.asItem(), EBlocks.MAHOGANY_FENCE.asItem()
+        );
+        valueLookupBuilder(ItemTags.FENCE_GATES).add(
+                EBlocks.POPLAR_FENCE_GATE.asItem(), EBlocks.AZALEA_FENCE_GATE.asItem(),
+                EBlocks.CEDAR_FENCE_GATE.asItem(), EBlocks.MAHOGANY_FENCE_GATE.asItem()
+        );
 
         // Sand
         valueLookupBuilder(ItemTags.SAND).add(EBlocks.PINK_SAND.asItem());
@@ -87,6 +110,8 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
         valueLookupBuilder(EItemTags.SOULSTEEL_EQUIPMENT).add(
                 EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS
         );
+
+        valueLookupBuilder(EItemTags.REPAIRS_VANGUARD_MASK).add(EItems.VANGUARD_MASK, EItems.SILVER_INGOT);
 
         // Repair tags
         valueLookupBuilder(EItemTags.REPAIRS_BRONZE_ARMOR).add(EItems.BRONZE_INGOT);

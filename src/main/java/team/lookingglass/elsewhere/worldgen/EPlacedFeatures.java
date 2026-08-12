@@ -8,8 +8,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.AquaticFeatures;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.TreePlacements;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -18,6 +21,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 import team.lookingglass.elsewhere.Elsewhere;
@@ -27,8 +33,6 @@ import team.lookingglass.elsewhere.worldgen.features.placement.SeaLevelFilter;
 import java.util.List;
 
 public class EPlacedFeatures {
-
-    public static final ResourceKey<PlacedFeature> ROCKY_OUTCROP = registerKey("rocky_outcrop");
 
     public static final ResourceKey<PlacedFeature> FOREST_ROCK_SPARSE = registerKey("forest_rock_sparse");
     public static final ResourceKey<PlacedFeature> MEADOW_ROCK = registerKey("meadow_rock");
@@ -43,7 +47,12 @@ public class EPlacedFeatures {
     public static final ResourceKey<PlacedFeature> OAK_SHRUBS = registerKey("oak_shrubs");
     public static final ResourceKey<PlacedFeature> CEDAR_FOREST_TREES = registerKey("cedar_forest_trees");
     public static final ResourceKey<PlacedFeature> CEDAR_TREES_SPARSE = registerKey("cedar_trees_sparse");
+
     public static final ResourceKey<PlacedFeature> RAINFOREST_MAHOGANY = registerKey("rainforest_mahogany");
+    public static final ResourceKey<PlacedFeature> RAINFOREST_SHRUB = registerKey("rainforest_shrub");
+    public static final ResourceKey<PlacedFeature> JUNGLE_TREES = registerKey("jungle_trees");
+    public static final ResourceKey<PlacedFeature> SPARSE_JUNGLE_TREES = registerKey("sparse_jungle_trees");
+    public static final ResourceKey<PlacedFeature> BAMBOO_JUNGLE_TREES = registerKey("bamboo_jungle_trees");
 
     public static final ResourceKey<PlacedFeature> TUNDRA_RED_VEGETATION_PATCH = registerKey("tundra_red_vegetation_patch");
     public static final ResourceKey<PlacedFeature> TUNDRA_GREEN_VEGETATION_PATCH = registerKey("tundra_green_vegetation_patch");
@@ -84,6 +93,7 @@ public class EPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> DESERT_ROCKS = registerKey("desert_rocks");
     public static final ResourceKey<PlacedFeature> LUSH_DESERT_ROCKS = registerKey("lush_desert_rocks");
+    public static final ResourceKey<PlacedFeature> OUTBACK_ROCKS = registerKey("outback_rocks");
 
     public static final ResourceKey<PlacedFeature> BEACHSTONE_ROCKS = registerKey("beachstone_rocks");
     public static final ResourceKey<PlacedFeature> EXTRA_BEACHSTONE_ROCKS = registerKey("extra_beachstone_rocks");
@@ -101,15 +111,6 @@ public class EPlacedFeatures {
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configured = context.lookup(Registries.CONFIGURED_FEATURE);
-
-        registerPlaced(context, ROCKY_OUTCROP,
-                configured.getOrThrow(EConfiguredFeatures.ROCKY_OUTCROP_KEY),
-                List.of(
-                        RarityFilter.onAverageOnceEvery(108),
-                        InSquarePlacement.spread(),
-                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()
-                ));
 
         registerPlaced(context, FOREST_ROCK_SPARSE,
                 configured.getOrThrow(MiscOverworldFeatures.FOREST_ROCK),
@@ -407,6 +408,14 @@ public class EPlacedFeatures {
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()
                 ));
+        registerPlaced(context, OUTBACK_ROCKS,
+                configured.getOrThrow(EConfiguredFeatures.RED_SANDSTONE_ROCK),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                ));
 
         registerPlaced(context, LUSH_SHORT_CACTUS,
                 configured.getOrThrow(EConfiguredFeatures.SHORT_CACTUS),
@@ -504,14 +513,36 @@ public class EPlacedFeatures {
         registerPlaced(context, RAINFOREST_MAHOGANY,
                 configured.getOrThrow(EConfiguredFeatures.MAHOGANY_TREE),
                 List.of(
-                        CountPlacement.of(16),
+                        CountPlacement.of(18),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome(),
-                        BlockPredicateFilter.forPredicate(
-                                BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
-                                        BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                BlockPredicate.wouldSurvive(EBlocks.MAHOGANY_SAPLING.defaultBlockState(), BlockPos.ZERO)))
                 ));
+        registerPlaced(context, RAINFOREST_SHRUB,
+                configured.getOrThrow(TreeFeatures.JUNGLE_BUSH),
+                List.of(
+                        CountPlacement.of(5),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                BlockPredicate.wouldSurvive(EBlocks.MAHOGANY_SAPLING.defaultBlockState(), BlockPos.ZERO)))
+                ));
+
+        registerPlaced(context, JUNGLE_TREES,
+                configured.getOrThrow(EConfiguredFeatures.JUNGLE_TREES_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(50, 0.1F, 1), Blocks.JUNGLE_SAPLING)
+        );
+        PlacementUtils.register(context, SPARSE_JUNGLE_TREES,
+                configured.getOrThrow(EConfiguredFeatures.SPARSE_JUNGLE_TREES_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.1F, 1), Blocks.JUNGLE_SAPLING)
+        );
+        PlacementUtils.register(context, BAMBOO_JUNGLE_TREES,
+                configured.getOrThrow(EConfiguredFeatures.BAMBOO_JUNGLE_TREES_KEY),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(30, 0.1F, 1), Blocks.JUNGLE_SAPLING)
+        );
 
         registerPlaced(context, DENSE_DRY_GRASS,
                 configured.getOrThrow(VegetationFeatures.DRY_GRASS),

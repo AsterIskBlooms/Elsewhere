@@ -1,5 +1,8 @@
 package team.lookingglass.elsewhere.registry;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -9,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.material.Fluids;
@@ -24,6 +28,7 @@ import team.lookingglass.elsewhere.registry.equipment.EMaterials;
 import team.lookingglass.elsewhere.registry.equipment.ArmorAttributes;
 import team.lookingglass.elsewhere.registry.trim.ETrimMaterials;
 
+import java.util.List;
 import java.util.function.Function;
 
 public interface EItems {
@@ -55,6 +60,15 @@ public interface EItems {
     Item CEDAR_CHEST_BOAT = register("cedar_chest_boat",
             p -> new BoatItem(EEntities.CEDAR_CHEST_BOAT, p), new Item.Properties().stacksTo(1));
 
+    Item MAHOGANY_SIGN = register("mahogany_sign",
+            p -> new SignItem(EBlocks.MAHOGANY_SIGN, EBlocks.MAHOGANY_WALL_SIGN, p), new Item.Properties().stacksTo(16));
+    Item MAHOGANY_HANGING_SIGN = register("mahogany_hanging_sign",
+            p -> new HangingSignItem(EBlocks.MAHOGANY_HANGING_SIGN, EBlocks.MAHOGANY_WALL_HANGING_SIGN, p), new Item.Properties().stacksTo(16));
+    Item MAHOGANY_BOAT = register("mahogany_boat",
+            p -> new BoatItem(EEntities.MAHOGANY_BOAT, p), new Item.Properties().stacksTo(1));
+    Item MAHOGANY_CHEST_BOAT = register("mahogany_chest_boat",
+            p -> new BoatItem(EEntities.MAHOGANY_CHEST_BOAT, p), new Item.Properties().stacksTo(1));
+
     Item DIAMOND_NUGGET = register("diamond_nugget", Item::new, new Item.Properties());
     Item EMERALD_NUGGET = register("emerald_nugget", Item::new, new Item.Properties());
 
@@ -67,19 +81,15 @@ public interface EItems {
     Item BRONZE_NUGGET = register("bronze_nugget", Item::new, new Item.Properties());
     Item BRONZE_HELMET = register("bronze_helmet", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.BRONZE_ARMOR, ArmorType.HELMET)
-            .durability(ArmorType.HELMET.getDurability(EMaterials.BRONZE_DURABILITY))
     );
     Item BRONZE_CHESTPLATE = register("bronze_chestplate", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.BRONZE_ARMOR, ArmorType.CHESTPLATE)
-            .durability(ArmorType.CHESTPLATE.getDurability(EMaterials.BRONZE_DURABILITY))
     );
     Item BRONZE_LEGGINGS = register("bronze_leggings", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.BRONZE_ARMOR, ArmorType.LEGGINGS)
-            .durability(ArmorType.LEGGINGS.getDurability(EMaterials.BRONZE_DURABILITY))
     );
     Item BRONZE_BOOTS = register("bronze_boots", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.BRONZE_ARMOR, ArmorType.BOOTS)
-            .durability(ArmorType.BOOTS.getDurability(EMaterials.BRONZE_DURABILITY))
     );
     Item BRONZE_SWORD = register("bronze_sword", Item::new, new Item.Properties()
             .sword(EMaterials.BRONZE_TOOL, 3.0F, -2.4F)
@@ -151,6 +161,14 @@ public interface EItems {
     );
 
     Item FROSTBITE_SPAWN_EGG = register("frostbite_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.FROSTBITE));
+    Item WEREWOLF_SPAWN_EGG = register("werewolf_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.WEREWOLF));
+    Item VANGUARD_SPAWN_EGG = register("vanguard_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.VANGUARD));
+    Item SULFUR_CUBE_SPAWN_EGG = register("sulfur_cube_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.SULFUR_CUBE));
+
+    Item VANGUARD_MASK = register("vanguard_mask", Item::new, new Item.Properties()
+            .humanoidArmor(EMaterials.VANGUARD_MASK, ArmorType.HELMET)
+    );
+
     Item PERCH_SPAWN_EGG = register("perch_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.PERCH));
 
     Item RAW_PERCH = register("raw_perch", Item::new, new Item.Properties()

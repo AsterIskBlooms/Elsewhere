@@ -166,13 +166,12 @@ public class VeilrootPortalBlock extends Block implements Portal {
         return bottomLeft.above(1);
     }
 
-    @SuppressWarnings("deprecation")
     private int findSafeSurfaceY(ServerLevel level, int x, int z) {
         int top = level.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING, x, z);
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, top, z);
         while (pos.getY() > level.getMinY()) {
             BlockState state = level.getBlockState(pos);
-            if (!state.is(Blocks.BEDROCK) && state.isSolid()) {
+            if (!state.is(Blocks.BEDROCK) && state.isSolidRender()) {
                 return pos.getY() + 1;
             }
             pos.move(Direction.DOWN);
