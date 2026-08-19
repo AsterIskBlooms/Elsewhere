@@ -11,9 +11,7 @@ import team.lookingglass.elsewhere.Elsewhere;
 
 public class ENoise {
 
-    public static final ResourceKey<NormalNoise.NoiseParameters> CAVE_GRADIENT_3D =
-            ResourceKey.create(Registries.NOISE,
-                    Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cave_gradient_3d"));
+    public static final ResourceKey<NormalNoise.NoiseParameters> CAVE_GRADIENT_3D = ResourceKey.create(Registries.NOISE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "cave_gradient_3d"));
 
 
     public static void bootstrap(BootstrapContext<NormalNoise.NoiseParameters> context) {

@@ -44,14 +44,14 @@ public abstract class OverworldBiomeGenMixin {
                 { EBiomes.TUNDRA, EBiomes.TUNDRA, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_TAIGA },
                 { Biomes.CHERRY_GROVE, Biomes.CHERRY_GROVE, Biomes.FLOWER_FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA },
                 { Biomes.PALE_GARDEN, Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST },
-                { Biomes.SAVANNA, Biomes.SAVANNA, EBiomes.CEDAR_FOREST, EBiomes.CEDAR_FOREST, Biomes.BAMBOO_JUNGLE },
+                { Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, EBiomes.CEDAR_FOREST, EBiomes.CEDAR_FOREST, Biomes.BAMBOO_JUNGLE },
                 { Biomes.BADLANDS, Biomes.BADLANDS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.WOODED_BADLANDS }
         });
         accessor.setPlateauBiomesVariant(new ResourceKey[][]{
                 { Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, null, null, null },
                 { Biomes.MEADOW, Biomes.MEADOW, EBiomes.DAPPLED_FOREST, null, Biomes.OLD_GROWTH_PINE_TAIGA },
                 { null, null, Biomes.FLOWER_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST, null },
-                { EBiomes.STEPPE, EBiomes.STEPPE, null, null, null },
+                { Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, null, null, null },
                 { Biomes.ERODED_BADLANDS, Biomes.ERODED_BADLANDS, null, null, null }
         });
     }

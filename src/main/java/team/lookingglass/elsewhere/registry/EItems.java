@@ -94,8 +94,8 @@ public interface EItems {
     Item BRONZE_SWORD = register("bronze_sword", Item::new, new Item.Properties()
             .sword(EMaterials.BRONZE_TOOL, 3.0F, -2.4F)
     );
-    Item BRONZE_AXE = register("bronze_axe", Item::new, new Item.Properties()
-            .axe(EMaterials.BRONZE_TOOL, 7.0F, -3.1F)
+    Item BRONZE_AXE = register("bronze_axe", p -> new AxeItem(
+            EMaterials.BRONZE_TOOL, 7.0F, -3.1F, p), new Item.Properties()
     );
     Item BRONZE_SPEAR = register("bronze_spear", Item::new, new Item.Properties()
             .spear(EMaterials.BRONZE_TOOL,
@@ -107,11 +107,11 @@ public interface EItems {
     Item BRONZE_PICKAXE = register("bronze_pickaxe", Item::new, new Item.Properties()
             .pickaxe(EMaterials.BRONZE_TOOL, 1.0F, -2.8F)
     );
-    Item BRONZE_SHOVEL = register("bronze_shovel", Item::new, new Item.Properties()
-            .shovel(EMaterials.BRONZE_TOOL, 1.5F, -3.0F)
+    Item BRONZE_SHOVEL = register("bronze_shovel", p -> new ShovelItem(
+            EMaterials.BRONZE_TOOL, 1.5F, -3.0F, p), new Item.Properties()
     );
-    Item BRONZE_HOE = register("bronze_hoe", Item::new, new Item.Properties()
-            .hoe(EMaterials.BRONZE_TOOL, -1.0F, -1.0F)
+    Item BRONZE_HOE = register("bronze_hoe", p -> new HoeItem(
+            EMaterials.BRONZE_TOOL, -1.0F, -1.0F, p), new Item.Properties()
     );
 
     Item RAW_SILVER = register("raw_silver", Item::new, new Item.Properties());
@@ -141,8 +141,8 @@ public interface EItems {
     Item SOULSTEEL_SWORD = register("soulsteel_sword", Item::new, new Item.Properties().fireResistant()
             .sword(EMaterials.SOULSTEEL_TOOL, 3.0F, -2.4F)
     );
-    Item SOULSTEEL_AXE = register("soulsteel_axe", Item::new, new Item.Properties().fireResistant()
-            .axe(EMaterials.SOULSTEEL_TOOL, 5.0F, -3.0F)
+    Item SOULSTEEL_AXE = register("soulsteel_axe", p -> new AxeItem(
+            EMaterials.SOULSTEEL_TOOL, 5.0F, -3.0F, p), new Item.Properties().fireResistant()
     );
     Item SOULSTEEL_SPEAR = register("soulsteel_spear", Item::new, new Item.Properties().fireResistant()
             .spear(EMaterials.SOULSTEEL_TOOL,
@@ -153,11 +153,11 @@ public interface EItems {
     Item SOULSTEEL_PICKAXE = register("soulsteel_pickaxe", Item::new, new Item.Properties().fireResistant()
             .pickaxe(EMaterials.SOULSTEEL_TOOL, 1.0F, -2.8F)
     );
-    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", Item::new, new Item.Properties().fireResistant()
-            .shovel(EMaterials.SOULSTEEL_TOOL, 1.5F, -3.0F)
+    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", p -> new ShovelItem(
+            EMaterials.SOULSTEEL_TOOL, 1.5F, -3.0F, p), new Item.Properties().fireResistant()
     );
-    Item SOULSTEEL_HOE = register("soulsteel_hoe", Item::new, new Item.Properties().fireResistant()
-            .hoe(EMaterials.SOULSTEEL_TOOL, -4.0F, 0.0F)
+    Item SOULSTEEL_HOE = register("soulsteel_hoe", p -> new HoeItem(
+            EMaterials.SOULSTEEL_TOOL, -4.0F, 0.0F, p), new Item.Properties().fireResistant()
     );
 
     Item FROSTBITE_SPAWN_EGG = register("frostbite_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.FROSTBITE));
@@ -183,6 +183,9 @@ public interface EItems {
 
     Item PERCH_BUCKET = register("perch_bucket", p -> new MobBucketItem(EEntities.PERCH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, p), new Item.Properties());
 
+
+
+    Item MUSIC_DISC_FOX = register("music_disc_fox", Item::new, new Item.Properties().jukeboxPlayable(EDiscs.FOX).rarity(Rarity.UNCOMMON));
 
     // Method
     static <GenericItem extends Item> GenericItem register(String name, Function<Item.Properties, GenericItem> itemFactory, Item.Properties settings) {

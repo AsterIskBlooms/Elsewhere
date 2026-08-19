@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class CaveRootBlock extends VegetationBlock implements BonemealableBlock {
+public class CaveWeedBlock extends VegetationBlock implements BonemealableBlock {
     public static final MapCodec<net.minecraft.world.level.block.BushBlock> CODEC = simpleCodec(net.minecraft.world.level.block.BushBlock::new);
     private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 4.0);
 
@@ -23,7 +23,7 @@ public class CaveRootBlock extends VegetationBlock implements BonemealableBlock 
         return CODEC;
     }
 
-    public CaveRootBlock(final BlockBehaviour.Properties properties) {
+    public CaveWeedBlock(final BlockBehaviour.Properties properties) {
         super(properties);
     }
 

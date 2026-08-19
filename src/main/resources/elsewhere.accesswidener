@@ -13,6 +13,7 @@ accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> 
 accessible method net/minecraft/core/particles/SimpleParticleType <init> (Z)V
 
 mutable field net/minecraft/world/level/block/grower/TreeGrower ACACIA Lnet/minecraft/world/level/block/grower/TreeGrower;
+mutable field net/minecraft/world/level/block/grower/TreeGrower BIRCH Lnet/minecraft/world/level/block/grower/TreeGrower;
 
 accessible field net/minecraft/world/item/ToolMaterial incorrectBlocksForDrops Lnet/minecraft/tags/TagKey;
 mutable field net/minecraft/world/item/ToolMaterial incorrectBlocksForDrops Lnet/minecraft/tags/TagKey;
@@ -42,7 +43,9 @@ accessible class net/minecraft/world/entity/monster/Slime$SlimeRandomDirectionGo
 accessible class net/minecraft/world/entity/monster/Slime$SlimeMoveControl
 accessible class net/minecraft/world/entity/monster/Slime$SlimeKeepOnJumpingGoal
 
+accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
 accessible field net/minecraft/world/item/ShovelItem FLATTENABLES Ljava/util/Map;
+accessible field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;
 
 accessible method net/minecraft/world/level/block/state/properties/BlockSetType register (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/state/properties/BlockSetType;
 accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;

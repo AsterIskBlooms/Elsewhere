@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
@@ -33,7 +34,7 @@ public class EWorldgen {
         );
         List<ResourceKey<Biome>> meadowRockBiomes = List.of(
                 Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW, EBiomes.SHRUBLAND,
-                Biomes.SPARSE_JUNGLE
+                Biomes.SPARSE_JUNGLE, EBiomes.SHRUBLAND, EBiomes.STEPPE
         );
 
         // Basic Features
@@ -173,6 +174,54 @@ public class EWorldgen {
                 GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SPARSE_JUNGLE_TREES
         );
 
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.FLOWER_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.FLOWER_FOREST_TREES
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.FLOWER_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.FLOWER_FOREST_WILDFLOWERS
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.CHERRY_GROVE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CHERRY_GROVE_BAMBOO
+        );
+
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.BIRCH_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BIRCH_TREES
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.OLD_GROWTH_BIRCH_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.OLD_GROWTH_BIRCH_TREES
+        );
+
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RAINFOREST_MAHOGANY
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RAINFOREST_SHRUB
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CHERRY_GROVE_BAMBOO
+        );
+
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.SWAMP,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_CATTAILS
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.SWAMP,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_GRASS
+        );
+        BiomeModifications.addFeature(
+                ctx -> ctx.getBiomeKey() == Biomes.MANGROVE_SWAMP,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_CATTAILS
+        );
+
 
 
 
@@ -186,6 +235,12 @@ public class EWorldgen {
                         SurfaceRules.abovePreliminarySurface(),
                         SurfaceRules.ifTrue(SurfaceRules.steep(),
                                 SurfaceRules.state(Blocks.STONE.defaultBlockState())
+                        )
+                );
+                SurfaceRules.RuleSource limestoneCliffsRule = SurfaceRules.ifTrue(
+                        SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(),
+                                SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState())
                         )
                 );
                 SurfaceRules.RuleSource sandstoneCliffsRule = SurfaceRules.ifTrue(
@@ -337,10 +392,10 @@ public class EWorldgen {
                         SurfaceRules.isBiome(Biomes.SWAMP),
                         SurfaceRules.sequence(
                                 prelimAndWaterCheck(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, 0.5, 1.0),
+                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, 0.0, 1.0),
                                                 SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState())))),
                                 prelimAndWaterCheck(SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, 0.5, 1.0),
+                                        SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE_SECONDARY, 0.0, 1.0),
                                                 SurfaceRules.state(Blocks.DIRT.defaultBlockState())))),
                                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(Blocks.MUD.defaultBlockState())),
                                 SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, SurfaceRules.state(Blocks.MUD.defaultBlockState()))
@@ -408,18 +463,28 @@ public class EWorldgen {
                                                 SurfaceRules.state(Blocks.STONE.defaultBlockState()))
                                 )));
 
+                SurfaceRules.RuleSource cedarForestRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.CEDAR_FOREST),
+                        prelimAndWaterCheck(
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.45, 1.0),
+                                                        SurfaceRules.state(EBlocks.LATERITE.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.45),
+                                                        SurfaceRules.state(EBlocks.LATERITE.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.45, 1.0),
+                                                        SurfaceRules.state(EBlocks.LATERITE.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.45),
+                                                        SurfaceRules.state(EBlocks.LATERITE.defaultBlockState())))
+                                )));
+
                 SurfaceRules.RuleSource steppeRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.STEPPE),
                         prelimAndWaterCheck(
                                 SurfaceRules.sequence(
-                                        stoneCliffsRule,
+                                        limestoneCliffsRule,
                                         // On Floor
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.45),
-                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.45, 1.0),
-                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
-
                                         SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
                                                 SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, 0.4, 0.6),
                                                         SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState()))),
@@ -432,13 +497,6 @@ public class EWorldgen {
 
                                         // Under Floor
                                         SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.45),
-                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
-                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.45, 1.0),
-                                                        SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))),
-
-                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
                                                 SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SURFACE, 0.4, 0.6),
                                                         SurfaceRules.state(Blocks.DIRT.defaultBlockState()))),
                                         SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
@@ -449,8 +507,8 @@ public class EWorldgen {
                                                 SurfaceRules.state(EBlocks.ARID_DIRT.defaultBlockState())),
 
                                         // Deep Under Floor
-                                        SurfaceRules.ifTrue(SurfaceRules.DEEP_UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.STONE.defaultBlockState()))
+                                        SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
+                                                SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState()))
                                 )));
 
                 SurfaceRules.RuleSource lushDesertRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.LUSH_DESERT),
@@ -722,7 +780,7 @@ public class EWorldgen {
                                 swampRules, riverRules, oceanRules,
                                 tidepoolRules, coldBeachRules, frozenBeachRules,
 
-                                shrublandRules, steppeRules,
+                                shrublandRules, cedarForestRules, steppeRules,
                                 outbackRules, lushDesertRules,
                                 tundraRules,
 

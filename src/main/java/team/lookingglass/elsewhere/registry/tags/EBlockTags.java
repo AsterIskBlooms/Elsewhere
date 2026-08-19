@@ -29,9 +29,6 @@ public interface EBlockTags {
     TagKey<Block> SULFUR_SPIKE_REPLACEABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_spike_replaceable"));
     TagKey<Block> ICICLE_REPLACEABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "icicle_replaceable"));
 
-    TagKey<Block> TUNDRA_RED_GRASS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tundra_red_grass"));
-    TagKey<Block> TUNDRA_GREEN_GRASS = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tundra_green_grass"));
-
     TagKey<Block> NEEDS_COPPER_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "needs_copper_tool"));
     TagKey<Block> NEEDS_BRONZE_TOOL = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "needs_bronze_tool"));
 

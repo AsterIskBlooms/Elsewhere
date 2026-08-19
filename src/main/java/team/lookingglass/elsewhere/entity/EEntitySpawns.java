@@ -51,5 +51,9 @@ public class EEntitySpawns {
 
         BiomeModifications.addSpawn(ctx -> ctx.getBiomeKey() == Biomes.RIVER,
                 MobCategory.WATER_AMBIENT, EEntities.PERCH, 1, 3, 5);
+        BiomeModifications.addSpawn(ctx -> ctx.getBiomeKey() == Biomes.SWAMP,
+                MobCategory.WATER_AMBIENT, EEntities.PERCH, 1, 3, 5);
+        BiomeModifications.addSpawn(ctx -> ctx.getBiomeKey() == Biomes.MANGROVE_SWAMP,
+                MobCategory.WATER_AMBIENT, EEntities.PERCH, 1, 3, 5);
     }
 }

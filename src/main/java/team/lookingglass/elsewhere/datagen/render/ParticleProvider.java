@@ -37,6 +37,7 @@ public class ParticleProvider implements DataProvider {
         futures.add(saveParticle(cache, EParticles.RED_POPLAR_LEAVES, false, "red_poplar", true, 4));
         futures.add(saveParticle(cache, EParticles.ORANGE_POPLAR_LEAVES, false, "orange_poplar", true, 4));
         futures.add(saveParticle(cache, EParticles.YELLOW_POPLAR_LEAVES, false, "yellow_poplar", true, 4));
+        futures.add(saveParticle(cache, EParticles.GILDED_BIRCH_LEAVES, false, "gilded_birch", true, 4));
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
 

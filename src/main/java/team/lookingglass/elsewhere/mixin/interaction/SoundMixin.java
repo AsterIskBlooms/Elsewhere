@@ -64,6 +64,15 @@ public class SoundMixin {
             map.put(SoundType.ROOTED_DIRT, Set.of(
                     Blocks.CLAY
             ));
+            map.put(SoundType.IRON, Set.of(
+                    Blocks.SMITHING_TABLE,
+                    Blocks.GOLD_BLOCK
+            ));
+            map.put(SoundType.AZALEA_LEAVES, Set.of(
+                    Blocks.OAK_LEAVES,  Blocks.SPRUCE_LEAVES, Blocks.BIRCH_LEAVES,
+                    Blocks.JUNGLE_LEAVES, Blocks.ACACIA_LEAVES, Blocks.DARK_OAK_LEAVES,
+                    Blocks.MANGROVE_LEAVES, Blocks.CHERRY_LEAVES, Blocks.PALE_OAK_LEAVES
+            ));
 
 
             SOUND_OVERRIDES = Map.copyOf(map);

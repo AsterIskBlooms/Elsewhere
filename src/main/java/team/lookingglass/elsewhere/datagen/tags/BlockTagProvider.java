@@ -40,13 +40,10 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
         valueLookupBuilder(EBlockTags.ICICLE_REPLACEABLE).add(Blocks.ICE, Blocks.PACKED_ICE, Blocks.BLUE_ICE);
 
-        valueLookupBuilder(EBlockTags.TUNDRA_RED_GRASS).add(EBlocks.RED_GRASS_BLOCK);
-        valueLookupBuilder(EBlockTags.TUNDRA_GREEN_GRASS).add(Blocks.GRASS_BLOCK);
-
         valueLookupBuilder(BlockTags.DIRT).add(
                 EBlocks.ARID_DIRT, EBlocks.ARID_GRASS_BLOCK,
                 EBlocks.RED_GRASS_BLOCK,
-                EBlocks.LATERITE
+                EBlocks.LATERITE, EBlocks.MOSSY_MUD
         );
         valueLookupBuilder(BlockTags.GRASS_BLOCKS).add(
                 EBlocks.ARID_GRASS_BLOCK, EBlocks.RED_GRASS_BLOCK, EBlocks.SEAGRASS_SAND
@@ -67,14 +64,18 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS,
                 EBlocks.MAGENTA_CONEFLOWER, EBlocks.YELLOW_CONEFLOWER, EBlocks.IRONWEED,
                 EBlocks.CATTAILS,
-                EBlocks.CAVE_ROOT, EBlocks.GLEAMSHROOM
+                EBlocks.CAVE_WEED, EBlocks.GLEAMSHROOM,
+                EBlocks.SHORT_MOSS_SPOROPHYTE, EBlocks.TALL_MOSS_SPOROPHYTE,
+                EBlocks.SHORT_RUSTY_MOSS_SPOROPHYTE, EBlocks.TALL_RUSTY_MOSS_SPOROPHYTE,
+                EBlocks.SHORT_PALE_MOSS_SPOROPHYTE, EBlocks.TALL_PALE_MOSS_SPOROPHYTE
         );
         valueLookupBuilder(BlockTags.MOSS_BLOCKS).add(
-                EBlocks.RUSTY_MOSS_BLOCK
+                EBlocks.RUSTY_MOSS_BLOCK, EBlocks.MOSSY_MUD
         );
 
         valueLookupBuilder(BlockTags.LEAVES).add(
-                EBlocks.RED_POPLAR_LEAVES, EBlocks.ORANGE_POPLAR_LEAVES, EBlocks.YELLOW_POPLAR_LEAVES
+                EBlocks.RED_POPLAR_LEAVES, EBlocks.ORANGE_POPLAR_LEAVES, EBlocks.YELLOW_POPLAR_LEAVES,
+                EBlocks.CEDAR_LEAVES, EBlocks.MAHOGANY_LEAVES, EBlocks.GILDED_BIRCH_LEAVES
         );
 
 
@@ -82,25 +83,16 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(
                         EBlocks.BLUEBONNET,
                         EBlocks.RED_HIBISCUS, EBlocks.ORANGE_HIBISCUS, EBlocks.YELLOW_HIBISCUS, EBlocks.BLUE_HIBISCUS,
-                        EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS
+                        EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS,
+                        EBlocks.MAGENTA_CONEFLOWER, EBlocks.YELLOW_CONEFLOWER, EBlocks.ROSE,
+                        EBlocks.IRONWEED
                 );
         valueLookupBuilder(BlockTags.SMALL_FLOWERS)
                 .add(
                         EBlocks.BLUEBONNET,
                         EBlocks.RED_HIBISCUS, EBlocks.ORANGE_HIBISCUS, EBlocks.YELLOW_HIBISCUS, EBlocks.BLUE_HIBISCUS,
-                        EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS
-                );
-        valueLookupBuilder(BlockTags.BEE_ATTRACTIVE)
-                .add(
-                        EBlocks.BLUEBONNET,
-                        EBlocks.RED_HIBISCUS, EBlocks.ORANGE_HIBISCUS, EBlocks.YELLOW_HIBISCUS, EBlocks.BLUE_HIBISCUS,
-                        EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS
-                );
-        valueLookupBuilder(BlockTags.BEE_GROWABLES)
-                .add(
-                        EBlocks.BLUEBONNET,
-                        EBlocks.RED_HIBISCUS, EBlocks.ORANGE_HIBISCUS, EBlocks.YELLOW_HIBISCUS, EBlocks.BLUE_HIBISCUS,
-                        EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS
+                        EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS,
+                        EBlocks.MAGENTA_CONEFLOWER, EBlocks.YELLOW_CONEFLOWER, EBlocks.ROSE
                 );
 
         // Tool Mineables

@@ -87,6 +87,9 @@ public interface ESounds {
     SoundType ROCKWEED_BASALT = new SoundType(1F, 1F,
             ROCKWEED_BASALT_BREAK, ROCKWEED_BASALT_STEP, ROCKWEED_BASALT_PLACE, ROCKWEED_BASALT_HIT, ROCKWEED_BASALT_FALL);
 
+    SoundType MOSSY_MUD = new SoundType(1F, 1F,
+            SoundEvents.MUD_BREAK, SoundEvents.MOSS_STEP, SoundEvents.MUD_PLACE, SoundEvents.MOSS_HIT, SoundEvents.MOSS_FALL);
+
 
     // Frostbite
     SoundEvent FROSTBITE_IDLE = register("entity.frostbite.idle");
@@ -96,6 +99,8 @@ public interface ESounds {
     SoundEvent PERCH_FLOP = register("entity.perch.flop");
     SoundEvent PERCH_HURT = register("entity.perch.hurt");
     SoundEvent PERCH_DEATH = register("entity.perch.death");
+
+    SoundEvent FOX_DISC = register("disc.fox");
 
 
 

@@ -8,6 +8,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import team.lookingglass.elsewhere.datagen.loot.EntityLootTableProvider;
 import team.lookingglass.elsewhere.datagen.loot.BlockLootTableProvider;
+import team.lookingglass.elsewhere.dimension.worldgen.VeilrootDensityFunctions;
+import team.lookingglass.elsewhere.dimension.worldgen.VeilrootNoises;
+import team.lookingglass.elsewhere.dimension.worldgen.VeilrootWorldgen;
+import team.lookingglass.elsewhere.registry.EDiscs;
 import team.lookingglass.elsewhere.registry.trim.EEquipmentAssets;
 import team.lookingglass.elsewhere.registry.trim.ETrimMaterials;
 import team.lookingglass.elsewhere.datagen.render.ModelProvider;
@@ -47,9 +51,14 @@ public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.PLACED_FEATURE, EPlacedFeatures::bootstrap);
 		registryBuilder.add(Registries.BIOME, EBiomes::bootstrap);
 		registryBuilder.add(Registries.NOISE, ENoise::bootstrap);
-		registryBuilder.add(Registries.DIMENSION_TYPE, EDimensions::bootstrapType);
-		registryBuilder.add(Registries.LEVEL_STEM, EDimensions::bootstrapStem);
 		registryBuilder.add(Registries.TRIM_MATERIAL, ETrimMaterials::bootstrap);
 		registryBuilder.add(EquipmentAssets.ROOT_ID, EEquipmentAssets::bootstrap);
+		registryBuilder.add(Registries.JUKEBOX_SONG, EDiscs::bootstrap);
+
+		registryBuilder.add(Registries.DIMENSION_TYPE, EDimensions::bootstrapType);
+		registryBuilder.add(Registries.LEVEL_STEM, EDimensions::bootstrapStem);
+		registryBuilder.add(Registries.NOISE, VeilrootNoises::bootstrap);
+		registryBuilder.add(Registries.DENSITY_FUNCTION, VeilrootDensityFunctions::bootstrap);
+		registryBuilder.add(Registries.NOISE_SETTINGS, VeilrootWorldgen::bootstrap);
 	}
 }

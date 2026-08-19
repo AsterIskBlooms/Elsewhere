@@ -40,7 +40,7 @@ public record NoiseCondition3D(
         return () -> {
             double value = normalNoise.getValue(
                     context.blockX,
-                    context.blockY,  // 3D — includes Y
+                    context.blockY,
                     context.blockZ
             );
             return value >= minThreshold && value < maxThreshold;

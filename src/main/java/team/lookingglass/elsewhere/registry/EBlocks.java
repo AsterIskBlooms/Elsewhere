@@ -1,10 +1,9 @@
 package team.lookingglass.elsewhere.registry;
 
-import net.fabricmc.fabric.api.client.rendering.v1.ColorResolverRegistry;
+import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.PushReaction;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.dimension.portal.VeilrootPortalBlock;
@@ -718,6 +717,13 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
     );
 
+    Block ROSE = register("rose", p -> new FlowerBlock(MobEffects.RESISTANCE, 5.0F, p), true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.GRASS).mapColor(MapColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block POTTED_ROSE = register("potted_rose", p -> new FlowerPotBlock(ROSE, p), true,
+            Blocks.flowerPotProperties()
+    );
+
     Block PEBBLE = register("pebble", PebbleBlock::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instabreak().sound(SoundType.STONE).noOcclusion()
     );
@@ -803,6 +809,33 @@ public interface EBlocks {
     );
     Block RUSTY_MOSS_CARPET = register("rusty_moss_carpet", CarpetBlock::new, true,
             BlockBehaviour.Properties.ofFullCopy(RUSTY_MOSS_BLOCK).sound(SoundType.MOSS_CARPET)
+    );
+
+    // Sporophytes
+    Block SHORT_MOSS_SPOROPHYTE = register("short_moss_sporophyte", BushBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.PLANT).sound(SoundType.MOSS_CARPET).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block TALL_MOSS_SPOROPHYTE = register("tall_moss_sporophyte", DoublePlantBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SHORT_MOSS_SPOROPHYTE)
+    );
+
+    Block SHORT_RUSTY_MOSS_SPOROPHYTE = register("short_rusty_moss_sporophyte", BushBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_ORANGE).sound(SoundType.MOSS_CARPET).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+    Block TALL_RUSTY_MOSS_SPOROPHYTE = register("tall_rusty_moss_sporophyte", DoublePlantBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SHORT_RUSTY_MOSS_SPOROPHYTE)
+    );
+
+    Block SHORT_PALE_MOSS_SPOROPHYTE = register("short_pale_moss_sporophyte", BushBlock::new, true,
+            BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.COLOR_LIGHT_GRAY).sound(SoundType.MOSS_CARPET).offsetType(BlockBehaviour.OffsetType.XZ).lightLevel(_ -> 5)
+    );
+    Block TALL_PALE_MOSS_SPOROPHYTE = register("tall_pale_moss_sporophyte", DoublePlantBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SHORT_PALE_MOSS_SPOROPHYTE)
+    );
+
+    Block GILDED_BIRCH_LEAVES = register("gilded_birch_leaves",
+            p -> new UntintedParticleLeavesBlock(0.01F, EParticles.GILDED_BIRCH_LEAVES, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(0.2F, 0.2F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
     );
 
     Block SEAGRASS_SAND = register("seagrass_sand", p -> new SandBlock(new ColorRGBA(14406560), p), true,
@@ -897,7 +930,7 @@ public interface EBlocks {
     Block POTTED_CEDAR_SAPLING = registerPottedSapling( "potted_cedar_sapling", CEDAR_SAPLING);
     Block CEDAR_LEAVES = register("cedar_leaves",
             p -> new TintedParticleLeavesBlock(0.01F, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.GRASS).noOcclusion()
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
     );
 
     // Mahogany
@@ -945,7 +978,7 @@ public interface EBlocks {
     Block POTTED_MAHOGANY_SAPLING = registerPottedSapling( "potted_mahogany_sapling", MAHOGANY_SAPLING);
     Block MAHOGANY_LEAVES = register("mahogany_leaves",
             p -> new TintedParticleLeavesBlock(0.01F, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.GRASS).noOcclusion()
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F, 0.2F).sound(SoundType.AZALEA_LEAVES).noOcclusion()
     );
 
     // Arid Dirt
@@ -969,7 +1002,7 @@ public interface EBlocks {
     );
 
     // Cave Flora
-    Block CAVE_ROOT = register("cave_root", CaveRootBlock::new, true,
+    Block CAVE_WEED = register("cave_weed", CaveWeedBlock::new, true,
             BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
                     .sound(SoundType.GRASS).mapColor(MapColor.GLOW_LICHEN).offsetType(BlockBehaviour.OffsetType.XZ)
     );
@@ -1251,11 +1284,19 @@ public interface EBlocks {
     Block CHISELED_PINK_SANDSTONE = registerSubBlock("chiseled_pink_sandstone", PINK_SANDSTONE);
 
 
+    // Mud
+    Block MOSSY_MUD = register("mossy_mud", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_BLOCK).sound(ESounds.MOSSY_MUD)
+    );
+    Block MUDSTONE = register("mudstone", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).sound(ESounds.CINNABAR)
+    );
+
 
 
 
     // Veilroot!
-    Block VEILROOT_PORTAL = register("veilroot_portal", VeilrootPortalBlock::new, false,
+    Block VEILROOT_PORTAL = register("veilroot_portal", VeilrootPortalBlock::new, true,
             BlockBehaviour.Properties.of().noCollision().noOcclusion().strength(-1F).lightLevel((_) -> 5)
     );
 

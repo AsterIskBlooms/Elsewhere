@@ -11,9 +11,10 @@ import team.lookingglass.elsewhere.worldgen.EConfiguredFeatures;
 import java.util.Optional;
 
 @Mixin(TreeGrower.class)
-public class MegaAcaciaMixin {
+public class TreeGrowerMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void elsewhere$megaAcacia(CallbackInfo ci) {
+    private static void elsewhere$treeChanges(CallbackInfo ci) {
         TreeGrower.ACACIA = new TreeGrower("acacia", Optional.of(EConfiguredFeatures.MEGA_ACACIA_KEY), Optional.of(TreeFeatures.ACACIA), Optional.empty());
+        TreeGrower.BIRCH = new TreeGrower("birch", Optional.empty(), Optional.of(EConfiguredFeatures.RANDOM_BIRCH), Optional.empty());
     }
 }

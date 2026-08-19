@@ -14,6 +14,8 @@ import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -335,6 +337,33 @@ public class EBlockModelGenerators extends BlockModelGenerators {
             );
 
             return this;
+        }
+    }
+
+    public final void createEmissiveDoublePlantWithDefaultItem(final Block block, final PlantType plantType) {
+        this.registerTwoLayerFlatItemModel(block, "_top", "_top_emissive");
+        this.createEmissiveDoublePlant(block, plantType);
+    }
+
+    public final void createEmissiveDoublePlant(final Block block, final PlantType plantType) {
+        MultiVariant topModel = plainVariant(this.createSuffixedVariant(block, "_top", plantType.getCross(),
+                material -> (new TextureMapping())
+                        .put(TextureSlot.CROSS, material)
+                        .put(TextureSlot.CROSS_EMISSIVE, TextureMapping.getBlockTexture(block, "_top_emissive"))));
+        MultiVariant bottomModel = plainVariant(this.createSuffixedVariant(block, "_bottom", plantType.getCross(),
+                material -> (new TextureMapping())
+                        .put(TextureSlot.CROSS, material)
+                        .put(TextureSlot.CROSS_EMISSIVE, TextureMapping.getBlockTexture(block, "_bottom_emissive"))));
+        this.createDoubleBlock(block, topModel, bottomModel);
+    }
+
+    public final void registerTwoLayerFlatItemModel(final Block block, final String baseSuffix, final String overlaySuffix) {
+        Item blockItem = block.asItem();
+        if (blockItem != Items.AIR) {
+            Material base = TextureMapping.getBlockTexture(block, baseSuffix);
+            Material overlay = TextureMapping.getBlockTexture(block, overlaySuffix);
+            Identifier model = ModelTemplates.TWO_LAYERED_ITEM.create(ModelLocationUtils.getModelLocation(blockItem), TextureMapping.layered(base, overlay), this.modelOutput);
+            this.registerSimpleItemModel(blockItem, model);
         }
     }
 }

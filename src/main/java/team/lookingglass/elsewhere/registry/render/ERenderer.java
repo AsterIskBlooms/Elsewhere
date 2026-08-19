@@ -25,6 +25,7 @@ public class ERenderer {
         ParticleProviderRegistry.getInstance().register(EParticles.RED_POPLAR_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
         ParticleProviderRegistry.getInstance().register(EParticles.ORANGE_POPLAR_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
         ParticleProviderRegistry.getInstance().register(EParticles.YELLOW_POPLAR_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
+        ParticleProviderRegistry.getInstance().register(EParticles.GILDED_BIRCH_LEAVES, FallingLeavesParticle.PaleOakProvider::new);
 
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), EBlocks.ARID_GRASS_BLOCK);
         BlockColorRegistry.register(List.of(BlockTintSources.foliage()), EBlocks.CEDAR_LEAVES);

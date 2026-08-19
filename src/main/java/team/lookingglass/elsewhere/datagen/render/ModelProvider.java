@@ -505,6 +505,7 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.CHISELED_MUD_BRICKS);
         gen.createRotatedPillarWithHorizontalVariant(EBlocks.MUD_BRICK_PILLAR, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
 
+        gen.createTrivialCube(EBlocks.MUDSTONE);
 
         // Wood Sets
         gen.family(EBlocks.OAK_MOSAIC).stairs(EBlocks.OAK_MOSAIC_STAIRS).slab(EBlocks.OAK_MOSAIC_SLAB);
@@ -569,11 +570,12 @@ public class ModelProvider extends FabricModelProvider {
 
         gen.createPlantWithDefaultItem(EBlocks.MAGENTA_CONEFLOWER, EBlocks.POTTED_MAGENTA_CONEFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
         gen.createPlantWithDefaultItem(EBlocks.YELLOW_CONEFLOWER, EBlocks.POTTED_YELLOW_CONEFLOWER, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createPlantWithDefaultItem(EBlocks.ROSE, EBlocks.POTTED_ROSE, BlockModelGenerators.PlantType.NOT_TINTED);
 
         gen.createDoublePlantWithDefaultItem(EBlocks.IRONWEED, BlockModelGenerators.PlantType.NOT_TINTED);
         gen.createDoublePlantWithDefaultItem(EBlocks.CATTAILS, BlockModelGenerators.PlantType.NOT_TINTED);
 
-        gen.createCrossBlockWithDefaultItem(EBlocks.CAVE_ROOT, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createCrossBlockWithDefaultItem(EBlocks.CAVE_WEED, BlockModelGenerators.PlantType.NOT_TINTED);
         gen.createCrossBlockWithDefaultItem(EBlocks.GLEAMSHROOM, BlockModelGenerators.PlantType.NOT_TINTED);
 
         customGen.createRotatedVariantColumn(EBlocks.ARID_DIRT);
@@ -611,7 +613,18 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.ORANGE_POPLAR_LEAVES);
         gen.createTrivialCube(EBlocks.YELLOW_POPLAR_LEAVES);
 
+        gen.createTrivialCube(EBlocks.GILDED_BIRCH_LEAVES);
+
         gen.createFullAndCarpetBlocks(EBlocks.RUSTY_MOSS_BLOCK, EBlocks.RUSTY_MOSS_CARPET);
+
+        gen.createCrossBlockWithDefaultItem(EBlocks.SHORT_MOSS_SPOROPHYTE, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createDoublePlantWithDefaultItem(EBlocks.TALL_MOSS_SPOROPHYTE, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        gen.createCrossBlockWithDefaultItem(EBlocks.SHORT_RUSTY_MOSS_SPOROPHYTE, BlockModelGenerators.PlantType.NOT_TINTED);
+        gen.createDoublePlantWithDefaultItem(EBlocks.TALL_RUSTY_MOSS_SPOROPHYTE, BlockModelGenerators.PlantType.NOT_TINTED);
+
+        gen.createCrossBlockWithDefaultItem(EBlocks.SHORT_PALE_MOSS_SPOROPHYTE, BlockModelGenerators.PlantType.EMISSIVE_NOT_TINTED);
+        customGen.createEmissiveDoublePlantWithDefaultItem(EBlocks.TALL_PALE_MOSS_SPOROPHYTE, BlockModelGenerators.PlantType.EMISSIVE_NOT_TINTED);
 
         gen.woodProvider(EBlocks.AZALEA_LOG).logWithHorizontal(EBlocks.AZALEA_LOG).wood(EBlocks.AZALEA_WOOD);
         gen.woodProvider(EBlocks.STRIPPED_AZALEA_LOG).logWithHorizontal(EBlocks.STRIPPED_AZALEA_LOG).wood(EBlocks.STRIPPED_AZALEA_WOOD);
@@ -842,6 +855,8 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.MUSIC_DISC_FOX, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.FROSTBITE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.WEREWOLF_SPAWN_EGG, ModelTemplates.FLAT_ITEM);

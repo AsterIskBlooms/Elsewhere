@@ -19,7 +19,7 @@
     "world.OverworldBiomeGenAccessor",
     "world.OverworldBiomeGenMixin",
     "world.feature.ExtraGrassesMixin",
-    "world.feature.MegaAcaciaMixin"
+    "world.feature.TreeGrowerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

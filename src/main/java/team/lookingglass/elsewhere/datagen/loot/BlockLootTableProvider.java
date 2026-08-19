@@ -446,8 +446,19 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         add(EBlocks.ORANGE_POPLAR_LEAVES, createLeavesDrops(EBlocks.ORANGE_POPLAR_LEAVES, EBlocks.POPLAR_SAPLING, 0.05F));
         add(EBlocks.YELLOW_POPLAR_LEAVES, createLeavesDrops(EBlocks.YELLOW_POPLAR_LEAVES, EBlocks.POPLAR_SAPLING, 0.05F));
 
+        add(EBlocks.GILDED_BIRCH_LEAVES, createLeavesDrops(EBlocks.GILDED_BIRCH_LEAVES, Blocks.BIRCH_SAPLING, 0.05F));
+
         dropSelf(EBlocks.RUSTY_MOSS_BLOCK);
         dropSelf(EBlocks.RUSTY_MOSS_CARPET);
+
+        add(EBlocks.SHORT_MOSS_SPOROPHYTE, createShearsOrSilkTouchOnlyDrop(EBlocks.SHORT_MOSS_SPOROPHYTE));
+        add(EBlocks.TALL_MOSS_SPOROPHYTE, createSegmentedBlockDrops(EBlocks.TALL_MOSS_SPOROPHYTE));
+
+        add(EBlocks.SHORT_RUSTY_MOSS_SPOROPHYTE, createShearsOrSilkTouchOnlyDrop(EBlocks.SHORT_RUSTY_MOSS_SPOROPHYTE));
+        add(EBlocks.TALL_RUSTY_MOSS_SPOROPHYTE, createSegmentedBlockDrops(EBlocks.TALL_RUSTY_MOSS_SPOROPHYTE));
+
+        add(EBlocks.SHORT_PALE_MOSS_SPOROPHYTE, createShearsOrSilkTouchOnlyDrop(EBlocks.SHORT_PALE_MOSS_SPOROPHYTE));
+        add(EBlocks.TALL_PALE_MOSS_SPOROPHYTE, createSegmentedBlockDrops(EBlocks.TALL_PALE_MOSS_SPOROPHYTE));
 
         dropSelf(EBlocks.AZALEA_LOG);
         dropSelf(EBlocks.STRIPPED_AZALEA_LOG);
@@ -555,10 +566,13 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.MAGENTA_CONEFLOWER);
         add(EBlocks.POTTED_YELLOW_CONEFLOWER, createPotFlowerItemTable(EBlocks.YELLOW_CONEFLOWER));
         add(EBlocks.POTTED_MAGENTA_CONEFLOWER, createPotFlowerItemTable(EBlocks.MAGENTA_CONEFLOWER));
-        add(EBlocks.IRONWEED, createDoublePlantShearsOrSilkTouchDrop(EBlocks.IRONWEED));
-        add(EBlocks.CATTAILS, createDoublePlantShearsOrSilkTouchDrop(EBlocks.CATTAILS));
-        dropSelf(EBlocks.CAVE_ROOT);
+        add(EBlocks.IRONWEED, createSegmentedBlockDrops(EBlocks.IRONWEED));
+        add(EBlocks.CATTAILS, createSegmentedBlockDrops(EBlocks.CATTAILS));
+        dropSelf(EBlocks.CAVE_WEED);
         dropSelf(EBlocks.GLEAMSHROOM);
+
+        add(EBlocks.MOSSY_MUD, createSingleItemTableWithSilkTouch(EBlocks.MOSSY_MUD, Blocks.MUD));
+        dropSelf(EBlocks.MUDSTONE);
 
         dropSelf(EBlocks.OAK_MOSAIC);
         dropSelf(EBlocks.OAK_MOSAIC_STAIRS);
@@ -842,8 +856,8 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         );
     }
 
+
     public LootTable.Builder createDoublePlantShearsOrSilkTouchDrop(final Block block) {
         return LootTable.lootTable().withPool(LootPool.lootPool().when(this.hasShearsOrSilkTouch()).add(LootItem.lootTableItem(block).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))));
     }
-
 }

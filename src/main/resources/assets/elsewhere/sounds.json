@@ -534,5 +534,12 @@
       "minecraft:entity/fish/hurt3",
       "minecraft:entity/fish/hurt4"
     ]
+  },
+
+
+  "disc.fox": {
+    "sounds": [
+      "elsewhere:records/fox"
+    ]
   }
 }

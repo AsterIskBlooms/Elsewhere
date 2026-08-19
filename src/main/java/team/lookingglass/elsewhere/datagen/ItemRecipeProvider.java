@@ -504,7 +504,6 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 shapeless(RecipeCategory.BUILDING_BLOCKS, Items.BAMBOO).requires(EBlocks.STRIPPED_BAMBOO_STEM)
                         .unlockedBy(getHasName(EBlocks.BAMBOO_STEM), has(EBlocks.BAMBOO_STEM)).save(wrappedOutput, shapedId(EBlocks.STRIPPED_BAMBOO_STEM));
 
-                itemToDye(EBlocks.BLUEBONNET, Items.BLUE_DYE);
                 itemToDye(EBlocks.RED_HIBISCUS, Items.RED_DYE);
                 itemToDye(EBlocks.ORANGE_HIBISCUS, Items.ORANGE_DYE);
                 itemToDye(EBlocks.YELLOW_HIBISCUS, Items.YELLOW_DYE);
@@ -512,6 +511,12 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 itemToDye(EBlocks.PURPLE_HIBISCUS, Items.PURPLE_DYE);
                 itemToDye(EBlocks.PINK_HIBISCUS, Items.PINK_DYE);
                 itemToDye(EBlocks.WHITE_HIBISCUS, Items.WHITE_DYE);
+
+                itemToDye(EBlocks.BLUEBONNET, Items.BLUE_DYE);
+                itemToDye(EBlocks.MAGENTA_CONEFLOWER, Items.MAGENTA_DYE);
+                itemToDye(EBlocks.YELLOW_CONEFLOWER, Items.YELLOW_DYE);
+                itemToDye(EBlocks.IRONWEED, Items.MAGENTA_DYE);
+                itemToDye(EBlocks.ROSE, Items.RED_DYE);
 
                 recipeStairSlab(Blocks.WHITE_WOOL, EBlocks.WHITE_WOOL_STAIRS, EBlocks.WHITE_WOOL_SLAB);
                 recipeStairSlab(Blocks.LIGHT_GRAY_WOOL, EBlocks.LIGHT_GRAY_WOOL_STAIRS, EBlocks.LIGHT_GRAY_WOOL_SLAB);

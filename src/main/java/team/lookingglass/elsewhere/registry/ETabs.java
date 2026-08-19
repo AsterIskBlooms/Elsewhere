@@ -16,14 +16,21 @@ public class ETabs {
 
             output.insertAfter(Items.SANDSTONE, EBlocks.PINK_SAND, EBlocks.PINK_SANDSTONE);
 
-            output.insertAfter(Items.SHORT_GRASS, EBlocks.SHORT_RED_GRASS);
-            output.insertAfter(Items.DRY_SHORT_GRASS, EBlocks.CAVE_ROOT);
+            output.insertAfter(Items.SHORT_GRASS,
+                    EBlocks.SHORT_RED_GRASS,
+                    EBlocks.SHORT_MOSS_SPOROPHYTE, EBlocks.SHORT_RUSTY_MOSS_SPOROPHYTE, EBlocks.SHORT_PALE_MOSS_SPOROPHYTE
+            );
+            output.insertAfter(Items.TALL_GRASS,
+                    EBlocks.TALL_RED_GRASS,
+                    EBlocks.TALL_MOSS_SPOROPHYTE, EBlocks.TALL_RUSTY_MOSS_SPOROPHYTE, EBlocks.TALL_PALE_MOSS_SPOROPHYTE
+            );
+            output.insertAfter(Items.DRY_SHORT_GRASS, EBlocks.CAVE_WEED);
             output.insertAfter(Items.DEAD_BUSH, EBlocks.RED_SHRUB);
-            output.insertAfter(Items.TALL_GRASS, EBlocks.TALL_RED_GRASS);
             output.insertAfter(Items.RED_MUSHROOM, EBlocks.GLEAMSHROOM);
             output.insertAfter(Items.LARGE_FERN, EBlocks.CATTAILS);
 
             output.insertAfter(Items.MOSS_CARPET, EBlocks.RUSTY_MOSS_BLOCK, EBlocks.RUSTY_MOSS_CARPET);
+            output.insertAfter(Items.MUD, EBlocks.MOSSY_MUD, EBlocks.MUDSTONE);
 
             output.insertAfter(Items.RED_SANDSTONE, EBlocks.BEACHSTONE);
             output.insertAfter(Items.SMOOTH_BASALT, EBlocks.ROCKWEED_BASALT);
@@ -31,7 +38,7 @@ public class ETabs {
 
             output.insertAfter(Items.BIRCH_SAPLING, EBlocks.CEDAR_SAPLING);
             output.insertAfter(Items.BIRCH_LOG, EBlocks.CEDAR_LOG);
-            output.insertAfter(Items.BIRCH_LEAVES, EBlocks.CEDAR_LEAVES);
+            output.insertAfter(Items.BIRCH_LEAVES, EBlocks.GILDED_BIRCH_LEAVES, EBlocks.CEDAR_LEAVES);
 
             output.insertAfter(Items.JUNGLE_SAPLING, EBlocks.MAHOGANY_SAPLING);
             output.insertAfter(Items.JUNGLE_LOG, EBlocks.MAHOGANY_LOG);
@@ -62,11 +69,12 @@ public class ETabs {
             output.insertAfter(Items.RAW_COPPER_BLOCK, EBlocks.RAW_TIN_BLOCK);
             output.insertAfter(Items.RAW_GOLD_BLOCK, EBlocks.RAW_SILVER_BLOCK);
 
-            output.insertAfter(Items.LILY_OF_THE_VALLEY, EBlocks.BLUEBONNET);
+            output.insertAfter(Items.LILY_OF_THE_VALLEY, EBlocks.BLUEBONNET, EBlocks.YELLOW_CONEFLOWER, EBlocks.MAGENTA_CONEFLOWER);
             output.insertAfter(Items.PINK_TULIP,
                     EBlocks.RED_HIBISCUS, EBlocks.ORANGE_HIBISCUS, EBlocks.YELLOW_HIBISCUS,
                     EBlocks.BLUE_HIBISCUS, EBlocks.PURPLE_HIBISCUS, EBlocks.PINK_HIBISCUS, EBlocks.WHITE_HIBISCUS
             );
+            output.insertAfter(Items.DANDELION, EBlocks.ROSE);
             output.insertAfter(Items.LEAF_LITTER, EBlocks.PEBBLE);
 
         });
@@ -449,6 +457,8 @@ public class ETabs {
             output.insertAfter(Items.BIRCH_CHEST_BOAT, EItems.CEDAR_BOAT, EItems.CEDAR_CHEST_BOAT);
             output.insertAfter(Items.JUNGLE_CHEST_BOAT, EItems.MAHOGANY_BOAT, EItems.MAHOGANY_CHEST_BOAT);
             output.insertAfter(Items.PALE_OAK_BOAT, EItems.POPLAR_BOAT, EItems.POPLAR_CHEST_BOAT, EItems.AZALEA_BOAT, EItems.AZALEA_CHEST_BOAT);
+
+            output.insertAfter(Items.MUSIC_DISC_CAT, EItems.MUSIC_DISC_FOX);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(output -> {
@@ -461,6 +471,8 @@ public class ETabs {
             output.insertAfter(Items.NETHERITE_SPEAR, EItems.SOULSTEEL_SPEAR);
             output.insertAfter(Items.NETHERITE_AXE, EItems.SOULSTEEL_AXE);
             output.insertAfter(Items.NETHERITE_BOOTS, EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS);
+
+            output.insertBefore(Items.WIND_CHARGE, Items.FIRE_CHARGE);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(output -> {

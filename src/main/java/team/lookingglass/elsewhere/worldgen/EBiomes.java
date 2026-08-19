@@ -49,6 +49,16 @@ public interface  EBiomes {
         context.register(FRIGID_CAVES, createFrigidCaves(context));
         context.register(VOLCANIC_DEPTHS, createVolcanicDepths(context));
         context.register(PALE_GROTTO, createPaleGrotto(context));
+
+
+        // Veilroot Biomes
+        context.register(ROTTEN_GROVE, rottenGrove(context));
+        context.register(SWEEPING_SANDS, sweepingSands(context));
+        context.register(FROSTED_CRAG, frostedCrag(context));
+        context.register(FROSTED_JUNGLE, frostedJungle(context));
+        context.register(BROUSH_FOREST, broushForest(context));
+        context.register(VEILED_FOREST, veiledForest(context));
+        context.register(BROOD_CANYON, broodCanyon(context));
     }
 
     ResourceKey<Biome> OUTBACK = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "outback"));
@@ -75,6 +85,16 @@ public interface  EBiomes {
     ResourceKey<Biome> FRIGID_CAVES = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frigid_caves"));
     ResourceKey<Biome> VOLCANIC_DEPTHS = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "volcanic_depths"));
     ResourceKey<Biome> PALE_GROTTO = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "pale_grotto"));
+
+
+
+    ResourceKey<Biome> ROTTEN_GROVE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "rotten_grove"));
+    ResourceKey<Biome> SWEEPING_SANDS = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sweeping_sands"));
+    ResourceKey<Biome> FROSTED_CRAG = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frosted_crag"));
+    ResourceKey<Biome> FROSTED_JUNGLE = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frosted_jungle"));
+    ResourceKey<Biome> BROUSH_FOREST = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "broush_forest"));
+    ResourceKey<Biome> VEILED_FOREST = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "veiled_forest"));
+    ResourceKey<Biome> BROOD_CANYON = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "brood_canyon"));
 
 
     private static Biome createOutback(BootstrapContext<Biome> context) {
@@ -285,7 +305,6 @@ public interface  EBiomes {
 
         genBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.FOREST_ROCK_SPARSE);
         genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DAPPLED_FOREST_TREES);
-        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RED_SHRUB_PATCH);
         genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RUSTY_MOSS_PATCH);
 
         return new Biome.BiomeBuilder()
@@ -367,10 +386,14 @@ public interface  EBiomes {
         BiomeDefaultFeatures.addExtraGold(genBuilder);
         BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
         BiomeDefaultFeatures.addDefaultSprings(genBuilder);
+        BiomeDefaultFeatures.addSavannaGrass(genBuilder);
         BiomeDefaultFeatures.addWarmFlowers(genBuilder);
         BiomeDefaultFeatures.addSavannaExtraGrass(genBuilder);
         genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, EPlacedFeatures.STEPPE_GRASS);
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, EPlacedFeatures.STEPPE_PILLARS);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -699,6 +722,9 @@ public interface  EBiomes {
         BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
         BiomeDefaultFeatures.addInfestedStone(genBuilder);
 
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CAVE_WEEDS);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CAVE_ROOTS);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.8F)
@@ -731,6 +757,7 @@ public interface  EBiomes {
         BiomeDefaultFeatures.addExtraEmeralds(genBuilder);
 
         genBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EPlacedFeatures.AMETHYST_NODE);
+        genBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CAVE_WEEDS);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
@@ -951,6 +978,179 @@ public interface  EBiomes {
                 .generationSettings(genBuilder.build())
                 .build();
     }
+
+
+
+
+    private static Biome rottenGrove(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 1, 3));
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, MiscOverworldPlacements.ICE_PATCH);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(0.7F).downfall(0.75F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x1fcc8a)
+                        .build())
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_END))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0x5a8241)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x5a8241)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x074a29)
+                .mobSpawnSettings(spawnBuilder.build()).generationSettings(genBuilder.build()).build();
+    }
+
+    private static Biome sweepingSands(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 1, 3));
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, MiscOverworldPlacements.DISK_SAND);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(2.0F).downfall(0.15F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x596343)
+                        .build())
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_END))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0x989e5d)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x989e5d)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x35401d)
+                .mobSpawnSettings(spawnBuilder.build()).generationSettings(genBuilder.build()).build();
+    }
+
+    private static Biome frostedCrag(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 35, new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 2, 4));
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, MiscOverworldPlacements.DISK_SAND);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(0.1F).downfall(0.1F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x53c2a8)
+                        .build())
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_END))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0x8ed6e6)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x8ed6e6)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x1b5447)
+                .mobSpawnSettings(spawnBuilder.build()).generationSettings(genBuilder.build()).build();
+    }
+
+    private static Biome frostedJungle(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 35, new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 2, 4));
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, MiscOverworldPlacements.DISK_SAND);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(0.1F).downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x53c2a8)
+                        .build())
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_END))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0x8ee6cc)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x8ee6cc)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x1b5447)
+                .mobSpawnSettings(spawnBuilder.build()).generationSettings(genBuilder.build()).build();
+    }
+
+    private static Biome broushForest(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.BOGGED, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.SKELETON_HORSE, 1, 1));
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, MiscOverworldPlacements.SPRING_WATER);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, EPlacedFeatures.BROUSH_TREES);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.4F).downfall(0.9F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x66d998)
+                        .build())
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_END))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0x487d27)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x487d27)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x2c704a)
+                .mobSpawnSettings(spawnBuilder.build()).generationSettings(genBuilder.build()).build();
+    }
+
+    private static Biome veiledForest(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 1));
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, MiscOverworldPlacements.SPRING_WATER);
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, VegetationPlacements.DARK_FOREST_VEGETATION);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.2F).downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x604987)
+                        .build())
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_END))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0x5e405a)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x5e405a)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x1e1233)
+                .mobSpawnSettings(spawnBuilder.build()).generationSettings(genBuilder.build()).build();
+    }
+
+    private static Biome broodCanyon(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.FROG, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 1));
+
+        genBuilder.addFeature(GenerationStep.Decoration.RAW_GENERATION, MiscOverworldPlacements.SPRING_WATER);
+        BiomeDefaultFeatures.addSurfaceFreezing(genBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .temperature(1.2F).downfall(0.6F)
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .waterColor(0x828749)
+                        .build())
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_END))
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0x52323c)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x52323c)
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x402b12)
+                .mobSpawnSettings(spawnBuilder.build()).generationSettings(genBuilder.build()).build();
+    }
+
 
 
 
