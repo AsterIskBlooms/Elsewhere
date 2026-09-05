@@ -1072,6 +1072,26 @@ public class LangProviderEN extends FabricLanguageProvider {
 
 
 
+        // Advancements
+        translationBuilder.add("advancements.elsewhere.stone_pickaxe.title", "Tumbled Beginnings");
+        translationBuilder.add("advancements.elsewhere.stone_pickaxe.description", "Craft a stone pickaxe using pebbles.");
+        translationBuilder.add("advancements.elsewhere.copper_pickaxe.title", "Getting an Upgrade");
+        translationBuilder.add("advancements.elsewhere.copper_pickaxe.description", "Craft a copper pickaxe using your newfound riches.");
+        translationBuilder.add("advancements.elsewhere.copper_armor.title", "Suit Up");
+        translationBuilder.add("advancements.elsewhere.copper_armor.description", "Craft a piece of copper armor.");
+        translationBuilder.add("advancements.elsewhere.blast_furnace.title", "In for a Blast!");
+        translationBuilder.add("advancements.elsewhere.blast_furnace.description", "Craft a blast furnace to smelt iron with.");
+        translationBuilder.add("advancements.elsewhere.smelt_iron.title", "Pure Irony");
+        translationBuilder.add("advancements.elsewhere.smelt_iron.description", "Get an iron ingot");
+        translationBuilder.add("advancements.elsewhere.iron_pickaxe.title", "How Do You Pronounce It!?");
+        translationBuilder.add("advancements.elsewhere.iron_pickaxe.description", "Craft an iron pickaxe.");
+        translationBuilder.add("advancements.story.obtain_armor.title", "Jarvis, Clip That");
+        translationBuilder.add("advancements.story.obtain_armor.description", "Craft a full set of iron armor.");
+        translationBuilder.add("advancements.elsewhere.upgrade_bronze.title", "Rome Wasn't Built- WHAT.");
+        translationBuilder.add("advancements.elsewhere.upgrade_bronze.description", "Upgrade your rusty iron into some shiny bronze.");
+
+
+
         // Attributes
         translationBuilder.add("attribute.elsewhere.lifesteal", "Lifesteal");
 

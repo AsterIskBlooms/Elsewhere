@@ -68,7 +68,7 @@ public class SoundMixin {
                     Blocks.SMITHING_TABLE
             ));
             map.put(SoundType.COPPER, Set.of(
-                    Blocks.GOLD_BLOCK
+                    Blocks.GOLD_BLOCK, Blocks.BLAST_FURNACE
             ));
             map.put(SoundType.AZALEA_LEAVES, Set.of(
                     Blocks.OAK_LEAVES,  Blocks.SPRUCE_LEAVES, Blocks.BIRCH_LEAVES,

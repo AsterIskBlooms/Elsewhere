@@ -33,11 +33,12 @@ public class ElsewhereDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ItemTagProvider::new);
 		pack.addProvider(BlockTagProvider::new);
 		pack.addProvider(BlockLootTableProvider::new);
-		pack.addProvider(ItemRecipeProvider::new);
+		pack.addProvider(ERecipeProvider::new);
 		pack.addProvider(ParticleProvider::new);
 		pack.addProvider(EntityLootTableProvider::new);
 		pack.addProvider(EntityTagProvider::new);
 		pack.addProvider(BiomeTagProvider::new);
+		pack.addProvider(EAdvancementProvider::new);
 	}
 
 	@Override

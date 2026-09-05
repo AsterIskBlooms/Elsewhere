@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class ItemRecipeProvider extends FabricRecipeProvider {
+public class ERecipeProvider extends FabricRecipeProvider {
 
-    public ItemRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public ERecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
