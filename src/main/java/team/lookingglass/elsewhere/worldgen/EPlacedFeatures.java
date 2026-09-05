@@ -2,14 +2,15 @@ package team.lookingglass.elsewhere.worldgen;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.AquaticFeatures;
 import net.minecraft.data.worldgen.features.MiscOverworldFeatures;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 import team.lookingglass.elsewhere.Elsewhere;
@@ -44,8 +44,8 @@ public class EPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CEDAR_FOREST_TREES = registerKey("cedar_forest_trees");
     public static final ResourceKey<PlacedFeature> CEDAR_TREES_SPARSE = registerKey("cedar_trees_sparse");
 
-    public static final ResourceKey<PlacedFeature> RAINFOREST_MAHOGANY = registerKey("rainforest_mahogany");
-    public static final ResourceKey<PlacedFeature> RAINFOREST_SHRUB = registerKey("rainforest_shrub");
+    public static final ResourceKey<PlacedFeature> WINDSWEPT_MAHOGANY = registerKey("windswept_mahogany");
+    public static final ResourceKey<PlacedFeature> WINDSWEPT_SHRUB = registerKey("windswept_shrub");
     public static final ResourceKey<PlacedFeature> JUNGLE_TREES = registerKey("jungle_trees");
     public static final ResourceKey<PlacedFeature> SPARSE_JUNGLE_TREES = registerKey("sparse_jungle_trees");
     public static final ResourceKey<PlacedFeature> BAMBOO_JUNGLE_TREES = registerKey("bamboo_jungle_trees");
@@ -53,6 +53,7 @@ public class EPlacedFeatures {
     public static final ResourceKey<PlacedFeature> FLOWER_FOREST_TREES = registerKey("flower_forest_trees");
     public static final ResourceKey<PlacedFeature> FLOWER_FOREST_WILDFLOWERS = registerKey("flower_forest_wildflowers");
     public static final ResourceKey<PlacedFeature> CHERRY_GROVE_BAMBOO = registerKey("cherry_grove_bamboo");
+    public static final ResourceKey<PlacedFeature> SPARSE_CHERRY = registerKey("sparse_cherry");
 
     public static final ResourceKey<PlacedFeature> BIRCH_TREES = registerKey("birch_trees");
     public static final ResourceKey<PlacedFeature> OLD_GROWTH_BIRCH_TREES = registerKey("old_growth_birch_trees");
@@ -83,6 +84,8 @@ public class EPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> DAPPLED_FOREST_TREES = registerKey("dappled_forest_trees");
     public static final ResourceKey<PlacedFeature> RUSTY_MOSS_PATCH = registerKey("rusty_moss_patch");
+
+    public static final ResourceKey<PlacedFeature> MOSSY_MUD_PATCH = registerKey("mossy_mud_patch");
 
     public static final ResourceKey<PlacedFeature> LUSH_SHORT_CACTUS = registerKey("lush_short_cactus");
     public static final ResourceKey<PlacedFeature> LUSH_TALL_CACTUS = registerKey("lush_tall_cactus");
@@ -361,20 +364,22 @@ public class EPlacedFeatures {
 
 
         PlacementUtils.register(context, DAPPLED_FOREST_TREES,
-                configured.getOrThrow(EConfiguredFeatures.RANDOM_POPLAR_KEY),
-                List.of(
-                        CountPlacement.of(4),
-                        InSquarePlacement.spread(),
-                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BlockPredicateFilter.forPredicate(
-                                BlockPredicate.wouldSurvive(EBlocks.POPLAR_SAPLING.defaultBlockState(), Vec3i.ZERO.below(0))),
-                        BiomeFilter.biome()
-                ));
+                configured.getOrThrow(EConfiguredFeatures.DAPPLED_FOREST_TREES),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(7, 0.1F, 1), EBlocks.POPLAR_SAPLING));
 
         PlacementUtils.register(context, RUSTY_MOSS_PATCH,
                 configured.getOrThrow(EConfiguredFeatures.RUSTY_MOSS_PATCH_KEY),
                 List.of(
                         RarityFilter.onAverageOnceEvery(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                ));
+
+        PlacementUtils.register(context, MOSSY_MUD_PATCH,
+                configured.getOrThrow(EConfiguredFeatures.MOSSY_MUD_PATCH_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(4),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()
@@ -526,7 +531,7 @@ public class EPlacedFeatures {
                                 BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                                         BlockPredicate.wouldSurvive(EBlocks.CEDAR_SAPLING.defaultBlockState(), BlockPos.ZERO)))
                 ));
-        PlacementUtils.register(context, RAINFOREST_MAHOGANY,
+        PlacementUtils.register(context, WINDSWEPT_MAHOGANY,
                 configured.getOrThrow(EConfiguredFeatures.MAHOGANY_TREE),
                 List.of(
                         CountPlacement.of(4),
@@ -536,7 +541,7 @@ public class EPlacedFeatures {
                         BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                                 BlockPredicate.wouldSurvive(EBlocks.MAHOGANY_SAPLING.defaultBlockState(), BlockPos.ZERO)))
                 ));
-        PlacementUtils.register(context, RAINFOREST_SHRUB,
+        PlacementUtils.register(context, WINDSWEPT_SHRUB,
                 configured.getOrThrow(EConfiguredFeatures.JUNGLE_SHRUB),
                 List.of(
                         CountPlacement.of(3),
@@ -586,6 +591,10 @@ public class EPlacedFeatures {
                                 BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
                                         BlockPredicate.wouldSurvive(Blocks.BAMBOO.defaultBlockState(), BlockPos.ZERO)))
                 ));
+        PlacementUtils.register(context, SPARSE_CHERRY,
+                configured.getOrThrow(TreeFeatures.CHERRY_BEES_005),
+                VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1F, 1), Blocks.CHERRY_SAPLING)
+        );
 
         PlacementUtils.register(context, BIRCH_TREES,
                 configured.getOrThrow(EConfiguredFeatures.OLD_GROWTH_BIRCH_TREES_KEY),
@@ -709,7 +718,9 @@ public class EPlacedFeatures {
                                 VerticalAnchor.bottom(),
                                 VerticalAnchor.absolute(60)
                         ),
-                        BiomeFilter.biome()
+                        BiomeFilter.biome(),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                                BlockPredicate.wouldSurvive(EBlocks.CAVE_WEED.defaultBlockState(), Vec3i.ZERO)))
                 ));
         PlacementUtils.register(context, CAVE_ROOTS,
                 configured.getOrThrow(EConfiguredFeatures.CAVE_ROOTED_DIRT),
@@ -770,7 +781,7 @@ public class EPlacedFeatures {
         PlacementUtils.register(context, SWAMP_GRASS,
                 configured.getOrThrow(VegetationFeatures.GRASS_JUNGLE),
                 List.of(
-                        CountPlacement.of(196),
+                        CountPlacement.of(232),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome(),

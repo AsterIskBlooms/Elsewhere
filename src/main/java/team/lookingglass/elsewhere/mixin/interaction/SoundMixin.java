@@ -65,7 +65,9 @@ public class SoundMixin {
                     Blocks.CLAY
             ));
             map.put(SoundType.IRON, Set.of(
-                    Blocks.SMITHING_TABLE,
+                    Blocks.SMITHING_TABLE
+            ));
+            map.put(SoundType.COPPER, Set.of(
                     Blocks.GOLD_BLOCK
             ));
             map.put(SoundType.AZALEA_LEAVES, Set.of(

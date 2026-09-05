@@ -41,6 +41,7 @@ public interface ESounds {
     SoundEvent GEYSER_ERUPTION_START = register("block.geyser.eruption_start");
     SoundEvent GEYSER_ERUPTION_ACTIVE = register("block.geyser.eruption_active");
 
+
     // Stone Bricks & Tiles
     SoundEvent STONE_BRICKS_BREAK = register("block.stone_bricks.break");
     SoundEvent STONE_BRICKS_STEP = register("block.stone_bricks.step");
@@ -90,12 +91,29 @@ public interface ESounds {
     SoundType MOSSY_MUD = new SoundType(1F, 1F,
             SoundEvents.MUD_BREAK, SoundEvents.MOSS_STEP, SoundEvents.MUD_PLACE, SoundEvents.MOSS_HIT, SoundEvents.MOSS_FALL);
 
+    SoundType IRON_GRATE = new SoundType(1F, 0.75F,
+            SoundEvents.COPPER_GRATE_BREAK, SoundEvents.COPPER_GRATE_STEP, SoundEvents.COPPER_GRATE_PLACE, SoundEvents.COPPER_GRATE_HIT, SoundEvents.COPPER_GRATE_FALL);
+
 
     // Frostbite
     SoundEvent FROSTBITE_IDLE = register("entity.frostbite.idle");
     SoundEvent FROSTBITE_HURT = register("entity.frostbite.hurt");
     SoundEvent FROSTBITE_DEATH = register("entity.frostbite.death");
 
+    // Sulfur Cube
+    SoundEvent SULFUR_CUBE_JUMP = register("entity.sulfur_cube.jump");
+    SoundEvent SULFUR_CUBE_SQUISH = register("entity.sulfur_cube.squish");
+    SoundEvent SULFUR_CUBE_ATTACK = register("entity.sulfur_cube.attack");
+    SoundEvent SULFUR_CUBE_HURT = register("entity.sulfur_cube.hurt");
+    SoundEvent SULFUR_CUBE_ABSORB = register("entity.sulfur_cube.absorb");
+    SoundEvent SULFUR_CUBE_DEATH = register("entity.sulfur_cube.death");
+
+    SoundEvent SMALL_SULFUR_CUBE_JUMP = register("entity.sulfur_cube.small.jump");
+    SoundEvent SMALL_SULFUR_CUBE_SQUISH = register("entity.sulfur_cube.small.squish");
+    SoundEvent SMALL_SULFUR_CUBE_HURT = register("entity.sulfur_cube.small.hurt");
+    SoundEvent SMALL_SULFUR_CUBE_DEATH = register("entity.sulfur_cube.small.death");
+
+    // Perch :3
     SoundEvent PERCH_FLOP = register("entity.perch.flop");
     SoundEvent PERCH_HURT = register("entity.perch.hurt");
     SoundEvent PERCH_DEATH = register("entity.perch.death");

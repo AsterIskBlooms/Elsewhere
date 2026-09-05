@@ -32,27 +32,27 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         // Copper & Coal Ore Changes
-        add(Blocks.COPPER_ORE, createOreDrop(Blocks.COPPER_ORE, Items.RAW_COPPER));
-        add(Blocks.DEEPSLATE_COPPER_ORE, createOreDrop(Blocks.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER));
+        add(Blocks.COPPER_ORE, createMultipleOreDrops(Blocks.COPPER_ORE, Items.RAW_COPPER, 1, 2));
+        add(Blocks.DEEPSLATE_COPPER_ORE, createMultipleOreDrops(Blocks.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER, 1, 2));
 
         // Shale Ores
         add(EBlocks.SHALE_COAL_ORE, createOreDrop(EBlocks.SHALE_COAL_ORE, Items.COAL));
-        add(EBlocks.SHALE_COPPER_ORE, createOreDrop(EBlocks.SHALE_COPPER_ORE, Items.RAW_COPPER));
+        add(EBlocks.SHALE_COPPER_ORE, createMultipleOreDrops(EBlocks.SHALE_COPPER_ORE, Items.RAW_COPPER, 1, 2));
         add(EBlocks.SHALE_IRON_ORE, createOreDrop(EBlocks.SHALE_IRON_ORE, Items.RAW_IRON));
         add(EBlocks.SHALE_GOLD_ORE, createOreDrop(EBlocks.SHALE_GOLD_ORE, Items.RAW_GOLD));
-        add(EBlocks.SHALE_REDSTONE_ORE, createMultipleOreDrops(EBlocks.SHALE_REDSTONE_ORE, Items.REDSTONE, 4.0F, 5.0F));
+        add(EBlocks.SHALE_REDSTONE_ORE, createRedstoneOreDrops(EBlocks.SHALE_REDSTONE_ORE));
         add(EBlocks.SHALE_DIAMOND_ORE, createOreDrop(EBlocks.SHALE_DIAMOND_ORE, Items.DIAMOND));
-        add(EBlocks.SHALE_LAPIS_ORE, createMultipleOreDrops(EBlocks.SHALE_LAPIS_ORE, Items.LAPIS_LAZULI, 4.0F, 9.0F));
+        add(EBlocks.SHALE_LAPIS_ORE, createLapisOreDrops(EBlocks.SHALE_LAPIS_ORE));
         add(EBlocks.SHALE_EMERALD_ORE, createOreDrop(EBlocks.SHALE_EMERALD_ORE, Items.EMERALD));
 
         // Cinnabar Ores
         add(EBlocks.CINNABAR_COAL_ORE, createOreDrop(EBlocks.CINNABAR_COAL_ORE, Items.COAL));
-        add(EBlocks.CINNABAR_COPPER_ORE, createOreDrop(EBlocks.CINNABAR_COPPER_ORE, Items.RAW_COPPER));
+        add(EBlocks.CINNABAR_COPPER_ORE, createMultipleOreDrops(EBlocks.CINNABAR_COPPER_ORE, Items.RAW_COPPER, 1, 2));
         add(EBlocks.CINNABAR_IRON_ORE, createOreDrop(EBlocks.CINNABAR_IRON_ORE, Items.RAW_IRON));
         add(EBlocks.CINNABAR_GOLD_ORE, createOreDrop(EBlocks.CINNABAR_GOLD_ORE, Items.RAW_GOLD));
-        add(EBlocks.CINNABAR_REDSTONE_ORE, createMultipleOreDrops(EBlocks.CINNABAR_REDSTONE_ORE, Items.REDSTONE, 4.0F, 5.0F));
+        add(EBlocks.CINNABAR_REDSTONE_ORE, createRedstoneOreDrops(EBlocks.CINNABAR_REDSTONE_ORE));
         add(EBlocks.CINNABAR_DIAMOND_ORE, createOreDrop(EBlocks.CINNABAR_DIAMOND_ORE, Items.DIAMOND));
-        add(EBlocks.CINNABAR_LAPIS_ORE, createMultipleOreDrops(EBlocks.CINNABAR_LAPIS_ORE, Items.LAPIS_LAZULI, 4.0F, 9.0F));
+        add(EBlocks.CINNABAR_LAPIS_ORE, createLapisOreDrops(EBlocks.CINNABAR_LAPIS_ORE));
         add(EBlocks.CINNABAR_EMERALD_ORE, createOreDrop(EBlocks.CINNABAR_EMERALD_ORE, Items.EMERALD));
 
         // Tin
@@ -69,9 +69,34 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 
         dropSelf(EBlocks.RAW_TIN_BLOCK);
         dropSelf(EBlocks.TIN_BLOCK);
+
         dropSelf(EBlocks.BRONZE_BLOCK);
-        dropSelf(EBlocks.SILVER_BLOCK);
+
         dropSelf(EBlocks.RAW_SILVER_BLOCK);
+        dropSelf(EBlocks.SILVER_BLOCK);
+        dropSelf(EBlocks.POLISHED_SILVER);
+        dropSelf(EBlocks.POLISHED_SILVER_STAIRS);
+        add(EBlocks.POLISHED_SILVER_SLAB, createSlabItemTable(EBlocks.POLISHED_SILVER_SLAB));
+        dropSelf(EBlocks.CUT_SILVER);
+        dropSelf(EBlocks.CUT_SILVER_STAIRS);
+        add(EBlocks.CUT_SILVER_SLAB, createSlabItemTable(EBlocks.CUT_SILVER_SLAB));
+        dropSelf(EBlocks.SILVER_PILLAR);
+        dropSelf(EBlocks.SILVER_BARS);
+
+        dropSelf(EBlocks.WROUGHT_IRON_BLOCK);
+        dropSelf(EBlocks.WROUGHT_IRON_STAIRS);
+        add(EBlocks.WROUGHT_IRON_SLAB, createSlabItemTable(EBlocks.WROUGHT_IRON_SLAB));
+        dropSelf(EBlocks.CUT_WROUGHT_IRON);
+        dropSelf(EBlocks.CUT_WROUGHT_IRON_STAIRS);
+        add(EBlocks.CUT_WROUGHT_IRON_SLAB, createSlabItemTable(EBlocks.CUT_WROUGHT_IRON_SLAB));
+        dropSelf(EBlocks.WROUGHT_IRON_GRATE);
+
+        dropSelf(EBlocks.CUT_TIN);
+        dropSelf(EBlocks.CUT_TIN_STAIRS);
+        add(EBlocks.CUT_TIN_SLAB, createSlabItemTable(EBlocks.CUT_TIN_SLAB));
+        dropSelf(EBlocks.CHISELED_TIN);
+        dropSelf(EBlocks.TIN_BARS);
+
         dropSelf(EBlocks.SOULSTEEL_BLOCK);
 
         add(Blocks.ANCIENT_DEBRIS, createMultipleOreDrops(Blocks.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 1, 2));

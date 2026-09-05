@@ -12,7 +12,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.world.level.block.Blocks;
 import team.lookingglass.elsewhere.registry.EItems;
-import team.lookingglass.elsewhere.registry.trim.EEquipmentAssets;
+import team.lookingglass.elsewhere.registry.equipment.EEquipmentAssets;
 
 public class ModelProvider extends FabricModelProvider {
     public ModelProvider(FabricPackOutput output) {
@@ -712,6 +712,33 @@ public class ModelProvider extends FabricModelProvider {
         gen.createTrivialCube(EBlocks.CINNABAR_SILVER_ORE);
         gen.createTrivialCube(EBlocks.RAW_SILVER_BLOCK);
         gen.createTrivialCube(EBlocks.SILVER_BLOCK);
+        gen.family(EBlocks.POLISHED_SILVER)
+                .stairs(EBlocks.POLISHED_SILVER_STAIRS)
+                .slab(EBlocks.POLISHED_SILVER_SLAB)
+        ;
+        gen.family(EBlocks.CUT_SILVER)
+                .stairs(EBlocks.CUT_SILVER_STAIRS)
+                .slab(EBlocks.CUT_SILVER_SLAB)
+        ;
+        gen.createRotatedPillarWithHorizontalVariant(EBlocks.SILVER_PILLAR, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
+        gen.createBarsAndItem(EBlocks.SILVER_BARS);
+
+        gen.family(EBlocks.WROUGHT_IRON_BLOCK)
+                .stairs(EBlocks.WROUGHT_IRON_STAIRS)
+                .slab(EBlocks.WROUGHT_IRON_SLAB)
+        ;
+        gen.family(EBlocks.CUT_WROUGHT_IRON)
+                .stairs(EBlocks.CUT_WROUGHT_IRON_STAIRS)
+                .slab(EBlocks.CUT_WROUGHT_IRON_SLAB)
+        ;
+        gen.createTrivialCube(EBlocks.WROUGHT_IRON_GRATE);
+
+        gen.family(EBlocks.CUT_TIN)
+                .stairs(EBlocks.CUT_TIN_STAIRS)
+                .slab(EBlocks.CUT_TIN_SLAB)
+        ;
+        gen.createTrivialCube(EBlocks.CHISELED_TIN);
+        gen.createBarsAndItem(EBlocks.TIN_BARS);
 
         gen.createTrivialCube(EBlocks.SOULSTEEL_BLOCK);
 
@@ -823,7 +850,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.TIN_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.TIN_NUGGET, ModelTemplates.FLAT_ITEM);
 
-        itemModelGenerator.generateFlatItem(EItems.BRONZE_MIX, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.BRONZE_NUGGET, ModelTemplates.FLAT_ITEM);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_HELMET, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
@@ -840,9 +867,6 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.RAW_SILVER, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SILVER_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
-
-        itemModelGenerator.generateFlatItem(EItems.NETHERITE_MIX, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_MIX, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_INGOT, ModelTemplates.FLAT_ITEM);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_HELMET, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
@@ -865,6 +889,14 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.VANGUARD_MASK, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SULFUR_CUBE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SULFUR_CREAM, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.SUBSLIME_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SUBSLIME_CLUSTER, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.SWEEPER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.MUD_GOLEM_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.PERCH_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.RAW_PERCH, ModelTemplates.FLAT_ITEM);

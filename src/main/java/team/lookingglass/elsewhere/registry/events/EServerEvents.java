@@ -24,7 +24,7 @@ public class EServerEvents {
                 boolean wasWearing = WEARING_MASK.getOrDefault(player.getUUID(), false);
 
                 if (wearing && !wasWearing) {
-                    player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 999999, 0, true, false, false));
+                    player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, -1, 0, true, false, false));
                 } else if (!wearing && wasWearing) {
                     player.removeEffect(MobEffects.NIGHT_VISION);
                 }
@@ -39,7 +39,6 @@ public class EServerEvents {
                 } else {
                     MASK_TIMER.remove(player.getUUID());
                 }
-
                 WEARING_MASK.put(player.getUUID(), wearing);
             }
         });

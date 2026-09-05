@@ -3,7 +3,9 @@
   "package": "team.lookingglass.elsewhere.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "entity.CreeperMixin",
     "entity.SkeletonMixin",
+    "entity.SubslimeDeathMixin",
     "entity.WitherSkeletonSwordsMixin",
     "entity.ZombieMixins",
     "equipment.ArmorMaterialsMixin",
@@ -12,13 +14,13 @@
     "equipment.toolstats.HoeReconfig",
     "equipment.toolstats.ShovelReconfig",
     "equipment.toolstats.SwordPickReconfig",
+    "interaction.AbstractCauldronBlockMixin",
     "interaction.FireChargeMixin",
     "interaction.SoundMixin",
     "world.NoiseGeneratorSettingsAccessor",
-    "world.OreConfigurationAccessor",
     "world.OverworldBiomeGenAccessor",
     "world.OverworldBiomeGenMixin",
-    "world.feature.ExtraGrassesMixin",
+    "world.feature.SpreadTargetMixin",
     "world.feature.TreeGrowerMixin"
   ],
   "injectors": {

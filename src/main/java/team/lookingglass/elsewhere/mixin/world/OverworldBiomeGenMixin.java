@@ -1,5 +1,6 @@
 package team.lookingglass.elsewhere.mixin.world;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -11,8 +12,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.worldgen.EBiomes;
 
 import java.util.function.Consumer;
@@ -20,7 +19,11 @@ import java.util.function.Consumer;
 @Mixin(OverworldBiomeBuilder.class)
 public abstract class OverworldBiomeGenMixin {
 
+    @Shadow
+    protected abstract ResourceKey<Biome> pickMiddleBiome(int temperatureIndex, int humidityIndex, Climate.Parameter weirdness);
+
     // Change Surface Biomes
+    @SuppressWarnings("unchecked")
     @Inject(method = "<init>", at = @At("TAIL"))
     private void injectCustomWorldgen(CallbackInfo ci) {
         OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor) this;
@@ -28,41 +31,43 @@ public abstract class OverworldBiomeGenMixin {
         // New Biome Spread
         accessor.setMiddleBiomes(new ResourceKey[][]{
                 { EBiomes.TUNDRA, Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.TAIGA },
-                { Biomes.MEADOW, Biomes.MEADOW, Biomes.FLOWER_FOREST, Biomes.FLOWER_FOREST, Biomes.OLD_GROWTH_SPRUCE_TAIGA },
+                { EBiomes.CHERRY_FIELDS, Biomes.MEADOW, Biomes.TAIGA, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA },
                 { Biomes.PLAINS, Biomes.PLAINS, Biomes.FOREST, Biomes.FOREST, Biomes.DARK_FOREST },
                 { Biomes.SAVANNA, Biomes.SAVANNA, EBiomes.SHRUBLAND, Biomes.SPARSE_JUNGLE, Biomes.JUNGLE },
-                { EBiomes.OUTBACK, EBiomes.OUTBACK, Biomes.DESERT, Biomes.DESERT, EBiomes.LUSH_DESERT }
+                { EBiomes.OUTBACK, EBiomes.OUTBACK, EBiomes.OUTBACK, EBiomes.OUTBACK, EBiomes.LUSH_DESERT }
         });
         accessor.setMiddleBiomesVariant(new ResourceKey[][]{
                 { Biomes.ICE_SPIKES, null, Biomes.SNOWY_TAIGA, null, null },
-                { null, null, EBiomes.DAPPLED_FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA },
+                { Biomes.MEADOW, null, EBiomes.DAPPLED_FOREST, null, Biomes.OLD_GROWTH_PINE_TAIGA },
                 { Biomes.SUNFLOWER_PLAINS, null, null, Biomes.BIRCH_FOREST, null },
-                { EBiomes.STEPPE, EBiomes.STEPPE, EBiomes.CEDAR_FOREST, EBiomes.CEDAR_FOREST, Biomes.BAMBOO_JUNGLE },
-                { null, null, null, null, null }
+                { EBiomes.STEPPE, EBiomes.STEPPE, EBiomes.CEDAR_FOREST, null, Biomes.BAMBOO_JUNGLE },
+                { Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, Biomes.DESERT, null }
         });
         accessor.setPlateauBiomes(new ResourceKey[][]{
                 { EBiomes.TUNDRA, EBiomes.TUNDRA, Biomes.SNOWY_PLAINS, Biomes.SNOWY_TAIGA, Biomes.SNOWY_TAIGA },
-                { Biomes.CHERRY_GROVE, Biomes.CHERRY_GROVE, Biomes.FLOWER_FOREST, Biomes.TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA },
-                { Biomes.PALE_GARDEN, Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.DARK_FOREST },
-                { Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, EBiomes.CEDAR_FOREST, EBiomes.CEDAR_FOREST, Biomes.BAMBOO_JUNGLE },
-                { Biomes.BADLANDS, Biomes.BADLANDS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.WOODED_BADLANDS }
+                { Biomes.CHERRY_GROVE, Biomes.CHERRY_GROVE, Biomes.FLOWER_FOREST, Biomes.FLOWER_FOREST, Biomes.OLD_GROWTH_SPRUCE_TAIGA },
+                { Biomes.SUNFLOWER_PLAINS, Biomes.PLAINS, Biomes.FOREST, Biomes.BIRCH_FOREST, Biomes.PALE_GARDEN },
+                { Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, EBiomes.CEDAR_FOREST, EBiomes.CEDAR_FOREST, Biomes.JUNGLE },
+                { Biomes.BADLANDS, Biomes.BADLANDS, Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.WOODED_BADLANDS}
         });
         accessor.setPlateauBiomesVariant(new ResourceKey[][]{
-                { Biomes.SNOWY_PLAINS, Biomes.SNOWY_PLAINS, null, null, null },
+                { null, null, null, null, null },
                 { Biomes.MEADOW, Biomes.MEADOW, EBiomes.DAPPLED_FOREST, null, Biomes.OLD_GROWTH_PINE_TAIGA },
-                { null, null, Biomes.FLOWER_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST, null },
-                { Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, null, null, null },
-                { Biomes.ERODED_BADLANDS, Biomes.ERODED_BADLANDS, null, null, null }
+                { null, null, null, Biomes.OLD_GROWTH_BIRCH_FOREST, null },
+                { Biomes.SAVANNA_PLATEAU, Biomes.SAVANNA_PLATEAU, null, null, Biomes.BAMBOO_JUNGLE },
+                { Biomes.ERODED_BADLANDS, Biomes.ERODED_BADLANDS, null, EBiomes.CLOUD_FOREST, EBiomes.CLOUD_FOREST }
         });
     }
 
-    // Desert Beaches
-    @Inject(method = "pickBeachBiome", at = @At("HEAD"), cancellable = true)
-    private void elsewhere$pickBeachBiome(int temperatureIndex, int humidityIndex, CallbackInfoReturnable<ResourceKey<Biome>> cir) {
-        if (temperatureIndex >= 2) { cir.setReturnValue(humidityIndex >= 3 ? EBiomes.TIDEPOOLS : Biomes.BEACH); }
-        else if (temperatureIndex == 1) { cir.setReturnValue(humidityIndex >= 3 ? EBiomes.TIDEPOOLS : EBiomes.COLD_BEACH); }
-        else if (temperatureIndex == 0) { cir.setReturnValue(humidityIndex >= 3 ? Biomes.SNOWY_BEACH : Biomes.SNOWY_BEACH); }
-        else { cir.setReturnValue(Biomes.BEACH); }
+    @Unique
+    private ResourceKey<Biome> elsewhere$pickBeachBiome(int temperatureIndex, int humidityIndex, Climate.Parameter weirdness) {
+        if (temperatureIndex == 4) {
+            return this.pickMiddleBiome(temperatureIndex, humidityIndex, weirdness);
+        }
+        else if (temperatureIndex >= 2) { return humidityIndex >= 3 ? EBiomes.TIDEPOOLS : Biomes.BEACH; }
+        else if (temperatureIndex == 1) { return humidityIndex >= 3 ? EBiomes.TIDEPOOLS : EBiomes.COLD_BEACH; }
+        else if (temperatureIndex == 0) { return humidityIndex >= 3 ? Biomes.SNOWY_BEACH : EBiomes.FROZEN_BEACH; }
+        else { return Biomes.BEACH; }
     }
 
     // Cave Biomes
@@ -130,7 +135,7 @@ public abstract class OverworldBiomeGenMixin {
         OverworldBiomeGenAccessor accessor = (OverworldBiomeGenAccessor)(Object) builder;
         if (biome == Biomes.RIVER && temperature == accessor.getUnfrozenRange()) {
             Climate.Parameter[] temperatures = accessor.getTemperatures();
-            ResourceKey<Biome>[] rivers = new ResourceKey[]{Biomes.FROZEN_RIVER, EBiomes.COLD_RIVER, Biomes.RIVER, EBiomes.LUKEWARM_RIVER, EBiomes.WARM_RIVER};
+            ResourceKey<Biome>[] rivers = new ResourceKey[]{Biomes.FROZEN_RIVER, EBiomes.COLD_RIVER, Biomes.RIVER, EBiomes.LUKEWARM_RIVER, EBiomes.LUKEWARM_RIVER};
             for (int i = 1; i < temperatures.length; i++) {
                 accessor.invokeAddSurfaceBiome(biomes, temperatures[i], humidity, continentalness, erosion, weirdness, offset, rivers[i]);
             }
@@ -156,4 +161,17 @@ public abstract class OverworldBiomeGenMixin {
     // Stop lower caves from generating as surface biomes
     @Redirect(method = "addSurfaceBiome", at = @At(value = "INVOKE", target = "Ljava/util/function/Consumer;accept(Ljava/lang/Object;)V", ordinal = 1))
     private void elsewhere$skipUndergroundSurfaceBiome(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> biomes, Object pair) {}
+
+    @Redirect(method = "addMidSlice", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/OverworldBiomeBuilder;pickBeachBiome(II)Lnet/minecraft/resources/ResourceKey;"))
+    private ResourceKey<Biome> elsewhere$redirectBeachMidSlice(OverworldBiomeBuilder instance, int temperatureIndex, int humidityIndex, @Local(argsOnly = true, name = "weirdness") Climate.Parameter weirdness) {
+        return elsewhere$pickBeachBiome(temperatureIndex, humidityIndex, weirdness);
+    }
+    @Redirect(method = "addLowSlice", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/OverworldBiomeBuilder;pickBeachBiome(II)Lnet/minecraft/resources/ResourceKey;"))
+    private ResourceKey<Biome> elsewhere$redirectBeachLowSlice(OverworldBiomeBuilder instance, int temperatureIndex, int humidityIndex, @Local(argsOnly = true, name = "weirdness") Climate.Parameter weirdness) {
+        return elsewhere$pickBeachBiome(temperatureIndex, humidityIndex, weirdness);
+    }
+    @Redirect(method = "pickShatteredCoastBiome", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/biome/OverworldBiomeBuilder;pickBeachBiome(II)Lnet/minecraft/resources/ResourceKey;"))
+    private ResourceKey<Biome> elsewhere$redirectBeachShatteredCoast(OverworldBiomeBuilder instance, int temperatureIndex, int humidityIndex, @Local(argsOnly = true, name = "weirdness") Climate.Parameter weirdness) {
+        return elsewhere$pickBeachBiome(temperatureIndex, humidityIndex, weirdness);
+    }
 }

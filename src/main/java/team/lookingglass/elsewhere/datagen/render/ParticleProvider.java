@@ -28,33 +28,39 @@ public class ParticleProvider implements DataProvider {
     @Override
     public CompletableFuture<?> run(CachedOutput cache) {
         List<CompletableFuture<?>> futures = new ArrayList<>();
-        futures.add(saveParticle(cache, EParticles.SULFUR_BUBBLES, true, "bubble", false, 1));
-        futures.add(saveParticle(cache, EParticles.NOXIOUS_GAS, false,"noxious_gas", true, 8));
-        futures.add(saveParticle(cache, EParticles.NOXIOUS_GAS_CLOUD, false,"noxious_gas", true, 8));
-        futures.add(saveParticle(cache, EParticles.GEYSER_BASE, false,"geyser_base", true, 8));
-        futures.add(saveParticle(cache, EParticles.GEYSER_POOF, false,"geyser_poof", true, 8));
-        futures.add(saveParticle(cache, EParticles.GEYSER_PLUME, false,"geyser_plume", true, 8));
-        futures.add(saveParticle(cache, EParticles.RED_POPLAR_LEAVES, false, "red_poplar", true, 4));
-        futures.add(saveParticle(cache, EParticles.ORANGE_POPLAR_LEAVES, false, "orange_poplar", true, 4));
-        futures.add(saveParticle(cache, EParticles.YELLOW_POPLAR_LEAVES, false, "yellow_poplar", true, 4));
-        futures.add(saveParticle(cache, EParticles.GILDED_BIRCH_LEAVES, false, "gilded_birch", true, 4));
+        futures.add(saveParticle(cache, EParticles.SULFUR_BUBBLES, true, "bubble"));
+        futures.add(saveParticle(cache, EParticles.NOXIOUS_GAS, false, "noxious_gas", 8));
+        futures.add(saveParticle(cache, EParticles.NOXIOUS_GAS_CLOUD, false, "noxious_gas", 8));
+        futures.add(saveParticle(cache, EParticles.GEYSER_BASE, false, "geyser_base", 8));
+        futures.add(saveParticle(cache, EParticles.GEYSER_POOF, false, "geyser_poof", 8));
+        futures.add(saveParticle(cache, EParticles.GEYSER_PLUME, false, "geyser_plume", 8));
+        futures.add(saveParticle(cache, EParticles.RED_POPLAR_LEAVES, false, "red_poplar", 4));
+        futures.add(saveParticle(cache, EParticles.ORANGE_POPLAR_LEAVES, false, "orange_poplar", 4));
+        futures.add(saveParticle(cache, EParticles.YELLOW_POPLAR_LEAVES, false, "yellow_poplar", 4));
+        futures.add(saveParticle(cache, EParticles.GILDED_BIRCH_LEAVES, false, "gilded_birch", 4));
+        futures.add(saveParticle(cache, EParticles.SULFUR_CUBE_PARTICLE, false, "sulfur_goo"));
+        futures.add(saveParticle(cache, EParticles.SUBSLIME_PARTICLE, false, "subslime_goo"));
+
+
         return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
 
-    private CompletableFuture<?> saveParticle(CachedOutput cache, ParticleType<?> type,  boolean vanilla, String name, boolean animated, int frames) {
+    private CompletableFuture<?> saveParticle(CachedOutput cache, ParticleType<?> type, boolean vanilla, String name) {
         String namespace = vanilla ? Identifier.DEFAULT_NAMESPACE : Elsewhere.MODID;
         JsonObject json = new JsonObject();
         JsonArray textures = new JsonArray();
-        if (animated) {
-            for (int i = 1; i <= frames; i++) {
-                textures.add(namespace + ":" + name + "_" + String.format("%02d", i));
-            }
-        } else {
-            textures.add(namespace + ":" + name);
-        }
+        textures.add(namespace + ":" + name);
         json.add("textures", textures);
-        Path path = output.getOutputFolder().resolve("assets/elsewhere/particles/" +
-                BuiltInRegistries.PARTICLE_TYPE.getKey(type).getPath() + ".json");
+        Path path = output.getOutputFolder().resolve("assets/elsewhere/particles/" + BuiltInRegistries.PARTICLE_TYPE.getKey(type).getPath() + ".json");
+        return DataProvider.saveStable(cache, json, path);
+    }
+    private CompletableFuture<?> saveParticle(CachedOutput cache, ParticleType<?> type, boolean vanilla, String name, int frames) {
+        String namespace = vanilla ? Identifier.DEFAULT_NAMESPACE : Elsewhere.MODID;
+        JsonObject json = new JsonObject();
+        JsonArray textures = new JsonArray();
+        for (int i = 1; i <= frames; i++) { textures.add(namespace + ":" + name + "_" + String.format("%02d", i)); }
+        json.add("textures", textures);
+        Path path = output.getOutputFolder().resolve("assets/elsewhere/particles/" + BuiltInRegistries.PARTICLE_TYPE.getKey(type).getPath() + ".json");
         return DataProvider.saveStable(cache, json, path);
     }
 

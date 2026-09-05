@@ -44,13 +44,40 @@ public class EntityLootTableProvider extends FabricEntityLootSubProvider {
                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2)))))
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(EItems.VANGUARD_MASK)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 1))).setWeight(2))
-                        .add(EmptyLootItem.emptyItem().setWeight(11))
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 1))).setWeight(3))
+                        .add(EmptyLootItem.emptyItem().setWeight(120))
+                )
+        );
+        add(EEntities.SWEEPER, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.GUNPOWDER)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2))))
+                )
+        );
+        add(EEntities.MUD_GOLEM, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.MUD)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2))))
+                )
+        );
+        add(EEntities.SULFUR_CUBE, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(EItems.SULFUR_CREAM)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2))))
+                )
+        );
+        add(EEntities.SUBSLIME, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(EItems.SUBSLIME_CLUSTER)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2))))
                 )
         );
 
-        add(EEntities.PERCH, LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(EItems.RAW_PERCH).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
-        );
+        add(EEntities.PERCH, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(EItems.RAW_PERCH).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))));
     }
 }

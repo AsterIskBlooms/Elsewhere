@@ -13,10 +13,10 @@ public abstract class ToolMaterialMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void patchMaterials(CallbackInfo ci) {
         mutate(ToolMaterial.WOOD, 1000, 3.0F, 0.0F, 5);
-        mutate(ToolMaterial.STONE, 64, 4.0F, 0.0F, 5);
-        mutate(ToolMaterial.COPPER, 122, 4.0F, 0.5F, 13);
+        mutate(ToolMaterial.STONE, 161, 4.0F, 0.0F, 5);
+        mutate(ToolMaterial.COPPER, 212, 5.0F, 1.0F, 13);
         mutate(ToolMaterial.IRON, 350, 6.0F, 2.0F, 14);
-        mutate(ToolMaterial.GOLD, 120, 12.0F, 2.0F, 25);
+        mutate(ToolMaterial.GOLD, 232, 12.0F, 2.0F, 25);
     }
 
     @Unique

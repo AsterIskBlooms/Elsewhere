@@ -14,6 +14,7 @@ public class LangProviderEN extends FabricLanguageProvider {
     @Override
     public void generateTranslations(HolderLookup.Provider wrapperLookup, TranslationBuilder translationBuilder) {
         // Translation Changes
+        translationBuilder.add("item.minecraft.quartz", "Quartz");
         translationBuilder.add("item.minecraft.netherite_scrap", "Ancient Scrap");
         translationBuilder.add("item.minecraft.netherite_upgrade_smithing_template.new", "Nether Upgrade");
         translationBuilder.add("item.minecraft.smithing_template.netherite_upgrade.additions_slot_description", "Add Netherite or Soulsteel Ingot");
@@ -884,8 +885,12 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("item.elsewhere.tin_nugget", "Tin Nugget");
         translationBuilder.add("block.elsewhere.tin_block", "Block of Tin");
         translationBuilder.add("block.elsewhere.raw_tin_block", "Block of Raw Tin");
+        translationBuilder.add("block.elsewhere.cut_tin", "Cut Tin");
+        translationBuilder.add("block.elsewhere.cut_tin_stairs", "Cut Tin Stairs");
+        translationBuilder.add("block.elsewhere.cut_tin_slab", "Cut Tin Slab");
+        translationBuilder.add("block.elsewhere.chiseled_tin", "Chiseled Tin");
+        translationBuilder.add("block.elsewhere.tin_bars", "Tin Bars");
 
-        translationBuilder.add("item.elsewhere.bronze_mix", "Bronze Mix");
         translationBuilder.add("item.elsewhere.bronze_ingot", "Bronze Ingot");
         translationBuilder.add("item.elsewhere.bronze_nugget", "Bronze Nugget");
         translationBuilder.add("block.elsewhere.bronze_block", "Block of Bronze");
@@ -900,6 +905,12 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("item.elsewhere.bronze_shovel", "Bronze Shovel");
         translationBuilder.add("item.elsewhere.bronze_hoe", "Bronze Hoe");
 
+        translationBuilder.add("item.elsewhere.bronze_upgrade_smithing_template", "Bronze Upgrade");
+        translationBuilder.add("item.elsewhere.smithing_template.bronze_upgrade.applies_to", "Iron Equipment");
+        translationBuilder.add("item.elsewhere.smithing_template.bronze_upgrade.ingredients", "Bronze Ingot");
+        translationBuilder.add("item.elsewhere.smithing_template.bronze_upgrade.base_slot_description", "Add iron armor, weapon, or tool");
+        translationBuilder.add("item.elsewhere.smithing_template.bronze_upgrade.additions_slot_description", "Add Bronze Ingot");
+
         translationBuilder.add("block.elsewhere.silver_ore", "Silver Ore");
         translationBuilder.add("block.elsewhere.shale_silver_ore", "Shale Silver Ore");
         translationBuilder.add("block.elsewhere.deepslate_silver_ore", "Deepslate Silver Ore");
@@ -909,9 +920,22 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("item.elsewhere.silver_nugget", "Silver Nugget");
         translationBuilder.add("block.elsewhere.silver_block", "Block of Silver");
         translationBuilder.add("block.elsewhere.raw_silver_block", "Block of Raw Silver");
+        translationBuilder.add("block.elsewhere.polished_silver", "Polished Silver");
+        translationBuilder.add("block.elsewhere.polished_silver_stairs", "Polished Silver Stairs");
+        translationBuilder.add("block.elsewhere.polished_silver_slab", "Polished Silver Slab");
+        translationBuilder.add("block.elsewhere.cut_silver", "Cut Silver");
+        translationBuilder.add("block.elsewhere.cut_silver_stairs", "Cut Silver Stairs");
+        translationBuilder.add("block.elsewhere.cut_silver_slab", "Cut Silver Slab");
+        translationBuilder.add("block.elsewhere.silver_pillar", "Silver Pillar");
+        translationBuilder.add("block.elsewhere.silver_bars", "Silver Bars");
 
-        translationBuilder.add("item.elsewhere.netherite_mix", "Netherite Mix");
-        translationBuilder.add("item.elsewhere.soulsteel_mix", "Soulsteel Mix");
+        translationBuilder.add("block.elsewhere.wrought_iron_block", "Wrought Iron Block");
+        translationBuilder.add("block.elsewhere.wrought_iron_stairs", "Wrought Iron Stairs");
+        translationBuilder.add("block.elsewhere.wrought_iron_slab", "Wrought Iron Slab");
+        translationBuilder.add("block.elsewhere.cut_wrought_iron", "Cut Wrought Iron");
+        translationBuilder.add("block.elsewhere.cut_wrought_iron_stairs", "Cut Wrought Iron Stairs");
+        translationBuilder.add("block.elsewhere.cut_wrought_iron_slab", "Cut Wrought Iron Slab");
+        translationBuilder.add("block.elsewhere.wrought_iron_grate", "Wrought Iron Grate");
 
         translationBuilder.add("item.elsewhere.soulsteel_ingot", "Soulsteel Ingot");
         translationBuilder.add("block.elsewhere.soulsteel_block", "Block of Soulsteel");
@@ -940,9 +964,21 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("entity.elsewhere.vanguard", "Vanguard");
         translationBuilder.add("item.elsewhere.vanguard_spawn_egg", "Vanguard Spawn Egg");
         translationBuilder.add("item.elsewhere.vanguard_mask", "Vanguard Mask");
+        translationBuilder.add("item.elsewhere.vanguard_mask.night_vision", "+ Night Vision");
 
         translationBuilder.add("entity.elsewhere.sulfur_cube", "Sulfur Cube");
         translationBuilder.add("item.elsewhere.sulfur_cube_spawn_egg", "Sulfur Cube Spawn Egg");
+        translationBuilder.add("item.elsewhere.sulfur_cream", "Sulfur Cream");
+
+        translationBuilder.add("entity.elsewhere.subslime", "Subslime");
+        translationBuilder.add("item.elsewhere.subslime_spawn_egg", "Subslime Spawn Egg");
+        translationBuilder.add("item.elsewhere.subslime_cluster", "Subslime Cluster");
+
+        translationBuilder.add("entity.elsewhere.sweeper", "Sweeper");
+        translationBuilder.add("item.elsewhere.sweeper_spawn_egg", "Sweeper Spawn Egg");
+
+        translationBuilder.add("entity.elsewhere.mud_golem", "Mud Golem");
+        translationBuilder.add("item.elsewhere.mud_golem_spawn_egg", "Mud Golem Spawn Egg");
 
         translationBuilder.add("entity.elsewhere.perch", "Perch");
         translationBuilder.add("item.elsewhere.perch_spawn_egg", "Perch Spawn Egg");
@@ -1017,9 +1053,27 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("subtitles.elsewhere.entity.frostbite.hurt", "Frostbite hurts");
         translationBuilder.add("subtitles.elsewhere.entity.frostbite.death", "Frostbite dies");
 
+        translationBuilder.add("subtitles.elsewhere.entity.sulfur_cube.jump", "Sulfur Cube jumps");
+        translationBuilder.add("subtitles.elsewhere.entity.sulfur_cube.squish", "Sulfur Cube squishes");
+        translationBuilder.add("subtitles.elsewhere.entity.sulfur_cube.attack", "Sulfur Cube attacks");
+        translationBuilder.add("subtitles.elsewhere.entity.sulfur_cube.hurt", "Sulfur Cube hurts");
+        translationBuilder.add("subtitles.elsewhere.entity.sulfur_cube.absorb", "Sulfur Cubes reform");
+        translationBuilder.add("subtitles.elsewhere.entity.sulfur_cube.death", "Sulfur Cube dies");
+
+        translationBuilder.add("subtitles.elsewhere.entity.subslime.jump", "Subslime jumps");
+        translationBuilder.add("subtitles.elsewhere.entity.subslime.squish", "Subslime squishes");
+        translationBuilder.add("subtitles.elsewhere.entity.subslime.attack", "Subslime attacks");
+        translationBuilder.add("subtitles.elsewhere.entity.subslime.hurt", "Subslime hurts");
+        translationBuilder.add("subtitles.elsewhere.entity.subslime.death", "Subslime dies");
+
         translationBuilder.add("subtitles.elsewhere.entity.perch.flop", "Perch flops");
         translationBuilder.add("subtitles.elsewhere.entity.perch.hurt", "Perch hurts");
         translationBuilder.add("subtitles.elsewhere.entity.perch.death", "Perch dies");
+
+
+
+        // Attributes
+        translationBuilder.add("attribute.elsewhere.lifesteal", "Lifesteal");
 
 
 

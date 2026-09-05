@@ -85,7 +85,6 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         .define('#', EBlocks.PEBBLE).define('S', Items.STICK)
                         .unlockedBy(getHasName(EBlocks.PEBBLE), has(EBlocks.PEBBLE)).save(wrappedOutput);
 
-
                 fullCookingBook(EItems.RAW_PERCH, EItems.COOKED_PERCH);
 
                 shapeless(RecipeCategory.MISC, EItems.DIAMOND_NUGGET, 9).requires(Items.DIAMOND)
@@ -108,15 +107,26 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.DEEPSLATE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE, EItems.RAW_TIN,
                         EItems.TIN_INGOT, EItems.TIN_NUGGET, EBlocks.RAW_TIN_BLOCK, EBlocks.TIN_BLOCK
                 );
+                recipe2x2t1(EItems.TIN_INGOT, EBlocks.CUT_TIN);
+                recipeStairSlab(EBlocks.CUT_TIN, EBlocks.CUT_TIN_STAIRS, EBlocks.CUT_TIN_SLAB);
+                recipe2x1t1(EBlocks.CUT_TIN, EBlocks.CHISELED_TIN);
+                stonecutterSet(List.of(EBlocks.CUT_TIN, EBlocks.CUT_TIN_STAIRS), List.of(EBlocks.CUT_TIN_SLAB));
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.TIN_BARS, 16).define('#', EItems.TIN_INGOT)
+                        .pattern("###").pattern("###")
+                        .unlockedBy(getHasName(EItems.TIN_INGOT), has(EItems.TIN_INGOT)).save(wrappedOutput);
 
                 // Bronze
-                shapeless(RecipeCategory.MISC, EItems.BRONZE_MIX).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.COPPER_MATERIALS).requires(EItemTags.TIN_MATERIALS)
-                        .unlockedBy(getHasName(EItems.RAW_TIN), has(EItems.RAW_TIN)).save(wrappedOutput);
-                itemSmeltableNBSet(0.7F,
-                        EItems.BRONZE_MIX, EItems.BRONZE_INGOT, EItems.BRONZE_NUGGET, EBlocks.BRONZE_BLOCK
-                );
-                equipmentSetCrafting(
-                        EItems.BRONZE_INGOT, Items.STICK,
+                shapeless(RecipeCategory.MISC, EItems.BRONZE_INGOT).requires(Items.COPPER_INGOT, 5).requires(EItems.TIN_INGOT, 4)
+                        .unlockedBy(getHasName(EItems.TIN_INGOT), has(EItems.TIN_INGOT)).save(wrappedOutput);
+                itemUnsmeltableNBSet(EItems.BRONZE_INGOT, EItems.BRONZE_NUGGET, EBlocks.BRONZE_BLOCK);
+                shaped(RecipeCategory.MISC, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE).define('#', EItems.TIN_INGOT).define('C', Blocks.STONE).define('T', EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)
+                        .pattern("#T#").pattern("#C#").pattern("###")
+                        .unlockedBy(getHasName(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE), has(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)).save(wrappedOutput);
+                equipmentSetSmithing(
+                        EItems.BRONZE_INGOT, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE,
+
+                        Items.IRON_SWORD, Items.IRON_AXE, Items.IRON_SPEAR, Items.IRON_PICKAXE, Items.IRON_SHOVEL, Items.IRON_HOE,
+                        Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS,
                         
                         EItems.BRONZE_SWORD, EItems.BRONZE_AXE, EItems.BRONZE_SPEAR, EItems.BRONZE_PICKAXE, EItems.BRONZE_SHOVEL, EItems.BRONZE_HOE,
                         EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS,
@@ -129,22 +139,32 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE, EItems.RAW_SILVER,
                         EItems.SILVER_INGOT, EItems.SILVER_NUGGET, EBlocks.RAW_SILVER_BLOCK, EBlocks.SILVER_BLOCK
                 );
+                recipe2x2t1(EItems.SILVER_INGOT, EBlocks.POLISHED_SILVER);
+                recipeStairSlab(EBlocks.POLISHED_SILVER, EBlocks.POLISHED_SILVER_STAIRS, EBlocks.POLISHED_SILVER_SLAB);
+                recipe2x2(EBlocks.POLISHED_SILVER, EBlocks.CUT_SILVER);
+                recipeStairSlab(EBlocks.CUT_SILVER, EBlocks.CUT_SILVER_STAIRS, EBlocks.CUT_SILVER_SLAB);
+                recipe2x1t2(EBlocks.CUT_SILVER, EBlocks.SILVER_PILLAR);
+                stonecutterSet(List.of(EBlocks.POLISHED_SILVER, EBlocks.POLISHED_SILVER_STAIRS, EBlocks.CUT_SILVER, EBlocks.CUT_SILVER_STAIRS, EBlocks.SILVER_PILLAR), List.of(EBlocks.POLISHED_SILVER_SLAB, EBlocks.CUT_SILVER_SLAB));
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.SILVER_BARS, 16).define('#', EItems.SILVER_INGOT)
+                        .pattern("###").pattern("###")
+                        .unlockedBy(getHasName(EItems.SILVER_INGOT), has(EItems.SILVER_INGOT)).save(wrappedOutput);
+
+                // Wrought Iron
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.WROUGHT_IRON_BLOCK).define('#', Items.IRON_INGOT)
+                        .pattern("##").pattern("##")
+                        .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(wrappedOutput);
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.WROUGHT_IRON_GRATE, 2).define('#', Items.IRON_INGOT)
+                        .pattern("###").pattern("# #").pattern("###")
+                        .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(wrappedOutput);
+                recipeStairSlab(EBlocks.WROUGHT_IRON_BLOCK, EBlocks.WROUGHT_IRON_STAIRS, EBlocks.WROUGHT_IRON_SLAB);
+                recipe2x2(EBlocks.WROUGHT_IRON_BLOCK, EBlocks.CUT_WROUGHT_IRON);
+                recipeStairSlab(EBlocks.CUT_WROUGHT_IRON, EBlocks.CUT_WROUGHT_IRON_STAIRS, EBlocks.CUT_WROUGHT_IRON_SLAB);
+                stonecutterSet(List.of(EBlocks.WROUGHT_IRON_BLOCK, EBlocks.WROUGHT_IRON_STAIRS, EBlocks.CUT_WROUGHT_IRON, EBlocks.CUT_WROUGHT_IRON_STAIRS, EBlocks.WROUGHT_IRON_GRATE), List.of(EBlocks.WROUGHT_IRON_SLAB, EBlocks.CUT_WROUGHT_IRON_SLAB));
 
                 // Mixes
-                shapeless(RecipeCategory.MISC, EItems.NETHERITE_MIX).requires(Items.NETHERITE_SCRAP, 4).requires(Items.GOLD_INGOT, 4)
+                shapeless(RecipeCategory.MISC, EItems.SOULSTEEL_INGOT)
+                        .requires(Items.NETHERITE_SCRAP, 2).requires(EItems.SILVER_INGOT, 2).requires(Items.QUARTZ, 5)
                         .unlockedBy(getHasName(Items.NETHERITE_SCRAP), has(Items.NETHERITE_SCRAP)).save(wrappedOutput);
-                shapeless(RecipeCategory.MISC, EItems.SOULSTEEL_MIX).requires(Items.NETHERITE_SCRAP, 4).requires(EItems.SILVER_INGOT, 4)
-                        .unlockedBy(getHasName(Items.NETHERITE_SCRAP), has(Items.NETHERITE_SCRAP)).save(wrappedOutput);
-
-                customSimpleCookingRecipe("smelting", SmeltingRecipe::new, 400,
-                        EItems.NETHERITE_MIX, Items.NETHERITE_INGOT, 2.5F);
-                customSimpleCookingRecipe("blasting", BlastingRecipe::new, 200,
-                        EItems.NETHERITE_MIX, Items.NETHERITE_INGOT, 2.5F);
-
-                customSimpleCookingRecipe("smelting", SmeltingRecipe::new, 400,
-                        EItems.SOULSTEEL_MIX, EItems.SOULSTEEL_INGOT, 2.5F);
-                customSimpleCookingRecipe("blasting", BlastingRecipe::new, 200,
-                        EItems.SOULSTEEL_MIX, EItems.SOULSTEEL_INGOT, 2.5F);
 
                 // Soulsteel
                 itemUnsmeltableBSet(EItems.SOULSTEEL_INGOT, EBlocks.SOULSTEEL_BLOCK);
@@ -331,8 +351,13 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipe2x2(EBlocks.POLISHED_SULFUR, EBlocks.SULFUR_BRICKS);
                 recipeStairSlabWall(EBlocks.SULFUR_BRICKS, EBlocks.SULFUR_BRICK_STAIRS, EBlocks.SULFUR_BRICK_SLAB, EBlocks.SULFUR_BRICK_WALL);
                 stonecutterSet(List.of(EBlocks.SULFUR, EBlocks.SULFUR_STAIRS, EBlocks.SULFUR_WALL, EBlocks.POLISHED_SULFUR, EBlocks.POLISHED_SULFUR_STAIRS, EBlocks.POLISHED_SULFUR_WALL, EBlocks.SULFUR_BRICKS, EBlocks.SULFUR_BRICK_STAIRS, EBlocks.SULFUR_BRICK_WALL, EBlocks.SULFUR_PILLAR, EBlocks.CHISELED_SULFUR), List.of(EBlocks.SULFUR_SLAB, EBlocks.POLISHED_SULFUR_SLAB, EBlocks.SULFUR_BRICK_SLAB));
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.POTENT_SULFUR, 3).define('C', EItems.SULFUR_CREAM).define('#', EBlocks.SULFUR)
+                        .pattern(" # ").pattern("#C#").pattern(" # ")
+                        .unlockedBy(getHasName(EItems.SULFUR_CREAM), has(EItems.SULFUR_CREAM)).save(wrappedOutput);
 
                 // Orpiment
+                shapeless(RecipeCategory.BUILDING_BLOCKS, EBlocks.ORPIMENT, 3).requires(EBlocks.SULFUR, 2).requires(EBlocks.CINNABAR)
+                        .unlockedBy(getHasName(EBlocks.SULFUR), has(EBlocks.SULFUR)).save(wrappedOutput);
                 recipeStairSlabWall(EBlocks.ORPIMENT, EBlocks.ORPIMENT_STAIRS, EBlocks.ORPIMENT_SLAB, EBlocks.ORPIMENT_WALL);
                 recipe2x2(EBlocks.ORPIMENT, EBlocks.POLISHED_ORPIMENT);
                 recipeStairSlabWall(EBlocks.POLISHED_ORPIMENT, EBlocks.POLISHED_ORPIMENT_STAIRS, EBlocks.POLISHED_ORPIMENT_SLAB, EBlocks.POLISHED_ORPIMENT_WALL);
@@ -362,9 +387,17 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(EBlocks.SMOOTH_BASALT_TILES, EBlocks.SMOOTH_BASALT_TILE_STAIRS, EBlocks.SMOOTH_BASALT_TILE_SLAB, EBlocks.SMOOTH_BASALT_TILE_WALL);
                 stonecutterSet(List.of(Blocks.BASALT, Blocks.POLISHED_BASALT, Blocks.SMOOTH_BASALT, EBlocks.SMOOTH_BASALT_STAIRS, EBlocks.SMOOTH_BASALT_WALL, EBlocks.POLISHED_SMOOTH_BASALT, EBlocks.POLISHED_SMOOTH_BASALT_STAIRS, EBlocks.POLISHED_SMOOTH_BASALT_WALL, EBlocks.SMOOTH_BASALT_BRICKS, EBlocks.SMOOTH_BASALT_BRICK_STAIRS, EBlocks.SMOOTH_BASALT_BRICK_WALL, EBlocks.SMOOTH_BASALT_TILES, EBlocks.SMOOTH_BASALT_TILE_STAIRS, EBlocks.SMOOTH_BASALT_TILE_WALL), List.of(EBlocks.BASALT_SLAB, EBlocks.POLISHED_BASALT_SLAB, EBlocks.SMOOTH_BASALT_SLAB, EBlocks.POLISHED_SMOOTH_BASALT_SLAB, EBlocks.SMOOTH_BASALT_BRICK_SLAB, EBlocks.SMOOTH_BASALT_TILE_SLAB));
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.BEACHSTONE).define('S', Blocks.SAND).define('#', EBlocks.PEBBLE)
+                // Limestone
+                shapeless(RecipeCategory.BUILDING_BLOCKS, EBlocks.LIMESTONE).requires(Blocks.CALCITE).requires(Items.QUARTZ)
+                        .unlockedBy(getHasName(Items.QUARTZ), has(Items.QUARTZ)).save(wrappedOutput);
+                recipeStairSlabWall(EBlocks.LIMESTONE, EBlocks.LIMESTONE_STAIRS, EBlocks.LIMESTONE_SLAB, EBlocks.LIMESTONE_WALL);
+                recipe2x2(EBlocks.LIMESTONE, EBlocks.CUT_LIMESTONE);
+                recipeStairSlabWall(EBlocks.CUT_LIMESTONE, EBlocks.CUT_LIMESTONE_STAIRS, EBlocks.CUT_LIMESTONE_SLAB, EBlocks.CUT_LIMESTONE_WALL);
+
+                // Beachstone
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.BEACHSTONE, 3).define('S', Blocks.SAND).define('#', EBlocks.LIMESTONE)
                         .pattern("#S").pattern("S#")
-                        .unlockedBy(getHasName(Blocks.SAND), has(Blocks.SAND)).save(wrappedOutput);
+                        .unlockedBy(getHasName(EBlocks.LIMESTONE), has(EBlocks.LIMESTONE)).save(wrappedOutput);
                 recipeStairSlabWall(EBlocks.BEACHSTONE, EBlocks.BEACHSTONE_STAIRS, EBlocks.BEACHSTONE_SLAB, EBlocks.BEACHSTONE_WALL);
                 recipe2x2(EBlocks.BEACHSTONE, EBlocks.POLISHED_BEACHSTONE);
                 recipeStairSlabWall(EBlocks.POLISHED_BEACHSTONE, EBlocks.POLISHED_BEACHSTONE_STAIRS, EBlocks.POLISHED_BEACHSTONE_SLAB, EBlocks.POLISHED_BEACHSTONE_WALL);
@@ -372,9 +405,9 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                 recipeStairSlabWall(EBlocks.BEACHSTONE_BRICKS, EBlocks.BEACHSTONE_BRICK_STAIRS, EBlocks.BEACHSTONE_BRICK_SLAB, EBlocks.BEACHSTONE_BRICK_WALL);
                 recipe2x1t1(EBlocks.POLISHED_BEACHSTONE_SLAB, EBlocks.CHISELED_BEACHSTONE);
 
-                recipeStairSlabWall(EBlocks.LIMESTONE, EBlocks.LIMESTONE_STAIRS, EBlocks.LIMESTONE_SLAB, EBlocks.LIMESTONE_WALL);
-                recipe2x2(EBlocks.LIMESTONE, EBlocks.CUT_LIMESTONE);
-                recipeStairSlabWall(EBlocks.CUT_LIMESTONE, EBlocks.CUT_LIMESTONE_STAIRS, EBlocks.CUT_LIMESTONE_SLAB, EBlocks.CUT_LIMESTONE_WALL);
+                // Mudstone
+                shapeless(RecipeCategory.BUILDING_BLOCKS, EBlocks.MUDSTONE).requires(Blocks.MUD).requires(EBlocks.COBBLESHALE)
+                        .unlockedBy(getHasName(Blocks.MUD), has(Blocks.MUD)).save(wrappedOutput);
 
 
 
@@ -384,6 +417,10 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                         Blocks.QUARTZ_BRICKS, EBlocks.QUARTZ_BRICK_STAIRS, EBlocks.QUARTZ_BRICK_SLAB,
                         Blocks.QUARTZ_PILLAR, Blocks.CHISELED_QUARTZ_BLOCK
                 );
+                shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.BUDDING_AMETHYST)
+                        .define('S', EBlocks.SODALITE).define('C', Blocks.CALCITE).define('#', Blocks.AMETHYST_BLOCK)
+                        .pattern("#S#").pattern("C#C").pattern("#S#")
+                        .unlockedBy(getHasName(Blocks.AMETHYST_BLOCK), has(Blocks.AMETHYST_BLOCK)).save(wrappedOutput);
                 quartzSet(
                         Blocks.AMETHYST_BLOCK, EBlocks.AMETHYST_STAIRS, EBlocks.AMETHYST_SLAB,
                         EBlocks.AMETHYST_BRICKS, EBlocks.AMETHYST_BRICK_STAIRS, EBlocks.AMETHYST_BRICK_SLAB,
@@ -808,9 +845,10 @@ public class ItemRecipeProvider extends FabricRecipeProvider {
                                 Identifier.fromNamespaceAndPath(Elsewhere.MODID, getBlastingRecipeName(scrapResult))));
             }
 
-            private void recipe2x2(ItemLike block, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result, 4).define('#', block).pattern("##").pattern("##").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(result));}
-            private void recipe2x1t2(ItemLike block, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', block).pattern("#").pattern("#").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(result));}
-            private void recipe2x1t1(ItemLike block, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', block).pattern("#").pattern("#").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(result));}
+            private void recipe2x2(ItemLike ingredient, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result, 4).define('#', ingredient).pattern("##").pattern("##").unlockedBy(getHasName(ingredient), has(ingredient)).save(wrappedOutput, shapedId(result));}
+            private void recipe2x2t1(ItemLike ingredient, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', ingredient).pattern("##").pattern("##").unlockedBy(getHasName(ingredient), has(ingredient)).save(wrappedOutput, shapedId(result));}
+            private void recipe2x1t2(ItemLike ingredient, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result, 2).define('#', ingredient).pattern("#").pattern("#").unlockedBy(getHasName(ingredient), has(ingredient)).save(wrappedOutput, shapedId(result));}
+            private void recipe2x1t1(ItemLike ingredient, ItemLike result){shaped(RecipeCategory.BUILDING_BLOCKS, result).define('#', ingredient).pattern("#").pattern("#").unlockedBy(getHasName(ingredient), has(ingredient)).save(wrappedOutput, shapedId(result));}
             private void recipeStairSlab(ItemLike block, ItemLike stair, ItemLike slab) {
                 shaped(RecipeCategory.BUILDING_BLOCKS, stair, 6).define('#', block).pattern("#  ").pattern("## ").pattern("###").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(stair));
                 shaped(RecipeCategory.BUILDING_BLOCKS, slab, 6).define('#', block).pattern("###").unlockedBy(getHasName(block), has(block)).save(wrappedOutput, shapedId(slab));

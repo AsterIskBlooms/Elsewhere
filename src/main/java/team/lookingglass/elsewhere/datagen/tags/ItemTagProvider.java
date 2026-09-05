@@ -99,8 +99,6 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
         valueLookupBuilder(EItemTags.BRONZE_EQUIPMENT).add(
                 EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS
         );
-        valueLookupBuilder(EItemTags.COPPER_MATERIALS).add(Items.RAW_COPPER).add(Items.COPPER_INGOT);
-        valueLookupBuilder(EItemTags.TIN_MATERIALS).add(EItems.RAW_TIN).add(EItems.TIN_INGOT);
 
         // Soulsteel
         valueLookupBuilder(EItemTags.SOULSTEEL_TOOLS).add(

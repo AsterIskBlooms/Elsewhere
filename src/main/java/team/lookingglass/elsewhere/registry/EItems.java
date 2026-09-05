@@ -1,8 +1,11 @@
 package team.lookingglass.elsewhere.registry;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -12,7 +15,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumables;
-import net.minecraft.world.item.component.ItemLore;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.material.Fluids;
@@ -23,10 +26,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import team.lookingglass.elsewhere.entity.EEntities;
-import team.lookingglass.elsewhere.registry.equipment.AttributeArmorItem;
-import team.lookingglass.elsewhere.registry.equipment.EMaterials;
-import team.lookingglass.elsewhere.registry.equipment.ArmorAttributes;
-import team.lookingglass.elsewhere.registry.trim.ETrimMaterials;
+import team.lookingglass.elsewhere.registry.equipment.*;
+import team.lookingglass.elsewhere.registry.sets.EDiscs;
 
 import java.util.List;
 import java.util.function.Function;
@@ -76,9 +77,16 @@ public interface EItems {
     Item TIN_INGOT = register("tin_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.TIN));
     Item TIN_NUGGET = register("tin_nugget", Item::new, new Item.Properties());
 
-    Item BRONZE_MIX = register("bronze_mix", Item::new, new Item.Properties());
     Item BRONZE_INGOT = register("bronze_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.BRONZE));
     Item BRONZE_NUGGET = register("bronze_nugget", Item::new, new Item.Properties());
+    Item BRONZE_UPGRADE_SMITHING_TEMPLATE = register("bronze_upgrade_smithing_template", p -> new SmithingTemplateItem(
+            Component.translatable("item.elsewhere.smithing_template.bronze_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item.elsewhere.smithing_template.bronze_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+            Component.translatable("item.elsewhere.smithing_template.bronze_upgrade.base_slot_description"),
+            Component.translatable("item.elsewhere.smithing_template.bronze_upgrade.additions_slot_description"),
+            SmithingTemplateItem.createNetheriteUpgradeIconList(), SmithingTemplateItem.createNetheriteUpgradeMaterialList(), p),
+            new Item.Properties().rarity(Rarity.UNCOMMON)
+    );
     Item BRONZE_HELMET = register("bronze_helmet", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.BRONZE_ARMOR, ArmorType.HELMET)
     );
@@ -95,7 +103,7 @@ public interface EItems {
             .sword(EMaterials.BRONZE_TOOL, 3.0F, -2.4F)
     );
     Item BRONZE_AXE = register("bronze_axe", p -> new AxeItem(
-            EMaterials.BRONZE_TOOL, 7.0F, -3.1F, p), new Item.Properties()
+            EMaterials.BRONZE_TOOL, 5.5F, -3.1F, p), new Item.Properties()
     );
     Item BRONZE_SPEAR = register("bronze_spear", Item::new, new Item.Properties()
             .spear(EMaterials.BRONZE_TOOL,
@@ -111,63 +119,93 @@ public interface EItems {
             EMaterials.BRONZE_TOOL, 1.5F, -3.0F, p), new Item.Properties()
     );
     Item BRONZE_HOE = register("bronze_hoe", p -> new HoeItem(
-            EMaterials.BRONZE_TOOL, -1.0F, -1.0F, p), new Item.Properties()
+            EMaterials.BRONZE_TOOL, -2.5F, -1.0F, p), new Item.Properties()
     );
 
     Item RAW_SILVER = register("raw_silver", Item::new, new Item.Properties());
     Item SILVER_INGOT = register("silver_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.SILVER));
     Item SILVER_NUGGET = register("silver_nugget", Item::new, new Item.Properties());
 
-    Item NETHERITE_MIX = register("netherite_mix", Item::new, new Item.Properties().fireResistant());
-    Item SOULSTEEL_MIX = register("soulsteel_mix", Item::new, new Item.Properties().fireResistant());
-
     Item SOULSTEEL_INGOT = register("soulsteel_ingot", Item::new, new Item.Properties().fireResistant().trimMaterial(ETrimMaterials.SOULSTEEL));
-    Item SOULSTEEL_HELMET = register("soulsteel_helmet", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
-            EMaterials.SOULSTEEL_ARMOR, ArmorType.HELMET, EquipmentSlotGroup.HEAD,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_HELMET_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
+    Item SOULSTEEL_HELMET = register("soulsteel_helmet", Item::new, new AttributeProperties()
+            .fireResistant()
+            .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.HELMET)
+            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_HELMET_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.HEAD)
     );
-    Item SOULSTEEL_CHESTPLATE = register("soulsteel_chestplate", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
-            EMaterials.SOULSTEEL_ARMOR, ArmorType.CHESTPLATE, EquipmentSlotGroup.CHEST,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_CHESTPLATE_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
+    Item SOULSTEEL_CHESTPLATE = register("soulsteel_chestplate", Item::new, new AttributeProperties()
+            .fireResistant()
+            .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.CHESTPLATE)
+            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_CHESTPLATE_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.CHEST)
     );
-    Item SOULSTEEL_LEGGINGS = register("soulsteel_leggings", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
-                    EMaterials.SOULSTEEL_ARMOR, ArmorType.LEGGINGS, EquipmentSlotGroup.LEGS,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_LEGGINGS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
+    Item SOULSTEEL_LEGGINGS = register("soulsteel_leggings", Item::new, new AttributeProperties()
+            .fireResistant()
+            .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.LEGGINGS)
+            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_LEGGINGS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.LEGS)
     );
-    Item SOULSTEEL_BOOTS = register("soulsteel_boots", AttributeArmorItem::new, AttributeArmorItem.createArmorProperties(
-                    EMaterials.SOULSTEEL_ARMOR, ArmorType.BOOTS, EquipmentSlotGroup.FEET,
-            Attributes.MAX_HEALTH, ArmorAttributes.SOULSTEEL_BOOTS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE).fireResistant()
+    Item SOULSTEEL_BOOTS = register("soulsteel_boots", Item::new, new AttributeProperties()
+            .fireResistant()
+            .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.BOOTS)
+            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_BOOTS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.FEET)
     );
-    Item SOULSTEEL_SWORD = register("soulsteel_sword", Item::new, new Item.Properties().fireResistant()
+    Item SOULSTEEL_SWORD = register("soulsteel_sword", SoulsteelItem::new, new AttributeProperties().fireResistant()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
             .sword(EMaterials.SOULSTEEL_TOOL, 3.0F, -2.4F)
     );
-    Item SOULSTEEL_AXE = register("soulsteel_axe", p -> new AxeItem(
-            EMaterials.SOULSTEEL_TOOL, 5.0F, -3.0F, p), new Item.Properties().fireResistant()
+    Item SOULSTEEL_AXE = register("soulsteel_axe", p -> new SoulsteelAxeItem(
+            EMaterials.SOULSTEEL_TOOL, 5.0F, -3.0F, p), new AttributeProperties().fireResistant()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
     );
-    Item SOULSTEEL_SPEAR = register("soulsteel_spear", Item::new, new Item.Properties().fireResistant()
+    Item SOULSTEEL_SPEAR = register("soulsteel_spear", SoulsteelItem::new, new AttributeProperties().fireResistant()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
             .spear(EMaterials.SOULSTEEL_TOOL,
                     1.10F, 1.14F, 0.45F,
                     2.6F, 9.5F, 6.0F,
                     5.1F, 9.4F, 4.6F
             ));
-    Item SOULSTEEL_PICKAXE = register("soulsteel_pickaxe", Item::new, new Item.Properties().fireResistant()
+    Item SOULSTEEL_PICKAXE = register("soulsteel_pickaxe", SoulsteelItem::new, new AttributeProperties().fireResistant()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
             .pickaxe(EMaterials.SOULSTEEL_TOOL, 1.0F, -2.8F)
     );
-    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", p -> new ShovelItem(
-            EMaterials.SOULSTEEL_TOOL, 1.5F, -3.0F, p), new Item.Properties().fireResistant()
+    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", p -> new SoulsteelShovelItem(
+            EMaterials.SOULSTEEL_TOOL, 1.5F, -3.0F, p), new AttributeProperties().fireResistant()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
     );
-    Item SOULSTEEL_HOE = register("soulsteel_hoe", p -> new HoeItem(
-            EMaterials.SOULSTEEL_TOOL, -4.0F, 0.0F, p), new Item.Properties().fireResistant()
+    Item SOULSTEEL_HOE = register("soulsteel_hoe", p -> new SoulsteelHoeItem(
+            EMaterials.SOULSTEEL_TOOL, -4.0F, 0.0F, p), new AttributeProperties().fireResistant()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
     );
 
     Item FROSTBITE_SPAWN_EGG = register("frostbite_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.FROSTBITE));
     Item WEREWOLF_SPAWN_EGG = register("werewolf_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.WEREWOLF));
     Item VANGUARD_SPAWN_EGG = register("vanguard_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.VANGUARD));
     Item SULFUR_CUBE_SPAWN_EGG = register("sulfur_cube_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.SULFUR_CUBE));
+    Item SUBSLIME_SPAWN_EGG = register("subslime_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.SUBSLIME));
+    Item SWEEPER_SPAWN_EGG = register("sweeper_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.SWEEPER));
+    Item MUD_GOLEM_SPAWN_EGG = register("mud_golem_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.MUD_GOLEM));
 
     Item VANGUARD_MASK = register("vanguard_mask", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.VANGUARD_MASK, ArmorType.HELMET)
+            .component(DataComponents.ATTRIBUTE_MODIFIERS,
+                    ItemAttributeModifiers.builder().add(Attributes.ARMOR, new AttributeModifier(
+                            Identifier.fromNamespaceAndPath(Elsewhere.MODID, "vanguard_mask_night_vision"),
+                                            0.0, AttributeModifier.Operation.ADD_VALUE),
+                                    EquipmentSlotGroup.HEAD, ItemAttributeModifiers.Display.override(
+                                            Component.translatable("item.elsewhere.vanguard_mask.night_vision").withStyle(ChatFormatting.BLUE)))
+                            .build()
+            )
     );
+    Item SULFUR_CREAM = register("sulfur_cream", Item::new, new Item.Properties());
+    Item SUBSLIME_CLUSTER = register("subslime_cluster", Item::new, new Item.Properties());
 
     Item PERCH_SPAWN_EGG = register("perch_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.PERCH));
 

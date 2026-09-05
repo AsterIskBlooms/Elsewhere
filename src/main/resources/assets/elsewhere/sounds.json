@@ -487,27 +487,137 @@
   "entity.frostbite.idle": {
     "subtitle": "subtitles.elsewhere.entity.frostbite.idle",
     "sounds": [
-      "elsewhere:entity/frostbite/idle1",
-      "elsewhere:entity/frostbite/idle2",
-      "elsewhere:entity/frostbite/idle3",
-      "elsewhere:entity/frostbite/idle4"
+      "elsewhere:mob/frostbite/idle1",
+      "elsewhere:mob/frostbite/idle2",
+      "elsewhere:mob/frostbite/idle3",
+      "elsewhere:mob/frostbite/idle4"
     ]
   },
   "entity.frostbite.hurt": {
     "subtitle": "subtitles.elsewhere.entity.frostbite.hurt",
     "sounds": [
-      "elsewhere:entity/frostbite/hurt1",
-      "elsewhere:entity/frostbite/hurt2",
-      "elsewhere:entity/frostbite/hurt3"
+      "elsewhere:mob/frostbite/hurt1",
+      "elsewhere:mob/frostbite/hurt2",
+      "elsewhere:mob/frostbite/hurt3"
     ]
   },
   "entity.frostbite.death": {
     "subtitle": "subtitles.elsewhere.entity.frostbite.death",
     "sounds": [
-      "elsewhere:entity/frostbite/death1",
-      "elsewhere:entity/frostbite/death2"
+      "elsewhere:mob/frostbite/death1",
+      "elsewhere:mob/frostbite/death2"
     ]
   },
+
+  "entity.sulfur_cube.jump": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.jump",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/jump1",
+      "elsewhere:mob/sulfur_cube/jump2",
+      "elsewhere:mob/sulfur_cube/jump3",
+      "elsewhere:mob/sulfur_cube/jump4",
+      "elsewhere:mob/sulfur_cube/jump5",
+      "elsewhere:mob/sulfur_cube/jump6",
+      "elsewhere:mob/sulfur_cube/jump7",
+      "elsewhere:mob/sulfur_cube/jump8",
+      "elsewhere:mob/sulfur_cube/jump9",
+      "elsewhere:mob/sulfur_cube/jump10",
+      "elsewhere:mob/sulfur_cube/jump11"
+    ]
+  },
+  "entity.sulfur_cube.squish": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.squish",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/squish1",
+      "elsewhere:mob/sulfur_cube/squish2",
+      "elsewhere:mob/sulfur_cube/squish3",
+      "elsewhere:mob/sulfur_cube/squish4",
+      "elsewhere:mob/sulfur_cube/squish5",
+      "elsewhere:mob/sulfur_cube/squish6",
+      "elsewhere:mob/sulfur_cube/squish7",
+      "elsewhere:mob/sulfur_cube/squish8",
+      "elsewhere:mob/sulfur_cube/squish9",
+      "elsewhere:mob/sulfur_cube/squish10",
+      "elsewhere:mob/sulfur_cube/squish11"
+    ]
+  },
+  "entity.sulfur_cube.attack": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.attack",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/attack1",
+      "elsewhere:mob/sulfur_cube/attack2"
+    ]
+  },
+  "entity.sulfur_cube.hurt": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.hurt",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/hurt1",
+      "elsewhere:mob/sulfur_cube/hurt2",
+      "elsewhere:mob/sulfur_cube/hurt3",
+      "elsewhere:mob/sulfur_cube/hurt4"
+    ]
+  },
+  "entity.sulfur_cube.absorb": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.absorb",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/absorb1",
+      "elsewhere:mob/sulfur_cube/absorb2"
+    ]
+  },
+  "entity.sulfur_cube.death": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.death",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/death"
+    ]
+  },
+
+  "entity.sulfur_cube.small.jump": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.jump",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/small/jump1",
+      "elsewhere:mob/sulfur_cube/small/jump2",
+      "elsewhere:mob/sulfur_cube/small/jump3",
+      "elsewhere:mob/sulfur_cube/small/jump4",
+      "elsewhere:mob/sulfur_cube/small/jump5",
+      "elsewhere:mob/sulfur_cube/small/jump6",
+      "elsewhere:mob/sulfur_cube/small/jump7",
+      "elsewhere:mob/sulfur_cube/small/jump8",
+      "elsewhere:mob/sulfur_cube/small/jump9",
+      "elsewhere:mob/sulfur_cube/small/jump10",
+      "elsewhere:mob/sulfur_cube/small/jump11"
+    ]
+  },
+  "entity.sulfur_cube.small.squish": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.squish",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/small/squish1",
+      "elsewhere:mob/sulfur_cube/small/squish2",
+      "elsewhere:mob/sulfur_cube/small/squish3",
+      "elsewhere:mob/sulfur_cube/small/squish4",
+      "elsewhere:mob/sulfur_cube/small/squish5",
+      "elsewhere:mob/sulfur_cube/small/squish6",
+      "elsewhere:mob/sulfur_cube/small/squish7",
+      "elsewhere:mob/sulfur_cube/small/squish8",
+      "elsewhere:mob/sulfur_cube/small/squish9",
+      "elsewhere:mob/sulfur_cube/small/squish10"
+    ]
+  },
+  "entity.sulfur_cube.small.hurt": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.hurt",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/small/hurt1",
+      "elsewhere:mob/sulfur_cube/small/hurt2",
+      "elsewhere:mob/sulfur_cube/small/hurt3",
+      "elsewhere:mob/sulfur_cube/small/hurt4"
+    ]
+  },
+  "entity.sulfur_cube.small.death": {
+    "subtitle": "subtitles.elsewhere.entity.sulfur_cube.death",
+    "sounds": [
+      "elsewhere:mob/sulfur_cube/small/death"
+    ]
+  },
+
   "entity.perch.flop": {
     "subtitle": "subtitles.elsewhere.entity.perch.flop",
     "sounds": [

@@ -12,8 +12,7 @@ import net.minecraft.util.Mth;
 import team.lookingglass.elsewhere.Elsewhere;
 
 public class PerchModel extends EntityModel<LivingEntityRenderState> {
-    public static final ModelLayerLocation LAYER_LOCATION =
-            new ModelLayerLocation(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "perch"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "perch"), "main");
 
     private final ModelPart body;
     private final ModelPart head;

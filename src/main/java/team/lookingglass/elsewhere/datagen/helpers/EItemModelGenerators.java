@@ -14,8 +14,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
-import team.lookingglass.elsewhere.registry.trim.EEquipmentAssets;
-import team.lookingglass.elsewhere.registry.trim.ETrimMaterials;
+import team.lookingglass.elsewhere.registry.equipment.EEquipmentAssets;
+import team.lookingglass.elsewhere.registry.equipment.ETrimMaterials;
 
 import java.util.ArrayList;
 import java.util.List;

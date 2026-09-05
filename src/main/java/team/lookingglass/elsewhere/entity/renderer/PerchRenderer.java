@@ -1,12 +1,11 @@
 package team.lookingglass.elsewhere.entity.renderer;
 
-import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.entity.mob.Perch;
+import team.lookingglass.elsewhere.entity.mob.creature.Perch;
 import team.lookingglass.elsewhere.entity.model.PerchModel;
 
 public class PerchRenderer extends MobRenderer<Perch, LivingEntityRenderState, PerchModel> {

@@ -23,11 +23,11 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.GameEvent.Context;
 import net.minecraft.world.level.material.Fluids;
 import org.jspecify.annotations.Nullable;
-import team.lookingglass.elsewhere.registry.EBlockEntityTypes;
-import team.lookingglass.elsewhere.registry.properties.EBlockStateProperties;
+import team.lookingglass.elsewhere.registry.util.EBlockEntityTypes;
+import team.lookingglass.elsewhere.registry.util.EBlockStateProperties;
 import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.ESounds;
-import team.lookingglass.elsewhere.registry.properties.blockstates.PotentSulfurState;
+import team.lookingglass.elsewhere.registry.blocktypes.blockstates.PotentSulfurState;
 import static team.lookingglass.elsewhere.registry.util.BlockEntityTickers.andThen;
 
 public class PotentSulfurBlock extends BaseEntityBlock {

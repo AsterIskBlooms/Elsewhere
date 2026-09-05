@@ -5,7 +5,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.CaveFeatures;
 import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.TreePlacements;
@@ -49,27 +51,22 @@ public class EConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUEBONNET_KEY = registerKey("bluebonnet");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUEBONNET_DENSE_KEY = registerKey("bluebonnet_dense");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> HIBISCUS_KEY = registerKey("hibiscus");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RED_GRASS = registerKey("red_grass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TUNDRA_RED_VEGETATION_KEY = registerKey("tundra_red_grass_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TUNDRA_GREEN_VEGETATION_KEY = registerKey("tundra_green_grass_patch");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMETHYST_NODE_KEY = registerKey("amethyst_node");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> ICICLE_KEY = registerKey("icicle");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ICICLE_CLUSTER_KEY = registerKey("icicle_cluster");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_SPIKE_KEY = registerKey("sulfur_spike");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_SPIKE_CLUSTER_KEY = registerKey("sulfur_spike_cluster");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> SULFUR_POOL_KEY = registerKey("sulfur_pool");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BEJEWELED_CALCITE_KEY = registerKey("bejeweled_calcite");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_ORE_KEY = registerKey("silver_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_ORE_SMALL_KEY = registerKey("silver_ore_small");
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE_KEY = registerKey("tin_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE_LARGE_KEY = registerKey("tin_ore_large");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE_SMALL_KEY = registerKey("tin_ore_small");
@@ -104,7 +101,9 @@ public class EConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> RED_POPLAR_KEY = registerKey("red_poplar_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_POPLAR_KEY = registerKey("orange_poplar_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> YELLOW_POPLAR_KEY = registerKey("yellow_poplar_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_POPLAR = registerKey("fallen_poplar");
     public static final ResourceKey<ConfiguredFeature<?, ?>> RANDOM_POPLAR_KEY = registerKey("random_poplar_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DAPPLED_FOREST_TREES = registerKey("dappled_forest_trees");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_CACTUS = registerKey("tall_cactus");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHORT_CACTUS = registerKey("short_cactus");
@@ -119,6 +118,9 @@ public class EConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> RUSTY_MOSS_VEGETATION = registerKey("rusty_moss_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> RUSTY_MOSS_PATCH_KEY = registerKey("rusty_moss_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> RUSTY_MOSS_PATCH_BONEMEAL = registerKey("rusty_moss_patch_bonemeal");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MOSSY_MUD_VEGETATION = registerKey("mossy_mud_vegetation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MOSSY_MUD_PATCH_KEY = registerKey("mossy_mud_patch");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BEACHSTONE_ROCK_KEY = registerKey("beachstone_rock");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROCKWEED_BASALT_PATCH_KEY = registerKey("rockweed_basalt_patch");
@@ -188,6 +190,8 @@ public class EConfiguredFeatures {
                         6, 3, 7, 5,
                         Direction.DOWN, 1
                 ));
+
+        FeatureUtils.register(context, RED_GRASS, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(EBlocks.SHORT_RED_GRASS)));
 
         FeatureUtils.register(context, TUNDRA_RED_VEGETATION_KEY, EFeatures.BLOCK_PATCH,
                 new BlockPatchConfiguration(
@@ -322,7 +326,7 @@ public class EConfiguredFeatures {
                 new CherryFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(4),
                         0.25F, 0.75F, 0.22F, 0.08F),
                 new TwoLayersFeatureSize(4, 0, 5)
-        ).build());
+        ).decorators(List.of(beehive)).build());
         FeatureUtils.register(context, ORANGE_POPLAR_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(EBlocks.POPLAR_LOG),
                 new ForkingTrunkPlacer(4, 2, 3),
@@ -330,7 +334,7 @@ public class EConfiguredFeatures {
                 new CherryFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(4),
                         0.25F, 0.75F, 0.22F, 0.08F),
                 new TwoLayersFeatureSize(4, 0, 5)
-        ).build());
+        ).decorators(List.of(beehive)).build());
         FeatureUtils.register(context, YELLOW_POPLAR_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(EBlocks.POPLAR_LOG),
                 new ForkingTrunkPlacer(4, 2, 3),
@@ -338,7 +342,9 @@ public class EConfiguredFeatures {
                 new CherryFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(4),
                         0.25F, 0.75F, 0.22F, 0.08F),
                 new TwoLayersFeatureSize(4, 0, 5)
-        ).build());
+        ).decorators(List.of(beehive)).build());
+        FeatureUtils.register(context, FALLEN_POPLAR, Feature.FALLEN_TREE, new FallenTreeConfiguration.FallenTreeConfigurationBuilder(
+                BlockStateProvider.simple(EBlocks.POPLAR_LOG), UniformInt.of(4, 6)).build());
 
         FeatureUtils.register(context, RANDOM_POPLAR_KEY, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfiguration(
@@ -347,6 +353,16 @@ public class EConfiguredFeatures {
                                 new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(YELLOW_POPLAR_KEY)), 0.33F)
                         ),
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(ORANGE_POPLAR_KEY))
+                )
+        );
+
+        FeatureUtils.register(context, DAPPLED_FOREST_TREES, Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(
+                        List.of(
+                                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(TreeFeatures.SPRUCE)), 0.05F),
+                                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(FALLEN_POPLAR)), 0.025F)
+                        ),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(RANDOM_POPLAR_KEY))
                 )
         );
 
@@ -487,8 +503,9 @@ public class EConfiguredFeatures {
         FeatureUtils.register(context, FLOWER_FOREST_TREES_KEY, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfiguration(List.of(
                         new WeightedPlacedFeature(placedFeatures.getOrThrow(TreePlacements.FALLEN_BIRCH_TREE), 0.0025F),
-                        new WeightedPlacedFeature(placedFeatures.getOrThrow(TreePlacements.BIRCH_BEES_002), 0.2F),
-                        new WeightedPlacedFeature(placedFeatures.getOrThrow(TreePlacements.FANCY_OAK_BEES_002), 0.1F),
+                        new WeightedPlacedFeature(placedFeatures.getOrThrow(TreePlacements.BIRCH_BEES_002), 0.18F),
+                        new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(GILDED_BIRCH)), 0.1F),
+                        new WeightedPlacedFeature(placedFeatures.getOrThrow(TreePlacements.FANCY_OAK_BEES_002), 0.12F),
                         new WeightedPlacedFeature(placedFeatures.getOrThrow(TreePlacements.CHERRY_BEES_005), 0.15F)
                 ), placedFeatures.getOrThrow(TreePlacements.OAK_BEES_002))
         );
@@ -570,6 +587,23 @@ public class EConfiguredFeatures {
                         CaveSurface.FLOOR, ConstantInt.of(1),
                         0.0F, 5, 0.6F,
                         UniformInt.of(1, 2), 0.75F
+                ));
+
+        FeatureUtils.register(context, MOSSY_MUD_VEGETATION, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(new WeightedStateProvider(
+                        WeightedList.<BlockState>builder()
+                                .add(Blocks.MOSS_CARPET.defaultBlockState(), 18)
+                                .add(EBlocks.SHORT_MOSS_SPOROPHYTE.defaultBlockState(), 40)
+                                .add(EBlocks.TALL_MOSS_SPOROPHYTE.defaultBlockState(), 10)
+                )));
+        FeatureUtils.register(context, MOSSY_MUD_PATCH_KEY, Feature.VEGETATION_PATCH,
+                new VegetationPatchConfiguration(
+                        BlockTags.MUD,
+                        BlockStateProvider.simple(EBlocks.MOSSY_MUD),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(MOSSY_MUD_VEGETATION)),
+                        CaveSurface.FLOOR, ConstantInt.of(1),
+                        0.0F, 5, 0.35F,
+                        UniformInt.of(5, 9), 0.3F
                 ));
 
         FeatureUtils.register(context, BEACHSTONE_ROCK_KEY, EFeatures.BLOCK_COLUMN_CLUSTER,

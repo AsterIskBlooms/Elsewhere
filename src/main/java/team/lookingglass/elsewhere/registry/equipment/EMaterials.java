@@ -23,19 +23,19 @@ public interface EMaterials {
 
     ToolMaterial BRONZE_TOOL = new ToolMaterial(
             EBlockTags.INCORRECT_FOR_BRONZE_TOOL,
-            150,
-            5F,
-            1F,
-            18,
+            455,
+            7F,
+            2.5F,
+            11,
             EItemTags.REPAIRS_BRONZE_ARMOR
     );
     ArmorMaterial BRONZE_ARMOR = new ArmorMaterial(
-            7,
-            makeDefense(2, 4, 3, 1),
-            15,
+            21,
+            makeDefense(2, 6, 5, 2),
+            11,
             SoundEvents.ARMOR_EQUIP_GOLD,
-            0F,
-            0.0F,
+            2F,
+            0.05F,
             EItemTags.REPAIRS_BRONZE_ARMOR,
             BRONZE_ARMOR_KEY
     );
@@ -57,7 +57,7 @@ public interface EMaterials {
             16,
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             2F,
-            0.00F,
+            0.0F,
             EItemTags.REPAIRS_SOULSTEEL_ARMOR,
             SOULSTEEL_ARMOR_KEY
     );
@@ -66,11 +66,11 @@ public interface EMaterials {
             Identifier.fromNamespaceAndPath(Elsewhere.MODID, "vanguard_mask"));
     ArmorMaterial VANGUARD_MASK = new ArmorMaterial(
             18,
-            Maps.newEnumMap(Map.of(ArmorType.HELMET, 3)),
+            Maps.newEnumMap(Map.of(ArmorType.HELMET, 0)),
             12,
             SoundEvents.ARMOR_EQUIP_WOLF,
             0F,
-            0.00F,
+            0.0F,
             EItemTags.REPAIRS_VANGUARD_MASK,
             VANGUARD_MASK_KEY
     );

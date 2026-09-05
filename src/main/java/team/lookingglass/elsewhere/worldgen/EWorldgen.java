@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
@@ -38,189 +37,107 @@ public class EWorldgen {
         );
 
         // Basic Features
-        BiomeModifications.addFeature(
-                ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD) && !ctx.hasTag(BiomeTags.IS_OCEAN),
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.PEBBLE
-        );
-        BiomeModifications.addFeature(
-                ctx -> forestRockBiomes.contains(ctx.getBiomeKey()),
-                GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.FOREST_ROCK_SPARSE
-        );
-        BiomeModifications.addFeature(
-                ctx -> meadowRockBiomes.contains(ctx.getBiomeKey()),
-                GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.MEADOW_ROCK
-        );
+        BiomeModifications.addFeature(ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD) && !ctx.hasTag(BiomeTags.IS_OCEAN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.PEBBLE);
+        BiomeModifications.addFeature(ctx -> forestRockBiomes.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.FOREST_ROCK_SPARSE);
+        BiomeModifications.addFeature(ctx -> meadowRockBiomes.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.MEADOW_ROCK);
+
+        // Ores
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.TIN_ORE);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.TIN_ORE_LARGE);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.TIN_ORE_SMALL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.SILVER_ORE);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.SILVER_ORE_SMALL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.BEJEWELED_CALCITE);
 
         // Hibiscus
-        List<ResourceKey<Biome>> hibiscusBiomes = List.of(
-                Biomes.JUNGLE, Biomes.BAMBOO_JUNGLE
-        );
-
-        BiomeModifications.addFeature(
-                ctx -> hibiscusBiomes.contains(ctx.getBiomeKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.HIBISCUS_JUNGLE
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.SPARSE_JUNGLE,
-                GenerationStep.Decoration.VEGETAL_DECORATION,
-                EPlacedFeatures.HIBISCUS_SPARSE_JUNGLE
-        );
+        List<ResourceKey<Biome>> hibiscusBiomes = List.of(Biomes.JUNGLE, Biomes.BAMBOO_JUNGLE);
+        BiomeModifications.addFeature(ctx -> hibiscusBiomes.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.HIBISCUS_JUNGLE);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.SPARSE_JUNGLE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.HIBISCUS_SPARSE_JUNGLE);
 
         // Bluebonnets
         List<ResourceKey<Biome>> bluebonnetBiomes = List.of(
                 Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU,
                 Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_GRAVELLY_HILLS, Biomes.WINDSWEPT_FOREST
         );
-        BiomeModifications.addFeature(
-                ctx -> bluebonnetBiomes.contains(ctx.getBiomeKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BLUEBONNET
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BLUEBONNET_DENSE
-        );
+        BiomeModifications.addFeature(ctx -> bluebonnetBiomes.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BLUEBONNET);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BLUEBONNET_DENSE);
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.DESERT,
-                GenerationStep.Decoration.RAW_GENERATION, EPlacedFeatures.DESERT_ROCKS
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.DESERT,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_DIRT_PATCH
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.DESERT,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_SHORT_CACTUS
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.DESERT,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_TALL_CACTUS
-        );
+        // Desert
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.DESERT,
+                GenerationStep.Decoration.RAW_GENERATION, EPlacedFeatures.DESERT_ROCKS);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.DESERT,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_DIRT_PATCH);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.DESERT,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_SHORT_CACTUS);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.DESERT,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DESERT_TALL_CACTUS);
 
-        List<ResourceKey<Biome>> beaches = List.of(
-                Biomes.BEACH, Biomes.SNOWY_BEACH
-        );
-        BiomeModifications.addFeature(
-                ctx -> beaches.contains(ctx.getBiomeKey()),
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DENSE_DRY_GRASS
-        );
-        BiomeModifications.addFeature(
-                ctx -> beaches.contains(ctx.getBiomeKey()),
-                GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.BEACHSTONE_ROCKS
-        );
-
-        // Calcite Ores
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.BEJEWELED_CALCITE
-        );
-
-        // Silver Ores
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.SILVER_ORE
-        );
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.SILVER_ORE_SMALL
-        );
-
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.TIN_ORE
-        );
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.TIN_ORE_LARGE
-        );
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES, EPlacedFeatures.TIN_ORE_SMALL
-        );
+        // Beach
+        List<ResourceKey<Biome>> beaches = List.of(Biomes.BEACH, Biomes.SNOWY_BEACH);
+        BiomeModifications.addFeature(ctx -> beaches.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.DENSE_DRY_GRASS);
+        BiomeModifications.addFeature(ctx -> beaches.contains(ctx.getBiomeKey()),
+                GenerationStep.Decoration.LOCAL_MODIFICATIONS, EPlacedFeatures.BEACHSTONE_ROCKS);
 
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.LUKEWARM_OCEAN,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_EXTRA
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.LUKEWARM_OCEAN,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_MID_EXTRA
-        );
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.DEEP_LUKEWARM_OCEAN,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_EXTRA
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.DEEP_LUKEWARM_OCEAN,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_MID_EXTRA
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.DEEP_LUKEWARM_OCEAN,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.KELP_CLUSTER
-        );
+        // Oceans
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.LUKEWARM_OCEAN,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_EXTRA);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.LUKEWARM_OCEAN,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_MID_EXTRA);
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.JUNGLE,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.JUNGLE_TREES
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.BAMBOO_JUNGLE,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BAMBOO_JUNGLE_TREES
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.SPARSE_JUNGLE,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SPARSE_JUNGLE_TREES
-        );
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.DEEP_LUKEWARM_OCEAN,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_EXTRA);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.DEEP_LUKEWARM_OCEAN,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SEAGRASS_MID_EXTRA);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.DEEP_LUKEWARM_OCEAN,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.KELP_CLUSTER);
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.FLOWER_FOREST,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.FLOWER_FOREST_TREES
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.FLOWER_FOREST,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.FLOWER_FOREST_WILDFLOWERS
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.CHERRY_GROVE,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CHERRY_GROVE_BAMBOO
-        );
+        // Jungles
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.JUNGLE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.JUNGLE_TREES);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.BAMBOO_JUNGLE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BAMBOO_JUNGLE_TREES);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.SPARSE_JUNGLE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SPARSE_JUNGLE_TREES);
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.BIRCH_FOREST,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BIRCH_TREES
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.OLD_GROWTH_BIRCH_FOREST,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.OLD_GROWTH_BIRCH_TREES
-        );
+        // Flower Forests
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.FLOWER_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.FLOWER_FOREST_TREES);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.FLOWER_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.FLOWER_FOREST_WILDFLOWERS);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.CHERRY_GROVE,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CHERRY_GROVE_BAMBOO);
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RAINFOREST_MAHOGANY
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.RAINFOREST_SHRUB
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CHERRY_GROVE_BAMBOO
-        );
+        // Birch Forests
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.BIRCH_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.BIRCH_TREES);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.OLD_GROWTH_BIRCH_FOREST,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.OLD_GROWTH_BIRCH_TREES);
 
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.SWAMP,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_CATTAILS
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.SWAMP,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_GRASS
-        );
-        BiomeModifications.addFeature(
-                ctx -> ctx.getBiomeKey() == Biomes.MANGROVE_SWAMP,
-                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_CATTAILS
-        );
+        // Windswept Savanna
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.WINDSWEPT_MAHOGANY);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.WINDSWEPT_SHRUB);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.WINDSWEPT_SAVANNA,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.CHERRY_GROVE_BAMBOO);
+
+        // Swamps
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.SWAMP,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_CATTAILS);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.SWAMP,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_GRASS);
+        BiomeModifications.addFeature(ctx -> ctx.getBiomeKey() == Biomes.MANGROVE_SWAMP,
+                GenerationStep.Decoration.VEGETAL_DECORATION, EPlacedFeatures.SWAMP_CATTAILS);
 
 
 
@@ -231,81 +148,47 @@ public class EWorldgen {
 
                 if (!id.equals(Identifier.withDefaultNamespace("overworld"))) return;
 
-                SurfaceRules.RuleSource stoneCliffsRule = SurfaceRules.ifTrue(
-                        SurfaceRules.abovePreliminarySurface(),
-                        SurfaceRules.ifTrue(SurfaceRules.steep(),
-                                SurfaceRules.state(Blocks.STONE.defaultBlockState())
-                        )
-                );
-                SurfaceRules.RuleSource limestoneCliffsRule = SurfaceRules.ifTrue(
-                        SurfaceRules.abovePreliminarySurface(),
-                        SurfaceRules.ifTrue(SurfaceRules.steep(),
-                                SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState())
-                        )
-                );
-                SurfaceRules.RuleSource sandstoneCliffsRule = SurfaceRules.ifTrue(
-                        SurfaceRules.abovePreliminarySurface(),
-                        SurfaceRules.ifTrue(SurfaceRules.steep(),
-                                SurfaceRules.sequence(
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())),
-                                        SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState()))
-                                )
-                        )
-                );
-                SurfaceRules.RuleSource sandstoneRedCliffsRule = SurfaceRules.ifTrue(
-                        SurfaceRules.abovePreliminarySurface(),
-                        SurfaceRules.ifTrue(SurfaceRules.steep(),
-                                SurfaceRules.sequence(
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                            SurfaceRules.state(Blocks.RED_SAND.defaultBlockState())),
-                                        SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.RED_SANDSTONE.defaultBlockState()))
-                                )
-                        )
-                );
-                SurfaceRules.RuleSource sandstonePinkCliffsRule = SurfaceRules.ifTrue(
-                        SurfaceRules.abovePreliminarySurface(),
-                        SurfaceRules.ifTrue(SurfaceRules.steep(),
-                                SurfaceRules.sequence(
-                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.state(EBlocks.PINK_SAND.defaultBlockState())),
-                                        SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR,
-                                                SurfaceRules.state(EBlocks.PINK_SANDSTONE.defaultBlockState()))
-                                )
-                        )
-                );
+                SurfaceRules.RuleSource stoneCliffsRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(), SurfaceRules.state(Blocks.STONE.defaultBlockState())));
+
+                SurfaceRules.RuleSource limestoneCliffsRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(), SurfaceRules.state(EBlocks.LIMESTONE.defaultBlockState())));
+
+                SurfaceRules.RuleSource sandstoneCliffsRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(), SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(Blocks.SAND.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR, SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())))));
+
+                SurfaceRules.RuleSource sandstoneRedCliffsRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(), SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(Blocks.RED_SAND.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR, SurfaceRules.state(Blocks.RED_SANDSTONE.defaultBlockState())))));
+
+                SurfaceRules.RuleSource sandstonePinkCliffsRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(), SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(EBlocks.PINK_SAND.defaultBlockState())),
+                                SurfaceRules.ifTrue(SurfaceRules.VERY_DEEP_UNDER_FLOOR, SurfaceRules.state(EBlocks.PINK_SANDSTONE.defaultBlockState())))));
+
+                SurfaceRules.RuleSource badlandsCliffRule = SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(SurfaceRules.steep(), SurfaceRules.bandlands()));
 
 
                 SurfaceRules.RuleSource biomeCliffRules = SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.isBiome(
-                                        Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW, Biomes.SNOWY_PLAINS,
-                                        Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.DARK_FOREST, Biomes.CHERRY_GROVE,
-                                        Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.GROVE,
-                                        Biomes.TAIGA, Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA,
-                                        EBiomes.DAPPLED_FOREST,
-                                        Biomes.SWAMP, Biomes.MANGROVE_SWAMP,
-                                        Biomes.JUNGLE, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE,
-                                        Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU, Biomes.WINDSWEPT_SAVANNA,
-                                        Biomes.STONY_SHORE, Biomes.BEACH, Biomes.SNOWY_BEACH,
-                                        Biomes.ICE_SPIKES
-                                ),
-                                stoneCliffsRule
-                        ),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.isBiome(
-                                        Biomes.DESERT
-                                ),
-                                sandstoneCliffsRule
-                        ),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.isBiome(
-                                        EBiomes.OUTBACK
-                                ),
-                                sandstoneRedCliffsRule
-                        )
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(
+                                Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.MEADOW, Biomes.SNOWY_PLAINS,
+                                Biomes.FOREST, Biomes.FLOWER_FOREST, Biomes.DARK_FOREST, Biomes.CHERRY_GROVE,
+                                Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.GROVE,
+                                Biomes.TAIGA, Biomes.SNOWY_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.OLD_GROWTH_PINE_TAIGA,
+                                EBiomes.DAPPLED_FOREST,
+                                Biomes.SWAMP, Biomes.MANGROVE_SWAMP,
+                                Biomes.JUNGLE, Biomes.SPARSE_JUNGLE, Biomes.BAMBOO_JUNGLE,
+                                Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU, Biomes.WINDSWEPT_SAVANNA,
+                                Biomes.STONY_SHORE, Biomes.BEACH, Biomes.SNOWY_BEACH,
+                                Biomes.ICE_SPIKES
+                        ), stoneCliffsRule),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(Biomes.DESERT), sandstoneCliffsRule),
+                        SurfaceRules.ifTrue(SurfaceRules.isBiome(
+                                Biomes.BADLANDS, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS), badlandsCliffRule)
                 );
 
                 SurfaceRules.RuleSource shaleRule = SurfaceRules.ifTrue(
@@ -404,6 +287,7 @@ public class EWorldgen {
                 SurfaceRules.RuleSource outbackRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.OUTBACK),
                         prelimAndWaterCheck(
                                 SurfaceRules.sequence(
+                                        sandstoneRedCliffsRule,
                                         // On Floor
                                         SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
                                                 SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.3),
@@ -536,6 +420,33 @@ public class EWorldgen {
                                                 SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState()))
                                 )));
 
+                SurfaceRules.RuleSource rainforestRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.CLOUD_FOREST),
+                        prelimAndWaterCheck(
+                                SurfaceRules.sequence(
+                                        badlandsCliffRule,
+                                        // Mud Surface
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, 0.15, 1.0),
+                                                        SurfaceRules.state(Blocks.MUD.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -1.0, -0.15),
+                                                        SurfaceRules.state(Blocks.MUD.defaultBlockState()))),
+
+                                        // Badlands Strips
+                                        SurfaceRules.bandlands()
+                                )));
+
+                SurfaceRules.RuleSource dappledForestRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.DAPPLED_FOREST),
+                        prelimAndWaterCheck(
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, 0.45, 1.0),
+                                                        SurfaceRules.state(Blocks.PODZOL.defaultBlockState()))),
+                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.PATCH, -1.0, -0.45),
+                                                        SurfaceRules.state(Blocks.PODZOL.defaultBlockState())))
+                                )));
+
                 SurfaceRules.RuleSource tundraRules = SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.TUNDRA),
                         prelimAndWaterCheck(
                                 SurfaceRules.sequence(
@@ -598,19 +509,6 @@ public class EWorldgen {
                         ));
 
                 SurfaceRules.RuleSource riverRules = SurfaceRules.sequence(
-                                SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.WARM_RIVER),
-                                        SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
-                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())),
-                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                                SurfaceRules.state(Blocks.SANDSTONE.defaultBlockState())))),
-                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
-                                                        SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
-                                                                SurfaceRules.state(Blocks.RED_SAND.defaultBlockState()))),
-                                                SurfaceRules.ifTrue(SurfaceRules.not(SurfaceRules.waterBlockCheck(0, 0)),
-                                                        SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR,
-                                                                SurfaceRules.state(Blocks.RED_SANDSTONE.defaultBlockState()))))),
-
                                 SurfaceRules.ifTrue(SurfaceRules.isBiome(EBiomes.LUKEWARM_RIVER),
                                         SurfaceRules.sequence(prelimAndWaterCheck(SurfaceRules.sequence(stoneCliffsRule,
                                                         SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR,
@@ -781,8 +679,8 @@ public class EWorldgen {
                                 tidepoolRules, coldBeachRules, frozenBeachRules,
 
                                 shrublandRules, cedarForestRules, steppeRules,
-                                outbackRules, lushDesertRules,
-                                tundraRules,
+                                outbackRules, lushDesertRules, rainforestRules,
+                                tundraRules, dappledForestRules,
 
                                 crystalCavernRules, sulfurCaveRules, aridCaveRules, frigidCaveRules,
                                 volcanicDepthsRules,

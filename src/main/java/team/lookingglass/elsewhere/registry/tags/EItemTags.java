@@ -23,8 +23,5 @@ public interface EItemTags {
     TagKey<Item> SOULSTEEL_TOOLS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "soulsteel_tools"));
     TagKey<Item> SOULSTEEL_EQUIPMENT = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "soulsteel_equipment"));
 
-    TagKey<Item> COPPER_MATERIALS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "copper_materials"));
-    TagKey<Item> TIN_MATERIALS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "tin_materials"));
-
     static void initialize() {}
 }

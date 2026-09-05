@@ -43,11 +43,13 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
         valueLookupBuilder(BlockTags.DIRT).add(
                 EBlocks.ARID_DIRT, EBlocks.ARID_GRASS_BLOCK,
                 EBlocks.RED_GRASS_BLOCK,
-                EBlocks.LATERITE, EBlocks.MOSSY_MUD
+                EBlocks.LATERITE,
+                Blocks.MUD, EBlocks.MOSSY_MUD
         );
         valueLookupBuilder(BlockTags.GRASS_BLOCKS).add(
                 EBlocks.ARID_GRASS_BLOCK, EBlocks.RED_GRASS_BLOCK, EBlocks.SEAGRASS_SAND
         );
+        valueLookupBuilder(BlockTags.MUD).add(Blocks.MUD, EBlocks.MOSSY_MUD);
         valueLookupBuilder(BlockTags.SAND).add(EBlocks.PINK_SAND, EBlocks.SEAGRASS_SAND);
         valueLookupBuilder(EBlockTags.SOIL).addTag(BlockTags.DIRT).addTag(BlockTags.GRASS_BLOCKS).addTag(BlockTags.SAND);
 
@@ -207,11 +209,20 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
                         EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.DEEPSLATE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE,
                         EBlocks.TIN_BLOCK, EBlocks.RAW_TIN_BLOCK,
+                        EBlocks.CUT_TIN, EBlocks.CUT_TIN_STAIRS, EBlocks.CUT_TIN_SLAB,
+                        EBlocks.CHISELED_TIN, EBlocks.TIN_BARS,
 
                         EBlocks.BRONZE_BLOCK,
 
                         EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE,
                         EBlocks.SILVER_BLOCK, EBlocks.RAW_SILVER_BLOCK,
+                        EBlocks.POLISHED_SILVER, EBlocks.POLISHED_SILVER_STAIRS, EBlocks.POLISHED_SILVER_SLAB,
+                        EBlocks.CUT_SILVER, EBlocks.CUT_SILVER_STAIRS, EBlocks.CUT_SILVER_SLAB,
+                        EBlocks.SILVER_PILLAR, EBlocks.SILVER_BARS,
+
+                        EBlocks.WROUGHT_IRON_BLOCK, EBlocks.WROUGHT_IRON_STAIRS, EBlocks.WROUGHT_IRON_SLAB,
+                        EBlocks.CUT_WROUGHT_IRON, EBlocks.CUT_WROUGHT_IRON_STAIRS, EBlocks.CUT_WROUGHT_IRON_SLAB,
+                        EBlocks.WROUGHT_IRON_GRATE,
 
                         EBlocks.SOULSTEEL_BLOCK,
 
@@ -257,7 +268,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 ).addTag(EBlockTags.TERRACOTTA_BLOCKS).addTag(EBlockTags.CONCRETE_BLOCKS)
         ;
 
-        // Unlocks Shale
+        // Tool Tiers
         valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .remove(
                         Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.IRON_BLOCK,
@@ -268,40 +279,14 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
         ;
         valueLookupBuilder(EBlockTags.NEEDS_COPPER_TOOL)
                 .add(
-                        EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE,
-                        EBlocks.TIN_BLOCK, EBlocks.RAW_TIN_BLOCK,
-
-                        EBlocks.BRONZE_BLOCK,
-
-                        Blocks.REDSTONE_ORE, EBlocks.SHALE_REDSTONE_ORE, EBlocks.CINNABAR_REDSTONE_ORE,
-
-                        Blocks.LAPIS_ORE, EBlocks.SHALE_LAPIS_ORE, EBlocks.CINNABAR_LAPIS_ORE,
-
-                        EBlocks.SHALE_COAL_ORE, EBlocks.SHALE_COPPER_ORE,
-
-                        EBlocks.SHALE, EBlocks.SHALE_STAIRS, EBlocks.SHALE_SLAB, EBlocks.SHALE_WALL,
-                        EBlocks.COBBLESHALE, EBlocks.COBBLESHALE_STAIRS, EBlocks.COBBLESHALE_SLAB, EBlocks.COBBLESHALE_WALL,
-                        EBlocks.POLISHED_SHALE, EBlocks.POLISHED_SHALE_STAIRS, EBlocks.POLISHED_SHALE_SLAB, EBlocks.POLISHED_SHALE_WALL,
-                        EBlocks.SHALE_BRICKS, EBlocks.SHALE_BRICK_STAIRS, EBlocks.SHALE_BRICK_SLAB, EBlocks.SHALE_BRICK_WALL,
-                        EBlocks.SHALE_TILES, EBlocks.SHALE_TILE_STAIRS, EBlocks.SHALE_TILE_SLAB, EBlocks.SHALE_TILE_WALL,
-                        EBlocks.SHALE_PILLAR, EBlocks.CHISELED_SHALE, EBlocks.CHISELED_SHALE_BRICKS
-                )
-        ;
-        // Unlocks Deepslate & Iron
-        valueLookupBuilder(EBlockTags.NEEDS_BRONZE_TOOL)
-                .add(
                         Blocks.IRON_ORE, EBlocks.SHALE_IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, EBlocks.CINNABAR_IRON_ORE,
                         Blocks.IRON_BLOCK, Blocks.RAW_IRON_BLOCK,
 
-                        Blocks.GOLD_ORE, EBlocks.SHALE_GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, EBlocks.CINNABAR_GOLD_ORE, Blocks.NETHER_GOLD_ORE,
-                        Blocks.GOLD_BLOCK, Blocks.RAW_GOLD_BLOCK,
+                        Blocks.REDSTONE_ORE, EBlocks.SHALE_REDSTONE_ORE, EBlocks.CINNABAR_REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE, Blocks.REDSTONE_BLOCK,
 
-                        EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE,
-                        EBlocks.SILVER_BLOCK, EBlocks.RAW_SILVER_BLOCK,
+                        Blocks.LAPIS_ORE, EBlocks.SHALE_LAPIS_ORE, EBlocks.CINNABAR_LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE,
 
-                        Blocks.EMERALD_ORE, EBlocks.SHALE_EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE, EBlocks.CINNABAR_EMERALD_ORE, Blocks.EMERALD_BLOCK,
-
-                        Blocks.DEEPSLATE_COAL_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.DEEPSLATE_LAPIS_ORE,  Blocks.DEEPSLATE_REDSTONE_ORE, EBlocks.DEEPSLATE_TIN_ORE,
+                        Blocks.DEEPSLATE_COAL_ORE, Blocks.DEEPSLATE_COPPER_ORE,
 
                         Blocks.DEEPSLATE, EBlocks.DEEPSLATE_STAIRS, EBlocks.DEEPSLATE_SLAB, EBlocks.DEEPSLATE_WALL,
                         Blocks.COBBLED_DEEPSLATE, Blocks.COBBLED_DEEPSLATE_STAIRS, Blocks.COBBLED_DEEPSLATE_SLAB, Blocks.COBBLED_DEEPSLATE_WALL,
@@ -311,54 +296,66 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.DEEPSLATE_PILLAR, Blocks.CHISELED_DEEPSLATE, EBlocks.CHISELED_DEEPSLATE_BRICKS
                 )
         ;
-        // Unlocks Gold & Silver
         valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(
+                        EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE, EBlocks.DEEPSLATE_TIN_ORE,
+                        EBlocks.TIN_BLOCK, EBlocks.RAW_TIN_BLOCK,
+
+                        EBlocks.BRONZE_BLOCK,
+
+                        Blocks.GOLD_ORE, EBlocks.SHALE_GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, EBlocks.CINNABAR_GOLD_ORE, Blocks.NETHER_GOLD_ORE,
+                        Blocks.GOLD_BLOCK, Blocks.RAW_GOLD_BLOCK,
+
+                        EBlocks.SILVER_ORE, EBlocks.SHALE_SILVER_ORE, EBlocks.DEEPSLATE_SILVER_ORE, EBlocks.CINNABAR_SILVER_ORE,
+                        EBlocks.SILVER_BLOCK, EBlocks.RAW_SILVER_BLOCK,
+
+                        Blocks.EMERALD_ORE, EBlocks.SHALE_EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE, EBlocks.CINNABAR_EMERALD_ORE, Blocks.EMERALD_BLOCK,
+
                         Blocks.OBSIDIAN, EBlocks.OBSIDIAN_STAIRS, EBlocks.OBSIDIAN_SLAB,
                         EBlocks.OBSIDIAN_BRICKS, EBlocks.OBSIDIAN_BRICK_STAIRS, EBlocks.OBSIDIAN_BRICK_SLAB,
                         EBlocks.OBSIDIAN_PILLAR, EBlocks.CHISELED_OBSIDIAN,
                         Blocks.CRYING_OBSIDIAN, Blocks.RESPAWN_ANCHOR
                 )
-                .remove(
-                        Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE,
-                        Blocks.REDSTONE_ORE,
-                        Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.DIAMOND_BLOCK,
-                        Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE, Blocks.EMERALD_BLOCK
-                )
+                .remove(Blocks.REDSTONE_ORE)
+        ;
+        valueLookupBuilder(EBlockTags.NEEDS_BRONZE_TOOL)
         ;
         valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .remove(
                         Blocks.DIAMOND_ORE, EBlocks.SHALE_DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, EBlocks.CINNABAR_DIAMOND_ORE,
                         Blocks.DIAMOND_BLOCK,
 
-                        Blocks.ANCIENT_DEBRIS, Blocks.NETHERITE_BLOCK, EBlocks.SOULSTEEL_BLOCK,
-
-                        Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.RESPAWN_ANCHOR,
-                        Blocks.ANCIENT_DEBRIS, Blocks.NETHERITE_BLOCK
+                        Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, Blocks.RESPAWN_ANCHOR
                         )
         ;
 
         // Incorrect Tags
+        valueLookupBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
+                .addTag(EBlockTags.NEEDS_COPPER_TOOL)
+                .addTag(BlockTags.NEEDS_IRON_TOOL)
+                .addTag(EBlockTags.NEEDS_BRONZE_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
+        ;
         valueLookupBuilder(BlockTags.INCORRECT_FOR_STONE_TOOL)
                 .addTag(EBlockTags.NEEDS_COPPER_TOOL)
-                .addTag(EBlockTags.NEEDS_BRONZE_TOOL)
                 .addTag(BlockTags.NEEDS_IRON_TOOL)
+                .addTag(EBlockTags.NEEDS_BRONZE_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
         ;
         valueLookupBuilder(BlockTags.INCORRECT_FOR_COPPER_TOOL)
+                .addTag(BlockTags.NEEDS_IRON_TOOL)
                 .addTag(EBlockTags.NEEDS_BRONZE_TOOL)
-                .addTag(BlockTags.NEEDS_IRON_TOOL)
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
-        ;
-        valueLookupBuilder(EBlockTags.INCORRECT_FOR_BRONZE_TOOL)
-                .addTag(BlockTags.NEEDS_IRON_TOOL)
-                .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
-        ;
-        valueLookupBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
-                .addTag(BlockTags.NEEDS_IRON_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
         ;
         valueLookupBuilder(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .addTag(EBlockTags.NEEDS_BRONZE_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
+        ;
+        valueLookupBuilder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
+                .addTag(EBlockTags.NEEDS_BRONZE_TOOL)
+                .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
+        ;
+        valueLookupBuilder(EBlockTags.INCORRECT_FOR_BRONZE_TOOL)
                 .addTag(BlockTags.NEEDS_DIAMOND_TOOL)
         ;
         valueLookupBuilder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)

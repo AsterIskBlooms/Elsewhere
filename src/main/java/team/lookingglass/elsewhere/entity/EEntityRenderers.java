@@ -8,15 +8,14 @@ import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.Identifier;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.entity.model.VanguardModel;
-import team.lookingglass.elsewhere.entity.model.PerchModel;
-import team.lookingglass.elsewhere.entity.model.SulfurCubeModel;
+import team.lookingglass.elsewhere.entity.model.*;
 import team.lookingglass.elsewhere.entity.renderer.*;
 
 public class EEntityRenderers {
     public static void register() {
         EntityRenderers.register(EEntities.FROSTBITE, FrostbiteRenderer::new);
 
+        ModelLayerRegistry.registerModelLayer(WerewolfModel.LAYER_LOCATION, WerewolfModel::createBodyLayer);
         EntityRenderers.register(EEntities.WEREWOLF, WerewolfRenderer::new);
 
         ModelLayerRegistry.registerModelLayer(VanguardModel.LAYER_LOCATION, VanguardModel::createBodyLayer);
@@ -28,7 +27,17 @@ public class EEntityRenderers {
         EntityRenderers.register(EEntities.VANGUARD, VanguardRenderer::new);
 
         ModelLayerRegistry.registerModelLayer(SulfurCubeModel.LAYER_LOCATION, SulfurCubeModel::createBodyLayer);
+        ModelLayerRegistry.registerModelLayer(SulfurCubeModel.SulfurCubeSmallModel.LAYER_LOCATION, SulfurCubeModel.SulfurCubeSmallModel::createBodyLayer);
         EntityRenderers.register(EEntities.SULFUR_CUBE, SulfurCubeRenderer::new);
+
+        ModelLayerRegistry.registerModelLayer(SubslimeModel.LAYER_LOCATION, SubslimeModel::createBodyLayer);
+        EntityRenderers.register(EEntities.SUBSLIME, SubslimeRenderer::new);
+
+        ModelLayerRegistry.registerModelLayer(SweeperModel.LAYER_LOCATION, SweeperModel::createBodyLayer);
+        EntityRenderers.register(EEntities.SWEEPER, SweeperRenderer::new);
+
+        ModelLayerRegistry.registerModelLayer(MudGolemModel.LAYER_LOCATION, MudGolemModel::createBodyLayer);
+        EntityRenderers.register(EEntities.MUD_GOLEM, MudGolemRenderer::new);
 
         ModelLayerRegistry.registerModelLayer(PerchModel.LAYER_LOCATION, PerchModel::createBodyLayer);
         EntityRenderers.register(EEntities.PERCH, PerchRenderer::new);

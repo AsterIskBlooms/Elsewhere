@@ -1,12 +1,10 @@
 package team.lookingglass.elsewhere.registry;
 
-import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.material.PushReaction;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.dimension.portal.VeilrootPortalBlock;
 import team.lookingglass.elsewhere.registry.blocktypes.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -25,10 +23,11 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.sets.EBlockSets;
+import team.lookingglass.elsewhere.registry.sets.ETreeGrowers;
 import team.lookingglass.elsewhere.registry.sets.EWoodTypes;
+import team.lookingglass.elsewhere.registry.util.SpreadTargetRegistry;
 import team.lookingglass.elsewhere.worldgen.EConfiguredFeatures;
 
-import java.util.Map;
 import java.util.function.Function;
 
 public interface EBlocks {
@@ -366,17 +365,27 @@ public interface EBlocks {
     Block CINNABAR_TIN_ORE = registerSubBlock("cinnabar_tin_ore", CINNABAR_SILVER_ORE);
 
     Block TIN_BLOCK = register("tin_block", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.IRON)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(SoundType.IRON)
     );
     Block RAW_TIN_BLOCK = register("raw_tin_block", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.STONE)
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(4.0F, 6.0F).sound(SoundType.STONE)
     );
     Block BRONZE_BLOCK = register("bronze_block", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).requiresCorrectToolForDrops().strength(4.0F, 6.0F).sound(SoundType.COPPER)
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.COPPER)
     );
     Block SILVER_BLOCK = register("silver_block", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.COPPER)
     );
+    Block POLISHED_SILVER = registerSubBlock("polished_silver", SILVER_BLOCK);
+    Block POLISHED_SILVER_STAIRS = registerStair("polished_silver_stairs", SILVER_BLOCK);
+    Block POLISHED_SILVER_SLAB = registerSlab("polished_silver_slab", SILVER_BLOCK);
+    Block CUT_SILVER = registerSubBlock("cut_silver", SILVER_BLOCK);
+    Block CUT_SILVER_STAIRS = registerStair("cut_silver_stairs", SILVER_BLOCK);
+    Block CUT_SILVER_SLAB = registerSlab("cut_silver_slab", SILVER_BLOCK);
+    Block SILVER_PILLAR = register("silver_pillar", RotatedPillarBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SILVER_BLOCK));
+    Block SILVER_BARS = register("silver_bars", IronBarsBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(SILVER_BLOCK).strength(1.0F));
     Block RAW_SILVER_BLOCK = register("raw_silver_block", Block::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)
     );
@@ -405,8 +414,9 @@ public interface EBlocks {
             BlockBehaviour.Properties.ofFullCopy(POLISHED_SULFUR)
     );
 
-    Block SULFUR_SPIKE = register("sulfur_spike", p -> new SpikeBlock(SULFUR, 2, ESounds.SULFUR_SPIKE_LAND, p), true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(ESounds.SULFUR).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)
+    Block SULFUR_SPIKE = register("sulfur_spike", p -> new SpikeBlock(SULFUR, 2,
+                    ESounds.SULFUR_SPIKE_LAND, true, 1.0F, p), true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(ESounds.SULFUR).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).randomTicks()
     );
 
     Block POTENT_SULFUR = register("potent_sulfur", PotentSulfurBlock::new, true,
@@ -511,8 +521,9 @@ public interface EBlocks {
     // Singular Purpur Block
     Block CHISELED_PURPUR = registerSubBlock("chiseled_purpur", Blocks.PURPUR_BLOCK);
 
-    Block ICICLE = register("icicle", p -> new SpikeBlock(Blocks.PACKED_ICE, 5, SoundEvents.GLASS_BREAK, p), true,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_ICE).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ)
+    Block ICICLE = register("icicle", p -> new SpikeBlock(Blocks.PACKED_ICE, 5,
+                    SoundEvents.GLASS_BREAK, false, 22.0F, p), true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_ICE).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).randomTicks()
     );
 
     Block PACKED_MUD_STAIRS = registerStair("packed_mud_stairs", Blocks.PACKED_MUD);
@@ -732,8 +743,8 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.WART_BLOCK)
     );
 
-    Block RED_GRASS_BLOCK = register("red_grass_block", SnowyBlock::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(0.5F).sound(SoundType.GRASS)
+    Block RED_GRASS_BLOCK = register("red_grass_block", RedGrassBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_RED).strength(0.5F).sound(SoundType.GRASS).randomTicks()
     );
     Block SHORT_RED_GRASS = register("short_red_grass", BushBlock::new, true,
             BlockBehaviour.Properties.of().noCollision().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).mapColor(MapColor.TERRACOTTA_RED).sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
@@ -982,18 +993,12 @@ public interface EBlocks {
     );
 
     // Arid Dirt
-    ResourceKey<Block> ARID_DIRT_KEY = ResourceKey.create(Registries.BLOCK,
-            Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_dirt")
-    );
+    ResourceKey<Block> ARID_DIRT_KEY = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_dirt"));
     Block ARID_DIRT = register("arid_dirt", Block::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.5F).sound(SoundType.ROOTED_DIRT)
     );
     Block ARID_GRASS_BLOCK = register("arid_grass_block", AridGrassBlock::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BROWN).strength(0.5F).sound(SoundType.ROOTED_DIRT).randomTicks()
-    );
-    Map<Block, Block> DIRT_TO_GRASS = Map.of(
-            Blocks.DIRT, Blocks.GRASS_BLOCK,
-            ARID_DIRT, ARID_GRASS_BLOCK
     );
 
     Block CATTAILS = register("cattails", AmphibiousDoublePlantBlock::new, true,
@@ -1286,18 +1291,10 @@ public interface EBlocks {
 
     // Mud
     Block MOSSY_MUD = register("mossy_mud", Block::new, true,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_BLOCK).sound(ESounds.MOSSY_MUD)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).sound(ESounds.MOSSY_MUD).mapColor(MapColor.COLOR_LIGHT_GREEN)
     );
     Block MUDSTONE = register("mudstone", Block::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).sound(ESounds.CINNABAR)
-    );
-
-
-
-
-    // Veilroot!
-    Block VEILROOT_PORTAL = register("veilroot_portal", VeilrootPortalBlock::new, true,
-            BlockBehaviour.Properties.of().noCollision().noOcclusion().strength(-1F).lightLevel((_) -> 5)
     );
 
     Block ASH = register("ash", p -> new SandBlock(new ColorRGBA(0xFF625A5C), p), true,
@@ -1305,6 +1302,28 @@ public interface EBlocks {
     );
     Block ASHSTONE = register("ashstone", Block::new, true,
             BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).mapColor(MapColor.COLOR_LIGHT_GRAY)
+    );
+
+    Block CUT_TIN = registerSubBlock("cut_tin", TIN_BLOCK);
+    Block CUT_TIN_STAIRS = registerStair("cut_tin_stairs", CUT_TIN);
+    Block CUT_TIN_SLAB = registerSlab("cut_tin_slab", CUT_TIN);
+    Block CHISELED_TIN = registerSubBlock("chiseled_tin", TIN_BLOCK);
+    Block TIN_BARS = register("tin_bars", IronBarsBlock::new, true,
+            BlockBehaviour.Properties.ofFullCopy(TIN_BLOCK).noOcclusion()
+    );
+
+    Block WROUGHT_IRON_BLOCK = register("wrought_iron_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F, 8.0F).sound(SoundType.IRON)
+    );
+    Block WROUGHT_IRON_STAIRS = registerStair("wrought_iron_stairs", WROUGHT_IRON_BLOCK);
+    Block WROUGHT_IRON_SLAB = registerSlab("wrought_iron_slab", WROUGHT_IRON_BLOCK);
+    Block CUT_WROUGHT_IRON = register("cut_wrought_iron", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F, 8.0F).sound(SoundType.IRON)
+    );
+    Block CUT_WROUGHT_IRON_STAIRS = registerStair("cut_wrought_iron_stairs", CUT_WROUGHT_IRON);
+    Block CUT_WROUGHT_IRON_SLAB = registerSlab("cut_wrought_iron_slab", CUT_WROUGHT_IRON);
+    Block WROUGHT_IRON_GRATE = register("wrought_iron_grate", WaterloggedTransparentBlock::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(1.5F, 4.0F).sound(ESounds.IRON_GRATE).noOcclusion()
     );
 
 
@@ -1430,5 +1449,8 @@ public interface EBlocks {
 
 
     // Initialize
-    static void initialize() {}
+    static void initialize() {
+        SpreadTargetRegistry.register(EBlocks.ARID_GRASS_BLOCK, Blocks.DIRT, Blocks.GRASS_BLOCK);
+        SpreadTargetRegistry.register(Blocks.GRASS_BLOCK, EBlocks.ARID_DIRT, EBlocks.ARID_GRASS_BLOCK);
+    }
 }

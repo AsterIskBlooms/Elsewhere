@@ -36,6 +36,9 @@ public interface EParticles {
     SimpleParticleType YELLOW_POPLAR_LEAVES = register("yellow_poplar_leaves", false);
     SimpleParticleType GILDED_BIRCH_LEAVES = register("gilded_birch_leaves", false);
 
+    SimpleParticleType SULFUR_CUBE_PARTICLE = register("sulfur_cube_particle", false);
+    SimpleParticleType SUBSLIME_PARTICLE = register("subslime_particle", false);
+
     private static SimpleParticleType register(String name, boolean overrideLimiter) {
         return Registry.register(BuiltInRegistries.PARTICLE_TYPE,
                 Identifier.fromNamespaceAndPath(Elsewhere.MODID, name),

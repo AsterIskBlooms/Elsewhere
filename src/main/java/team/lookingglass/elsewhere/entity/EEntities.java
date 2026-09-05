@@ -15,7 +15,8 @@ import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.levelgen.Heightmap;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.entity.mob.*;
+import team.lookingglass.elsewhere.entity.mob.creature.Perch;
+import team.lookingglass.elsewhere.entity.mob.monster.*;
 import team.lookingglass.elsewhere.registry.EItems;
 
 import java.util.function.Supplier;
@@ -39,7 +40,7 @@ public interface EEntities {
     ResourceKey<EntityType<?>> WEREWOLF_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "werewolf"));
     EntityType<Werewolf> WEREWOLF = Registry.register(BuiltInRegistries.ENTITY_TYPE, WEREWOLF_KEY,
             EntityType.Builder.of(Werewolf::new, MobCategory.MONSTER)
-                    .sized(0.6F, 1.95F)
+                    .sized(1.2F, 2.95F)
                     .clientTrackingRange(8)
                     .build(WEREWOLF_KEY)
     );
@@ -58,6 +59,30 @@ public interface EEntities {
                     .sized(0.5625F, 0.5625F)
                     .clientTrackingRange(8)
                     .build(SULFUR_CUBE_KEY)
+    );
+
+    ResourceKey<EntityType<?>> SUBSLIME_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "subslime"));
+    EntityType<Subslime> SUBSLIME = Registry.register(BuiltInRegistries.ENTITY_TYPE, SUBSLIME_KEY,
+            EntityType.Builder.of(Subslime::new, MobCategory.MONSTER)
+                    .sized(0.5625F, 0.5625F)
+                    .clientTrackingRange(8)
+                    .build(SUBSLIME_KEY)
+    );
+
+    ResourceKey<EntityType<?>> SWEEPER_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sweeper"));
+    EntityType<Sweeper> SWEEPER = Registry.register(BuiltInRegistries.ENTITY_TYPE, SWEEPER_KEY,
+            EntityType.Builder.of(Sweeper::new, MobCategory.MONSTER)
+                    .sized(0.75F, 2.4F)
+                    .clientTrackingRange(8)
+                    .build(SWEEPER_KEY)
+    );
+
+    ResourceKey<EntityType<?>> MUD_GOLEM_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "mud_golem"));
+    EntityType<MudGolem> MUD_GOLEM = Registry.register(BuiltInRegistries.ENTITY_TYPE, MUD_GOLEM_KEY,
+            EntityType.Builder.of(MudGolem::new, MobCategory.MONSTER)
+                    .sized(1.4F, 2.6F)
+                    .clientTrackingRange(8)
+                    .build(MUD_GOLEM_KEY)
     );
 
 
@@ -106,6 +131,15 @@ public interface EEntities {
 
         FabricDefaultAttributeRegistry.register(SULFUR_CUBE, SulfurCube.createAttributes().build());
         SpawnPlacements.register(SULFUR_CUBE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SulfurCube::checkSulfurCubeSpawnRules);
+
+        FabricDefaultAttributeRegistry.register(SUBSLIME, Subslime.createAttributes().build());
+        SpawnPlacements.register(SUBSLIME, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Subslime::checkSubslimeSpawnRules);
+
+        FabricDefaultAttributeRegistry.register(SWEEPER, Sweeper.createAttributes().build());
+        SpawnPlacements.register(SWEEPER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Sweeper::checkMonsterSpawnRules);
+
+        FabricDefaultAttributeRegistry.register(MUD_GOLEM, MudGolem.createAttributes().build());
+        SpawnPlacements.register(MUD_GOLEM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MudGolem::checkMonsterSpawnRules);
     }
 
     private static EntityType.EntityFactory<Boat> boatFactory(final Supplier<Item> boatItem) {

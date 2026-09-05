@@ -10,14 +10,14 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.resources.Identifier;
 import team.lookingglass.elsewhere.Elsewhere;
-import team.lookingglass.elsewhere.entity.renderer.states.SulfurCubeRenderState;
+import team.lookingglass.elsewhere.entity.renderer.states.CubeRenderState;
 
-public class SulfurCubeModel extends EntityModel<SulfurCubeRenderState> {
+public class SulfurCubeModel extends EntityModel<CubeRenderState> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_cube"), "main");
 
-    private final ModelPart cube;
-    private final ModelPart innerCube;
-    private final ModelPart outerCube;
+    protected final ModelPart cube;
+    protected final ModelPart innerCube;
+    protected final ModelPart outerCube;
 
     public SulfurCubeModel(ModelPart root) {
         super(root);
@@ -47,18 +47,49 @@ public class SulfurCubeModel extends EntityModel<SulfurCubeRenderState> {
 
 
     @Override
-    public void setupAnim(SulfurCubeRenderState state) {
-        float squish = state.squish;
-        float yScale = 1.0F + squish * 0.5F;
-        float xzScale = 1.0F - squish * 0.25F;
-        float sizeCorrection = switch (state.size) {
-            case 1 -> 0.5F;
-            case 4 -> 2.0F;
-            default -> 1.0F;
-        };
+    public void setupAnim(CubeRenderState state) {
+        float squish = springEase(state.squish);
+
+        float yScale = 1.0F + squish * 0.65F;
+        float xzScale = 1.0F - squish * 0.30F;
+
         cube.y = 24.0F;
-        cube.yScale = yScale * sizeCorrection;
-        cube.xScale = xzScale * sizeCorrection;
-        cube.zScale = xzScale * sizeCorrection;
+        cube.yScale = yScale;
+        cube.xScale = xzScale;
+        cube.zScale = xzScale;
+    }
+
+    private static float springEase(float t) {
+        float c1 = 1.5F;
+        float c3 = c1 + 1.0F;
+        float t1 = t - 1.0F;
+        return 1.0F + c3 * t1 * t1 * t1 + c1 * t1 * t1;
+    }
+
+    public static class SulfurCubeSmallModel extends SulfurCubeModel {
+        public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "sulfur_cube_small"), "main");
+
+        public SulfurCubeSmallModel(ModelPart root) {
+            super(root);
+        }
+
+        public static LayerDefinition createBodyLayer() {
+            MeshDefinition mesh = new MeshDefinition();
+            PartDefinition root = mesh.getRoot();
+
+            PartDefinition cube = root.addOrReplaceChild("cube", CubeListBuilder.create(), PartPose.ZERO);
+            cube.addOrReplaceChild("inner_cube", CubeListBuilder.create()
+                            .texOffs(0, 20)
+                            .addBox(-4.0F, -9.0F, -4.0F, 8.0F, 8.0F, 8.0F),
+                    PartPose.ZERO
+            );
+            cube.addOrReplaceChild("outer_cube", CubeListBuilder.create()
+                            .texOffs(0, 0)
+                            .addBox(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F),
+                    PartPose.ZERO
+            );
+
+            return LayerDefinition.create(mesh, 64, 64);
+        }
     }
 }
