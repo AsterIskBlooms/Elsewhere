@@ -98,6 +98,8 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(EBlocks.TIN_BARS);
 
         dropSelf(EBlocks.SOULSTEEL_BLOCK);
+        dropSelf(EBlocks.ELECTRUM_BLOCK);
+        dropSelf(EBlocks.URANIUM_BLOCK);
 
         add(Blocks.ANCIENT_DEBRIS, createMultipleOreDrops(Blocks.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 1, 2));
 
@@ -426,6 +428,10 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 
         dropSelf(EBlocks.CHISELED_PURPUR);
 
+        dropSelf(EBlocks.LAPIS_BRICKS);
+        dropSelf(EBlocks.LAPIS_BRICK_STAIRS);
+        add(EBlocks.LAPIS_BRICK_SLAB, createSlabItemTable(EBlocks.LAPIS_BRICK_SLAB));
+
         add(EBlocks.ICICLE, createSilkTouchOnlyTable(EBlocks.ICICLE));
 
         dropSelf(EBlocks.PACKED_MUD_STAIRS);
@@ -593,7 +599,7 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
         add(EBlocks.POTTED_MAGENTA_CONEFLOWER, createPotFlowerItemTable(EBlocks.MAGENTA_CONEFLOWER));
         add(EBlocks.IRONWEED, createSegmentedBlockDrops(EBlocks.IRONWEED));
         add(EBlocks.CATTAILS, createSegmentedBlockDrops(EBlocks.CATTAILS));
-        dropSelf(EBlocks.CAVE_WEED);
+        add(EBlocks.CAVE_WEED, createShearsOrSilkTouchOnlyDrop(EBlocks.CAVE_WEED));
         dropSelf(EBlocks.GLEAMSHROOM);
 
         add(EBlocks.MOSSY_MUD, createSingleItemTableWithSilkTouch(EBlocks.MOSSY_MUD, Blocks.MUD));

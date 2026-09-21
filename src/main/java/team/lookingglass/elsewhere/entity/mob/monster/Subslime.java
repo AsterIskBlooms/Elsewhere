@@ -33,8 +33,8 @@ public class Subslime extends Slime {
     private static final EntityDataAccessor<Integer> ATTACK_ANIMATION_TICKS = SynchedEntityData.defineId(Subslime.class, EntityDataSerializers.INT);
     private static final double MAX_HEALTH = 20.0D;
     private static final double MOVEMENT_SPEED = 0.5D;
-    private static final double ATTACK_DAMAGE = 6.0D;
-    private static final int ATTACK_ANIMATION_LENGTH = 10;
+    private static final double ATTACK_DAMAGE = 7.0D;
+    private static final int ATTACK_ANIMATION_LENGTH = 20;
     private double attackMomentumX;
     private double attackMomentumZ;
 
@@ -68,7 +68,7 @@ public class Subslime extends Slime {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0)
                 .add(Attributes.MOVEMENT_SPEED, 1.0)
-                .add(Attributes.ATTACK_DAMAGE, 6.0)
+                .add(Attributes.ATTACK_DAMAGE, ATTACK_DAMAGE)
                 .add(Attributes.FALL_DAMAGE_MULTIPLIER, 0.5);
     }
 
@@ -164,8 +164,8 @@ public class Subslime extends Slime {
 
     @Override
     protected void dealDamage(LivingEntity target) {
+        if (attackAnimationTicks() <= 0) { return; }
         Level currentLevel = level();
-
         if (currentLevel instanceof ServerLevel level) {
             if (isAlive() && isWithinMeleeAttackRange(target) && hasLineOfSight(target)) {
                 DamageSource damageSource = damageSources().mobAttack(this);

@@ -102,6 +102,11 @@ public class ERecipeProvider extends FabricRecipeProvider {
                 shapeless(RecipeCategory.MISC, EBlocks.PEBBLE).requires(Blocks.COBBLESTONE, 4)
                         .unlockedBy(getHasName(Blocks.COBBLESTONE), has(Blocks.COBBLESTONE)).save(wrappedOutput);
 
+                shaped(RecipeCategory.MISC, Blocks.BLAST_FURNACE)
+                        .define('#', Items.COPPER_INGOT).define('O', Blocks.COBBLED_DEEPSLATE).define('F', Blocks.FURNACE)
+                        .pattern("###").pattern("#F#").pattern("OOO")
+                        .unlockedBy(getHasName(Blocks.COBBLED_DEEPSLATE), has(Blocks.COBBLED_DEEPSLATE)).save(wrappedOutput);
+
                 // Tin
                 itemFullSmeltableNBSet(0.7F,
                         EBlocks.TIN_ORE, EBlocks.SHALE_TIN_ORE, EBlocks.DEEPSLATE_TIN_ORE, EBlocks.CINNABAR_TIN_ORE, EItems.RAW_TIN,
@@ -116,14 +121,14 @@ public class ERecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(EItems.TIN_INGOT), has(EItems.TIN_INGOT)).save(wrappedOutput);
 
                 // Bronze
-                shapeless(RecipeCategory.MISC, EItems.BRONZE_INGOT).requires(Items.COPPER_INGOT, 5).requires(EItems.TIN_INGOT, 4)
+                shapeless(RecipeCategory.MISC, EItems.BRONZE_ALLOY).requires(Items.COPPER_INGOT, 3).requires(EItems.TIN_INGOT, 2)
                         .unlockedBy(getHasName(EItems.TIN_INGOT), has(EItems.TIN_INGOT)).save(wrappedOutput);
-                itemUnsmeltableNBSet(EItems.BRONZE_INGOT, EItems.BRONZE_NUGGET, EBlocks.BRONZE_BLOCK);
-                shaped(RecipeCategory.MISC, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE).define('#', EItems.TIN_INGOT).define('C', Blocks.STONE).define('T', EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)
+                itemUnsmeltableBSet(EItems.BRONZE_ALLOY, EBlocks.BRONZE_BLOCK);
+                shaped(RecipeCategory.MISC, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE).define('#', Items.LAPIS_LAZULI).define('C', Blocks.STONE).define('T', EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)
                         .pattern("#T#").pattern("#C#").pattern("###")
                         .unlockedBy(getHasName(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE), has(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)).save(wrappedOutput);
                 equipmentSetSmithing(
-                        EItems.BRONZE_INGOT, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE,
+                        EItems.BRONZE_ALLOY, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE,
 
                         Items.IRON_SWORD, Items.IRON_AXE, Items.IRON_SPEAR, Items.IRON_PICKAXE, Items.IRON_SHOVEL, Items.IRON_HOE,
                         Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS,
@@ -131,7 +136,7 @@ public class ERecipeProvider extends FabricRecipeProvider {
                         EItems.BRONZE_SWORD, EItems.BRONZE_AXE, EItems.BRONZE_SPEAR, EItems.BRONZE_PICKAXE, EItems.BRONZE_SHOVEL, EItems.BRONZE_HOE,
                         EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS,
 
-                        EItems.BRONZE_NUGGET
+                        EItems.TIN_INGOT
                 );
 
                 // Silver
@@ -161,24 +166,48 @@ public class ERecipeProvider extends FabricRecipeProvider {
                 recipeStairSlab(EBlocks.CUT_WROUGHT_IRON, EBlocks.CUT_WROUGHT_IRON_STAIRS, EBlocks.CUT_WROUGHT_IRON_SLAB);
                 stonecutterSet(List.of(EBlocks.WROUGHT_IRON_BLOCK, EBlocks.WROUGHT_IRON_STAIRS, EBlocks.CUT_WROUGHT_IRON, EBlocks.CUT_WROUGHT_IRON_STAIRS, EBlocks.WROUGHT_IRON_GRATE), List.of(EBlocks.WROUGHT_IRON_SLAB, EBlocks.CUT_WROUGHT_IRON_SLAB));
 
-                // Mixes
-                shapeless(RecipeCategory.MISC, EItems.SOULSTEEL_INGOT)
-                        .requires(Items.NETHERITE_SCRAP, 2).requires(EItems.SILVER_INGOT, 2).requires(Items.QUARTZ, 5)
-                        .unlockedBy(getHasName(Items.NETHERITE_SCRAP), has(Items.NETHERITE_SCRAP)).save(wrappedOutput);
-
                 // Soulsteel
-                itemUnsmeltableBSet(EItems.SOULSTEEL_INGOT, EBlocks.SOULSTEEL_BLOCK);
+                shapeless(RecipeCategory.MISC, EItems.SOULSTEEL_ALLOY)
+                        .requires(Items.IRON_INGOT, 2).requires(Items.BLAZE_POWDER).requires(Items.QUARTZ, 3)
+                        .unlockedBy(getHasName(Items.BLAZE_POWDER), has(Items.BLAZE_POWDER)).save(wrappedOutput);
+                itemUnsmeltableBSet(EItems.SOULSTEEL_ALLOY, EBlocks.SOULSTEEL_BLOCK);
+                shaped(RecipeCategory.MISC, EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE).define('#', Items.QUARTZ).define('C', Blocks.BLACKSTONE).define('T', EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE)
+                        .pattern("#T#").pattern("#C#").pattern("###")
+                        .unlockedBy(getHasName(EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE), has(EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE)).save(wrappedOutput);
                 equipmentSetSmithing(
-                        EItems.SOULSTEEL_INGOT, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
+                        EItems.SOULSTEEL_ALLOY, EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE,
 
-                        Items.DIAMOND_SWORD, Items.DIAMOND_AXE, Items.DIAMOND_SPEAR, Items.DIAMOND_PICKAXE, Items.DIAMOND_SHOVEL, Items.DIAMOND_HOE,
-                        Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS,
+                        Items.IRON_SWORD, Items.IRON_AXE, Items.IRON_SPEAR, Items.IRON_PICKAXE, Items.IRON_SHOVEL, Items.IRON_HOE,
+                        Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS,
 
                         EItems.SOULSTEEL_SWORD, EItems.SOULSTEEL_AXE, EItems.SOULSTEEL_SPEAR, EItems.SOULSTEEL_PICKAXE, EItems.SOULSTEEL_SHOVEL, EItems.SOULSTEEL_HOE,
                         EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS,
 
                         Items.NETHERITE_SCRAP
                 );
+
+                // Electrum
+                shapeless(RecipeCategory.MISC, EItems.ELECTRUM_ALLOY)
+                        .requires(Items.GOLD_INGOT, 5).requires(EItems.SILVER_INGOT, 4)
+                        .unlockedBy(getHasName(EItems.SILVER_INGOT), has(EItems.SILVER_INGOT)).save(wrappedOutput);
+                itemUnsmeltableBSet(EItems.ELECTRUM_ALLOY, EBlocks.ELECTRUM_BLOCK);
+                shaped(RecipeCategory.MISC, EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE).define('#', Items.LAPIS_LAZULI).define('C', Blocks.TUFF).define('T', EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE)
+                        .pattern("#T#").pattern("#C#").pattern("###")
+                        .unlockedBy(getHasName(EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE), has(EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE)).save(wrappedOutput);
+                equipmentSetSmithing(
+                        EItems.ELECTRUM_ALLOY, EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE,
+
+                        Items.GOLDEN_SWORD, Items.GOLDEN_AXE, Items.GOLDEN_SPEAR, Items.GOLDEN_PICKAXE, Items.GOLDEN_SHOVEL, Items.GOLDEN_HOE,
+                        Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS,
+
+                        EItems.ELECTRUM_SWORD, EItems.ELECTRUM_AXE, EItems.ELECTRUM_SPEAR, EItems.ELECTRUM_PICKAXE, EItems.ELECTRUM_SHOVEL, EItems.ELECTRUM_HOE,
+                        EItems.ELECTRUM_HELMET, EItems.ELECTRUM_CHESTPLATE, EItems.ELECTRUM_LEGGINGS, EItems.ELECTRUM_BOOTS,
+
+                        EItems.SILVER_INGOT
+                );
+
+                // Uranium
+                itemUnsmeltableNBSet(EItems.URANIUM, EItems.URANIUM_SHARD, EBlocks.URANIUM_BLOCK);
 
                 // Stone
                 recipeStairSlabWall(Blocks.STONE, Blocks.STONE_STAIRS, Blocks.STONE_SLAB, EBlocks.STONE_WALL);
@@ -409,6 +438,8 @@ public class ERecipeProvider extends FabricRecipeProvider {
                 shapeless(RecipeCategory.BUILDING_BLOCKS, EBlocks.MUDSTONE).requires(Blocks.MUD).requires(EBlocks.COBBLESHALE)
                         .unlockedBy(getHasName(Blocks.MUD), has(Blocks.MUD)).save(wrappedOutput);
 
+                recipe2x2(Blocks.LAPIS_BLOCK, EBlocks.LAPIS_BRICKS);
+                recipeStairSlab(EBlocks.LAPIS_BRICKS, EBlocks.LAPIS_BRICK_STAIRS, EBlocks.LAPIS_BRICK_SLAB);
 
 
 

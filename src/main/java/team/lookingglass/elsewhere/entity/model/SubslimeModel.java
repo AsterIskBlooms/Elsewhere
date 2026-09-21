@@ -63,16 +63,18 @@ public class SubslimeModel extends EntityModel<CubeRenderState> {
         float yScale = 1.0F + squish * 0.5F;
         float xzScale = 1.0F - squish * 0.22F;
 
-        float attackStretch = Mth.sin(state.attackTime * Mth.PI);
-        xzScale *= 1.0F + attackStretch * 0.6F;
-        yScale *= 1.0F - attackStretch * 0.3F;
+        float stretchUp = Mth.sin(Mth.clamp(state.attackTime / 0.15F, 0.0F, 1.0F) * Mth.PI);
+        float squashDown = (1.0F - Mth.cos(Mth.clamp((state.attackTime - 0.08F) / 0.2F, 0.0F, 1.0F) * Mth.PI)) * 0.5F;
+
+        xzScale *= 1.0F - stretchUp * 0.35F + squashDown * 0.6F;
+        yScale *= 1.0F + stretchUp * 0.5F - squashDown * 0.3F;
 
         cube.y = 24.0F;
         cube.yScale = yScale;
         cube.xScale = xzScale;
         cube.zScale = xzScale;
 
-        cube.yRot = state.attackTime * Mth.TWO_PI;
+        cube.yRot = state.attackTime * Mth.TWO_PI * 2.0F;
     }
 
     private static float gentleEase(float t) {

@@ -6,11 +6,16 @@ import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.client.particle.BreakingItemParticle;
 import net.minecraft.client.particle.FallingLeavesParticle;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.client.renderer.special.SpecialModelRenderers;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.resources.Identifier;
+import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.datagen.render.ParticleProvider;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.render.particles.*;
+import team.lookingglass.elsewhere.registry.render.shields.QuickShieldSpecialRenderer;
+import team.lookingglass.elsewhere.registry.render.shields.ReinforcedShieldSpecialRenderer;
 
 import java.util.List;
 
@@ -36,5 +41,8 @@ public class ERenderer {
         BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), EBlocks.ARID_GRASS_BLOCK);
         BlockColorRegistry.register(List.of(BlockTintSources.foliage()), EBlocks.CEDAR_LEAVES);
         BlockColorRegistry.register(List.of(BlockTintSources.foliage()), EBlocks.MAHOGANY_LEAVES);
+
+        SpecialModelRenderers.ID_MAPPER.put(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "quick_shield"), QuickShieldSpecialRenderer.Unbaked.MAP_CODEC);
+        SpecialModelRenderers.ID_MAPPER.put(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "reinforced_shield"), ReinforcedShieldSpecialRenderer.Unbaked.MAP_CODEC);
     }
 }

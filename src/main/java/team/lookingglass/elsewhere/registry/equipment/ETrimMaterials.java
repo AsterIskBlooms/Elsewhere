@@ -18,6 +18,8 @@ public class ETrimMaterials {
     public static final ResourceKey<TrimMaterial> BRONZE = createKey("bronze");
     public static final ResourceKey<TrimMaterial> SILVER = createKey("silver");
     public static final ResourceKey<TrimMaterial> SOULSTEEL = createKey("soulsteel");
+    public static final ResourceKey<TrimMaterial> ELECTRUM = createKey("electrum");
+    public static final ResourceKey<TrimMaterial> URANIUM = createKey("uranium");
 
     private static ResourceKey<TrimMaterial> createKey(String name) {
         return ResourceKey.create(Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(Elsewhere.MODID, name));
@@ -32,6 +34,10 @@ public class ETrimMaterials {
                 coloredName("silver", 0xDEF6EE));
         register(ctx, SOULSTEEL, "soulsteel", "soulsteel_darker", EEquipmentAssets.SOULSTEEL,
                 coloredName("soulsteel", 0x758894));
+        register(ctx, ELECTRUM, "electrum", "electrum_darker", EEquipmentAssets.ELECTRUM,
+                coloredName("electrum", 0xEAE297));
+        register(ctx, URANIUM, "uranium",
+                coloredName("uranium", 0x97FF44));
     }
 
     private static Component coloredName(String path, int rgb) {

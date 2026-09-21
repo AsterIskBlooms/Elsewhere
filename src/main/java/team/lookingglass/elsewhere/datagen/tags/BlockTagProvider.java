@@ -224,7 +224,9 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.CUT_WROUGHT_IRON, EBlocks.CUT_WROUGHT_IRON_STAIRS, EBlocks.CUT_WROUGHT_IRON_SLAB,
                         EBlocks.WROUGHT_IRON_GRATE,
 
-                        EBlocks.SOULSTEEL_BLOCK,
+                        EBlocks.SOULSTEEL_BLOCK, EBlocks.ELECTRUM_BLOCK,
+
+                        EBlocks.URANIUM_BLOCK,
 
                         EBlocks.SULFUR, EBlocks.SULFUR_STAIRS, EBlocks.SULFUR_SLAB, EBlocks.SULFUR_WALL,
                         EBlocks.POLISHED_SULFUR, EBlocks.POLISHED_SULFUR_STAIRS, EBlocks.POLISHED_SULFUR_SLAB, EBlocks.POLISHED_SULFUR_WALL,
@@ -264,7 +266,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.PACKED_MUD_STAIRS, EBlocks.PACKED_MUD_SLAB, EBlocks.PACKED_MUD_WALL,
                         EBlocks.CHISELED_MUD_BRICKS, EBlocks.MUD_BRICK_PILLAR,
 
-                        EBlocks.CHISELED_PURPUR
+                        EBlocks.CHISELED_PURPUR, EBlocks.LAPIS_BRICKS
                 ).addTag(EBlockTags.TERRACOTTA_BLOCKS).addTag(EBlockTags.CONCRETE_BLOCKS)
         ;
 
@@ -273,8 +275,8 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                 .remove(
                         Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.IRON_BLOCK,
                         Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.GOLD_BLOCK, Blocks.RAW_GOLD_BLOCK,
-                        Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE,
-                        Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE
+                        Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE, Blocks.REDSTONE_BLOCK,
+                        Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE, Blocks.LAPIS_BLOCK
                 )
         ;
         valueLookupBuilder(EBlockTags.NEEDS_COPPER_TOOL)
@@ -285,6 +287,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         Blocks.REDSTONE_ORE, EBlocks.SHALE_REDSTONE_ORE, EBlocks.CINNABAR_REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE, Blocks.REDSTONE_BLOCK,
 
                         Blocks.LAPIS_ORE, EBlocks.SHALE_LAPIS_ORE, EBlocks.CINNABAR_LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE,
+                        Blocks.LAPIS_BLOCK, EBlocks.LAPIS_BRICKS, EBlocks.LAPIS_BRICK_STAIRS, EBlocks.LAPIS_BRICK_SLAB,
 
                         Blocks.DEEPSLATE_COAL_ORE, Blocks.DEEPSLATE_COPPER_ORE,
 
@@ -310,6 +313,10 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
                         EBlocks.SILVER_BLOCK, EBlocks.RAW_SILVER_BLOCK,
 
                         Blocks.EMERALD_ORE, EBlocks.SHALE_EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE, EBlocks.CINNABAR_EMERALD_ORE, Blocks.EMERALD_BLOCK,
+
+                        EBlocks.SOULSTEEL_BLOCK, EBlocks.ELECTRUM_BLOCK,
+
+                        EBlocks.URANIUM_BLOCK,
 
                         Blocks.OBSIDIAN, EBlocks.OBSIDIAN_STAIRS, EBlocks.OBSIDIAN_SLAB,
                         EBlocks.OBSIDIAN_BRICKS, EBlocks.OBSIDIAN_BRICK_STAIRS, EBlocks.OBSIDIAN_BRICK_SLAB,

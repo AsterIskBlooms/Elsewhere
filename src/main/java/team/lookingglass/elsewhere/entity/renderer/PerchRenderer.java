@@ -9,7 +9,6 @@ import team.lookingglass.elsewhere.entity.mob.creature.Perch;
 import team.lookingglass.elsewhere.entity.model.PerchModel;
 
 public class PerchRenderer extends MobRenderer<Perch, LivingEntityRenderState, PerchModel> {
-
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Elsewhere.MODID, "textures/entity/fish/perch.png");
 
     public PerchRenderer(EntityRendererProvider.Context context) {

@@ -57,7 +57,7 @@ public class SulfurCube extends Slime {
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 16.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.7)
+                .add(Attributes.MOVEMENT_SPEED, 0.85)
                 .add(Attributes.ATTACK_DAMAGE, 4.0)
                 .add(Attributes.FALL_DAMAGE_MULTIPLIER, 0.0);
     }

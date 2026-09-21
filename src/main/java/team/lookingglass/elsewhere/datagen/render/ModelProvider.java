@@ -490,10 +490,6 @@ public class ModelProvider extends FabricModelProvider {
 
         customGen.createSeagrassSandBlock();
 
-
-        // Purpur
-        gen.createTrivialBlock(EBlocks.CHISELED_PURPUR, TexturedModel.COLUMN);
-
         customGen.generateStalactite(gen, EBlocks.ICICLE);
 
         // Mud
@@ -506,6 +502,13 @@ public class ModelProvider extends FabricModelProvider {
         gen.createRotatedPillarWithHorizontalVariant(EBlocks.MUD_BRICK_PILLAR, TexturedModel.COLUMN, TexturedModel.COLUMN_HORIZONTAL);
 
         gen.createTrivialCube(EBlocks.MUDSTONE);
+
+        gen.createTrivialBlock(EBlocks.CHISELED_PURPUR, TexturedModel.COLUMN);
+
+        gen.family(EBlocks.LAPIS_BRICKS)
+                .stairs(EBlocks.LAPIS_BRICK_STAIRS)
+                .slab(EBlocks.LAPIS_BRICK_SLAB)
+        ;
 
         // Wood Sets
         gen.family(EBlocks.OAK_MOSAIC).stairs(EBlocks.OAK_MOSAIC_STAIRS).slab(EBlocks.OAK_MOSAIC_SLAB);
@@ -741,6 +744,8 @@ public class ModelProvider extends FabricModelProvider {
         gen.createBarsAndItem(EBlocks.TIN_BARS);
 
         gen.createTrivialCube(EBlocks.SOULSTEEL_BLOCK);
+        gen.createTrivialCube(EBlocks.ELECTRUM_BLOCK);
+        gen.createTrivialCube(EBlocks.URANIUM_BLOCK);
 
         gen.family(Blocks.WHITE_WOOL).stairs(EBlocks.WHITE_WOOL_STAIRS).slab(EBlocks.WHITE_WOOL_SLAB);
         gen.family(Blocks.LIGHT_GRAY_WOOL).stairs(EBlocks.LIGHT_GRAY_WOOL_STAIRS).slab(EBlocks.LIGHT_GRAY_WOOL_SLAB);
@@ -851,8 +856,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.TIN_NUGGET, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.BRONZE_INGOT, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.BRONZE_NUGGET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.BRONZE_ALLOY, ModelTemplates.FLAT_ITEM);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_HELMET, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_CHESTPLATE, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.BRONZE_LEGGINGS, EEquipmentAssets.BRONZE, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -868,7 +872,8 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SILVER_INGOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SILVER_NUGGET, ModelTemplates.FLAT_ITEM);
 
-        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_INGOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_ALLOY, ModelTemplates.FLAT_ITEM);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_HELMET, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_CHESTPLATE, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
         armorModelGenerator.generateElsewhereTrimmableArmor(EItems.SOULSTEEL_LEGGINGS, EEquipmentAssets.SOULSTEEL, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -879,6 +884,22 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerator.generateFlatItem(EItems.SOULSTEEL_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.ELECTRUM_ALLOY, ModelTemplates.FLAT_ITEM);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.ELECTRUM_HELMET, EEquipmentAssets.ELECTRUM, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.ELECTRUM_CHESTPLATE, EEquipmentAssets.ELECTRUM, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.ELECTRUM_LEGGINGS, EEquipmentAssets.ELECTRUM, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        armorModelGenerator.generateElsewhereTrimmableArmor(EItems.ELECTRUM_BOOTS, EEquipmentAssets.ELECTRUM, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModelGenerator.generateFlatItem(EItems.ELECTRUM_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.ELECTRUM_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateSpear(EItems.ELECTRUM_SPEAR);
+        itemModelGenerator.generateFlatItem(EItems.ELECTRUM_PICKAXE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.ELECTRUM_SHOVEL, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.ELECTRUM_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.URANIUM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.URANIUM_SHARD, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.MUSIC_DISC_FOX, ModelTemplates.FLAT_ITEM);
 
@@ -897,6 +918,9 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.SWEEPER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.MUD_GOLEM_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(EItems.SOUL_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(EItems.TROLL_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.PERCH_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(EItems.RAW_PERCH, ModelTemplates.FLAT_ITEM);

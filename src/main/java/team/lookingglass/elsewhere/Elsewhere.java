@@ -14,6 +14,7 @@ import team.lookingglass.elsewhere.registry.sets.ETreeGrowers;
 import team.lookingglass.elsewhere.registry.render.EParticles;
 import team.lookingglass.elsewhere.registry.tags.*;
 import team.lookingglass.elsewhere.registry.util.EBlockInteractions;
+import team.lookingglass.elsewhere.worldgen.EBiomes;
 import team.lookingglass.elsewhere.worldgen.EFeatures;
 import team.lookingglass.elsewhere.worldgen.noise.ENoise;
 import team.lookingglass.elsewhere.worldgen.EWorldgen;
@@ -36,13 +37,16 @@ public class Elsewhere implements ModInitializer {
 		EParticles.initialize();
 		EServerEvents.initialize();
 		ENoise.initialize();
-		EBlockTags.initialize();
-		EItemTags.initialize();
 		EEntities.initialize();
 		EEntitySpawns.initialize();
 		ETreeGrowers.initialize();
 		EPlacementModifiers.initialize();
 		FlammableBlocks.initialize();
 		EAttributes.initialize();
+
+		EBlockTags.initialize();
+		EItemTags.initialize();
+		EBiomeTags.initialize();
+		EEntityTags.initialize();
 	}
 }

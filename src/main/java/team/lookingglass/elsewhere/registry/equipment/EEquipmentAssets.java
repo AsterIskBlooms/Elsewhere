@@ -10,6 +10,7 @@ import team.lookingglass.elsewhere.Elsewhere;
 public class EEquipmentAssets {
     public static final ResourceKey<EquipmentAsset> BRONZE = createKey("bronze");
     public static final ResourceKey<EquipmentAsset> SOULSTEEL = createKey("soulsteel");
+    public static final ResourceKey<EquipmentAsset> ELECTRUM = createKey("electrum");
 
     private static ResourceKey<EquipmentAsset> createKey(String name) {
         return ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Elsewhere.MODID, name));
@@ -18,5 +19,6 @@ public class EEquipmentAssets {
     public static void bootstrap(BootstrapContext<EquipmentAsset> ctx) {
         ctx.register(BRONZE, new EquipmentAsset());
         ctx.register(SOULSTEEL, new EquipmentAsset());
+        ctx.register(ELECTRUM, new EquipmentAsset());
     }
 }

@@ -117,16 +117,22 @@ public class EAdvancementProvider extends FabricAdvancementProvider {
         AdvancementHolder upgradeBronze = Advancement.Builder.advancement()
                 .parent(ironPickaxe)
                 .display(
-                        EItems.BRONZE_PICKAXE,
+                        EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE,
                         Component.translatable("advancements.elsewhere.upgrade_bronze.title"),
                         Component.translatable("advancements.elsewhere.upgrade_bronze.description"),
                         null, AdvancementType.TASK, true, true, false
                 )
-                .addCriterion("bronze_item", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        EItems.BRONZE_SWORD, EItems.BRONZE_AXE, EItems.BRONZE_SPEAR,
-                        EItems.BRONZE_PICKAXE, EItems.BRONZE_SHOVEL, EItems.BRONZE_HOE,
-                        EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS
-                ))
+                .addCriterion("bronze_sword", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_SWORD))
+                .addCriterion("bronze_axe", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_AXE))
+                .addCriterion("bronze_spear", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_SPEAR))
+                .addCriterion("bronze_pickaxe", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_PICKAXE))
+                .addCriterion("bronze_shovel", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_SHOVEL))
+                .addCriterion("bronze_hoe", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_HOE))
+                .addCriterion("bronze_helmet", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_HELMET))
+                .addCriterion("bronze_chestplate", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_CHESTPLATE))
+                .addCriterion("bronze_leggings", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_LEGGINGS))
+                .addCriterion("bronze_boots", InventoryChangeTrigger.TriggerInstance.hasItems(EItems.BRONZE_BOOTS))
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, Elsewhere.MODID + ":story/upgrade_bronze");
     }
 }

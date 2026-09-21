@@ -390,7 +390,14 @@ public interface EBlocks {
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_CYAN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.STONE)
     );
     Block SOULSTEEL_BLOCK = register("soulsteel_block", Block::new, true,
-            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).sound(SoundType.NETHERITE_BLOCK)
+            BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(10.0F, 1200.0F).sound(SoundType.NETHERITE_BLOCK)
+    );
+    Block ELECTRUM_BLOCK = register("electrum_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(7.0F, 12.0F).sound(SoundType.COPPER)
+    );
+
+    Block URANIUM_BLOCK = register("uranium_block", Block::new, true,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.LODESTONE)
     );
 
 
@@ -1325,6 +1332,12 @@ public interface EBlocks {
     Block WROUGHT_IRON_GRATE = register("wrought_iron_grate", WaterloggedTransparentBlock::new, true,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(1.5F, 4.0F).sound(ESounds.IRON_GRATE).noOcclusion()
     );
+
+    Block LAPIS_BRICKS = register("lapis_bricks", Block::new, true,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.LAPIS_BLOCK).sound(ESounds.STONE_BRICKS)
+    );
+    Block LAPIS_BRICK_STAIRS = registerStair("lapis_brick_stairs", LAPIS_BRICKS);
+    Block LAPIS_BRICK_SLAB = registerSlab("lapis_brick_slab", LAPIS_BRICKS);
 
 
 

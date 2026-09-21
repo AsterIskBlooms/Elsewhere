@@ -304,13 +304,13 @@ public class EPlacedFeatures {
         PlacementUtils.register(context, TIN_ORE,
                 configured.getOrThrow(EConfiguredFeatures.TIN_ORE_KEY),
                 List.of(
-                        CountPlacement.of(18),
+                        CountPlacement.of(11),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.of(
                                 TrapezoidHeight.of(
-                                        VerticalAnchor.absolute(0),
+                                        VerticalAnchor.absolute(-24),
                                         VerticalAnchor.absolute(72),
-                                        30
+                                        38
                                 )
                         ),
                         BiomeFilter.biome()
@@ -322,17 +322,17 @@ public class EPlacedFeatures {
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(
                                 VerticalAnchor.aboveBottom(-80),
-                                VerticalAnchor.absolute(-30)
+                                VerticalAnchor.absolute(-12)
                         ),
                         BiomeFilter.biome()
                 ));
         PlacementUtils.register(context, TIN_ORE_SMALL,
                 configured.getOrThrow(EConfiguredFeatures.TIN_ORE_SMALL_KEY),
                 List.of(
-                        CountPlacement.of(24),
+                        CountPlacement.of(9),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(
-                                VerticalAnchor.absolute(68),
+                                VerticalAnchor.absolute(48),
                                 VerticalAnchor.absolute(180)
                         ),
                         BiomeFilter.biome()

@@ -1,23 +1,25 @@
 package team.lookingglass.elsewhere.registry;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.BlocksAttacks;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.material.Fluids;
 import team.lookingglass.elsewhere.Elsewhere;
 import net.minecraft.core.Registry;
@@ -27,9 +29,13 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import team.lookingglass.elsewhere.entity.EEntities;
 import team.lookingglass.elsewhere.registry.equipment.*;
+import team.lookingglass.elsewhere.registry.equipment.items.ConfigurableShieldItem;
+import team.lookingglass.elsewhere.registry.equipment.items.SoulsteelAxeItem;
+import team.lookingglass.elsewhere.registry.equipment.items.SoulsteelItem;
 import team.lookingglass.elsewhere.registry.sets.EDiscs;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public interface EItems {
@@ -77,8 +83,7 @@ public interface EItems {
     Item TIN_INGOT = register("tin_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.TIN));
     Item TIN_NUGGET = register("tin_nugget", Item::new, new Item.Properties());
 
-    Item BRONZE_INGOT = register("bronze_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.BRONZE));
-    Item BRONZE_NUGGET = register("bronze_nugget", Item::new, new Item.Properties());
+    Item BRONZE_ALLOY = register("bronze_alloy", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.BRONZE));
     Item BRONZE_UPGRADE_SMITHING_TEMPLATE = register("bronze_upgrade_smithing_template", p -> new SmithingTemplateItem(
             Component.translatable("item.elsewhere.smithing_template.bronze_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
             Component.translatable("item.elsewhere.smithing_template.bronze_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
@@ -103,14 +108,14 @@ public interface EItems {
             .sword(EMaterials.BRONZE_TOOL, 3.0F, -2.4F)
     );
     Item BRONZE_AXE = register("bronze_axe", p -> new AxeItem(
-            EMaterials.BRONZE_TOOL, 5.5F, -3.1F, p), new Item.Properties()
+            EMaterials.BRONZE_TOOL, 5.0F, -3.0F, p), new Item.Properties()
     );
     Item BRONZE_SPEAR = register("bronze_spear", Item::new, new Item.Properties()
             .spear(EMaterials.BRONZE_TOOL,
-                    0.9F, 0.87F, 0.65F,
-                    3.3F, 11.5F,
-                    7.5F, 5.1F,
-                    11.9F, 4.6F
+                    1.0F, 1.013F, 0.6F,
+                    2.8F, 10.5F,
+                    6.63F, 5.1F,
+                    10.63F, 4.6F
             ));
     Item BRONZE_PICKAXE = register("bronze_pickaxe", Item::new, new Item.Properties()
             .pickaxe(EMaterials.BRONZE_TOOL, 1.0F, -2.8F)
@@ -126,63 +131,147 @@ public interface EItems {
     Item SILVER_INGOT = register("silver_ingot", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.SILVER));
     Item SILVER_NUGGET = register("silver_nugget", Item::new, new Item.Properties());
 
-    Item SOULSTEEL_INGOT = register("soulsteel_ingot", Item::new, new Item.Properties().fireResistant().trimMaterial(ETrimMaterials.SOULSTEEL));
+    Item SOULSTEEL_ALLOY = register("soulsteel_alloy", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.SOULSTEEL));
+    Item SOULSTEEL_UPGRADE_SMITHING_TEMPLATE = register("soulsteel_upgrade_smithing_template", p -> new SmithingTemplateItem(
+                    Component.translatable("item.elsewhere.smithing_template.soulsteel_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("item.elsewhere.smithing_template.soulsteel_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("item.elsewhere.smithing_template.soulsteel_upgrade.base_slot_description"),
+                    Component.translatable("item.elsewhere.smithing_template.soulsteel_upgrade.additions_slot_description"),
+                    SmithingTemplateItem.createNetheriteUpgradeIconList(), SmithingTemplateItem.createNetheriteUpgradeMaterialList(), p),
+            new Item.Properties().rarity(Rarity.UNCOMMON)
+    );
     Item SOULSTEEL_HELMET = register("soulsteel_helmet", Item::new, new AttributeProperties()
-            .fireResistant()
             .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.HELMET)
-            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_HELMET_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.HEAD)
     );
     Item SOULSTEEL_CHESTPLATE = register("soulsteel_chestplate", Item::new, new AttributeProperties()
-            .fireResistant()
             .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.CHESTPLATE)
-            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_CHESTPLATE_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.CHEST)
     );
     Item SOULSTEEL_LEGGINGS = register("soulsteel_leggings", Item::new, new AttributeProperties()
-            .fireResistant()
             .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.LEGGINGS)
-            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_LEGGINGS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.LEGS)
     );
     Item SOULSTEEL_BOOTS = register("soulsteel_boots", Item::new, new AttributeProperties()
-            .fireResistant()
             .humanoidArmor(EMaterials.SOULSTEEL_ARMOR, ArmorType.BOOTS)
-            .attribute(Attributes.MAX_HEALTH, new AttributeModifier(AttributeIDs.SOULSTEEL_BOOTS_HEALTH_ID, 2, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.FEET)
     );
-    Item SOULSTEEL_SWORD = register("soulsteel_sword", SoulsteelItem::new, new AttributeProperties().fireResistant()
-            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+    Item SOULSTEEL_SWORD = register("soulsteel_sword", SoulsteelItem::new, new AttributeProperties()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
                     EquipmentSlotGroup.MAINHAND)
             .sword(EMaterials.SOULSTEEL_TOOL, 3.0F, -2.4F)
     );
     Item SOULSTEEL_AXE = register("soulsteel_axe", p -> new SoulsteelAxeItem(
-            EMaterials.SOULSTEEL_TOOL, 5.0F, -3.0F, p), new AttributeProperties().fireResistant()
-            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+            EMaterials.SOULSTEEL_TOOL, 5.0F, -3.0F, p), new AttributeProperties()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
+            .attribute(Attributes.BLOCK_INTERACTION_RANGE, new AttributeModifier(AttributeIDs.SOULSTEEL_REACH_ID, 0.35, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
                     EquipmentSlotGroup.MAINHAND)
     );
-    Item SOULSTEEL_SPEAR = register("soulsteel_spear", SoulsteelItem::new, new AttributeProperties().fireResistant()
-            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+    Item SOULSTEEL_SPEAR = register("soulsteel_spear", SoulsteelItem::new, new AttributeProperties()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
                     EquipmentSlotGroup.MAINHAND)
             .spear(EMaterials.SOULSTEEL_TOOL,
-                    1.10F, 1.14F, 0.45F,
-                    2.6F, 9.5F, 6.0F,
-                    5.1F, 9.4F, 4.6F
+                    1.05F, 1.075F, 0.5F,
+                    3.0F, 10.0F,
+                    6.5F, 5.1F,
+                    10.0F, 4.6F
             ));
-    Item SOULSTEEL_PICKAXE = register("soulsteel_pickaxe", SoulsteelItem::new, new AttributeProperties().fireResistant()
-            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+    Item SOULSTEEL_PICKAXE = register("soulsteel_pickaxe", SoulsteelItem::new, new AttributeProperties()
+            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    EquipmentSlotGroup.MAINHAND)
+            .attribute(Attributes.BLOCK_INTERACTION_RANGE, new AttributeModifier(AttributeIDs.SOULSTEEL_REACH_ID, 0.35, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
                     EquipmentSlotGroup.MAINHAND)
             .pickaxe(EMaterials.SOULSTEEL_TOOL, 1.0F, -2.8F)
     );
-    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", p -> new SoulsteelShovelItem(
-            EMaterials.SOULSTEEL_TOOL, 1.5F, -3.0F, p), new AttributeProperties().fireResistant()
-            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+    Item SOULSTEEL_SHOVEL = register("soulsteel_shovel", p -> new ShovelItem(
+            EMaterials.SOULSTEEL_TOOL, 1.5F, -3.0F, p), new AttributeProperties()
+            .attribute(Attributes.BLOCK_INTERACTION_RANGE, new AttributeModifier(AttributeIDs.SOULSTEEL_REACH_ID, 0.35, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
                     EquipmentSlotGroup.MAINHAND)
     );
-    Item SOULSTEEL_HOE = register("soulsteel_hoe", p -> new SoulsteelHoeItem(
-            EMaterials.SOULSTEEL_TOOL, -4.0F, 0.0F, p), new AttributeProperties().fireResistant()
-            .attribute(EAttributes.LIFESTEAL, new AttributeModifier(AttributeIDs.SOULSTEEL_LIFESTEAL_ID, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+    Item SOULSTEEL_HOE = register("soulsteel_hoe", p -> new HoeItem(
+            EMaterials.SOULSTEEL_TOOL, -3.0F, 0.0F, p), new AttributeProperties()
+            .attribute(Attributes.BLOCK_INTERACTION_RANGE, new AttributeModifier(AttributeIDs.SOULSTEEL_REACH_ID, 0.35, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
                     EquipmentSlotGroup.MAINHAND)
+    );
+
+    Item ELECTRUM_ALLOY = register("electrum_alloy", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.ELECTRUM));
+    Item ELECTRUM_UPGRADE_SMITHING_TEMPLATE = register("electrum_upgrade_smithing_template", p -> new SmithingTemplateItem(
+                    Component.translatable("item.elsewhere.smithing_template.electrum_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("item.elsewhere.smithing_template.electrum_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("item.elsewhere.smithing_template.electrum_upgrade.base_slot_description"),
+                    Component.translatable("item.elsewhere.smithing_template.electrum_upgrade.additions_slot_description"),
+                    SmithingTemplateItem.createNetheriteUpgradeIconList(), SmithingTemplateItem.createNetheriteUpgradeMaterialList(), p),
+            new Item.Properties().rarity(Rarity.UNCOMMON)
+    );
+    Item ELECTRUM_HELMET = register("electrum_helmet", Item::new, new AttributeProperties()
+            .humanoidArmor(EMaterials.ELECTRUM_ARMOR, ArmorType.HELMET)
+            .attribute(Attributes.MOVEMENT_SPEED, new AttributeModifier(AttributeIDs.ELECTRUM_HELMET_SPEED_ID, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    EquipmentSlotGroup.HEAD)
+    );
+    Item ELECTRUM_CHESTPLATE = register("electrum_chestplate", Item::new, new AttributeProperties()
+            .humanoidArmor(EMaterials.ELECTRUM_ARMOR, ArmorType.CHESTPLATE)
+            .attribute(Attributes.MOVEMENT_SPEED, new AttributeModifier(AttributeIDs.ELECTRUM_CHESTPLATE_SPEED_ID, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    EquipmentSlotGroup.CHEST)
+    );
+    Item ELECTRUM_LEGGINGS = register("electrum_leggings", Item::new, new AttributeProperties()
+            .humanoidArmor(EMaterials.ELECTRUM_ARMOR, ArmorType.LEGGINGS)
+            .attribute(Attributes.MOVEMENT_SPEED, new AttributeModifier(AttributeIDs.ELECTRUM_LEGGINGS_SPEED_ID, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    EquipmentSlotGroup.LEGS)
+    );
+    Item ELECTRUM_BOOTS = register("electrum_boots", Item::new, new AttributeProperties()
+            .humanoidArmor(EMaterials.ELECTRUM_ARMOR, ArmorType.BOOTS)
+            .attribute(Attributes.MOVEMENT_SPEED, new AttributeModifier(AttributeIDs.ELECTRUM_BOOTS_SPEED_ID, 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    EquipmentSlotGroup.FEET)
+    );
+    Item ELECTRUM_SWORD = register("electrum_sword", Item::new, new AttributeProperties()
+            .sword(EMaterials.ELECTRUM_TOOL, 3.0F, -2.1F)
+    );
+    Item ELECTRUM_AXE = register("electrum_axe", p -> new AxeItem(
+            EMaterials.ELECTRUM_TOOL, 5.0F, -2.9F, p), new AttributeProperties()
+    );
+    Item ELECTRUM_SPEAR = register("electrum_spear", Item::new, new AttributeProperties()
+            .spear(EMaterials.ELECTRUM_TOOL,
+                    0.9F, 1.075F, 0.45F,
+                    4.0F, 10.0F,
+                    7.5F, 5.1F,
+                    14.0F, 4.6F
+            ));
+    Item ELECTRUM_PICKAXE = register("electrum_pickaxe", Item::new, new AttributeProperties()
+            .pickaxe(EMaterials.ELECTRUM_TOOL, 1.0F, -2.5F)
+    );
+    Item ELECTRUM_SHOVEL = register("electrum_shovel", p -> new ShovelItem(
+            EMaterials.ELECTRUM_TOOL, 1.5F, -2.0F, p), new AttributeProperties()
+    );
+    Item ELECTRUM_HOE = register("electrum_hoe", p -> new HoeItem(
+            EMaterials.ELECTRUM_TOOL, -3.0F, 1.0F, p), new AttributeProperties()
+    );
+
+    Item URANIUM = register("uranium", Item::new, new Item.Properties().trimMaterial(ETrimMaterials.URANIUM));
+    Item URANIUM_SHARD = register("uranium_shard", Item::new, new Item.Properties());
+
+    Item REINFORCED_SHIELD = register("reinforced_shield", p -> new ConfigurableShieldItem(p, 70, 160, 15.0F), new Item.Properties()
+            .durability(672)
+            .component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
+            .repairable(ItemTags.DIAMOND_TOOL_MATERIALS).equippableUnswappable(EquipmentSlot.OFFHAND)
+            .delayedComponent(DataComponents.BLOCKS_ATTACKS, context -> new BlocksAttacks(
+                    0.0F, 1.0F,
+                    List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
+                    new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
+                    Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
+                    Optional.of(SoundEvents.SHIELD_BLOCK),
+                    Optional.of(SoundEvents.SHIELD_BREAK)))
+            .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)
+    );
+
+    Item QUICK_SHIELD = register("quick_shield", p -> new ConfigurableShieldItem(p, 15, 50, 8.0F), new Item.Properties()
+            .durability(434)
+            .component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
+            .repairable(ItemTags.WOODEN_TOOL_MATERIALS).equippableUnswappable(EquipmentSlot.OFFHAND)
+            .delayedComponent(DataComponents.BLOCKS_ATTACKS, (context) -> new BlocksAttacks(
+                    0.0F, 1.0F,
+                    List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
+                    new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
+                    Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
+                    Optional.of(SoundEvents.SHIELD_BLOCK),
+                    Optional.of(SoundEvents.SHIELD_BREAK)))
+            .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)
     );
 
     Item FROSTBITE_SPAWN_EGG = register("frostbite_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.FROSTBITE));
@@ -192,6 +281,8 @@ public interface EItems {
     Item SUBSLIME_SPAWN_EGG = register("subslime_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.SUBSLIME));
     Item SWEEPER_SPAWN_EGG = register("sweeper_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.SWEEPER));
     Item MUD_GOLEM_SPAWN_EGG = register("mud_golem_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.MUD_GOLEM));
+    Item SOUL_SPAWN_EGG = register("soul_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.SOUL));
+    Item TROLL_SPAWN_EGG = register("troll_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.TROLL));
 
     Item VANGUARD_MASK = register("vanguard_mask", Item::new, new Item.Properties()
             .humanoidArmor(EMaterials.VANGUARD_MASK, ArmorType.HELMET)

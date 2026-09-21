@@ -85,6 +85,22 @@ public interface EEntities {
                     .build(MUD_GOLEM_KEY)
     );
 
+    ResourceKey<EntityType<?>> SOUL_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "soul"));
+    EntityType<Soul> SOUL = Registry.register(BuiltInRegistries.ENTITY_TYPE, SOUL_KEY,
+            EntityType.Builder.of(Soul::new, MobCategory.MONSTER)
+                    .sized(0.35F, 0.55F)
+                    .clientTrackingRange(8)
+                    .build(SOUL_KEY)
+    );
+
+    ResourceKey<EntityType<?>> TROLL_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "troll"));
+    EntityType<Troll> TROLL = Registry.register(BuiltInRegistries.ENTITY_TYPE, TROLL_KEY,
+            EntityType.Builder.of(Troll::new, MobCategory.MONSTER)
+                    .sized(0.85F, 1.6F)
+                    .clientTrackingRange(8)
+                    .build(TROLL_KEY)
+    );
+
 
     // Boats
     ResourceKey<EntityType<?>> POPLAR_BOAT_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "poplar_boat"));
@@ -139,7 +155,13 @@ public interface EEntities {
         SpawnPlacements.register(SWEEPER, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Sweeper::checkMonsterSpawnRules);
 
         FabricDefaultAttributeRegistry.register(MUD_GOLEM, MudGolem.createAttributes().build());
-        SpawnPlacements.register(MUD_GOLEM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MudGolem::checkMonsterSpawnRules);
+        SpawnPlacements.register(MUD_GOLEM, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MudGolem::checkMudGolemSpawnRules);
+
+        FabricDefaultAttributeRegistry.register(SOUL, Soul.createAttributes().build());
+        SpawnPlacements.register(SOUL, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Soul::checkMonsterSpawnRules);
+
+        FabricDefaultAttributeRegistry.register(TROLL, Troll.createAttributes().build());
+        SpawnPlacements.register(TROLL, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Troll::checkMonsterSpawnRules);
     }
 
     private static EntityType.EntityFactory<Boat> boatFactory(final Supplier<Item> boatItem) {

@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.Identifier;
 import team.lookingglass.elsewhere.Elsewhere;
+import team.lookingglass.elsewhere.entity.mob.monster.Soul;
 import team.lookingglass.elsewhere.entity.model.*;
 import team.lookingglass.elsewhere.entity.renderer.*;
 
@@ -38,6 +39,12 @@ public class EEntityRenderers {
 
         ModelLayerRegistry.registerModelLayer(MudGolemModel.LAYER_LOCATION, MudGolemModel::createBodyLayer);
         EntityRenderers.register(EEntities.MUD_GOLEM, MudGolemRenderer::new);
+
+        ModelLayerRegistry.registerModelLayer(SoulModel.LAYER_LOCATION, SoulModel::createBodyLayer);
+        EntityRenderers.register(EEntities.SOUL, SoulRenderer::new);
+
+        ModelLayerRegistry.registerModelLayer(TrollModel.LAYER_LOCATION, TrollModel::createBodyLayer);
+        EntityRenderers.register(EEntities.TROLL, TrollRenderer::new);
 
         ModelLayerRegistry.registerModelLayer(PerchModel.LAYER_LOCATION, PerchModel::createBodyLayer);
         EntityRenderers.register(EEntities.PERCH, PerchRenderer::new);

@@ -30,7 +30,10 @@
         "bronze": "elsewhere:trims/color_palettes/bronze",
         "bronze_darker": "elsewhere:trims/color_palettes/bronze_darker",
         "soulsteel": "elsewhere:trims/color_palettes/soulsteel",
-        "soulsteel_darker": "elsewhere:trims/color_palettes/soulsteel_darker"
+        "soulsteel_darker": "elsewhere:trims/color_palettes/soulsteel_darker",
+        "electrum": "elsewhere:trims/color_palettes/electrum",
+        "electrum_darker": "elsewhere:trims/color_palettes/electrum_darker",
+        "uranium": "elsewhere:trims/color_palettes/uranium"
       },
       "textures": [
         "minecraft:trims/items/helmet_trim",

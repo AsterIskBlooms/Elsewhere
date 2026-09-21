@@ -760,13 +760,10 @@ public interface  EBiomes {
 
     private static Biome createDefaultCaves(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
 
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
-
-        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
-                context.lookup(Registries.PLACED_FEATURE),
-                context.lookup(Registries.CONFIGURED_CARVER)
-        );
+        createDefaultCaveSpawns(spawnBuilder);
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
 
         BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
         BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
@@ -798,7 +795,8 @@ public interface  EBiomes {
     private static Biome createCrystalCaverns(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+        createDefaultCaveSpawns(spawnBuilder);
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -836,18 +834,8 @@ public interface  EBiomes {
     private static Biome createSulfurCaves(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        spawnBuilder.addSpawn(MobCategory.AMBIENT, 10, new MobSpawnSettings.SpawnerData(EntityType.BAT, 8, 8));
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SULFUR_CUBE, 2, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 85, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 75, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 75, new MobSpawnSettings.SpawnerData(EntityType.BOGGED, 4, 4));
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1));
+        createSulfurCaveSpawns(spawnBuilder);
+        BiomeDefaultFeatures.caveSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -886,9 +874,7 @@ public interface  EBiomes {
     private static Biome createAridCaves(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        BiomeDefaultFeatures.monsters(spawnBuilder, 19, 1, 0, 50, false);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 4, 4));
+        createHotCaveSpawns(spawnBuilder);
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
@@ -924,15 +910,8 @@ public interface  EBiomes {
     private static Biome createFrigidCaves(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
+        createColdCaveSpawns(spawnBuilder);
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE),
@@ -970,9 +949,7 @@ public interface  EBiomes {
     private static Biome createVolcanicDepths(BootstrapContext<Biome> context) {
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        BiomeDefaultFeatures.monsters(spawnBuilder, 19, 1, 0, 50, false);
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 4, 4));
+        createHotCaveSpawns(spawnBuilder);
         BiomeDefaultFeatures.caveSpawns(spawnBuilder);
 
         BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
@@ -1043,6 +1020,65 @@ public interface  EBiomes {
 
 
 
+    static void createDefaultCaveSpawns(MobSpawnSettings.Builder spawnBuilder) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+    }
+
+    static void createHotCaveSpawns(MobSpawnSettings.Builder spawnBuilder) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.PARCHED, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+    }
+
+    static void createColdCaveSpawns(MobSpawnSettings.Builder spawnBuilder) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+    }
+
+    static void createSulfurCaveSpawns(MobSpawnSettings.Builder spawnBuilder) {
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 75, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 75, new MobSpawnSettings.SpawnerData(EntityType.BOGGED, 4, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SULFUR_CUBE, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
+
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
+    }
 
     // Global features --- Don't use this, this is just for reference... -w-"
      static void globalOverworldGeneration(BiomeGenerationSettings.Builder genBuilder) {

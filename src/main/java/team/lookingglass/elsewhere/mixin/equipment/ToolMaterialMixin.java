@@ -12,7 +12,7 @@ public abstract class ToolMaterialMixin {
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void patchMaterials(CallbackInfo ci) {
-        mutate(ToolMaterial.WOOD, 1000, 3.0F, 0.0F, 5);
+        mutate(ToolMaterial.WOOD, 1000, 3.0F, -1.0F, 5);
         mutate(ToolMaterial.STONE, 161, 4.0F, 0.0F, 5);
         mutate(ToolMaterial.COPPER, 212, 5.0F, 1.0F, 13);
         mutate(ToolMaterial.IRON, 350, 6.0F, 2.0F, 14);

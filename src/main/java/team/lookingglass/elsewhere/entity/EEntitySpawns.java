@@ -29,9 +29,10 @@ public class EEntitySpawns {
                 Biomes.JUNGLE, Biomes.BAMBOO_JUNGLE, Biomes.SPARSE_JUNGLE
         );
 
+        // PARTIALLY CUT FOR 1.0
         BiomeModifications.create(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frozen_monster_spawns"))
-                .add(ModificationPhase.REMOVALS, ctx -> frostbiteBiomes.contains(ctx.getBiomeKey()),
-                        spawn -> spawn.getMobSpawnSettings().removeSpawnsOfEntityType(EntityType.ZOMBIE))
+//                .add(ModificationPhase.REMOVALS, ctx -> frostbiteBiomes.contains(ctx.getBiomeKey()),
+//                        spawn -> spawn.getMobSpawnSettings().removeSpawnsOfEntityType(EntityType.ZOMBIE))
                 .add(ModificationPhase.REMOVALS, ctx -> frostbiteBiomes.contains(ctx.getBiomeKey()),
                         spawn -> spawn.getMobSpawnSettings().removeSpawnsOfEntityType(EntityType.SKELETON))
                 .add(ModificationPhase.REMOVALS, ctx -> frostbiteBiomes.contains(ctx.getBiomeKey()),
@@ -46,9 +47,9 @@ public class EEntitySpawns {
                 .add(ModificationPhase.ADDITIONS, ctx -> frostbiteBiomes.contains(ctx.getBiomeKey()),
                         spawn -> spawn.getMobSpawnSettings().addSpawn(MobCategory.MONSTER,
                                 new MobSpawnSettings.SpawnerData(EntityType.STRAY, 4, 4), 80))
-                .add(ModificationPhase.ADDITIONS, ctx -> frostbiteBiomes.contains(ctx.getBiomeKey()),
-                        spawn -> spawn.getMobSpawnSettings().addSpawn(MobCategory.MONSTER,
-                                new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4), 75))
+//                .add(ModificationPhase.ADDITIONS, ctx -> frostbiteBiomes.contains(ctx.getBiomeKey()),
+//                        spawn -> spawn.getMobSpawnSettings().addSpawn(MobCategory.MONSTER,
+//                                new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4), 75))
         ;
 
         BiomeModifications.create(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "bogged_spawns"))
@@ -65,20 +66,18 @@ public class EEntitySpawns {
                                 new MobSpawnSettings.SpawnerData(EntityType.BOGGED, 4, 4), 70))
         ;
 
-        List<ResourceKey<Biome>> mudGolemBiomes = List.of(
-                Biomes.SWAMP, Biomes.MANGROVE_SWAMP, Biomes.LUSH_CAVES
+        List<ResourceKey<Biome>> mudGolemSurfaceBiomes = List.of(
+                Biomes.SWAMP, Biomes.MANGROVE_SWAMP
         );
 
-        BiomeModifications.addSpawn(ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD),
-                MobCategory.MONSTER, EEntities.VANGUARD, 70, 1, 3);
-        BiomeModifications.addSpawn(ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD),
-                MobCategory.MONSTER, EEntities.WEREWOLF, 35, 1, 1);
-        BiomeModifications.addSpawn(ctx -> ctx.hasTag(EBiomeTags.IS_CAVE),
-                MobCategory.MONSTER, EEntities.SUBSLIME, 75, 2, 4);
-        BiomeModifications.addSpawn(ctx -> mudGolemBiomes.contains(ctx.getBiomeKey()),
+        // CUT FOR 1.0
+//        BiomeModifications.addSpawn(ctx -> ctx.hasTag(BiomeTags.IS_OVERWORLD),
+//                MobCategory.MONSTER, EEntities.WEREWOLF, 35, 1, 1);
+        BiomeModifications.addSpawn(ctx -> mudGolemSurfaceBiomes.contains(ctx.getBiomeKey()),
                 MobCategory.MONSTER, EEntities.MUD_GOLEM, 65, 1, 2);
-        BiomeModifications.addSpawn(ctx -> ctx.hasTag(EBiomeTags.IS_CAVE),
-                MobCategory.MONSTER, EEntities.SWEEPER, 80, 1, 2);
+
+        BiomeModifications.addSpawn(ctx -> ctx.getBiomeKey() == Biomes.SOUL_SAND_VALLEY,
+                MobCategory.MONSTER, EEntities.SOUL, 15, 2, 4);
 
         BiomeModifications.addSpawn(ctx -> ctx.getBiomeKey() == Biomes.RIVER,
                 MobCategory.WATER_AMBIENT, EEntities.PERCH, 1, 3, 5);

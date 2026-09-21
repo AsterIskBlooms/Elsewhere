@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Items;
 import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.tags.EItemTags;
 import team.lookingglass.elsewhere.registry.EItems;
@@ -109,36 +108,46 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS
         );
 
+        // Soulsteel
+        valueLookupBuilder(EItemTags.ELECTRUM_TOOLS).add(
+                EItems.ELECTRUM_SWORD, EItems.ELECTRUM_AXE, EItems.ELECTRUM_SPEAR,
+                EItems.ELECTRUM_PICKAXE, EItems.ELECTRUM_SHOVEL, EItems.ELECTRUM_HOE
+        );
+        valueLookupBuilder(EItemTags.ELECTRUM_EQUIPMENT).add(
+                EItems.ELECTRUM_HELMET, EItems.ELECTRUM_CHESTPLATE, EItems.ELECTRUM_LEGGINGS, EItems.ELECTRUM_BOOTS
+        );
+
         valueLookupBuilder(EItemTags.REPAIRS_VANGUARD_MASK).add(EItems.VANGUARD_MASK, EItems.SILVER_INGOT);
 
         // Repair tags
-        valueLookupBuilder(EItemTags.REPAIRS_BRONZE_ARMOR).add(EItems.BRONZE_INGOT);
-        valueLookupBuilder(EItemTags.REPAIRS_SILVER_ARMOR).add(EItems.SILVER_INGOT);
-        valueLookupBuilder(EItemTags.REPAIRS_SOULSTEEL_ARMOR).add(EItems.SOULSTEEL_INGOT);
+        valueLookupBuilder(EItemTags.REPAIRS_BRONZE_ARMOR).add(EItems.BRONZE_ALLOY);
+        valueLookupBuilder(EItemTags.REPAIRS_SOULSTEEL_ARMOR).add(EItems.SOULSTEEL_ALLOY);
+        valueLookupBuilder(EItemTags.REPAIRS_ELECTRUM_ARMOR).add(EItems.ELECTRUM_ALLOY);
 
         // Tool type tags
-        valueLookupBuilder(ItemTags.SWORDS).add(EItems.BRONZE_SWORD, EItems.SOULSTEEL_SWORD);
-        valueLookupBuilder(ItemTags.AXES).add(EItems.BRONZE_AXE, EItems.SOULSTEEL_AXE);
-        valueLookupBuilder(ItemTags.SPEARS).add(EItems.BRONZE_SPEAR, EItems.SOULSTEEL_SPEAR);
-        valueLookupBuilder(ItemTags.PICKAXES).add(EItems.BRONZE_PICKAXE, EItems.SOULSTEEL_PICKAXE);
-        valueLookupBuilder(ItemTags.SHOVELS).add(EItems.BRONZE_SHOVEL, EItems.SOULSTEEL_SHOVEL);
-        valueLookupBuilder(ItemTags.HOES).add(EItems.BRONZE_HOE, EItems.SOULSTEEL_HOE);
+        valueLookupBuilder(ItemTags.SWORDS).add(EItems.BRONZE_SWORD, EItems.SOULSTEEL_SWORD, EItems.ELECTRUM_SWORD);
+        valueLookupBuilder(ItemTags.AXES).add(EItems.BRONZE_AXE, EItems.SOULSTEEL_AXE, EItems.ELECTRUM_AXE);
+        valueLookupBuilder(ItemTags.SPEARS).add(EItems.BRONZE_SPEAR, EItems.SOULSTEEL_SPEAR, EItems.ELECTRUM_SPEAR);
+        valueLookupBuilder(ItemTags.PICKAXES).add(EItems.BRONZE_PICKAXE, EItems.SOULSTEEL_PICKAXE, EItems.ELECTRUM_PICKAXE);
+        valueLookupBuilder(ItemTags.SHOVELS).add(EItems.BRONZE_SHOVEL, EItems.SOULSTEEL_SHOVEL, EItems.ELECTRUM_SHOVEL);
+        valueLookupBuilder(ItemTags.HOES).add(EItems.BRONZE_HOE, EItems.SOULSTEEL_HOE, EItems.ELECTRUM_HOE);
 
         // Armor type tags
-        valueLookupBuilder(ItemTags.HEAD_ARMOR).add(EItems.BRONZE_HELMET, EItems.SOULSTEEL_HELMET);
-        valueLookupBuilder(ItemTags.CHEST_ARMOR).add(EItems.BRONZE_CHESTPLATE, EItems.SOULSTEEL_CHESTPLATE);
-        valueLookupBuilder(ItemTags.LEG_ARMOR).add(EItems.BRONZE_LEGGINGS, EItems.SOULSTEEL_LEGGINGS);
-        valueLookupBuilder(ItemTags.FOOT_ARMOR).add(EItems.BRONZE_BOOTS, EItems.SOULSTEEL_BOOTS);
+        valueLookupBuilder(ItemTags.HEAD_ARMOR).add(EItems.BRONZE_HELMET, EItems.SOULSTEEL_HELMET, EItems.ELECTRUM_HELMET);
+        valueLookupBuilder(ItemTags.CHEST_ARMOR).add(EItems.BRONZE_CHESTPLATE, EItems.SOULSTEEL_CHESTPLATE, EItems.ELECTRUM_CHESTPLATE);
+        valueLookupBuilder(ItemTags.LEG_ARMOR).add(EItems.BRONZE_LEGGINGS, EItems.SOULSTEEL_LEGGINGS, EItems.ELECTRUM_LEGGINGS);
+        valueLookupBuilder(ItemTags.FOOT_ARMOR).add(EItems.BRONZE_BOOTS, EItems.SOULSTEEL_BOOTS, EItems.ELECTRUM_BOOTS);
 
 
         // Trim Tags
         valueLookupBuilder(ItemTags.TRIM_MATERIALS).add(
-                EItems.TIN_INGOT, EItems.BRONZE_INGOT, EItems.SILVER_INGOT, EItems.SOULSTEEL_INGOT
+                EItems.TIN_INGOT, EItems.BRONZE_ALLOY, EItems.SILVER_INGOT, EItems.SOULSTEEL_ALLOY, EItems.ELECTRUM_ALLOY
         );
-        valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR).add(
-                EItems.BRONZE_HELMET, EItems.BRONZE_CHESTPLATE, EItems.BRONZE_LEGGINGS, EItems.BRONZE_BOOTS,
-                EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS
-        );
+        valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .addTag(EItemTags.BRONZE_EQUIPMENT)
+                .addTag(EItemTags.SOULSTEEL_EQUIPMENT)
+                .addTag(EItemTags.ELECTRUM_EQUIPMENT)
+        ;
 
 
 

@@ -5,15 +5,21 @@
   "mixins": [
     "entity.CreeperMixin",
     "entity.SkeletonMixin",
+    "entity.SlimeMixin",
     "entity.SubslimeDeathMixin",
     "entity.WitherSkeletonSwordsMixin",
     "entity.ZombieMixins",
+    "entity.possession.PossessedFiringMixin",
+    "entity.possession.PossessionMixin",
     "equipment.ArmorMaterialsMixin",
+    "equipment.PickaxePierceMixin",
+    "equipment.SpearMixin",
     "equipment.ToolMaterialMixin",
+    "equipment.shield.ShieldBlockDelayMixin",
+    "equipment.shield.ShieldCooldownMixin",
+    "equipment.shield.ShieldItemMixin",
     "equipment.toolstats.AxeReconfig",
     "equipment.toolstats.HoeReconfig",
-    "equipment.toolstats.ShovelReconfig",
-    "equipment.toolstats.SwordPickReconfig",
     "interaction.AbstractCauldronBlockMixin",
     "interaction.FireChargeMixin",
     "interaction.SoundMixin",
@@ -28,5 +34,11 @@
   },
   "overwrites": {
     "requireAnnotations": true
-	}
+  },
+  "client": [
+    "entity.possession.PossessionRenderExtractionMixin",
+    "entity.possession.PossessionRenderingMixin",
+    "entity.possession.PossessionRenderLayerMixin",
+    "entity.possession.PossessionRenderStateMixin"
+  ]
 }
