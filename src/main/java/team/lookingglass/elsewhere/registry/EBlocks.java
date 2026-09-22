@@ -1304,12 +1304,12 @@ public interface EBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).sound(ESounds.CINNABAR)
     );
 
-    Block ASH = register("ash", p -> new SandBlock(new ColorRGBA(0xFF625A5C), p), true,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.COLOR_LIGHT_GRAY)
-    );
-    Block ASHSTONE = register("ashstone", Block::new, true,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).mapColor(MapColor.COLOR_LIGHT_GRAY)
-    );
+//    Block ASH = register("ash", p -> new SandBlock(new ColorRGBA(0xFF625A5C), p), true,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.COLOR_LIGHT_GRAY)
+//    );
+//    Block ASHSTONE = register("ashstone", Block::new, true,
+//            BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).mapColor(MapColor.COLOR_LIGHT_GRAY)
+//    );
 
     Block CUT_TIN = registerSubBlock("cut_tin", TIN_BLOCK);
     Block CUT_TIN_STAIRS = registerStair("cut_tin_stairs", CUT_TIN);

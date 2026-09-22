@@ -108,15 +108,16 @@ public abstract class OverworldBiomeGenMixin {
                 0.0F,
                 EBiomes.FRIGID_CAVES
         );
-        addDeepUndergroundBiome(biomes,
-                Climate.Parameter.span(0.2F, 1.0F),
-                Climate.Parameter.span(0.1F, 1.0F),
-                Climate.Parameter.span(-0.455F, 0.3F),
-                Climate.Parameter.span(-0.375F, 1.0F),
-                accessor.getFULL_RANGE(),
-                0.0F,
-                EBiomes.VOLCANIC_DEPTHS
-        );
+        // CUT FOR 1.0
+//        addDeepUndergroundBiome(biomes,
+//                Climate.Parameter.span(0.2F, 1.0F),
+//                Climate.Parameter.span(0.1F, 1.0F),
+//                Climate.Parameter.span(-0.455F, 0.3F),
+//                Climate.Parameter.span(-0.375F, 1.0F),
+//                accessor.getFULL_RANGE(),
+//                0.0F,
+//                EBiomes.VOLCANIC_DEPTHS
+//        );
     }
 
     // River Biomes

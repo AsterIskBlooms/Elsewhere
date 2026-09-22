@@ -1003,11 +1003,9 @@ public class LangProviderEN extends FabricLanguageProvider {
 
         translationBuilder.add("entity.elsewhere.sulfur_cube", "Sulfur Cube");
         translationBuilder.add("item.elsewhere.sulfur_cube_spawn_egg", "Sulfur Cube Spawn Egg");
-        translationBuilder.add("item.elsewhere.sulfur_cream", "Sulfur Cream");
 
         translationBuilder.add("entity.elsewhere.subslime", "Subslime");
         translationBuilder.add("item.elsewhere.subslime_spawn_egg", "Subslime Spawn Egg");
-        translationBuilder.add("item.elsewhere.subslime_cluster", "Subslime Cluster");
 
         translationBuilder.add("entity.elsewhere.sweeper", "Sweeper");
         translationBuilder.add("item.elsewhere.sweeper_spawn_egg", "Sweeper Spawn Egg");
@@ -1029,12 +1027,24 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("item.elsewhere.perch_bucket", "Bucket of Perch");
 
 
+
+        // Tags
+        translationBuilder.add("tag.elsewhere.is_cave", "Is Cave");
+
         translationBuilder.add("tag.elsewhere.mosaics", "Mosaics");
         translationBuilder.add("tag.elsewhere.mosaic_stairs", "Mosaic Stairs");
         translationBuilder.add("tag.elsewhere.mosaic_slabs", "Mosaic Slabs");
         translationBuilder.add("tag.elsewhere.boards", "Boards");
         translationBuilder.add("tag.elsewhere.trims", "Trims");
+
+        translationBuilder.add("tag.elsewhere.poplar_logs", "Poplar Logs");
+        translationBuilder.add("tag.elsewhere.azalea_logs", "Azalea Logs");
+        translationBuilder.add("tag.elsewhere.cedar_logs", "Cedar Logs");
+        translationBuilder.add("tag.elsewhere.mahogany_logs", "Mahogany Logs");
         translationBuilder.add("tag.elsewhere.bamboo_stems", "Bamboo Stems");
+
+        translationBuilder.add("tag.elsewhere.natural_stone_blocks", "Natural Stone Blocks");
+        translationBuilder.add("tag.elsewhere.soil", "Soil");
 
         translationBuilder.add("tag.elsewhere.shale_ore_replaceables", "Shale Ore Replaceables");
         translationBuilder.add("tag.elsewhere.cinnabar_ore_replaceables", "Cinnabar Ore Replaceables");
@@ -1045,9 +1055,44 @@ public class LangProviderEN extends FabricLanguageProvider {
         translationBuilder.add("tag.elsewhere.tundra_red_grass", "Tundra Red Grass");
         translationBuilder.add("tag.elsewhere.tundra_green_grass", "Tundra Green Grass");
 
+        translationBuilder.add("tag.elsewhere.wool_blocks", "Wool Blocks");
+        translationBuilder.add("tag.elsewhere.wool_stairs", "Wool Stairs");
+        translationBuilder.add("tag.elsewhere.wool_slabs", "Wool Slabs");
+
+        translationBuilder.add("tag.elsewhere.terracotta_blocks", "Terracotta Blocks");
+        translationBuilder.add("tag.elsewhere.terracotta_stairs", "Terracotta Stairs");
+        translationBuilder.add("tag.elsewhere.terracotta_slabs", "Terracotta Slabs");
+
+        translationBuilder.add("tag.elsewhere.terracotta_bricks", "Terracotta Bricks");
+        translationBuilder.add("tag.elsewhere.terracotta_brick_stairs", "Terracotta Brick Stairs");
+        translationBuilder.add("tag.elsewhere.terracotta_brick_slabs", "Terracotta Brick Slabs");
+
+        translationBuilder.add("tag.elsewhere.terracotta_brick_tiles", "Terracotta Brick Tiles");
+        translationBuilder.add("tag.elsewhere.terracotta_brick_tile_stairs", "Terracotta Brick Tile Stairs");
+        translationBuilder.add("tag.elsewhere.terracotta_brick_tile_slabs", "Terracotta Brick Tile Slabs");
+
+        translationBuilder.add("tag.elsewhere.concrete", "Concrete");
+        translationBuilder.add("tag.elsewhere.concrete_blocks", "Concrete Blocks");
+        translationBuilder.add("tag.elsewhere.concrete_stairs", "Concrete Stairs");
+        translationBuilder.add("tag.elsewhere.concrete_slabs", "Concrete Slabs");
+
         translationBuilder.add("tag.elsewhere.needs_copper_tool", "Needs Copper Tool");
         translationBuilder.add("tag.elsewhere.needs_bronze_tool", "Needs Bronze Tool");
         translationBuilder.add("tag.elsewhere.incorrect_for_bronze_tool", "Incorrect For Bronze Tool");
+
+        translationBuilder.add("tag.elsewhere.repairs_bronze_armor", "Repairs Bronze Armor");
+        translationBuilder.add("tag.elsewhere.bronze_tools", "Bronze Tools");
+        translationBuilder.add("tag.elsewhere.bronze_equipment", "Bronze Equipment");
+
+        translationBuilder.add("tag.elsewhere.repairs_soulsteel_armor", "Repairs Soulsteel Armor");
+        translationBuilder.add("tag.elsewhere.soulsteel_tools", "Soulsteel Tools");
+        translationBuilder.add("tag.elsewhere.soulsteel_equipment", "Soulsteel Equipment");
+
+        translationBuilder.add("tag.elsewhere.repairs_electrum_armor", "Repairs Electrum Armor");
+        translationBuilder.add("tag.elsewhere.electrum_tools", "Electrum Tools");
+        translationBuilder.add("tag.elsewhere.electrum_equipment", "Electrum Equipment");
+
+        translationBuilder.add("tag.elsewhere.repairs_vanguard_mask", "Repairs Vanguard Mask");
 
         translationBuilder.add("tag.elsewhere.possessable", "Possessable");
 
@@ -1106,14 +1151,13 @@ public class LangProviderEN extends FabricLanguageProvider {
 
         translationBuilder.add("subtitles.elsewhere.entity.subslime.jump", "Subslime jumps");
         translationBuilder.add("subtitles.elsewhere.entity.subslime.squish", "Subslime squishes");
-        translationBuilder.add("subtitles.elsewhere.entity.subslime.attack", "Subslime attacks");
+        translationBuilder.add("subtitles.elsewhere.entity.subslime.attack", "Subslime spins");
         translationBuilder.add("subtitles.elsewhere.entity.subslime.hurt", "Subslime hurts");
         translationBuilder.add("subtitles.elsewhere.entity.subslime.death", "Subslime dies");
 
         translationBuilder.add("subtitles.elsewhere.entity.perch.flop", "Perch flops");
         translationBuilder.add("subtitles.elsewhere.entity.perch.hurt", "Perch hurts");
         translationBuilder.add("subtitles.elsewhere.entity.perch.death", "Perch dies");
-
 
 
         // Advancements

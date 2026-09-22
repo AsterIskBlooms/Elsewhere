@@ -26,7 +26,7 @@ public class BiomeTagProvider extends FabricTagsProvider<Biome> {
                 EBiomes.CAVES,
                 Biomes.DRIPSTONE_CAVES, Biomes.LUSH_CAVES,
                 EBiomes.SULFUR_CAVES, EBiomes.CRYSTAL_CAVERNS, EBiomes.ARID_CAVES, EBiomes.FRIGID_CAVES,
-                EBiomes.VOLCANIC_DEPTHS, EBiomes.PALE_GROTTO
+                EBiomes.VOLCANIC_DEPTHS
         );
 
 

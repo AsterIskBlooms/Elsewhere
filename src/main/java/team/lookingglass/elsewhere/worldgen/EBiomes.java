@@ -48,7 +48,6 @@ public interface  EBiomes {
         context.register(ARID_CAVES, createAridCaves(context));
         context.register(FRIGID_CAVES, createFrigidCaves(context));
         context.register(VOLCANIC_DEPTHS, createVolcanicDepths(context));
-        context.register(PALE_GROTTO, createPaleGrotto(context));
     }
 
     ResourceKey<Biome> OUTBACK = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "outback"));
@@ -75,7 +74,6 @@ public interface  EBiomes {
     ResourceKey<Biome> ARID_CAVES = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "arid_caves"));
     ResourceKey<Biome> FRIGID_CAVES = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "frigid_caves"));
     ResourceKey<Biome> VOLCANIC_DEPTHS = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "volcanic_depths"));
-    ResourceKey<Biome> PALE_GROTTO = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "pale_grotto"));
 
 
     private static Biome createOutback(BootstrapContext<Biome> context) {
@@ -976,43 +974,6 @@ public interface  EBiomes {
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
                 .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 256F)
                 .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, true)
-                .mobSpawnSettings(spawnBuilder.build())
-                .generationSettings(genBuilder.build())
-                .build();
-    }
-
-    private static Biome createPaleGrotto(BootstrapContext<Biome> context) {
-        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 1, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 1, 4));
-        spawnBuilder.addSpawn(MobCategory.AMBIENT, 1, new MobSpawnSettings.SpawnerData(EntityType.BAT, 8, 8));
-
-        BiomeGenerationSettings.Builder genBuilder = new BiomeGenerationSettings.Builder(
-                context.lookup(Registries.PLACED_FEATURE),
-                context.lookup(Registries.CONFIGURED_CARVER)
-        );
-
-        BiomeDefaultFeatures.addDefaultCarversAndLakes(genBuilder);
-        BiomeDefaultFeatures.addDefaultCrystalFormations(genBuilder);
-        BiomeDefaultFeatures.addDefaultMonsterRoom(genBuilder);
-        BiomeDefaultFeatures.addDefaultUndergroundVariety(genBuilder);
-        BiomeDefaultFeatures.addDefaultOres(genBuilder);
-        BiomeDefaultFeatures.addDefaultSoftDisks(genBuilder);
-
-        return new Biome.BiomeBuilder()
-                .hasPrecipitation(false)
-                .temperature(3.0F)
-                .downfall(0.0F)
-                .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0x43D5EE)
-                        .build())
-                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_STONY_PEAKS))
-                .setAttribute(EnvironmentAttributes.SKY_COLOR, 0xB9B9B9)
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, 0x817770)
-                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041F33)
-                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 64F)
-                .setAttribute(EnvironmentAttributes.SKY_FOG_END_DISTANCE, 64F)
-                .setAttribute(EnvironmentAttributes.SNOW_GOLEM_MELTS, false)
                 .mobSpawnSettings(spawnBuilder.build())
                 .generationSettings(genBuilder.build())
                 .build();

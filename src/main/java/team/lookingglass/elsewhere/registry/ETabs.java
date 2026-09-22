@@ -164,7 +164,11 @@ public class ETabs {
                     EBlocks.CINNABAR, EBlocks.CINNABAR_STAIRS, EBlocks.CINNABAR_SLAB, EBlocks.CINNABAR_WALL,
                     EBlocks.CHISELED_CINNABAR, EBlocks.CINNABAR_PILLAR,
                     EBlocks.POLISHED_CINNABAR, EBlocks.POLISHED_CINNABAR_STAIRS, EBlocks.POLISHED_CINNABAR_SLAB, EBlocks.POLISHED_CINNABAR_WALL,
-                    EBlocks.CINNABAR_BRICKS, EBlocks.CINNABAR_BRICK_STAIRS, EBlocks.CINNABAR_BRICK_SLAB, EBlocks.CINNABAR_BRICK_WALL);
+                    EBlocks.CINNABAR_BRICKS, EBlocks.CINNABAR_BRICK_STAIRS, EBlocks.CINNABAR_BRICK_SLAB, EBlocks.CINNABAR_BRICK_WALL,
+
+                    EBlocks.LIMESTONE, EBlocks.LIMESTONE_STAIRS, EBlocks.LIMESTONE_SLAB, EBlocks.LIMESTONE_WALL,
+                    EBlocks.CUT_LIMESTONE, EBlocks.CUT_LIMESTONE_STAIRS, EBlocks.CUT_LIMESTONE_SLAB, EBlocks.CUT_LIMESTONE_WALL
+            );
 
             // Prismarine
             output.insertAfter(Items.PRISMARINE_WALL,
@@ -257,8 +261,8 @@ public class ETabs {
 
             output.insertAfter(
                     Items.AMETHYST_BLOCK, EBlocks.AMETHYST_STAIRS, EBlocks.AMETHYST_SLAB, EBlocks.CHISELED_AMETHYST,
-                    EBlocks.AMETHYST_BRICKS, EBlocks.AMETHYST_BRICK_STAIRS, EBlocks.AMETHYST_BRICK_SLAB, EBlocks.AMETHYST_PILLAR,
-                    EBlocks.URANIUM_BLOCK
+                    EBlocks.AMETHYST_BRICKS, EBlocks.AMETHYST_BRICK_STAIRS, EBlocks.AMETHYST_BRICK_SLAB, EBlocks.AMETHYST_PILLAR
+//                    EBlocks.URANIUM_BLOCK
             );
             output.insertAfter(
                     Items.LIGHT_WEIGHTED_PRESSURE_PLATE,
@@ -492,7 +496,7 @@ public class ETabs {
                     EItems.SOULSTEEL_HELMET, EItems.SOULSTEEL_CHESTPLATE, EItems.SOULSTEEL_LEGGINGS, EItems.SOULSTEEL_BOOTS
             );
 
-            output.insertAfter(Items.SHIELD, EItems.REINFORCED_SHIELD, EItems.QUICK_SHIELD);
+//            output.insertAfter(Items.SHIELD, EItems.REINFORCED_SHIELD, EItems.QUICK_SHIELD);
 
             output.insertBefore(Items.WIND_CHARGE, Items.FIRE_CHARGE);
 
@@ -506,15 +510,13 @@ public class ETabs {
             output.insertAfter(Items.GOLD_NUGGET, EItems.SILVER_NUGGET);
             output.insertAfter(Items.COPPER_INGOT, EItems.TIN_INGOT);
             output.insertAfter(Items.GOLD_INGOT, EItems.SILVER_INGOT, EItems.BRONZE_ALLOY, EItems.ELECTRUM_ALLOY, EItems.SOULSTEEL_ALLOY);
-            output.insertAfter(Items.AMETHYST_SHARD, EItems.URANIUM, EItems.URANIUM_SHARD);
+//            output.insertAfter(Items.AMETHYST_SHARD, EItems.URANIUM, EItems.URANIUM_SHARD);
 
             output.insertBefore(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
                     EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE,
                     EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE,
                     EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE
             );
-
-            output.insertAfter(Items.SLIME_BALL, EItems.SUBSLIME_CLUSTER, EItems.SULFUR_CREAM);
         });
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FOOD_AND_DRINKS).register(output -> {

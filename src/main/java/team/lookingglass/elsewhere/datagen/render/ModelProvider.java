@@ -910,10 +910,8 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(EItems.VANGUARD_MASK, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SULFUR_CUBE_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SULFUR_CREAM, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SUBSLIME_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(EItems.SUBSLIME_CLUSTER, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(EItems.SWEEPER_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
 

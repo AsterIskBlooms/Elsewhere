@@ -113,6 +113,13 @@ public interface ESounds {
     SoundEvent SMALL_SULFUR_CUBE_HURT = register("entity.sulfur_cube.small.hurt");
     SoundEvent SMALL_SULFUR_CUBE_DEATH = register("entity.sulfur_cube.small.death");
 
+    // Subslime
+    SoundEvent SUBSLIME_JUMP = register("entity.subslime.jump");
+    SoundEvent SUBSLIME_SQUISH = register("entity.subslime.squish");
+    SoundEvent SUBSLIME_ATTACK = register("entity.subslime.attack");
+    SoundEvent SUBSLIME_HURT = register("entity.subslime.hurt");
+    SoundEvent SUBSLIME_DEATH = register("entity.subslime.death");
+
     // Perch :3
     SoundEvent PERCH_FLOP = register("entity.perch.flop");
     SoundEvent PERCH_HURT = register("entity.perch.hurt");

@@ -295,8 +295,6 @@ public interface EItems {
                             .build()
             )
     );
-    Item SULFUR_CREAM = register("sulfur_cream", Item::new, new Item.Properties());
-    Item SUBSLIME_CLUSTER = register("subslime_cluster", Item::new, new Item.Properties());
 
     Item PERCH_SPAWN_EGG = register("perch_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(EEntities.PERCH));
 

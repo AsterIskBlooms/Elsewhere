@@ -108,12 +108,12 @@ public class Subslime extends Slime {
                 return;
             }
         }
-
         super.jumpFromGround();
     }
 
     public void startAttackAnimation() {
         entityData.set(ATTACK_ANIMATION_TICKS, ATTACK_ANIMATION_LENGTH);
+        playSound(ESounds.SUBSLIME_ATTACK, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
     }
 
     public float getAttackAnimationProgress(float partialTicks) {
@@ -170,7 +170,6 @@ public class Subslime extends Slime {
             if (isAlive() && isWithinMeleeAttackRange(target) && hasLineOfSight(target)) {
                 DamageSource damageSource = damageSources().mobAttack(this);
                 if (target.hurtServer(level, damageSource, getAttackDamage())) {
-                    playSound(ESounds.SULFUR_CUBE_ATTACK, 1.0F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
                     EnchantmentHelper.doPostAttackEffects(level, target, damageSource);
                 }
             }
@@ -184,22 +183,22 @@ public class Subslime extends Slime {
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ESounds.SULFUR_CUBE_HURT;
+        return ESounds.SUBSLIME_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ESounds.SULFUR_CUBE_DEATH;
+        return ESounds.SUBSLIME_DEATH;
     }
 
     @Override
     protected SoundEvent getJumpSound() {
-        return ESounds.SULFUR_CUBE_JUMP;
+        return ESounds.SUBSLIME_JUMP;
     }
 
     @Override
     protected SoundEvent getSquishSound() {
-        return ESounds.SULFUR_CUBE_SQUISH;
+        return ESounds.SUBSLIME_SQUISH;
     }
 
     public static boolean checkSubslimeSpawnRules(EntityType<Subslime> type, ServerLevelAccessor level, EntitySpawnReason spawnType, BlockPos pos, RandomSource random) {

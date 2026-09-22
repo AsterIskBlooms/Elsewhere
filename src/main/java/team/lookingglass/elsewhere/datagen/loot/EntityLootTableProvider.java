@@ -3,6 +3,7 @@ package team.lookingglass.elsewhere.datagen.loot;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricEntityLootSubProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import team.lookingglass.elsewhere.entity.EEntities;
+import team.lookingglass.elsewhere.registry.EBlocks;
 import team.lookingglass.elsewhere.registry.EItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -62,22 +64,34 @@ public class EntityLootTableProvider extends FabricEntityLootSubProvider {
                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2))))
                 )
         );
-        add(EEntities.SULFUR_CUBE, LootTable.lootTable()
+        add(EEntities.SUBSLIME, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(EItems.SULFUR_CREAM)
+                        .add(LootItem.lootTableItem(Items.AMETHYST_SHARD)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2))))
                 )
         );
-        add(EEntities.SUBSLIME, LootTable.lootTable()
+        add(EEntities.TROLL, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(EItems.SUBSLIME_CLUSTER)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))
+                        .add(LootItem.lootTableItem(Items.GOLD_NUGGET)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 7)))
                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2))))
                 )
         );
 
         add(EEntities.PERCH, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                 .add(LootItem.lootTableItem(EItems.RAW_PERCH).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))));
+
+        add(EntityType.PIGLIN_BRUTE, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.GOLD_NUGGET)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(4, 11)))
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(3, 5)))))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.NETHERITE_SCRAP).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.NETHERITE_SCRAP).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                        .add(EmptyLootItem.emptyItem().setWeight(4)))
+        );
     }
 }

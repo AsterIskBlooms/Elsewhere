@@ -124,7 +124,7 @@ public class ERecipeProvider extends FabricRecipeProvider {
                 shapeless(RecipeCategory.MISC, EItems.BRONZE_ALLOY).requires(Items.COPPER_INGOT, 3).requires(EItems.TIN_INGOT, 2)
                         .unlockedBy(getHasName(EItems.TIN_INGOT), has(EItems.TIN_INGOT)).save(wrappedOutput);
                 itemUnsmeltableBSet(EItems.BRONZE_ALLOY, EBlocks.BRONZE_BLOCK);
-                shaped(RecipeCategory.MISC, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE).define('#', Items.LAPIS_LAZULI).define('C', Blocks.STONE).define('T', EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)
+                shaped(RecipeCategory.MISC, EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE, 2).define('#', Items.LAPIS_LAZULI).define('C', Blocks.STONE).define('T', EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)
                         .pattern("#T#").pattern("#C#").pattern("###")
                         .unlockedBy(getHasName(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE), has(EItems.BRONZE_UPGRADE_SMITHING_TEMPLATE)).save(wrappedOutput);
                 equipmentSetSmithing(
@@ -171,7 +171,7 @@ public class ERecipeProvider extends FabricRecipeProvider {
                         .requires(Items.IRON_INGOT, 2).requires(Items.BLAZE_POWDER).requires(Items.QUARTZ, 3)
                         .unlockedBy(getHasName(Items.BLAZE_POWDER), has(Items.BLAZE_POWDER)).save(wrappedOutput);
                 itemUnsmeltableBSet(EItems.SOULSTEEL_ALLOY, EBlocks.SOULSTEEL_BLOCK);
-                shaped(RecipeCategory.MISC, EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE).define('#', Items.QUARTZ).define('C', Blocks.BLACKSTONE).define('T', EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE)
+                shaped(RecipeCategory.MISC, EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE, 2).define('#', Items.QUARTZ).define('C', Blocks.BLACKSTONE).define('T', EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE)
                         .pattern("#T#").pattern("#C#").pattern("###")
                         .unlockedBy(getHasName(EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE), has(EItems.SOULSTEEL_UPGRADE_SMITHING_TEMPLATE)).save(wrappedOutput);
                 equipmentSetSmithing(
@@ -191,7 +191,7 @@ public class ERecipeProvider extends FabricRecipeProvider {
                         .requires(Items.GOLD_INGOT, 5).requires(EItems.SILVER_INGOT, 4)
                         .unlockedBy(getHasName(EItems.SILVER_INGOT), has(EItems.SILVER_INGOT)).save(wrappedOutput);
                 itemUnsmeltableBSet(EItems.ELECTRUM_ALLOY, EBlocks.ELECTRUM_BLOCK);
-                shaped(RecipeCategory.MISC, EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE).define('#', Items.LAPIS_LAZULI).define('C', Blocks.TUFF).define('T', EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE)
+                shaped(RecipeCategory.MISC, EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE, 2).define('#', Items.LAPIS_LAZULI).define('C', Blocks.TUFF).define('T', EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE)
                         .pattern("#T#").pattern("#C#").pattern("###")
                         .unlockedBy(getHasName(EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE), has(EItems.ELECTRUM_UPGRADE_SMITHING_TEMPLATE)).save(wrappedOutput);
                 equipmentSetSmithing(
@@ -205,6 +205,26 @@ public class ERecipeProvider extends FabricRecipeProvider {
 
                         EItems.SILVER_INGOT
                 );
+
+                // Template Changes
+                switchTemplateRecipe(Items.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE, Items.COBBLESTONE);
+                switchTemplateRecipe(Items.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE, Items.SANDSTONE);
+                switchTemplateRecipe(Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE, Items.COBBLESTONE);
+                switchTemplateRecipe(Items.WILD_ARMOR_TRIM_SMITHING_TEMPLATE, Items.MOSSY_COBBLESTONE);
+                switchTemplateRecipe(Items.WARD_ARMOR_TRIM_SMITHING_TEMPLATE, Items.COBBLED_DEEPSLATE);
+                switchTemplateRecipe(Items.EYE_ARMOR_TRIM_SMITHING_TEMPLATE, Items.END_STONE);
+                switchTemplateRecipe(Items.VEX_ARMOR_TRIM_SMITHING_TEMPLATE, Items.COBBLESTONE);
+                switchTemplateRecipe(Items.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, Items.PRISMARINE);
+                switchTemplateRecipe(Items.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE, Items.BLACKSTONE);
+                switchTemplateRecipe(Items.RIB_ARMOR_TRIM_SMITHING_TEMPLATE, Items.NETHERRACK);
+                switchTemplateRecipe(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, Items.PURPUR_BLOCK);
+                switchTemplateRecipe(Items.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE, Items.COBBLED_DEEPSLATE);
+                switchTemplateRecipe(Items.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE, Items.TERRACOTTA);
+                switchTemplateRecipe(Items.RAISER_ARMOR_TRIM_SMITHING_TEMPLATE, Items.TERRACOTTA);
+                switchTemplateRecipe(Items.SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE, Items.TERRACOTTA);
+                switchTemplateRecipe(Items.HOST_ARMOR_TRIM_SMITHING_TEMPLATE, Items.TERRACOTTA);
+                switchTemplateRecipe(Items.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE, Items.BREEZE_ROD);
+                switchTemplateRecipe(Items.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE, Items.COPPER_BLOCK);
 
                 // Uranium
                 itemUnsmeltableNBSet(EItems.URANIUM, EItems.URANIUM_SHARD, EBlocks.URANIUM_BLOCK);
@@ -380,9 +400,9 @@ public class ERecipeProvider extends FabricRecipeProvider {
                 recipe2x2(EBlocks.POLISHED_SULFUR, EBlocks.SULFUR_BRICKS);
                 recipeStairSlabWall(EBlocks.SULFUR_BRICKS, EBlocks.SULFUR_BRICK_STAIRS, EBlocks.SULFUR_BRICK_SLAB, EBlocks.SULFUR_BRICK_WALL);
                 stonecutterSet(List.of(EBlocks.SULFUR, EBlocks.SULFUR_STAIRS, EBlocks.SULFUR_WALL, EBlocks.POLISHED_SULFUR, EBlocks.POLISHED_SULFUR_STAIRS, EBlocks.POLISHED_SULFUR_WALL, EBlocks.SULFUR_BRICKS, EBlocks.SULFUR_BRICK_STAIRS, EBlocks.SULFUR_BRICK_WALL, EBlocks.SULFUR_PILLAR, EBlocks.CHISELED_SULFUR), List.of(EBlocks.SULFUR_SLAB, EBlocks.POLISHED_SULFUR_SLAB, EBlocks.SULFUR_BRICK_SLAB));
-                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.POTENT_SULFUR, 3).define('C', EItems.SULFUR_CREAM).define('#', EBlocks.SULFUR)
-                        .pattern(" # ").pattern("#C#").pattern(" # ")
-                        .unlockedBy(getHasName(EItems.SULFUR_CREAM), has(EItems.SULFUR_CREAM)).save(wrappedOutput);
+                shaped(RecipeCategory.BUILDING_BLOCKS, EBlocks.POTENT_SULFUR).define('#', EBlocks.SULFUR)
+                        .pattern("###").pattern("###").pattern("###")
+                        .unlockedBy(getHasName(EBlocks.SULFUR), has(EBlocks.SULFUR)).save(wrappedOutput);
 
                 // Orpiment
                 shapeless(RecipeCategory.BUILDING_BLOCKS, EBlocks.ORPIMENT, 3).requires(EBlocks.SULFUR, 2).requires(EBlocks.CINNABAR)
@@ -1025,6 +1045,15 @@ public class ERecipeProvider extends FabricRecipeProvider {
                 shaped(RecipeCategory.TRANSPORTATION, boat).define('#', planks).pattern("# #").pattern("###")
                         .unlockedBy(getHasName(planks), has(planks)).save(wrappedOutput);
             }
+
+            private void switchTemplateRecipe(ItemLike template, ItemLike base) {
+                shaped(RecipeCategory.MISC, template, 2).define('#', Items.AMETHYST_SHARD).define('C', base).define('S', template)
+                        .pattern("#S#").pattern("#C#").pattern("###")
+                        .unlockedBy(getHasName(template), has(template)).save(wrappedOutput);
+            }
+
+
+
 
 
 

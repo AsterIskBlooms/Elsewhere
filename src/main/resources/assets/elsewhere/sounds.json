@@ -618,6 +618,64 @@
     ]
   },
 
+  "entity.subslime.jump": {
+    "subtitle": "subtitles.elsewhere.entity.subslime.jump",
+    "sounds": [
+      "elsewhere:mob/subslime/jump1",
+      "elsewhere:mob/subslime/jump2",
+      "elsewhere:mob/subslime/jump3",
+      "elsewhere:mob/subslime/jump4",
+      "elsewhere:mob/subslime/jump5",
+      "elsewhere:mob/subslime/jump6",
+      "elsewhere:mob/subslime/jump7",
+      "elsewhere:mob/subslime/jump8",
+      "elsewhere:mob/subslime/jump9",
+      "elsewhere:mob/subslime/jump10",
+      "elsewhere:mob/subslime/jump11"
+    ]
+  },
+  "entity.subslime.squish": {
+    "subtitle": "subtitles.elsewhere.entity.subslime.squish",
+    "sounds": [
+      "elsewhere:mob/subslime/squish1",
+      "elsewhere:mob/subslime/squish2",
+      "elsewhere:mob/subslime/squish3",
+      "elsewhere:mob/subslime/squish4",
+      "elsewhere:mob/subslime/squish5",
+      "elsewhere:mob/subslime/squish6",
+      "elsewhere:mob/subslime/squish7",
+      "elsewhere:mob/subslime/squish8",
+      "elsewhere:mob/subslime/squish9",
+      "elsewhere:mob/subslime/squish10",
+      "elsewhere:mob/subslime/squish11"
+    ]
+  },
+  "entity.subslime.attack": {
+    "subtitle": "subtitles.elsewhere.entity.subslime.attack",
+    "sounds": [
+      "elsewhere:mob/subslime/attack1",
+      "elsewhere:mob/subslime/attack2"
+    ]
+  },
+  "entity.subslime.hurt": {
+    "subtitle": "subtitles.elsewhere.entity.subslime.hurt",
+    "sounds": [
+      "elsewhere:mob/subslime/hurt1",
+      "elsewhere:mob/subslime/hurt2",
+      "elsewhere:mob/subslime/hurt3",
+      "elsewhere:mob/subslime/hurt4"
+    ]
+  },
+  "entity.subslime.death": {
+    "subtitle": "subtitles.elsewhere.entity.subslime.death",
+    "sounds": [
+      "elsewhere:mob/subslime/death1",
+      "elsewhere:mob/subslime/death2",
+      "elsewhere:mob/subslime/death3",
+      "elsewhere:mob/subslime/death4"
+    ]
+  },
+
   "entity.perch.flop": {
     "subtitle": "subtitles.elsewhere.entity.perch.flop",
     "sounds": [

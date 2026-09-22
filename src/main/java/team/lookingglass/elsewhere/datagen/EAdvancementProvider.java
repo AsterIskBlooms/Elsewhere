@@ -66,19 +66,8 @@ public class EAdvancementProvider extends FabricAdvancementProvider {
                 .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, Elsewhere.MODID + ":story/copper_armor");
 
-        AdvancementHolder blastFurnace = Advancement.Builder.advancement()
-                .parent(copperPickaxe)
-                .display(
-                        Blocks.BLAST_FURNACE.asItem(),
-                        Component.translatable("advancements.elsewhere.blast_furnace.title"),
-                        Component.translatable("advancements.elsewhere.blast_furnace.description"),
-                        null, AdvancementType.TASK, true, true, false
-                )
-                .addCriterion("blast_furnace", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.BLAST_FURNACE))
-                .save(consumer, Elsewhere.MODID + ":story/blast_furnace");
-
         AdvancementHolder smeltIron = Advancement.Builder.advancement()
-                .parent(blastFurnace)
+                .parent(copperPickaxe)
                 .display(
                         Items.IRON_INGOT,
                         Component.translatable("advancements.story.smelt_iron.title"),
