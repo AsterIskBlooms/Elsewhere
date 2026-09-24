@@ -1,7 +1,5 @@
 package team.lookingglass.elsewhere.entity.model;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -16,7 +14,6 @@ import net.minecraft.util.Mth;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.entity.renderer.states.SweeperRenderState;
 
-@Environment(EnvType.CLIENT)
 public class SweeperModel extends EntityModel<SweeperRenderState> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Elsewhere.MODID, "seeper"), "main");
     private final ModelPart torso;

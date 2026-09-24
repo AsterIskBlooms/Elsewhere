@@ -1,52 +1,48 @@
 package team.lookingglass.elsewhere.entity.renderer;
 
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
+import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.item.ShieldItem;
 import team.lookingglass.elsewhere.Elsewhere;
 import team.lookingglass.elsewhere.entity.mob.monster.Vanguard;
 import team.lookingglass.elsewhere.entity.model.VanguardModel;
+import team.lookingglass.elsewhere.entity.renderer.states.VanguardRenderState;
 
-public class VanguardRenderer extends HumanoidMobRenderer<Vanguard, HumanoidRenderState, VanguardModel> {
+public class VanguardRenderer extends MobRenderer<Vanguard, VanguardRenderState, VanguardModel> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Elsewhere.MODID, "textures/entity/vanguard/vanguard.png");
+    private final ItemModelResolver itemModelResolver;
 
     public VanguardRenderer(EntityRendererProvider.Context context) {
         super(context, new VanguardModel(context.bakeLayer(VanguardModel.LAYER_LOCATION)), 0.5F);
-        this.addLayer(new HumanoidArmorLayer<>(
-                this, ArmorModelSet.bake(VanguardModel.ARMOR_LAYERS, context.getModelSet(), VanguardModel::new),
-                context.getEquipmentRenderer()));
+        this.itemModelResolver = context.getItemModelResolver();
+        this.addLayer(new ItemInHandLayer<>(this));
     }
 
     @Override
-    public void extractRenderState(Vanguard entity, HumanoidRenderState state, float partialTick) {
+    public VanguardRenderState createRenderState() {
+        return new VanguardRenderState();
+    }
+
+    @Override
+    public void extractRenderState(Vanguard entity, VanguardRenderState state, float partialTick) {
         super.extractRenderState(entity, state, partialTick);
-
-        if (entity.isUsingItem() && entity.getUseItem().getItem() instanceof ShieldItem) {
-            if (entity.getUsedItemHand() == InteractionHand.OFF_HAND) {
-                if (entity.getMainArm() == HumanoidArm.RIGHT) { state.leftArmPose = HumanoidModel.ArmPose.BLOCK; }
-                else { state.rightArmPose = HumanoidModel.ArmPose.BLOCK; }
-            }
-            else {
-                if (entity.getMainArm() == HumanoidArm.RIGHT) { state.rightArmPose = HumanoidModel.ArmPose.BLOCK; }
-                else { state.leftArmPose = HumanoidModel.ArmPose.BLOCK; }
-            }
-        }
+        VanguardRenderState.extractArmedEntityRenderState(entity, state, itemModelResolver, partialTick);
+        state.walkPhase = entity.getWalkPhase(partialTick);
+        state.walkWeight = entity.getWalkWeight(partialTick);
+        state.blockWeight = entity.getBlockWeight(partialTick);
+        state.idleAnimationState.copyFrom(entity.idleAnimationState);
+        state.blockStartAnimationState.copyFrom(entity.blockStartAnimationState);
+        state.blockAnimationState.copyFrom(entity.blockAnimationState);
+        state.singleSwingAnimationState.copyFrom(entity.singleSwingAnimationState);
+        state.doubleSwingAnimationState.copyFrom(entity.doubleSwingAnimationState);
+        state.chargeAnimationState.copyFrom(entity.chargeAnimationState);
+        state.stunAnimationState.copyFrom(entity.stunAnimationState);
     }
 
     @Override
-    public Identifier getTextureLocation(HumanoidRenderState state) {
+    public Identifier getTextureLocation(VanguardRenderState state) {
         return TEXTURE;
-    }
-
-    @Override
-    public HumanoidRenderState createRenderState() {
-        return new HumanoidRenderState();
     }
 }

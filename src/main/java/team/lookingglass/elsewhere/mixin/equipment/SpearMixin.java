@@ -1,11 +1,13 @@
 package team.lookingglass.elsewhere.mixin.equipment;
 
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import team.lookingglass.elsewhere.registry.tags.EItemTags;
 
 @Mixin(Item.Properties.class)
 public abstract class SpearMixin {
@@ -16,6 +18,9 @@ public abstract class SpearMixin {
 
     @ModifyVariable(method = "spear", at = @At("HEAD"), argsOnly = true, name = "attackDuration")
     private float elsewhere$forceSpearAttackDuration(float attackDuration) {
+        if (attackDuration == 0.9F) {
+            return attackDuration;
+        }
         return 0.8F;
     }
 

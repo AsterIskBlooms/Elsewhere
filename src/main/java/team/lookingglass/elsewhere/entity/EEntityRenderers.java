@@ -20,10 +20,6 @@ public class EEntityRenderers {
         EntityRenderers.register(EEntities.WEREWOLF, WerewolfRenderer::new);
 
         ModelLayerRegistry.registerModelLayer(VanguardModel.LAYER_LOCATION, VanguardModel::createBodyLayer);
-        ModelLayerRegistry.registerModelLayer(VanguardModel.ARMOR_HEAD, () -> VanguardModel.createArmorLayer(new CubeDeformation(0.5F)));
-        ModelLayerRegistry.registerModelLayer(VanguardModel.ARMOR_CHEST, () -> VanguardModel.createArmorLayer(new CubeDeformation(0.5F)));
-        ModelLayerRegistry.registerModelLayer(VanguardModel.ARMOR_LEGS, () -> VanguardModel.createArmorLayer(new CubeDeformation(0.25F)));
-        ModelLayerRegistry.registerModelLayer(VanguardModel.ARMOR_FEET, () -> VanguardModel.createArmorLayer(new CubeDeformation(0.5F)));
 
         EntityRenderers.register(EEntities.VANGUARD, VanguardRenderer::new);
 

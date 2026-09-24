@@ -40,7 +40,7 @@ public interface EMaterials {
 
     ResourceKey<EquipmentAsset> SOULSTEEL_ARMOR_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "soulsteel"));
     ToolMaterial SOULSTEEL_TOOL = new ToolMaterial(
-            BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
+            BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
             1261,
             10F,
             3F,

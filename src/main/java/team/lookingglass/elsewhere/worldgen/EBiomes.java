@@ -988,7 +988,7 @@ public interface  EBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
 
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 1, 2));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
 
@@ -1003,7 +1003,7 @@ public interface  EBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EntityType.HUSK, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
 
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 1, 2));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
 
@@ -1018,7 +1018,7 @@ public interface  EBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, 95, new MobSpawnSettings.SpawnerData(EEntities.FROSTBITE, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.CAVE_SPIDER, 2, 4));
 
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 1, 2));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
 
@@ -1033,7 +1033,7 @@ public interface  EBiomes {
         spawnBuilder.addSpawn(MobCategory.MONSTER, 75, new MobSpawnSettings.SpawnerData(EntityType.BOGGED, 4, 4));
 
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SULFUR_CUBE, 4, 4));
-        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 2, 2));
+        spawnBuilder.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EEntities.VANGUARD, 1, 2));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EEntities.SWEEPER, 4, 4));
         spawnBuilder.addSpawn(MobCategory.MONSTER, 55, new MobSpawnSettings.SpawnerData(EEntities.SUBSLIME, 2, 4));
 

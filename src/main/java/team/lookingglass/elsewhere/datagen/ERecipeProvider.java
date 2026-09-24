@@ -755,9 +755,9 @@ public class ERecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(raw), has(raw)).save(wrappedOutput, specificPath(raw, "_from_" + getItemName(rawBlock)));
 
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
                         .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
@@ -774,9 +774,9 @@ public class ERecipeProvider extends FabricRecipeProvider {
                 customOreBlasting(smeltables, RecipeCategory.MISC, CookingBookCategory.MISC, ingot, exp, 100, getItemName(ingot));
 
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
                         .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(compBlock, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
@@ -785,9 +785,9 @@ public class ERecipeProvider extends FabricRecipeProvider {
             }
             private void itemUnsmeltableNBSet(ItemLike ingot, ItemLike nugget, ItemLike compBlock) {
                 shapeless(RecipeCategory.MISC, ingot).requires(nugget, 9)
-                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
+                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(nugget.asItem()).getPath()));
                 shapeless(RecipeCategory.MISC, nugget, 9).requires(ingot)
-                        .unlockedBy(getHasName(nugget), has(nugget)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
+                        .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(nugget, "_from_" + BuiltInRegistries.ITEM.getKey(ingot.asItem()).getPath()));
 
                 shapeless(RecipeCategory.BUILDING_BLOCKS, compBlock).requires(ingot, 9)
                         .unlockedBy(getHasName(ingot), has(ingot)).save(wrappedOutput, specificPath(ingot, "_from_" + BuiltInRegistries.ITEM.getKey(compBlock.asItem()).getPath()));

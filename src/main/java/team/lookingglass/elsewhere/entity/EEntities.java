@@ -48,7 +48,7 @@ public interface EEntities {
     ResourceKey<EntityType<?>> VANGUARD_KEY = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Elsewhere.MODID, "vanguard"));
     EntityType<Vanguard> VANGUARD = Registry.register(BuiltInRegistries.ENTITY_TYPE, VANGUARD_KEY,
             EntityType.Builder.of(Vanguard::new, MobCategory.MONSTER)
-                    .sized(0.6F, 1.95F)
+                    .sized(0.95F, 2.15F)
                     .clientTrackingRange(8)
                     .build(VANGUARD_KEY)
     );

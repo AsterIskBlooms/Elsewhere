@@ -140,7 +140,7 @@
       },
       {
         "type": "elsewhere:vanguard",
-        "maxCount": 2,
+        "maxCount": 1,
         "minCount": 2,
         "weight": 85
       },

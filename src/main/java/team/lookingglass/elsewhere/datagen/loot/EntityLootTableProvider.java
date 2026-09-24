@@ -41,13 +41,13 @@ public class EntityLootTableProvider extends FabricEntityLootSubProvider {
         );
         add(EEntities.VANGUARD, LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(EItems.SILVER_NUGGET)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 6)))
+                        .add(LootItem.lootTableItem(EItems.SILVER_INGOT)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1, 2)))))
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(EItems.VANGUARD_MASK)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 1))).setWeight(3))
-                        .add(EmptyLootItem.emptyItem().setWeight(120))
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))).setWeight(1))
+                        .add(EmptyLootItem.emptyItem().setWeight(19))
                 )
         );
         add(EEntities.SWEEPER, LootTable.lootTable()
